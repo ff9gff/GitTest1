@@ -30,13 +30,11 @@ public class TestController {
 	
 	@RequestMapping(value = "test3", method = RequestMethod.GET)
 	public void test3() {
-
 		logger.info("야호");
 		logger.info("?");
 		logger.info("!");
-		logger.info("@");
+		logger.info("bug fix");
 		
-
 	}
 
 }
