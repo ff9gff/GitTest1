@@ -13,11 +13,13 @@ public class TestController {
 	@RequestMapping(value = "index", method = RequestMethod.GET)
 	public void main() {
 		logger.info("야호");
+		logger.info("github Test");
 	}
 	
 	@RequestMapping(value = "test1", method = RequestMethod.GET)
 	public void test1() {
 		logger.info("야호");
+		logger.info("github Test");
 	}
 
 }
