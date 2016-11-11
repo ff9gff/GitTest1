@@ -21,5 +21,17 @@ public class TestController {
 		logger.info("야호");
 		logger.info("github Test");
 	}
+	
+	@RequestMapping(value = "test2", method = RequestMethod.GET)
+	public void test1() {
+		logger.info("야호");
+		logger.info("github Test");
+	}
+	
+	@RequestMapping(value = "test3", method = RequestMethod.GET)
+	public void test1() {
+		logger.info("야호");
+		logger.info("github Test");
+	}
 
 }
