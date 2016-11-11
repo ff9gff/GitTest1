@@ -31,6 +31,7 @@ public class TestController {
 	@RequestMapping(value = "test3", method = RequestMethod.GET)
 	public void test3() {
 		logger.info("Hello, github");
+		logger.info("Hello, 1st");
 		logger.info("github Test");
 	}
 
