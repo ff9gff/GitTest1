@@ -10,36 +10,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TestController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	@RequestMapping(value = "index", method = RequestMethod.GET)
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void main() {
 		logger.info("야호");
 		logger.info("github Test");
 	}
 	
-	@RequestMapping(value = "test1", method = RequestMethod.GET)
-	public void test1() {
+	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
+	public String test1() {
 		logger.info("야호");
 		logger.info("github Test");
-	}
-	
-	@RequestMapping(value = "test2", method = RequestMethod.GET)
-	public void test2() {
-		logger.info("야호");
-		logger.info("github Test");
-	}
-	
-	@RequestMapping(value = "test3", method = RequestMethod.GET)
-	public void test3() {
-		logger.info("야호");
-		logger.info("?");
-		logger.info("!");
-
-		logger.info("니가 하면 나도 한다 bug fix");
-
-		logger.info("bug fix");
-
 		
+		return "index";
 	}
+	
 	
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정

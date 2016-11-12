@@ -62,13 +62,9 @@ http://www.templatemo.com/tm-406-flex
                                         <li><a href="#services">후기</a></li>
                                         <li><a href="#portfolio">찾기</a></li>
                                         <li><a href="#our-team">마이페이지</a></li>
-                                        <li><a href="#contact">Contact</a></li>      
+                                        <li><a href="#login">로그인</a></li>      
                                       
-                                        <li><a href="login">로그인</a></li>                           
-                                    	
-                                    	<c:if test="">
-                                        	<li><a href="login">로그인</a></li>                           
-                                    	</c:if>
+                                      
                                     </ul>                                    
                                 </div> <!-- /.main-menu -->
                             </div> <!-- /.row -->
@@ -405,12 +401,22 @@ http://www.templatemo.com/tm-406-flex
             </div> <!-- /.container -->
         </div> <!-- /#our-team -->
 
-        <div class="content-section" id="contact">
+        <div class="content-section" id="login">
             <div class="container">
                 <div class="row">
                     <div class="heading-section col-md-12 text-center">
-                        <h2>Contact</h2>
+                        <h2>로그인</h2>
                         <p>Send a message to us</p>
+                        <p></p>
+                        
+                        <form action="login-post" method="post">
+							<input type="text" name="userid" placeholder="아이디" required /> <br/><br/>
+							<input type="password" name="pwd" placeholder="비밀번호" required /> <br/><br/>	
+							<input type="submit" value="로그인" />
+							<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
+							<input type="button" value="회원가입" /> <br/><br/>	
+							<%-- <input type="hidden" name="query" value="<%=request.getQueryString() %>" /> --%>
+						</form>
                     </div> <!-- /.heading-section -->
                 </div> <!-- /.row -->
                 <div class="row">

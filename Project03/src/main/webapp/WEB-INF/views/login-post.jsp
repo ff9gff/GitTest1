@@ -58,17 +58,12 @@ http://www.templatemo.com/tm-406-flex
                                 <div class="col-md-10 col-sm-10 main-menu text-right">
                                     <div class="toggle-menu visible-sm visible-xs"><i class="fa fa-bars"></i></div>
                                     <ul class="menu-first">
-                                        <li class="active"><a href="#">메인</a></li>
+                                        <li class="active"><a href="index">메인</a></li>
                                         <li><a href="#services">후기</a></li>
                                         <li><a href="#portfolio">찾기</a></li>
                                         <li><a href="#our-team">마이페이지</a></li>
-                                        <li><a href="#contact">Contact</a></li>      
-                                      
-                                        <li><a href="login">로그인</a></li>                           
-                                    	
-                                    	<c:if test="">
-                                        	<li><a href="login">로그인</a></li>                           
-                                    	</c:if>
+                                        <li><a href="#login">로그인</a></li>      
+                     
                                     </ul>                                    
                                 </div> <!-- /.main-menu -->
                             </div> <!-- /.row -->
@@ -84,27 +79,9 @@ http://www.templatemo.com/tm-406-flex
                                 <div class="overlay"></div>
                                 <img src="resources/theme/images/slide1.jpg" alt="">
                                 <div class="slider-caption visible-md visible-lg">
-                                    <h2>같이가자</h2>
-                                    <p>같이 여행 갈 동행자를 찾아보세요</p>
-                                    <a href="#" class="slider-btn">ㅎㅎㅎ</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="overlay"></div>
-                                <img src="resources/theme/images/slide2.jpg" alt="">
-                                <div class="slider-caption visible-md visible-lg">
-                                    <h2>이벤트</h2>
-                                    <p>운영진과 함께 떠나는 즐거운 여행</p>
-                                    <a href="#" class="slider-btn">개소리 ㄴㄴ해</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="overlay"></div>
-                                <img src="resources/theme/images/slide3.jpg" alt="">
-                                <div class="slider-caption visible-md visible-lg">
-                                    <h2>하이</h2>
-                                    <p>으아</p>
-                                    <a href="#" class="slider-btn">힝</a>
+                                    <h2>로그인</h2>
+                                    <p></p>
+                                    <a href="#" class="slider-btn"></a>
                                 </div>
                             </li>
                         </ul>
@@ -118,62 +95,17 @@ http://www.templatemo.com/tm-406-flex
             <div class="container">
                 <div class="row">
                     <div class="heading-section col-md-12 text-center">
-                        <h2>Top 4 Review</h2>
-                        <p>당신만의 멋진 후기를 보여주세요</p>
-                    </div> 
-                    <div class="heading-section col-md-12 text-center">
-                    	<h4><a href="test1">전체보기</a></h4>
+                        <h2>로그인</h2>
+                        <p>로그인</p>
                     </div> 
                     <!-- /.heading-section -->
                 </div> <!-- /.row -->
                 <div class="row">
                     <div class="col-md-3 col-sm-6">
                         <div class="service-item" id="service-1">
-                            <div class="service-icon">
-                                <i class="fa fa-file-code-o"></i>
-                            </div> <!-- /.service-icon -->
                             <div class="service-content">
                                 <div class="inner-service">
                                    <h3>HTML5 Coding</h3>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, assumenda, eveniet, consectetur, ex doloribus veniam asperiores incidunt mollitia placeat aniet.</p> 
-                                </div>
-                            </div> <!-- /.service-content -->
-                        </div> <!-- /#service-1 -->
-                    </div> <!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item" id="service-2">
-                            <div class="service-icon">
-                                <i class="fa fa-paper-plane-o"></i>
-                            </div> <!-- /.service-icon -->
-                            <div class="service-content">
-                                <div class="inner-service">
-                                   <h3>Our Support</h3>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, assumenda, eveniet, consectetur, ex doloribus veniam asperiores incidunt mollitia placeat aniet.</p> 
-                                </div>
-                            </div> <!-- /.service-content -->
-                        </div> <!-- /#service-1 -->
-                    </div> <!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item" id="service-3">
-                            <div class="service-icon">
-                                <i class="fa fa-institution"></i>
-                            </div> <!-- /.service-icon -->
-                            <div class="service-content">
-                                <div class="inner-service">
-                                   <h3>Our Design</h3>
-                                   <p>We make HTML CSS templates that are responsive for any screen size on any device. Feel free to download and use our templates without restrictions.</p> 
-                                </div>
-                            </div> <!-- /.service-content -->
-                        </div> <!-- /#service-1 -->
-                    </div> <!-- /.col-md-3 -->
-                    <div class="col-md-3 col-sm-6">
-                        <div class="service-item" id="service-4">
-                            <div class="service-icon">
-                                <i class="fa fa-flask"></i>
-                            </div> <!-- /.service-icon -->
-                            <div class="service-content">
-                                <div class="inner-service">
-                                   <h3>Go for mobile</h3>
                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, assumenda, eveniet, consectetur, ex doloribus veniam asperiores incidunt mollitia placeat aniet.</p> 
                                 </div>
                             </div> <!-- /.service-content -->
@@ -405,7 +337,7 @@ http://www.templatemo.com/tm-406-flex
             </div> <!-- /.container -->
         </div> <!-- /#our-team -->
 
-        <div class="content-section" id="contact">
+        <div class="content-section" id="login">
             <div class="container">
                 <div class="row">
                     <div class="heading-section col-md-12 text-center">
