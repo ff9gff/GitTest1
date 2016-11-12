@@ -24,8 +24,8 @@ public class MemberDAOImpl implements MemberDAO {
 
 	@Override
 	public List<MemberVO> select() {
-		// TODO Auto-generated method stub
-		return null;
+		List<MemberVO> list = sqlSession.selectList(NAMESPACE+ ".member-select-all"); 
+		return list;
 	}
 
 	@Override

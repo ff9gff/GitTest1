@@ -15,7 +15,7 @@
     <!-- 전체 검색 SELECT -->
     <select id="member-select-all"
         resultType="edu.spring.project03.domain.MemberVO">
-    select * from test_temp order by mid
+    select * from test_temp order by mno
     </select>
     
     <!-- userid로 검색하는 SQL문 -->

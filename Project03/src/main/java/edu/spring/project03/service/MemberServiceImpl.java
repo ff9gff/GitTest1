@@ -7,15 +7,19 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.persistence.MemberDAO;
 
 //@Component // 스프링 프레임워크가 bean으로 관리하는 클래스
 @Service // 스프링 프레임워크가 Service bean으로 관리하는 클래스
 public class MemberServiceImpl implements MemberService {
+	
+	@Autowired
+	private MemberDAO dao;
 
 	@Override
 	public List<MemberVO> read() {
-		// TODO Auto-generated method stub
-		return null;
+		List<MemberVO> list = dao.select();
+		return list;
 	}
 
 	@Override

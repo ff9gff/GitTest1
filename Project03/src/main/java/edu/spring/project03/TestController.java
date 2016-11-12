@@ -1,12 +1,16 @@
 package edu.spring.project03;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.service.MemberService;
 
 @Controller
@@ -23,11 +27,13 @@ public class TestController {
 	}
 	
 	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
-	public String test1() {
+	public String test1(Model model) {
 		logger.info("야호");
 		logger.info("github Test");
+		List<MemberVO> list = memberService.read();
+		model.addAttribute("memberList", list);
 		
-		return "index";
+		return "member/list";
 	}
 	
 	
