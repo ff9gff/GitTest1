@@ -1,21 +1,25 @@
 package edu.spring.project03.domain;
 
+import java.util.Date;
+
 public class MemberVO {
 	private int mno;
 	private String userid;
 	private String pwd;
 	private String nickname;
+	private Date join_date;
 	private int authority;
 	
 	public MemberVO() {
 
 	}
 
-	public MemberVO(int mno, String userid, String pwd, String nickname, int authority) {
+	public MemberVO(int mno, String userid, String pwd, String nickname, Date join_date, int authority) {
 		this.mno = mno;
 		this.userid = userid;
 		this.pwd = pwd;
 		this.nickname = nickname;
+		this.join_date = join_date;
 		this.authority = authority;
 	}
 
@@ -51,6 +55,14 @@ public class MemberVO {
 		this.nickname = nickname;
 	}
 
+	public Date getJoin_date() {
+		return join_date;
+	}
+
+	public void setJoin_date(Date join_date) {
+		this.join_date = join_date;
+	}
+
 	public int getAuthority() {
 		return authority;
 	}
@@ -58,4 +70,9 @@ public class MemberVO {
 	public void setAuthority(int authority) {
 		this.authority = authority;
 	}
+	
+	
+	
+
+	
 }
