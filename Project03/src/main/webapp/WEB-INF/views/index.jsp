@@ -91,7 +91,7 @@ http://www.templatemo.com/tm-406-flex
                                 <div class="slider-caption visible-md visible-lg">
                                     <h2>이벤트</h2>
                                     <p>운영진과 함께 떠나는 즐거운 여행</p>
-                                    <a href="#" class="slider-btn">개소리 ㄴㄴ해</a>
+                                    <a href="#" class="slider-btn">응 안가</a>
                                 </div>
                             </li>
                             <li>
@@ -413,25 +413,27 @@ http://www.templatemo.com/tm-406-flex
 							<input type="text" name="userid" placeholder="아이디" required /> <br/><br/>
 							<input type="password" name="pwd" placeholder="비밀번호" required /> <br/><br/>	
 							<input type="submit" value="로그인" />
+							
+							<input type="button" value="회원가입"/>
+							
 							<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
-							<input type="button" value="회원가입" /> <br/><br/>	
 							<%-- <input type="hidden" name="query" value="<%=request.getQueryString() %>" /> --%>
 						</form>
+						
+						
+						
                     </div> <!-- /.heading-section -->
                 </div> <!-- /.row -->
-                <div class="row">
+               <!--  <div class="row">
                     <div class="col-md-12">
                        <div class="googlemap-wrapper">
                             <div id="map_canvas" class="map-canvas"></div>
-                        </div> <!-- /.googlemap-wrapper -->
-                    </div> <!-- /.col-md-12 -->
-                </div> <!-- /.row -->
+                        </div> /.googlemap-wrapper
+                    </div> /.col-md-12
+                </div> /.row -->
                 <div class="row">
                     <div class="col-md-7 col-sm-6">
-                        <p>Flex is a Bootstrap v3.1.1 HTML CSS web template by <span class="blue">template</span><span class="green">mo</span>. Slider images and portfolio images are from <a rel="nofollow" href="http://unsplash.com" target="_parent">Unsplash</a> website. Thank you for visiting. Please tell your friends about templatemo.<br><br>
-                        Hic, suscipit, praesentium earum quod ea distinctio impedit ullam deserunt minus dolore quibusdam quis saepe aliquam doloribus voluptatibus eum excepturi. Aenean semper erat neque. Nunc et scelerisque nunc, in adipiscing magna.<br><br>
-				    Duis ullamcorper tortor tellus. Ut diam libero, ultricies non augue a, mollis congue risus. Fusce a quam eget nisi luctus imperdiet. Consectetur quod at aperiam corporis totam. Nesciunt minima laborum sapiente totam facere unde est cum quia. 
-                    	</p>
+                        
                         <ul class="contact-info">
                             <li>Phone: 033-033-0660</li>
                             <li>Email: <a href="mailto:info@company.com">info@company.com</a></li>
@@ -480,33 +482,6 @@ http://www.templatemo.com/tm-406-flex
         <script src="resources/theme/js/bootstrap.js"></script>
         <script src="resources/theme/js/plugins.js"></script>
         <script src="resources/theme/js/main.js"></script>
-
-        <!-- Google Map -->
-        <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-        <script src="js/vendor/jquery.gmap3.min.js"></script>
         
-        <!-- Google Map Init-->
-        <script type="text/javascript">
-            jQuery(function($){
-                $('#map_canvas').gmap3({
-                    marker:{
-                        address: '37.769725, -122.462154' 
-                    },
-                        map:{
-                        options:{
-                        zoom: 15,
-                        scrollwheel: false,
-                        streetViewControl : true
-                        }
-                    }
-                });
-
-                /* Simulate hover on iPad
-                 * http://stackoverflow.com/questions/2851663/how-do-i-simulate-a-hover-with-a-touch-in-touch-enabled-browsers
-                 --------------------------------------------------------------------------------------------------------------*/ 
-                $('body').bind('touchstart', function() {});
-            });
-        </script>
-        <!-- templatemo 406 flex -->
     </body>
 </html>

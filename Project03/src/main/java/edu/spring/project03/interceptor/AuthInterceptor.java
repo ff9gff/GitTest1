@@ -1,5 +1,7 @@
 package edu.spring.project03.interceptor;
 
-public class AuthInterceptor {
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+public class AuthInterceptor extends HandlerInterceptorAdapter {
 
 }

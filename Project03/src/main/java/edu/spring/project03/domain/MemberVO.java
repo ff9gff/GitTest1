@@ -7,19 +7,19 @@ public class MemberVO {
 	private String userid;
 	private String pwd;
 	private String nickname;
-	private Date join_date;
+	private Date joindate;
 	private int authority;
 	
 	public MemberVO() {
 
 	}
 
-	public MemberVO(int mno, String userid, String pwd, String nickname, Date join_date, int authority) {
+	public MemberVO(int mno, String userid, String pwd, String nickname, Date joindate, int authority) {
 		this.mno = mno;
 		this.userid = userid;
 		this.pwd = pwd;
 		this.nickname = nickname;
-		this.join_date = join_date;
+		this.joindate = joindate;
 		this.authority = authority;
 	}
 
@@ -55,12 +55,12 @@ public class MemberVO {
 		this.nickname = nickname;
 	}
 
-	public Date getJoin_date() {
-		return join_date;
+	public Date getJoindate() {
+		return joindate;
 	}
 
-	public void setJoin_date(Date join_date) {
-		this.join_date = join_date;
+	public void setJoindate(Date joindate) {
+		this.joindate = joindate;
 	}
 
 	public int getAuthority() {
@@ -70,9 +70,5 @@ public class MemberVO {
 	public void setAuthority(int authority) {
 		this.authority = authority;
 	}
-	
-	
-	
 
-	
 }

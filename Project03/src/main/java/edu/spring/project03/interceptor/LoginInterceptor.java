@@ -1,5 +1,7 @@
 package edu.spring.project03.interceptor;
 
-public class LoginInterceptor {
+import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+public class LoginInterceptor extends HandlerInterceptorAdapter{
 
 }
