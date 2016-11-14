@@ -56,5 +56,6 @@ public class TestController {
 	
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
+	// gg
 
 }
