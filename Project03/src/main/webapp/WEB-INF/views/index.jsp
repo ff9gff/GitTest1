@@ -25,6 +25,13 @@ http://www.templatemo.com/tm-406-flex
         <link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>" >
 
         <script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+        
+        <style> 
+        	.searchRegion {
+        		display: none;
+        	}
+        	
+        </style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -62,7 +69,7 @@ http://www.templatemo.com/tm-406-flex
                                         <li><a href="#services">후기</a></li>
                                         <li><a href="#portfolio">찾기</a></li>
                                         <li><a href="#our-team">마이페이지</a></li>
-                                        <li><a href="#login">로그인</a></li>      
+                                        <li><a href="login">로그인</a></li>      
                                       
                                       
                                     </ul>                                    
@@ -143,8 +150,8 @@ http://www.templatemo.com/tm-406-flex
                             </div> <!-- /.service-icon -->
                             <div class="service-content">
                                 <div class="inner-service">
-                                   <h3>Our Support</h3>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, assumenda, eveniet, consectetur, ex doloribus veniam asperiores incidunt mollitia placeat aniet.</p> 
+                                   <h3></h3>
+                                   <p></p> 
                                 </div>
                             </div> <!-- /.service-content -->
                         </div> <!-- /#service-1 -->
@@ -156,8 +163,8 @@ http://www.templatemo.com/tm-406-flex
                             </div> <!-- /.service-icon -->
                             <div class="service-content">
                                 <div class="inner-service">
-                                   <h3>Our Design</h3>
-                                   <p>We make HTML CSS templates that are responsive for any screen size on any device. Feel free to download and use our templates without restrictions.</p> 
+                                   <h3></h3>
+                                   <p></p> 
                                 </div>
                             </div> <!-- /.service-content -->
                         </div> <!-- /#service-1 -->
@@ -169,8 +176,8 @@ http://www.templatemo.com/tm-406-flex
                             </div> <!-- /.service-icon -->
                             <div class="service-content">
                                 <div class="inner-service">
-                                   <h3>Go for mobile</h3>
-                                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim, assumenda, eveniet, consectetur, ex doloribus veniam asperiores incidunt mollitia placeat aniet.</p> 
+                                   <h3></h3>
+                                   <p></p> 
                                 </div>
                             </div> <!-- /.service-content -->
                         </div> <!-- /#service-1 -->
@@ -185,8 +192,14 @@ http://www.templatemo.com/tm-406-flex
             <div class="container">
                 <div class="row">
                     <div class="heading-section col-md-12 text-center">
-                        <h2>Our Portfolio</h2>
-                        <p>Amazing work for our clients</p>
+                        <h2>동행자 찾기 게시판</h2>
+                        <p> </p>
+                        <div>
+                        	<button>지역 검색</button>
+            
+                        	<button>날짜 검색</button>
+                        	<button>새 글 작성</button>
+                        </div>
                     </div> <!-- /.heading-section -->
                 </div> <!-- /.row -->
                 <div class="row">
@@ -297,28 +310,25 @@ http://www.templatemo.com/tm-406-flex
             <div class="container">
                 <div class="row">
                     <div class="heading-section col-md-12 text-center">
-                        <h2>Our Team</h2>
-                        <p>Our people are very united for your success</p>
+                        <h2>마이페이지</h2>
+                        <p></p>
                     </div> <!-- /.heading-section -->
                 </div> <!-- /.row -->
                 <div class="row">
                     <div class="team-member col-md-3 col-sm-6">
                         <div class="member-thumb">
+                        	<!-- 프로필 사진 들어가야 할 곳  -->
                             <img src="resources/theme/images/member1.jpg" alt="">
-                            <div class="team-overlay">
-                                <h3>Tracy</h3>
-                                <span>Designer</span>
-                                <ul class="social">
-                                    <li><a href="#" class="fa fa-facebook"></a></li>
-                                    <li><a href="#" class="fa fa-twitter"></a></li>
-                                    <li><a href="#" class="fa fa-linkedin"></a></li>
-                                </ul>
-                            </div> <!-- /.team-overlay -->
                         </div> <!-- /.member-thumb -->
+                        
+                        <div>
+                        	
+                        </div>
+                        
                     </div> <!-- /.team-member -->
                     <div class="team-member col-md-3 col-sm-6">
                         <div class="member-thumb">
-                            <img src="resources/theme/images/member2.jpg" alt="">
+                            <!-- <img src="resources/theme/images/member2.jpg" alt=""> -->
                             <div class="team-overlay">
                                 <h3>Cindy</h3>
                                 <span>Developer</span>
@@ -332,7 +342,7 @@ http://www.templatemo.com/tm-406-flex
                     </div> <!-- /.team-member -->
                     <div class="team-member col-md-3 col-sm-6">
                         <div class="member-thumb">
-                            <img src="resources/theme/images/member3.jpg" alt="">
+                           <!--  <img src="resources/theme/images/member3.jpg" alt=""> -->
                             <div class="team-overlay">
                                 <h3>Mary</h3>
                                 <span>Director</span>
@@ -346,7 +356,7 @@ http://www.templatemo.com/tm-406-flex
                     </div> <!-- /.team-member -->
                     <div class="team-member col-md-3 col-sm-6">
                         <div class="member-thumb">
-                            <img src="resources/theme/images/member4.jpg" alt="">
+                            <!-- <img src="resources/theme/images/member4.jpg" alt=""> -->
                             <div class="team-overlay">
                                 <h3>Linda</h3>
                                 <span>Chief Executive</span>
@@ -359,46 +369,8 @@ http://www.templatemo.com/tm-406-flex
                         </div> <!-- /.member-thumb -->
                     </div> <!-- /.team-member -->
                 </div> <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <div class="skills-heading">
-                            <h3 class="skills-title">Design Skills</h3>
-                            <p class="small-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div> <!-- /.col-md-12 -->
-                </div> <!-- /.row -->
-                <div class="row">
-                    <div class="col-md-8 col-sm-6">
-                        <p>Aliquam faucibus in dolor sed vestibulum. Sed adipiscing malesuada luctus. Morbi tincidunt, tellus scelerisque scelerisque scelerisque, sapien dui pretium augue, at consectetur sapien tellus vitae nunc. Ut vitae metus quis nulla cursus adipiscing pretium vel dolor. Fusce lacinia accumsan arcu, quis porttitor nisi tincidunt ut. Nunc malesuada nunc eget nunc sollicitudin posuere. Maecenas vitae tortor quis odio hendrerit sagittis.<br><br>
-						Etiam tincidunt, magna eu elementum tristique, sapien nisl venenatis lacus, nec sagittis lectus dui eget lorem. Donec in tempus mi. Aenean egestas interdum dolor, et mollis lectus consequat. Mauris ullamcorper, felis sit amet gravida malesuada, nisi sem rhoncus massa, non tempor est erat sit amet diam.<!-- spacing for mobile viewing --><br><br>
-						</p>
-                    </div> <!-- /.col-md-8 -->
-                    <div class="col-md-4 col-sm-6">
-                        <ul class="progess-bars">
-                            <li>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">Photoshop 90%</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">HTML CSS 80%</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">Development 70%</div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">Marketing 80%</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div> <!-- /.col-md-4 -->
-                </div> <!-- /.row -->
-            </div> <!-- /.container -->
+               
+             </div> <!-- /.container -->
         </div> <!-- /#our-team -->
 
         <div class="content-section" id="login">
@@ -431,36 +403,7 @@ http://www.templatemo.com/tm-406-flex
                         </div> /.googlemap-wrapper
                     </div> /.col-md-12
                 </div> /.row -->
-                <div class="row">
-                    <div class="col-md-7 col-sm-6">
-                        
-                        <ul class="contact-info">
-                            <li>Phone: 033-033-0660</li>
-                            <li>Email: <a href="mailto:info@company.com">info@company.com</a></li>
-                            <li>Address: 880 De Best Studio, Fork Street, San Francisco</li>
-                        </ul>
-                        <!-- spacing for mobile viewing --><br><br>
-                    </div> <!-- /.col-md-7 -->
-                    <div class="col-md-5 col-sm-6">
-                        <div class="contact-form">
-                            <form method="post" name="contactform" id="contactform">
-                                <p>
-                                    <input name="name" type="text" id="name" placeholder="Your Name">
-                                </p>
-                                <p>
-                                    <input name="email" type="text" id="email" placeholder="Your Email"> 
-                                </p>
-                                <p>
-                                    <input name="subject" type="text" id="subject" placeholder="Subject"> 
-                                </p>
-                                <p>
-                                    <textarea name="comments" id="comments" placeholder="Message"></textarea>    
-                                </p>
-                                <input type="submit" class="mainBtn" id="submit" value="Send Message">
-                            </form>
-                        </div> <!-- /.contact-form -->
-                    </div> <!-- /.col-md-5 -->
-                </div> <!-- /.row -->
+               
             </div> <!-- /.container -->
         </div> <!-- /#contact -->
             

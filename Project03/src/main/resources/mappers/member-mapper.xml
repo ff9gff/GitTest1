@@ -30,11 +30,12 @@
     where userid = #{userid}
     </update>
     
-    <!-- 해당 userid 데이터 삭제  -->
+    <!-- 관리자: 해당 userid 데이터 삭제  -->
     <delete id="delete">
     delete from test_temp where userid = #{userid}
     </delete>
     
+    <!-- 관리자: 해당 userid 데이터 삭제  -->
     <update id="update-email">
     update test_temp set email = #{email} where userid = #{userid}
     </update>

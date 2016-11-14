@@ -26,6 +26,14 @@ public class TestController {
 		logger.info("github Test");
 	}
 	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void test2() {
+		logger.info("야호");
+		logger.info("github Test");
+
+		
+	}
+	
 	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
 	public String test1(Model model) {
 		logger.info("야호");
