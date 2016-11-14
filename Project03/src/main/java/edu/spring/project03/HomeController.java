@@ -32,14 +32,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		
-		System.out.println("push test by 대호");
-		System.out.println("push test by 성준");
-		System.out.println("push test by 주영");
-		System.out.println("push test by 승현");
-		System.out.println("push test by 유나");
-		System.out.println("push test by 태훈");
-		
+	
 		return "index";
 	}
 	
