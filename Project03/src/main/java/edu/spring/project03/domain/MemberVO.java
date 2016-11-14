@@ -6,7 +6,6 @@ public class MemberVO {
 	private int mno;
 	private String userid;
 	private String pwd;
-	private String nickname;
 	private Date joindate;
 	private int authority;
 	
@@ -14,11 +13,10 @@ public class MemberVO {
 
 	}
 
-	public MemberVO(int mno, String userid, String pwd, String nickname, Date joindate, int authority) {
+	public MemberVO(int mno, String userid, String pwd, Date joindate, int authority) {
 		this.mno = mno;
 		this.userid = userid;
 		this.pwd = pwd;
-		this.nickname = nickname;
 		this.joindate = joindate;
 		this.authority = authority;
 	}
@@ -47,14 +45,6 @@ public class MemberVO {
 		this.pwd = pwd;
 	}
 
-	public String getNickname() {
-		return nickname;
-	}
-
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
 	public Date getJoindate() {
 		return joindate;
 	}
@@ -70,5 +60,8 @@ public class MemberVO {
 	public void setAuthority(int authority) {
 		this.authority = authority;
 	}
+	
+	
 
+	
 }

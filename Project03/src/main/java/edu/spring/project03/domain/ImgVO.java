@@ -2,7 +2,7 @@ package edu.spring.project03.domain;
 
 public class ImgVO {
 	
-	private String type; // 게시판 종류
+	private String type; // 게시판 종류(후기 & 여행등록)
 	private int no; // 종류에 따른 게시글 번호
 	private String img_url;
 	
