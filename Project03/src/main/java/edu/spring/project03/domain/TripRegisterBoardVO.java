@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class TripRegisterBoardVO {
 	
-	private int trip_no; //
+	private int trip_no; // 다시 수정 테스트
 	private String mno;
 	private String title;
 	private int contidion_sex;
