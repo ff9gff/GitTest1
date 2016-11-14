@@ -38,6 +38,7 @@ public class HomeController {
 		System.out.println("push test by 주영");
 		System.out.println("push test by 승현");
 		System.out.println("push test by 유나");
+		System.out.println("push test by 태훈");
 		
 		return "index";
 	}
