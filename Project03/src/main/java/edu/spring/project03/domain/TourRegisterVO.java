@@ -8,7 +8,7 @@ public class TourRegisterVO {
 	private int mno; // 회원 번호
 	private String title;
 	private int contidion_sex;
-	private int contifion_age;
+	private int contidion_age;
 	private String content;
 	private Date regdate;
 	private Date start_date;
@@ -19,13 +19,13 @@ public class TourRegisterVO {
 
 	}
 
-	public TourRegisterVO(int trip_no, int mno, String title, int contidion_sex, int contifion_age, String content,
+	public TourRegisterVO(int trip_no, int mno, String title, int contidion_sex, int contidion_age, String content,
 			Date regdate, Date start_date, Date end_date, int expire) {
 		this.trip_no = trip_no;
 		this.mno = mno;
 		this.title = title;
 		this.contidion_sex = contidion_sex;
-		this.contifion_age = contifion_age;
+		this.contidion_age = contidion_age;
 		this.content = content;
 		this.regdate = regdate;
 		this.start_date = start_date;
@@ -65,12 +65,12 @@ public class TourRegisterVO {
 		this.contidion_sex = contidion_sex;
 	}
 
-	public int getContifion_age() {
-		return contifion_age;
+	public int getContidion_age() {
+		return contidion_age;
 	}
 
-	public void setContifion_age(int contifion_age) {
-		this.contifion_age = contifion_age;
+	public void setContifion_age(int contidion_age) {
+		this.contidion_age = contidion_age;
 	}
 
 	public String getContent() {
