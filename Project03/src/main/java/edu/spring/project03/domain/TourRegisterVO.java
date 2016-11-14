@@ -2,10 +2,10 @@ package edu.spring.project03.domain;
 
 import java.util.Date;
 
-public class TripRegisterBoardVO {
+public class TourRegisterVO {
 	
-	private int trip_no; // 다시 수정 테스트
-	private String mno;
+	private int trip_no; // 여행 모집 게시글 번호 
+	private int mno; // 회원 번호
 	private String title;
 	private int contidion_sex;
 	private int contifion_age;
@@ -13,14 +13,14 @@ public class TripRegisterBoardVO {
 	private Date regdate;
 	private Date start_date;
 	private Date end_date;
+	private int expire; // 모집 마감 여부
 	
-	public TripRegisterBoardVO() {
+	public TourRegisterVO() {
 
 	}
-	
 
-	public TripRegisterBoardVO(int trip_no, String mno, String title, int contidion_sex, int contifion_age,
-			String content, Date regdate, Date start_date, Date end_date) {
+	public TourRegisterVO(int trip_no, int mno, String title, int contidion_sex, int contifion_age, String content,
+			Date regdate, Date start_date, Date end_date, int expire) {
 		this.trip_no = trip_no;
 		this.mno = mno;
 		this.title = title;
@@ -30,6 +30,7 @@ public class TripRegisterBoardVO {
 		this.regdate = regdate;
 		this.start_date = start_date;
 		this.end_date = end_date;
+		this.expire = expire;
 	}
 
 	public int getTrip_no() {
@@ -40,11 +41,11 @@ public class TripRegisterBoardVO {
 		this.trip_no = trip_no;
 	}
 
-	public String getMno() {
+	public int getMno() {
 		return mno;
 	}
 
-	public void setMno(String mno) {
+	public void setMno(int mno) {
 		this.mno = mno;
 	}
 
@@ -103,5 +104,14 @@ public class TripRegisterBoardVO {
 	public void setEnd_date(Date end_date) {
 		this.end_date = end_date;
 	}
+
+	public int getExpire() {
+		return expire;
+	}
+
+	public void setExpire(int expire) {
+		this.expire = expire;
+	}
+
 
 }

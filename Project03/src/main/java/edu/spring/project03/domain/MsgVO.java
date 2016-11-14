@@ -4,34 +4,54 @@ import java.util.Date;
 
 public class MsgVO {
 	
-	private String userid;
-	private String content;
-	private Date msg_date;
+	private int msg_no; // 쪽지 고유 번호 
+	private int sd_mno; // 보낸 사람 회원 번호
+	private int rc_mno; // 받은 사람 회원 번호
+	private String msg_content; // 쪽지 내용
+	private Date msg_date; // 메시지 전송 시간
 	
 	public MsgVO() {
-	
+		
 	}
 
-	public MsgVO(String userid, String content, Date msg_date) {
-		this.userid = userid;
-		this.content = content;
+	public MsgVO(int msg_no, int sd_mno, int rc_mno, String msg_content, Date msg_date) {
+		this.msg_no = msg_no;
+		this.sd_mno = sd_mno;
+		this.rc_mno = rc_mno;
+		this.msg_content = msg_content;
 		this.msg_date = msg_date;
 	}
 
-	public String getUserid() {
-		return userid;
+	public int getMsg_no() {
+		return msg_no;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setMsg_no(int msg_no) {
+		this.msg_no = msg_no;
 	}
 
-	public String getContent() {
-		return content;
+	public int getSd_mno() {
+		return sd_mno;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setSd_mno(int sd_mno) {
+		this.sd_mno = sd_mno;
+	}
+
+	public int getRc_mno() {
+		return rc_mno;
+	}
+
+	public void setRc_mno(int rc_mno) {
+		this.rc_mno = rc_mno;
+	}
+
+	public String getMsg_content() {
+		return msg_content;
+	}
+
+	public void setMsg_content(String msg_content) {
+		this.msg_content = msg_content;
 	}
 
 	public Date getMsg_date() {

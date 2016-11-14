@@ -1,20 +1,20 @@
 package edu.spring.project03.domain;
 
-public class SubmitListVO {
+public class TourJoinVO {
 	
 	private int trip_no;
 	private int list_no;
-	private String userid;
+	private int mno;
 	private int approval;
 	
-	public SubmitListVO() {
-		super();
+	public TourJoinVO() {
+		
 	}
 
-	public SubmitListVO(int trip_no, int list_no, String userid, int approval) {
+	public TourJoinVO(int trip_no, int list_no, int mno, int approval) {
 		this.trip_no = trip_no;
 		this.list_no = list_no;
-		this.userid = userid;
+		this.mno = mno;
 		this.approval = approval;
 	}
 
@@ -34,12 +34,12 @@ public class SubmitListVO {
 		this.list_no = list_no;
 	}
 
-	public String getUserid() {
-		return userid;
+	public int getMno() {
+		return mno;
 	}
 
-	public void setUserid(String userid) {
-		this.userid = userid;
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 
 	public int getApproval() {
@@ -49,11 +49,5 @@ public class SubmitListVO {
 	public void setApproval(int approval) {
 		this.approval = approval;
 	}
-	
-	
-	
-	
-	
-	
 
 }

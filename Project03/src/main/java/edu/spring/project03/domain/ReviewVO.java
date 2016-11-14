@@ -2,29 +2,37 @@ package edu.spring.project03.domain;
 
 import java.util.Date;
 
-public class ReviewBoardVO {
+public class ReviewVO {
 	
 	private int review_no;
 	private String title;
 	private String content;
-	private String userid;
+	private int mno;
 	private int like;
 	private int totalview;
 	private Date regdate;
 	
-	public ReviewBoardVO() {
+	public ReviewVO() {
 		
 	}
 
-	public ReviewBoardVO(int review_no, String title, String content, String userid, int like, int totalview,
+	public ReviewVO(int review_no, String title, String content, int mno, int like, int totalview,
 			Date regdate) {
 		this.review_no = review_no;
 		this.title = title;
 		this.content = content;
-		this.userid = userid;
+		this.mno = mno;
 		this.like = like;
 		this.totalview = totalview;
 		this.regdate = regdate;
+	}
+
+	public int getMno() {
+		return mno;
+	}
+
+	public void setMno(int mno) {
+		this.mno = mno;
 	}
 
 	public int getReview_no() {
@@ -51,13 +59,6 @@ public class ReviewBoardVO {
 		this.content = content;
 	}
 
-	public String getUserid() {
-		return userid;
-	}
-
-	public void setUserid(String userid) {
-		this.userid = userid;
-	}
 
 	public int getLike() {
 		return like;
