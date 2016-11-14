@@ -17,6 +17,7 @@ public class TripRegisterBoardVO {
 	public TripRegisterBoardVO() {
 
 	}
+	
 
 	public TripRegisterBoardVO(int trip_no, String mno, String title, int contidion_sex, int contifion_age,
 			String content, Date regdate, Date start_date, Date end_date) {
