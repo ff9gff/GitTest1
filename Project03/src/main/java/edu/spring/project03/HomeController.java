@@ -40,10 +40,8 @@ public class HomeController {
 		System.out.println("push test by 유나");
 		System.out.println("push test by 태훈");
 		
-		return "pickTest";
+		return "test/pickTest";
 
-	
-		
 	}
 	
 }

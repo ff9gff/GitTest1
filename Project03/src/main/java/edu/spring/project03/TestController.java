@@ -52,7 +52,7 @@ public class TestController {
 		model.addAttribute("start_date", start_date);
 		model.addAttribute("end_date", end_date);
 		
-		return "pickTest";
+		return "test/pickTest";
 	}
 	
 	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
@@ -63,7 +63,7 @@ public class TestController {
 		
 		model.addAttribute("regionList", regionList);
 		
-		return "pickTest";
+		return "test/pickTest";
 	}
 	
 	
