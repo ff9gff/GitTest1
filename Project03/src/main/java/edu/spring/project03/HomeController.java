@@ -41,6 +41,9 @@ public class HomeController {
 		System.out.println("push test by 태훈");
 		
 		return "pickTest";
+
+	
+		
 	}
 	
 }

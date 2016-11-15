@@ -36,7 +36,7 @@ public class TestController {
 	
 	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
 	public String test1(Model model) {
-		logger.info("야호");
+		logger.info("야호으아아으");
 		logger.info("github Test");
 		List<MemberVO> list = memberService.read();
 		model.addAttribute("memberList", list);
