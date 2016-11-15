@@ -13,8 +13,8 @@ public interface MemberDAO {
 
 	public abstract MemberVO login(MemberVO vo);
 	
-	public abstract List<MemberVO> select_region(String region);
+	public abstract List<TourRegisterVO> select_region(String region);
 	
-	public abstract List<MemberVO> select_region_date(TourRegisterVO vo);
+	public abstract List<TourRegisterVO> select_region_date(TourRegisterVO vo);
 
 }

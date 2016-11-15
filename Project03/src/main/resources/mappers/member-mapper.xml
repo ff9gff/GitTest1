@@ -6,11 +6,7 @@
 <!-- SQL 문장들을 작성하는 XML 파일 -->
 <mapper namespace="edu.spring.project03.MemberMapper">
 
-    <!-- INSERT SQL문 -->
-    <insert id="member-insert">
-    insert into test_temp(userid, pwd, email)
-    values(#{userid}, #{pwd}, #{email})
-    </insert>
+  
     
     <!-- 전체 검색 SELECT -->
     <select id="member-select-all"
@@ -35,24 +31,20 @@
     delete from test_temp where userid = #{userid}
     </delete>
     
-    <!-- 관리자: 해당 userid 데이터 삭제  -->
-    <update id="update-email">
-    update test_temp set email = #{email} where userid = #{userid}
-    </update>
-
 	<select id="login" resultType="edu.spring.project03.domain.MemberVO">
 		select * from test_temp
 		where userid = #{userid} and pwd = #{pwd}
 	</select>
 	
 	<select id="select_trip_date" resultType="edu.spring.project03.domain.TourRegisterVO">
-		select * from wm_tour
-		where region = #{region} and start_date = #{start_date} and end_date = #{end_date}
+		select * from wm_tour 
+		where start_date <![CDATA[<]]> to_date(#{end_date},'YYYY-MM-DD')+1
+  		and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD')
 	</select>
 	
 	<select id="select_trip_region" resultType="edu.spring.project03.domain.TourRegisterVO">
 		select * from wm_tour
-		where region = #{region}
+		where region = #{region} 
 	</select>
 
 </mapper>

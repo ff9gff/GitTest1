@@ -42,8 +42,9 @@
     	<input type="submit" value="검색" />
     </form>
    
-    <textarea rows="" cols="">${start_date}</textarea>
-    <textarea rows="" cols="">${end_date}</textarea>
+   <c:forEach var="period" items="${periodList }">
+    <textarea rows="" cols="">${period.title}</textarea><br/>
+   </c:forEach>
     
 </p>
 

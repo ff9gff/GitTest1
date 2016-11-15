@@ -11,8 +11,8 @@ public class TourRegisterVO {
 	private int contidion_age;
 	private String content;
 	private Date regdate;
-	private Date start_date;
-	private Date end_date;
+	private String start_date;
+	private String end_date;
 	private int expire; // 모집 마감 여부
 	private String region; // 지역
 	
@@ -21,7 +21,7 @@ public class TourRegisterVO {
 	}
 
 	public TourRegisterVO(int trip_no, int mno, String title, int contidion_sex, int contidion_age, String content,
-			Date regdate, Date start_date, Date end_date, int expire, String region) {
+			Date regdate, String start_date, String end_date, int expire, String region) {
 		this.trip_no = trip_no;
 		this.mno = mno;
 		this.title = title;
@@ -91,19 +91,19 @@ public class TourRegisterVO {
 		this.regdate = regdate;
 	}
 
-	public Date getStart_date() {
+	public String getStart_date() {
 		return start_date;
 	}
 
-	public void setStart_date(Date start_date) {
+	public void setStart_date(String start_date) {
 		this.start_date = start_date;
 	}
 
-	public Date getEnd_date() {
+	public String getEnd_date() {
 		return end_date;
 	}
 
-	public void setEnd_date(Date end_date) {
+	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
 

@@ -41,14 +41,14 @@ public class MemberDAOImpl implements MemberDAO {
 	}
 
 	@Override
-	public List<MemberVO> select_region(String region) {
-		List<MemberVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_region", region);
+	public List<TourRegisterVO> select_region(String region) {
+		List<TourRegisterVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_region", region);
 		return list;
 	}
 
 	@Override
-	public List<MemberVO> select_region_date(TourRegisterVO vo) {
-		List<MemberVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_region", vo);
+	public List<TourRegisterVO> select_region_date(TourRegisterVO vo) {
+		List<TourRegisterVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_date", vo);
 		return list;
 	}
 	
