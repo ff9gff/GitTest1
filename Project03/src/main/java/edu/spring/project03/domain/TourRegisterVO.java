@@ -14,13 +14,14 @@ public class TourRegisterVO {
 	private Date start_date;
 	private Date end_date;
 	private int expire; // 모집 마감 여부
+	private String region; // 지역
 	
 	public TourRegisterVO() {
 
 	}
 
 	public TourRegisterVO(int trip_no, int mno, String title, int contidion_sex, int contidion_age, String content,
-			Date regdate, Date start_date, Date end_date, int expire) {
+			Date regdate, Date start_date, Date end_date, int expire, String region) {
 		this.trip_no = trip_no;
 		this.mno = mno;
 		this.title = title;
@@ -31,6 +32,7 @@ public class TourRegisterVO {
 		this.start_date = start_date;
 		this.end_date = end_date;
 		this.expire = expire;
+		this.region = region;
 	}
 
 	public int getTrip_no() {
@@ -69,7 +71,7 @@ public class TourRegisterVO {
 		return contidion_age;
 	}
 
-	public void setContifion_age(int contidion_age) {
+	public void setContidion_age(int contidion_age) {
 		this.contidion_age = contidion_age;
 	}
 
@@ -112,6 +114,16 @@ public class TourRegisterVO {
 	public void setExpire(int expire) {
 		this.expire = expire;
 	}
+
+	public String getRegion() {
+		return region;
+	}
+
+	public void setRegion(String region) {
+		this.region = region;
+	}
+
+	
 
 
 }

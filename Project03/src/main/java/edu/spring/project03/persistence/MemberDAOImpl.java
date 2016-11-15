@@ -1,14 +1,14 @@
 package edu.spring.project03.persistence;
 
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.TourRegisterVO;
 
 //@Component // 스프링에서 Component 빈으로 관리
 @Repository // 스프링에서 DAO Componet 빈으로 관리
@@ -38,6 +38,18 @@ public class MemberDAOImpl implements MemberDAO {
 	public MemberVO login(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<MemberVO> select_region(String region) {
+		List<MemberVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_region", region);
+		return list;
+	}
+
+	@Override
+	public List<MemberVO> select_region_date(TourRegisterVO vo) {
+		List<MemberVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_region", vo);
+		return list;
 	}
 	
 	

@@ -19,6 +19,8 @@ public interface MemberService {
 	// public abstract int delete(String userid);
 	
 	public abstract MemberVO login(MemberVO vo);
+	
+	public abstract List<MemberVO> read_region(String region);
 }
 
 

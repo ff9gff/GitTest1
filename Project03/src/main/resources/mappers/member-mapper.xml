@@ -44,6 +44,16 @@
 		select * from test_temp
 		where userid = #{userid} and pwd = #{pwd}
 	</select>
+	
+	<select id="select_trip_date" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
+		where region = #{region} and start_date = #{start_date} and end_date = #{end_date}
+	</select>
+	
+	<select id="select_trip_region" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
+		where region = #{region}
+	</select>
 
 </mapper>
 

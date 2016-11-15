@@ -3,7 +3,6 @@ package edu.spring.project03.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.MemberVO;
@@ -32,6 +31,12 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(MemberVO vo) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<MemberVO> read_region(String region) {
+		List<MemberVO> list = dao.select_region(region);
+		return list;
 	}
 
 	

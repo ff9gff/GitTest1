@@ -44,6 +44,28 @@ public class TestController {
 		return "member/list";
 	}
 	
+	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
+	public String test5(Model model, String start_date, String end_date) {
+		logger.info("startDate: " + start_date);
+		logger.info("endDate: " + end_date);
+		
+		model.addAttribute("start_date", start_date);
+		model.addAttribute("end_date", end_date);
+		
+		return "pickTest";
+	}
+	
+	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
+	public String test6(Model model, String region) {
+		logger.info("region: " + region);
+		
+		List<MemberVO> regionList = memberService.read_region(region);
+		
+		model.addAttribute("regionList", regionList);
+		
+		return "pickTest";
+	}
+	
 	
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정
