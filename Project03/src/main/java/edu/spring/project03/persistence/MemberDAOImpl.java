@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
@@ -49,6 +50,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public List<TourRegisterVO> select_region_date(TourRegisterVO vo) {
 		List<TourRegisterVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_date", vo);
+		return list;
+	}
+	
+	@Override
+	public List<ImgVO> select_region_image(ImgVO vo) {
+		List<ImgVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_region_image", vo);
 		return list;
 	}
 	

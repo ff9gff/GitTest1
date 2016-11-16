@@ -2,42 +2,52 @@ package edu.spring.project03.domain;
 
 public class ImgVO {
 	
-	private String type; // 게시판 종류(후기 & 여행등록)
-	private int no; // 종류에 따른 게시글 번호
-	private String img_url;
+	private int board_type;
+	private int content_no;
+	private int photo_no;
+	private String img_file;
 	
 	public ImgVO() {
 		
 	}
 
-	public ImgVO(String type, int no, String img_url) {
-		this.type = type;
-		this.no = no;
-		this.img_url = img_url;
+	public ImgVO(int board_type, int content_no, int photo_no, String img_file) {
+		this.board_type = board_type;
+		this.content_no = content_no;
+		this.photo_no = photo_no;
+		this.img_file = img_file;
 	}
 
-	public String getType() {
-		return type;
+	public int getBoard_type() {
+		return board_type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setBoard_type(int board_type) {
+		this.board_type = board_type;
 	}
 
-	public int getNo() {
-		return no;
+	public int getContent_no() {
+		return content_no;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public void setContent_no(int content_no) {
+		this.content_no = content_no;
 	}
 
-	public String getImg_url() {
-		return img_url;
+	public int getPhoto_no() {
+		return photo_no;
 	}
 
-	public void setImg_url(String img_url) {
-		this.img_url = img_url;
+	public void setPhoto_no(int photo_no) {
+		this.photo_no = photo_no;
+	}
+
+	public String getImg_file() {
+		return img_file;
+	}
+
+	public void setImg_file(String img_file) {
+		this.img_file = img_file;
 	}
 
 }

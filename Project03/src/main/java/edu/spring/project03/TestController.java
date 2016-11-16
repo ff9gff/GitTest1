@@ -1,8 +1,6 @@
 package edu.spring.project03;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.MemberService;
@@ -68,6 +67,20 @@ public class TestController {
 		List<TourRegisterVO> regionList = memberService.read_region(region);
 
 		model.addAttribute("regionList", regionList);
+
+		return "test/pickTest";
+	}
+	
+	@RequestMapping(value = "/imageTest", method = RequestMethod.POST)
+	public String test6(Model model, int board_type, int content_no, int photo_no ) {
+		
+		logger.info("no: " + photo_no);
+		
+		ImgVO vo = new ImgVO(board_type, content_no, photo_no, null);
+
+		List<ImgVO> imageList = memberService.read_region_image(vo);
+
+		model.addAttribute("imageList", imageList);
 
 		return "test/pickTest";
 	}

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.persistence.MemberDAO;
@@ -43,6 +44,12 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public List<TourRegisterVO> read_region_date(TourRegisterVO vo) {
 		List<TourRegisterVO> list = dao.select_region_date(vo);
+		return list;
+	}
+
+	@Override
+	public List<ImgVO> read_region_image(ImgVO vo) {
+		List<ImgVO> list = dao.select_region_image(vo);
 		return list;
 	}
 
