@@ -60,48 +60,55 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>동행자 찾기 게시판</h2><br/><br/><br/>
+					<h2>동행자 찾기 게시판</h2>
+					<br /> <br /> <br />
 					<p>
-						<form action="regionTest" method="POST">
-							<input type="text" id="region" name="region" placeholder="지역이름">
-							<input type="submit" value="검색" />
-						</form>
+					<form action="regionTest" method="POST">
+						<input type="text" id="region" name="region" placeholder="지역이름">
+						<input type="submit" value="검색" />
+					</form>
 					</p>
 
 					<p>
-						<form action="datepickTest" method="POST">
-							<input type="text" id="start_date" name="start_date" placeholder="시작일" > ~ <input
-								type="text" id="end_date" name="end_date" placeholder="종료일"> <input
-								type="submit" value="검색" />
-						</form>
+					<form action="datepickTest" method="POST">
+						<input type="text" id="start_date" name="start_date"
+							placeholder="시작일"> ~ <input type="text" id="end_date"
+							name="end_date" placeholder="종료일"> <input type="submit"
+							value="검색" />
+					</form>
 					</p>
-					
-					<c:forEach var="region" items="${regionList }">
-						<textarea rows="" cols="">${region.title}</textarea>
-					</c:forEach>
 
-					<c:forEach var="period" items="${periodList}">
-						<textarea rows="" cols="">${period.title}</textarea>
-					</c:forEach>
+
 
 					<div>
 						<p>
-							<form action="imageTest" method="POST">
-								<input type="number" id="board_type" name="board_type" placeholder="게시판구분" required> 
-								<input type="number" id="content_no" name="content_no" placeholder="게시글구분" required> 
-								<input type="number" id="photo_no" name="photo_no" placeholder="사진구분" required> 
-								<input type="submit" value="사진" />
-							</form>
-							
-							
-								
-							
+						<form action="imageTest" method="POST">
+							<input type="number" id="board_type" name="board_type"
+								placeholder="게시판구분" required> <input type="number"
+								id="content_no" name="content_no" placeholder="게시글구분" required>
+							<input type="number" id="photo_no" name="photo_no"
+								placeholder="사진구분" required> <input type="submit"
+								value="사진" />
+						</form>
 						</p>
 					</div>
 				</div>
 				<!-- /.heading-section -->
 			</div>
 			<!-- /.row -->
+
+			<p>
+				<c:forEach var="region" items="${regionList }">
+					<textarea rows="" cols="">${region.title}</textarea>
+				</c:forEach>
+			</p>
+
+			<p>
+				<c:forEach var="period" items="${periodList}">
+					<textarea rows="" cols="">${period.title}</textarea>
+				</c:forEach>
+			</p>
+
 			<c:forEach var="image" items="${imageList}">
 				<div class="row">
 					<div class="portfolio-item col-md-3 col-sm-6">
@@ -109,11 +116,9 @@ http://www.templatemo.com/tm-406-flex
 							<a><img src="${image.img_file}"></a>
 							<div class="portfolio-overlay">
 								<h3>여행지</h3>
-								<p>
-									앙기모띠
-								</p>
-								<a href="${image.img_file}"
-									data-rel="" class="expand"> <i class="fa fa-search"></i>
+								<p>앙기모띠</p>
+								<a href="${image.img_file}" data-rel="" class="expand"> <i
+									class="fa fa-search"></i>
 								</a>
 							</div>
 							<!-- /.portfolio-overlay -->
@@ -121,7 +126,7 @@ http://www.templatemo.com/tm-406-flex
 						<!-- /.portfolio-thumb -->
 					</div>
 				</div>
-			</c:forEach>	
+			</c:forEach>
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
