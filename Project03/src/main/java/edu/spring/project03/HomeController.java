@@ -44,4 +44,13 @@ public class HomeController {
 
 	}
 	
+	
+	@RequestMapping(value="admin" ,method=RequestMethod.GET)
+	public void adminPage(){
+		
+		
+	}
+
+	
+	
 }

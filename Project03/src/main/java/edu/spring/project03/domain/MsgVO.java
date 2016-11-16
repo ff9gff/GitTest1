@@ -26,9 +26,7 @@ public class MsgVO {
 		return msg_no;
 	}
 
-	public void setMsg_no(int msg_no) {
-		this.msg_no = msg_no;
-	}
+
 
 	public int getSd_mno() {
 		return sd_mno;
