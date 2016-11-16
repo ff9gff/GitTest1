@@ -32,6 +32,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+
 		
 		System.out.println("push test by 대호");
 		System.out.println("push test by 성준");
@@ -51,9 +52,9 @@ public class HomeController {
 		
 	}
 	
-	@RequestMapping(value="/pickTest" ,method=RequestMethod.GET)
+	@RequestMapping(value="/tourSearch" ,method=RequestMethod.GET)
 	public void tourSelect(){
-		logger.info("pickTest.jsp 소환");
+		logger.info("tourSearch.jsp 소환");
 		
 	}
 

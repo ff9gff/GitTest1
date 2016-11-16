@@ -12,7 +12,10 @@
         <title>같이가자</title>
     	<meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<!-- 
+Flex Template 
+http://www.templatemo.com/tm-406-flex
+-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         
         <link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>" >

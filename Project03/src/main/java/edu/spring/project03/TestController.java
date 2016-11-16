@@ -38,7 +38,7 @@ public class TestController {
 
 		model.addAttribute("periodList", list);
 		
-		return "pickTest";
+		return "tourSearch";
 	}
 
 	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
@@ -49,7 +49,7 @@ public class TestController {
 
 		model.addAttribute("regionList", regionList);
 
-		return "/pickTest";
+		return "tourSearch";
 	}
 	
 	@RequestMapping(value = "/imageTest", method = RequestMethod.POST)
@@ -63,7 +63,7 @@ public class TestController {
 
 		model.addAttribute("imageList", imageList);
 
-		return "pickTest";
+		return "tourSearch";
 	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
