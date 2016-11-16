@@ -134,9 +134,9 @@
 		</section>
 
 		<aside id="sidebar">
-			<img alt="고양이" src="images/css_cat.jpg" style="width: 170px" /> <img
-				alt="강아지" src="images/css_dog.jpg" style="width: 170px" /> <img
-				alt="백조" src="images/css_swan.jpg" style="width: 170px" />
+			<img alt="고양이" src="resources/theme/images/css_cat.jpg" style="width: 170px" /> 
+			<img alt="강아지" src="resources/theme/images/css_dog.jpg" style="width: 170px" />
+			<img alt="백조" src="resources/theme/images/css_swan.jpg" style="width: 170px" />
 		</aside>
 
 	</div>

@@ -60,36 +60,36 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>동행자 찾기 게시판</h2>
-					<br /> <br /> <br />
+					<h2>새 친구를 찾아보자</h2>
+					<br /> <br /> 
 					<p>
-					<form action="regionTest" method="POST">
-						<input type="text" id="region" name="region" placeholder="지역이름">
-						<input type="submit" value="검색" />
-					</form>
+						<form action="regionTest" method="POST">
+							<input type="text" id="region" name="region" placeholder="지역이름">
+							<input type="submit" value="검색" />
+						</form>
 					</p>
 
 					<p>
-					<form action="datepickTest" method="POST">
-						<input type="text" id="start_date" name="start_date"
-							placeholder="시작일"> ~ <input type="text" id="end_date"
-							name="end_date" placeholder="종료일"> <input type="submit"
-							value="검색" />
-					</form>
+						<form action="datepickTest" method="POST">
+							<input type="text" id="start_date" name="start_date"
+								placeholder="시작일"> ~ <input type="text" id="end_date"
+								name="end_date" placeholder="종료일"> <input type="submit"
+								value="검색" />
+						</form>
 					</p>
 
 
 
 					<div>
 						<p>
-						<form action="imageTest" method="POST">
-							<input type="number" id="board_type" name="board_type"
-								placeholder="게시판구분" required> <input type="number"
-								id="content_no" name="content_no" placeholder="게시글구분" required>
-							<input type="number" id="photo_no" name="photo_no"
-								placeholder="사진구분" required> <input type="submit"
-								value="사진" />
-						</form>
+							<form action="imageTest" method="POST">
+								<input type="number" id="board_type" name="board_type"
+									placeholder="게시판구분" required> <input type="number"
+									id="content_no" name="content_no" placeholder="게시글구분" required>
+								<input type="number" id="photo_no" name="photo_no"
+									placeholder="사진구분" required> <input type="submit"
+									value="사진" />
+							</form>
 						</p>
 					</div>
 				</div>

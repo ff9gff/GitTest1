@@ -40,14 +40,20 @@ public class HomeController {
 		System.out.println("push test by 유나");
 		System.out.println("push test by 태훈");
 		
-		return "test/pickTest";
+		return "index";
 
 	}
 	
 	
-	@RequestMapping(value="admin" ,method=RequestMethod.GET)
+	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
 	public void adminPage(){
+		logger.info("admin.jsp 소환");
 		
+	}
+	
+	@RequestMapping(value="/pickTest" ,method=RequestMethod.GET)
+	public void tourSelect(){
+		logger.info("pickTest.jsp 소환");
 		
 	}
 

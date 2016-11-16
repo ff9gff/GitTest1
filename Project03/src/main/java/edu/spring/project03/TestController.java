@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
-import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.MemberService;
 
@@ -25,25 +24,7 @@ public class TestController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void main() {
-		logger.info("야호");
-		logger.info("github Test");
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void test2() {
-		logger.info("야호");
-		logger.info("github Test");
-
-	}
-
-	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
-	public String test1(Model model) {
-		logger.info("야호으아아으");
-		logger.info("github Test");
-		List<MemberVO> list = memberService.read();
-		model.addAttribute("memberList", list);
-
-		return "member/list";
+		logger.info("index.jsp 소환");
 	}
 
 	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
@@ -57,7 +38,7 @@ public class TestController {
 
 		model.addAttribute("periodList", list);
 		
-		return "test/pickTest";
+		return "pickTest";
 	}
 
 	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
@@ -68,7 +49,7 @@ public class TestController {
 
 		model.addAttribute("regionList", regionList);
 
-		return "test/pickTest";
+		return "/pickTest";
 	}
 	
 	@RequestMapping(value = "/imageTest", method = RequestMethod.POST)
@@ -82,7 +63,7 @@ public class TestController {
 
 		model.addAttribute("imageList", imageList);
 
-		return "test/pickTest";
+		return "pickTest";
 	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
@@ -96,6 +77,5 @@ public class TestController {
 
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
-	// gg
 
 }
