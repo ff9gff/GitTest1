@@ -1,4 +1,4 @@
-package edu.spring.project03;
+package edu.spring.project03.controller;
 
 
 import java.util.List;
@@ -28,7 +28,7 @@ public class TestController {
 	}
 
 	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
-	public String test5(Model model, String start_date, String end_date) {
+	public String test1(Model model, String start_date, String end_date) {
 		logger.info("startDate: " + start_date);
 		logger.info("endDate: " + end_date);
 
@@ -42,7 +42,7 @@ public class TestController {
 	}
 
 	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	public String test6(Model model, String region) {
+	public String test2(Model model, String region) {
 		logger.info("region: " + region);
 
 		List<TourRegisterVO> regionList = memberService.read_region(region);
@@ -53,7 +53,7 @@ public class TestController {
 	}
 	
 	@RequestMapping(value = "/imageTest", method = RequestMethod.POST)
-	public String test6(Model model, int board_type, int content_no, int photo_no ) {
+	public String test3(Model model, int board_type, int content_no, int photo_no ) {
 		
 		logger.info("no: " + photo_no);
 		
@@ -67,9 +67,27 @@ public class TestController {
 	}
 	
 	@RequestMapping(value = "/totalReview", method = RequestMethod.GET)
-	public String test6() {
+	public String test4() {
 		
 		return "Review";
+	}
+	
+	@RequestMapping(value = "/MyPage", method = RequestMethod.GET)
+	public String test5() {
+		
+		return "MyPage";
+	}
+	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String test6() {
+		
+		return "login";
+	}
+	
+	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
+	public String test7() {
+		
+		return "index";
 	}
 
 	// 웹사이트에서 동일한 부분 코드 수정

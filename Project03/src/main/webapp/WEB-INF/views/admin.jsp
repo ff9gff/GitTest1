@@ -46,6 +46,9 @@
 
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo.jsp">홈(아직)</a>
 				</li>
+				
+				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				</li>
 
 
 
@@ -142,23 +145,9 @@
 	</div>
 
 
-	<%-- 
-
-		<footer id = "bottom"> www.withMeTTR.com 
-						
-	
-		</footer>
-
-
---%>
-
-
-
 	<script type="text/javascript">
 		$('#checkboxTestTbl > tr > th >input: checked').each(function(index) {
-
 			alert($(this).val());
-
 		})
 	</script>
 

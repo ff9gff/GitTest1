@@ -90,10 +90,9 @@ http://www.templatemo.com/tm-406-flex
 									<li class="active"><a href="#">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="#our-team">마이페이지</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
+									<li><a href="admin">관리자</a></li>
 									<li><a href="login">로그인</a></li>
-
-
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -116,26 +115,13 @@ http://www.templatemo.com/tm-406-flex
 							src="resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>같이가자</h2>
-								<p>같이 여행 갈 동행자를 찾아보세요</p>
-								<a href="#" class="slider-btn">ㅎㅎㅎ</a>
 							</div>
 						</li>
 						<li>
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>이벤트</h2>
-								<p>운영진과 함께 떠나는 즐거운 여행</p>
-								<a href="#" class="slider-btn">응 안가</a>
-							</div>
-						</li>
-						<li>
-							<div class="overlay"></div> <img
-							src="resources/theme/images/slide3.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>하이</h2>
-								<p>으아</p>
-								<a href="#" class="slider-btn">힝</a>
+								<h2>이벤트</h2>								
 							</div>
 						</li>
 					</ul>
