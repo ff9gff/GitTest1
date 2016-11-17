@@ -2,23 +2,23 @@ package edu.spring.project03.domain;
 
 import java.util.Date;
 
-public class TourReplyVO {
-	
+public class ReviewReplyVO {
 	private int rno;
 	private int parentrno;
-	private int trip_no;
+	private int review_no;
 	private int mno;
 	private String content;
 	private Date regdate;
 	
-	public TourReplyVO() {
-		
+	public ReviewReplyVO() {
+
 	}
 
-	public TourReplyVO(int rno, int parentrno, int trip_no, int mno, String content, Date regdate) {
+	public ReviewReplyVO(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
+		super();
 		this.rno = rno;
 		this.parentrno = parentrno;
-		this.trip_no = trip_no;
+		this.review_no = review_no;
 		this.mno = mno;
 		this.content = content;
 		this.regdate = regdate;
@@ -40,12 +40,12 @@ public class TourReplyVO {
 		this.parentrno = parentrno;
 	}
 
-	public int getTrip_no() {
-		return trip_no;
+	public int getReview_no() {
+		return review_no;
 	}
 
-	public void setTrip_no(int trip_no) {
-		this.trip_no = trip_no;
+	public void setReview_no(int review_no) {
+		this.review_no = review_no;
 	}
 
 	public int getMno() {
@@ -73,6 +73,5 @@ public class TourReplyVO {
 	}
 	
 	
-
 
 }

@@ -3,8 +3,9 @@ package edu.spring.project03.domain;
 import java.util.Date;
 
 public class ReviewReply {
+	
 	private int rno;
-	private int parentno;
+	private int parentrno;
 	private int review_no;
 	private int mno;
 	private String content;
@@ -14,21 +15,21 @@ public class ReviewReply {
 
 	}
 	
-	public ReviewReply(int rno, int parentno, int review_no, int mno, String content, Date regdate) {
+	public ReviewReply(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
 		this.rno = rno;
-		this.parentno = parentno;
+		this.parentrno = parentrno;
 		this.review_no = review_no;
 		this.mno = mno;
 		this.content = content;
 		this.regdate = regdate;
 	}
 
-	public int getParentno() {
-		return parentno;
+	public int getParentrno() {
+		return parentrno;
 	}
 
-	public void setParentno(int parentno) {
-		this.parentno = parentno;
+	public void setParentno(int parentrno) {
+		this.parentrno = parentrno;
 	}
 
 	public int getRno() {
