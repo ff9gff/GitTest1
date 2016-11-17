@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -45,6 +44,21 @@ http://www.templatemo.com/tm-406-flex
 .searchRegion {
 	display: none;
 }
+
+        a:link {
+            color: red;
+            text-decoration: none;
+        }       
+        a:visited {
+            color: black;
+            text-decoration: none;
+        }        
+        a:hover {
+            color: blue;
+            text-decoration: underline;
+        }        
+        <!-- a:link: 클릭하지 않은 링크 a:visited: 한번 클릭했던 혹은 다녀갔던 링크 a:hover: 링크를 클릭하려고 마우스를 가져갔을 때 decoration: 밑줄 none: 없는 상태 underline: 있는 상태 -->
+
 </style>
 </head>
 <body>
@@ -74,6 +88,10 @@ http://www.templatemo.com/tm-406-flex
 						<input type="hidden" name="query"
 							value="<%=request.getQueryString()%>" />
 					</form>
+					<a>아이디</a>·<a>비밀번호 찾기</a>&nbsp;&nbsp;<a href="register01">회원가입</a>
+					
+
+
 
 					<form action="register01" method="post">
 						<input type="submit" value="회원가입" /> <br /> <br />
