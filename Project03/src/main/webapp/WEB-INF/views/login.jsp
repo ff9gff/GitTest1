@@ -88,7 +88,7 @@ http://www.templatemo.com/tm-406-flex
 						<input type="hidden" name="query"
 							value="<%=request.getQueryString()%>" />
 					</form>
-					<a>아이디</a>·<a>비밀번호 찾기</a>&nbsp;&nbsp;<a href="register01">회원가입</a>
+					<a>아이디</a>·<a>비밀번호 찾기</a>&nbsp;&nbsp;<a href="member_register01">회원가입</a>
 					
 
 

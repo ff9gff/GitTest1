@@ -45,9 +45,9 @@ public class HomeController {
 
 	} // end home(locale, model)
 	
-	@RequestMapping(value="/register01", method=RequestMethod.GET)
+	@RequestMapping(value="/member_register01", method=RequestMethod.GET)
 	public void register01() {
-		logger.info("register01.jsp 호출...");
+		logger.info("member_register01.jsp 호출...");
 		
 	} // end register01()
 	
