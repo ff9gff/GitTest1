@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class ReviewReply {
 	private int rno;
+	private int parentrno;
 	private int review_no;
 	private int mno;
 	private String content;
@@ -12,9 +13,11 @@ public class ReviewReply {
 	public ReviewReply() {
 
 	}
-	
-	public ReviewReply(int rno, int review_no, int mno, String content, Date regdate) {
+
+	public ReviewReply(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
+		super();
 		this.rno = rno;
+		this.parentrno = parentrno;
 		this.review_no = review_no;
 		this.mno = mno;
 		this.content = content;
@@ -27,6 +30,14 @@ public class ReviewReply {
 
 	public void setRno(int rno) {
 		this.rno = rno;
+	}
+
+	public int getParentrno() {
+		return parentrno;
+	}
+
+	public void setParentrno(int parentrno) {
+		this.parentrno = parentrno;
 	}
 
 	public int getReview_no() {
@@ -60,5 +71,7 @@ public class ReviewReply {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+	
+	
 
 }

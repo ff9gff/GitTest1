@@ -5,6 +5,7 @@ import java.util.Date;
 public class TourReplyVO {
 	
 	private int rno;
+	private int parentrno;
 	private int trip_no;
 	private int mno;
 	private String content;
@@ -14,8 +15,10 @@ public class TourReplyVO {
 		
 	}
 
-	public TourReplyVO(int rno, int trip_no, int mno, String content, Date regdate) {
+	public TourReplyVO(int rno, int parentrno, int trip_no, int mno, String content, Date regdate) {
+		super();
 		this.rno = rno;
+		this.parentrno = parentrno;
 		this.trip_no = trip_no;
 		this.mno = mno;
 		this.content = content;
@@ -28,6 +31,14 @@ public class TourReplyVO {
 
 	public void setRno(int rno) {
 		this.rno = rno;
+	}
+
+	public int getParentrno() {
+		return parentrno;
+	}
+
+	public void setParentrno(int parentrno) {
+		this.parentrno = parentrno;
 	}
 
 	public int getTrip_no() {
@@ -61,6 +72,8 @@ public class TourReplyVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-
 	
+	
+
+
 }
