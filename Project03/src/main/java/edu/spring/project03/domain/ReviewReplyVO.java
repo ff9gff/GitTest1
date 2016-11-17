@@ -2,7 +2,7 @@ package edu.spring.project03.domain;
 
 import java.util.Date;
 
-public class ReviewReply {
+public class ReviewReplyVO {
 	private int rno;
 	private int parentrno;
 	private int review_no;
@@ -10,11 +10,11 @@ public class ReviewReply {
 	private String content;
 	private Date regdate;
 	
-	public ReviewReply() {
+	public ReviewReplyVO() {
 
 	}
 
-	public ReviewReply(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
+	public ReviewReplyVO(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
 		super();
 		this.rno = rno;
 		this.parentrno = parentrno;
