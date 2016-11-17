@@ -89,6 +89,12 @@ public class TestController {
 		
 		return "index";
 	}
+	
+	@RequestMapping(value = "/TourRegister", method = RequestMethod.GET)
+	public String test8() {
+		
+		return "TourRegister";
+	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정

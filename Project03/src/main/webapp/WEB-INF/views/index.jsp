@@ -274,6 +274,12 @@ http://www.templatemo.com/tm-406-flex
 						</form>
 						</p>
 					</div>
+					
+					<div>
+						<p>
+							<a href="TourRegister">여행 등록하러 가기</a>
+						</p>
+					</div>
 				</div>
 				<!-- /.heading-section -->
 			</div>
