@@ -46,18 +46,4 @@ public class HomeController {
 	} // end home(locale, model)
 	
 	
-	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
-	public void adminPage(){
-		logger.info("admin.jsp 소환");
-		
-	}
-	
-	@RequestMapping(value="/tourSearch" ,method=RequestMethod.GET)
-	public void tourSelect(){
-		logger.info("tourSearch.jsp 소환");
-		
-	}
-
-	
-	
 }

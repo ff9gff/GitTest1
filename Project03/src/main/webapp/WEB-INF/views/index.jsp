@@ -277,7 +277,10 @@ http://www.templatemo.com/tm-406-flex
 					
 					<div>
 						<p>
-							<a href="TourRegister">여행 등록하러 가기</a>
+							<form action="TourRegister" method="post">
+								<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
+							</form>
+							<a href="TourRegister"></a>
 						</p>
 					</div>
 				</div>
@@ -287,13 +290,13 @@ http://www.templatemo.com/tm-406-flex
 
 			<p>
 				<c:forEach var="region" items="${regionList }">
-					<textarea rows="" cols="">${region.title}</textarea>
+					<a href="FTourRegister"><textarea rows="" cols="">${region.title}</textarea></a>
 				</c:forEach>
 			</p>
 
 			<p>
 				<c:forEach var="period" items="${periodList}">
-					<textarea rows="" cols="">${period.title}</textarea>
+					<a href="FTourRegister"><textarea rows="" cols="">${period.title}</textarea></a>
 				</c:forEach>
 			</p>
 
@@ -301,7 +304,7 @@ http://www.templatemo.com/tm-406-flex
 				<div class="row">
 					<div class="portfolio-item col-md-3 col-sm-6">
 						<div class="portfolio-thumb">
-							<a><img src="${image.img_file}"></a>
+							<a href = "FTourRegister"><img src="${image.img_file}"></a>
 							<div class="portfolio-overlay">
 								<h3>여행지</h3>
 								<p>앙기모띠</p>

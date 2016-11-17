@@ -90,12 +90,24 @@ public class TestController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/TourRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
 	public String test8() {
 		
 		return "TourRegister";
 	}
 
+	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
+	public void test9(){
+		logger.info("admin.jsp 소환");
+		
+	}
+	
+	@RequestMapping(value="/FTourRegister" ,method=RequestMethod.GET)
+	public void test10(){
+		logger.info("FTourRegister.jsp 소환");
+		
+	}
+	
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정
 	// 이클립스에서 커밋앤푸쉬하려니 불가능!
