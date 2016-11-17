@@ -179,9 +179,10 @@
 전 화 : 02-000-0000
 메 일 : ******
 
-11. 고지의 의무현 개인정보취급방침 내용 추가, 삭제 및 수정이 있을 시에는 개정 최소 7일전부터 홈페이지의 '공지사항'을 통해 고지할 것입니다.
+11. 고지의 의무
+현 개인정보취급방침 내용 추가, 삭제 및 수정이 있을 시에는 개정 최소 7일전부터 홈페이지의 '공지사항'을 통해 고지할 것입니다.
 
- 부칙이 약관은 2000년 00월 00일부터 적용됩니다
+ 부칙이 약관은 20XX년 XX월 XX일부터 적용됩니다
 	</textarea><br/>
 	
 	<input type="radio" id="btn_personal_information_agree" name="information" value="agree"  />
@@ -200,8 +201,7 @@ $(document).ready(function() {
 	
 	$('#cancel').click(function() {
 		location = 'index';
-	});
-	
+	});	
 	
 	$('#confirm').click(function() {
 		
