@@ -66,10 +66,10 @@ public class TestController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/Review", method = RequestMethod.GET)
-	public void test6() {
+	@RequestMapping(value = "/totalReview", method = RequestMethod.GET)
+	public String test6() {
 		
-		
+		return "Review";
 	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
