@@ -55,9 +55,9 @@
 	</textarea><br/>
 	
 	<input type="radio" id="btn_member_stipulation_agree" name="stipulation" value="agree"  />
-	<label for="btn_member_stipulation_agree">동의합니다.</label>
+	<label for="btn_member_stipulation_agree">동의합니다</label>
 	<input type="radio" id="btn_member_stipulation_disagree" name="stipulation" value="disagree"  />
-	<label for="btn_member_stipulation_disagree">동의하지않습니다.</label>
+	<label for="btn_member_stipulation_disagree">동의하지않습니다</label>
 	</div>
 
 
@@ -204,15 +204,19 @@ $(document).ready(function() {
 	});	
 	
 	$('#confirm').click(function() {
+		var stipulation = $('input[type=radio][name=stipulation]:checked').val();
+		var information = $('input[type=radio][name=information]:checked').val();
 		
-		
-		
-		
-	});
-	
-	
-	
-	
+		if(stipulation == 'disagree' && information == 'disagree') {
+			alert("이용약관 및 개인정보취급방침에 동의하셔야 합니다.");			
+		} else if(stipulation == 'agree' && information == 'disagree') {
+			alert("개인정보취급방침에 동의하셔야 합니다.");
+		} else if(stipulation == 'disagree' && information == 'agree') {
+			alert("이용약관에 동의하셔야 합니다.");
+		} else if(stipulation == 'agree' && information == 'agree') {
+			location = 'member_register02';
+		}		
+	});	
 });
 </script>	
 	
