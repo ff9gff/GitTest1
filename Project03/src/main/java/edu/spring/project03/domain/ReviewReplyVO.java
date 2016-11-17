@@ -7,20 +7,20 @@ public class ReviewReplyVO {
 	private int parentrno;
 	private int review_no;
 	private int mno;
-	private String content;
+	private String rcontent;
 	private Date regdate;
 	
 	public ReviewReplyVO() {
 
 	}
 
-	public ReviewReplyVO(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
+	public ReviewReplyVO(int rno, int parentrno, int review_no, int mno, String rcontent, Date regdate) {
 		super();
 		this.rno = rno;
 		this.parentrno = parentrno;
 		this.review_no = review_no;
 		this.mno = mno;
-		this.content = content;
+		this.rcontent = rcontent;
 		this.regdate = regdate;
 	}
 
@@ -56,12 +56,12 @@ public class ReviewReplyVO {
 		this.mno = mno;
 	}
 
-	public String getContent() {
-		return content;
+	public String getRcontent() {
+		return rcontent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setRcontent(String rcontent) {
+		this.rcontent = rcontent;
 	}
 
 	public Date getRegdate() {
@@ -71,6 +71,7 @@ public class ReviewReplyVO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
 	
 	
 
