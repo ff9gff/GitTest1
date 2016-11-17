@@ -290,13 +290,13 @@ http://www.templatemo.com/tm-406-flex
 
 			<p>
 				<c:forEach var="region" items="${regionList }">
-					<a href="FTourRegister"><textarea rows="" cols="">${region.title}</textarea></a>
+					<a href="FTourRegister?trip_no=${region.trip_no }"><textarea rows="" cols="">${region.title}</textarea></a>
 				</c:forEach>
 			</p>
 
 			<p>
 				<c:forEach var="period" items="${periodList}">
-					<a href="FTourRegister"><textarea rows="" cols="">${period.title}</textarea></a>
+					<a href="FTourRegister?trip_no=${period.trip_no }"><textarea rows="" cols="">${period.title}</textarea></a>
 				</c:forEach>
 			</p>
 
