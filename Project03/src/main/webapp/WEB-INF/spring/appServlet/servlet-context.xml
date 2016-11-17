@@ -25,6 +25,11 @@
 	<beans:bean id="loginInterceptor" class="edu.spring.project03.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" class="edu.spring.project03.interceptor.AuthInterceptor"></beans:bean>
 		
+	<!-- Multipart를 받기 위한 리졸버 추가 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>	
+		
+		
 	<!-- 인터셉터를 요청(request)에 매핑 -->
 	<interceptors>
 		<interceptor>
@@ -37,6 +42,8 @@
 			<beans:ref bean="authInterceptor"/>	
 		</interceptor>
 	</interceptors>
+	
+	
 	
 	<context:component-scan base-package="edu.spring.project03" />
 	

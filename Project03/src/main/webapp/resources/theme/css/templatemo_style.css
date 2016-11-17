@@ -594,6 +594,7 @@ hr {
   margin-bottom: 30px;
 }
 .portfolio-item .portfolio-thumb {
+	
   position: relative;
   overflow: hidden;
 }

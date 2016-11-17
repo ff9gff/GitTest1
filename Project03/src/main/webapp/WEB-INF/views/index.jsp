@@ -45,6 +45,10 @@ http://www.templatemo.com/tm-406-flex
 .searchRegion {
 	display: none;
 }
+
+.row {
+	
+}
 </style>
 </head>
 <body>
@@ -121,7 +125,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>이벤트</h2>								
+								<h2>이벤트</h2>
 							</div>
 						</li>
 					</ul>
@@ -246,8 +250,8 @@ http://www.templatemo.com/tm-406-flex
 					<br /> <br />
 					<p>
 					<form action="regionTest" method="POST">
-						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-						<input type="submit" value="검색" />
+						<input type="text" id="region_name" name="region_name"
+							placeholder="지역이름"> <input type="submit" value="검색" />
 					</form>
 					</p>
 
@@ -274,15 +278,15 @@ http://www.templatemo.com/tm-406-flex
 						</form>
 						</p>
 					</div>
-					
-					
-					
+
+
+
 					<div>
 						<p>
-							<form action="TourRegister" method="post">
-								<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
-							</form>
-							<a href="TourRegister"></a>
+						<form action="TourRegister" method="post">
+							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
+						</form>
+						<a href="TourRegister"></a>
 						</p>
 					</div>
 				</div>
@@ -291,38 +295,55 @@ http://www.templatemo.com/tm-406-flex
 			<!-- /.row -->
 
 			<p>
+			<div class="row">
 				<c:forEach var="region" items="${regionList }">
-					<a href="FTourRegister?trip_no=${region.trip_no }"><textarea rows="" cols="">${region.title}</textarea></a>
+					<div class="portfolio-item col-md-3 col-sm-6">
+						<div class="portfolio-thumb">
+
+							<figure>
+
+								<a href="FTourRegister?trip_no=${region.content_no}"><img
+									src="${region.img_file}" width="300" height="200"></a>
+
+							</figure>
+
+
+						</div>
+						<!-- /.portfolio-thumb -->
+					</div>
 				</c:forEach>
+			</div>
+
 			</p>
 
 			<p>
 				<c:forEach var="period" items="${periodList}">
-					<a href="FTourRegister?trip_no=${period.trip_no }"><textarea rows="" cols="">${period.title}</textarea></a>
+					<a href="FTourRegister?trip_no=${period.trip_no }"><textarea
+							rows="" cols="">${period.title}</textarea></a>
 				</c:forEach>
 			</p>
 
-			<c:forEach var="image" items="${imageList}">
-				<script type="text/javascript">
-					alert("${image.img_file}");				
-				</script>
-				<div class="row">
+
+			<div class="row">
+				<c:forEach var="image" items="${imageList}">
+					
+
+
+
 					<div class="portfolio-item col-md-3 col-sm-6">
 						<div class="portfolio-thumb">
-							<a href = "FTourRegister"><img src="${image.img_file}"></a>
-							<div class="portfolio-overlay">
-								<h3>여행지</h3>
-								<p>앙기모띠</p>
-								<a href="${image.img_file}" data-rel="" class="expand"> <i
-									class="fa fa-search"></i>
-								</a>
-							</div>
-							<!-- /.portfolio-overlay -->
+							<a href="FTourRegister"><img src="${image.img_file}" width="300" height="200"></a>
 						</div>
 						<!-- /.portfolio-thumb -->
 					</div>
-				</div>
-			</c:forEach>
+
+
+				</c:forEach>
+			</div>
+
+
+
+
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->

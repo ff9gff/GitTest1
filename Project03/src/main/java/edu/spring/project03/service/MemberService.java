@@ -2,9 +2,8 @@ package edu.spring.project03.service;
 
 import java.util.List;
 
-import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
-import edu.spring.project03.domain.TourRegisterVO;
+
 
 // 비즈니스 로직을 구현하는 인터페이스
 // CRUD: Create, Read, Update, Delete
@@ -22,11 +21,6 @@ public interface MemberService {
 	
 	public abstract MemberVO login(MemberVO vo);
 	
-	public abstract List<TourRegisterVO> read_region(String region);
-	
-	public abstract List<TourRegisterVO> read_region_date(TourRegisterVO vo);
-	
-	public abstract List<ImgVO> read_region_image(ImgVO vo);
 }
 
 

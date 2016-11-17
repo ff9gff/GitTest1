@@ -1,112 +1,14 @@
 package edu.spring.project03.controller;
 
-
-import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
-import edu.spring.project03.domain.ImgVO;
-import edu.spring.project03.domain.TourRegisterVO;
-import edu.spring.project03.service.MemberService;
 
 @Controller
 public class TestController {
-	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	// private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
-	@Autowired
-	private MemberService memberService;
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public void main() {
-		logger.info("index.jsp 소환");
-	}
-
-	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
-	public String test1(Model model, String start_date, String end_date) {
-		logger.info("startDate: " + start_date);
-		logger.info("endDate: " + end_date);
-
-		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0, null);
-
-		List<TourRegisterVO> list = memberService.read_region_date(vo);
-
-		model.addAttribute("periodList", list);
-		
-		return "index";
-	}
-
-	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	public String test2(Model model, String region_name) {
-		logger.info("region: " + region_name);
-
-		List<TourRegisterVO> regionList = memberService.read_region(region_name);
-
-		model.addAttribute("regionList", regionList);
-
-		return "index";
-	}
-	
-	@RequestMapping(value = "/imageTest", method = RequestMethod.POST)
-	public String test3(Model model, int board_type, int content_no, int photo_no ) {
-		
-		logger.info("no: " + photo_no);
-		
-		ImgVO vo = new ImgVO(board_type, content_no, photo_no, null);
-
-		List<ImgVO> imageList = memberService.read_region_image(vo);
-
-		model.addAttribute("imageList", imageList);
-
-		return "index";
-	}
-	
-	@RequestMapping(value = "/totalReview", method = RequestMethod.GET)
-	public String test4() {
-		
-		return "Review";
-	}
-	
-	@RequestMapping(value = "/MyPage", method = RequestMethod.GET)
-	public String test5() {
-		
-		return "MyPage";
-	}
-	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String test6() {
-		
-		return "login";
-	}
-	
-	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
-	public String test7() {
-		
-		return "index";
-	}
-	
-	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
-	public String test8() {
-		
-		return "TourRegister";
-	}
-
-	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
-	public void test9(){
-		logger.info("admin.jsp 소환");
-		
-	}
-	
-	@RequestMapping(value="/FTourRegister" ,method=RequestMethod.GET)
-	public void test10(){
-		logger.info("FTourRegister.jsp 소환");
-		
-	}
 	
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정

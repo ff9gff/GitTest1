@@ -42,13 +42,11 @@
   		and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD')
 	</select>
 	
-	<select id="select_trip_region" resultType="edu.spring.project03.domain.TourRegisterVO">
+	<select id="select_trip_region" resultType="edu.spring.project03.domain.ImgVO">
 		
-		select * from wm_tour
-		where trip_no = (select trip_no from wm_tour_region where region_name = #{region_name})
-	
-		<!-- select * from wm_tour
-		where region = #{region}  -->
+		select * from wm_image
+		where content_no = (select trip_no from wm_tour_region where region_name = #{region_name})
+
 	</select>
 	
 	<select id="select_trip_region_image" resultType="edu.spring.project03.domain.ImgVO">
