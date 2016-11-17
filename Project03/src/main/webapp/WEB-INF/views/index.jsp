@@ -246,7 +246,7 @@ http://www.templatemo.com/tm-406-flex
 					<br /> <br />
 					<p>
 					<form action="regionTest" method="POST">
-						<input type="text" id="region" name="region" placeholder="지역이름">
+						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
 						<input type="submit" value="검색" />
 					</form>
 					</p>
@@ -275,6 +275,8 @@ http://www.templatemo.com/tm-406-flex
 						</p>
 					</div>
 					
+					
+					
 					<div>
 						<p>
 							<form action="TourRegister" method="post">
@@ -301,6 +303,9 @@ http://www.templatemo.com/tm-406-flex
 			</p>
 
 			<c:forEach var="image" items="${imageList}">
+				<script type="text/javascript">
+					alert("${image.img_file}");				
+				</script>
 				<div class="row">
 					<div class="portfolio-item col-md-3 col-sm-6">
 						<div class="portfolio-thumb">

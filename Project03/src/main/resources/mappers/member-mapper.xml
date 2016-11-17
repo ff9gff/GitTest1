@@ -43,8 +43,12 @@
 	</select>
 	
 	<select id="select_trip_region" resultType="edu.spring.project03.domain.TourRegisterVO">
+		
 		select * from wm_tour
-		where region = #{region} 
+		where trip_no = (select trip_no from wm_tour_region where region_name = #{region_name})
+	
+		<!-- select * from wm_tour
+		where region = #{region}  -->
 	</select>
 	
 	<select id="select_trip_region_image" resultType="edu.spring.project03.domain.ImgVO">

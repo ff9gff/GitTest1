@@ -42,10 +42,10 @@ public class TestController {
 	}
 
 	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	public String test2(Model model, String region) {
-		logger.info("region: " + region);
+	public String test2(Model model, String region_name) {
+		logger.info("region: " + region_name);
 
-		List<TourRegisterVO> regionList = memberService.read_region(region);
+		List<TourRegisterVO> regionList = memberService.read_region(region_name);
 
 		model.addAttribute("regionList", regionList);
 
