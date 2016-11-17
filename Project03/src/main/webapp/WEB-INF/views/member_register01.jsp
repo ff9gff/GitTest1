@@ -8,7 +8,7 @@
 <title>같이가자</title>
 </head>
 <body>
-<h1>register01.jsp</h1>
+<h1>member_register01.jsp</h1>
 	<h2>이용약관</h2>
 	<div>
 	<textarea rows="15" cols="250">
