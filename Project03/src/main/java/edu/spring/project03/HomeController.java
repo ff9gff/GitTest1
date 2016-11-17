@@ -43,7 +43,7 @@ public class HomeController {
 		
 		return "index";
 
-	}
+	} // end home(locale, model)
 	
 	
 	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
