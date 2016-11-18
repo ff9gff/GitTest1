@@ -28,4 +28,8 @@
 		#{content_no} and photo_no = #{photo_no}
 	</select>
 
+
+
+	
+
 </mapper>

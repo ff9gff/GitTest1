@@ -41,7 +41,7 @@
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg.jsp">공지사항</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo.jsp">유저
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저
 						정보</a></li>
 
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo.jsp">홈(아직)</a>
