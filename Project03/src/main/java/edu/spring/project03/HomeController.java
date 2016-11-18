@@ -51,6 +51,11 @@ public class HomeController {
 		
 	} // end register01()
 	
+	@RequestMapping(value="/tour/detail", method=RequestMethod.GET)
+	public String tourDetail() {
+		// tour/detail.jsp 테스트 콘트롤러입니다~
+		return "tour/detail";
+	} // end tourDetail()
 	
 	
 	
