@@ -47,15 +47,13 @@ http://www.templatemo.com/tm-406-flex
 }
 
 .wrap textarea {
-      width: 100%;
-      
+	width: 100%;
 }
-
 </style>
 
 
 
-  
+
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -124,7 +122,9 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>여행 등록</h2><br/><br/>
+								<h2>여행 등록</h2>
+								<br />
+								<br />
 							</div>
 						</li>
 
@@ -137,8 +137,8 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
-	
-		<script>
+
+	<script>
 		$(function() {
 			$("#start_date, #end_date").datepicker({
 				dateFormat : 'yy-mm-dd'
@@ -153,44 +153,53 @@ http://www.templatemo.com/tm-406-flex
 			<div class="row">
 				<div class="heading-section">
 					<h2>여행 등록</h2>
-					
+
 				</div>
 				<!-- /.heading-section -->
 
-				<div class="wrap">				
-				<input type="hidden" name="mno" readonly="readonly"/><br />
-				제목: <input type="text" name="title" style="width: 100%"/><br/>
-				<form action="datepickTest" method="POST">
-					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-					<input type="text" id="end_date" name="end_date" placeholder="종료일">
-				</form>
-				성별 조건:<br/> 
-				<div> 
-				남자 <input type="radio" name="condition_sex" value="1"/> 
-				여자 <input type="radio" name="condition_sex" value="2"/> 
-				조건없음 <input type="radio" name="condition_sex" value="3"/> 
+
+				<div class="wrap" contentEditable="true">
+
+					<input type="hidden" name="mno" readonly="readonly" /><br /> <input
+						type="hidden" name="board_type" value="1" readonly="readonly" /><br />
+					<input type="hidden" name="trip_no" readonly="readonly" /><br />
+					제목: <input type="text" name="title" style="width: 100%" /><br />
+					여행지역:<input type="text" name="region_name"><br />
+					<form action="datepickTest" method="POST">
+						<input type="text" id="start_date" name="start_date"
+							placeholder="시작일"> ~ <input type="text" id="end_date"
+							name="end_date" placeholder="종료일">
+					</form>
+					성별 조건:<br />
+					<div>
+						남자 <input type="radio" name="condition_sex" value="1" /> 여자 <input
+							type="radio" name="condition_sex" value="2" /> 조건없음 <input
+							type="radio" name="condition_sex" value="3" />
+					</div>
+					연령 조건:<br />
+					<div>
+						20대 <input type="radio" name="condition_age" value="1" /> 
+						30대 <input type="radio" name="condition_age" value="2" /> 
+						40대 <input type="radio" name="condition_age" value="3" /> 
+						50대 <input type="radio" name="condition_age" value="4" />
+					</div>
+
+
+					내용:<br />
+					<textarea name="content" rows="25" cols="" contenteditable="true">
+					
+					</textarea>
+
+					<form action="upload" method="post" enctype="multipart/form-data">
+						<input type="file" name="imageFile"> <input type="submit"
+							value="전송">
+					</form>
+
+					<br /> <br /> <input type="submit" name="register" value="등록">
+
 				</div>
-				연령 조건:<br/>
-				<div> 
-				20대 <input type="radio" name="condition_age" value="1"/> 
-				30대 <input type="radio" name="condition_age" value="2"/> 
-				40대 <input type="radio" name="condition_age" value="3"/> 
-				50대 <input type="radio" name="condition_age" value="4"/>
-				</div>
-				내용:<br/> <textarea name="content" rows="25" cols=""></textarea>
-				
-				<form action="./upload" method="post" enctype="multipart/form-data">
-																	
-						<input type="file" name="imageFile"> <input type="submit" value="전송">
-				</form>
-				
-				<br/>
-				<br/>
-				<input type="button" name="register" value="등록" >
-				<input type="button" name="register_cancel" value="취소">
-				
-				</div>				
-				
+
+
 
 
 
