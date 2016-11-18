@@ -48,8 +48,9 @@ $(document).ready(function(){
 				// date 타입으로 변환
 				var date = new Date(this.regdate);
 				var dateString = date.toLocaleDateString();
+				var parentrno = this.rno;
 				
-				if(this.parentrno == 'null'){
+				if(this.parentrno == 0){
 				// list에 html추가 - 댓글만
 				list +='<li class="reply_list" data-rno="'+this.rno+'">'
 					+'<dl class="reply_body">'
@@ -67,6 +68,32 @@ $(document).ready(function(){
 						+'<dd class="rcontent">'+this.rcontent+'</dd>'
 					+'</dl>'
 				+'</li>'
+					// 대댓글
+					$(data).each(function(){
+						// date 타입으로 변환
+						var date = new Date(this.regdate);
+						var dateString = date.toLocaleDateString();
+						
+						if(this.parentrno == parentrno){
+							list +='<li class="reply_list" data-rno="'+this.rno+'">'
+							+'<dl class="reply_body">'
+								+'<dt class="icno">'+'</dt>'
+								+'<dt class="reply_header">'
+									+'<strong class="nickname">'+this.mno+'번째회원</strong>'
+									+'<span class="regdate">'+dateString+'</span>'
+									+'<span class="btns">'+
+										+'<button class="btn_reply">답글</button>'
+										+'<button class="btn_up_start">수정</button>'
+										+'<button class="btn_del">삭제</button>'
+										+'<button class="btn_cancel">취소</button>'
+									+'</span>'
+								+'</dt>'
+								+'<dd class="rcontent">'+this.rcontent+'</dd>'
+							+'</dl>'
+						+'</li>'
+						}// end if
+					});// end data.each();
+				
 				} // end if(this.parentrno == 'null')
 				
 				
