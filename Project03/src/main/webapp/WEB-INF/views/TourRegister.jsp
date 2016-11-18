@@ -137,6 +137,8 @@ http://www.templatemo.com/tm-406-flex
 					<h2>여행 등록</h2>
 				</div>
 				<!-- /.heading-section -->
+				
+				
 			</div>
 			<!-- /.row -->
 		</div>
