@@ -45,7 +45,17 @@ http://www.templatemo.com/tm-406-flex
 .searchRegion {
 	display: none;
 }
+
+.wrap textarea {
+      width: 100%;
+      
+}
+
 </style>
+
+
+
+  
 </head>
 <body>
 	<!--[if lt IE 7]>
@@ -128,6 +138,14 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
+	
+		<script>
+		$(function() {
+			$("#start_date, #end_date").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+		});
+	</script>
 
 
 	<div class="content-section" id="services">
@@ -137,7 +155,30 @@ http://www.templatemo.com/tm-406-flex
 					<h2>여행 등록</h2>
 				</div>
 				<!-- /.heading-section -->
+				<div class="wrap">				
+				<input type="hidden" name="mno" readonly="readonly"/><br />
+				제목: <input type="text" name="title" style="width: 100%"/><br/>
+				<form action="datepickTest" method="POST">
+					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
+					<input type="text" id="end_date" name="end_date" placeholder="종료일">
+				</form>
+				성별 조건:<br/> 
+				<div> 
+				남자 <input type="radio" name="condition_sex" value="1"/> 
+				여자 <input type="radio" name="condition_sex" value="2"/> 
+				조건없음 <input type="radio" name="condition_sex" value="3"/> 
+				</div>
+				연령 조건:<br/>
+				<div> 
+				20대 <input type="radio" name="condition_age" value="1"/> 
+				30대 <input type="radio" name="condition_age" value="2"/> 
+				40대 <input type="radio" name="condition_age" value="3"/> 
+				50대 <input type="radio" name="condition_age" value="4"/>
+				</div>
+				내용:<br/> <textarea name="content" rows="25" cols=""></textarea>
 				
+				
+				</div>				
 				
 			</div>
 			<!-- /.row -->
