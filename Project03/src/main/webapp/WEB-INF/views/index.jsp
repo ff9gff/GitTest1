@@ -151,7 +151,7 @@ http://www.templatemo.com/tm-406-flex
 			</div>
 			<!-- /.row -->
 			<div class="row">
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6" style="display: inline">
 					<div class="service-item" id="service-1">
 						<div class="service-icon">
 							<i class="fa fa-file-code-o"></i>
@@ -170,7 +170,7 @@ http://www.templatemo.com/tm-406-flex
 					<!-- /#service-1 -->
 				</div>
 				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6" style="display: inline">
 					<div class="service-item" id="service-2">
 						<div class="service-icon">
 							<i class="fa fa-paper-plane-o"></i>
@@ -187,7 +187,7 @@ http://www.templatemo.com/tm-406-flex
 					<!-- /#service-1 -->
 				</div>
 				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6" style="display: inline">
 					<div class="service-item" id="service-3">
 						<div class="service-icon">
 							<i class="fa fa-institution"></i>
@@ -204,7 +204,7 @@ http://www.templatemo.com/tm-406-flex
 					<!-- /#service-1 -->
 				</div>
 				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6">
+				<div class="col-md-3 col-sm-6" style="display: inline">
 					<div class="service-item" id="service-4">
 						<div class="service-icon">
 							<i class="fa fa-flask"></i>
