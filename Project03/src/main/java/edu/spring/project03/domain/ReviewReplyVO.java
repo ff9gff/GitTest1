@@ -3,6 +3,7 @@ package edu.spring.project03.domain;
 import java.util.Date;
 
 public class ReviewReplyVO {
+	
 	private int rno;
 	private int parentrno;
 	private int review_no;

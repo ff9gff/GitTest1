@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.TourRegisterVO;
-import edu.spring.project03.persistence.TourSelectDAO;
+import edu.spring.project03.persistence.TourSearchDAO;
 
 @Service
-public class TourSelectServiceImpl implements TourSelectService {
+public class TourSearchServiceImpl implements TourSearchService {
 	
 	@Autowired
-	private TourSelectDAO dao;
+	private TourSearchDAO dao;
 
 	@Override
 	public List<ImgVO> read_region(String region) {

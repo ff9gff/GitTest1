@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.TourRegisterVO;
-import edu.spring.project03.service.TourSelectService;
+import edu.spring.project03.service.TourSearchService;
 
 @Controller
-public class TourSelectController {
-	private static final Logger logger = LoggerFactory.getLogger(TourSelectController.class);
+public class TourSearchController {
+	private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
 
 	@Autowired
-	private TourSelectService tourSelectService;
+	private TourSearchService tourSelectService;
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void main() {
@@ -31,7 +31,7 @@ public class TourSelectController {
 		logger.info("startDate: " + start_date);
 		logger.info("endDate: " + end_date);
 
-		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0, null);
+		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
 
 		List<ImgVO> list = tourSelectService.read_region_date(vo);
 

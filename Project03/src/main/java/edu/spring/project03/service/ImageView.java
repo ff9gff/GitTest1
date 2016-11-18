@@ -1,4 +1,4 @@
-package edu.spring.project03;
+package edu.spring.project03.service;
 
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.view.AbstractView;
+
+import edu.spring.project03.domain.ImageFile;
 
 
 @Component("imageView")

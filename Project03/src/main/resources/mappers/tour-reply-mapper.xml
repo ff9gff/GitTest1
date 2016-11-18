@@ -12,7 +12,7 @@
 	<select id="select"
 			resultType="edu.spring.project03.domain.TourReplyVO">
 		select * from wm_tour_reply
-		where bno = #{bno}
+		where trip_no = #{trip_no}
 		order by rno asc
 	</select>
 	
