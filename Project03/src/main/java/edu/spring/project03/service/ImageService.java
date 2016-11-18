@@ -1,4 +1,4 @@
-package edu.spring.project03;
+package edu.spring.project03.service;
 
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
@@ -9,6 +9,8 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+
+import edu.spring.project03.domain.ImageFile;
 
 @Service
 public class ImageService {
