@@ -249,111 +249,96 @@ http://www.templatemo.com/tm-406-flex
 					<h2>새 친구를 찾아보자</h2>
 					<br /> <br />
 					<p>
-					<form action="regionTest" method="POST">
-						<input type="text" id="region_name" name="region_name"
-							placeholder="지역이름"> <input type="submit" value="검색" />
-					</form>
+						<form action="regionTest" method="POST">
+							<input type="text" id="region_name" name="region_name"
+								placeholder="지역이름"> <input type="submit" value="검색" />
+						</form>
 					</p>
 
 					<p>
-					<form action="datepickTest" method="POST">
-						<input type="text" id="start_date" name="start_date"
-							placeholder="시작일"> ~ <input type="text" id="end_date"
-							name="end_date" placeholder="종료일"> <input type="submit"
-							value="검색" />
-					</form>
+						<form action="datepickTest" method="POST">
+							<input type="text" id="start_date" name="start_date"
+								placeholder="시작일"> ~ <input type="text" id="end_date"
+								name="end_date" placeholder="종료일"> <input type="submit"
+								value="검색" />
+						</form>
 					</p>
 
 
-
-					<div>
-						<p>
-						<form action="imageTest" method="POST">
-							<input type="number" id="board_type" name="board_type"
-								placeholder="게시판구분" required> <input type="number"
-								id="content_no" name="content_no" placeholder="게시글구분" required>
-							<input type="number" id="photo_no" name="photo_no"
-								placeholder="사진구분" required> <input type="submit"
-								value="사진" />
-						</form>
-						</p>
-					</div>
-
+					<p>
+						<div>
+							<form action="imageTest" method="POST">
+								<input type="number" id="board_type" name="board_type"
+									placeholder="게시판구분" required> <input type="number"
+									id="content_no" name="content_no" placeholder="게시글구분" required>
+								<input type="number" id="photo_no" name="photo_no"
+									placeholder="사진구분" required> <input type="submit"
+									value="사진" />
+							</form>	
+						</div>
+					</p>
 
 
-					<div>
-						<p>
-						<form action="TourRegister" method="post">
-							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
-						</form>
-						<a href="TourRegister"></a>
-						</p>
-					</div>
+					<p>
+						<div>
+							<form action="TourRegister" method="post">
+								<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
+							</form>
+							<a href="TourRegister"></a>
+						</div>
+					</p>
 				</div>
 				<!-- /.heading-section -->
 			</div>
 			<!-- /.row -->
 
 			<p>
-			<div class="row">
-				<c:forEach var="region" items="${regionList }">
-					<div class="portfolio-item col-md-3 col-sm-6">
-						<div class="portfolio-thumb">
-
-							<figure>
-
-								<a href="FTourRegister?trip_no=${region.content_no}"><img
-									src="${region.img_file}" width="300" height="200"></a>
-
-							</figure>
-
-
+				<div class="row">
+					<c:forEach var="region" items="${regionList }">
+						<div class="portfolio-item col-md-3 col-sm-6">
+							<div class="portfolio-thumb">
+								<figure>
+									<a href="FTourRegister?trip_no=${region.content_no}"><img
+										src="${region.img_file}" width="300" height="200"></a>
+	
+								</figure>
+							</div>
+							<!-- /.portfolio-thumb -->
 						</div>
-						<!-- /.portfolio-thumb -->
-					</div>
-				</c:forEach>
-			</div>
-
+					</c:forEach>
+				</div>
 			</p>
 
 			<p>
-			<div class="row">
-				<c:forEach var="period" items="${periodList}">
-					<div class="portfolio-item col-md-3 col-sm-6">
-						<div class="portfolio-thumb">
+				<div class="row">
+					<c:forEach var="period" items="${periodList}">
+						<div class="portfolio-item col-md-3 col-sm-6">
+							<div class="portfolio-thumb">
 	
-							<figure>
-								<a href="FTourRegister?trip_no=${period.content_no }"><img
-									src="${period.img_file}" width="300" height="200"></a>
-							</figure>
-
+								<figure>
+									<a href="FTourRegister?trip_no=${period.content_no }"><img
+										src="${period.img_file}" width="300" height="200"></a>
+								</figure>
+	
+							</div>
 						</div>
-					</div>
-				</c:forEach>
-			</div>
+					</c:forEach>
+				</div>
+			
+
+			<p>
+				<div class="row">
+					<c:forEach var="image" items="${imageList}">
+						<div class="portfolio-item col-md-3 col-sm-6">
+							<div class="portfolio-thumb">
+								<a href="FTourRegister"><img src="${image.img_file}"
+									width="300" height="200"></a>
+							</div>
+							<!-- /.portfolio-thumb -->
+						</div>
+					</c:forEach>
+				</div>
 			</p>
-
-
-			<div class="row">
-				<c:forEach var="image" items="${imageList}">
-					
-
-
-
-					<div class="portfolio-item col-md-3 col-sm-6">
-						<div class="portfolio-thumb">
-							<a href="FTourRegister"><img src="${image.img_file}" width="300" height="200"></a>
-						</div>
-						<!-- /.portfolio-thumb -->
-					</div>
-
-
-				</c:forEach>
-			</div>
-
-
-
-
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->

@@ -10,10 +10,10 @@ import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 @Repository
-public class TourSelectDAOImpl implements TourSelectDAO {
+public class TourSearchDAOImpl implements TourSearchDAO {
 
 	private static final String NAMESPACE2 =
-			"edu.spring.project03.TestMapper";
+			"edu.spring.project03.TourSearchMapper";
 	
 	@Autowired
 	private SqlSession sqlSession;

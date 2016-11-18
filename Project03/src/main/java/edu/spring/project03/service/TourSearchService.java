@@ -5,7 +5,7 @@ import java.util.List;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
-public interface TourSelectService {
+public interface TourSearchService {
 
 	public abstract List<ImgVO> read_region(String region);
 

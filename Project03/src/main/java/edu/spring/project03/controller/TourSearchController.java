@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.TourRegisterVO;
-import edu.spring.project03.service.TourSelectService;
+import edu.spring.project03.service.TourSearchService;
 
 @Controller
-public class TourSelectController {
-	private static final Logger logger = LoggerFactory.getLogger(TourSelectController.class);
+public class TourSearchController {
+	private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
 
 	@Autowired
-	private TourSelectService tourSelectService;
+	private TourSearchService tourSelectService;
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void main() {

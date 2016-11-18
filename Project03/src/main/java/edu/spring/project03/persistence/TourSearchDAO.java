@@ -5,7 +5,7 @@ import java.util.List;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
-public interface TourSelectDAO {
+public interface TourSearchDAO {
 
 	public abstract List<ImgVO> select_region(String region);
 

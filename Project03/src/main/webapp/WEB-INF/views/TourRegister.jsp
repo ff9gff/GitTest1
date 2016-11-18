@@ -90,7 +90,7 @@ http://www.templatemo.com/tm-406-flex
 									<li><a href="index">메인</a></li>
 									<li><a href="admin">관리자</a></li>
 									<li><a href="login">로그인</a></li>
-									
+
 
 
 								</ul>
@@ -114,11 +114,10 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>여행 등록</h2>
-								<h2>당신만의 일정을 등록해 파티원을 모집해보세요</h2>
+								<h2>여행 등록</h2><br/><br/>
 							</div>
 						</li>
-						
+
 					</ul>
 				</div>
 				<!-- /.flexslider -->
@@ -130,13 +129,22 @@ http://www.templatemo.com/tm-406-flex
 	<!-- /.site-main -->
 
 
+
 	<div class="content-section" id="services">
 		<div class="container">
 			<div class="row">
-				<div class="heading-section col-md-12 text-center">
+				<div class="heading-section">
 					<h2>여행 등록</h2>
+					<form action="./upload" method="post" enctype="multipart/form-data">
+						<br/><br/>
+						<textarea rows="5" cols="120"></textarea>
+						
+						<input type="file" name="imageFile">
+						<input type="submit" value="전송">
+					</form>
 				</div>
 				<!-- /.heading-section -->
+
 			</div>
 			<!-- /.row -->
 		</div>
