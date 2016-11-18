@@ -43,21 +43,15 @@ public class HomeController {
 		
 		return "index";
 
-	}
+	} // end home(locale, model)
 	
-	
-	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
-	public void adminPage(){
-		logger.info("admin.jsp 소환");
+	@RequestMapping(value="/member_register01", method=RequestMethod.GET)
+	public void register01() {
+		logger.info("member_register01.jsp 호출...");
 		
-	}
-	
-	@RequestMapping(value="/tourSearch" ,method=RequestMethod.GET)
-	public void tourSelect(){
-		logger.info("tourSearch.jsp 소환");
-		
-	}
-
+	} // end register01()
 	
 	
-}
+	
+	
+} // end class HomeController

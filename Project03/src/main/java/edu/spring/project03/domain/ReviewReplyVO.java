@@ -2,34 +2,26 @@ package edu.spring.project03.domain;
 
 import java.util.Date;
 
-public class ReviewReply {
-	
+public class ReviewReplyVO {
 	private int rno;
 	private int parentrno;
 	private int review_no;
 	private int mno;
-	private String content;
+	private String rcontent;
 	private Date regdate;
 	
-	public ReviewReply() {
+	public ReviewReplyVO() {
 
 	}
-	
-	public ReviewReply(int rno, int parentrno, int review_no, int mno, String content, Date regdate) {
+
+	public ReviewReplyVO(int rno, int parentrno, int review_no, int mno, String rcontent, Date regdate) {
+		super();
 		this.rno = rno;
 		this.parentrno = parentrno;
 		this.review_no = review_no;
 		this.mno = mno;
-		this.content = content;
+		this.rcontent = rcontent;
 		this.regdate = regdate;
-	}
-
-	public int getParentrno() {
-		return parentrno;
-	}
-
-	public void setParentno(int parentrno) {
-		this.parentrno = parentrno;
 	}
 
 	public int getRno() {
@@ -38,6 +30,14 @@ public class ReviewReply {
 
 	public void setRno(int rno) {
 		this.rno = rno;
+	}
+
+	public int getParentrno() {
+		return parentrno;
+	}
+
+	public void setParentrno(int parentrno) {
+		this.parentrno = parentrno;
 	}
 
 	public int getReview_no() {
@@ -56,12 +56,12 @@ public class ReviewReply {
 		this.mno = mno;
 	}
 
-	public String getContent() {
-		return content;
+	public String getRcontent() {
+		return rcontent;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setRcontent(String rcontent) {
+		this.rcontent = rcontent;
 	}
 
 	public Date getRegdate() {
@@ -71,5 +71,8 @@ public class ReviewReply {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
+
+	
+	
 
 }

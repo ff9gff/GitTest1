@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="edu.spring.project03.TestMapper">
+
+	<select id="select_trip_date" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where content_no in (select trip_no from wm_tour 
+                            where start_date <![CDATA[<]]> to_date(#{end_date},'YYYY-MM-DD')+1
+                            and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD'))
+	
+	</select>
+
+	<select id="select_trip_region" resultType="edu.spring.project03.domain.ImgVO">
+
+		select * from wm_image
+		where content_no = (select trip_no from wm_tour_region
+		where region_name = #{region_name})
+
+	</select>
+
+	<select id="select_trip_region_image" resultType="edu.spring.project03.domain.ImgVO">
+		select * from
+		wm_image
+		where board_type = #{board_type} and content_no =
+		#{content_no} and photo_no = #{photo_no}
+	</select>
+
+</mapper>
