@@ -31,7 +31,7 @@ public class TourSearchController {
 		logger.info("startDate: " + start_date);
 		logger.info("endDate: " + end_date);
 
-		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0, null);
+		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
 
 		List<ImgVO> list = tourSelectService.read_region_date(vo);
 
