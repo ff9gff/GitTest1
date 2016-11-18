@@ -317,10 +317,20 @@ http://www.templatemo.com/tm-406-flex
 			</p>
 
 			<p>
+			<div class="row">
 				<c:forEach var="period" items="${periodList}">
-					<a href="FTourRegister?trip_no=${period.trip_no }"><textarea
-							rows="" cols="">${period.title}</textarea></a>
+					<div class="portfolio-item col-md-3 col-sm-6">
+						<div class="portfolio-thumb">
+	
+							<figure>
+								<a href="FTourRegister?trip_no=${period.content_no }"><img
+									src="${period.img_file}" width="300" height="200"></a>
+							</figure>
+
+						</div>
+					</div>
 				</c:forEach>
+			</div>
 			</p>
 
 

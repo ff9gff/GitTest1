@@ -33,7 +33,7 @@ public class TourSelectController {
 
 		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0, null);
 
-		List<TourRegisterVO> list = tourSelectService.read_region_date(vo);
+		List<ImgVO> list = tourSelectService.read_region_date(vo);
 
 		model.addAttribute("periodList", list);
 		

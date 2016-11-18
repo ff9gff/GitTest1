@@ -22,8 +22,8 @@ public class TourSelectServiceImpl implements TourSelectService {
 	}
 	
 	@Override
-	public List<TourRegisterVO> read_region_date(TourRegisterVO vo) {
-		List<TourRegisterVO> list = dao.select_region_date(vo);
+	public List<ImgVO> read_region_date(TourRegisterVO vo) {
+		List<ImgVO> list = dao.select_region_date(vo);
 		return list;
 	}
 

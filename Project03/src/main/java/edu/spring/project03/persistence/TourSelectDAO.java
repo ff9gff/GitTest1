@@ -9,7 +9,7 @@ public interface TourSelectDAO {
 
 	public abstract List<ImgVO> select_region(String region);
 
-	public abstract List<TourRegisterVO> select_region_date(TourRegisterVO vo);
+	public abstract List<ImgVO> select_region_date(TourRegisterVO vo);
 
 	public abstract List<ImgVO> select_region_image(ImgVO vo);
 

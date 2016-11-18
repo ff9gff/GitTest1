@@ -9,7 +9,7 @@ public interface TourSelectService {
 
 	public abstract List<ImgVO> read_region(String region);
 
-	public abstract List<TourRegisterVO> read_region_date(TourRegisterVO vo);
+	public abstract List<ImgVO> read_region_date(TourRegisterVO vo);
 
 	public abstract List<ImgVO> read_region_image(ImgVO vo);
 

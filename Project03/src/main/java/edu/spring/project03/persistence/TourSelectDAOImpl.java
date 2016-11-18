@@ -25,8 +25,8 @@ public class TourSelectDAOImpl implements TourSelectDAO {
 	}
 
 	@Override
-	public List<TourRegisterVO> select_region_date(TourRegisterVO vo) {
-		List<TourRegisterVO> list = sqlSession.selectList(NAMESPACE2 + ".select_trip_date", vo);
+	public List<ImgVO> select_region_date(TourRegisterVO vo) {
+		List<ImgVO> list = sqlSession.selectList(NAMESPACE2 + ".select_trip_date", vo);
 		return list;
 	}
 	
