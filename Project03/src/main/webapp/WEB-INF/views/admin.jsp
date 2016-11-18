@@ -35,7 +35,7 @@
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="admin.jsp">가입승인</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg.jsp">공지사항</a>
@@ -149,6 +149,9 @@
 		$('#checkboxTestTbl > tr > th >input: checked').each(function(index) {
 			alert($(this).val());
 		})
+		
+		
+		
 	</script>
 
 

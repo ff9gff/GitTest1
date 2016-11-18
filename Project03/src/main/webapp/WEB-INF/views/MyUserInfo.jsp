@@ -12,15 +12,12 @@
 <h1> test 입니다. </h1>
 
 
-
  <form action="searchMyuser2" method="post">
  <input type="text" name="userid" id="userid" placeholder="찾을 유저검색">
  <input type="submit" value="찾기" > 	
  </form>
  <input type="button" id="btnList" value="찾기 2">
 
-
- 	
  	<table id="tableTest2" border="1px" >
  	<caption>유저 찾기 </caption>
  	<colgroup>
@@ -29,8 +26,7 @@
  		<col width="100px">
  	</colgroup>
  	
- 	
- 	
+
  	<tr>
  		<th></th>
  		<th>유저 번호 </th>
@@ -40,21 +36,8 @@
 	<tbody id="c">
 
 	</tbody>
-	
 
- 	
- 	
- 	
-<%--- 
- 	<c:forEach var="s2" items="{userList}">
- 		<tr>
- 			<th><input type="checkbox"/></th>
- 		 	<td>${s2.mno }</td>
- 		 	<td>${s2.userid }</td>	
- 		</tr>
 
- 	</c:forEach>
- --%>
  	</table>
  	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	

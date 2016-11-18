@@ -27,7 +27,7 @@ public class SearchUserRESTcontroller {
 	private SearchUserService suRestService;
 	
 	@RequestMapping(value="/all/{userid}",method=RequestMethod.GET)
-	public ResponseEntity<List<MemberVO>> readReplies(@PathVariable("userid") String userid) {
+	public ResponseEntity<List<MemberVO>> readSearchUser(@PathVariable("userid") String userid) {
 	logger.info("read My Search user ->"+userid);
 	ResponseEntity<List<MemberVO>> entity = null;
 	
