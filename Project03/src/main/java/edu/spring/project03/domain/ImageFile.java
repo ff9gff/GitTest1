@@ -1,4 +1,4 @@
-package edu.spring.project03;
+package edu.spring.project03.domain;
 
 public class ImageFile {
 	/**
