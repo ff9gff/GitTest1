@@ -41,7 +41,8 @@ http://www.templatemo.com/tm-406-flex
 <script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
-
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 
 <style>
@@ -55,8 +56,7 @@ http://www.templatemo.com/tm-406-flex
 </style>
 </head>
 
-<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+
 
 <body>
 	<!--[if lt IE 7]>
@@ -223,7 +223,8 @@ http://www.templatemo.com/tm-406-flex
 				<div>
 						<form action="send" method="post" id="frm">
 							<textarea name="smarteditor" id="smarteditor" rows="10" cols="100" style="width: 766px; height: 412px;">
-							</textarea><br/>							
+							</textarea><br/>
+							<input type="button" id="savebutton" value="서버전송" />							
 						</form>
 						
 						<br /> <br /> 
