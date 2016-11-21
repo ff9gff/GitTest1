@@ -28,8 +28,7 @@
     <mvc:resources mapping="/resources/**" location="/resources/theme/"
 	cache-period="31556926"/>
 	
-	 <mvc:resources mapping="/resources/**" location="/resources/smart_editor/"
-	cache-period="31556926"/>
+	
 
     <mvc:annotation-driven />
 

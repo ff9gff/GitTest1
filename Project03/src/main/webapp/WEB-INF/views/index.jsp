@@ -38,7 +38,7 @@ http://www.templatemo.com/tm-406-flex
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
 <style>
@@ -299,7 +299,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="portfolio-thumb">
 								<figure>
 									<a href="FTourRegister?trip_no=${region.content_no}"><img
-										src="${region.img_file}" width="300" height="200"></a>
+										src="${region.img_url}" width="300" height="200"></a>
 	
 								</figure>
 							</div>
@@ -317,7 +317,7 @@ http://www.templatemo.com/tm-406-flex
 	
 								<figure>
 									<a href="FTourRegister?trip_no=${period.content_no }"><img
-										src="${period.img_file}" width="300" height="200"></a>
+										src="${period.img_url}" width="300" height="200"></a>
 								</figure>
 	
 							</div>
@@ -331,7 +331,7 @@ http://www.templatemo.com/tm-406-flex
 					<c:forEach var="image" items="${imageList}">
 						<div class="portfolio-item col-md-3 col-sm-6">
 							<div class="portfolio-thumb">
-								<a href="FTourRegister"><img src="${image.img_file}"
+								<a href="FTourRegister"><img src="${image.img_url}"
 									width="300" height="200"></a>
 							</div>
 							<!-- /.portfolio-thumb -->

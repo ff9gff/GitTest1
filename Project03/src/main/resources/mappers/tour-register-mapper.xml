@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="edu.spring.Project03.tour-register-mapper">
+  
+    <insert id="insert-register">
+    insert into wm_tour(trip_no, mno, title, condition_sex, condition_age, content, regdate, start_date, end_date, expire)
+    values (#{trip_no}, #{mno}, #{title}, #{condition_sex}, #{condition_age}, #{content}, #{regdate}, #{start_date}, #{end_date}, #{expire})
+    </insert>
+    
+  </mapper>
