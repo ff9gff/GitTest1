@@ -7,6 +7,14 @@
   
   
   
+  <select id="newUser" resultType="edu.spring.project03.domain.MemberVO">
+  
+  
+ select * from WM_MEMBER WHERE AUTHORITY = 0 order by mno desc
+  
+  
+  </select>
+  
   
   
   
