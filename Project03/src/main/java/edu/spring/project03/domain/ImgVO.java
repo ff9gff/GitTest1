@@ -5,17 +5,17 @@ public class ImgVO {
 	private int board_type;
 	private int content_no;
 	private int photo_no;
-	private String img_file;
+	private String img_url;
 	
 	public ImgVO() {
 		
 	}
 
-	public ImgVO(int board_type, int content_no, int photo_no, String img_file) {
+	public ImgVO(int board_type, int content_no, int photo_no, String img_url) {
 		this.board_type = board_type;
 		this.content_no = content_no;
 		this.photo_no = photo_no;
-		this.img_file = img_file;
+		this.img_url = img_url;
 	}
 
 	public int getBoard_type() {
@@ -42,12 +42,16 @@ public class ImgVO {
 		this.photo_no = photo_no;
 	}
 
-	public String getImg_file() {
-		return img_file;
+	public String getImg_url() {
+		return img_url;
 	}
 
-	public void setImg_file(String img_file) {
-		this.img_file = img_file;
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
 	}
+	
+	
+
+	
 
 }
