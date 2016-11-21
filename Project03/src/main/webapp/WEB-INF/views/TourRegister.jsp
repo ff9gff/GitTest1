@@ -157,10 +157,11 @@ http://www.templatemo.com/tm-406-flex
 				</div>
 				<!-- /.heading-section -->
 
-				<div class="wrap">				
+				<div class="wrap" >				
 				<input type="hidden" name="mno" readonly="readonly"/><br />
 				제목: <input type="text" name="title" style="width: 100%"/><br/>
 				<form action="datepickTest" method="POST">
+				날짜: <br/>
 					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
 					<input type="text" id="end_date" name="end_date" placeholder="종료일">
 				</form>
@@ -177,9 +178,11 @@ http://www.templatemo.com/tm-406-flex
 				40대 <input type="radio" name="condition_age" value="3"/> 
 				50대 <input type="radio" name="condition_age" value="4"/>
 				</div>
-				내용:<br/> <textarea name="content" rows="25" cols=""></textarea>
 				
 				<form action="./upload" method="post" enctype="multipart/form-data">
+				내용:<br/> <textarea name="content" rows="25" cols=""></textarea>
+				
+				
 																	
 						<input type="file" name="imageFile"> <input type="submit" value="전송">
 				</form>
