@@ -59,15 +59,17 @@ $(document).ready(function(){
 							+'<strong class="nickname">'+this.mno+'번째회원</strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'+
-								+'<button class="btn_reply">답글</button>'
-								+'<button class="btn_up_start">수정</button>'
-								+'<button class="btn_del">삭제</button>'
-								+'<button class="btn_cancel">취소</button>'
+								+'<a href="#" class="btn_reply">답글</a>'
+								+'<span class="btn_div">|</span>'
+								+'<a href="#" class="btn_update">수정</a>'
+								+'<span class="btn_div">|</span>'
+								+'<a href="#" class="btn_delete">삭제</a>'
 							+'</span>'
 						+'</dt>'
 						+'<dd class="rcontent">'+this.rcontent+'</dd>'
 					+'</dl>'
-				+'</li>'
+				+'</li>';
+				console.info(dateString);
 					// 대댓글
 					$(data).each(function(){
 						// date 타입으로 변환
@@ -90,7 +92,7 @@ $(document).ready(function(){
 								+'</dt>'
 								+'<dd class="rcontent">'+this.rcontent+'</dd>'
 							+'</dl>'
-						+'</li>'
+						+'</li>';
 						}// end if
 					});// end data.each(); 
 				
