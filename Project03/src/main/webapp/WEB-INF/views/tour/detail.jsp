@@ -7,6 +7,33 @@
 <head>
 <meta charset="UTF-8">
 <title>같이가자</title>
+<style>
+#reply-panel{
+  width:800px;
+  margin: 0 auto;
+}
+#replies{
+	margin:0;
+	padding:0;
+	list-style:none;
+}
+#replies li{
+	margin-bottom:10px;
+	padding-bottom:5px;
+	border-bottom:1px dotted #999999;
+}
+.reply_body{
+	margin-left:20px;
+}
+.re_reply_body{
+	margin-left:80px;
+}
+.btns{
+	float: right;
+	margin-right: 20px;
+}
+
+</style>
 </head>
 <body>
 
@@ -58,16 +85,45 @@ $(document).ready(function(){
 						+'<dt class="reply_header">'
 							+'<strong class="nickname">'+this.mno+'번째회원</strong>'
 							+'<span class="regdate">'+dateString+'</span>'
-							+'<span class="btns">'+
-								+'<button class="btn_reply">답글</button>'
-								+'<button class="btn_up_start">수정</button>'
-								+'<button class="btn_del">삭제</button>'
-								+'<button class="btn_cancel">취소</button>'
+							+'<span class="btns">'
+								+'<a href="#" class="btn_reply">답글</a>'
+								+'<span class="btn_div">|</span>'
+								+'<a href="#" class="btn_update">수정</a>'
+								+'<span class="btn_div">|</span>'
+								+'<a href="#" class="btn_delete">삭제</a>'
 							+'</span>'
 						+'</dt>'
 						+'<dd class="rcontent">'+this.rcontent+'</dd>'
+						+'<dd>'
+							+'<div class="rcon_modify" style="display: none;">'
+								+'<input type="hidden" class="update_rno" value="'+this.rno+'"/>'
+								+'<table class="update_table">'
+									+'<tbody>'
+										+'<tr>'
+											+'<td><textarea cols="50" rows="2" class="update_textarea"></textarea></td>'
+											+'<td><input type="button" class="update_commit" value="수정완료"/></td>'
+										+'</tr>'
+									+'</tbody>'
+								+'</table>'
+							+'<div>'
+						+'</dd>'
 					+'</dl>'
 				+'</li>'
+				+'<li class="reply_insert" style="display: none;">'
+					+'<div class="re_reply_body">'
+						+'<input type="hidden" class="parent_rno" value="'+this.rno+'"/>'
+						+'<table class="reply_table">'
+							+'<tbody>'
+								+'<tr>'
+									+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
+									+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
+									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
+								+'</tr>'
+							+'</tbody>'
+						+'</table>'
+					+'</div>'
+				+'</li>';
+		
 					// 대댓글
 					$(data).each(function(){
 						// date 타입으로 변환
@@ -76,26 +132,53 @@ $(document).ready(function(){
 						
 						if(this.parentrno == parentrno){
 							list +='<li class="reply_list" data-rno="'+this.rno+'">'
-							+'<dl class="reply_body">'
+							+'<dl class="re_reply_body">'
 								+'<dt class="icno">'+'</dt>'
 								+'<dt class="reply_header">'
 									+'<strong class="nickname">'+this.mno+'번째회원</strong>'
 									+'<span class="regdate">'+dateString+'</span>'
-									+'<span class="btns">'+
-										+'<button class="btn_reply">답글</button>'
-										+'<button class="btn_up_start">수정</button>'
-										+'<button class="btn_del">삭제</button>'
-										+'<button class="btn_cancel">취소</button>'
+									+'<span class="btns">'
+										+'<a href="#" class="btn_reply">답글</a>'
+										+'<span class="btn_div">|</span>'
+										+'<a href="#" class="btn_update">수정</a>'
+										+'<span class="btn_div">|</span>'
+										+'<a href="#" class="btn_delete">삭제</a>'
 									+'</span>'
 								+'</dt>'
 								+'<dd class="rcontent">'+this.rcontent+'</dd>'
+								+'<dd>'
+									+'<div class="rcon_modify" style="display: none;">'
+										+'<input type="hidden" class="update_rno" value="'+this.rno+'"/>'
+										+'<table class="update_table">'
+											+'<tbody>'
+												+'<tr>'
+													+'<td><textarea cols="50" rows="2" class="update_textarea"></textarea></td>'
+													+'<td><input type="button" class="update_commit" value="수정완료"/></td>'
+												+'</tr>'
+											+'</tbody>'
+										+'</table>'
+									+'<div>'
+								+'</dd>'
 							+'</dl>'
 						+'</li>'
+						+'<li class="reply_insert" style="display: none;">'
+							+'<div class="re_reply_body">'
+								+'<input type="hidden" class="parent_rno" value="'+this.parentrno+'"/>'
+								+'<table class="reply_table">'
+									+'<tbody>'
+										+'<tr>'
+											+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
+											+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
+											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
+										+'</tr>'
+									+'</tbody>'
+								+'</table>'
+							+'</div>'
+						+'</li>';
 						}// end if
 					});// end data.each(); 
 				
 				} // end if(this.parentrno == 'null')
-				
 				
 			});// end data.each();
 			
@@ -103,8 +186,10 @@ $(document).ready(function(){
 			
 		});// end getJSON
 		
-		
 	}; // end getAllReplies()
+	
+	
+	
 }); // end document.ready
 </script>
 
