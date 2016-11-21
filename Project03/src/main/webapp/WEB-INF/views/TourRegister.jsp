@@ -53,54 +53,10 @@ http://www.templatemo.com/tm-406-flex
 	width: 100%;
 }
 </style>
-
-
-
-
 </head>
 
-
-
-<!-- Smart Editor -->
-<script type="text/javascript" src="<%=request.getContextPath()%>/se2폴더를 붙여넣기 한 곳의 경로/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
-<script type="text/javascript" src="<%=request.getContextPath()%>/se2폴더를 붙여넣기 한 곳의 경로/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
- 
- 
-<!-- Smart Editor -->
-<script type="text/javascript">
- 
-var oEditors = [];
-nhn.husky.EZCreator.createInIFrame({
-    oAppRef: oEditors,
-    elPlaceHolder: "textAreaContent",
-    sSkinURI: "<%=request.getContextPath()%>/se2폴더를 붙여넣기 한 곳의 경로/se2/SmartEditor2Skin.html",
-    fCreator: "createSEditor2"
-});
- 
-//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
-function submitContents(elClickedObj) {
-    // 에디터의 내용이 textarea에 적용된다.
-    oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", [ ]);
- 
-    // 에디터의 내용에 대한 값 검증은 이곳에서
-    // document.getElementById("textAreaContent").value를 이용해서 처리한다.
-  
-    try {
-        elClickedObj.form.submit();
-    } catch(e) {
-     
-    }
-}
- 
-// textArea에 이미지 첨부
-function pasteHTML(filepath){
-    var sHTML = '<img src="<%=request.getContextPath()%>/path에서 설정했던 경로/'+filepath+'">';
-    oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
-}
- 
-</script>
-
-
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <body>
 	<!--[if lt IE 7]>
@@ -193,6 +149,40 @@ function pasteHTML(filepath){
 			});
 		});
 	</script>
+	
+	<script>
+	
+	$(function(){
+	    //전역변수선언
+	    var editor_object = [];
+	     
+	    nhn.husky.EZCreator.createInIFrame({
+	        oAppRef: editor_object,
+	        elPlaceHolder: "smarteditor",
+	        sSkinURI: "/smarteditor/SmartEditor2Skin.html", 
+	        htParams : {
+	            // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseToolbar : true,             
+	            // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseVerticalResizer : true,     
+	            // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+	            bUseModeChanger : true, 
+	        }
+	    });
+	     
+	    //전송버튼 클릭이벤트
+	    $("#savebutton").click(function(){
+	        //id가 smarteditor인 textarea에 에디터에서 대입
+	        editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
+	         
+	        // 이부분에 에디터 validation 검증
+	         
+	        //폼 submit
+	        $("#frm").submit();
+	    })
+	})
+	
+	</script>
 
 
 
@@ -207,40 +197,34 @@ function pasteHTML(filepath){
 
 
 
-				<div class="wrap" >				
-				<input type="hidden" name="mno" readonly="readonly"/><br />
-				제목: <input type="text" name="title" style="width: 100%"/><br/>
-				<form action="datepickTest" method="POST">
-				날짜: <br/>
-					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-					<input type="text" id="end_date" name="end_date" placeholder="종료일">
-				</form>
-				성별 조건:<br/> 
-				<div> 
-				남자 <input type="radio" name="condition_sex" value="1"/> 
-				여자 <input type="radio" name="condition_sex" value="2"/> 
-				조건없음 <input type="radio" name="condition_sex" value="3"/> 
-				</div>
-				연령 조건:<br/>
-				<div> 
-				20대 <input type="radio" name="condition_age" value="1"/> 
-				30대 <input type="radio" name="condition_age" value="2"/> 
-				40대 <input type="radio" name="condition_age" value="3"/> 
-				50대 <input type="radio" name="condition_age" value="4"/>
-				
-				<textarea style="width: 100%" rows="10" name="content" id="textAreaContent" cols="80"></textarea>
-				
-				</div>
-												
-				</div>				
-				
+				<div class="wrap">
+					<input type="hidden" name="mno" readonly="readonly" /><br /> 
+					제목: <input type="text" name="title" style="width: 100%" /><br />
+					<form action="datepickTest" method="POST">
+						날짜: <br /> <input type="text" id="start_date" name="start_date"	placeholder="시작일"> ~ 
+						<input type="text" id="end_date" name="end_date" placeholder="종료일">
+					</form>
+					성별 조건:<br />
 					<div>
-						<form action="send" method="post" id="frm">
-							<textarea name="smarteditor" id="smarteditor" rows="10"
-								cols="100" style="width: 766px; height: 412px;"></textarea><br/>
-							<input type="button" id="savebutton" value="서버전송" />
-						</form>
+						남자 <input type="radio" name="condition_sex" value="1" /> 
+						여자 <input type="radio" name="condition_sex" value="2" /> 
+						조건없음 <input type="radio" name="condition_sex" value="3" />
+					</div>
+					연령 조건:<br />
+					<div>
+						20대 <input type="radio" name="condition_age" value="1" /> 
+						30대 <input type="radio" name="condition_age" value="2" /> 
+						40대 <input type="radio" name="condition_age" value="3" /> 
+						50대 <input type="radio" name="condition_age" value="4" />
+					</div>
 
+				</div>
+
+				<div>
+						<form action="send" method="post" id="frm">
+							<textarea name="smarteditor" id="smarteditor" rows="10" cols="100" style="width: 766px; height: 412px;">
+							</textarea><br/>							
+						</form>
 						
 						<br /> <br /> 
 						<input type="button" name="register" value="등록">
