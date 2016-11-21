@@ -9,4 +9,7 @@ public interface AdminService {
 	
 	public List<MemberVO> newUserList();
 	
+	public List<MemberVO> userLevel12read();
+	
+	public int sendAllUserMessage( String msg_content);
 }

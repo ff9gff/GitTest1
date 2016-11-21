@@ -51,6 +51,18 @@ public class HomeController {
 		
 	} // end register01()
 	
+	@RequestMapping(value="/member_register02", method=RequestMethod.GET)
+	public void register02() {
+		logger.info("member_register02.jsp 호출...");
+		
+	} // end register01()
+	
+	@RequestMapping(value="/test", method=RequestMethod.GET)
+	public void test() {
+		logger.info("member_register02.jsp 호출...");
+		
+	} // end register01()
+	
 	@RequestMapping(value="/tour/detail", method=RequestMethod.GET)
 	public String tourDetail() {
 		// tour/detail.jsp 테스트 콘트롤러입니다~
