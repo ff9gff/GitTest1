@@ -8,10 +8,29 @@
 <meta charset="UTF-8">
 <title>같이가자</title>
 <style>
-.replies{
+#reply-panel{
+  width:800px;
+  margin: 0 auto;
+}
+#replies{
 	margin:0;
 	padding:0;
 	list-style:none;
+}
+#replies li{
+	margin-bottom:10px;
+	padding-bottom:5px;
+	border-bottom:1px dotted #999999;
+}
+.reply_body{
+	margin-left:20px;
+}
+.re_reply_body{
+	margin-left:80px;
+}
+.btns{
+	float: right;
+	margin-right: 20px;
 }
 
 </style>
@@ -91,16 +110,18 @@ $(document).ready(function(){
 					+'</dl>'
 				+'</li>'
 				+'<li class="reply_insert" style="display: none;">'
-					+'<input type="hidden" class="parent_rno" value="'+this.rno+'"/>'
-					+'<table class="reply_table">'
-						+'<tbody>'
-							+'<tr>'
-								+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
-								+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
-								+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
-							+'</tr>'
-						+'</tbody>'
-					+'</table>'
+					+'<div class="re_reply_body">'
+						+'<input type="hidden" class="parent_rno" value="'+this.rno+'"/>'
+						+'<table class="reply_table">'
+							+'<tbody>'
+								+'<tr>'
+									+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
+									+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
+									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
+								+'</tr>'
+							+'</tbody>'
+						+'</table>'
+					+'</div>'
 				+'</li>';
 		
 					// 대댓글
@@ -110,8 +131,8 @@ $(document).ready(function(){
 						var dateString = date.toLocaleDateString();
 						
 						if(this.parentrno == parentrno){
-							list +='<li class="re_reply_list" data-rno="'+this.rno+'">'
-							+'<dl class="reply_body">'
+							list +='<li class="reply_list" data-rno="'+this.rno+'">'
+							+'<dl class="re_reply_body">'
 								+'<dt class="icno">'+'</dt>'
 								+'<dt class="reply_header">'
 									+'<strong class="nickname">'+this.mno+'번째회원</strong>'
@@ -141,16 +162,18 @@ $(document).ready(function(){
 							+'</dl>'
 						+'</li>'
 						+'<li class="reply_insert" style="display: none;">'
-							+'<input type="hidden" class="parent_rno" value="'+this.parentrno+'"/>'
-							+'<table class="reply_table">'
-							+'<tbody>'
-								+'<tr>'
-									+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
-									+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
-									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
-								+'</tr>'
-							+'</tbody>'
-						+'</table>'
+							+'<div class="re_reply_body">'
+								+'<input type="hidden" class="parent_rno" value="'+this.parentrno+'"/>'
+								+'<table class="reply_table">'
+									+'<tbody>'
+										+'<tr>'
+											+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
+											+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
+											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
+										+'</tr>'
+									+'</tbody>'
+								+'</table>'
+							+'</div>'
 						+'</li>';
 						}// end if
 					});// end data.each(); 
@@ -164,6 +187,9 @@ $(document).ready(function(){
 		});// end getJSON
 		
 	}; // end getAllReplies()
+	
+	
+	
 }); // end document.ready
 </script>
 
