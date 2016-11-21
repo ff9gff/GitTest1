@@ -11,13 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.TourRegisterVO;
+import edu.spring.project03.service.AdminService;
 import edu.spring.project03.service.TourSearchService;
 
 @Controller
 public class TourSearchController {
 	private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
 
+	@Autowired 
+	private AdminService adminService;
 	@Autowired
 	private TourSearchService tourSelectService;
 
@@ -91,13 +95,15 @@ public class TourSearchController {
 	
 	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
 	public String test8() {
-		
 		return "TourRegister";
 	}
 
 	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
-	public void test9(){
-		logger.info("admin.jsp 소환");
+	public void test9(Model model){
+		
+		List<MemberVO> list =adminService.newUserList();
+		model.addAttribute("newMemberList",list);
+		logger.info("admin.jsp 가라아아아아 소환 ");
 		
 	}
 	

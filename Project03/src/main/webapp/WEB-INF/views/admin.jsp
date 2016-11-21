@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -11,6 +12,9 @@
 
 
 <style type="text/css">
+
+
+
 #dropDownType {
 	width: 50px
 }
@@ -67,22 +71,40 @@
 					<col width="200px">
 					<col width="200px;" />
 					<col width="200px;" />
-					<col width="200px;" />
 
 				</colgroup>
+	
+				
+				
+				
 				<tr>
 					<th><input type="checkbox"></th>
 					<th>유저 번호</th>
 					<th>유저 아이디</th>
-					<th>유저 연락처</th>
 					<th>유저 이메일</th>
 					<th>유저 가입날짜</th>
 				</tr>
+				
+		
+				<c:forEach var="vo" items="${newMemberList}">
+				
+					<tr>
+						<td><input type="checkbox"></td>
+						<td>${vo.mno }</td>
+						<td>${vo.userid }</td>
+						<td>userEmail1</td>
+						<td>JoinDate!
+						</td>
+			
+					</tr>
+				
+				
+				
+				</c:forEach>
 				<tr>
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user1</th>
-					<th>Phone1</th>
 					<th>userEmail1</th>
 					<th>JoinDate1</th>
 				</tr>
@@ -90,7 +112,7 @@
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user2</th>
-					<th>Phone2</th>
+					
 					<th>userEmail2</th>
 					<th>JoinDate2</th>
 				</tr>
@@ -98,7 +120,6 @@
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user3</th>
-					<th>Phone3</th>
 					<th>userEmail3</th>
 					<th>JoinDate3</th>
 				</tr>
@@ -106,7 +127,6 @@
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user4</th>
-					<th>Phone4</th>
 					<th>userEmail4</th>
 					<th>JoinDate5</th>
 				</tr>
@@ -114,7 +134,6 @@
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user5</th>
-					<th>Phone5</th>
 					<th>userEmail5</th>
 					<th>JoinDate5</th>
 				</tr>
