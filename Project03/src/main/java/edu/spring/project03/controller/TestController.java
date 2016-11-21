@@ -1,5 +1,7 @@
 package edu.spring.project03.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 //import org.slf4j.Logger;
@@ -26,5 +28,10 @@ public class TestController {
 	@RequestMapping("/form")
 	public String form(){
 	    return "form";
+	}
+	
+	@RequestMapping("/submit")
+	public void submit(HttpServletRequest request){
+	    System.out.println("에디터 컨텐츠값:"+request.getParameter("editor"));
 	}
 }
