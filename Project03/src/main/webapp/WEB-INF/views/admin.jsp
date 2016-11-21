@@ -42,7 +42,7 @@
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg.jsp">공지사항</a>
+				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
 
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저
@@ -163,7 +163,7 @@
 
 	</div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
 	<script type="text/javascript">
 		$('#checkboxTestTbl > tr > th >input: checked').each(function(index) {
 			alert($(this).val());

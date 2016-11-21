@@ -1,6 +1,8 @@
 package edu.spring.project03.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -27,6 +29,42 @@ public class AdminDAOImpl implements AdminDAO {
 		List<MemberVO> newlist = sqlSession.selectList(NAMESPACE+".newUser"); 
 		return newlist;
 	}//end read() 
+
+	@Override
+	public List<MemberVO> readAllUser12() {
+		logger.info(" 1 2 등급의 유저");
+		
+		List<MemberVO> list = sqlSession.selectList(NAMESPACE+".userLevel12");
+		return list;
+	}
+
+	@Override
+	public int sendAllUserMsg(int mno , String msg_content) {
+		logger.info(" 모든 유저에게 보낼 메세지입니다.");
+		
+		Map<String,Object> map = new HashMap<>();
+		map.put("mno",mno );
+		map.put("msg_content",msg_content);
+		int result = sqlSession.insert(NAMESPACE+".sendAlluser12", map);
+				
+		
+		
+		
+		
+		/*
+	@Override
+	public int updateReplyCnt(int amount, int bno) {
+		
+		Map<String, Integer> map =new  HashMap<>();
+		map.put("amount", amount);
+		map.put("bno", bno); 
+		// 문자열로 지정해서 보내주어야 받을 수 있다. 
+		
+		
+		return sqlssesion.update(namespace+".updateReplyCnt",map );
+	}*/		
+		return result;
+	}
 
 	
 	

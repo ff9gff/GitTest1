@@ -5,6 +5,24 @@
   
   <mapper namespace="edu.spring.project03.SearchMember">
   
+ 
+ 
+ <select id="userLevel12" resultType="edu.spring.project03.domain.MemberVO">
+ 
+ 	select mno from WM_Member where AUTHORITY=1 or  AUTHORITY=2
+ 
+ </select>
+  
+  
+  <insert id="sendAlluser12">
+  
+    insert into WM_MSG (sd_mno , rc_mno , msg_content) values 
+ (1,#{mno} ,#{msg_content})
+ 
+  </insert>
+  
+  
+  
   
   
   <select id="newUser" resultType="edu.spring.project03.domain.MemberVO">

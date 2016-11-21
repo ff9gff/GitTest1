@@ -47,4 +47,10 @@ public class MemberVO {
 		this.authority = authority;
 	}
 	
+	
+	@Override
+	public String toString() {
+		
+		return String.valueOf(mno);
+	}
 } // end class MemberVO
