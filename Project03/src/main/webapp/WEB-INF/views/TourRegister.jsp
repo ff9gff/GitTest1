@@ -33,16 +33,15 @@ http://www.templatemo.com/tm-406-flex
 <link rel="stylesheet"
 	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script
+	src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
-
-
-
+<script type="text/javascript"
+	src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <style>
 .searchRegion {
@@ -162,14 +161,16 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.heading-section -->
 
 				<div class="wrap">
-					<input type="hidden" name="mno" readonly="readonly" /> 제목: <input
-						type="text" name="title" style="width: 100%" /><br /> <br />
+					<input type="hidden" name="mno" readonly="readonly" /> 
+					제목: <input	type="text" name="title" style="width: 60%" /><br /> <br />
+					지역: <input	type="text" name="region" style="width: 60%" /><br /> <br />
 					<form action="datepickTest" method="POST">
 						<input type="text" id="start_date" name="start_date"
 							placeholder="시작일"> ~ <input type="text" id="end_date"
 							name="end_date" placeholder="종료일">
 					</form>
-					<br /> 성별 조건:<br />
+					<br /> 
+					성별 조건:<br />
 					<div>
 						남자 <input type="radio" name="condition_sex" value="1" /> 여자 <input
 							type="radio" name="condition_sex" value="2" /> 조건없음 <input
@@ -189,13 +190,46 @@ http://www.templatemo.com/tm-406-flex
 					<div>
 						<form action="send" method="post" id="frm">
 							<textarea name="smarteditor" id="smarteditor" rows="10"
-								cols="100" style="width: 766px; height: 412px;"></textarea><br/>
+								cols="100" style="width: 766px; height: 412px;"></textarea>
 							<input type="button" id="savebutton" value="서버전송" />
 						</form>
 
-						
-						<br /> <br /> 
-						<input type="button" name="register" value="등록">
+						<script>
+							$(function() {
+								//전역변수선언
+								var editor_object = [];
+
+								nhn.husky.EZCreator
+										.createInIFrame({
+											oAppRef : editor_object,
+											elPlaceHolder : "smarteditor",
+											sSkinURI : "resources/smarteditor/SmartEditor2Skin.html",
+											htParams : {
+												// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+												bUseToolbar : true,
+												// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+												bUseVerticalResizer : true,
+												// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+												bUseModeChanger : true,
+											}
+										});
+
+								//전송버튼 클릭이벤트
+								$("#savebutton").click(
+												function() {
+													//id가 smarteditor인 textarea에 에디터에서 대입
+													editor_object.getById["smarteditor"]
+															.exec(
+																	"UPDATE_CONTENTS_FIELD",
+																	[]);
+													// 이부분에 에디터 validation 검증
+
+													//폼 submit
+													$("#frm").submit();
+												})
+							})
+						</script>
+						<br /> <br /> <input type="button" name="register" value="등록">
 						<input type="button" name="register_cancel" value="취소">
 					</div>
 
