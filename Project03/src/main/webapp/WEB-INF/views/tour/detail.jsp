@@ -79,7 +79,7 @@ $(document).ready(function(){
 				
 				if(this.parentrno == 0){
 				// list에 html추가 - 댓글만
-				list +='<li class="reply_list" data-rno="'+this.rno+'">'
+				list +='<li class="reply_list" data-rno="'+this.rno+'" data-parent="'+this.parentrno+'">'
 					+'<dl class="reply_body">'
 						+'<dt class="icno">'+'</dt>'
 						+'<dt class="reply_header">'
@@ -131,7 +131,7 @@ $(document).ready(function(){
 						var dateString = date.toLocaleDateString();
 						
 						if(this.parentrno == parentrno){
-							list +='<li class="reply_list" data-rno="'+this.rno+'">'
+							list +='<li class="reply_list" data-rno="'+this.rno+'" data-parent="'+this.parentrno+'">'
 							+'<dl class="re_reply_body">'
 								+'<dt class="icno">'+'</dt>'
 								+'<dt class="reply_header">'
@@ -217,51 +217,64 @@ $(document).ready(function(){
 		
 	});// end btn_create()
 	
-	// 댓글 수정 처리
+
+
+	// 댓글 수정 처리 - 수정 눌렀을때 보이기/숨기기/글자바꾸기
 	$('#replies').on('click','.reply_list .btn_update',function(){
-		// 해당 reply_body 찾기
-		var targetbody = $(this).parent().parent().parent();
-		// 기존 rcontent 숨기기
-		targetbody.children('.rcontent').hide();
-		// 수정글씨를 수정 취소로 바꾸기
-		$(this).text('수정 취소');
-		// 수정하는 textarea 나타내기
-		var targetdiv = targetbody.children().children('.rcon_modify');
-		targetdiv.show();
-		
-		
-		// 수정 취소버튼
-		targetbody.children().children().children('.btn_update').click(function(){
-			console.log('안된다!!');
-	
-		});// end this onclick;
-		
-		// 수정 완료하기
-		var update_rno = targetdiv.children('.update_rno').val();
-		targetdiv.children('.update_table').children().children().children().children('.update_commit').click(function(){
-			var updatetext = targetdiv.children('.update_table').children().children().children().children('.update_textarea').val();
+
+		if($(this).text()=='수정'){ // 수정 버튼 눌렀을 때
+			// 해당 reply_body 찾기
+			var targetbody = $(this).parent().parent().parent();
+			// 기존 rcontent 숨기기
+			targetbody.children('.rcontent').hide();
+			// 수정글씨를 수정 취소로 바꾸기
+			$(this).text('수정 취소');
+			// 수정하는 textarea 나타내기
+			var targetdiv = targetbody.children().children('.rcon_modify');
+			targetdiv.show();
 			
-			$.ajax({
-				type:'put',
-				url:'/project03/tour/detail/'+update_rno,
-				headers:{
-					'Content-Type':'application/json',
-					'X-Http-Method-Ovveride':'PUT'
-				},
-				data: JSON.stringify({
-					rno: update_rno,
-					rcontent: updatetext
-				}),
-				success: function(result){
-					if(result == 'success'){
-						alert('댓글이 수정되었습니다.');
-						getAllReplies();
-					}
-				}
-			});// end ajax
-			
-		}); // end 수정완료하기
+		}else{
+			// 해당 reply_body 찾기
+			var targetbody = $(this).parent().parent().parent();
+			// 기존 rcontent 숨기기
+			targetbody.children('.rcontent').show();
+			// 수정글씨를 수정 취소로 바꾸기
+			$(this).text('수정');
+			// 수정하는 textarea 나타내기
+			var targetdiv = targetbody.children().children('.rcon_modify');
+			targetdiv.hide();
+
+		}// end if
+		
 	});// end update
+	
+	// 수정 완료하기
+	
+	$('#replies').on('click','.reply_list .update_commit',function(){
+		var update_rno = $(this).parent().parent().parent().parent().parent().children('.update_rno').val();
+		var update_text = $(this).parent().parent().children().children('.update_textarea').val();
+	
+		$.ajax({
+			type:'put',
+			url:'/project03/tour/detail/'+update_rno,
+			headers:{
+				'Content-Type':'application/json',
+				'X-Http-Method-Ovveride':'PUT'
+			},
+			data: JSON.stringify({
+				rno: update_rno,
+				rcontent: update_text
+			}),
+			success: function(result){
+				if(result == 'success'){
+					alert('댓글이 수정되었습니다.');
+					getAllReplies();
+				}
+			}
+		});// end ajax
+		
+	});// end 수정완료
+
 	
 	// 대댓글 입력
 	$('#replies').on('click','.reply_list .btn_reply',function(){
@@ -296,12 +309,34 @@ $(document).ready(function(){
 				}
 			});// end ajax
 			
-			
-			
 		});
 		
 	});// end btn_reply
 
+	// 댓글 삭제
+	$('#replies').on('click','.reply_list .btn_delete',function(){
+		var targetli = $(this).parent().parent().parent().parent();
+		var rno = targetli.attr('data-rno');
+		var parent = targetli.attr('data-parent');
+		console.log(parent);
+		var check = confirm('정말 삭제하시겠습니까?');
+		if(check == true){
+			$.ajax({
+				type:'delete',
+				url:'/project03/tour/detail/'+rno+'/'+parent,
+				headers:{
+					'Content-Type':'application/json',
+					'X-HTTP-Method-Override':'DELETE'
+				},
+				success: function(result){
+					if(result == 'success'){
+						alert('댓글이 삭제됐습니다.');
+						getAllReplies();
+					}
+				}
+			});
+		}// end if
+	});// end reply delete
 	
 }); // end document.ready
 </script>

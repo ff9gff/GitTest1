@@ -13,5 +13,7 @@ public interface TourReplyDAO {
 	public abstract int update(TourReplyVO vo);
 	// 댓글 삭제
 	public abstract int delete(int rno);
+	// 대댓글도 모두 삭제
+	public abstract int allDelete(int parentrno);
 	
 }// end interface TourReplyDAO
