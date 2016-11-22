@@ -18,6 +18,7 @@ public class TourJoinVO {
 		this.approval = approval;
 	}
 	
+
 	public int getTrip_no() {
 		return trip_no;
 	}
@@ -49,5 +50,8 @@ public class TourJoinVO {
 	public void setApproval(int approval) {
 		this.approval = approval;
 	}
+
+
+	
 
 }

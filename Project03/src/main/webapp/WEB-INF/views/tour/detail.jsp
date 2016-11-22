@@ -91,6 +91,7 @@ width: 80px;
 				<th class="apply_th">성별</th>
 			</tr>
 	</div>
+	<div id="test"></div>
 	<button type="button" class="applicant_button" id="apply_ok">수락하기</button>
 	<button type="button" class="applicant_button" id="trip_end">마감</button>
 
@@ -411,12 +412,7 @@ $(document).ready(function(){
 $(document).ready(function(){
 	var trip_no = 1;
 	
-	getAllAppricants();
-	
-	// DB에서 해당 글번호(trip_no)의 모든 댓글을 읽어오는 함수 정의
-	function getAllAppricants(){
-		
-	}; // end getAllAppricants()
+
 
 }); // end document.ready();
 </script>

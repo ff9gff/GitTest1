@@ -4,5 +4,17 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.spring.project03.TourJoinMapper">
+	
+	<select id="selectlist" resultType="edu.spring.project03.domain.TourJoinVO">
+		select t.trip_no, t.list_no, t.mno, t.approval,
+		p.name, p.sex, p.age, p.nickname,p.introduce
+		from wm_tour_join t, wm_personal p
+		where trip_no = #{trip_no} and t.mno = p.mno
+		order by list_no asc
+	</select>
+	
+	
+	
+
 
 </mapper>
