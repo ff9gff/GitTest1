@@ -161,14 +161,16 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.heading-section -->
 
 				<div class="wrap">
-					<input type="hidden" name="mno" readonly="readonly" /> 제목: <input
-						type="text" name="title" style="width: 100%" /><br /> <br />
+					<input type="hidden" name="mno" readonly="readonly" /> 
+					제목: <input	type="text" name="title" style="width: 60%" /><br /> <br />
+					지역: <input	type="text" name="region" style="width: 60%" /><br /> <br />
 					<form action="datepickTest" method="POST">
 						<input type="text" id="start_date" name="start_date"
 							placeholder="시작일"> ~ <input type="text" id="end_date"
 							name="end_date" placeholder="종료일">
 					</form>
-					<br /> 성별 조건:<br />
+					<br /> 
+					성별 조건:<br />
 					<div>
 						남자 <input type="radio" name="condition_sex" value="1" /> 여자 <input
 							type="radio" name="condition_sex" value="2" /> 조건없음 <input
@@ -213,8 +215,7 @@ http://www.templatemo.com/tm-406-flex
 										});
 
 								//전송버튼 클릭이벤트
-								$("#savebutton")
-										.click(
+								$("#savebutton").click(
 												function() {
 													//id가 smarteditor인 textarea에 에디터에서 대입
 													editor_object.getById["smarteditor"]
