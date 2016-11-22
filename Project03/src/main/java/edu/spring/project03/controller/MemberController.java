@@ -2,6 +2,7 @@ package edu.spring.project03.controller;
 
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -64,17 +65,18 @@ public class MemberController {
 		
 	} // end loginPOST()
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	@RequestMapping(value="logout", method=RequestMethod.GET)
+	public String logout(HttpServletRequest req) {
+		logger.info("logout() 호출...");
+		
+		// 세션에 저장된 로그인 관련 정보를 모두 삭제, 세션 무효화(invalidate)
+		HttpSession session = req.getSession();
+		session.removeAttribute("login_id");
+		session.removeAttribute("mno");
+		session.invalidate();
+
+		return "redirect:/";
+	} // end logout()
 	
 	
 } // end class MemberController

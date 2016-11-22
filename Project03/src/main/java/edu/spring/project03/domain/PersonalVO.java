@@ -37,6 +37,14 @@ public class PersonalVO {
 		this.email = email;
 		this.joindate = joindate;
 	}
+	
+	public PersonalVO(String name, int sex, int age, String nickname, String introduce){
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.nickname = nickname;
+		this.introduce = introduce;
+	}
 
 	public int getMno() {
 		return mno;

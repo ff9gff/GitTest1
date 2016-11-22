@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.spring.project03.domain.TourJoinVO;
 import edu.spring.project03.domain.TourReplyVO;
+import edu.spring.project03.service.TourJoinService;
 import edu.spring.project03.service.TourReplyService;
 
 @RestController
@@ -90,6 +92,8 @@ public class TourReplyRESTController {
 		
 		return entity;
 	}// end deleteReply()
+	
+
 	
 }// end class TourReplyRESTController
 
