@@ -9,4 +9,5 @@ public interface TourReplyService {
 	public abstract List<TourReplyVO> read(int trip_no);
 	public abstract int update(TourReplyVO vo);
 	public abstract int delete(int rno);
+	public abstract int allDelete(int parentrno);
 }// end interface TourReplyService

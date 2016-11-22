@@ -1,6 +1,8 @@
 package edu.spring.project03.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -41,7 +43,12 @@ public class TourReplyDAOImpl implements TourReplyDAO {
 	@Override
 	public int delete(int rno) {
 		logger.info("delete() 호출: rno = "+rno);
-		return sqlSession.selectOne(NAMESPACE+".delete",rno);
+		return sqlSession.delete(NAMESPACE+".delete",rno);
+	}
+	
+	@Override
+	public int allDelete(int parentrno) {
+		return sqlSession.delete(NAMESPACE+".alldelete", parentrno);
 	}
 
 }

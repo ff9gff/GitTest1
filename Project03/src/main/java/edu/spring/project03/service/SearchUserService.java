@@ -9,4 +9,7 @@ public interface SearchUserService {
 
 	
 	public abstract List<MemberVO> readuser(String userid); //userSearch
+	
+	
+	//public abstract int 
 }

@@ -12,25 +12,26 @@
 <h1> test 입니다. </h1>
 
 
- <form action="searchMyuser2" method="post">
- <input type="text" name="userid" id="userid" placeholder="찾을 유저검색">
- <input type="submit" value="찾기" > 	
- </form>
+
+ <input type="text" name="userid" id="userid" form="btnList" placeholder="찾을 유저검색">
+
  <input type="button" id="btnList" value="찾기 2">
 
  	<table id="tableTest2" border="1px" >
  	<caption>유저 찾기 </caption>
  	<colgroup>
- 		<col width="50px">
  		<col width="100px">
  		<col width="100px">
+ 		<col width="200px">
  	</colgroup>
  	
 
  	<tr>
- 		<th></th>
  		<th>유저 번호 </th>
  		<th>유저 아이디</th>
+ 		<th>구분</th>
+ 		
+ 		
  	</tr>
  	
 	<tbody id="c">
@@ -43,15 +44,26 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
 <script type="text/javascript">
 $(document).ready(function(){
+	
+		//var table= $('#tableTest2');
+	   // var tabel_len =(table.rows.length)-1;
+		//alert(table_len)
+	
+	var table=document.getElementById("tableTest2");
+ 	var table_len=(table.rows.length)-1;
+ 	//alert(table_len); //-> 기본으로 1이므로 -1 했으므로 0 이 alert 창에 나온다. 
+		
+
+	
  	   $('#btnList').click(function() {
  	    	//location = 'list';
  	    	//location = "list-page?page=${page}"
  	    			
  	    			//searchUserid
  	    var userid = $('#userid').val();		
- 		 alert('안녕하세요 '+ userid );
+ 		// alert('안녕하세요 '+ userid );
  		//  $('#userid').val("");
- 		  
+ 		
  	
  		  
 		getMyUser();
@@ -83,11 +95,11 @@ $(document).ready(function(){
  			
  			   	<%--$('#c').append(--%>
  			   	 list+= '<tr>'
- 			   	 			+'<td><input type="checkbox"/></td>'
- 		 			    	+'<td>' +this.mno+'</td>'
- 		 			    	+'<td>' +this.userid+'</td>'
+ 		 			    	+'<td id="mno_id('+table_len+')">' +this.mno+'</td>'
+ 		 			    	+'<td id="userid_id('+table_len+')">' +this.userid+'</td>'
+ 			   	 			+'<td><input type="button" id="upgrade" value="관리자" onclick="upgrade_row('+table_len+')"/>'
+ 			   	 			+'<input type="button" id="delete" value="강퇴" onclick="delete_row('+table_len+')"/></td>'	
  		 			    +'</tr>';
- 				 
  			  }); /*반복문 끝 */
  			  
  			$('#c').html(list);
@@ -95,14 +107,53 @@ $(document).ready(function(){
  			  
  		   });// end getJSON()
 
+ 		   
+ 		   /*
+
+ 		   
+ 		   
+ 		   */
  	   };//end of getMyUser()
  	   
  	   
 
+ 	   
+ 	   
+ 	   
+ 	  function delete_row(no)
+ 	 {
+ 		   
+ 		var num = $('#mno_id(no)');
+ 		
+ 	  alert("test 입니다. "+num);
+ 	  
+ 	  
+ 	  
+ 	 };
+ 	   
+ 	function upgrade_row(no)
+	 {
+		   
+		var num = $('#mno_id(no)');
+		
+	  alert("test 입니다. "+num);
+	  
+	  
+	  
+	 };  
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
+ 	   
  		
  		
- 		
- 	});
+ 	});//end docu
  	
  	
  	

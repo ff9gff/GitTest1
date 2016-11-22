@@ -19,6 +19,15 @@ public class PersonalVO {
 
 	}
 
+	/*	this.mno = mno;
+		this.userid = userid;
+		this.pwd = pwd;
+		this.authority = authority;*/
+	public PersonalVO(MemberVO vo,String email, Date joindate){
+		
+		this.email = email;
+		this.joindate = joindate;
+	}
 	public PersonalVO(int mno, String name, int sex, int age, String nickname, String phone, String address,
 			String introduce, String email, Date joindate) {
 		this.mno = mno;

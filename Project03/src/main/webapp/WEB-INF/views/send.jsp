@@ -1,19 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<% request.setCharacterEncoding("utf-8");
-out.println("¿¡µğÅÍ °á°ú");  
-out.println(request.getParameter("smarteditor"));
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-
-
+	<%
+		//í•œê¸€ ì¸ì½”ë”©ì„ ìœ„í•œ UTF-8 ì„¤ì •
+		request.setCharacterEncoding("utf-8");
+		out.println("ì—ë””í„° ê²°ê³¼");
+		out.println(request.getParameter("smarteditor"));
+	%>
+	
+	
 
 </body>
 </html>

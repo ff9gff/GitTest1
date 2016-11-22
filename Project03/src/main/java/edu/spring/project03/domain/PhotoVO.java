@@ -3,14 +3,25 @@ package edu.spring.project03.domain;
 import org.springframework.web.multipart.MultipartFile;
 
 public class PhotoVO {
-	//photo_uploader.html페이지의 form태그내에 존재하는 file 태그의 name명과 일치시켜줌
+    //photo_uploader.html페이지의 form태그내에 존재하는 file 태그의 name명과 일치시켜줌
     private MultipartFile Filedata;
     //callback URL
     private String callback;
     //콜백함수??
     private String callback_func;
  
-    public MultipartFile getFiledata() {
+    public PhotoVO() {
+		
+	}
+
+	public PhotoVO(MultipartFile filedata, String callback, String callback_func) {
+		Filedata = filedata;
+		this.callback = callback;
+		this.callback_func = callback_func;
+	}
+
+	public MultipartFile getFiledata() {
+
         return Filedata;
     }
  
