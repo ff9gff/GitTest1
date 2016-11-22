@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.support.MultipartFilter;
 
 import edu.spring.project03.domain.PhotoVO;
+import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 @Controller
@@ -50,11 +51,46 @@ public class TestController {
 	public String form() {
 		return "form";
 	}
+	
+	@RequestMapping("/cancelTourRegister")
+	public String tourRegister() {
+		return "TourRegister";
+	}
+	
+	@RequestMapping(value="/insertTour", method = RequestMethod.POST)
+	public String insertTour(TourRegisterVO vo, RegionVO vo2) {
+		
+		if (vo != null && vo2 != null) {
+			
+			logger.info("insertTour() 호출!"); 
+			logger.info("여행 제목: " + vo.getTitle()); 			
+			logger.info("여행 지역: " + vo2.getRegion_name()); 			
+			logger.info("시작 날짜: " + vo.getStart_date()); 			
+			logger.info("종료 날짜: " + vo.getEnd_date()); 			
+			logger.info("성별 조건: " + vo.getContidion_sex()); 			
+			logger.info("나이 조건: " + vo.getContidion_age()); 			
+			
+		} else {
+			logger.info("응 실패^^"); 
+		}
+		
+		
+		return "TourRegister";
+		
+	}
 
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
-	public void submit(HttpServletRequest request, TourRegisterVO vo) {
+	public void submit(TourRegisterVO vo, Model model) {
+		
+		if (vo != null) {
+			
+			
+			logger.info("컨텐츠: " + vo.getContent()); 
+			
+			model.addAttribute("vo", vo);
+			
+		}
 
-		System.out.println("에디터 컨텐츠값:" + request.getParameter("editor"));
 	}
 
 	//단일파일업로드
@@ -74,6 +110,7 @@ public class TestController {
 	            String path = defaultPath + "resources" + File.separator + "photo_upload" + File.separator;              
 	            File file = new File(path);
 	            System.out.println("path:"+path);
+	            
 	            //디렉토리 존재하지 않을경우 디렉토리 생성
 	            if(!file.exists()) {
 	                file.mkdirs();
