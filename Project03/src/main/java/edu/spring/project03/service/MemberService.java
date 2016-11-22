@@ -8,6 +8,24 @@ import edu.spring.project03.domain.MemberVO;
 // 비즈니스 로직을 구현하는 인터페이스
 // CRUD: Create, Read, Update, Delete
 public interface MemberService {
+	
+	// MemberVO
+	public abstract MemberVO login(MemberVO vo);
+	
+	
+	// 특정 회원 검색
+	
+	
+	
+	
+	
+	
+	// PersonalVO
+	
+	
+	
+	
+	
 	// Create: 새로운 회원 가입
 	// public abstract int create(MemberVO vo);
 	// Read 1: 회원 전체 검색
@@ -19,19 +37,6 @@ public interface MemberService {
 	// Delete: 특정 회원(userid)의 정보 삭제
 	// public abstract int delete(String userid);
 	
-	public abstract MemberVO login(MemberVO vo);
 	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+} // end interface MemberService

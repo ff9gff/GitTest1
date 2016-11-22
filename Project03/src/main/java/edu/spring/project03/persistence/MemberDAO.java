@@ -5,11 +5,28 @@ import java.util.List;
 import edu.spring.project03.domain.MemberVO;
 
 public interface MemberDAO {
-
-	public abstract List<MemberVO> select();
-
-	public abstract MemberVO select(String userid);
-
+		
+	// MemberVO
 	public abstract MemberVO login(MemberVO vo);
+	
+	
+	// PersonalVO
+	
+	
+	
+	
+	public abstract MemberVO select(String userid);
+	public abstract MemberVO select(int mno);
+	
+	
+	
+	
+	
+	
+	
+	
+	public abstract List<MemberVO> select();
+	
+	
 
-}
+} // end interface MemberDAO

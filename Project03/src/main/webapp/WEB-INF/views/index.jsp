@@ -96,7 +96,7 @@ http://www.templatemo.com/tm-406-flex
 									<li><a href="#portfolio">찾기</a></li>
 									<li><a href="MyPage">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
-									<li><a href="login">로그인</a></li>
+									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -238,6 +238,8 @@ http://www.templatemo.com/tm-406-flex
 				dateFormat : 'yy-mm-dd'
 			});
 		});
+		
+		alert("${mno}");
 	</script>
 
 

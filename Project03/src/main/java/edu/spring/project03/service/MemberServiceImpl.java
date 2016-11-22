@@ -13,11 +13,20 @@ import edu.spring.project03.persistence.MemberDAO;
 public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
-	private MemberDAO dao;
+	private MemberDAO memberDAO;
+	
+	
+	@Override
+	public MemberVO login(MemberVO vo) {
+
+		return memberDAO.login(vo);
+	} // end login(vo)
+	
+	
 
 	@Override
 	public List<MemberVO> read() {
-		List<MemberVO> list = dao.select();
+		List<MemberVO> list = memberDAO.select();
 		return list;
 	}
 
@@ -27,17 +36,7 @@ public class MemberServiceImpl implements MemberService {
 		return null;
 	}
 
-	@Override
-	public MemberVO login(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	
 	
 } // end class MemberServiceImpl
-
-
-
-
-
-

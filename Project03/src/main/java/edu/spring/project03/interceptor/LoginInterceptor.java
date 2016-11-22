@@ -17,6 +17,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger= LoggerFactory.getLogger(LoginInterceptor.class);
 	
 	private static final String SESSION_ATTR_ID = "login_id";
+	private static final String SESSION_ATTR_MNO = "mno";
 	
 	@Override          
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
@@ -65,6 +66,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			
 			// 아이디 정보를 세션에 저장
 			session.setAttribute(SESSION_ATTR_ID, result.getUserid());
+			logger.info(result.getUserid());
+			session.setAttribute(SESSION_ATTR_MNO, String.valueOf(result.getMno()));
+			logger.info(String.valueOf(result.getMno()));
+			
+			
+			
 			
 			// 기존에 최종 요청 주소(dest)가 있는 경우는 해당 페이지로 이동
 			Object dest = session.getAttribute("dest");
@@ -72,7 +79,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 				response.sendRedirect((String) dest);
 			} else {
 				// 저장된 최종 요청 주소가 없는 경우는 메인 페이지로 이동
-				response.sendRedirect("/ex02/member/list");
+				response.sendRedirect("/project03");
 			}
 			
 			
