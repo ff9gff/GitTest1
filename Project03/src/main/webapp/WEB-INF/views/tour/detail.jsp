@@ -8,7 +8,16 @@
 <meta charset="UTF-8">
 <title>같이가자</title>
 <style>
-#reply-panel{
+.menu{
+  width:800px;
+  margin: 0 auto;
+  color: #F4511E;
+  border-bottom:3px solid #F4511E;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.reply_panel{
   width:800px;
   margin: 0 auto;
 }
@@ -32,6 +41,23 @@
 	float: right;
 	margin-right: 20px;
 }
+.regdate,.btn_div,.btn_reply,.btn_update,.btn_delete{
+	font-size: 10pt;
+	color:#757575;
+}
+.btn_reply,.btn_update,.btn_delete{
+	text-decoration:none;
+}
+#rcontent{
+	width: 700px;
+	height: 50px;
+	padding:0;
+}
+#btn.Create{
+	width: 100px;
+	height: 50px;
+	padding:0;
+}
 
 </style>
 </head>
@@ -41,19 +67,13 @@
 <div>여행 공고 내용 아직 업데이트안됨여</div>
 
 <h1>댓글 부분↓</h1>
-
-
-<div>
-	<input type="text" name="rcontent" id="rcontent"
-		placeholder="댓글을 입력하세요" required/>
-	<input hidden type="number" name="mno" id="mno"
-		value="1" required/>
+<div class="menu">Comment</div>
+<div class="reply_panel">
+	<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
+	<input hidden type="number" name="mno" id="mno" value="1" required/>
 	<button type="button" id="btn_Create">댓글 입력</button>
 </div>
-
-
-<h2>댓글 리스트부분</h2>
-<div id="reply-panel">
+<div class="reply_panel">
 	<ul id="replies"></ul>
 </div>
 
@@ -191,29 +211,33 @@ $(document).ready(function(){
 	// 댓글 입력 버튼 처리
 	$('#btn_Create').click(function(){
 		var rtextString = $('#rcontent').val();
-		var mnoString = $('#mno').val();
-		
-		$.ajax({
-			type: 'post',
-			url: '/project03/tour/detail',
-			headers:{
-				'Content-Type':'application/json',
-				'X-HTTP-Method-Override':'POST'
-			},
-			data: JSON.stringify({
-				parentrno: null,
-				trip_no: trip_no,
-				mno: mnoString,
-				rcontent: rtextString
-			}),
-			success: function(result){
-				if(result == 1){
-					alert('댓글 입력 성공');
+		if(rtextString == ""){
+			alert('댓글 내용을 입력하세요');
+		}else{
+			var mnoString = $('#mno').val();
+			
+			$.ajax({
+				type: 'post',
+				url: '/project03/tour/detail',
+				headers:{
+					'Content-Type':'application/json',
+					'X-HTTP-Method-Override':'POST'
+				},
+				data: JSON.stringify({
+					parentrno: null,
+					trip_no: trip_no,
+					mno: mnoString,
+					rcontent: rtextString
+				}),
+				success: function(result){
+					if(result == 1){
+						alert('댓글 입력 성공');
+					}
+					getAllReplies();
+					$('#rcontent').val('');
 				}
-				getAllReplies();
-				$('#rcontent').val('');
-			}
-		});// end ajax
+			});// end ajax
+		}
 		
 	});// end btn_create()
 	
@@ -276,42 +300,50 @@ $(document).ready(function(){
 	});// end 수정완료
 
 	
-	// 대댓글 입력
+	// 대댓글 처리 - 답글 눌렀을때 보이기/숨기기/글자바꾸기
 	$('#replies').on('click','.reply_list .btn_reply',function(){
 		var rno = $(this).parent().parent().parent().parent().attr('data-rno');
-		
-		
 		var targetinsert = $('#replies').children('#'+rno);
-		targetinsert.show();
-		targetinsert.children('.re_reply_body').children('.reply_table').children().children().children().children('.reply_commit').click(function(){
-			var replycontent = targetinsert.children('.re_reply_body').children('.reply_table').children().children().children().children('.reply_textarea').val();
-			var targetparent = targetinsert.children('.re_reply_body').children('.parent_rno').val();
-			var mnoString = $('#mno').val();
-			
-			$.ajax({
-				type: 'post',
-				url: '/project03/tour/detail',
-				headers:{
-					'Content-Type':'application/json',
-					'X-HTTP-Method-Override':'POST'
-				},
-				data: JSON.stringify({
-					parentrno: targetparent,
-					trip_no: trip_no,
-					mno: mnoString,
-					rcontent: replycontent
-				}),
-				success: function(result){
-					if(result == 1){
-						alert('답글 입력 성공');
-					}
-					getAllReplies();
-				}
-			});// end ajax
-			
-		});
 		
-	});// end btn_reply
+		if($(this).text()=='답글'){
+			targetinsert.show();
+			$(this).text('답글 취소');
+		}else{
+			targetinsert.hide();
+			$(this).text('답글');
+		}
+	});// end 대댓글 처리
+	
+	// 대댓글 입력 완료
+	$('#replies').on('click','.reply_insert .re_reply_body .reply_table .reply_commit',function(){
+		var targetdiv = $(this).parent().parent().parent().parent().parent();
+		var targetparent = targetdiv.children('.parent_rno').val();
+		var replycontent = targetdiv.children('.reply_table').children().children().children().children('.reply_textarea').val();
+		var mnoString = $('#mno').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '/project03/tour/detail',
+			headers:{
+				'Content-Type':'application/json',
+				'X-HTTP-Method-Override':'POST'
+			},
+			data: JSON.stringify({
+				parentrno: targetparent,
+				trip_no: trip_no,
+				mno: mnoString,
+				rcontent: replycontent
+			}),
+			success: function(result){
+				if(result == 1){
+					alert('답글 입력 성공');
+				}
+				getAllReplies();
+			}
+		});// end ajax
+		
+	}); // end 대댓글 입력
+
 
 	// 댓글 삭제
 	$('#replies').on('click','.reply_list .btn_delete',function(){
