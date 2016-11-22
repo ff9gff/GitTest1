@@ -48,7 +48,7 @@
 		placeholder="댓글을 입력하세요" required/>
 	<input hidden type="number" name="mno" id="mno"
 		value="1" required/>
-	<button type="button" id="btnCreate">댓글 입력</button>
+	<button type="button" id="btn_Create">댓글 입력</button>
 </div>
 
 
@@ -79,7 +79,7 @@ $(document).ready(function(){
 				
 				if(this.parentrno == 0){
 				// list에 html추가 - 댓글만
-				list +='<li class="reply_list" data-rno="'+this.rno+'">'
+				list +='<li class="reply_list" data-rno="'+this.rno+'" data-parent="'+this.parentrno+'">'
 					+'<dl class="reply_body">'
 						+'<dt class="icno">'+'</dt>'
 						+'<dt class="reply_header">'
@@ -100,7 +100,7 @@ $(document).ready(function(){
 								+'<table class="update_table">'
 									+'<tbody>'
 										+'<tr>'
-											+'<td><textarea cols="50" rows="2" class="update_textarea"></textarea></td>'
+											+'<td><textarea cols="90" rows="3" class="update_textarea">'+this.rcontent+'</textarea></td>'
 											+'<td><input type="button" class="update_commit" value="수정완료"/></td>'
 										+'</tr>'
 									+'</tbody>'
@@ -109,14 +109,14 @@ $(document).ready(function(){
 						+'</dd>'
 					+'</dl>'
 				+'</li>'
-				+'<li class="reply_insert" style="display: none;">'
+				+'<li class="reply_insert" style="display: none;" id="'+this.rno+'">'
 					+'<div class="re_reply_body">'
 						+'<input type="hidden" class="parent_rno" value="'+this.rno+'"/>'
 						+'<table class="reply_table">'
 							+'<tbody>'
 								+'<tr>'
 									+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
-									+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
+									+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 								+'</tr>'
 							+'</tbody>'
@@ -131,7 +131,7 @@ $(document).ready(function(){
 						var dateString = date.toLocaleDateString();
 						
 						if(this.parentrno == parentrno){
-							list +='<li class="reply_list" data-rno="'+this.rno+'">'
+							list +='<li class="reply_list" data-rno="'+this.rno+'" data-parent="'+this.parentrno+'">'
 							+'<dl class="re_reply_body">'
 								+'<dt class="icno">'+'</dt>'
 								+'<dt class="reply_header">'
@@ -152,7 +152,7 @@ $(document).ready(function(){
 										+'<table class="update_table">'
 											+'<tbody>'
 												+'<tr>'
-													+'<td><textarea cols="50" rows="2" class="update_textarea"></textarea></td>'
+													+'<td><textarea cols="90" rows="3" class="update_textarea">'+this.rcontent+'</textarea></td>'
 													+'<td><input type="button" class="update_commit" value="수정완료"/></td>'
 												+'</tr>'
 											+'</tbody>'
@@ -161,14 +161,14 @@ $(document).ready(function(){
 								+'</dd>'
 							+'</dl>'
 						+'</li>'
-						+'<li class="reply_insert" style="display: none;">'
+						+'<li class="reply_insert" style="display: none;" id="'+this.rno+'">'
 							+'<div class="re_reply_body">'
 								+'<input type="hidden" class="parent_rno" value="'+this.parentrno+'"/>'
 								+'<table class="reply_table">'
 									+'<tbody>'
 										+'<tr>'
 											+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
-											+'<td><textarea cols="50" rows="2" class="reply_textarea"></textarea></td>'
+											+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 										+'</tr>'
 									+'</tbody>'
@@ -188,7 +188,155 @@ $(document).ready(function(){
 		
 	}; // end getAllReplies()
 	
+	// 댓글 입력 버튼 처리
+	$('#btn_Create').click(function(){
+		var rtextString = $('#rcontent').val();
+		var mnoString = $('#mno').val();
+		
+		$.ajax({
+			type: 'post',
+			url: '/project03/tour/detail',
+			headers:{
+				'Content-Type':'application/json',
+				'X-HTTP-Method-Override':'POST'
+			},
+			data: JSON.stringify({
+				parentrno: null,
+				trip_no: trip_no,
+				mno: mnoString,
+				rcontent: rtextString
+			}),
+			success: function(result){
+				if(result == 1){
+					alert('댓글 입력 성공');
+				}
+				getAllReplies();
+				$('#rcontent').val('');
+			}
+		});// end ajax
+		
+	});// end btn_create()
 	
+
+
+	// 댓글 수정 처리 - 수정 눌렀을때 보이기/숨기기/글자바꾸기
+	$('#replies').on('click','.reply_list .btn_update',function(){
+
+		if($(this).text()=='수정'){ // 수정 버튼 눌렀을 때
+			// 해당 reply_body 찾기
+			var targetbody = $(this).parent().parent().parent();
+			// 기존 rcontent 숨기기
+			targetbody.children('.rcontent').hide();
+			// 수정글씨를 수정 취소로 바꾸기
+			$(this).text('수정 취소');
+			// 수정하는 textarea 나타내기
+			var targetdiv = targetbody.children().children('.rcon_modify');
+			targetdiv.show();
+			
+		}else{
+			// 해당 reply_body 찾기
+			var targetbody = $(this).parent().parent().parent();
+			// 기존 rcontent 숨기기
+			targetbody.children('.rcontent').show();
+			// 수정글씨를 수정 취소로 바꾸기
+			$(this).text('수정');
+			// 수정하는 textarea 나타내기
+			var targetdiv = targetbody.children().children('.rcon_modify');
+			targetdiv.hide();
+
+		}// end if
+		
+	});// end update
+	
+	// 수정 완료하기
+	
+	$('#replies').on('click','.reply_list .update_commit',function(){
+		var update_rno = $(this).parent().parent().parent().parent().parent().children('.update_rno').val();
+		var update_text = $(this).parent().parent().children().children('.update_textarea').val();
+	
+		$.ajax({
+			type:'put',
+			url:'/project03/tour/detail/'+update_rno,
+			headers:{
+				'Content-Type':'application/json',
+				'X-Http-Method-Ovveride':'PUT'
+			},
+			data: JSON.stringify({
+				rno: update_rno,
+				rcontent: update_text
+			}),
+			success: function(result){
+				if(result == 'success'){
+					alert('댓글이 수정되었습니다.');
+					getAllReplies();
+				}
+			}
+		});// end ajax
+		
+	});// end 수정완료
+
+	
+	// 대댓글 입력
+	$('#replies').on('click','.reply_list .btn_reply',function(){
+		var rno = $(this).parent().parent().parent().parent().attr('data-rno');
+		
+		
+		var targetinsert = $('#replies').children('#'+rno);
+		targetinsert.show();
+		targetinsert.children('.re_reply_body').children('.reply_table').children().children().children().children('.reply_commit').click(function(){
+			var replycontent = targetinsert.children('.re_reply_body').children('.reply_table').children().children().children().children('.reply_textarea').val();
+			var targetparent = targetinsert.children('.re_reply_body').children('.parent_rno').val();
+			var mnoString = $('#mno').val();
+			
+			$.ajax({
+				type: 'post',
+				url: '/project03/tour/detail',
+				headers:{
+					'Content-Type':'application/json',
+					'X-HTTP-Method-Override':'POST'
+				},
+				data: JSON.stringify({
+					parentrno: targetparent,
+					trip_no: trip_no,
+					mno: mnoString,
+					rcontent: replycontent
+				}),
+				success: function(result){
+					if(result == 1){
+						alert('답글 입력 성공');
+					}
+					getAllReplies();
+				}
+			});// end ajax
+			
+		});
+		
+	});// end btn_reply
+
+	// 댓글 삭제
+	$('#replies').on('click','.reply_list .btn_delete',function(){
+		var targetli = $(this).parent().parent().parent().parent();
+		var rno = targetli.attr('data-rno');
+		var parent = targetli.attr('data-parent');
+		console.log(parent);
+		var check = confirm('정말 삭제하시겠습니까?');
+		if(check == true){
+			$.ajax({
+				type:'delete',
+				url:'/project03/tour/detail/'+rno+'/'+parent,
+				headers:{
+					'Content-Type':'application/json',
+					'X-HTTP-Method-Override':'DELETE'
+				},
+				success: function(result){
+					if(result == 'success'){
+						alert('댓글이 삭제됐습니다.');
+						getAllReplies();
+					}
+				}
+			});
+		}// end if
+	});// end reply delete
 	
 }); // end document.ready
 </script>

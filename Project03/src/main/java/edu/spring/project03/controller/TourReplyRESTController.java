@@ -71,11 +71,17 @@ public class TourReplyRESTController {
 	}// end updateReply()
 	
 	// 해당 댓글을 삭제
-	@RequestMapping(value="/{no}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> deleteReply(@PathVariable("no") Integer rno){
+	@RequestMapping(value="/{no}/{parent}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteReply(@PathVariable("no") Integer rno,
+			@PathVariable("parent") Integer parentrno){
 		ResponseEntity<String> entity = null;
+		int result=0;
 		
-		int result = service.delete(rno);
+		result = service.delete(rno);
+		if(parentrno == 0){
+			service.allDelete(rno);
+		}
+		
 		if(result == 1){ // delete 성공
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
 		}else{ // delete 실패
