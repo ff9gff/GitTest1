@@ -17,7 +17,7 @@ public class TourJoinVO {
 		this.mno = mno;
 		this.approval = approval;
 	}
-
+	
 	public int getTrip_no() {
 		return trip_no;
 	}
