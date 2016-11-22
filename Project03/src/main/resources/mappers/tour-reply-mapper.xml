@@ -25,5 +25,9 @@
 	<delete id="delete">
 	delete from wm_tour_reply where rno = #{rno}
 	</delete>
+	
+	<delete id="alldelete">
+	delete from wm_tour_reply where parentrno = #{parentrno}
+	</delete>
 
 </mapper>
