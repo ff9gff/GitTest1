@@ -6,6 +6,40 @@
 <!-- SQL 문장들을 작성하는 XML 파일 -->
 <mapper namespace="edu.spring.project03.MemberMapper">
 
+<!-- WM_MEMBER_ -->
+
+	<select id="login" resultType="edu.spring.project03.domain.MemberVO">
+		select * from wm_member
+		where userid = #{userid} and pwd = #{pwd}
+	</select>
+
+
+
+
+
+
+
+
+    <!-- userid로 검색하는 SQL문 -->
+    <select id="select-by-userid" resultType="edu.spring.project03.domain.MemberVO">
+    	select * from wm_member where userid = #{userid}
+    </select>
+    
+    <select id="select-by-userid2" resultType="Integer">
+    	select mno from wm_member where userid = #{userid}
+    </select>
+
+
+<!-- WM_PERSONAL -->
+	<!-- mno로 검색하는 SQL문 -->
+	<select id="select-by-mno" resultType="edu.spring.project03.domain.PersonalVO">
+		select mno from wm_personal where mno = #{mno}
+	</select>
+    
+    
+    
+    
+
   
     
     <!-- 전체 검색 SELECT -->
@@ -14,12 +48,7 @@
     select * from test_temp order by mno
     </select>
     
-    <!-- userid로 검색하는 SQL문 -->
-    <select id="select-by-userid"
-        resultType="edu.spring.project03.domain.MemberVO">
-    select * from test_temp where userid = #{userid}
-    </select>
-    
+   
     <!-- 해당 userid의 pwd와 email을 수정(업데이트) -->
     <update id="update">
     update test_temp set pwd = #{pwd}, email = #{email}
@@ -31,10 +60,7 @@
     delete from test_temp where userid = #{userid}
     </delete>
     
-	<select id="login" resultType="edu.spring.project03.domain.MemberVO">
-		select * from test_temp
-		where userid = #{userid} and pwd = #{pwd}
-	</select>
+
 	
 	<select id="select_trip_date" resultType="edu.spring.project03.domain.TourRegisterVO">
 		select * from wm_tour 
@@ -57,13 +83,3 @@
 	
 
 </mapper>
-
-
-
-
-
-
-
-
-
-

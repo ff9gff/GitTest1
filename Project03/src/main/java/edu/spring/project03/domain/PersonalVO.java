@@ -15,16 +15,12 @@ public class PersonalVO {
 	private String email;
 	private Date joindate;
 
-	public PersonalVO() {
-
-	}
-
+	public PersonalVO() {}
 	/*	this.mno = mno;
 		this.userid = userid;
 		this.pwd = pwd;
 		this.authority = authority;*/
 	public PersonalVO(MemberVO vo,String email, Date joindate){
-		
 		this.email = email;
 		this.joindate = joindate;
 	}
