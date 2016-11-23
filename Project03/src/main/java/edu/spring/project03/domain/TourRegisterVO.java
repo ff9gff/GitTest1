@@ -7,8 +7,8 @@ public class TourRegisterVO {
 	private int trip_no; // 여행 모집 게시글 번호 
 	private int mno; // 회원 번호
 	private String title;
-	private int contidion_sex;
-	private int contidion_age;
+	private int condition_sex;
+	private int condition_age;
 	private String content;
 	private Date regdate;
 	private String start_date;
@@ -19,13 +19,13 @@ public class TourRegisterVO {
 
 	}
 
-	public TourRegisterVO(int trip_no, int mno, String title, int contidion_sex, int contidion_age, String content,
+	public TourRegisterVO(int trip_no, int mno, String title, int condition_sex, int condition_age, String content,
 			Date regdate, String start_date, String end_date, int expire) {
 		this.trip_no = trip_no;
 		this.mno = mno;
 		this.title = title;
-		this.contidion_sex = contidion_sex;
-		this.contidion_age = contidion_age;
+		this.condition_sex = condition_sex;
+		this.condition_age = condition_age;
 		this.content = content;
 		this.regdate = regdate;
 		this.start_date = start_date;
@@ -57,20 +57,20 @@ public class TourRegisterVO {
 		this.title = title;
 	}
 
-	public int getContidion_sex() {
-		return contidion_sex;
+	public int getCondition_sex() {
+		return condition_sex;
 	}
 
-	public void setContidion_sex(int contidion_sex) {
-		this.contidion_sex = contidion_sex;
+	public void setCondition_sex(int condition_sex) {
+		this.condition_sex = condition_sex;
 	}
 
-	public int getContidion_age() {
-		return contidion_age;
+	public int getCondition_age() {
+		return condition_age;
 	}
 
-	public void setContidion_age(int contidion_age) {
-		this.contidion_age = contidion_age;
+	public void setCondition_age(int condition_age) {
+		this.condition_age = condition_age;
 	}
 
 	public String getContent() {

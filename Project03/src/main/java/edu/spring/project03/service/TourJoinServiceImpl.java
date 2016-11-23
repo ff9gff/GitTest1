@@ -3,11 +3,13 @@ package edu.spring.project03.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourJoinVO;
 import edu.spring.project03.persistence.TourJoinDAO;
 
+@Service
 public class TourJoinServiceImpl implements TourJoinService {
 
 	@Autowired

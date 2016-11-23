@@ -114,7 +114,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>여행 등록</h2>
+								<h2>여행 등록 정보 확인</h2>
 
 								<br /> <br />
 
@@ -199,9 +199,9 @@ http://www.templatemo.com/tm-406-flex
 							~ 
 							<input type="text" id="end_date" name="end_date" value="${vo.end_date}" placeholder="종료일"> <br /> <br />
 							
-							성별 조건: {vo.condition_sex}<br /> 
+							성별 조건: <input type="text" id="condition_sex" name="condition_sex" value="${vo.condition_sex}" placeholder="성별조건"> <br /> <br />
 						
-							연령 조건: {vo.condition_age}<br />
+							연령 조건: <input type="text" id="condition_age" name="condition_age" value="${vo.condition_age}" placeholder="나이조건"> <br /> <br />
 							
 				
 							 <br />

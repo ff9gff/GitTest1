@@ -198,26 +198,7 @@ http://www.templatemo.com/tm-406-flex
 
 				<div class="wrap">
 
-						<!-- <form action="insertTour" method="post">
-							
-							<input type="hidden" name="trip_no" value='1' readonly="readonly" /> 
-							
-							<input type="hidden" name="mno" value='2' readonly="readonly" /> 
-						
-							<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
-						
-							<input type="text" name="region_name" style="width: 60%" placeholder="지역"/><br /> <br />
-				
-							<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
-							~ 
-							<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
-							
-						
-							
-							
-							<input type="submit" value="전송"><br /><br />
-						
-						</form> -->
+					
 						
 						
 						<form action="send" method="post" id="frm">
@@ -236,7 +217,7 @@ http://www.templatemo.com/tm-406-flex
 							
 							성별 조건: <br />
 							
-								남자 <input type="radio" name="condition_sex" value="1" /> 
+								남자 <input type="radio" name="contidion_sex" value="1" /> 
 								여자 <input type="radio" name="condition_sex" value="2" /> 
 								조건없음 <input type="radio" name="condition_sex" value="3" />
 								<br /> 
