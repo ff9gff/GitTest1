@@ -74,7 +74,7 @@ public class TourRegisterController {
 
 	}
 
-	@RequestMapping(value = "/send", method = RequestMethod.POST)
+	@RequestMapping(value = "/TourRegisterConfirm", method = RequestMethod.POST)
 	public void submit(TourRegisterVO vo, RegionVO vo2, Model model) {
 
 		if (vo != null && vo2 != null) {

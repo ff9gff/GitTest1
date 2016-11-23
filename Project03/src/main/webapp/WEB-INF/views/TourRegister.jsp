@@ -201,7 +201,7 @@ http://www.templatemo.com/tm-406-flex
 					
 						
 						
-						<form action="send" method="post" id="frm">
+						<form action="TourRegisterConfirm" method="post" id="frm">
 						
 							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
 								
