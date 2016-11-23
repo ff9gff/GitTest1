@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="edu.spring.project03.TourJoinMapper">
+	
+	<select id="selectlist" resultType="edu.spring.project03.domain.TourJoinVO">
+		select * from wm_tour_join
+		where trip_no = #{trip_no}
+		order by approval asc
+	</select>
+	
+	<select id = "selectperson" resultType="edu.spring.project03.domain.PersonalVO">
+		select * from wm_personal
+		where mno = #{mno}
+	</select>
+	
+	<update id="updateapproval">
+		update wm_tour_join
+		set approval = #{approval}
+		where list_no = #{list_no}
+	</update>
+	
+	<insert id="insert">
+		insert into wm_tour_join (trip_no, mno, approval)
+		values(#{trip_no},#{mno},0)
+	</insert>
+
+
+</mapper>

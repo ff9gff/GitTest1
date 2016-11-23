@@ -1,5 +1,6 @@
 package edu.spring.project03.controller;
 
+
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
@@ -12,11 +13,13 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,11 +32,10 @@ import edu.spring.project03.domain.PhotoVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 
+
 @Controller
 public class TestController {
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
-
-	private static final String savePath = "C:/Study/git-repo/GitTest1/Project03/src/main/webapp/resources/images/photo_upload/";
 
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정
@@ -46,6 +48,7 @@ public class TestController {
 
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
+
 
 	@RequestMapping("/form")
 	public String form() {

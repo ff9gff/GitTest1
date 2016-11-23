@@ -17,7 +17,7 @@
   font-weight: bold;
   margin-bottom: 20px;
 }
-.reply_panel{
+.reply_panel,.apply_panel{
   width:800px;
   margin: 0 auto;
 }
@@ -53,9 +53,24 @@
 	height: 50px;
 	padding:0;
 }
-#btn.Create{
-	width: 100px;
+#btn_Create{
+	width: 90px;
 	height: 50px;
+		font-weight:bold;
+
+}
+.applicant_panel,.applicant_button{
+	display: inline-block;
+}
+.applicant_panel{
+	width: 600px;
+	height: 200px;
+	padding:0;
+	overflow-x:hidden;
+}
+.applicant_button{
+width: 80px;
+	height: 200px;
 	padding:0;
 }
 
@@ -65,6 +80,23 @@
 
 <h1>여행공고글</h1>
 <div>여행 공고 내용 아직 업데이트안됨여</div>
+<h1>신청 리스트 부분↓</h1>
+<div class="menu">Apply for</div>
+<div class="apply_panel">
+	<div class="applicant_panel">
+		<table id="applicants"></table>
+			<tr>
+				<th class="apply_th"><input id="allCheck" type="checkbox"/></th>
+				<th class="apply_th">닉네임</th>
+				<th class="apply_th">성별</th>
+			</tr>
+	</div>
+	<div id="test"></div>
+	<button type="button" class="applicant_button" id="apply_ok">수락하기</button>
+	<button type="button" class="applicant_button" id="trip_end">마감</button>
+
+
+</div>
 
 <h1>댓글 부분↓</h1>
 <div class="menu">Comment</div>
@@ -78,6 +110,8 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
 	var trip_no = 1;
@@ -371,6 +405,38 @@ $(document).ready(function(){
 	});// end reply delete
 	
 }); // end document.ready
+</script>
+
+<%-- 신청부분 --%>
+<script>
+$(document).ready(function(){
+	var trip_no = 1;
+	
+	getAllApply();
+	
+	// DB에서 해당 글번호(trip_no)의 모든 신청자들을 읽어오는 함수 정의
+	function getAllApply(){
+		var url = '/project03/tour/detail/apply/all/'+trip_no;
+		
+		$.getJSON(url, function(data){
+			var tr = '<tr>'+'<th class="apply_th"><input id="allCheck" type="checkbox"/></th>'
+				+'<th class="apply_th">닉네임</th>'
+				+'<th class="apply_th">성별</th>'
+			+'</tr>';
+			
+			$(data).each(function(){
+				tr += '<tr>'
+					+'<td class="apply_td"><input name="rowcheck" type="checkbox" value="'+this.list_no+'"/></td>'
+					+'<td class="apply_td">'+'</td>'
+					+'<td class="apply_td">'+'</td>'
+				+'</tr>'
+			});// end data.each
+			
+		}); // end getJSON
+		
+	}// end getAllApply()
+
+}); // end document.ready();
 </script>
 
 

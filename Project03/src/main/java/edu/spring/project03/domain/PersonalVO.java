@@ -15,16 +15,12 @@ public class PersonalVO {
 	private String email;
 	private Date joindate;
 
-	public PersonalVO() {
-
-	}
-
+	public PersonalVO() {}
 	/*	this.mno = mno;
 		this.userid = userid;
 		this.pwd = pwd;
 		this.authority = authority;*/
 	public PersonalVO(MemberVO vo,String email, Date joindate){
-		
 		this.email = email;
 		this.joindate = joindate;
 	}
@@ -40,6 +36,14 @@ public class PersonalVO {
 		this.introduce = introduce;
 		this.email = email;
 		this.joindate = joindate;
+	}
+	
+	public PersonalVO(String name, int sex, int age, String nickname, String introduce){
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.nickname = nickname;
+		this.introduce = introduce;
 	}
 
 	public int getMno() {

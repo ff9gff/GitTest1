@@ -52,6 +52,8 @@ http://www.templatemo.com/tm-406-flex
 .wrap textarea {
    width: 100%;
 }
+
+
 </style>
 
 
@@ -157,46 +159,48 @@ $(document.ready(function(){
    </div>
    <!-- /.site-main -->
 
-   <script>
-      $(function() {
-         $("#start_date, #end_date").datepicker({
-            dateFormat : 'yy-mm-dd'
-         });
-      });
-   </script>
-   
-   <script>
-      $(function() { //전역변수선언
-         var editor_object = [];
-         nhn.husky.EZCreator.createInIFrame({
-            oAppRef : editor_object,
-            elPlaceHolder : "smarteditor",
-            sSkinURI : "resources/smarteditor/SmartEditor2Skin.html",
-            htParams : {
-               // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-               bUseToolbar : true,
-               // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-               bUseVerticalResizer : true,
-               // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-               bUseModeChanger : true,
-            }
-         });
 
-         //전송버튼 클릭이벤트
-         $("#savebutton").click(function() {
-            //id가 smarteditor인 textarea에 에디터에서 대입
-            editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
-            // 이부분에 에디터 validation 검증
+	<script>
+		$(function() {
+			$("#start_date, #end_date").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+		});
+	</script>
+	
+	<script>
+		$(function() { //전역변수선언
+			var editor_object = [];
+			nhn.husky.EZCreator.createInIFrame({
+				oAppRef : editor_object,
+				elPlaceHolder : "smarteditor",
+				sSkinURI : "resources/smarteditor/SmartEditor2Skin.html",
+				htParams : {
+					// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+					bUseToolbar : true,
+					// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+					bUseVerticalResizer : true,
+					// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+					bUseModeChanger : true,
+				}
+			});
 
-            //폼 submit
-            $("#frm").submit();
-         })
-         
-         $("#cancelbutton").click(function() {
-            location = 'TourRegister.jsp';
-         })
-      })
-   </script>
+			//전송버튼 클릭이벤트
+			$("#savebutton").click(function() {
+				//id가 smarteditor인 textarea에 에디터에서 대입
+				editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
+				// 이부분에 에디터 validation 검증
+				
+				//폼 submit
+				$("#frm").submit();
+			})
+			
+			$("#cancelbutton").click(function() {
+				location = 'cancelTourRegister';
+			})
+		})
+	</script>
+
 
 
 
@@ -209,82 +213,88 @@ $(document.ready(function(){
                <h2>여행 등록</h2>
             </div>
 
+
+
+				<div class="wrap">
+
+						<form action="TourRegister" method="post" id="frm">
+						
+						<!-- 	<input type="hidden" name="trip_no" readonly="readonly" />  -->
+								
+							<input type="hidden" name="mno" value="1" readonly="readonly" /> 
+						
+							<input type="text" name="title" style="width: 60%" value="뭐야이거" placeholder="제목"/><br /> <br /> 
+						
+							<input type="text" name="region_name" style="width: 60%" value="넌뭐야" placeholder="지역"/><br /> <br />
+				
+							<input type="text" id="start_date" name="start_date" value="2016-11-14" placeholder="시작일"> 
+							~ 
+							<input type="text" id="end_date" name="end_date" value="2016-11-18" placeholder="종료일"> <br /> <br />
+							
+							성별 조건: <br />
+								<div>
+								남자 <input type="radio" name="condition_sex" value="1" /> 
+								여자 <input type="radio" name="condition_sex" value="2" /> 
+								조건없음 <input type="radio" name="condition_sex" value="3" />
+								</div>
+								<br /> 
+						
+							연령 조건: <br />
+							
+								20대 <input type="radio" name="condition_age" value="1" /> 
+								30대 <input type="radio" name="condition_age" value="2" /> 
+								40대 <input type="radio" name="condition_age" value="3" /> 
+								50대 <input type="radio" name="condition_age" value="4" />
+							 <br />
+							
+							<textarea name="content" id="smarteditor" rows="10"
+								cols="100" style="width: 766px; height: 412px;">	
+							</textarea><br /><br />									
+						</form>	
+						
+					<input type="button" id="savebutton" value="서버전송" />
+					<input type="button" id="cancelbutton" value="취소" />
+
+				</div>
+				
 			
-            <div class="wrap">
-            
-		      
-       <form action="send" method="post" id="frm_title" class="register">        
-                  <input type="hidden" name="mno" readonly="readonly" /> 
-                  
-                  <input   type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
-                  
-                  <input type="text" name="region" style="width: 60%" placeholder="지역"/><br /> <br />
-            
-                  <input type="text" id="start_date" name="start_date" placeholder="시작일"> 
-                  ~ 
-                  <input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
-                  
-                  성별 조건: <br />
-                  <div>
-                     남자 <input type="radio" name="condition_sex" value="1" /> 
-                     여자 <input type="radio" name="condition_sex" value="2" /> 
-                     조건없음 <input type="radio" name="condition_sex" value="3" />
-                  </div>   <br /> 
-                  
-                  연령 조건: <br />
-                  <div>
-                     20대 <input type="radio" name="condition_age" value="1" /> 
-                     30대 <input type="radio" name="condition_age" value="2" /> 
-                     40대 <input type="radio" name="condition_age" value="3" /> 
-                     50대 <input type="radio" name="condition_age" value="4" />
-                  </div> <br />
-                  
-		</form>
-               
-                  <form action="send" method="post" id="frm" class="register">
-                  <textarea name="smarteditor" id="smarteditor" rows="10"
-                     cols="100" style="width: 766px; height: 412px;"></textarea><br /><br />
-                     
-                    <input type="button" id="savebutton" value="서버전송" />
-                  	<input type="button" id="cancelbutton" value="취소" />
-                  </form>                     
-                  
-                         
-            </div>
-            
-
-            
-         </div>
-         <!-- /.row -->
-      </div>
-      <!-- /.container -->
-   </div>
-   <!-- /#services -->
+				
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#services -->
 
 
-   <div id="footer">
-      <div class="container">
-         <div class="row">
-            <div class="col-md-8 col-xs-12 text-left">
-               <span>Copyright &copy; 2014 Company Name</span>
-            </div>
-            <!-- /.text-center -->
-            <div class="col-md-4 hidden-xs text-right">
-               <a href="#top" id="go-top">Back to top</a>
-            </div>
-            <!-- /.text-center -->
-         </div>
-         <!-- /.row -->
-      </div>
-      <!-- /.container -->
-   </div>
-   <!-- /#footer -->
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-xs-12 text-left">
+					<span>Copyright &copy; 2014 Company Name</span>
+				</div>
+				<!-- /.text-center -->
+				<div class="col-md-4 hidden-xs text-right">
+					<a href="#top" id="go-top">Back to top</a>
+				</div>
+				<!-- /.text-center -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#footer -->
 
 
 
-   <script src="resources/theme/js/bootstrap.js"></script>
-   <script src="resources/theme/js/plugins.js"></script>
-   <script src="resources/theme/js/main.js"></script>
+	<script src="resources/theme/js/bootstrap.js"></script>
+	<script src="resources/theme/js/plugins.js"></script>
+	<script src="resources/theme/js/main.js"></script>
+	
+	<script>
+		console.log($('#se2_iframe').val());
+	</script>
+
 
 </body>
 </html>

@@ -505,13 +505,10 @@
  	    	},
  	    	success : function(oCustomEvent) {
  	    		alert("success");
- 	    		
- 	    		
 
- 	    		
  	    		// 업로드가 성공적으로 완료되었을 때 발생
  	    		// oCustomEvent(이벤트 객체) = {
- 	    		//	htResult (Object) 서버에서 전달해주는 결과 객체 (서버 설정에 따라 유동적으로 선택가능)
+ 	    		//	htResult (Object ) 서버에서 전달해주는 결과 객체 (서버 설정에 따라 유동적으로 선택가능)
  	    		// }
  	    		var aResult = []; 
  	    		aResult[0] = oCustomEvent.htResult;
@@ -520,6 +517,7 @@
  	    		goReadyMode();
  	    		oFileUploader.reset();
  	    		window.close();
+ 	    		console.log($('#se2_iframe').text());
  	    	},
  	    	error : function(oCustomEvent) {
  	    		//업로드가 실패했을 때 발생

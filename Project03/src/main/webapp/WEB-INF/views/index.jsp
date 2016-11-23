@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -18,28 +17,18 @@
 Flex Template 
 http://www.templatemo.com/tm-406-flex
 -->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
-
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
 
 <style>
 .searchRegion {
@@ -52,30 +41,16 @@ http://www.templatemo.com/tm-406-flex
 </style>
 </head>
 <body>
+
+	
 	<!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-
-
-
+        
+	<%@ include file="top_header.jspf" %>
 
 	<div class="site-main" id="sTop">
 		<div class="site-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<ul class="social-icons">
-							<li><a href="#" class="fa fa-facebook"></a></li>
-							<li><a href="#" class="fa fa-twitter"></a></li>
-							<li><a href="#" class="fa fa-dribbble"></a></li>
-							<li><a href="#" class="fa fa-linkedin"></a></li>
-						</ul>
-					</div>
-					<!-- /.col-md-12 -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
 			<div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
@@ -96,7 +71,7 @@ http://www.templatemo.com/tm-406-flex
 									<li><a href="#portfolio">찾기</a></li>
 									<li><a href="MyPage">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
-									<li><a href="login">로그인</a></li>
+									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -238,6 +213,7 @@ http://www.templatemo.com/tm-406-flex
 				dateFormat : 'yy-mm-dd'
 			});
 		});
+
 	</script>
 
 
@@ -331,7 +307,7 @@ http://www.templatemo.com/tm-406-flex
 					<c:forEach var="image" items="${imageList}">
 						<div class="portfolio-item col-md-3 col-sm-6">
 							<div class="portfolio-thumb">
-								<a href="FTourRegister"><img src="${image.img_url}"
+								<a href="FTourRegister">"${image.img_url}"
 									width="300" height="200"></a>
 							</div>
 							<!-- /.portfolio-thumb -->

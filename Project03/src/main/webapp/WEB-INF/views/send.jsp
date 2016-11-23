@@ -10,14 +10,7 @@
 <body>
 	
 	
-	<% 
- 
- String title = request.getParameter("title");
- 
- HashMap<String,String> map = new HashMap<String,String>();
-	map.put("title",title);
-%> 
-  제목:<%=map.get("title")%><br>
+
 
 	<%
 		//한글 인코딩을 위한 UTF-8 설정
