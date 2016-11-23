@@ -1,7 +1,12 @@
 package edu.spring.project03.controller;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -9,10 +14,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.service.MemberService;
 
 @Controller
@@ -78,5 +85,35 @@ public class MemberController {
 		return "redirect:/";
 	} // end logout()
 	
+	
+	@RequestMapping(value="checkid", method=RequestMethod.POST)
+	public void checkid(@RequestBody MemberVO vo, HttpServletRequest request, HttpServletResponse response) throws IOException {
+				
+		logger.info("userid: " + vo.getUserid());
+		
+		String checkid = memberService.readUserid(vo.getUserid());
+		logger.info("checkid : " + checkid);
+		
+		PrintWriter out = response.getWriter();
+		
+		if(checkid != null) {
+			out.print("NOK");
+		} // end if		
+	} // checkid(request, response)
+	
+	@RequestMapping(value="checknick", method=RequestMethod.POST)
+	public void checkid(@RequestBody PersonalVO vo, HttpServletRequest request, HttpServletResponse response) throws IOException {
+				
+		logger.info("userid: " + vo.getNickname());
+		
+		String checknick = memberService.readNickname(vo.getNickname());
+		logger.info("checkid : " + checknick);
+		
+		PrintWriter out = response.getWriter();
+		
+		if(checknick != null) {
+			out.print("NOK");
+		} // end if		
+	} // checkid(request, response)
 	
 } // end class MemberController

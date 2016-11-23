@@ -1,6 +1,7 @@
 package edu.spring.project03.persistence;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -33,6 +34,23 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(NAMESPACE + ".login", vo);
 	} // end login(vo)
 	
+	@Override
+	public String selectUserid(String userid) {
+		logger.info("selectUserid() 호출...");
+				
+		return sqlSession.selectOne(NAMESPACE + ".select-by-userid", userid);
+	} // end select(userid)
+	
+	@Override
+	public String selectNickname(String nickname) {
+		logger.info("selectNickname() 호출...");
+				
+		return sqlSession.selectOne(NAMESPACE + ".select-by-nickname", nickname);
+	} // end select(nickname)
+	
+	
+	
+
 	
 	
 	/***
@@ -40,12 +58,7 @@ public class MemberDAOImpl implements MemberDAO {
 	 */
 	
 	
-	@Override
-	public MemberVO select(String userid) {
-		
-		MemberVO membervo = sqlSession.selectOne(NAMESPACE + ".select-by-userid", userid);
-		return membervo;
-	} // end select(userid)
+
 	
 	@Override
 	public MemberVO select(int mno) {
@@ -68,11 +81,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	
 	
-	@Override
-	public List<MemberVO> select() {
-		List<MemberVO> list = sqlSession.selectList(NAMESPACE+ ".member-select-all"); 
-		return list;
-	}
+
 
 
 

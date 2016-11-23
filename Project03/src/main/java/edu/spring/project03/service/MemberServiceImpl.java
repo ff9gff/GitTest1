@@ -1,5 +1,6 @@
 package edu.spring.project03.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,11 @@ public class MemberServiceImpl implements MemberService {
 	
 	@Autowired
 	private MemberDAO memberDAO;
+
 	
+	/*
+	 * MemberVO
+	 */	
 	
 	@Override
 	public MemberVO login(MemberVO vo) {
@@ -22,19 +27,32 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.login(vo);
 	} // end login(vo)
 	
+	@Override
+	public String readUserid(String userid) {
+				
+		return memberDAO.selectUserid(userid);
+	} // end readUserid(userid)
+	
+	
+	/*
+	 * PersonalVO
+	 */	
+	@Override
+	public String readNickname(String nickname) {
+		
+		return memberDAO.selectNickname(nickname);
+	} // end readNickname(nickname)
+	
+	
+	/**
+	 * 
+	 */
+	
 	
 
-	@Override
-	public List<MemberVO> read() {
-		List<MemberVO> list = memberDAO.select();
-		return list;
-	}
 
-	@Override
-	public MemberVO read(String userid) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 
 
 	

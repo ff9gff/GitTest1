@@ -12,28 +12,26 @@
 		select * from wm_member
 		where userid = #{userid} and pwd = #{pwd}
 	</select>
-
-
-
-
-
-
-
-
-    <!-- userid로 검색하는 SQL문 -->
-    <select id="select-by-userid" resultType="edu.spring.project03.domain.MemberVO">
-    	select * from wm_member where userid = #{userid}
-    </select>
     
     <select id="select-by-userid2" resultType="Integer">
     	select mno from wm_member where userid = #{userid}
     </select>
+    
+    <!-- userid로 검색하는 SQL문 -->
+    <select id="select-by-userid" resultType="String">
+    	select userid from wm_member where userid = #{userid}
+    </select>
+    
 
 
 <!-- WM_PERSONAL -->
 	<!-- mno로 검색하는 SQL문 -->
 	<select id="select-by-mno" resultType="edu.spring.project03.domain.PersonalVO">
 		select mno from wm_personal where mno = #{mno}
+	</select>
+	
+	<select id="select-by-nickname" resultType="String">
+		select nickname from wm_personal where nickname = #{nickname}
 	</select>
     
     
