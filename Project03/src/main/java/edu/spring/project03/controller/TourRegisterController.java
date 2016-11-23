@@ -14,17 +14,22 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.spring.project03.domain.PhotoVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
+import edu.spring.project03.service.TourRegisterService;
 
 @Controller
 public class TourRegisterController {
@@ -42,6 +47,9 @@ public class TourRegisterController {
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
 	
+	@Autowired
+	private TourRegisterService service;
+	
 	
 	
 
@@ -58,14 +66,21 @@ public class TourRegisterController {
 			logger.info("insertTour() 호출!");
 			logger.info("여행 번호: " + vo.getTrip_no());
 			logger.info("여행 제목: " + vo.getTitle());
-			logger.info("여행 지역: " + vo2.getRegion_name());
+			// logger.info("여행 지역: " + vo2.getRegion_name());
 			logger.info("시작 날짜: " + vo.getStart_date());
 			logger.info("종료 날짜: " + vo.getEnd_date());
 			logger.info("성별 조건: " + vo.getCondition_sex());
 			logger.info("나이 조건: " + vo.getCondition_age());
 			
 			model.addAttribute("vo", vo);
-			model.addAttribute("vo2", vo2);
+			// model.addAttribute("vo2", vo2);
+			
+			int result = service.create(vo);
+			if (result == 1) { // DB insert 성공
+				
+			} else { // DB insert 실패
+				
+			}
 
 		} else {
 			logger.info("응 실패^^");
@@ -117,6 +132,23 @@ public class TourRegisterController {
 			e.printStackTrace();
 		}
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
+	}
+	
+	
+	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
+	public void createRegister(TourRegisterVO vo, RedirectAttributes attr) {
+		
+		logger.info("insertTour() 호출!");
+		logger.info("여행 번호: " + vo.getTrip_no());
+		logger.info("여행 제목: " + vo.getTitle());		
+		logger.info("시작 날짜: " + vo.getStart_date());
+		logger.info("종료 날짜: " + vo.getEnd_date());
+		logger.info("성별 조건: " + vo.getCondition_sex());
+		logger.info("나이 조건: " + vo.getCondition_age());
+				
+		
+		
+		//return "redirect:TourRegisterConfirm";
 	}
 
 }

@@ -21,6 +21,7 @@ public class PhotoVO {
 	}
 
 	public MultipartFile getFiledata() {
+
         return Filedata;
     }
  
