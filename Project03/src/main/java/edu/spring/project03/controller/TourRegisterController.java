@@ -41,37 +41,13 @@ public class TourRegisterController {
 
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
-
-	@RequestMapping("/form")
-	public String form() {
-		return "form";
-	}
+	
+	
+	
 
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "TourRegister";
-	}
-
-	@RequestMapping(value = "/insertTour", method = RequestMethod.POST)
-	public String insertTour(TourRegisterVO vo, RegionVO vo2) {
-
-		if (vo != null && vo2 != null) {
-
-			logger.info("insertTour() 호출!");
-			logger.info("여행 번호: " + vo.getTrip_no());
-			logger.info("여행 제목: " + vo.getTitle());
-			logger.info("여행 지역: " + vo2.getRegion_name());
-			logger.info("시작 날짜: " + vo.getStart_date());
-			logger.info("종료 날짜: " + vo.getEnd_date());
-			logger.info("성별 조건: " + vo.getCondition_sex());
-			logger.info("나이 조건: " + vo.getCondition_age());
-
-		} else {
-			logger.info("응 실패^^");
-		}
-
-		return "TourRegister";
-
 	}
 
 	@RequestMapping(value = "/TourRegisterConfirm", method = RequestMethod.POST)
@@ -98,11 +74,18 @@ public class TourRegisterController {
 	}
 
 	// 단일파일업로드
-	@RequestMapping("/photoUpload")
-	public String photoUpload(HttpServletRequest request, PhotoVO vo) {
+	@RequestMapping(value="/photoUpload", method = RequestMethod.POST)
+	public String photoUpload(HttpServletRequest request, TourRegisterVO vo2, PhotoVO vo) {
 		String callback = vo.getCallback();
 		String callback_func = vo.getCallback_func();
 		String file_result = "";
+		
+		if (vo2 != null) {
+			logger.info("사진 테스트 여행 번호: " + vo2.getTrip_no());
+			logger.info("사진 테스트 회원 번호: " + vo2.getMno());
+		}
+		
+		
 
 		try {
 			if (vo.getFiledata() != null && vo.getFiledata().getOriginalFilename() != null

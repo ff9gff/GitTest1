@@ -198,9 +198,6 @@ http://www.templatemo.com/tm-406-flex
 
 				<div class="wrap">
 
-					
-						
-						
 						<form action="TourRegisterConfirm" method="post" id="frm">
 						
 							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
