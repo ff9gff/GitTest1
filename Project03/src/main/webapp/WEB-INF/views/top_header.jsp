@@ -10,7 +10,7 @@
 b {
 	display: inline-block;
 }
-.mini_header {
+#mini_header {
 	display: inline-block;
 	float: right;
 }
@@ -18,24 +18,24 @@ b {
 </style>
 </head>
 <body>
-	<b>같이가자</b>
-	<div id="mini_header">
-		<c:if test="${empty login_id }">
-			<%-- 세션에 로그인 정보가 없는 경우 --%>
-			<button id="btnMemberRegister">회원가입</button>
-			<button id="btnLogin">로그인</button>
-
-		</c:if>
-		
-		<c:if test="${not empty login_id }">
-			<%-- 세션에 로그인 정보가 있는 경우 --%>
-			<button id="btnMypage">마이페이지</button>		
-			<button id="btnLogout">로그아웃</button><br/>
-		</c:if>	
+	<div class="site-main" style="height: 15%;">
+		<b>같이가자</b>
+		<div id="mini_header">
+			<c:if test="${empty login_id }">
+				<%-- 세션에 로그인 정보가 없는 경우 --%>
+				<button id="btnMemberRegister">회원가입</button>
+				<button id="btnLogin">로그인</button>
+	
+			</c:if>
+			
+			<c:if test="${not empty login_id }">
+				<%-- 세션에 로그인 정보가 있는 경우 --%>
+				<button id="btnMypage">마이페이지</button>		
+				<button id="btnLogout">로그아웃</button><br/>
+			</c:if>	
+		</div>		
 	</div>
 
-<!-- jQuery CDN -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
 	$('#btnMemberRegister').click(function() {
