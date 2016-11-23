@@ -1,11 +1,6 @@
 package edu.spring.project03.controller;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
 import java.util.UUID;
 
 
@@ -25,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.spring.project03.domain.PhotoVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
+
+import java.util.regex.Pattern;
 
 @Controller
 public class TourRegisterController {
@@ -56,13 +53,17 @@ public class TourRegisterController {
 		if (vo != null && vo2 != null) {
 
 			logger.info("insertTour() 호출!");
-			logger.info("여행 번호: " + vo.getTrip_no());
 			logger.info("여행 제목: " + vo.getTitle());
 			logger.info("여행 지역: " + vo2.getRegion_name());
 			logger.info("시작 날짜: " + vo.getStart_date());
 			logger.info("종료 날짜: " + vo.getEnd_date());
 			logger.info("성별 조건: " + vo.getCondition_sex());
 			logger.info("나이 조건: " + vo.getCondition_age());
+			
+			Pattern imgTagPattern = Pattern.compile(vo.getContent());
+			
+			logger.info("이미지 태그 분리: " + imgTagPattern);
+			
 			
 			model.addAttribute("vo", vo);
 			model.addAttribute("vo2", vo2);
@@ -80,13 +81,6 @@ public class TourRegisterController {
 		String callback_func = vo.getCallback_func();
 		String file_result = "";
 		
-		if (vo2 != null) {
-			logger.info("사진 테스트 여행 번호: " + vo2.getTrip_no());
-			logger.info("사진 테스트 회원 번호: " + vo2.getMno());
-		}
-		
-		
-
 		try {
 			if (vo.getFiledata() != null && vo.getFiledata().getOriginalFilename() != null
 					&& !vo.getFiledata().getOriginalFilename().equals("")) {

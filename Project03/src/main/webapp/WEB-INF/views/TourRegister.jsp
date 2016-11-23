@@ -74,10 +74,7 @@ http://www.templatemo.com/tm-406-flex
 				<div class="row">
 					<div class="col-md-12 text-center">
 						<ul class="social-icons">
-							<li><a href="#" class="fa fa-facebook"></a></li>
-							<li><a href="#" class="fa fa-twitter"></a></li>
-							<li><a href="#" class="fa fa-dribbble"></a></li>
-							<li><a href="#" class="fa fa-linkedin"></a></li>
+							
 						</ul>
 					</div>
 					<!-- /.col-md-12 -->
@@ -85,7 +82,7 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.row -->
 			</div>
 			<!-- /.container -->
-			<div class="main-header">
+			<!-- <div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
 						<div class="row">
@@ -94,7 +91,7 @@ http://www.templatemo.com/tm-406-flex
 									<a href="#">hello </a>
 								</h1>
 							</div>
-							<!-- /.logo-wrapper -->
+							/.logo-wrapper
 							<div class="col-md-10 col-sm-10 main-menu text-right">
 								<div class="toggle-menu visible-sm visible-xs">
 									<i class="fa fa-bars"></i>
@@ -108,18 +105,18 @@ http://www.templatemo.com/tm-406-flex
 
 								</ul>
 							</div>
-							<!-- /.main-menu -->
+							/.main-menu
 						</div>
-						<!-- /.row -->
+						/.row
 					</div>
-					<!-- /#menu-wrapper -->
+					/#menu-wrapper
 				</div>
-				<!-- /.container -->
-			</div>
+				/.container
+			</div> -->
 			<!-- /.main-header -->
 		</div>
 		<!-- /.site-header -->
-		<div class="site-slider">
+		<!-- <div class="site-slider">
 			<div class="slider">
 				<div class="flexslider">
 					<ul class="slides">
@@ -136,10 +133,10 @@ http://www.templatemo.com/tm-406-flex
 
 					</ul>
 				</div>
-				<!-- /.flexslider -->
+				/.flexslider
 			</div>
-			<!-- /.slider -->
-		</div>
+			/.slider
+		</div> -->
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
@@ -182,6 +179,10 @@ http://www.templatemo.com/tm-406-flex
 			$("#cancelbutton").click(function() {
 				location = 'cancelTourRegister';
 			})
+			
+			$("#homebutton").click(function() {
+				location = 'index';
+			})
 		})
 	</script>
 
@@ -197,48 +198,69 @@ http://www.templatemo.com/tm-406-flex
 				</div>
 
 				<div class="wrap">
-
-						<form action="TourRegisterConfirm" method="post" id="frm">
-						
-							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
-								
-							<input type="hidden" name="mno" value="2" readonly="readonly" /> 
-						
-							<input type="text" name="title" style="width: 60%" value="뭐야이거" placeholder="제목"/><br /> <br /> 
-						
-							<input type="text" name="region_name" style="width: 60%" value="넌뭐야" placeholder="지역"/><br /> <br />
-				
-							<input type="text" id="start_date" name="start_date" value="2016-11-14" placeholder="시작일"> 
-							~ 
-							<input type="text" id="end_date" name="end_date" value="2016-11-18" placeholder="종료일"> <br /> <br />
+					<div>
+					 	대표 이미지: 
+						<form action="./upload" method="post" enctype="multipart/form-data">
+							<input type="file" name="imageFile"><br>
+							<input type="submit" value="전송">
+						</form>
+					</div><br />
 							
+					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
+					
+						<c:choose>
+							<c:when test="${imageFile != null }">
+							<%-- 파일 업로드 완료
+							<ul>
+								<li>파일 ID : ${imageFile.id }</li>
+								<li>저장된 파일 이름 : ${imageFile.fileName }</li>
+								<li>파일 길이 : ${imageFile.contentLength }</li>
+								<li>MIME 타입 : ${imageFile.contentType }</li>
+							</ul>
+							 --%>
+							<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
+							</c:when>
+						</c:choose><br /><br />
+					
+						<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
+							
+						<input type="hidden" name="mno" value="2" readonly="readonly" /> 
+					
+						<input type="text" name="title" style="width: 60%" value="뭐야이거" placeholder="제목"/><br /> <br /> 
+					
+						<input type="text" name="region_name" style="width: 60%" value="넌뭐야" placeholder="지역"/><br /> <br />
+			
+						<input type="text" id="start_date" name="start_date" value="2016-11-14" placeholder="시작일"> 
+						~ 
+						<input type="text" id="end_date" name="end_date" value="2016-11-18" placeholder="종료일"> <br /> <br />
+						
+						<div>
 							성별 조건: <br />
-							
-								남자 <input type="radio" name="contidion_sex" value="1" /> 
-								여자 <input type="radio" name="condition_sex" value="2" /> 
-								조건없음 <input type="radio" name="condition_sex" value="3" />
-								<br /> 
-						
+							남자 <input type="radio" name="contidion_sex" value="1" /> 
+							여자 <input type="radio" name="condition_sex" value="2" /> 
+							조건없음 <input type="radio" name="condition_sex" value="3" />
+						</div><br />
+					
+						<div>
 							연령 조건: <br />
-							
-								20대 <input type="radio" name="condition_age" value="1" /> 
-								30대 <input type="radio" name="condition_age" value="2" /> 
-								40대 <input type="radio" name="condition_age" value="3" /> 
-								50대 <input type="radio" name="condition_age" value="4" />
-							 <br />
-							
-							<textarea name="content" id="smarteditor" rows="10"
-								cols="100" style="width: 766px; height: 412px;">	
-							</textarea><br /><br />									
-						</form>	
+							20대 <input type="radio" name="condition_age" value="1" /> 
+							30대 <input type="radio" name="condition_age" value="2" /> 
+							40대 <input type="radio" name="condition_age" value="3" /> 
+							50대 <input type="radio" name="condition_age" value="4" />
+						 </div><br />		 
+						 
 						
-					<input type="button" id="savebutton" value="서버전송" />
+						<textarea name="content" id="smarteditor" rows="10"
+							cols="100" style="width: 766px; height: 412px;">	
+						</textarea><br /><br />									
+					</form>	
+
+					<input type="button" id="savebutton" value="등록" />
 					<input type="button" id="cancelbutton" value="취소" />
+					<input type="button" id="homebutton" value="홈으로" />
 
 				</div>
-				
-			
-				
+
 			</div>
 			<!-- /.row -->
 		</div>
