@@ -30,8 +30,8 @@ public class TourJoinDAOImple implements TourJoinDAO {
 	}
 	
 	@Override
-	public PersonalVO selectPerson(int mno) {
-		return sqlSession.selectOne(NAMESPACE+".selectperson", mno);
+	public List<PersonalVO> selectPerson(int trip_no) {
+		return sqlSession.selectList(NAMESPACE+".selectperson", trip_no);
 	}
 	
 	@Override

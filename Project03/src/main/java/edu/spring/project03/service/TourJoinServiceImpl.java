@@ -21,8 +21,8 @@ public class TourJoinServiceImpl implements TourJoinService {
 	}
 	
 	@Override
-	public PersonalVO readPerson(int mno) {
-		return tourJoinDAO.selectPerson(mno);
+	public List<PersonalVO> readPerson(int trip_no) {
+		return tourJoinDAO.selectPerson(trip_no);
 	}
 	@Override
 	public int update(int approval, int list_no) {
