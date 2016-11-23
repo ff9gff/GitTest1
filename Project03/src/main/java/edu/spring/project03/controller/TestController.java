@@ -33,8 +33,6 @@ import edu.spring.project03.domain.TourRegisterVO;
 public class TestController {
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
-	private static final String savePath = "C:/Study/git-repo/GitTest1/Project03/src/main/webapp/resources/images/photo_upload/";
-
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정
 	// 이클립스에서 커밋앤푸쉬하려니 불가능!
@@ -51,82 +49,94 @@ public class TestController {
 	public String form() {
 		return "form";
 	}
-	
+
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "TourRegister";
 	}
-	
-	@RequestMapping(value="/insertTour", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/insertTour", method = RequestMethod.POST)
 	public String insertTour(TourRegisterVO vo, RegionVO vo2) {
-		
+
 		if (vo != null && vo2 != null) {
-			
-			logger.info("insertTour() 호출!"); 
-			logger.info("여행 제목: " + vo.getTitle()); 			
-			logger.info("여행 지역: " + vo2.getRegion_name()); 			
-			logger.info("시작 날짜: " + vo.getStart_date()); 			
-			logger.info("종료 날짜: " + vo.getEnd_date()); 			
-			logger.info("성별 조건: " + vo.getContidion_sex()); 			
-			logger.info("나이 조건: " + vo.getContidion_age()); 			
-			
+
+			logger.info("insertTour() 호출!");
+			logger.info("여행 번호: " + vo.getTrip_no());
+			logger.info("여행 제목: " + vo.getTitle());
+			logger.info("여행 지역: " + vo2.getRegion_name());
+			logger.info("시작 날짜: " + vo.getStart_date());
+			logger.info("종료 날짜: " + vo.getEnd_date());
+			logger.info("성별 조건: " + vo.getContidion_sex());
+			logger.info("나이 조건: " + vo.getContidion_age());
+
 		} else {
-			logger.info("응 실패^^"); 
+			logger.info("응 실패^^");
 		}
-		
-		
+
 		return "TourRegister";
-		
+
 	}
 
 	@RequestMapping(value = "/send", method = RequestMethod.POST)
-	public void submit(TourRegisterVO vo, Model model) {
-		
-		if (vo != null) {
-			
-			
-			logger.info("컨텐츠: " + vo.getContent()); 
+	public void submit(TourRegisterVO vo, RegionVO vo2, Model model) {
+
+		if (vo != null && vo2 != null) {
+
+			logger.info("insertTour() 호출!");
+			logger.info("여행 번호: " + vo.getTrip_no());
+			logger.info("여행 제목: " + vo.getTitle());
+			logger.info("여행 지역: " + vo2.getRegion_name());
+			logger.info("시작 날짜: " + vo.getStart_date());
+			logger.info("종료 날짜: " + vo.getEnd_date());
+			logger.info("성별 조건: " + vo.getContidion_sex());
+			logger.info("나이 조건: " + vo.getContidion_age());
 			
 			model.addAttribute("vo", vo);
-			
+			model.addAttribute("vo2", vo2);
+
+		} else {
+			logger.info("응 실패^^");
 		}
 
 	}
 
-	//단일파일업로드
+	// 단일파일업로드
 	@RequestMapping("/photoUpload")
-	public String photoUpload(HttpServletRequest request, PhotoVO vo){
-	    String callback = vo.getCallback();
-	    String callback_func = vo.getCallback_func();
-	    String file_result = "";
-	    try {
-	        if(vo.getFiledata() != null && vo.getFiledata().getOriginalFilename() != null && !vo.getFiledata().getOriginalFilename().equals("")){
-	            //파일이 존재하면
-	            String original_name = vo.getFiledata().getOriginalFilename();
-	            String ext = original_name.substring(original_name.lastIndexOf(".")+1);
-	            //파일 기본경로
-	            String defaultPath = request.getSession().getServletContext().getRealPath("/");
-	            //파일 기본경로 _ 상세경로
-	            String path = defaultPath + "resources" + File.separator + "photo_upload" + File.separator;              
-	            File file = new File(path);
-	            System.out.println("path:"+path);
-	            
-	            //디렉토리 존재하지 않을경우 디렉토리 생성
-	            if(!file.exists()) {
-	                file.mkdirs();
-	            }
-	            //서버에 업로드 할 파일명(한글문제로 인해 원본파일은 올리지 않는것이 좋음)
-	            String realname = UUID.randomUUID().toString() + "." + ext;
-	        ///////////////// 서버에 파일쓰기 ///////////////// 
-	            vo.getFiledata().transferTo(new File(path+realname));
-	            file_result += "&bNewLine=true&sFileName="+original_name+"&sFileURL=/project03/resources/photo_upload/"+realname;
-	        } else {
-	            file_result += "&errstr=error";
-	        }
-	    } catch (Exception e) {
-	        e.printStackTrace();
-	    }
-	    return "redirect:" + callback + "?callback_func="+callback_func+file_result;
+	public String photoUpload(HttpServletRequest request, PhotoVO vo) {
+		String callback = vo.getCallback();
+		String callback_func = vo.getCallback_func();
+		String file_result = "";
+
+		try {
+			if (vo.getFiledata() != null && vo.getFiledata().getOriginalFilename() != null
+					&& !vo.getFiledata().getOriginalFilename().equals("")) {
+				// 파일이 존재하면
+				String original_name = vo.getFiledata().getOriginalFilename();
+				String ext = original_name.substring(original_name.lastIndexOf(".") + 1);
+				// 파일 기본경로
+				String defaultPath = request.getSession().getServletContext().getRealPath("/");
+				// 파일 기본경로 _ 상세경로
+				String path = defaultPath + "resources" + File.separator + "photo_upload" + File.separator;
+				File file = new File(path);
+				logger.info("path: " + path);
+
+				// 디렉토리 존재하지 않을경우 디렉토리 생성
+				if (!file.exists()) {
+					file.mkdirs();
+				}
+				// 서버에 업로드 할 파일명(한글문제로 인해 원본파일은 올리지 않는것이 좋음)
+				String realname = UUID.randomUUID().toString() + "." + ext;
+				///////////////// 서버에 파일쓰기 /////////////////
+				vo.getFiledata().transferTo(new File(path + realname));
+				file_result += "&bNewLine=true&sFileName=" + original_name
+						+ "&sFileURL=/project03/resources/photo_upload/" + realname;
+			} else {
+				file_result += "&errstr=error";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
 	}
 
 }

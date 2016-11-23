@@ -175,7 +175,6 @@ http://www.templatemo.com/tm-406-flex
 				editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 				// 이부분에 에디터 validation 검증
 				
-				
 				//폼 submit
 				$("#frm").submit();
 			})
@@ -199,7 +198,7 @@ http://www.templatemo.com/tm-406-flex
 
 				<div class="wrap">
 
-						<form action="insertTour" method="post">
+						<!-- <form action="insertTour" method="post">
 							
 							<input type="hidden" name="trip_no" value='1' readonly="readonly" /> 
 							
@@ -214,33 +213,45 @@ http://www.templatemo.com/tm-406-flex
 							<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
 							
 						
+							
+							
+							<input type="submit" value="전송"><br /><br />
+						
+						</form> -->
+						
+						
+						<form action="send" method="post" id="frm">
+						
+							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
+								
+							<input type="hidden" name="mno" value="2" readonly="readonly" /> 
+						
+							<input type="text" name="title" style="width: 60%" value="뭐야이거" placeholder="제목"/><br /> <br /> 
+						
+							<input type="text" name="region_name" style="width: 60%" value="넌뭐야" placeholder="지역"/><br /> <br />
+				
+							<input type="text" id="start_date" name="start_date" value="2016-11-14" placeholder="시작일"> 
+							~ 
+							<input type="text" id="end_date" name="end_date" value="2016-11-18" placeholder="종료일"> <br /> <br />
+							
 							성별 조건: <br />
-							<div>
+							
 								남자 <input type="radio" name="condition_sex" value="1" /> 
 								여자 <input type="radio" name="condition_sex" value="2" /> 
 								조건없음 <input type="radio" name="condition_sex" value="3" />
-							</div>	<br /> 
+								<br /> 
 						
 							연령 조건: <br />
-							<div>
+							
 								20대 <input type="radio" name="condition_age" value="1" /> 
 								30대 <input type="radio" name="condition_age" value="2" /> 
 								40대 <input type="radio" name="condition_age" value="3" /> 
 								50대 <input type="radio" name="condition_age" value="4" />
-							</div> <br />
+							 <br />
 							
-							<input type="submit" value="전송"><br /><br />
-						
-						</form>
-						
-						
-						<form action="send" method="post" id="frm">
 							<textarea name="content" id="smarteditor" rows="10"
-								cols="100" style="width: 766px; height: 412px;">
-							</textarea><br /><br />		
-							
-							
-							
+								cols="100" style="width: 766px; height: 412px;">	
+							</textarea><br /><br />									
 						</form>	
 						
 					<input type="button" id="savebutton" value="서버전송" />
@@ -248,9 +259,7 @@ http://www.templatemo.com/tm-406-flex
 
 				</div>
 				
-			<div id="hiddenphoto">
-				
-			</div>
+			
 				
 			</div>
 			<!-- /.row -->
