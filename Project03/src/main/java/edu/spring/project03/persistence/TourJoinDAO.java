@@ -11,7 +11,7 @@ public interface TourJoinDAO {
 	// 리스트 검색
 	public abstract List<TourJoinVO> selectList(int trip_no);
 	// 개인정보 검색
-	public abstract PersonalVO selectPerson(int mno);
+	public abstract List<PersonalVO> selectPerson(int trip_no);
 	// 승인수정
 	public abstract int updateApproval(int approval, int list_no);
 	// 신청

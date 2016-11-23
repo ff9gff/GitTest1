@@ -54,13 +54,13 @@ public class TourJoinRESTController {
 	
 	// 해당 신청자의 프로필을 읽어오는 메소드
 	@RequestMapping(value="/person/{no}", method=RequestMethod.GET)
-	public ResponseEntity<PersonalVO> readPerson(@PathVariable("no") Integer mno){
-		PersonalVO vo = service.readPerson(mno);
-		ResponseEntity<PersonalVO> entity = null;
-		if(vo != null){ // select 성공
-			entity = new ResponseEntity<>(vo, HttpStatus.OK);
+	public ResponseEntity<List<PersonalVO>> readPerson(@PathVariable("no") Integer trip_no){
+		List<PersonalVO> list = service.readPerson(trip_no);
+		ResponseEntity<List<PersonalVO>> entity = null;
+		if(list != null){ // select 성공
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
 		}else{ // select 실패
-			entity = new ResponseEntity<>(vo, HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 		}// end if
 		return entity;
 	}

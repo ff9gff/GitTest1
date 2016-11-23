@@ -85,11 +85,11 @@ width: 80px;
 <div class="apply_panel">
 	<div class="applicant_panel">
 		<table id="applicants"></table>
-			<tr>
+<!-- 			<tr>
 				<th class="apply_th"><input id="allCheck" type="checkbox"/></th>
 				<th class="apply_th">닉네임</th>
 				<th class="apply_th">성별</th>
-			</tr>
+			</tr> -->
 	</div>
 	<div id="test"></div>
 	<button type="button" class="applicant_button" id="apply_ok">수락하기</button>
@@ -411,29 +411,63 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
 	var trip_no = 1;
+	var applylist = [];
+	var personlist = [];
+	var start = false;
+	getAlldata();
+
 	
-	getAllApply();
 	
 	// DB에서 해당 글번호(trip_no)의 모든 신청자들을 읽어오는 함수 정의
-	function getAllApply(){
-		var url = '/project03/tour/detail/apply/all/'+trip_no;
-		
-		$.getJSON(url, function(data){
-			var tr = '<tr>'+'<th class="apply_th"><input id="allCheck" type="checkbox"/></th>'
-				+'<th class="apply_th">닉네임</th>'
-				+'<th class="apply_th">성별</th>'
-			+'</tr>';
-			
+	function getAlldata(){
+
+		var url1 = '/project03/tour/detail/apply/all/'+trip_no;
+		$.getJSON(url1, function(data){
 			$(data).each(function(){
-				tr += '<tr>'
-					+'<td class="apply_td"><input name="rowcheck" type="checkbox" value="'+this.list_no+'"/></td>'
-					+'<td class="apply_td">'+'</td>'
-					+'<td class="apply_td">'+'</td>'
-				+'</tr>'
-			});// end data.each
+				applylist.push({list_no: this.list_no, mno: this.mno, approval: this.approval, person:{}});	
+				
+			});
 			
+			var url2 = '/project03/tour/detail/apply/person/'+trip_no;
+			$.getJSON(url2, function(data){
+				$(data).each(function(){
+					personlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce})
+				
+				
+				});
+				for(var i=0; i<applylist.length; i++){
+					for(var j=0; j<personlist.length; j++){
+						if(applylist[i].mno == personlist[j].mno){
+							applylist[i].person = personlist[j];	
+						}
+					}// end for(j)
+				}// end for(i)
+				getAllApply();
+			}); // end getJSON
 		}); // end getJSON
+	}// end getAllApply()
+	
+	function getAllApply(){
+		var tr = '<tr>'
+					+'<th class="apply_th"><input id="allCheck" type="checkbox"/></th>'
+					+'<th class="apply_th">닉네임</th>'
+					+'<th class="apply_th">성별</th>'
+				+'</tr>'
 		
+		for(var i=0; i<applylist.length; i++){
+			tr+= '<tr>'
+					+'<td class="apply_td"><input name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>'
+					+'<td class="apply_td">'+applylist[i].person["nickname"]+'</td>'
+					+'<td class="apply_td">';
+					if(applylist[i].person["sex"] == 0){
+						tr+='여자'+'</td></tr>';
+					}else{
+						tr+='남자'+'</td></tr>';
+					}
+		}// end for(i)
+		
+		$('#applicants').html(tr);
+				
 	}// end getAllApply()
 
 }); // end document.ready();

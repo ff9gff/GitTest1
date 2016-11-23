@@ -13,7 +13,7 @@
 	
 	<select id = "selectperson" resultType="edu.spring.project03.domain.PersonalVO">
 		select * from wm_personal
-		where mno = #{mno}
+		where mno in (select mno from wm_tour_join where trip_no = #{trip_no})
 	</select>
 	
 	<update id="updateapproval">
