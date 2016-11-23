@@ -412,7 +412,29 @@ $(document).ready(function(){
 $(document).ready(function(){
 	var trip_no = 1;
 	
-
+	getAllApply();
+	
+	// DB에서 해당 글번호(trip_no)의 모든 신청자들을 읽어오는 함수 정의
+	function getAllApply(){
+		var url = '/project03/tour/detail/apply/all/'+trip_no;
+		
+		$.getJSON(url, function(data){
+			var tr = '<tr>'+'<th class="apply_th"><input id="allCheck" type="checkbox"/></th>'
+				+'<th class="apply_th">닉네임</th>'
+				+'<th class="apply_th">성별</th>'
+			+'</tr>';
+			
+			$(data).each(function(){
+				tr += '<tr>'
+					+'<td class="apply_td"><input name="rowcheck" type="checkbox" value="'+this.list_no+'"/></td>'
+					+'<td class="apply_td">'+'</td>'
+					+'<td class="apply_td">'+'</td>'
+				+'</tr>'
+			});// end data.each
+			
+		}); // end getJSON
+		
+	}// end getAllApply()
 
 }); // end document.ready();
 </script>
