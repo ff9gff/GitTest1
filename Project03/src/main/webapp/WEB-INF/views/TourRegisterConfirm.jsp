@@ -2,111 +2,79 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-<head>
-<meta charset="utf-8">
-<title>같이가자</title>
-<meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 
-Flex Template 
-http://www.templatemo.com/tm-406-flex
--->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+	<head>
+		<meta charset="utf-8">
+		<title>같이가자</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-
-<script
-	src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
-<script type="text/javascript"
-	src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
-
-<style>
-.searchRegion {
-	display: none;
-}
-
-.wrap textarea {
-	width: 100%;
-}
-
-
-</style>
-
-
-
-
-</head>
-<body>
-	<!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
-
-	<%@ include file="top_header.jspf"  %>
-
-
-	<div class="site-main" id="sTop" style="background-color: green;">
-		<div class="site-header">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+		<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
+		<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+		<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+		<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+		
+		<style>
+			.searchRegion {
+				display: none;
+			}
+			
+			.wrap textarea {
+				width: 100%;
+			}
+		</style>
+	</head>
 	
-			<!-- /.container -->
-			<div class="main-header">
-				<div class="container">
-					<div id="menu-wrapper">
-						<div class="row">
-							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
-							</div>
-							<!-- /.logo-wrapper -->
-							<div class="col-md-10 col-sm-10 main-menu text-right">
-								<div class="toggle-menu visible-sm visible-xs">
-									<i class="fa fa-bars"></i>
-								</div>
-								<ul class="menu-first">
-									<li><a href="index">메인</a></li>
-									<li><a href="admin">관리자</a></li>
-									<li><a href="login">로그인</a></li>
+	<body>
+		<%@ include file="top_header.jspf"  %>
 
-
-
-								</ul>
-							</div>
-							<!-- /.main-menu -->
-						</div>
-						<!-- /.row -->
-					</div>
-					<!-- /#menu-wrapper -->
-				</div>
+		<div class="site-main" id="sTop" style="background-color: green;">
+			<div class="site-header">
 				<!-- /.container -->
+				<div class="main-header">
+					<div class="container">
+						<div id="menu-wrapper">
+							<div class="row">
+								<div class="logo-wrapper col-md-2 col-sm-2">
+									<h1>
+										<a href="#">hello </a>
+									</h1>
+								</div>
+								<!-- /.logo-wrapper -->
+								<div class="col-md-10 col-sm-10 main-menu text-right">
+									<div class="toggle-menu visible-sm visible-xs">
+										<i class="fa fa-bars"></i>
+									</div>
+									
+									<ul class="menu-first">
+										<li><a href="index">메인</a></li>
+										<li><a href="admin">관리자</a></li>
+										<li><a href="login">로그인</a></li>
+									</ul>
+								</div>
+								<!-- /.main-menu -->
+							</div>
+							<!-- /.row -->
+						</div>
+						<!-- /#menu-wrapper -->
+					</div>
+					<!-- /.container -->
+				</div>
+				<!-- /.main-header -->
 			</div>
-			<!-- /.main-header -->
-		</div>
-		<!-- /.site-header -->
-		<div class="site-slider">
+			
+			<!-- /.site-header -->
+			<div class="site-slider">
+			
 			<div class="slider">
 				<div class="flexslider">
 					<ul class="slides">
@@ -115,12 +83,9 @@ http://www.templatemo.com/tm-406-flex
 							src="resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>여행 등록 정보 확인</h2>
-
 								<br /> <br />
-
 							</div>
 						</li>
-
 					</ul>
 				</div>
 				<!-- /.flexslider -->
@@ -169,6 +134,10 @@ http://www.templatemo.com/tm-406-flex
 			$("#cancelbutton").click(function() {
 				location = 'cancelTourRegister';
 			}) */
+			
+			$("#homebutton").click(function() {
+				location = 'index';
+			})
 		})
 	</script>
 
@@ -213,6 +182,7 @@ http://www.templatemo.com/tm-406-flex
 						
 					<input type="button" id="updatebutton" value="수정" />
 					<input type="button" id="deletebutton" value="삭제" />
+					<input type="button" id="homebutton" value="홈으로" />
 
 				</div>
 				
@@ -245,14 +215,9 @@ http://www.templatemo.com/tm-406-flex
 	<!-- /#footer -->
 
 
-
 	<script src="resources/theme/js/bootstrap.js"></script>
 	<script src="resources/theme/js/plugins.js"></script>
 	<script src="resources/theme/js/main.js"></script>
-	
-	<script>
-		console.log($('#se2_iframe').val());
-	</script>
 
 </body>
 </html>
