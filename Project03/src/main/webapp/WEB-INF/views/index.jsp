@@ -257,7 +257,7 @@ http://www.templatemo.com/tm-406-flex
 
 					<p>
 						<div>
-							<form action="TourRegister" method="post">
+							<form action="GoRegister" method="post">
 								<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
 							</form>
 							<a href="TourRegister"></a>

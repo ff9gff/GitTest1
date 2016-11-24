@@ -334,7 +334,7 @@
     	var tempFile,
     		sUploadURL;
     	
-    	sUploadURL= '/project03/multiplePhotoUpload';     //다중파일업로드 URL
+    	sUploadURL= '/project03/multiplePhotoUpload'; //다중파일업로드 URL
     	
     	//파일을 하나씩 보내고, 결과를 받음.
     	for(var j=0, k=0; j < nImageInfoCnt; j++) {
@@ -480,6 +480,7 @@
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
  			sUrl  : '/project03/photoUpload', //파일업로드시 동작되는 컨트롤러 url
  			sCallback : '/resources/smarteditor/photo_uploader/popup/callback.html',  //업로드 이후  redirect 페이지 url
+
  	    	sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//허용할 파일의 형식. ex) "*", "*.*", "*.jpg", 구분자(;)	
  	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP 확장자만 가능합니다',	//허용할 파일의 형식이 아닌경우에 띄워주는 경고창의 문구
  	    	bAutoUpload : false,									 	//파일이 선택됨과 동시에 자동으로 업로드를 수행할지 여부 (upload 메소드 수행)
@@ -504,6 +505,7 @@
  	    	},
  	    	success : function(oCustomEvent) {
  	    		alert("success");
+
  	    		// 업로드가 성공적으로 완료되었을 때 발생
  	    		// oCustomEvent(이벤트 객체) = {
  	    		//	htResult (Object ) 서버에서 전달해주는 결과 객체 (서버 설정에 따라 유동적으로 선택가능)

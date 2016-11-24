@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -19,130 +19,65 @@ Flex Template
 http://www.templatemo.com/tm-406-flex
 -->
 <link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
+   href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+   rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+   href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
 <link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+   href="<c:url value="/resources/theme/css/font-awesome.css"/>">
 <link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/animate.css"/>">
+   href="<c:url value="/resources/theme/css/animate.css"/>">
 <link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+   href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
 <link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+   href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
 <link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+   href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script
-	src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+   src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 <script type="text/javascript"
-	src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+   src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <style>
 .searchRegion {
-	display: none;
+   display: none;
 }
 
 .wrap textarea {
-	width: 100%;
+   width: 100%;
 }
 
 
 </style>
 
 
+<script>
+$(document.ready(function(){
+    $("a.submitforms").click(function(){
+       $('form.register').each(function(){
+           Form = $(this);
+           payload = $(Form).serialize();
+
+          //Send payload via Ajax.
+       });
+    });
+}));
+</script>
+
+
+
 
 
 </head>
 <body>
-	<!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
 
 
-
-
-	<div class="site-main" id="sTop">
-		<div class="site-header">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<ul class="social-icons">
-							<li><a href="#" class="fa fa-facebook"></a></li>
-							<li><a href="#" class="fa fa-twitter"></a></li>
-							<li><a href="#" class="fa fa-dribbble"></a></li>
-							<li><a href="#" class="fa fa-linkedin"></a></li>
-						</ul>
-					</div>
-					<!-- /.col-md-12 -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
-			<div class="main-header">
-				<div class="container">
-					<div id="menu-wrapper">
-						<div class="row">
-							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
-							</div>
-							<!-- /.logo-wrapper -->
-							<div class="col-md-10 col-sm-10 main-menu text-right">
-								<div class="toggle-menu visible-sm visible-xs">
-									<i class="fa fa-bars"></i>
-								</div>
-								<ul class="menu-first">
-									<li><a href="index">메인</a></li>
-									<li><a href="admin">관리자</a></li>
-									<li><a href="login">로그인</a></li>
-
-
-
-								</ul>
-							</div>
-							<!-- /.main-menu -->
-						</div>
-						<!-- /.row -->
-					</div>
-					<!-- /#menu-wrapper -->
-				</div>
-				<!-- /.container -->
-			</div>
-			<!-- /.main-header -->
-		</div>
-		<!-- /.site-header -->
-		<div class="site-slider">
-			<div class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="overlay"></div> <img
-							src="resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>여행 등록</h2>
-
-								<br /> <br />
-
-							</div>
-						</li>
-
-					</ul>
-				</div>
-				<!-- /.flexslider -->
-			</div>
-			<!-- /.slider -->
-		</div>
-		<!-- /.site-slider -->
-	</div>
-	<!-- /.site-main -->
 
 	<script>
 		$(function() {
@@ -182,85 +117,92 @@ http://www.templatemo.com/tm-406-flex
 			$("#cancelbutton").click(function() {
 				location = 'cancelTourRegister';
 			})
+			
+			$("#homebutton").click(function() {
+				location = 'index';
+			})
 		})
 	</script>
 
 
 
-	<div class="content-section" id="services">
-		<div class="container">
-			<div class="row">
-			
-				<!-- /.heading-section -->
-				<div class="heading-section">
-					<h2>여행 등록</h2>
-				</div>
+
+   <div class="content-section" id="services">
+      <div class="container">
+         <div class="row">
+         
+            <!-- /.heading-section -->
+            <div class="heading-section">
+               <h2>여행 등록</h2>
+            </div>
+
+
 
 				<div class="wrap">
 
-						<!-- <form action="insertTour" method="post">
+					<div>
+					 	대표 이미지: 
+						<form action="./upload" method="post" enctype="multipart/form-data">
+							<input type="file" name="imageFile"><br>
+							<input type="submit" value="전송">
+						</form>
+					</div><br />
+		
+					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
+					
+						<c:choose>
+							<c:when test="${imageFile != null }">
+							<%-- 파일 업로드 완료
+							<ul>
+								<li>파일 ID : ${imageFile.id }</li>
+								<li>저장된 파일 이름 : ${imageFile.fileName }</li>
+								<li>파일 길이 : ${imageFile.contentLength }</li>
+								<li>MIME 타입 : ${imageFile.contentType }</li>
+							</ul>
+							 --%>
+							<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
+							</c:when>
+						</c:choose><br /><br />
+					
 							
-							<input type="hidden" name="trip_no" value='1' readonly="readonly" /> 
-							
-							<input type="hidden" name="mno" value='2' readonly="readonly" /> 
+						<input type="hidden" name="mno" value="112" readonly="readonly" /> 
+					
+						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
+					
+						<input type="text" name="region_name" style="width: 60%" placeholder="지역"/><br /> <br />
+			
+						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
+						~ 
+						<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
 						
-							<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
-						
-							<input type="text" name="region_name" style="width: 60%" placeholder="지역"/><br /> <br />
-				
-							<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
-							~ 
-							<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
-							
-						
-							
-							
-							<input type="submit" value="전송"><br /><br />
-						
-						</form> -->
-						
-						
-						<form action="send" method="post" id="frm">
-						
-							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
-								
-							<input type="hidden" name="mno" value="2" readonly="readonly" /> 
-						
-							<input type="text" name="title" style="width: 60%" value="뭐야이거" placeholder="제목"/><br /> <br /> 
-						
-							<input type="text" name="region_name" style="width: 60%" value="넌뭐야" placeholder="지역"/><br /> <br />
-				
-							<input type="text" id="start_date" name="start_date" value="2016-11-14" placeholder="시작일"> 
-							~ 
-							<input type="text" id="end_date" name="end_date" value="2016-11-18" placeholder="종료일"> <br /> <br />
-							
+						<div>
 							성별 조건: <br />
-							
-								남자 <input type="radio" name="condition_sex" value="1" /> 
-								여자 <input type="radio" name="condition_sex" value="2" /> 
-								조건없음 <input type="radio" name="condition_sex" value="3" />
-								<br /> 
-						
+							남자 <input type="radio" name="condition_sex" value="1" /> 
+							여자 <input type="radio" name="condition_sex" value="2" /> 
+							조건없음 <input type="radio" name="condition_sex" value="3" />
+						</div><br />
+					
+						<div>
 							연령 조건: <br />
-							
-								20대 <input type="radio" name="condition_age" value="1" /> 
-								30대 <input type="radio" name="condition_age" value="2" /> 
-								40대 <input type="radio" name="condition_age" value="3" /> 
-								50대 <input type="radio" name="condition_age" value="4" />
-							 <br />
-							
-							<textarea name="content" id="smarteditor" rows="10"
-								cols="100" style="width: 766px; height: 412px;">	
-							</textarea><br /><br />									
-						</form>	
+							20대 <input type="radio" name="condition_age" value="1" /> 
+							30대 <input type="radio" name="condition_age" value="2" /> 
+							40대 <input type="radio" name="condition_age" value="3" /> 
+							50대 <input type="radio" name="condition_age" value="4" />
+						 </div><br />		 
+						 
 						
-					<input type="button" id="savebutton" value="서버전송" />
+						<textarea name="content" id="smarteditor" rows="10"
+							cols="100" style="width: 766px; height: 412px;">	
+						</textarea><br /><br />		
+													
+					</form>	
+
+					<input type="button" id="savebutton" value="작성" />
 					<input type="button" id="cancelbutton" value="취소" />
+					<input type="button" id="homebutton" value="홈으로" />
 
 				</div>
-				
-			
-				
+
 			</div>
 			<!-- /.row -->
 		</div>
@@ -296,6 +238,7 @@ http://www.templatemo.com/tm-406-flex
 	<script>
 		console.log($('#se2_iframe').val());
 	</script>
+
 
 </body>
 </html>

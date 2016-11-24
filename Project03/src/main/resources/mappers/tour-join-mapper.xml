@@ -6,15 +6,26 @@
 <mapper namespace="edu.spring.project03.TourJoinMapper">
 	
 	<select id="selectlist" resultType="edu.spring.project03.domain.TourJoinVO">
-		select t.trip_no, t.list_no, t.mno, t.approval,
-		p.name, p.sex, p.age, p.nickname,p.introduce
-		from wm_tour_join t, wm_personal p
-		where trip_no = #{trip_no} and t.mno = p.mno
-		order by list_no asc
+		select * from wm_tour_join
+		where trip_no = #{trip_no}
+		order by approval asc
 	</select>
 	
+	<select id = "selectperson" resultType="edu.spring.project03.domain.PersonalVO">
+		select * from wm_personal
+		where mno in (select mno from wm_tour_join where trip_no = #{trip_no})
+	</select>
 	
+	<update id="updateapproval">
+		update wm_tour_join
+		set approval = #{approval}
+		where list_no = #{list_no}
+	</update>
 	
+	<insert id="insert">
+		insert into wm_tour_join (trip_no, mno, approval)
+		values(#{trip_no},#{mno},0)
+	</insert>
 
 
 </mapper>

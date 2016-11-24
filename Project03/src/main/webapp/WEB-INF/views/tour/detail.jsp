@@ -74,6 +74,32 @@ width: 80px;
 	padding:0;
 }
 
+#applicants table {
+    width:100%;
+    margin:15px 0;
+    border:0;
+}
+#applicants th {
+    background-color:#6d6f70;
+    color:#FFFFFF
+}
+#applicants,#applicants th,#applicants td {
+    font-size:0.95em;
+    text-align:center;
+    padding:4px;
+    border-collapse:collapse;
+}
+#applicants th,#applicants td {
+    border: 1px solid #6d6f70;
+    border-width:1px 0 1px 0
+}
+#applicants tr {
+	background-color:#fdfdfd;
+    border: 1px solid #6d6f70;
+}
+
+
+
 </style>
 </head>
 <body>
@@ -85,11 +111,7 @@ width: 80px;
 <div class="apply_panel">
 	<div class="applicant_panel">
 		<table id="applicants"></table>
-			<tr>
-				<th class="apply_th"><input id="allCheck" type="checkbox"/></th>
-				<th class="apply_th">닉네임</th>
-				<th class="apply_th">성별</th>
-			</tr>
+
 	</div>
 	<div id="test"></div>
 	<button type="button" class="applicant_button" id="apply_ok">수락하기</button>
@@ -412,8 +434,91 @@ $(document).ready(function(){
 $(document).ready(function(){
 	var trip_no = 1;
 	
+	// wm_tour_join 리스트
+	var applylist = [];
+	// wm_personal 리스트
+	var personlist = [];
+
+	getAlldata();
+	
+	// DB에서 해당 글번호(trip_no)의 모든 신청자들을 읽어오는 함수 정의
+	function getAlldata(){
+
+		var url1 = '/project03/tour/detail/apply/all/'+trip_no;
+		$.getJSON(url1, function(data){
+			$(data).each(function(){
+				applylist.push({list_no: this.list_no, mno: this.mno, approval: this.approval, person:{}});	
+				
+			});
+			
+			var url2 = '/project03/tour/detail/apply/person/'+trip_no;
+			$.getJSON(url2, function(data){
+				$(data).each(function(){
+					personlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce})
+				
+				
+				});
+				for(var i=0; i<applylist.length; i++){
+					for(var j=0; j<personlist.length; j++){
+						if(applylist[i].mno == personlist[j].mno){
+							applylist[i].person = personlist[j];	
+						}
+					}// end for(j)
+				}// end for(i)
+				getAllApply();
+			}); // end getJSON
+		}); // end getJSON
+	}// end getAllApply()
+	
+	function getAllApply(){
+		var tr ='<tr class="apply_th">'
+					+'<th><input id="allCheck" type="checkbox"/></th>'
+					+'<th>닉네임</th>'
+					+'<th>성별</th>'
+					
+				+'</tr>' 
+		
+		for(var i=0; i<applylist.length; i++){
+			tr+= '<tr class="apply_td">'
+					+'<td><input name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>'
+					+'<td>'+applylist[i].person["nickname"]+'</td>'
+					+'<td>';
+					if(applylist[i].person["sex"] == 0){
+						tr+='여자'+'</td></tr>';
+					}else{
+						tr+='남자'+'</td></tr>';
+					}
+		}// end for(i)
+	
+		$('#applicants').html(tr);
+				
+	}// end getAllApply()
 
 
+	
+	// 체크박스 전체 선택
+	$('#applicants').on('click','#allCheck',function(){
+		var chkObj = document.getElementsByName("rowCheck");
+	      var rowCnt = chkObj.length - 1;
+	      var check = $(this).context.checked;
+	  
+	      if (check) {﻿
+	          for (var i=0; i<=rowCnt; i++){
+	           if(chkObj[i].type == "checkbox")
+	               chkObj[i].checked = true; 
+	          }
+	      } else {
+	          for (var i=0; i<=rowCnt; i++) {
+	           if(chkObj[i].type == "checkbox"){
+	               chkObj[i].checked = false; 
+	           }
+	          }
+	      }
+	}); // 체크박스 전체선택 끝
+	
+
+	
+	
 }); // end document.ready();
 </script>
 
