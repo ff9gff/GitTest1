@@ -122,6 +122,7 @@ width: 100px;
 	width: 700px;
 }
 
+
 </style>
 </head>
 <body>
@@ -509,9 +510,9 @@ $(document).ready(function(){
 		for(var i=0; i<applylist.length; i++){
 			tr+= '<tr class="apply_td">';
 			if(applylist[i].approval == 0){
-					tr+='<td class="table_check"><input name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>';
+					tr+='<td class="table_check"><input class="checked" name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>';
 			}else{
-				tr+='<td class="table_check"><input name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
+				tr+='<td class="table_check"><input class="check" name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
 			}
 					tr+='<td class="table_name">'+applylist[i].person["nickname"]+'</td>'
 					+'<td class="table_sex">';
@@ -531,8 +532,11 @@ $(document).ready(function(){
 		$('#applicants').html(tr);
 				
 	}// end getAllApply()
-
-
+	
+	
+	// ★★★수락 완료된부분 색변경하기 수정!!!★★★
+	console.log($('#applicants .apply_td .table_check .checked'));
+	$('#applicants .apply_td .table_check .checked').parentNode.parentNode.style.backgroundColor='#DBD9D9';
 	
 	// 체크박스 전체 선택
 	$('#applicants').on('click','#allCheck',function(){
@@ -544,15 +548,32 @@ $(document).ready(function(){
 	          for (var i=0; i<=rowCnt; i++){
 	           if(chkObj[i].type == "checkbox")
 	               chkObj[i].checked = true; 
+	           var styletr = chkObj[i].parentNode.parentNode;
+	           styletr.style.backgroundColor='#DBD9D9';
 	          }
 	      } else {
 	          for (var i=0; i<=rowCnt; i++) {
 	           if(chkObj[i].type == "checkbox"){
-	               chkObj[i].checked = false; 
+	               chkObj[i].checked = false;
+	               var styletr = chkObj[i].parentNode.parentNode;
+		           styletr.style.backgroundColor='#FFFFFF';
 	           }
 	          }
 	      }
+	 
 	}); // 체크박스 전체선택 끝
+	
+	// 체크박스 누를때마다 색 바꾸기
+	$('#applicants').on('click','.apply_td .table_check .check',function(){
+		 var styletr = this.parentNode.parentNode;
+		if(this.checked == true){
+	       	styletr.style.backgroundColor='#DBD9D9';
+		}
+		if(this.checked == false){
+		    styletr.style.backgroundColor='#FFFFFF';
+		}
+
+	});
 	
 	// 수락하기
 	$('#apply_ok').on('click',$(this),function(){
