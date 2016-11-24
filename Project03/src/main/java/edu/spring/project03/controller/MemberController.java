@@ -12,11 +12,14 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
@@ -29,6 +32,10 @@ public class MemberController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private JavaMailSenderImpl mailSender;
+	
 	
 	
 	@RequestMapping(value="/member_register01", method=RequestMethod.GET)
@@ -115,5 +122,64 @@ public class MemberController {
 			out.print("NOK");
 		} // end if		
 	} // checkid(request, response)
+	
+	@RequestMapping(value="email_auth", method=RequestMethod.POST)
+	public void email_auth(Model model, @RequestBody String email, HttpServletResponse response) throws IOException {
+		int code = (int) (Math.random()*10000);
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(email);
+		logger.info("메일 주소 : " + email);
+		message.setSubject("같이가자(With me) 회원가입 인증번호");
+		message.setText("인증번호: "+ code);
+		logger.info("보낸 코드 : "+ code);
+		mailSender.send(message);
+		
+		PrintWriter out = response.getWriter();
+		
+		if(code != 0 || code != Integer.valueOf("")) {
+//			out.print("OK");
+			out.print(code);
+//			model.addAttribute("code", code);			
+		}
+
+//		model.addAttribute("code", code);			
+	} // end email_auth(model, email)
+	
+	@RequestMapping(value="sign_up", method=RequestMethod.POST)
+	public String signUp(MemberVO membervo, PersonalVO personalvo, RedirectAttributes attr) {
+		logger.info("sign_up 호출...");
+		logger.info("아이디 : " + membervo.getUserid());
+		logger.info("비밀번호 : " + membervo.getPwd());
+		
+		int member_result = memberService.createMember(membervo);
+		
+		if(member_result == 1) {
+			logger.info("MemberVO insert");
+			
+			String userid = membervo.getUserid();
+			int mno = memberService.readMnobyUserid(userid);
+			
+			PersonalVO personal = new PersonalVO(mno, personalvo.getName(), personalvo.getSex(), personalvo.getAge(), personalvo.getNickname(), personalvo.getPhone(), personalvo.getAddress(), personalvo.getIntroduce(), personalvo.getEmail(), null);
+			
+			int personal_result = memberService.createPersional(personal);
+			
+			if(personal_result == 1) {
+				logger.info("PersonalVO insert");
+				attr.addFlashAttribute("insert_result", "success");
+			} else {
+				attr.addFlashAttribute("insert_result", "fail");
+			}
+			
+		} else {			
+			attr.addFlashAttribute("Member_insert_result", "fail");			
+		} // end if		
+		
+		return "redirect:/";
+	} // end signUp(membervo, personalvo, attr)
+	
+	
+	
+	
+	
 	
 } // end class MemberController

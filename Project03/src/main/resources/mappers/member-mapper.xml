@@ -12,16 +12,20 @@
 		select * from wm_member
 		where userid = #{userid} and pwd = #{pwd}
 	</select>
-    
-    <select id="select-by-userid2" resultType="Integer">
-    	select mno from wm_member where userid = #{userid}
-    </select>
-    
+  
     <!-- userid로 검색하는 SQL문 -->
     <select id="select-by-userid" resultType="String">
     	select userid from wm_member where userid = #{userid}
     </select>
     
+    <select id="select-by-userid2" resultType="Integer">
+    	select mno from wm_member where userid = #{userid}
+    </select>
+    
+    <insert id="member-insert">
+    	insert into wm_member(userid, pwd)
+    	values(#{userid}, #{pwd})
+    </insert>    
 
 
 <!-- WM_PERSONAL -->
@@ -33,6 +37,12 @@
 	<select id="select-by-nickname" resultType="String">
 		select nickname from wm_personal where nickname = #{nickname}
 	</select>
+
+    <insert id="personal-insert">
+    	insert into wm_personal(mno, name, sex, age, nickname, phone, address, introduce, email)
+    	values(#{mno}, #{name}, #{sex}, #{age}, #{nickname}, #{phone}, #{address}, #{introduce}, #{email})
+    </insert> 	
+	
     
     
     

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.PersonalVO;
 
 
 // 비즈니스 로직을 구현하는 인터페이스
@@ -11,11 +12,14 @@ import edu.spring.project03.domain.MemberVO;
 public interface MemberService {
 	
 	// MemberVO
-	public abstract MemberVO login(MemberVO vo);
+	public abstract MemberVO login(MemberVO membervo);
 	public abstract String readUserid(String userid);
+	public abstract int createMember(MemberVO membervo);
+	public abstract int readMnobyUserid(String userid);
 	
 	// PersonalVO
 	public abstract String readNickname(String nickname);
+	public abstract int createPersional (PersonalVO personalvo);
 	
 	
 	

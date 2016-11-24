@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.PersonalVO;
 
 
 //@Component // 스프링에서 Component 빈으로 관리
@@ -27,11 +28,15 @@ public class MemberDAOImpl implements MemberDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
+	
+	/*
+	 * MemberVO
+	 */
 	@Override
-	public MemberVO login(MemberVO vo) {
+	public MemberVO login(MemberVO membervo) {
 		logger.info("login() 호출...");			
 		
-		return sqlSession.selectOne(NAMESPACE + ".login", vo);
+		return sqlSession.selectOne(NAMESPACE + ".login", membervo);
 	} // end login(vo)
 	
 	@Override
@@ -42,12 +47,34 @@ public class MemberDAOImpl implements MemberDAO {
 	} // end select(userid)
 	
 	@Override
+	public int insertMember(MemberVO membervo) {
+		int member_result = sqlSession.insert(NAMESPACE + ".member-insert", membervo);
+		
+		return member_result;
+	} // end insertMember(membervo)
+	
+	@Override
+	public int selectUserMno(String userid) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select-by-userid2", userid); // Mno 리턴
+	} // end selectUserMno
+
+	
+	/*
+	 * PersonalVO
+	 */
+	@Override
 	public String selectNickname(String nickname) {
 		logger.info("selectNickname() 호출...");
 				
 		return sqlSession.selectOne(NAMESPACE + ".select-by-nickname", nickname);
 	} // end select(nickname)
 	
+	@Override
+	public int insertPersional(PersonalVO personalvo) {
+		
+		return sqlSession.insert(NAMESPACE + ".personal-insert", personalvo);
+	}// end insertPersional(personalvo) 
 	
 	
 
