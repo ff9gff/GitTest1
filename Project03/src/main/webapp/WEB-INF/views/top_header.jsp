@@ -18,7 +18,7 @@ b {
 </style>
 </head>
 <body>
-	<div class="site-main" style="height: 15%;">
+	<div>
 		<b>같이가자</b>
 		<div id="mini_header">
 			<c:if test="${empty login_id }">
