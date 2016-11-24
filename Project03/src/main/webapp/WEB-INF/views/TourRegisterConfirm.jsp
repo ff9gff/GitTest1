@@ -175,24 +175,24 @@
 								
 							<input type="hidden" name="mno" value="2" readonly="readonly" /> 
 						
-							<input type="text" name="title" style="width: 60%" value="${vo.title}" placeholder="제목"/><br /> <br /> 
+							<input type="text" name="title" style="width: 60%" value="${vo.title}" placeholder="제목" readonly="readonly"/><br /> <br /> 
 						
-							<input type="text" name="region_name" style="width: 60%" value="${vo2.region_name}" placeholder="지역"/><br /> <br />
+							<input type="text" name="region_name" style="width: 60%" value="${vo2.region_name}" placeholder="지역" readonly="readonly"/><br /> <br />
 				
-							<input type="text" id="start_date" name="start_date" value="${vo.start_date}" placeholder="시작일"> 
+							<input type="text" id="start_date" name="start_date" value="${vo.start_date}" placeholder="시작일" readonly="readonly"> 
 							~ 
-							<input type="text" id="end_date" name="end_date" value="${vo.end_date}" placeholder="종료일"> <br /> <br />
+							<input type="text" id="end_date" name="end_date" value="${vo.end_date}" placeholder="종료일" readonly="readonly"> <br /> <br />
 							
-							성별 조건: <input type="text" id="condition_sex" name="condition_sex" value="${vo.condition_sex}" placeholder="성별조건"> <br /> <br />
+							성별 조건: <input type="text" id="condition_sex" name="condition_sex" value="${vo.condition_sex}" placeholder="성별조건" readonly="readonly"> <br /> <br />
 						
-							연령 조건: <input type="text" id="condition_age" name="condition_age" value="${vo.condition_age}" placeholder="나이조건"> <br /> <br />
+							연령 조건: <input type="text" id="condition_age" name="condition_age" value="${vo.condition_age}" placeholder="나이조건" readonly="readonly"> <br /> <br />
 							
 				
 							 <br />
 							
-							<textarea name="content" id="smarteditor" rows="10"
-								cols="100" style="width: 766px; height: 412px;">${vo.content}	
-							</textarea><br /><br />									
+							<textarea rows="10" cols="100" style="width: 766px; height: 412px;">${vo.content}	
+							</textarea><br /><br />	
+															
 						</form>	
 						
 					<input type="button" id="updatebutton" value="수정" />
