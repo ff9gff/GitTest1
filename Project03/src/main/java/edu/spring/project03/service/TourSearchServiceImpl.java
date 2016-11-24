@@ -33,4 +33,10 @@ public class TourSearchServiceImpl implements TourSearchService {
 		return list;
 	}
 
+	@Override
+	public TourRegisterVO read_trip_by_no(int trip_no) {
+		TourRegisterVO vo = dao.select_trip_by_no(trip_no);
+		return vo;
+	}
+
 }

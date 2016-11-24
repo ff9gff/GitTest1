@@ -139,32 +139,11 @@ $(document.ready(function(){
 
 
 				<div class="wrap">
-
-					<div>
-					 	대표 이미지: 
-						<form action="./upload" method="post" enctype="multipart/form-data">
-							<input type="file" name="imageFile"><br>
-							<input type="submit" value="전송">
-						</form>
-					</div><br />
 		
 					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
 					
-						<c:choose>
-							<c:when test="${imageFile != null }">
-							<%-- 파일 업로드 완료
-							<ul>
-								<li>파일 ID : ${imageFile.id }</li>
-								<li>저장된 파일 이름 : ${imageFile.fileName }</li>
-								<li>파일 길이 : ${imageFile.contentLength }</li>
-								<li>MIME 타입 : ${imageFile.contentType }</li>
-							</ul>
-							 --%>
-							<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
-							</c:when>
-						</c:choose><br /><br />
+						<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					
-							
 						<input type="hidden" name="mno" value="112" readonly="readonly" /> 
 					
 						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 

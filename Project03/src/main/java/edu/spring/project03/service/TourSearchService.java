@@ -12,5 +12,7 @@ public interface TourSearchService {
 	public abstract List<ImgVO> read_region_date(TourRegisterVO vo);
 
 	public abstract List<ImgVO> read_region_image(ImgVO vo);
+	
+	public abstract TourRegisterVO read_trip_by_no(int trip_no);
 
 }

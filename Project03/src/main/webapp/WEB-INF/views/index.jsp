@@ -307,7 +307,7 @@ http://www.templatemo.com/tm-406-flex
 					<c:forEach var="image" items="${imageList}">
 						<div class="portfolio-item col-md-3 col-sm-6">
 							<div class="portfolio-thumb">
-								<a href="FTourRegister">"${image.img_url}"
+								<a href="FTourRegister"><img src ="${image.img_url}"
 									width="300" height="200"></a>
 							</div>
 							<!-- /.portfolio-thumb -->

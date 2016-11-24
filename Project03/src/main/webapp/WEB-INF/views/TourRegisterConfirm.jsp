@@ -122,7 +122,7 @@
 			});
 
 			//전송버튼 클릭이벤트
-			$("#insertbutton").click(function() {
+			$("#updatebutton").click(function() {
 				//id가 smarteditor인 textarea에 에디터에서 대입
 				editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 				// 이부분에 에디터 validation 검증
@@ -131,13 +131,14 @@
 				$("#frm").submit();
 			})
 			
-			$("#updatebutton").click(function() {
-				location = 'GoRegister';
-			})
-			
 			$("#homebutton").click(function() {
 				location = 'index';
 			})
+			
+			$("#deletebutton").click(function() {
+				location = 'GoRegister';
+			})
+			
 		})
 	</script>
 
@@ -155,6 +156,20 @@
 				<div class="wrap">				
 						
 						<form action="TourRegisterComplete" method="post" id="frm">
+						
+							<c:choose>
+								<c:when test="${imageFile != null }">
+								<%-- 파일 업로드 완료
+								<ul>
+									<li>파일 ID : ${imageFile.id }</li>
+									<li>저장된 파일 이름 : ${imageFile.fileName }</li>
+									<li>파일 길이 : ${imageFile.contentLength }</li>
+									<li>MIME 타입 : ${imageFile.contentType }</li>
+								</ul>
+								 --%>
+								<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
+								</c:when>
+							</c:choose><br /><br />
 						
 							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
 								
@@ -180,10 +195,10 @@
 							</textarea><br /><br />									
 						</form>	
 						
-					<input type="button" id="insertbutton" value="등록" />	
 					<input type="button" id="updatebutton" value="수정" />
 					<input type="button" id="cancelbutton" value="취소" />
-
+					<input type="button" id="homebutton" value="홈으로" />
+					
 				</div>
 				
 			

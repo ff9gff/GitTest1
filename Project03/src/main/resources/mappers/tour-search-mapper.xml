@@ -25,6 +25,11 @@
 		where board_type = #{board_type} and content_no = #{content_no} 
 		and photo_no = #{photo_no}
 	</select>
+	
+	<select id="select_trip_by_no" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
+		where trip_no = #{trip_no}
+	</select>
 
 
 

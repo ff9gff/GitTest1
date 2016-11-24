@@ -6,8 +6,18 @@
   <mapper namespace="edu.spring.Project03.TourRegisterMapper">
   
     <insert id="insert-register">
-    insert into wm_tour(mno, title, condition_sex, condition_age, content, start_date, end_date)
-    values (#{mno}, #{title}, #{condition_sex}, #{condition_age}, #{content}, #{start_date}, #{end_date})
+	    insert into wm_tour(mno, title, condition_sex, condition_age, content, start_date, end_date)
+	    values (#{mno}, #{title}, #{condition_sex}, #{condition_age}, #{content}, #{start_date}, #{end_date})
     </insert>
+    
+    <insert id="insert-thumnail">
+	    insert into wm_image(board_type, content_no, img_url)
+		values (#{board_type}, #{content_no}, #{img_url})
+    </insert>
+    
+    <select id="select-trip_no" resultType="Integer">
+    	select trip_no from wm_tour
+    	where content = #{content}
+    </select>
     
   </mapper>

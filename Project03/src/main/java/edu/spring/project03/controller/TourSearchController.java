@@ -22,8 +22,11 @@ public class TourSearchController {
 
 	@Autowired 
 	private AdminService adminService;
+	
 	@Autowired
 	private TourSearchService tourSelectService;
+	
+	
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public void main() {
@@ -108,8 +111,13 @@ public class TourSearchController {
 	}
 	
 	@RequestMapping(value="/FTourRegister" ,method=RequestMethod.GET)
-	public void test10(){
+	public void test10(int trip_no, Model model){
 		logger.info("FTourRegister.jsp 소환");
+		logger.info("trip_no: " + trip_no);
+		
+		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
+		
+		model.addAttribute("tourVO", tourVO);
 		
 	}
 	

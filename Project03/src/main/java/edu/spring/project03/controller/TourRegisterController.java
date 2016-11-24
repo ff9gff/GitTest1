@@ -3,6 +3,7 @@ package edu.spring.project03.controller;
 import java.io.File;
 import java.util.UUID;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -13,18 +14,28 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import edu.spring.project03.domain.ImageFile;
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PhotoVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
-
+import edu.spring.project03.service.ImageService;
+import edu.spring.project03.service.ImageView;
 import edu.spring.project03.service.TourRegisterService;
 
 @Controller
 public class TourRegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(TourRegisterController.class);
+	
+	public static final String SAVE_IMAGE_DIR = "resources/photo_upload/";
+	
+	private int TourRegisterID = 1;
 
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정
@@ -40,6 +51,10 @@ public class TourRegisterController {
 
 	@Autowired
 	private TourRegisterService service;
+	
+	@Resource(name="imageView") ImageView imageView;
+	
+	@Autowired ImageService imageService;
 
 	// 단일파일업로드
 	@RequestMapping(value = "/photoUpload", method = RequestMethod.POST)
@@ -94,25 +109,39 @@ public class TourRegisterController {
 
 	// 여행 일정이 잘 작성되었는지 확인하러 가자
 	@RequestMapping(value = "/TourRegisterConfirm", method = RequestMethod.POST)
-	public void submit(TourRegisterVO vo, RegionVO vo2, Model model) {
+	public void submit(TourRegisterVO vo, RegionVO vo2, @RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
+
+		ImageFile fileInfo = imageService.save(imageFile);
+		
+		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
 
 		if (vo != null && vo2 != null) {
-
-			logger.info("insertTour() 호출!");
-			logger.info("여행 제목: " + vo.getTitle());
-			// logger.info("여행 지역: " + vo2.getRegion_name());
-			logger.info("시작 날짜: " + vo.getStart_date());
-			logger.info("종료 날짜: " + vo.getEnd_date());
-			logger.info("성별 조건: " + vo.getCondition_sex());
-			logger.info("나이 조건: " + vo.getCondition_age());
-
+			
+		
+			
 			model.addAttribute("vo", vo);
 			// model.addAttribute("vo2", vo2);
+			modelMap.put("imageFile", fileInfo);
 
 			// 이상 없으면 DB insert!
 			int result = service.create(vo);
+			
 			if (result == 1) { // DB insert 성공
 				logger.info("여행 등록 성공");
+				
+				int content_no = service.readTrip_no(vo.getContent());
+				
+				ImgVO vo3 = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+				
+				int result2 = service.createThumnail(vo3);
+				
+				
+				if (result2 == 1) {
+					logger.info("썸네일 등록 성공");
+				} else {
+					logger.info("썸네일 등록 실패");
+				}
+				
 			} else { // DB insert 실패
 				logger.info("여행 등록 실패");
 			}
