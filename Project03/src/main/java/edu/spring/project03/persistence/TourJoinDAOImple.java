@@ -36,6 +36,8 @@ public class TourJoinDAOImple implements TourJoinDAO {
 	
 	@Override
 	public int updateApproval(int approval, int list_no) {
+		System.out.println("approval="+approval);
+		System.out.println("list_no="+list_no);
 		Map<String, Integer> value = new HashMap<>();
 		value.put("approval", approval);
 		value.put("list_no", list_no);

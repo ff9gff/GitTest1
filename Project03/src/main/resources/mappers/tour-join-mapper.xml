@@ -8,7 +8,7 @@
 	<select id="selectlist" resultType="edu.spring.project03.domain.TourJoinVO">
 		select * from wm_tour_join
 		where trip_no = #{trip_no}
-		order by approval asc
+		order by approval desc
 	</select>
 	
 	<select id = "selectperson" resultType="edu.spring.project03.domain.PersonalVO">
