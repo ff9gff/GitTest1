@@ -1,11 +1,22 @@
 package edu.spring.project03.controller;
 
+
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+
+
+import java.io.File;
+
+import java.util.UUID;
+
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +28,7 @@ import edu.spring.project03.domain.ImageFile;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.ImageService;
 import edu.spring.project03.service.ImageView;
+
 
 @Controller
 public class TestController {
@@ -34,7 +46,7 @@ public class TestController {
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
 	
-@Resource(name="imageView") ImageView imageView;
+	@Resource(name="imageView") ImageView imageView;
 	
 	@Autowired ImageService imageService;
 	
@@ -68,5 +80,11 @@ public class TestController {
 		
 		return imageView;
 	}
+
+	@RequestMapping("/form")
+	public String form() {
+		return "form";
+	}
+
 
 }

@@ -3,12 +3,12 @@ package edu.spring.project03.controller;
 import java.io.File;
 import java.util.UUID;
 
-
 import javax.servlet.http.HttpServletRequest;
-
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -16,12 +16,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
 import edu.spring.project03.domain.PhotoVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
-import java.util.regex.Pattern;
+import edu.spring.project03.service.TourRegisterService;
 
 @Controller
 public class TourRegisterController {
@@ -38,49 +37,17 @@ public class TourRegisterController {
 
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
-	
-	
-	
 
-	@RequestMapping("/cancelTourRegister")
-	public String tourRegister() {
-		return "TourRegister";
-	}
-
-	@RequestMapping(value = "/TourRegisterConfirm", method = RequestMethod.POST)
-	public void submit(TourRegisterVO vo, RegionVO vo2, Model model) {
-
-		if (vo != null && vo2 != null) {
-
-			logger.info("insertTour() 호출!");
-			logger.info("여행 제목: " + vo.getTitle());
-			logger.info("여행 지역: " + vo2.getRegion_name());
-			logger.info("시작 날짜: " + vo.getStart_date());
-			logger.info("종료 날짜: " + vo.getEnd_date());
-			logger.info("성별 조건: " + vo.getCondition_sex());
-			logger.info("나이 조건: " + vo.getCondition_age());
-			
-			Pattern imgTagPattern = Pattern.compile(vo.getContent());
-			
-			logger.info("이미지 태그 분리: " + imgTagPattern);
-			
-			
-			model.addAttribute("vo", vo);
-			model.addAttribute("vo2", vo2);
-
-		} else {
-			logger.info("응 실패^^");
-		}
-
-	}
+	@Autowired
+	private TourRegisterService service;
 
 	// 단일파일업로드
-	@RequestMapping(value="/photoUpload", method = RequestMethod.POST)
+	@RequestMapping(value = "/photoUpload", method = RequestMethod.POST)
 	public String photoUpload(HttpServletRequest request, TourRegisterVO vo2, PhotoVO vo) {
 		String callback = vo.getCallback();
 		String callback_func = vo.getCallback_func();
 		String file_result = "";
-		
+
 		try {
 			if (vo.getFiledata() != null && vo.getFiledata().getOriginalFilename() != null
 					&& !vo.getFiledata().getOriginalFilename().equals("")) {
@@ -113,4 +80,75 @@ public class TourRegisterController {
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
 	}
 
+	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
+	@RequestMapping(value = "/GoRegister", method = RequestMethod.POST)
+	public String createRegister() {
+		return "TourRegister";
+	}
+
+	// 등록하기 전에 여행 일정을 수정해야 한다?
+	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
+	public String createRegister2() {
+		return "TourRegister";
+	}
+
+	// 여행 일정이 잘 작성되었는지 확인하러 가자
+	@RequestMapping(value = "/TourRegisterConfirm", method = RequestMethod.POST)
+	public void submit(TourRegisterVO vo, RegionVO vo2, Model model) {
+
+		if (vo != null && vo2 != null) {
+
+			logger.info("insertTour() 호출!");
+			logger.info("여행 제목: " + vo.getTitle());
+			// logger.info("여행 지역: " + vo2.getRegion_name());
+			logger.info("시작 날짜: " + vo.getStart_date());
+			logger.info("종료 날짜: " + vo.getEnd_date());
+			logger.info("성별 조건: " + vo.getCondition_sex());
+			logger.info("나이 조건: " + vo.getCondition_age());
+
+			model.addAttribute("vo", vo);
+			// model.addAttribute("vo2", vo2);
+
+			// 이상 없으면 DB insert!
+			int result = service.create(vo);
+			if (result == 1) { // DB insert 성공
+				logger.info("여행 등록 성공");
+			} else { // DB insert 실패
+				logger.info("여행 등록 실패");
+			}
+
+		} else {
+			logger.info("응 실패^^");
+		}
+
+	}
+
+	@RequestMapping("/TourRegisterComplete")
+	public String tourRegisterComplete(TourRegisterVO vo) {
+
+		if (vo != null) {
+
+			logger.info("최종 저장 데이터부터 확인한다");
+			logger.info("여행 제목: " + vo.getTitle());
+			// logger.info("여행 지역: " + vo2.getRegion_name());
+			logger.info("시작 날짜: " + vo.getStart_date());
+			logger.info("종료 날짜: " + vo.getEnd_date());
+			logger.info("성별 조건: " + vo.getCondition_sex());
+			logger.info("나이 조건: " + vo.getCondition_age());
+
+			// 이상 없으면 DB update or delete
+			
+
+		} else {
+			logger.info("응 실패^^");
+		}
+
+		return "index";
+	}
+
+	//
+	@RequestMapping("/cancelTourRegister")
+	public String tourRegister() {
+		return "TourRegister";
+	}
 }

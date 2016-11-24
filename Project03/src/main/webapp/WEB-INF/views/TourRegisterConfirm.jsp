@@ -121,8 +121,8 @@
 				}
 			});
 
-			/* //전송버튼 클릭이벤트
-			$("#savebutton").click(function() {
+			//전송버튼 클릭이벤트
+			$("#insertbutton").click(function() {
 				//id가 smarteditor인 textarea에 에디터에서 대입
 				editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 				// 이부분에 에디터 validation 검증
@@ -131,9 +131,9 @@
 				$("#frm").submit();
 			})
 			
-			$("#cancelbutton").click(function() {
-				location = 'cancelTourRegister';
-			}) */
+			$("#updatebutton").click(function() {
+				location = 'GoRegister';
+			})
 			
 			$("#homebutton").click(function() {
 				location = 'index';
@@ -154,7 +154,7 @@
 
 				<div class="wrap">				
 						
-						<form action="send" method="post" id="frm">
+						<form action="TourRegisterComplete" method="post" id="frm">
 						
 							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
 								
@@ -180,9 +180,9 @@
 							</textarea><br /><br />									
 						</form>	
 						
+					<input type="button" id="insertbutton" value="등록" />	
 					<input type="button" id="updatebutton" value="수정" />
-					<input type="button" id="deletebutton" value="삭제" />
-					<input type="button" id="homebutton" value="홈으로" />
+					<input type="button" id="cancelbutton" value="취소" />
 
 				</div>
 				

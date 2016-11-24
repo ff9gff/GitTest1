@@ -93,10 +93,10 @@ public class TourSearchController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
-	public String test8() {
-		return "TourRegister";
-	}
+//	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
+//	public String test8() {
+//		return "TourRegister";
+//	}
 
 	@RequestMapping(value="/admin" ,method=RequestMethod.GET)
 	public void test9(Model model){
