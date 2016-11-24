@@ -63,21 +63,25 @@
 	display: inline-block;
 }
 .applicant_panel{
-	width: 600px;
-	height: 200px;
+	width: 450px;
+	height: 150px;
 	padding:0;
+	overflow: auto;
 	overflow-x:hidden;
+	margin: 0;
 }
 .applicant_button{
-width: 80px;
-	height: 200px;
+width: 100px;
+	height: 150px;
 	padding:0;
 }
 
-#applicants table {
+#applicants table {ddddd
     width:100%;
-    margin:15px 0;
+    margin:0;
     border:0;
+    padding:0;
+    padding: 0;
 }
 #applicants th {
     background-color:#6d6f70;
@@ -97,8 +101,26 @@ width: 80px;
 	background-color:#fdfdfd;
     border: 1px solid #6d6f70;
 }
+.table_check{
+	width: 30px;
+}
+.table_name,.table_com{
+	width: 130px;
+}
+.table_sex,.table_age{
+	width: 70px;
+}
+.apply_panel_table{
+	width: 450px;
+	background-color: lightgray;
 
-
+}
+.apply_panel_btns{
+	width: 100px;
+}
+.apply_panel{
+	width: 700px;
+}
 
 </style>
 </head>
@@ -108,19 +130,19 @@ width: 80px;
 <div>여행 공고 내용 아직 업데이트안됨여</div>
 <h1>신청 리스트 부분↓</h1>
 <div class="menu">Apply for</div>
-<div class="apply_panel">
-	<div class="applicant_panel">
-		<table id="applicants"></table>
+<table class="apply_panel">
+	<tr>
+		<td class="apply_panel_table">
+			<div class="applicant_panel">
+				<table id="applicants"></table>
+			</div>
+		</td>
+		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
+		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
+	</tr>
+</table>
 
-	</div>
-	<div id="test"></div>
-	<button type="button" class="applicant_button" id="apply_ok">수락하기</button>
-	<button type="button" class="applicant_button" id="trip_end">마감</button>
 
-
-</div>
-
-<h1>댓글 부분↓</h1>
 <div class="menu">Comment</div>
 <div class="reply_panel">
 	<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
@@ -130,6 +152,8 @@ width: 80px;
 <div class="reply_panel">
 	<ul id="replies"></ul>
 </div>
+
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
@@ -162,11 +186,11 @@ $(document).ready(function(){
 							+'<strong class="nickname">'+this.mno+'번째회원</strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
-								+'<a href="#" class="btn_reply">답글</a>'
+								+'<a href="#this" class="btn_reply">답글</a>'
 								+'<span class="btn_div">|</span>'
-								+'<a href="#" class="btn_update">수정</a>'
+								+'<a href="#this" class="btn_update">수정</a>'
 								+'<span class="btn_div">|</span>'
-								+'<a href="#" class="btn_delete">삭제</a>'
+								+'<a href="#this" class="btn_delete">삭제</a>'
 							+'</span>'
 						+'</dt>'
 						+'<dd class="rcontent">'+this.rcontent+'</dd>'
@@ -214,11 +238,11 @@ $(document).ready(function(){
 									+'<strong class="nickname">'+this.mno+'번째회원</strong>'
 									+'<span class="regdate">'+dateString+'</span>'
 									+'<span class="btns">'
-										+'<a href="#" class="btn_reply">답글</a>'
+										+'<a href="#this" class="btn_reply">답글</a>'
 										+'<span class="btn_div">|</span>'
-										+'<a href="#" class="btn_update">수정</a>'
+										+'<a href="#this" class="btn_update">수정</a>'
 										+'<span class="btn_div">|</span>'
-										+'<a href="#" class="btn_delete">삭제</a>'
+										+'<a href="#this" class="btn_delete">삭제</a>'
 									+'</span>'
 								+'</dt>'
 								+'<dd class="rcontent">'+this.rcontent+'</dd>'
@@ -301,7 +325,6 @@ $(document).ready(function(){
 
 	// 댓글 수정 처리 - 수정 눌렀을때 보이기/숨기기/글자바꾸기
 	$('#replies').on('click','.reply_list .btn_update',function(){
-
 		if($(this).text()=='수정'){ // 수정 버튼 눌렀을 때
 			// 해당 reply_body 찾기
 			var targetbody = $(this).parent().parent().parent();
@@ -325,7 +348,7 @@ $(document).ready(function(){
 			targetdiv.hide();
 
 		}// end if
-		
+
 	});// end update
 	
 	// 수정 완료하기
@@ -443,7 +466,11 @@ $(document).ready(function(){
 	
 	// DB에서 해당 글번호(trip_no)의 모든 신청자들을 읽어오는 함수 정의
 	function getAlldata(){
-
+		// wm_tour_join 리스트
+		applylist = [];
+		// wm_personal 리스트
+		personlist = [];
+		
 		var url1 = '/project03/tour/detail/apply/all/'+trip_no;
 		$.getJSON(url1, function(data){
 			$(data).each(function(){
@@ -472,21 +499,32 @@ $(document).ready(function(){
 	
 	function getAllApply(){
 		var tr ='<tr class="apply_th">'
-					+'<th><input id="allCheck" type="checkbox"/></th>'
-					+'<th>닉네임</th>'
-					+'<th>성별</th>'
-					
+					+'<th class="table_check"><input id="allCheck" type="checkbox"/></th>'
+					+'<th class="table_name">신청자</th>'
+					+'<th class="table_sex">성별</th>'
+					+'<th class="table_age">나이</th>'
+					+'<th class="table_com">수락여부</th>'
 				+'</tr>' 
 		
 		for(var i=0; i<applylist.length; i++){
-			tr+= '<tr class="apply_td">'
-					+'<td><input name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>'
-					+'<td>'+applylist[i].person["nickname"]+'</td>'
-					+'<td>';
+			tr+= '<tr class="apply_td">';
+			if(applylist[i].approval == 0){
+					tr+='<td class="table_check"><input name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>';
+			}else{
+				tr+='<td class="table_check"><input name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
+			}
+					tr+='<td class="table_name">'+applylist[i].person["nickname"]+'</td>'
+					+'<td class="table_sex">';
 					if(applylist[i].person["sex"] == 0){
-						tr+='여자'+'</td></tr>';
+						tr+='여자'+'</td>';
 					}else{
-						tr+='남자'+'</td></tr>';
+						tr+='남자'+'</td>';
+					}
+					tr+='<td class="table_age">'+applylist[i].person["age"]+'</td>';
+					if(applylist[i].approval == 0){
+						tr+='<td class="table_com"></td></tr>';
+					}else{
+						tr+='<td class="table_com">수락완료</td></tr>';
 					}
 		}// end for(i)
 	
@@ -516,6 +554,37 @@ $(document).ready(function(){
 	      }
 	}); // 체크박스 전체선택 끝
 	
+	// 수락하기
+	$('#apply_ok').on('click',$(this),function(){
+		var chkObj = document.getElementsByName("rowCheck");
+		var rowCnt = chkObj.length - 1;
+		for(var i=0; i<=rowCnt; i++){
+			if(chkObj[i].checked == true){
+				var no = chkObj[i].value;
+				console.log(no);
+				$.ajax({
+					type:'put',
+					url:'/project03/tour/detail/apply/'+1+'/'+no,
+					headers:{
+						'Content-Type':'application/json',
+						'X-Http-Method-Ovveride':'PUT'
+					},
+					data: JSON.stringify({
+						approval: 1,
+						list_no: no
+					}),
+					success: function(result){
+							if(result == 'success'){
+							}
+					}
+				});// end ajax
+			}// end if
+		}// end for
+
+		alert('수락이 완료되었습니다.');
+		getAlldata();
+
+	}); // end apply_ok click
 
 	
 	
