@@ -121,6 +121,15 @@ width: 100px;
 .apply_panel{
 	width: 700px;
 }
+.join{
+	font-weight: 800;
+}
+#context_ul li{
+	padding: 5px 0px 5px 5px;
+    margin: 0px;
+    border: 1px solid #d8d6d6;
+    font-size: 12px;
+}
 
 
 </style>
@@ -135,6 +144,7 @@ width: 100px;
 	<tr>
 		<td class="apply_panel_table">
 			<div class="applicant_panel">
+				<span id="span_join"></span>
 				<table id="applicants"></table>
 			</div>
 		</td>
@@ -143,6 +153,14 @@ width: 100px;
 	</tr>
 </table>
 
+<div id="contextmenu">
+	<input hidden type="number" name="mno" id="mno"/>
+	<ul id="context_ul" style="list-style:none;">
+		<li id="context_profile">프로필보기</li>
+		<li id="context_board">게시글보기</li>
+		<li id="context_msg">쪽지보내기</li>
+	</ul>
+</div>
 
 <div class="menu">Comment</div>
 <div class="reply_panel">
@@ -462,6 +480,8 @@ $(document).ready(function(){
 	var applylist = [];
 	// wm_personal 리스트
 	var personlist = [];
+	// 수락한 인원
+	var joincount=0;
 
 	getAlldata();
 	
@@ -471,6 +491,7 @@ $(document).ready(function(){
 		applylist = [];
 		// wm_personal 리스트
 		personlist = [];
+		joincount=0;
 		
 		var url1 = '/project03/tour/detail/apply/all/'+trip_no;
 		$.getJSON(url1, function(data){
@@ -512,6 +533,7 @@ $(document).ready(function(){
 					tr+= '<tr class="apply_td">';
 					tr+='<td class="table_check"><input class="check" name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>';
 			}else{
+				joincount++;
 				tr+= '<tr class="apply_td" style="background-color:#DBD9D9 ">';
 				tr+='<td class="table_check"><input class="test" name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
 			}
@@ -526,11 +548,12 @@ $(document).ready(function(){
 					if(applylist[i].approval == 0){
 						tr+='<td class="table_com"></td></tr>';
 					}else{
-						tr+='<td class="table_com">수락완료</td></tr>';
+						tr+='<td class="table_com"><span class="join">수락완료</span></td></tr>';
 					}
 		}// end for(i)
 	
 		$('#applicants').html(tr);
+		$('#span_join').html(joincount+"명 수락완료");
 				
 	}// end getAllApply()
 	
@@ -616,7 +639,11 @@ $(document).ready(function(){
 	
 }); // end document.ready();
 </script>
-
+<script>
+$(document).mousemove(function(e){
+   // console.log(e.pageX + ', ' + e.pageY);
+ });
+</script>
 
 
 </body>
