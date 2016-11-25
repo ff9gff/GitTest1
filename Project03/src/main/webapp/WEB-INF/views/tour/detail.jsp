@@ -152,6 +152,10 @@ margin: 0;
 	text-decoration:none;
 	font-weight: 800;
 }
+.btn_context{
+text-decoration:none;
+color: #000000;
+}
 
 </style>
 </head>
@@ -159,9 +163,9 @@ margin: 0;
 <div id="contextmenu" hidden>
 	<input hidden type="number" name="mno" id="context_mno"/>
 	<ul id="context_ul">
-		<li id="context_profile">프로필보기</li>
-		<li id="context_board">게시글보기</li>
-		<li id="context_msg">쪽지보내기</li>
+		<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
+		<li id="context_board"><a href="#this" class="btn_context">게시글보기</a></li>
+		<li id="context_msg"><a href="#this" class="btn_context">쪽지보내기</a></li>
 	</ul>
 </div>
 <h1>여행공고글</h1>
@@ -668,50 +672,46 @@ $('#context_ul').on('mouseout','li',function(){
 	$(this).context.style.backgroundColor='#FFFFFF';
 });
 
+// 다른 곳 클릭시 메뉴 사라지기
+$(document).click(function(e){		
+	if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
+		!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length){
+			$('#contextmenu').hide();
+			$('#context_mno').val(null);
+	} 
+});
 
-
-// 클릭한 위치에 menu보이기
-
-		$('#applicants').on('click','.apply_td .table_name .btn_nickname',function(e){
-			// e.pageX
-			var atag = $(this).offset();
-			 var menubox = $('#contextmenu');
-			  menubox.css("left", (atag.left+30) +"px");
-			  menubox.css("top", (atag.top+10) +"px");
-			  menubox.show();
+// 닉네임 클릭시 메뉴 보이기
+$('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
+	// e.pageX
+	// a 태그안의 mno 불러오기
+	var amno = $(this).attr('data-rno');
+	// 메뉴 input에 mno숨겨넣기
+	$('#context_mno').val(amno);
+	// a 태그의 위치
+	var atag = $(this).offset();
+	var menubox = $('#contextmenu');
+	menubox.css("left", (atag.left+30) +"px");
+	menubox.css("top", (atag.top+10) +"px");
+	menubox.show();
 			 
-		});	 
+});	
 
- 		$(document).click(function(e){
- 			// 다른 범위 클릭시 사라지기
-			if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
-					!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length){
-				$('#contextmenu').hide();
-			} 
-			
- 			// 닉네임 클릭시 메뉴 보이기
-			$('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
-				// e.pageX
-				// a 태그안의 mno 불러오기
-				var amno = $(this).attr('data-rno');
-				console.log("amno="+amno);
-				$('#context_mno').val(amno);
-				console.log("context_mno="+$('#context_mno').val());
-				// a 태그의 위치
-				var atag = $(this).offset();
-				
-				
-				 var menubox = $('#contextmenu');
-				 menubox
-				  menubox.css("left", (atag.left+30) +"px");
-				  menubox.css("top", (atag.top+10) +"px");
-				  menubox.show();
-				 
-			});	
+$('#context_profile').on('click','.btn_context',function(){
+	var amno = $('#context_mno').val();
+	alert(amno+'번째 회원 프로필');
+});
 
-		});
+$('#context_board').on('click','.btn_context',function(){
+	var amno = $('#context_mno').val();
+	alert(amno+'번째 회원 게시글 보기');
+});
 
-		
+$('#context_msg').on('click','.btn_context',function(){
+	var amno = $('#context_mno').val();
+	alert(amno+'번째 회원 쪽지보내기');
+});
+
 </script>
 
 
