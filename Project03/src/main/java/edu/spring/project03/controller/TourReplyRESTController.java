@@ -14,99 +14,81 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.spring.project03.domain.TourReplyVO;
+
 import edu.spring.project03.service.TourReplyService;
 
 @RestController
-@RequestMapping(value="/tour/detail")
+@RequestMapping(value = "/tour/detail")
 public class TourReplyRESTController {
-//	private static Logger logger = 
-//			LoggerFactory.getLogger(TourReplyRESTController.class);
-	
+	// private static Logger logger =
+	// LoggerFactory.getLogger(TourReplyRESTController.class);
+
 	@Autowired
 	private TourReplyService service;
-	
+
 	// 데이터 입력
-	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Integer> createReply(@RequestBody TourReplyVO vo){
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Integer> createReply(@RequestBody TourReplyVO vo) {
 		ResponseEntity<Integer> entity = null;
 		int result = service.create(vo);
-		if(result == 1){ // DB insert 성공
+		if (result == 1) { // DB insert 성공
 			entity = new ResponseEntity<Integer>(1, HttpStatus.OK);
-		}else{ // DB insert 실패
+		} else { // DB insert 실패
 			entity = new ResponseEntity<Integer>(0, HttpStatus.BAD_REQUEST);
-		}// end if()
-		
+		} // end if()
+
 		return entity;
 	}// end createReply()
 
 	// 해당 게시글의 모든 댓글 목록을 읽어오는 메소드
-	@RequestMapping(value="/all/{no}", method=RequestMethod.GET)
-	public ResponseEntity<List<TourReplyVO>> readReplies(@PathVariable("no") Integer trip_no){
+	@RequestMapping(value = "/all/{no}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourReplyVO>> readReplies(@PathVariable("no") Integer trip_no) {
 		List<TourReplyVO> list = service.read(trip_no);
 		ResponseEntity<List<TourReplyVO>> entity = null;
-		if(list != null){ // select 성공
+		if (list != null) { // select 성공
 			entity = new ResponseEntity<List<TourReplyVO>>(list, HttpStatus.OK);
-		}else{ // select 실패
+		} else { // select 실패
 			entity = new ResponseEntity<List<TourReplyVO>>(list, HttpStatus.BAD_REQUEST);
-		}// end if
-		
+		} // end if
+
 		return entity;
 	}// end readReplies()
-	
+
 	// 해당 댓글을 수정
-	@RequestMapping(value="/{no}", method=RequestMethod.PUT)
-	public ResponseEntity<String> updateReply(
-			@PathVariable("no") Integer rno, @RequestBody TourReplyVO vo){
+	@RequestMapping(value = "/{no}", method = RequestMethod.PUT)
+	public ResponseEntity<String> updateReply(@PathVariable("no") Integer rno, @RequestBody TourReplyVO vo) {
 		ResponseEntity<String> entity = null;
-		
+
 		vo.setRno(rno);
 		int result = service.update(vo);
-		if(result == 1){ //update 성공
+		if (result == 1) { // update 성공
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
-		}else{ // update 실패
+		} else { // update 실패
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
-		}// end if()
-		
+		} // end if()
+
 		return entity;
 	}// end updateReply()
-	
+
 	// 해당 댓글을 삭제
-	@RequestMapping(value="/{no}", method = RequestMethod.DELETE)
-	public ResponseEntity<String> deleteReply(@PathVariable("no") Integer rno){
+	@RequestMapping(value = "/{no}/{parent}", method = RequestMethod.DELETE)
+	public ResponseEntity<String> deleteReply(@PathVariable("no") Integer rno,
+			@PathVariable("parent") Integer parentrno) {
 		ResponseEntity<String> entity = null;
-		
-		int result = service.delete(rno);
-		if(result == 1){ // delete 성공
+		int result = 0;
+
+		result = service.delete(rno);
+		if (parentrno == 0) {
+			service.allDelete(rno);
+		}
+
+		if (result == 1) { // delete 성공
 			entity = new ResponseEntity<String>("success", HttpStatus.OK);
-		}else{ // delete 실패
+		} else { // delete 실패
 			entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
-		}// end if()
-		
+		} // end if()
+
 		return entity;
 	}// end deleteReply()
-	
+
 }// end class TourReplyRESTController
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

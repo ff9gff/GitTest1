@@ -12,5 +12,7 @@ public interface TourSearchDAO {
 	public abstract List<ImgVO> select_region_date(TourRegisterVO vo);
 
 	public abstract List<ImgVO> select_region_image(ImgVO vo);
+	
+	public abstract TourRegisterVO select_trip_by_no(int trip_no);
 
 }

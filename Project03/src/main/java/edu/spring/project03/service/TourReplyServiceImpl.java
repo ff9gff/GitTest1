@@ -34,5 +34,10 @@ public class TourReplyServiceImpl implements TourReplyService {
 	public int delete(int rno) {
 		return tourReplyDAO.delete(rno);
 	}
+	
+	@Override
+	public int allDelete(int parentrno) {
+		return tourReplyDAO.allDelete(parentrno);
+	}
 
 }

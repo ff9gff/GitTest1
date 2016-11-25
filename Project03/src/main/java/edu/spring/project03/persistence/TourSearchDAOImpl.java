@@ -36,4 +36,10 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 		return list;
 	}
 
+	@Override
+	public TourRegisterVO select_trip_by_no(int trip_no) {
+		TourRegisterVO vo = sqlSession.selectOne(NAMESPACE2 + ".select_trip_by_no", trip_no);
+		return vo;
+	}
+
 }

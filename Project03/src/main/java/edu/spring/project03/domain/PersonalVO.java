@@ -14,26 +14,7 @@ public class PersonalVO {
 	private String introduce;
 	private String email;
 	private Date joindate;
-	private MsgVO msg;
-	
-	
-	public MsgVO getMsg() {
-	
-		return msg;
-		
-	}
-	
-//	public void setMsgVO(MsgVO vo){
-//		
-//		this.msg.setRc_mno(vo.getRc_mno());
-//		this.msg.setMsg_content(vo.getMsg_content());
-//		this.msg.setMsg_date(vo.getMsg_date());
-//		this.msg = vo;
-//		
-//		
-//		
-//		
-//	}
+
 	public PersonalVO() {
 
 	}
@@ -47,11 +28,7 @@ public class PersonalVO {
 
 
 
-	
-	
-	/* 아래꺼 지울 예정 - 조승현 */
 	public PersonalVO(MemberVO vo,String email, Date joindate){
-		
 		this.email = email;
 		this.joindate = joindate;
 	}
@@ -67,6 +44,14 @@ public class PersonalVO {
 		this.introduce = introduce;
 		this.email = email;
 		this.joindate = joindate;
+	}
+	
+	public PersonalVO(String name, int sex, int age, String nickname, String introduce){
+		this.name = name;
+		this.sex = sex;
+		this.age = age;
+		this.nickname = nickname;
+		this.introduce = introduce;
 	}
 
 	public int getMno() {

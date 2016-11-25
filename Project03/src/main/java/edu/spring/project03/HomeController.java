@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -44,30 +46,23 @@ public class HomeController {
 		return "index";
 
 	} // end home(locale, model)
-	
-	@RequestMapping(value="/member_register01", method=RequestMethod.GET)
-	public void register01() {
-		logger.info("member_register01.jsp 호출...");
-		
-	} // end register01()
-	
-	@RequestMapping(value="/member_register02", method=RequestMethod.GET)
-	public void register02() {
-		logger.info("member_register02.jsp 호출...");
-		
-	} // end register01()
-	
-	@RequestMapping(value="/test", method=RequestMethod.GET)
-	public void test() {
-		logger.info("member_register02.jsp 호출...");
-		
-	} // end register01()
-	
+
+
 	@RequestMapping(value="/tour/detail", method=RequestMethod.GET)
 	public String tourDetail() {
 		// tour/detail.jsp 테스트 콘트롤러입니다~
 		return "tour/detail";
 	} // end tourDetail()
+	
+	@RequestMapping(value="/smarteditor", method=RequestMethod.GET)
+	public String test123() {
+		// tour/detail.jsp 테스트 콘트롤러입니다~
+		return "smarteditorTest";
+	} // end tourDetail()
+	
+
+	
+	
 	
 	
 	

@@ -14,7 +14,7 @@
     
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver" />
     
-
+	
     <bean
 	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 	<property name="prefix">
@@ -25,8 +25,11 @@
 	</property>
     </bean>
 
-    <mvc:resources mapping="/resources/**" location="/resources/theme/"
-	cache-period="31556926"/>
+
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+
+    <mvc:resources mapping="/resources/**" location="/resources/theme/" cache-period="31556926"/>
+	
 	
 	
 
