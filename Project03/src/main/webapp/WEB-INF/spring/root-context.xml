@@ -29,8 +29,10 @@
 	   <!-- MyBatis 설정 파일 위치를 선언 -->
 	   <property name="configLocation" value="classpath:/mybatis-config.xml" />
 	   <!-- 매퍼(mapper) 파일 위치 선언 -->
-
+ 		<property name="mapperLocations"
+	       value="classpath:mappers/*.xml" /> 
 	</bean>
+	 
 	
 	<!-- SqlSession 빈: SqlSessionFactory를 사용해서 생성 -->
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
