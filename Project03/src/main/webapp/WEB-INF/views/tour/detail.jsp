@@ -124,18 +124,46 @@ width: 100px;
 .join{
 	font-weight: 800;
 }
-#context_ul li{
+#context_profile,#context_board{
+	padding: 5px 0px 5px 5px;
+    margin: 0px;
+    border: 1px solid #d8d6d6;
+    border-bottom: 1px solid #FFFFFF;
+    font-size: 12px;
+}
+#context_msg{
 	padding: 5px 0px 5px 5px;
     margin: 0px;
     border: 1px solid #d8d6d6;
     font-size: 12px;
 }
-
+#contextmenu{
+	width: 90px;
+	position: absolute;
+	background-color: #FFFFFF;
+}
+#context_ul{
+list-style:none;
+padding: 0;
+margin: 0;
+}
+.btn_nickname{
+	color: #000000;
+	text-decoration:none;
+	font-weight: 800;
+}
 
 </style>
 </head>
 <body>
-
+<div id="contextmenu" hidden>
+	<input hidden type="number" name="mno" id="context_mno"/>
+	<ul id="context_ul">
+		<li id="context_profile">프로필보기</li>
+		<li id="context_board">게시글보기</li>
+		<li id="context_msg">쪽지보내기</li>
+	</ul>
+</div>
 <h1>여행공고글</h1>
 <div>여행 공고 내용 아직 업데이트안됨여</div>
 <h1>신청 리스트 부분↓</h1>
@@ -152,15 +180,6 @@ width: 100px;
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
 	</tr>
 </table>
-
-<div id="contextmenu">
-	<input hidden type="number" name="mno" id="mno"/>
-	<ul id="context_ul" style="list-style:none;">
-		<li id="context_profile">프로필보기</li>
-		<li id="context_board">게시글보기</li>
-		<li id="context_msg">쪽지보내기</li>
-	</ul>
-</div>
 
 <div class="menu">Comment</div>
 <div class="reply_panel">
@@ -537,7 +556,7 @@ $(document).ready(function(){
 				tr+= '<tr class="apply_td" style="background-color:#DBD9D9 ">';
 				tr+='<td class="table_check"><input class="test" name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
 			}
-					tr+='<td class="table_name">'+applylist[i].person["nickname"]+'</td>'
+					tr+='<td class="table_name"><a href="#this" class="btn_nickname" data-rno="'+applylist[i].mno+'">'+applylist[i].person["nickname"]+'</a></td>'
 					+'<td class="table_sex">';
 					if(applylist[i].person["sex"] == 0){
 						tr+='여자'+'</td>';
@@ -640,9 +659,59 @@ $(document).ready(function(){
 }); // end document.ready();
 </script>
 <script>
-$(document).mousemove(function(e){
-   // console.log(e.pageX + ', ' + e.pageY);
- });
+
+// menu에 마우스가 올라갔을때 색 바꾸기
+$('#context_ul').on('mouseover','li',function(){
+	$(this).context.style.backgroundColor='#ffdfaf';
+});
+$('#context_ul').on('mouseout','li',function(){
+	$(this).context.style.backgroundColor='#FFFFFF';
+});
+
+
+
+// 클릭한 위치에 menu보이기
+
+		$('#applicants').on('click','.apply_td .table_name .btn_nickname',function(e){
+			// e.pageX
+			var atag = $(this).offset();
+			 var menubox = $('#contextmenu');
+			  menubox.css("left", (atag.left+30) +"px");
+			  menubox.css("top", (atag.top+10) +"px");
+			  menubox.show();
+			 
+		});	 
+
+ 		$(document).click(function(e){
+ 			// 다른 범위 클릭시 사라지기
+			if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
+					!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length){
+				$('#contextmenu').hide();
+			} 
+			
+ 			// 닉네임 클릭시 메뉴 보이기
+			$('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
+				// e.pageX
+				// a 태그안의 mno 불러오기
+				var amno = $(this).attr('data-rno');
+				console.log("amno="+amno);
+				$('#context_mno').val(amno);
+				console.log("context_mno="+$('#context_mno').val());
+				// a 태그의 위치
+				var atag = $(this).offset();
+				
+				
+				 var menubox = $('#contextmenu');
+				 menubox
+				  menubox.css("left", (atag.left+30) +"px");
+				  menubox.css("top", (atag.top+10) +"px");
+				  menubox.show();
+				 
+			});	
+
+		});
+
+		
 </script>
 
 
