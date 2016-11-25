@@ -18,6 +18,11 @@ public class TourRegisterVO {
 	public TourRegisterVO() {
 
 	}
+	
+	public TourRegisterVO(String start_date, String end_date) {
+		this.start_date = start_date;
+		this.end_date = end_date;
+	}
 
 	public TourRegisterVO(int trip_no, int mno, String title, int condition_sex, int condition_age, String content,
 			Date regdate, String start_date, String end_date, int expire) {

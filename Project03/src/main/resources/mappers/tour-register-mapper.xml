@@ -15,9 +15,14 @@
 		values (#{board_type}, #{content_no}, #{img_url})
     </insert>
     
+    <insert id="insert-region">
+	    insert into wm_tour_region(trip_no, region_name)
+		values (#{trip_no}, #{region_name})
+    </insert>
+    
     <select id="select-trip_no" resultType="Integer">
     	select trip_no from wm_tour
-    	where content = #{content}
+    	where (mno = #{mno} and title = #{title} and start_date = #{start_date} and end_date = #{end_date} and content = #{content}) 
     </select>
     
   </mapper>

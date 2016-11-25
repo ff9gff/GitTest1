@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -17,18 +18,27 @@
 Flex Template 
 http://www.templatemo.com/tm-406-flex
 -->
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<link
+	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
+	rel='stylesheet' type='text/css'>
+<link rel="stylesheet"
+	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/theme/css/animate.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet"
+	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link rel="stylesheet"
+	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
-<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script
+	src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 <style>
 .searchRegion {
@@ -42,12 +52,12 @@ http://www.templatemo.com/tm-406-flex
 </head>
 <body>
 
-	
+
 	<!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-        
-	<%@ include file="top_header.jspf" %>
+
+	<%@ include file="top_header.jspf"%>
 
 	<div class="site-main" id="sTop">
 		<div class="site-header">
@@ -213,7 +223,6 @@ http://www.templatemo.com/tm-406-flex
 				dateFormat : 'yy-mm-dd'
 			});
 		});
-
 	</script>
 
 
@@ -225,10 +234,12 @@ http://www.templatemo.com/tm-406-flex
 					<h2>새 친구를 찾아보자</h2>
 					<br /> <br />
 					<p>
-						<form action="regionTest" method="POST">
-							<input type="text" id="region_name" name="region_name"
-								placeholder="지역이름"> <input type="submit" value="검색" />
-						</form>
+
+						<input type="text" id="region_name" name="region_name"
+							placeholder="지역이름">
+
+						<button type="button" id="region_search">장소 검색</button>
+						<br>
 					</p>
 
 					<p>
@@ -238,30 +249,31 @@ http://www.templatemo.com/tm-406-flex
 								name="end_date" placeholder="종료일"> <input type="submit"
 								value="검색" />
 						</form>
+
 					</p>
 
 
 					<p>
-						<div>
-							<form action="imageTest" method="POST">
-								<input type="number" id="board_type" name="board_type"
-									placeholder="게시판구분" required> <input type="number"
-									id="content_no" name="content_no" placeholder="게시글구분" required>
-								<input type="number" id="photo_no" name="photo_no"
-									placeholder="사진구분" required> <input type="submit"
-									value="사진" />
-							</form>	
-						</div>
+					<div>
+						<form action="imageTest" method="POST">
+							<input type="number" id="board_type" name="board_type"
+								placeholder="게시판구분" required> <input type="number"
+								id="content_no" name="content_no" placeholder="게시글구분" required>
+							<input type="number" id="photo_no" name="photo_no"
+								placeholder="사진구분" required> <input type="submit"
+								value="사진" />
+						</form>
+					</div>
 					</p>
 
 
 					<p>
-						<div>
-							<form action="GoRegister" method="post">
-								<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
-							</form>
-							<a href="TourRegister"></a>
-						</div>
+					<div>
+						<form action="GoRegister" method="post">
+							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
+						</form>
+						<a href="TourRegister"></a>
+					</div>
 					</p>
 				</div>
 				<!-- /.heading-section -->
@@ -269,8 +281,9 @@ http://www.templatemo.com/tm-406-flex
 			<!-- /.row -->
 
 			<p>
-				<div class="row">
-					<c:forEach var="region" items="${regionList }">
+			<div class="row" id="regionsearch">
+
+				<%-- <c:forEach var="region" items="${regionList }">
 						<div class="portfolio-item col-md-3 col-sm-6">
 							<div class="portfolio-thumb">
 								<figure>
@@ -281,50 +294,43 @@ http://www.templatemo.com/tm-406-flex
 							</div>
 							<!-- /.portfolio-thumb -->
 						</div>
-					</c:forEach>
-				</div>
+					</c:forEach> --%>
+			</div>
 			</p>
 
 			<p>
-				<div class="row">
-					<c:forEach var="period" items="${periodList}">
-						<div class="portfolio-item col-md-3 col-sm-6">
-							<div class="portfolio-thumb">
-	
-								<figure>
-									<a href="FTourRegister?trip_no=${period.content_no }"><img
-										src="${period.img_url}" width="300" height="200"></a>
-								</figure>
-	
-							</div>
+			<div class="row" id="periodsearch">
+				<c:forEach var="period" items="${periodList}">
+					<div class="portfolio-item col-md-3 col-sm-6">
+						<div class="portfolio-thumb">
+							<figure>
+								<a href="FTourRegister?trip_no=${period.content_no }"><img
+									src="${period.img_url}" width="300" height="200"></a>
+							</figure>
 						</div>
-					</c:forEach>
-				</div>
-			
+					</div>
+				</c:forEach>
+			</div>
+
 
 			<p>
-				<div class="row">
-					<c:forEach var="image" items="${imageList}">
-						<div class="portfolio-item col-md-3 col-sm-6">
-							<div class="portfolio-thumb">
-								<a href="FTourRegister"><img src ="${image.img_url}"
-									width="300" height="200"></a>
-							</div>
-							<!-- /.portfolio-thumb -->
+			<div class="row">
+				<c:forEach var="image" items="${imageList}">
+					<div class="portfolio-item col-md-3 col-sm-6">
+						<div class="portfolio-thumb">
+							<a href="FTourRegister"><img src="${image.img_url}"
+								width="300" height="200"></a>
 						</div>
-					</c:forEach>
-				</div>
+						<!-- /.portfolio-thumb -->
+					</div>
+				</c:forEach>
+			</div>
 			</p>
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
 	</div>
 	<!-- /#portfolio -->
-
-
-
-
-
 
 
 
@@ -346,6 +352,39 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#footer -->
 
+	<script>
+
+	// 지역 검색 버튼 처리
+	$('#region_search').click(function(){
+		var region = $('#region_name').val();
+		
+		if(region == ""){
+			alert('검색할 지역을 입력하세요');
+		}else{
+				
+			$.ajax({
+				type: 'post',
+				url: '/project03/regionTest',
+				headers:{
+					'Content-Type':'application/json',
+					'X-HTTP-Method-Override':'POST'
+				},
+				data: JSON.stringify({
+					region_name: region
+				}),
+				success: function(list){
+					if(list != null){
+						alert('지역 검색 성공');
+						$('#regionsearch').html(list);
+					}
+					
+				}
+			});// end ajax
+		}
+		
+	});// end btn_create()
+	
+</script>
 
 
 	<script src="resources/theme/js/bootstrap.js"></script>

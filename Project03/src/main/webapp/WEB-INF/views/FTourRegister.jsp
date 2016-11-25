@@ -142,8 +142,6 @@
 		})
 	</script>
 
-
-
 	<div class="content-section" id="services">
 		<div class="container">
 			<div class="row">
@@ -156,20 +154,6 @@
 				<div class="wrap">				
 						
 						<form action="TourRegisterComplete" method="post" id="frm">
-						
-							<c:choose>
-								<c:when test="${imageFile != null }">
-								<%-- 파일 업로드 완료
-								<ul>
-									<li>파일 ID : ${imageFile.id }</li>
-									<li>저장된 파일 이름 : ${imageFile.fileName }</li>
-									<li>파일 길이 : ${imageFile.contentLength }</li>
-									<li>MIME 타입 : ${imageFile.contentType }</li>
-								</ul>
-								 --%>
-								<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
-								</c:when>
-							</c:choose><br /><br />
 						
 							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
 								
