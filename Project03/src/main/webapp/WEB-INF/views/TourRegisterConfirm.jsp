@@ -190,8 +190,8 @@
 				
 							 <br />
 							
-							<textarea rows="10" cols="100" style="width: 766px; height: 412px;">${vo.content}	
-							</textarea><br /><br />	
+							${vo.content}	
+							<br /><br />	
 															
 						</form>	
 						
