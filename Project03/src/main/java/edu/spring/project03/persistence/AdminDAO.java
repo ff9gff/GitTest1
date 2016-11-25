@@ -13,4 +13,6 @@ public interface AdminDAO {
 	public abstract List<MemberVO> readAllUser12();
 	
 	public abstract int sendAllUserMsg(int mno , String msg_content);
+	
+	
 }

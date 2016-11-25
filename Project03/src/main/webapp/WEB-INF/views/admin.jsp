@@ -48,7 +48,7 @@
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저
 						정보</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo.jsp">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
 				</li>
 				
 				<li Class="menuItem"><a Class="mylink" href="index">메인</a>

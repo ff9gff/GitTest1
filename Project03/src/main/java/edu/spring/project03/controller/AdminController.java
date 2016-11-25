@@ -4,11 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.MsgVO;
 import edu.spring.project03.service.AdminService;
+import edu.spring.project03.service.SearchUserService;
 
 @Controller
 
@@ -19,6 +22,9 @@ public class AdminController {
 	
 	@Autowired
 	private AdminService adminService;
+	
+	@Autowired
+	private SearchUserService searchUserService;
 	// 아이디 정보를 찾는 거다 . 
 	@RequestMapping(value="/MyUserInfo", method=RequestMethod.GET)
 	public void MyUserInfomation(){
@@ -39,14 +45,18 @@ public class AdminController {
 	}
 	
 	
+	
+	
+	
 	/*	frm.attr('action','sendAllMyUser');
 		frm.attr('method','post');
 		frm.submit();*/
 	
 	//@ModelAttribute("msg_content") String msg_content
 	@RequestMapping(value="/sendAllMyUser", method=RequestMethod.POST)
-	public String sendUserText(String msg_content){
+	public String sendUserText(String msg_content , MsgVO vo){
 		
+		logger.info("vo "+ vo.getMsg_content());
 		//@ModelAttribute("msg_content")
 		
 		logger.info("msg.content 나와라 !"+msg_content);
@@ -64,9 +74,48 @@ public class AdminController {
 	
 	
 	
+	///////////////임시 자리 
 	
-	
-	
+//	@RequestMapping(value= "/SendMsg" , method=RequestMethod.GET)
+//	public void sendMSgPage(){
+//		
+//		
+//		
+//	}
+//	
+//	
+//	@RequestMapping(value ="/sendMsgU" , method=RequestMethod.POST)
+//	public String sendMSGU(String sd_mno , String nickname  , String msg_content){
+//		
+//		
+//		logger.info("userid - > " + sd_mno); // content 넘어 가는 거 확인 
+//		logger.info("neckname "+nickname); 
+//		logger.info("msg_content"+msg_content);
+//		
+//		searchUserService.sendMsgTO(sd_mno, nickname, msg_content);
+//		return "redirect:admin"; 
+//	}
+//	
+//	
+//	
+//	///////////////테스트 컨트롤러 
+//	@RequestMapping(value="/myMsg", method= RequestMethod.GET)
+//	public void stres(Model model){
+//		/* <c:forEach var="vo" items="${boardList }">
+//    <tr>
+//        <td>${vo.bno }</td>
+//        <td><a href="${vo.bno }">${vo.title }</a></td>
+//        <td>${vo.userid }</td>
+//        <td>
+//	        <fmt:formatDate value="${vo.regdate }" 
+//	            pattern="yyyy-MM-dd HH:mm:ss"/>*/
+//		
+//	
+//		
+//		
+//	
+//	
+//	}
 	
 	
 	

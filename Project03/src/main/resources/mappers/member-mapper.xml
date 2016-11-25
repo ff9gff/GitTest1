@@ -55,7 +55,36 @@
 	</select>
 	
 	
+	
+	
+	<!--  Msg Text를 보내는 mapper  -->
+	<select  id="selectMsg" resultType="edu.spring.project03.domain.MsgVO">
+	select sd_mno , msg_content , msg_date from WM_MSG where rc_Mno =#{mno} <!-- 수정해야하는 부분입니다.  -->
+	</select>
 
+
+
+ <!--   Msg Text 파잃 읋 보내는 닉네임 받아오기  -->
+ <select id="selectNickname" resultType="String">
+ select nickname from WM_PERSONAL where mno = #{mno}
+ </select>
+ 
+ 
+ <!--  Msg Test 새로 운 형식으로 간다,  -->
+<select id="selectGetMsg" resultType="MsgDTO">
+
+select m.msg_no, p.nickname, m.msg_content, m.msg_date
+from wm_msg m, wm_personal p
+where m.sd_mno = p.mno and m.rc_mno = #{mno}
+order by m.msg_no
+
+</select> 
+ 
+ 
+ 
+ 
+ 
+ 
 </mapper>
 
 

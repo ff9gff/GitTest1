@@ -24,7 +24,6 @@
   
   
   
-  
   <select id="newUser" resultType="edu.spring.project03.domain.MemberVO">
   
   
@@ -35,13 +34,51 @@
   
   
   
+<update id="updatePlayer"> <!--  승낙하는 단계  -->
+
+ UPDATE WM_MEMBER set AUTHORITY = 2 WHERE MNO = #{mno};
+
+</update>
   
+
+<update id="updateBanUser"> <!-- 강퇴하는 단계  -->
+
+UPDATE WM_MEMBER set AUTHORITY = 0 WHERE MNO = #{mno};
+</update>
+  
+  
+  
+  
+  <!--  유저 이름 찾기 SearchUser -->
   <select id="searchUserName" resultType="edu.spring.project03.domain.MemberVO">
 	
 	select * from WM_MEMBER WHERE USERID 
 	LIKE #{userid} order by mno desc
 
 	</select>
+  
+  <!-- 쪽지 보내기에서 유저 정보 가져오기   select mno from WM_personal where nickname = 'see';-->
+	<select id="searchSndUno" resultType="Integer">
+	
+	select mno from WM_PERSONAL where nickname= #{nickname}
+	
+	</select>  
+	
+	
+  
+  <!-- 쪽지 보내기 기능 입니다. 실제 db에 입력 되는  -->
+  <insert id="sendMSGU">
+  
+  insert into WM_MSG (sd_mno , rc_mno , msg_content) values 
+ (#{sd_mno},#{rc_mno} ,#{msg_content})
+  
+  </insert>
+  
+  
+ 
+  
+  
+  
   
   
   </mapper>

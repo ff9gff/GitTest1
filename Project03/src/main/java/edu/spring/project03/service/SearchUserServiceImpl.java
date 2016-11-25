@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.MsgVO;
 import edu.spring.project03.persistence.SearchUserDAO;
 
 
@@ -17,7 +18,6 @@ public class SearchUserServiceImpl implements SearchUserService {
 	
 	private static final Logger logger =
 			LoggerFactory.getLogger(SearchUserServiceImpl.class);
-	
 	
 	@Autowired
 	private SearchUserDAO suDao;
@@ -30,6 +30,23 @@ public class SearchUserServiceImpl implements SearchUserService {
 		List<MemberVO> list =	suDao.searchUser(userid);
 		logger.info("list => "+list.size());
 		return suDao.searchUser(userid);
+	}
+
+	@Override
+	public int sendMsgTO(String userid , String nickname , String msg_content) {
+
+		logger.info("SearchUserServiceimple 을 지납니다. 편지 작성 하자 디비디비딥");
+		logger.info("userid "+ userid + " getUser -> " + nickname);
+		
+		int rc_mno = suDao.searchSndUno(nickname); 
+		
+		int sd_mno = suDao.searchSndUno(userid);
+		
+		logger.info("보낸이 => "+ sd_mno +" 받는이 "+ rc_mno);
+		
+		MsgVO vo = new MsgVO(0, sd_mno, rc_mno, msg_content, null);
+		
+		return suDao.sendMsgToU(vo);
 	}
 
 }
