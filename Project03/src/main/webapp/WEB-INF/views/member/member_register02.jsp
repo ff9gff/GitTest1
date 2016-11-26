@@ -244,7 +244,7 @@ $(document).ready(function() {
 	});	
 
 	$("#submit_Cancel").click(function() {
-		location = '/index';
+		location = '../index';
 	});	
 	
 

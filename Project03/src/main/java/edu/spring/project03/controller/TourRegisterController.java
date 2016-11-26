@@ -30,6 +30,7 @@ import edu.spring.project03.service.ImageView;
 import edu.spring.project03.service.TourRegisterService;
 
 @Controller
+@RequestMapping(value="/tourRegister")
 public class TourRegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(TourRegisterController.class);
 	
@@ -98,13 +99,13 @@ public class TourRegisterController {
 	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.POST)
 	public String createRegister() {
-		return "TourRegister";
+		return "tourRegister/TourRegister";
 	}
 
 	// 등록하기 전에 여행 일정을 수정해야 한다?
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
 	public String createRegister2() {
-		return "TourRegister";
+		return "tourRegister/TourRegister";
 	}
 
 	// 여행 일정이 잘 작성되었는지 확인하러 가자
@@ -191,6 +192,6 @@ public class TourRegisterController {
 	//
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
-		return "TourRegister";
+		return "tourRegister/TourRegister";
 	}
 }

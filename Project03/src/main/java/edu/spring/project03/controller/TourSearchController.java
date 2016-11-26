@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
@@ -96,7 +97,7 @@ public class TourSearchController {
 
 	}
 
-	@RequestMapping(value = "/FTourRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "tourRegister/FTourRegister", method = RequestMethod.GET)
 	public void test10(int trip_no, Model model) {
 		logger.info("FTourRegister.jsp 소환");
 		logger.info("trip_no: " + trip_no);
@@ -109,40 +110,47 @@ public class TourSearchController {
 
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
-	/*@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	public void checkRegion(@RequestBody RegionVO vo, HttpServletRequest request, HttpServletResponse response)
-			throws IOException {
-
+	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
+	public void readReplies(@RequestBody RegionVO vo, HttpServletResponse response) throws IOException {
+		
 		logger.info("여행 지역: " + vo.getRegion_name());
-
+		
 		List<ImgVO> list = tourSelectService.read_region(vo.getRegion_name());
-		logger.info("검색된 사진 개수: " + list.size());
 
 		PrintWriter out = response.getWriter();
 
 		if (list != null) {
 			out.print(list);
 		} // end if
-	} // checkid(request, response)
-*/	
-	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	public ResponseEntity<List<ImgVO>> readReplies(@RequestBody RegionVO vo) {
 		
-		logger.info("여행 지역: " + vo.getRegion_name());
 		
-		List<ImgVO> list = tourSelectService.read_region(vo.getRegion_name());
-		
-		ResponseEntity<List<ImgVO>> entity = null;
-		if (list != null) { // select 성공
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-		} else { // select 실패
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-		} // end if
-
-		return entity;
 	}// end readReplies()
+	
+	@RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> readSearchUser(@PathVariable("region_name") String region_name) {
+		logger.info("여행 지역 -> " + region_name);
+		ResponseEntity<List<ImgVO>> entity = null;
 
-	// end updateReply()
+		List<ImgVO> list = tourSelectService.read_region(region_name);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("select 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("select 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+
+	}
+
+	
 	// 웹사이트에서 동일한 부분 코드 수정
 
 	// 이클립스에서 동일한 부분 코드 수정

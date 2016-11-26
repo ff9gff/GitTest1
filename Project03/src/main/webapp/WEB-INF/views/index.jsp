@@ -52,11 +52,6 @@ http://www.templatemo.com/tm-406-flex
 </head>
 <body>
 
-
-	<!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
-
 	<%@ include file="top_header.jspf"%>
 
 	<div class="site-main" id="sTop">
@@ -237,24 +232,23 @@ http://www.templatemo.com/tm-406-flex
 
 						<input type="text" id="region_name" name="region_name"
 							placeholder="지역이름">
-
 						<button type="button" id="region_search">장소 검색</button>
 						<br>
 					</p>
 
 					<p>
-						<form action="datepickTest" method="POST">
-							<input type="text" id="start_date" name="start_date"
-								placeholder="시작일"> ~ <input type="text" id="end_date"
-								name="end_date" placeholder="종료일"> <input type="submit"
-								value="검색" />
-						</form>
+					<form action="datepickTest" method="POST">
+						<input type="text" id="start_date" name="start_date"
+							placeholder="시작일"> ~ <input type="text" id="end_date"
+							name="end_date" placeholder="종료일"> <input type="submit"
+							value="검색" />
+					</form>
 
 					</p>
 
 
 					<p>
-					<div>
+						<!-- <div>
 						<form action="imageTest" method="POST">
 							<input type="number" id="board_type" name="board_type"
 								placeholder="게시판구분" required> <input type="number"
@@ -263,16 +257,15 @@ http://www.templatemo.com/tm-406-flex
 								placeholder="사진구분" required> <input type="submit"
 								value="사진" />
 						</form>
-					</div>
+					</div> -->
 					</p>
 
 
 					<p>
 					<div>
-						<form action="GoRegister" method="post">
+						<form action="tourRegister/GoRegister" method="post">
 							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
 						</form>
-						<a href="TourRegister"></a>
 					</div>
 					</p>
 				</div>
@@ -304,7 +297,8 @@ http://www.templatemo.com/tm-406-flex
 					<div class="portfolio-item col-md-3 col-sm-6">
 						<div class="portfolio-thumb">
 							<figure>
-								<a href="FTourRegister?trip_no=${period.content_no }"><img
+								<a
+									href="tourRegister/FTourRegister?trip_no=${period.content_no }"><img
 									src="${period.img_url}" width="300" height="200"></a>
 							</figure>
 						</div>
@@ -352,39 +346,58 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#footer -->
 
-	<script>
 
-	// 지역 검색 버튼 처리
-	$('#region_search').click(function(){
-		var region = $('#region_name').val();
-		
-		if(region == ""){
-			alert('검색할 지역을 입력하세요');
-		}else{
-				
-			$.ajax({
-				type: 'post',
-				url: '/project03/regionTest',
-				headers:{
-					'Content-Type':'application/json',
-					'X-HTTP-Method-Override':'POST'
-				},
-				data: JSON.stringify({
-					region_name: region
-				}),
-				success: function(list){
-					if(list != null){
-						alert('지역 검색 성공');
-						$('#regionsearch').html(list);
-					}
-					
-				}
-			});// end ajax
-		}
-		
-	});// end btn_create()
+
+	<script>
 	
-</script>
+		$(document).ready(function() {
+
+			//DB에서 해당 여행정보 썸네일 사진을 읽어오는 함수 정의 
+			
+			function getThumnails() {
+				
+				var url = '/project03/index/' + $('#region_name').val();
+
+				$.getJSON(url, function(data) {
+					var list = '';
+
+					$(data).each(function() {
+	
+						list += '<c:forEach var="region" items="${regionlist }">'
+								+ '<div class="portfolio-item col-md-3 col-sm-6">'
+								+ '<div class="portfolio-thumb">'
+								+ '<figure>'
+								+ '<a href="FTourRegister?trip_no=${region.content_no}"><img src="${region.img_url}" width="300" height="200"></a>'
+								+ '</figure>'
+								+ '</div>'
+								+ '</div>'
+								+ '</c:forEach>';
+					});
+	
+					$('#regionsearch').html(list);
+
+				});// end getJSON()
+
+			};//end of getThumnails()
+
+			
+			// 지역 검색 버튼 처리
+			$('#region_search').click(function() {
+	
+				var region_name = $('#region_name').val();
+	
+				if (region_name == "") {
+					alert('검색할 지역을 입력하세요');
+				} else {
+					alert('지역 검색 메소드 호출 ');
+					getThumnails();
+				}
+	
+			});
+			// end 지역 검색 버튼 처리
+		});
+		
+	</script>
 
 
 	<script src="resources/theme/js/bootstrap.js"></script>

@@ -200,7 +200,7 @@
 $(document).ready(function() {
 	
 	$('#cancel').click(function() {
-		location = 'index';
+		location = '../index';
 	});	
 	
 	$('#confirm').click(function() {

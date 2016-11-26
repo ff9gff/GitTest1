@@ -23,15 +23,15 @@ http://www.templatemo.com/tm-406-flex
    rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet"
-   href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+   href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
 <link rel="stylesheet"
-   href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+   href="<c:url value="../resources/theme/css/font-awesome.css"/>">
 <link rel="stylesheet"
-   href="<c:url value="/resources/theme/css/animate.css"/>">
+   href="<c:url value="../resources/theme/css/animate.css"/>">
 <link rel="stylesheet"
-   href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+   href="<c:url value="../resources/theme/css/templatemo_misc.css"/>">
 <link rel="stylesheet"
-   href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+   href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 
 <link rel="stylesheet"
    href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
@@ -39,10 +39,10 @@ http://www.templatemo.com/tm-406-flex
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script
-   src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+   src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 <script type="text/javascript"
-   src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+   src="../resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 
 <style>
 .searchRegion {
@@ -57,26 +57,75 @@ http://www.templatemo.com/tm-406-flex
 </style>
 
 
-<script>
-$(document.ready(function(){
-    $("a.submitforms").click(function(){
-       $('form.register').each(function(){
-           Form = $(this);
-           payload = $(Form).serialize();
-
-          //Send payload via Ajax.
-       });
-    });
-}));
-</script>
-
-
-
-
-
 </head>
+
 <body>
 
+	<%@ include file="../top_header.jspf"%>
+
+	<div class="site-main" id="sTop">
+		<div class="site-header">
+			<div class="main-header">
+				<div class="container">
+					<div id="menu-wrapper">
+						<div class="row">
+							<div class="logo-wrapper col-md-2 col-sm-2">
+								<h1>
+									<a href="#">hello </a>
+								</h1>
+							</div>
+							<!-- /.logo-wrapper -->
+							<div class="col-md-10 col-sm-10 main-menu text-right">
+								<div class="toggle-menu visible-sm visible-xs">
+									<i class="fa fa-bars"></i>
+								</div>
+								<ul class="menu-first">
+									<li class="active"><a href="#">메인</a></li>
+									<li><a href="#services">후기</a></li>
+									<li><a href="#portfolio">찾기</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
+									<li><a href="admin">관리자</a></li>
+									<li><a href="member/login">로그인</a></li>
+								</ul>
+							</div>
+							<!-- /.main-menu -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /#menu-wrapper -->
+				</div>
+				<!-- /.container -->
+			</div>
+			<!-- /.main-header -->
+		</div>
+		<!-- /.site-header -->
+		<div class="site-slider">
+			<div class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<div class="overlay"></div> <img
+							src="../resources/theme/images/slide1.jpg" alt="">
+							<div class="slider-caption visible-md visible-lg">
+								<h2>같이가자</h2>
+							</div>
+						</li>
+						<li>
+							<div class="overlay"></div> <img
+							src="resources/theme/images/slide2.jpg" alt="">
+							<div class="slider-caption visible-md visible-lg">
+								<h2>이벤트</h2>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- /.flexslider -->
+			</div>
+			<!-- /.slider -->
+		</div>
+		<!-- /.site-slider -->
+	</div>
+	<!-- /.site-main -->
 
 
 	<script>
@@ -93,7 +142,7 @@ $(document.ready(function(){
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef : editor_object,
 				elPlaceHolder : "smarteditor",
-				sSkinURI : "resources/smarteditor/SmartEditor2Skin.html",
+				sSkinURI : "../resources/smarteditor/SmartEditor2Skin.html",
 				htParams : {
 					// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 					bUseToolbar : true,
@@ -119,7 +168,7 @@ $(document.ready(function(){
 			})
 			
 			$("#homebutton").click(function() {
-				location = 'index';
+				location = '../index';
 			})
 		})
 	</script>
@@ -210,9 +259,9 @@ $(document.ready(function(){
 
 
 
-	<script src="resources/theme/js/bootstrap.js"></script>
-	<script src="resources/theme/js/plugins.js"></script>
-	<script src="resources/theme/js/main.js"></script>
+	<script src="../resources/theme/js/bootstrap.js"></script>
+	<script src="../resources/theme/js/plugins.js"></script>
+	<script src="../resources/theme/js/main.js"></script>
 	
 	<script>
 		console.log($('#se2_iframe').val());
