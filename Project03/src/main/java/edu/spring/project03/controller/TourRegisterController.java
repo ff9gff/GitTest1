@@ -122,12 +122,6 @@ public class TourRegisterController {
 			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);
 			
-			logger.info("여행 등록 : " + tourregistervo.getContent());
-			logger.info("여행 등록 성공");
-			logger.info("여행 등록 성공");
-			
-			
-
 			// 이상 없으면 여행등록 DB insert!
 			int result = service.create(tourregistervo);
 			

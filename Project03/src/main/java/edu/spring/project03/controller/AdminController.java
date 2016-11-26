@@ -1,14 +1,16 @@
 package edu.spring.project03.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.MsgVO;
 import edu.spring.project03.service.AdminService;
 import edu.spring.project03.service.SearchUserService;
@@ -25,6 +27,16 @@ public class AdminController {
 	
 	@Autowired
 	private SearchUserService searchUserService;
+	
+	@RequestMapping(value = "/admin", method = RequestMethod.GET)
+	public void callAdmin(Model model) {
+
+		List<MemberVO> list = adminService.newUserList();
+		model.addAttribute("newMemberList", list);
+		logger.info("admin.jsp 소환 ");
+
+	}
+	
 	// 아이디 정보를 찾는 거다 . 
 	@RequestMapping(value="/MyUserInfo", method=RequestMethod.GET)
 	public void MyUserInfomation(){

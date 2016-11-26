@@ -54,16 +54,4 @@ public class HomeController {
 		return "tour/detail";
 	} // end tourDetail()
 	
-	@RequestMapping(value="/smarteditor", method=RequestMethod.GET)
-	public String test123() {
-		// tour/detail.jsp 테스트 콘트롤러입니다~
-		return "smarteditorTest";
-	} // end tourDetail()
-	
-
-	
-	
-	
-	
-	
 } // end class HomeController

@@ -1,11 +1,6 @@
 package edu.spring.project03.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,22 +13,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.spring.project03.domain.ImgVO;
-import edu.spring.project03.domain.MemberVO;
-import edu.spring.project03.domain.RegionVO;
+
 import edu.spring.project03.domain.TourRegisterVO;
-import edu.spring.project03.domain.TourReplyVO;
-import edu.spring.project03.service.AdminService;
+
 import edu.spring.project03.service.TourSearchService;
 
 @Controller
 public class TourSearchController {
 	private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
-
-	@Autowired
-	private AdminService adminService;
 
 	@Autowired
 	private TourSearchService tourSelectService;
@@ -43,8 +32,8 @@ public class TourSearchController {
 		logger.info("index.jsp 소환");
 	}
 
-	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
-	public String test1(Model model, String start_date, String end_date) {
+	@RequestMapping(value = "/datepickTest2", method = RequestMethod.POST)
+	public String notAjaxPeriodTest(Model model, String start_date, String end_date) {
 		logger.info("startDate: " + start_date);
 		logger.info("endDate: " + end_date);
 
@@ -57,48 +46,19 @@ public class TourSearchController {
 		return "index";
 	}
 
-	/*
-	 * @RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	 * public String test2(Model model, String region_name) { logger.info(
-	 * "region: " + region_name);
-	 * 
-	 * List<ImgVO> regionList = tourSelectService.read_region(region_name);
-	 * 
-	 * model.addAttribute("regionList", regionList);
-	 * 
-	 * return "index"; }
-	 */
+	@RequestMapping(value = "/regionTest2", method = RequestMethod.POST)
+	public String notAjaxRegionTest(Model model, String region_name) {
+		logger.info("region: " + region_name);
 
-	@RequestMapping(value = "/imageTest", method = RequestMethod.POST)
-	public String test3(Model model, int board_type, int content_no, int photo_no) {
+		List<ImgVO> regionList = tourSelectService.read_region(region_name);
 
-		logger.info("no: " + photo_no);
-
-		ImgVO vo = new ImgVO(board_type, content_no, photo_no, null);
-
-		List<ImgVO> imageList = tourSelectService.read_region_image(vo);
-
-		model.addAttribute("imageList", imageList);
+		model.addAttribute("regionList", regionList);
 
 		return "index";
 	}
 
-	// @RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
-	// public String test8() {
-	// return "TourRegister";
-	// }
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public void test9(Model model) {
-
-		List<MemberVO> list = adminService.newUserList();
-		model.addAttribute("newMemberList", list);
-		logger.info("admin.jsp 소환 ");
-
-	}
-
 	@RequestMapping(value = "tourRegister/FTourRegister", method = RequestMethod.GET)
-	public void test10(int trip_no, Model model) {
+	public void tourRegister3(int trip_no, Model model) {
 		logger.info("FTourRegister.jsp 소환");
 		logger.info("trip_no: " + trip_no);
 
@@ -110,25 +70,9 @@ public class TourSearchController {
 
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
-	@RequestMapping(value = "/regionTest", method = RequestMethod.POST)
-	public void readReplies(@RequestBody RegionVO vo, HttpServletResponse response) throws IOException {
-		
-		logger.info("여행 지역: " + vo.getRegion_name());
-		
-		List<ImgVO> list = tourSelectService.read_region(vo.getRegion_name());
-
-		PrintWriter out = response.getWriter();
-
-		if (list != null) {
-			out.print(list);
-		} // end if
-		
-		
-	}// end readReplies()
-	
 	@RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> readSearchUser(@PathVariable("region_name") String region_name) {
-		logger.info("여행 지역 -> " + region_name);
+	public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("region_name") String region_name) {
+		logger.info("여행 지역: " + region_name);
 		ResponseEntity<List<ImgVO>> entity = null;
 
 		List<ImgVO> list = tourSelectService.read_region(region_name);
@@ -136,21 +80,52 @@ public class TourSearchController {
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("select 성공 ");
+			logger.info("지역 검색 성공 ");
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("select 실패 ");
+			logger.info("지역 검색 실패 ");
 		}
 
 		logger.info("entity " + entity);
 		// logger.info("list.mno "+ list.get(0).getUserid());
 		// 출력 됨
 		return entity;
-
 	}
 
-	
+	// 기간 검색 Ajax 처리
+	// 해당 기간 검색 메소드
+	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
+	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@RequestBody TourRegisterVO vo) {
+
+		String start_date = vo.getStart_date();
+		String end_date = vo.getEnd_date();
+
+		logger.info("시작 날짜: " + start_date);
+		logger.info("종료 날짜: " + end_date);
+
+		ResponseEntity<List<ImgVO>> entity = null;
+
+		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+
+		List<ImgVO> list = tourSelectService.read_region_date(vo2);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("기간 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("기간 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
 	// 웹사이트에서 동일한 부분 코드 수정
 
 	// 이클립스에서 동일한 부분 코드 수정

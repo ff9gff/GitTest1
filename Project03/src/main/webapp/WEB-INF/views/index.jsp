@@ -217,6 +217,10 @@ http://www.templatemo.com/tm-406-flex
 			$("#start_date, #end_date").datepicker({
 				dateFormat : 'yy-mm-dd'
 			});
+			
+			$("#start_date2, #end_date2").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
 		});
 	</script>
 
@@ -226,23 +230,33 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>새 친구를 찾아보자</h2>
+					<h2>여행 검색 (여행지 & 여행기간)</h2>
 					<br /> <br />
 					<p>
 
-						<input type="text" id="region_name" name="region_name"
-							placeholder="지역이름">
-						<button type="button" id="region_search">장소 검색</button>
-						<br>
+						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+						<button type="button" id="region_search">ajax 장소 검색</button><br /><br />
+						
+						<form action="regionTest2" method="POST">
+							<input type="text" id="region_name2" name="region_name" placeholder="지역이름">
+							<input type="submit" value="장소 검색" />
+						</form>
 					</p>
 
+					<br /><br />
+					
 					<p>
-					<form action="datepickTest" method="POST">
-						<input type="text" id="start_date" name="start_date"
-							placeholder="시작일"> ~ <input type="text" id="end_date"
-							name="end_date" placeholder="종료일"> <input type="submit"
-							value="검색" />
-					</form>
+					
+						<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
+						<input type="text" id="end_date" name="end_date" placeholder="종료일">
+						<button type="button" id="period_search">ajax 기간 검색</button> <br /><br />
+					
+					
+						<form action="datepickTest2" method="POST">
+							<input type="text" id="start_date2" name="start_date" placeholder="시작일"> ~ 
+							<input type="text" id="end_date2" name="end_date" placeholder="종료일">
+							<input type="submit" value="기간 검색" />
+						</form>
 
 					</p>
 
@@ -276,18 +290,18 @@ http://www.templatemo.com/tm-406-flex
 			<p>
 			<div class="row" id="regionsearch">
 
-				<%-- <c:forEach var="region" items="${regionList }">
-						<div class="portfolio-item col-md-3 col-sm-6">
-							<div class="portfolio-thumb">
-								<figure>
-									<a href="FTourRegister?trip_no=${region.content_no}"><img
-										src="${region.img_url}" width="300" height="200"></a>
-	
-								</figure>
-							</div>
-							<!-- /.portfolio-thumb -->
+				<c:forEach var="region" items="${regionList }">
+					<div class="portfolio-item col-md-3 col-sm-6">
+						<div class="portfolio-thumb">
+							<figure>
+								<a href="FTourRegister?trip_no=${region.content_no}"><img
+									src="${region.img_url}" width="300" height="200"></a>
+
+							</figure>
 						</div>
-					</c:forEach> --%>
+						<!-- /.portfolio-thumb -->
+					</div>
+					</c:forEach> 
 			</div>
 			</p>
 
@@ -352,9 +366,8 @@ http://www.templatemo.com/tm-406-flex
 	
 		$(document).ready(function() {
 
-			//DB에서 해당 여행정보 썸네일 사진을 읽어오는 함수 정의 
-			
-			function getThumnails() {
+			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
+			function getThumnails_By_Region() {
 				
 				var url = '/project03/index/' + $('#region_name').val();
 
@@ -363,15 +376,15 @@ http://www.templatemo.com/tm-406-flex
 
 					$(data).each(function() {
 	
-						list += '<c:forEach var="region" items="${regionlist }">'
+						list += 'ㅋㅋㅋ' /* '<c:forEach var="region" items="${regionlist }">'
 								+ '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="FTourRegister?trip_no=${region.content_no}"><img src="${region.img_url}" width="300" height="200"></a>'
+								+ '<a href="FTourRegister?trip_no=${region.content_no}">' + data +'<img src="${region.img_url}" width="300" height="200"></a>'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>'
-								+ '</c:forEach>';
+								+ '</c:forEach>' */;
 					});
 	
 					$('#regionsearch').html(list);
@@ -379,7 +392,36 @@ http://www.templatemo.com/tm-406-flex
 				});// end getJSON()
 
 			};//end of getThumnails()
+			
+			
+			// 기간 검색: 해당 기간의 여행정보 썸네일들을 읽어오는 함수 정의 
+			function getThumnails_By_Period() {
+				
+				var url = '/project03/datepickTest';
+				
+				$.getJSON(url, function(data) {
+					var list = '';
 
+					$(data).each(function() {
+	
+						list += 'ㅎㅎㅎ' /* '<c:forEach var="region" items="${regionlist }">'
+								+ '<div class="portfolio-item col-md-3 col-sm-6">'
+								+ '<div class="portfolio-thumb">'
+								+ '<figure>'
+								+ '<a href="FTourRegister?trip_no=${region.content_no}"><img src="${region.img_url}" width="300" height="200"></a>'
+								+ '</figure>'
+								+ '</div>'
+								+ '</div>'
+								+ '</c:forEach>' */;
+					});
+	
+					$('#regionsearch').html(list);
+
+				});// end getJSON()
+
+			};//end of getThumnails()
+			
+			
 			
 			// 지역 검색 버튼 처리
 			$('#region_search').click(function() {
@@ -390,13 +432,41 @@ http://www.templatemo.com/tm-406-flex
 					alert('검색할 지역을 입력하세요');
 				} else {
 					alert('지역 검색 메소드 호출 ');
-					getThumnails();
+					getThumnails_By_Region();
 				}
 	
 			});
-			// end 지역 검색 버튼 처리
-		});
 		
+
+			// 기간 검색 버튼 처리			
+			$('#period_search').click(function(){
+				
+				var start_date = $('#start_date').val();
+				var end_date = $('#end_date').val();
+				
+				if (start_date == "" || end_date == "") {
+					alert('검색할 기간을 선택하세요');		
+				} else {	
+					$.ajax({
+						type: 'post',
+						url: '/project03/datepickTest/',
+						headers:{
+							'Content-Type':'application/json',
+							'X-HTTP-Method-Override':'POST'
+						},
+						data: JSON.stringify({
+							start_date: start_date,
+							end_date: end_date
+						}),
+						success: function(list){
+							alert('기간 검색 메소드 호출');
+							getThumnails_By_Period();
+						}
+					});// end ajax
+				}
+
+			}); 
+		});
 	</script>
 
 

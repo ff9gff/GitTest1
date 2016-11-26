@@ -112,7 +112,7 @@ http://www.templatemo.com/tm-406-flex
 						</li>
 						<li>
 							<div class="overlay"></div> <img
-							src="resources/theme/images/slide2.jpg" alt="">
+							src="../resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>이벤트</h2>
 							</div>
@@ -191,7 +191,7 @@ http://www.templatemo.com/tm-406-flex
 		
 					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
 					
-						<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+						대문 이미지: <input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					
 						<input type="hidden" name="mno" value="112" readonly="readonly" /> 
 					
@@ -256,7 +256,6 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.container -->
 	</div>
 	<!-- /#footer -->
-
 
 
 	<script src="../resources/theme/js/bootstrap.js"></script>
