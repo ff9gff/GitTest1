@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourReplyVO;
 import edu.spring.project03.persistence.TourReplyDAO;
 
@@ -40,4 +41,8 @@ public class TourReplyServiceImpl implements TourReplyService {
 		return tourReplyDAO.allDelete(parentrno);
 	}
 
+	@Override
+	public List<PersonalVO> readPerson(int trip_no) {
+		return tourReplyDAO.selectPerson(trip_no);
+	}
 }

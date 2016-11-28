@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourReplyVO;
 
 @Repository
@@ -47,4 +48,8 @@ public class TourReplyDAOImpl implements TourReplyDAO {
 		return sqlSession.delete(NAMESPACE + ".alldelete", parentrno);
 	}
 
+	@Override
+	public List<PersonalVO> selectPerson(int trip_no) {
+		return sqlSession.selectList(NAMESPACE+".selectperson", trip_no);
+	}
 }
