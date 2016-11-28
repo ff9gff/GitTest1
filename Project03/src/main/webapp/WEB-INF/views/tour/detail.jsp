@@ -63,7 +63,7 @@
 	display: inline-block;
 }
 .applicant_panel{
-	width: 450px;
+	width: 100%;
 	height: 150px;
 	padding:0;
 	overflow: auto;
@@ -71,12 +71,12 @@
 	margin: 0;
 }
 .applicant_button{
-width: 100px;
-	height: 150px;
+width: 100%;
+	height: 100%;
 	padding:0;
 }
 
-#applicants table {ddddd
+#applicants{
     width:100%;
     margin:0;
     border:0;
@@ -102,17 +102,18 @@ width: 100px;
     border: 1px solid #6d6f70;
 }
 .table_check{
-	width: 30px;
+	width: 8%;
 }
 .table_name,.table_com{
-	width: 130px;
+	width: 30%;
 }
 .table_sex,.table_age{
-	width: 70px;
+	width: 16%;
 }
 .apply_panel_table{
-	width: 450px;
+	width: 70%;
 	background-color: lightgray;
+	padding: 0;
 
 }
 .apply_panel_btns{
@@ -156,33 +157,110 @@ margin: 0;
 text-decoration:none;
 color: #000000;
 }
+#profilemenu{
+width: 400px;
+height: 120px;
+	position: absolute;
+	background-color: #FFFFFF;
+	border:solid 1px #ccc; 
+	position: absolute;
+	box-shadow: 0px 1px 20px #333;
+	z-index:100; 
+}
+#profilemenu table{
+	width: 100%;
+	height: 100%;
+	padding: 10px;
+}
+#profile_image{
+	width:30%;
+	border: 1px solid #d8d6d6;
+	padding-right: 5px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-top: 0;
+
+}
+#profile_button1{
+border:#FFFFFF;
+background-color: #FFFFFF;
+color: #686767;
+font-size: 12px;
+}
+#profile_button2{
+border: 1px solid #d8d6d6;
+background-color: #FFFFFF;
+color: #686767;
+font-size: 10px;
+}
+#profile_nickname{
+color: #444343;
+font-weight: 800;
+font-size: 20px;
+}
+#profile_introduce{
+color: #a8a6a6;
+font-size: 12px;
+}
+#overlay{
+	background-color: #000;
+ 	bottom: 0; left: 0;
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+	position: fixed;
+	right: 0; top: 0;
+	z-index: 99; display:none;
+}
 
 </style>
 </head>
 <body>
+<div id="overlay"></div>
+
 <div id="contextmenu" hidden>
 	<input hidden type="number" name="mno" id="context_mno"/>
+	<input hidden type="number" name="listno" id="context_listno"/>
+	<input hidden type="text" id="context_type"/>
 	<ul id="context_ul">
 		<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
 		<li id="context_board"><a href="#this" class="btn_context">게시글보기</a></li>
 		<li id="context_msg"><a href="#this" class="btn_context">쪽지보내기</a></li>
 	</ul>
 </div>
+
+
+<div id="profilemenu" hidden>
+	<table>
+	<tr>
+		<td rowspan="3" id="profile_image">프로필 사진</td>
+		<td id="profile_nickname" style="text-align: justify;">닉네임</td>
+		<td colspan="2" style="text-align: right;"><button id="profile_button1">X</button></td>
+	</tr>
+	<tr><td colspan="2" id="profile_introduce" style="padding-top: 0;">자기소개</td></tr>
+	<tr><td colspan="2" style="text-align: right;"><button id="profile_button2">자세히▶</button></td></tr>
+</table>
+
+</div>
+
 <h1>여행공고글</h1>
 <div>여행 공고 내용 아직 업데이트안됨여</div>
 <h1>신청 리스트 부분↓</h1>
 <div class="menu">Apply for</div>
 <table class="apply_panel">
-	<tr>
-		<td class="apply_panel_table">
+	<tr style="padding: 0;">
+		<td rowspan="3" class="apply_panel_table">
 			<div class="applicant_panel">
-				<span id="span_join"></span>
 				<table id="applicants"></table>
 			</div>
 		</td>
+		<td colspan="2" style="padding: 0; height: 10%"><span id="span_join"></span></td>
+	</tr>	
+	<tr>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
 	</tr>
+
+
 </table>
 
 <div class="menu">Comment</div>
@@ -261,7 +339,7 @@ $(document).ready(function(){
 					+'<dl class="reply_body">'
 						+'<dt class="icno">'+'</dt>'
 						+'<dt class="reply_header">'
-							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'">'+replylist[i].person["nickname"]+'</a></strong>'
+							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
 								+'<a href="#this" class="btn_reply">답글</a>'
@@ -293,7 +371,7 @@ $(document).ready(function(){
 						+'<table class="reply_table">'
 							+'<tbody>'
 								+'<tr>'
-									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'">'+replylist[i].person["nickname"]+'</a></strong></td>'
+									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong></td>'
 									+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 								+'</tr>'
@@ -313,7 +391,7 @@ $(document).ready(function(){
 							+'<dl class="re_reply_body">'
 								+'<dt class="icno">'+'</dt>'
 								+'<dt class="reply_header">'
-									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'">'+replylist[j].person["nickname"]+'</a></strong>'
+									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong>'
 									+'<span class="regdate">'+dateString+'</span>'
 									+'<span class="btns">'
 										+'<a href="#this" class="btn_reply">답글</a>'
@@ -345,7 +423,7 @@ $(document).ready(function(){
 								+'<table class="reply_table">'
 									+'<tbody>'
 										+'<tr>'
-											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'">'+replylist[j].person["nickname"]+'</a></strong></td>'
+											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong></td>'
 											+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 										+'</tr>'
@@ -525,13 +603,8 @@ $(document).ready(function(){
 			});
 		}// end if
 	});// end reply delete
-	
-}); // end document.ready
-</script>
-
-<%-- 신청부분 --%>
-<script>
-$(document).ready(function(){
+		
+	<%-- 신청부분 --%>
 	var trip_no = 1;
 	
 	// wm_tour_join 리스트
@@ -595,7 +668,7 @@ $(document).ready(function(){
 				tr+= '<tr class="apply_td" style="background-color:#DBD9D9 ">';
 				tr+='<td class="table_check"><input class="test" name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
 			}
-					tr+='<td class="table_name"><a href="#this" class="btn_nickname" data-rno="'+applylist[i].mno+'">'+applylist[i].person["nickname"]+'</a></td>'
+					tr+='<td class="table_name"><a href="#this" class="btn_nickname" data-rno="'+applylist[i].mno+'" data-listno="'+i+'">'+applylist[i].person["nickname"]+'</a></td>'
 					+'<td class="table_sex">';
 					if(applylist[i].person["sex"] == 0){
 						tr+='여자'+'</td>';
@@ -694,10 +767,7 @@ $(document).ready(function(){
 	}); // end apply_ok click
 
 	
-	
-}); // end document.ready();
-</script>
-<script>
+
 
 // menu에 마우스가 올라갔을때 색 바꾸기
 $('#context_ul').on('mouseover','li',function(){
@@ -723,13 +793,15 @@ $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 	// e.pageX
 	// a 태그안의 mno 불러오기
 	var amno = $(this).attr('data-rno');
+	var alistno = $(this).attr('data-listno');
 	// 메뉴 input에 mno숨겨넣기
 	$('#context_mno').val(amno);
+	$('#context_listno').val(alistno);
+	$('#context_type').val("apply");
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
 	menubox.css("left", (atag.left+30) +"px");
-	
 	menubox.css("top", (atag.top+10) +"px");
 	menubox.show();
 			 
@@ -740,8 +812,11 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 	// e.pageX
 	// a 태그안의 mno 불러오기
 	var amno = $(this).attr('data-rno');
+	var alistno = $(this).attr('data-listno');
 	// 메뉴 input에 mno숨겨넣기
 	$('#context_mno').val(amno);
+	$('#context_listno').val(alistno);
+	$('#context_type').val("reply");
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
@@ -752,9 +827,28 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 });	
 
 $('#context_profile').on('click','.btn_context',function(){
-	var amno = $('#context_mno').val();
-	alert(amno+'번째 회원 프로필');
+	
+	var alistno = $('#context_listno').val();
+	var atype = $('#context_type').val();
+	if(atype=='reply'){
+		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
+		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
+	}else{
+		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
+		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
+	}
+	$('#overlay, #profilemenu').show();
+
+	$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
+	$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
 });
+
+// 프로필 창 닫기
+$('#overlay, #profile_button1').click(function(e){ 
+    e.preventDefault(); 
+    $('#profilemenu, #overlay').hide(); 
+}); 
+
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
@@ -766,6 +860,9 @@ $('#context_msg').on('click','.btn_context',function(){
 	alert(amno+'번째 회원 쪽지보내기');
 });
 
+
+
+}); // end document.ready();
 </script>
 
 
