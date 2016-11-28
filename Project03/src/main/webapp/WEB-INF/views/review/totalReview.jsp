@@ -19,17 +19,17 @@ http://www.templatemo.com/tm-406-flex
 -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>"> 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>"> 
+<link rel="stylesheet" href="<c:url value="../resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="../resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script src="../../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
 
@@ -286,9 +286,9 @@ http://www.templatemo.com/tm-406-flex
 
 
 
-	<script src="resources/theme/js/bootstrap.js"></script>
-	<script src="resources/theme/js/plugins.js"></script>
-	<script src="resources/theme/js/main.js"></script>
+	<script src="../resources/theme/js/bootstrap.js"></script>
+	<script src="../resources/theme/js/plugins.js"></script>
+	<script src="../resources/theme/js/main.js"></script>
 	<script>
 	$(document).ready(function() {
 		$('#btn_create_review').click(function() {
