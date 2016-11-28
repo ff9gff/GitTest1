@@ -101,6 +101,11 @@ width: 100%;
 	background-color:#fdfdfd;
     border: 1px solid #6d6f70;
 }
+.apply_notdata{
+	background-color: lightgray;
+	border: 1px solid lightgray;
+}
+
 .table_check{
 	width: 8%;
 }
@@ -211,6 +216,10 @@ font-size: 12px;
 	right: 0; top: 0;
 	z-index: 99; display:none;
 }
+#span_join{
+	color:#6d6f70;
+	font-weight: bold;
+}
 
 </style>
 </head>
@@ -253,7 +262,7 @@ font-size: 12px;
 				<table id="applicants"></table>
 			</div>
 		</td>
-		<td colspan="2" style="padding: 0; height: 10%"><span id="span_join"></span></td>
+		<td colspan="2" style="padding: 0; height: 10%; text-align: center;"><span id="span_join"></span></td>
 	</tr>	
 	<tr>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
@@ -286,12 +295,10 @@ $(document).ready(function(){
 	replylist=[];
 	// wm_personal 리스트
 	reply_personlist=[];
-	console.log("실행은 됐니?");
 	 getReplyAlldata();
 	
 	// 댓글 리스트+개인정보 리스트 합체
 	function getReplyAlldata(){
-		console.log("불렸다1");
 		// wm_tour_reply 리스트
 		replylist=[];
 		// wm_personal 리스트
@@ -323,7 +330,6 @@ $(document).ready(function(){
 
 	// DB에서 해당 글번호(trip_no)의 모든 댓글을 읽어오는 함수 정의
 	function getAllReplies(){
-		console.log("불렸다2");
 			var list= '';
 			/*data의 개수만큼 function()의 내용을 반복해서 수행*/
 
@@ -605,8 +611,6 @@ $(document).ready(function(){
 	});// end reply delete
 		
 	<%-- 신청부분 --%>
-	var trip_no = 1;
-	
 	// wm_tour_join 리스트
 	var applylist = [];
 	// wm_personal 리스트
@@ -658,7 +662,9 @@ $(document).ready(function(){
 					+'<th class="table_age">나이</th>'
 					+'<th class="table_com">수락여부</th>'
 				+'</tr>' 
-		
+		if(applylist[0] == null){
+			tr+= '<tr class="apply_notdata" style="height:130px;"><td colspan="5" class="apply_notdata">신청자가 없습니다.</td></tr>';
+		}else{
 		for(var i=0; i<applylist.length; i++){
 			if(applylist[i].approval == 0){
 					tr+= '<tr class="apply_td">';
@@ -682,9 +688,9 @@ $(document).ready(function(){
 						tr+='<td class="table_com"><span class="join">수락완료</span></td></tr>';
 					}
 		}// end for(i)
-	
+		}
 		$('#applicants').html(tr);
-		$('#span_join').html(joincount+"명 수락완료");
+		$('#span_join').html("현재까지 "+joincount+"명 수락완료");
 				
 	}// end getAllApply()
 	
@@ -734,7 +740,8 @@ $(document).ready(function(){
 	$('#apply_ok').on('click',$(this),function(){
 		var chkObj = document.getElementsByName("rowCheck");
 		var rowCnt = chkObj.length - 1;
-		var test= false;
+		var success= false;
+		var fail = 0;
 		for(var i=0; i<=rowCnt; i++){
 			if(chkObj[i].checked == true){
 				var no = chkObj[i].value;
@@ -755,13 +762,19 @@ $(document).ready(function(){
 							}
 					}
 				});// end ajax
+				success = true;
 			}// end if
-			test = true;
+			if(chkObj[i].checked == false){
+				fail++;
+			}
 		}// end for
 
-		if(test){
+		if(success){
 			alert('수락이 완료되었습니다.');
 			getAlldata();
+		}
+		if(fail > rowCnt){
+			alert('신청자를 체크해주세요');
 		}
 
 	}); // end apply_ok click

@@ -134,8 +134,14 @@ public class TourRegisterController {
 
 		ImageFile fileInfo = imageService.save(imageFile);
 		
-		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+		
+		if (fileInfo != null) {
+			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+		} else {
+			logger.info("대실패 ");
 
+		}
+		
 		if (tourregistervo != null && regionvo != null) {
 
 			model.addAttribute("vo", tourregistervo);
