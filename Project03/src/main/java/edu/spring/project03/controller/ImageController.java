@@ -56,6 +56,6 @@ public class ImageController {
 			e.printStackTrace();
 		}
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
-	}
+	} // end String photoUpload(request, vo)
 
-}
+} // end class ImageController
