@@ -9,17 +9,17 @@ public class ReviewVO {
 	private String content;
 	private int mno;
 	private int countOfBest;
-	private int totalview;
+	private int hits;
 	private Date regdate;
 	
 	public ReviewVO() {}
-	public ReviewVO(int review_no, String title, String content, int mno, int countOfBest, int totalview, Date regdate) {		
+	public ReviewVO(int review_no, String title, String content, int mno, int countOfBest, int hits, Date regdate) {		
 		this.review_no = review_no;
 		this.title = title;
 		this.content = content;
 		this.mno = mno;
 		this.countOfBest = countOfBest;
-		this.totalview = totalview;
+		this.hits = hits;
 		this.regdate = regdate;
 	}
 	
@@ -29,36 +29,42 @@ public class ReviewVO {
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
 	}
+	
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
 	public String getContent() {
 		return content;
 	}
 	public void setContent(String content) {
 		this.content = content;
 	}
+	
 	public int getMno() {
 		return mno;
 	}
 	public void setMno(int mno) {
 		this.mno = mno;
 	}
+	
 	public int getCountOfBest() {
 		return countOfBest;
 	}
 	public void setCountOfBest(int countOfBest) {
 		this.countOfBest = countOfBest;
 	}
-	public int getTotalview() {
-		return totalview;
+	
+	public int getHits() {
+		return hits;
 	}
-	public void setTotalview(int totalview) {
-		this.totalview = totalview;
+	public void setHits(int hits) {
+		this.hits = hits;
 	}
+	
 	public Date getRegdate() {
 		return regdate;
 	}
