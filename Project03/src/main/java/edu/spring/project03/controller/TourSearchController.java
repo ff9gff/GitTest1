@@ -22,121 +22,121 @@ import edu.spring.project03.service.TourSearchService;
 
 @Controller
 public class TourSearchController {
-	private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
+   private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
 
-	@Autowired
-	private TourSearchService tourSelectService;
+   @Autowired
+   private TourSearchService tourSelectService;
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public void main() {
-		logger.info("index.jsp 소환");
-	}
+   @RequestMapping(value = "/index", method = RequestMethod.GET)
+   public void main() {
+      logger.info("index.jsp 소환");
+   }
 
-	@RequestMapping(value = "/datepickTest2", method = RequestMethod.POST)
-	public String notAjaxPeriodTest(Model model, String start_date, String end_date) {
-		logger.info("startDate: " + start_date);
-		logger.info("endDate: " + end_date);
+   @RequestMapping(value = "/datepickTest2", method = RequestMethod.POST)
+   public String notAjaxPeriodTest(Model model, String start_date, String end_date) {
+      logger.info("startDate: " + start_date);
+      logger.info("endDate: " + end_date);
 
-		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+      TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
 
-		List<ImgVO> list = tourSelectService.read_region_date(vo);
+      List<ImgVO> list = tourSelectService.read_region_date(vo);
 
-		model.addAttribute("periodList", list);
+      model.addAttribute("periodList", list);
 
-		return "index";
-	}
+      return "index";
+   }
 
-	@RequestMapping(value = "/regionTest2", method = RequestMethod.POST)
-	public String notAjaxRegionTest(Model model, String region_name) {
-		logger.info("region: " + region_name);
+   @RequestMapping(value = "/regionTest2", method = RequestMethod.POST)
+   public String notAjaxRegionTest(Model model, String region_name) {
+      logger.info("region: " + region_name);
 
-		List<ImgVO> regionList = tourSelectService.read_region(region_name);
+      List<ImgVO> regionList = tourSelectService.read_region(region_name);
 
-		model.addAttribute("regionList", regionList);
+      model.addAttribute("regionList", regionList);
 
-		return "index";
-	}
+      return "index";
+   }
 
-	@RequestMapping(value = "tourRegister/FTourRegister", method = RequestMethod.GET)
-	public void tourRegister3(int trip_no, Model model) {
-		logger.info("FTourRegister.jsp 소환");
-		logger.info("trip_no: " + trip_no);
+   @RequestMapping(value = "tourRegister/FTourRegister", method = RequestMethod.GET)
+   public void tourRegister3(int trip_no, Model model) {
+      logger.info("FTourRegister.jsp 소환");
+      logger.info("trip_no: " + trip_no);
 
-		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
+      TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
 
-		model.addAttribute("tourVO", tourVO);
+      model.addAttribute("tourVO", tourVO);
 
-	}
+   }
 
-	// 지역 검색 Ajax 처리
-	// 해당 지역 검색 메소드
-	@RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("region_name") String region_name) {
-		logger.info("여행 지역: " + region_name);
-		ResponseEntity<List<ImgVO>> entity = null;
+   // 지역 검색 Ajax 처리
+   // 해당 지역 검색 메소드
+   @RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
+   public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("region_name") String region_name) {
+      logger.info("여행 지역: " + region_name);
+      ResponseEntity<List<ImgVO>> entity = null;
 
-		List<ImgVO> list = tourSelectService.read_region(region_name);
+      List<ImgVO> list = tourSelectService.read_region(region_name);
 
-		if (list != null) {
-			// select 성공 한것이다.
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("지역 검색 성공 ");
-		} else {
-			// select 실패이다.
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("지역 검색 실패 ");
-		}
+      if (list != null) {
+         // select 성공 한것이다.
+         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+         logger.info("지역 검색 성공 ");
+      } else {
+         // select 실패이다.
+         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+         logger.info("지역 검색 실패 ");
+      }
 
-		logger.info("entity " + entity);
-		// logger.info("list.mno "+ list.get(0).getUserid());
-		// 출력 됨
-		return entity;
-	}
+      logger.info("entity " + entity);
+      // logger.info("list.mno "+ list.get(0).getUserid());
+      // 출력 됨
+      return entity;
+   }
 
-	// 기간 검색 Ajax 처리
-	// 해당 기간 검색 메소드
-	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
-	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@RequestBody TourRegisterVO vo) {
+   // 기간 검색 Ajax 처리
+   // 해당 기간 검색 메소드
+   @RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
+   public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@RequestBody TourRegisterVO vo) {
 
-		String start_date = vo.getStart_date();
-		String end_date = vo.getEnd_date();
+      String start_date = vo.getStart_date();
+      String end_date = vo.getEnd_date();
 
-		logger.info("시작 날짜: " + start_date);
-		logger.info("종료 날짜: " + end_date);
+      logger.info("시작 날짜: " + start_date);
+      logger.info("종료 날짜: " + end_date);
 
-		ResponseEntity<List<ImgVO>> entity = null;
+      ResponseEntity<List<ImgVO>> entity = null;
 
-		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+      TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
 
-		List<ImgVO> list = tourSelectService.read_region_date(vo2);
+      List<ImgVO> list = tourSelectService.read_region_date(vo2);
 
-		if (list != null) {
-			// select 성공 한것이다.
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("기간 검색 성공 ");
-		} else {
-			// select 실패이다.
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("기간 검색 실패 ");
-		}
+      if (list != null) {
+         // select 성공 한것이다.
+         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+         logger.info("기간 검색 성공 ");
+      } else {
+         // select 실패이다.
+         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+         logger.info("기간 검색 실패 ");
+      }
 
-		logger.info("entity " + entity);
-		// logger.info("list.mno "+ list.get(0).getUserid());
-		// 출력 됨
-		return entity;
-	}
+      logger.info("entity " + entity);
+      // logger.info("list.mno "+ list.get(0).getUserid());
+      // 출력 됨
+      return entity;
+   }
 
-	// 웹사이트에서 동일한 부분 코드 수정
+   // 웹사이트에서 동일한 부분 코드 수정
 
-	// 이클립스에서 동일한 부분 코드 수정
-	// 이클립스에서 커밋앤푸쉬하려니 불가능!
-	// 뭐지? 이상하네 싶어서 중앙리파지토리에서 pull을 했더니
-	// 웹사이트, 이클립스에서 수정한 부분이 모두 뜬다!
-	// 선택을 해야 한다! 뭐가 더 나은 코드인지 확인 후 필터링
-	// 필터링이 다 됐으면 add to index를 하고
-	// 커밋앤푸시를 하면 반영 완료!
+   // 이클립스에서 동일한 부분 코드 수정
+   // 이클립스에서 커밋앤푸쉬하려니 불가능!
+   // 뭐지? 이상하네 싶어서 중앙리파지토리에서 pull을 했더니
+   // 웹사이트, 이클립스에서 수정한 부분이 모두 뜬다!
+   // 선택을 해야 한다! 뭐가 더 나은 코드인지 확인 후 필터링
+   // 필터링이 다 됐으면 add to index를 하고
+   // 커밋앤푸시를 하면 반영 완료!
 
-	// 커밋만 하면 로컬리파지토리에만 저장된다.
-	// 로컬에서 푸시를 해야 git허브에 저장된다
+   // 커밋만 하면 로컬리파지토리에만 저장된다.
+   // 로컬에서 푸시를 해야 git허브에 저장된다
 
 }

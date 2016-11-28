@@ -128,7 +128,7 @@ http://www.templatemo.com/tm-406-flex
 				</div>
 				<div class="heading-section col-md-12 text-center">
 					<h4>
-						<a href="totalReview">전체보기</a>
+						<a href="review/totalReview">전체보기</a>
 					</h4>
 				</div>
 				<!-- /.heading-section -->

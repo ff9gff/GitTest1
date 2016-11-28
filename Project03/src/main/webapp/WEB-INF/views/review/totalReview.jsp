@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -19,17 +18,19 @@ Flex Template
 http://www.templatemo.com/tm-406-flex
 -->
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>"> 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
-<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
 <style>
@@ -42,24 +43,14 @@ http://www.templatemo.com/tm-406-flex
 	<!--[if lt IE 7]>
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
-
-
-
-
+        
+    
+    <%@ include file="../top_header.jsp" %>
+    
 	<div class="site-main" id="sTop">
 		<div class="site-header">
 			<div class="container">
-				<div class="row">
-					<div class="col-md-12 text-center">
-						<ul class="social-icons">
-							<li><a href="#" class="fa fa-facebook"></a></li>
-							<li><a href="#" class="fa fa-twitter"></a></li>
-							<li><a href="#" class="fa fa-dribbble"></a></li>
-							<li><a href="#" class="fa fa-linkedin"></a></li>
-						</ul>
-					</div>
-					<!-- /.col-md-12 -->
-				</div>
+
 				<!-- /.row -->
 			</div>
 			<!-- /.container -->
@@ -81,9 +72,6 @@ http://www.templatemo.com/tm-406-flex
 									<li><a href="index">메인</a></li>
 									<li><a href="admin">관리자</a></li>
 									<li><a href="login">로그인</a></li>
-									
-
-
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -97,25 +85,6 @@ http://www.templatemo.com/tm-406-flex
 			<!-- /.main-header -->
 		</div>
 		<!-- /.site-header -->
-		<div class="site-slider">
-			<div class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="overlay"></div> <img
-							src="resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>후기 게시판</h2>
-							</div>
-						</li>
-						
-					</ul>
-				</div>
-				<!-- /.flexslider -->
-			</div>
-			<!-- /.slider -->
-		</div>
-		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
 
@@ -130,6 +99,14 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.heading-section -->
 			</div>
 			<!-- /.row -->
+			
+			<div class="row">
+				<button id="btn_create_review" style="float: right; margin-right: 13px ">후기 등록</button>
+			</div>
+			
+			<div id="best_top4">
+				<h3 class="h3" style="font: bold;">Best top4</h3>
+			
 			<div class="row">
 				<div class="col-md-3 col-sm-6">
 					<div class="service-item" id="service-1">
@@ -149,7 +126,86 @@ http://www.templatemo.com/tm-406-flex
 					</div>
 					<!-- /#service-1 -->
 				</div>
+				<!-- /.col-md-3 -->				
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item" id="service-2">
+						<div class="service-icon">
+							<i class="fa fa-paper-plane-o"></i>
+						</div>
+						<!-- /.service-icon -->
+						<div class="service-content">
+							<div class="inner-service">
+								<h3></h3>
+								<p></p>
+							</div>
+						</div>
+						<!-- /.service-content -->
+					</div>
+					<!-- /#service-1 -->
+				</div>
 				<!-- /.col-md-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item" id="service-3">
+						<div class="service-icon">
+							<i class="fa fa-institution"></i>
+						</div>
+						<!-- /.service-icon -->
+						<div class="service-content">
+							<div class="inner-service">
+								<h3></h3>
+								<p></p>
+							</div>
+						</div>
+						<!-- /.service-content -->
+					</div>
+					<!-- /#service-1 -->
+				</div>
+				<!-- /.col-md-3 -->
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item" id="service-4">
+						<div class="service-icon">
+							<i class="fa fa-flask"></i>
+						</div>
+						<!-- /.service-icon -->
+						<div class="service-content">
+							<div class="inner-service">
+								<h3></h3>
+								<p></p>
+							</div>
+						</div>
+						<!-- /.service-content -->
+					</div>
+					<!-- /#service-1 -->
+				</div>
+				<!-- /.col-md-3 -->
+			</div>
+			<!-- /.row -->			
+			</div><br/><br/> <!-- // end best-top4 -->
+			
+			<!--  -->
+			<!--  -->
+			<!-- 일반 리뷰 → 게시글 갯수에 따라서 유동적! → c:for → 개수만큼 나오게... -->
+			<div id="General_reviews" style="margin: 10px">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="service-item" id="service-1">
+						<div class="service-icon">
+							<i class="fa fa-file-code-o"></i>
+						</div>
+						<!-- /.service-icon -->
+						<div class="service-content">
+							<div class="inner-service">
+								<h3>HTML5 Coding</h3>
+								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+									Enim, assumenda, eveniet, consectetur, ex doloribus veniam
+									asperiores incidunt mollitia placeat aniet.</p>
+							</div>
+						</div>
+						<!-- /.service-content -->
+					</div>
+					<!-- /#service-1 -->
+				</div>
+				<!-- /.col-md-3 -->				
 				<div class="col-md-3 col-sm-6">
 					<div class="service-item" id="service-2">
 						<div class="service-icon">
@@ -203,6 +259,7 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.col-md-3 -->
 			</div>
 			<!-- /.row -->
+			</div> <!--// end General reviews  -->
 		</div>
 		<!-- /.container -->
 	</div>
@@ -232,6 +289,15 @@ http://www.templatemo.com/tm-406-flex
 	<script src="resources/theme/js/bootstrap.js"></script>
 	<script src="resources/theme/js/plugins.js"></script>
 	<script src="resources/theme/js/main.js"></script>
-
+	<script>
+	$(document).ready(function() {
+		$('#btn_create_review').click(function() {
+			location = 'review_register';
+			
+		});
+		
+	});
+	
+	</script>
 </body>
 </html>
