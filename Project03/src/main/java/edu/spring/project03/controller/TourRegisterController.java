@@ -28,6 +28,7 @@ import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.ImageService;
 import edu.spring.project03.service.ImageView;
 import edu.spring.project03.service.TourRegisterService;
+import edu.spring.project03.service.TourSearchService;
 
 @Controller
 @RequestMapping(value="/tourRegister")
@@ -56,10 +57,16 @@ public class TourRegisterController {
 	@Resource(name="imageView") ImageView imageView;
 	
 	@Autowired ImageService imageService;
+	
+	@Autowired
+	private TourSearchService tourSelectService;
 
 	// 단일파일업로드
 	@RequestMapping(value = "/photoUpload", method = RequestMethod.POST)
 	public String photoUpload(HttpServletRequest request, TourRegisterVO vo2, PhotoVO vo) {
+		
+		logger.info("들어왔니?");
+		
 		String callback = vo.getCallback();
 		String callback_func = vo.getCallback_func();
 		String file_result = "";
@@ -95,6 +102,19 @@ public class TourRegisterController {
 		}
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
 	}
+	
+	@RequestMapping(value = "/FTourRegister", method = RequestMethod.GET)
+	   public String tourRegister3(int trip_no, Model model) {
+	      logger.info("FTourRegister.jsp 소환");
+	      logger.info("trip_no: " + trip_no);
+
+	      TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
+
+	      model.addAttribute("tourVO", tourVO);
+	      
+	      return "tourRegister/FTourRegister";
+
+	   }
 
 	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.POST)

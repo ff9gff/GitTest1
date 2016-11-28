@@ -19,12 +19,6 @@
 		where region_name = #{region_name})
 
 	</select>
-
-	<select id="select_trip_region_image" resultType="edu.spring.project03.domain.ImgVO">
-		select * from wm_image
-		where board_type = #{board_type} and content_no = #{content_no} 
-		and photo_no = #{photo_no}
-	</select>
 	
 	<select id="select_trip_by_no" resultType="edu.spring.project03.domain.TourRegisterVO">
 		select * from wm_tour
