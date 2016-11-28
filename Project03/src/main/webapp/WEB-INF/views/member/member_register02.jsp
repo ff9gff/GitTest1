@@ -58,7 +58,7 @@
 		
 		<label for="email_certification">인증번호 입력</label><br/>
 		<input type="text" id="email_certification" placeholder="인증번호">
-		<button type="button" id="btn_check_certificationbtn">인증번호 확인</button><br><br>
+		<button type="button" id="btn_check_certification">인증번호 확인</button><br><br>
 		
 		<label for="introduce">자기소개</label><br/>
 		<textarea id="introduce" name="introduce" cols="100" rows="15"></textarea><br><br>
@@ -220,7 +220,7 @@ $(document).ready(function() {
 	var final_check = 0; // 인증번호 입력시 회원가입이 되기 위하여...
 	
 	// 인증번호 입력 확인
-	$('#btn_check_certificationbtn').click(function() {		
+	$('#btn_check_certification').click(function() {		
 		if($('#email_certification').val() == auth_code) {
 			alert('인증번호가 동일!');
 			final_check = 1;

@@ -72,11 +72,11 @@ public class TourSearchController {
 		return "index";
 	}
 	
-	@RequestMapping(value = "/totalReview", method = RequestMethod.GET)
-	public String test4() {
-		
-		return "Review";
-	}
+//	@RequestMapping(value = "/totalReview", method = RequestMethod.GET)
+//	public String test4() {
+//		
+//		return "Review";
+//	}
 	
 	@RequestMapping(value = "/MyPage", method = RequestMethod.GET)
 	public String test5() {
@@ -84,17 +84,17 @@ public class TourSearchController {
 		return "MyPage";
 	}
 	
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String test6() {
-		
-		return "login";
-	}
-	
-	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
-	public String test7() {
-		
-		return "index";
-	}
+//	@RequestMapping(value = "/login", method = RequestMethod.GET)
+//	public String test6() {
+//		
+//		return "login";
+//	}
+//	
+//	@RequestMapping(value = "/login-post", method = RequestMethod.POST)
+//	public String test7() {
+//		
+//		return "index";
+//	}
 	
 //	@RequestMapping(value = "/TourRegister", method = RequestMethod.POST)
 //	public String test8() {

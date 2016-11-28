@@ -175,11 +175,7 @@ public class MemberController {
 		} // end if		
 		
 		return "redirect:/";
-	} // end signUp(membervo, personalvo, attr)
-	
-	
-	
-	
+	} // end signUp(membervo, personalvo, attr)	
 	
 	
 } // end class MemberController
