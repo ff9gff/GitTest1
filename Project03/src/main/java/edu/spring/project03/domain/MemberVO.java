@@ -8,11 +8,24 @@ public class MemberVO {
 	
 	public MemberVO() {}
 
+
+	
+	
+	
 	public MemberVO(int mno, String userid, String pwd, int authority) {
 		this.mno = mno;
 		this.userid = userid;
 		this.pwd = pwd;
 		this.authority = authority;
+	}
+	
+
+	/*수정 완료 */
+	public MemberVO(PersonalVO vo ,String userid , String pwd, int authority ){
+		this.userid = userid;
+		this.pwd = pwd;
+		this.authority = authority;
+		
 	}
 
 	public int getMno() {
@@ -46,6 +59,7 @@ public class MemberVO {
 	public void setAuthority(int authority) {
 		this.authority = authority;
 	}
+
 	
 	
 	@Override

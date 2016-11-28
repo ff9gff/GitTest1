@@ -30,6 +30,7 @@ import edu.spring.project03.service.ImageView;
 import edu.spring.project03.service.TourRegisterService;
 
 @Controller
+@RequestMapping(value="/tourRegister")
 public class TourRegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(TourRegisterController.class);
 	
@@ -98,46 +99,53 @@ public class TourRegisterController {
 	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.POST)
 	public String createRegister() {
-		return "TourRegister";
+		return "tourRegister/TourRegister";
 	}
 
 	// 등록하기 전에 여행 일정을 수정해야 한다?
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
 	public String createRegister2() {
-		return "TourRegister";
+		return "tourRegister/TourRegister";
 	}
 
 	// 여행 일정이 잘 작성되었는지 확인하러 가자
 	@RequestMapping(value = "/TourRegisterConfirm", method = RequestMethod.POST)
-	public void submit(TourRegisterVO vo, RegionVO vo2, @RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
+	public void submit(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
 		
 		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
 
-		if (vo != null && vo2 != null) {
-			
-		
-			
-			model.addAttribute("vo", vo);
-			// model.addAttribute("vo2", vo2);
-			modelMap.put("imageFile", fileInfo);
+		if (tourregistervo != null && regionvo != null) {
 
-			// 이상 없으면 DB insert!
-			int result = service.create(vo);
+			model.addAttribute("vo", tourregistervo);
+			model.addAttribute("vo2", regionvo);
+			modelMap.put("imageFile", fileInfo);
 			
-			if (result == 1) { // DB insert 성공
+			// 이상 없으면 여행등록 DB insert!
+			int result = service.create(tourregistervo);
+			
+			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 등록 성공");
+
+				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자
+				tourregistervo = new TourRegisterVO(0, tourregistervo.getMno(), tourregistervo.getTitle(), 0, 0, tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(), 0);
+				int content_no = service.readTrip_no(tourregistervo);
 				
-				int content_no = service.readTrip_no(vo.getContent());
-				
-				ImgVO vo3 = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				
-				int result2 = service.createThumnail(vo3);
-				
-				
+				ImgVO imgvo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+				int result2 = service.createThumnail(imgvo);
+
 				if (result2 == 1) {
 					logger.info("썸네일 등록 성공");
+					
+					String region_name = regionvo.getRegion_name();
+					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
+					int result3 = service.createRegion(regionvo2);
+					
+					if (result3 == 1) {
+						logger.info("장소 등록 성공");
+					}
+					
 				} else {
 					logger.info("썸네일 등록 실패");
 				}
@@ -178,6 +186,6 @@ public class TourRegisterController {
 	//
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
-		return "TourRegister";
+		return "tourRegister/TourRegister";
 	}
 }

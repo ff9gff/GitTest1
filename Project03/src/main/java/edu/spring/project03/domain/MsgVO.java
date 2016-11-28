@@ -10,9 +10,17 @@ public class MsgVO {
 	private String msg_content; // 쪽지 내용
 	private Date msg_date; // 메시지 전송 시간
 	
+	
+
+	
+	
 	public MsgVO() {
 		
 	}
+	
+	
+	
+	
 
 	public MsgVO(int msg_no, int sd_mno, int rc_mno, String msg_content, Date msg_date) {
 		this.msg_no = msg_no;

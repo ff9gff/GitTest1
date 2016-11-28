@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 @Repository
@@ -31,9 +32,15 @@ public class TourRegisterDAOImpl implements TourRegisterDAO {
 	}
 
 	@Override
-	public int selectTrip_no(String content) {
+	public int selectTrip_no(TourRegisterVO vo) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(NAMESPACE + ".select-trip_no", content);
+		return sqlSession.selectOne(NAMESPACE + ".select-trip_no", vo);
+	}
+
+	@Override
+	public int insertRegion(RegionVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert(NAMESPACE + ".insert-region", vo);
 	}
 
 }

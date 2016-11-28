@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.MsgVO;
 
 
 
@@ -35,6 +36,27 @@ public class SearchUserDAOImpl implements SearchUserDAO {
 		return list;
 		
 	}
+	
+	
+	@Override
+	public int searchSndUno(String nickname) {
+		
+		int result = sqlSession.selectOne(NAMESPACE+".searchSndUno",nickname);
+		logger.info("searchuserDAO 지남 "+result);
+		return result;
+	}
+
+
+	@Override
+	public int sendMsgToU(MsgVO vo) {
+		
+		int result = sqlSession.insert(NAMESPACE+".sendMSGU", vo);
+		logger.info("searchuserDAO 지남  -> 에 메세지 insert 중입니다. "+result);
+		
+		return result;
+	}
+	
+	
 	
 
 }

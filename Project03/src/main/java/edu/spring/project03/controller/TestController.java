@@ -1,17 +1,8 @@
 package edu.spring.project03.controller;
 
-
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-
-import java.io.File;
-
-import java.util.UUID;
-
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +20,9 @@ import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.ImageService;
 import edu.spring.project03.service.ImageView;
 
-
 @Controller
 public class TestController {
-	 private static final Logger logger = LoggerFactory.getLogger(TestController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 
 	// 웹사이트에서 동일한 부분 코드 수정
 	// 이클립스에서 동일한 부분 코드 수정
@@ -45,39 +35,41 @@ public class TestController {
 
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
-	
-	@Resource(name="imageView") ImageView imageView;
-	
-	@Autowired ImageService imageService;
-	
+
+	@Resource(name = "imageView")
+	ImageView imageView;
+
+	@Autowired
+	ImageService imageService;
+
 	/**
-	 * 이미지 업로드를 위한 페이지 매핑 
+	 * 이미지 업로드를 위한 페이지 매핑
 	 */
 	@RequestMapping("/uploadPage")
 	private String uploadView() {
 		return "upload";
 	}
-	
+
 	/**
-	 * 이미지 업로드 페이지의 폼에서 전송 시 받게 되는 메서드 
+	 * 이미지 업로드 페이지의 폼에서 전송 시 받게 되는 메서드
 	 */
-	@RequestMapping(value="/upload", method=RequestMethod.POST)
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	private String upload(@RequestParam MultipartFile imageFile, ModelMap modelMap) {
 		ImageFile fileInfo = imageService.save(imageFile);
-		
+
 		modelMap.put("imageFile", fileInfo);
-		
+
 		return "TourRegister";
 	}
-	
+
 	@RequestMapping("/image/{imageId}")
 	private ImageView getImage(@PathVariable String imageId, TourRegisterVO vo, ModelMap modelMap) {
 		ImageFile imageFile = imageService.get(imageId);
-		
+
 		logger.info("" + vo.getTrip_no());
-		
+
 		modelMap.put("imageFile", imageFile);
-		
+
 		return imageView;
 	}
 
@@ -85,6 +77,10 @@ public class TestController {
 	public String form() {
 		return "form";
 	}
-
+	
+	@RequestMapping("/MyPage")
+	public String myPage() {
+		return "MyPage";
+	}
 
 }

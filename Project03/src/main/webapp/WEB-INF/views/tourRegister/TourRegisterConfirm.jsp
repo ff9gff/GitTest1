@@ -11,17 +11,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/font-awesome.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/animate.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_misc.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-		<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-		<script src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="../resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 		
 		<style>
 			.searchRegion {
@@ -35,7 +35,7 @@
 	</head>
 	
 	<body>
-		<%@ include file="top_header.jspf"  %>
+		<%@ include file="../top_header.jspf"  %>
 
 		<div class="site-main" id="sTop" style="background-color: green;">
 			<div class="site-header">
@@ -80,7 +80,7 @@
 					<ul class="slides">
 						<li>
 							<div class="overlay"></div> <img
-							src="resources/theme/images/slide1.jpg" alt="">
+							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>여행 등록 정보 확인</h2>
 								<br /> <br />
@@ -106,33 +106,15 @@
 	
 	<script>
 		$(function() { //전역변수선언
-			var editor_object = [];
-			nhn.husky.EZCreator.createInIFrame({
-				oAppRef : editor_object,
-				elPlaceHolder : "smarteditor",
-				sSkinURI : "resources/smarteditor/SmartEditor2Skin.html",
-				htParams : {
-					// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseToolbar : true,
-					// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseVerticalResizer : true,
-					// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseModeChanger : true,
-				}
-			});
-
+		
 			//전송버튼 클릭이벤트
-			$("#updatebutton").click(function() {
-				//id가 smarteditor인 textarea에 에디터에서 대입
-				editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
-				// 이부분에 에디터 validation 검증
-				
+			$("#updatebutton").click(function() {			
 				//폼 submit
 				$("#frm").submit();
 			})
 			
 			$("#homebutton").click(function() {
-				location = 'index';
+				location = '/index';
 			})
 			
 			$("#deletebutton").click(function() {
@@ -230,9 +212,9 @@
 	<!-- /#footer -->
 
 
-	<script src="resources/theme/js/bootstrap.js"></script>
-	<script src="resources/theme/js/plugins.js"></script>
-	<script src="resources/theme/js/main.js"></script>
+	<script src="../resources/theme/js/bootstrap.js"></script>
+	<script src="../resources/theme/js/plugins.js"></script>
+	<script src="../resources/theme/js/main.js"></script>
 
 </body>
 </html>

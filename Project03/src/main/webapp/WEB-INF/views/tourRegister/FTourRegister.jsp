@@ -11,17 +11,17 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-		<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/font-awesome.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/animate.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_misc.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-		<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-		<script src="resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="../resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
 		
 		<style>
 			.searchRegion {
@@ -35,7 +35,7 @@
 	</head>
 	
 	<body>
-		<%@ include file="top_header.jspf"  %>
+		<%@ include file="../top_header.jspf"  %>
 
 		<div class="site-main" id="sTop" style="background-color: green;">
 			<div class="site-header">
@@ -56,9 +56,9 @@
 									</div>
 									
 									<ul class="menu-first">
-										<li><a href="index">메인</a></li>
-										<li><a href="admin">관리자</a></li>
-										<li><a href="login">로그인</a></li>
+										<li><a href="../index">메인</a></li>
+										<li><a href="../admin">관리자</a></li>
+										<li><a href="../login">로그인</a></li>
 									</ul>
 								</div>
 								<!-- /.main-menu -->
@@ -80,7 +80,7 @@
 					<ul class="slides">
 						<li>
 							<div class="overlay"></div> <img
-							src="resources/theme/images/slide1.jpg" alt="">
+							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>여행 등록 정보 확인</h2>
 								<br /> <br />
@@ -110,7 +110,7 @@
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef : editor_object,
 				elPlaceHolder : "smarteditor",
-				sSkinURI : "resources/smarteditor/SmartEditor2Skin.html",
+				sSkinURI : "../resources/smarteditor/SmartEditor2Skin.html",
 				htParams : {
 					// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
 					bUseToolbar : true,
@@ -132,7 +132,7 @@
 			})
 			
 			$("#homebutton").click(function() {
-				location = 'index';
+				location = '/index';
 			})
 			
 			$("#deletebutton").click(function() {
@@ -141,8 +141,6 @@
 			
 		})
 	</script>
-
-
 
 	<div class="content-section" id="services">
 		<div class="container">
@@ -156,20 +154,6 @@
 				<div class="wrap">				
 						
 						<form action="TourRegisterComplete" method="post" id="frm">
-						
-							<c:choose>
-								<c:when test="${imageFile != null }">
-								<%-- 파일 업로드 완료
-								<ul>
-									<li>파일 ID : ${imageFile.id }</li>
-									<li>저장된 파일 이름 : ${imageFile.fileName }</li>
-									<li>파일 길이 : ${imageFile.contentLength }</li>
-									<li>MIME 타입 : ${imageFile.contentType }</li>
-								</ul>
-								 --%>
-								<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
-								</c:when>
-							</c:choose><br /><br />
 						
 							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
 								
@@ -225,9 +209,9 @@
 	<!-- /#footer -->
 
 
-	<script src="resources/theme/js/bootstrap.js"></script>
-	<script src="resources/theme/js/plugins.js"></script>
-	<script src="resources/theme/js/main.js"></script>
+	<script src="../resources/theme/js/bootstrap.js"></script>
+	<script src="../resources/theme/js/plugins.js"></script>
+	<script src="../resources/theme/js/main.js"></script>
 
 </body>
 </html>

@@ -15,11 +15,19 @@ public class PersonalVO {
 	private String email;
 	private Date joindate;
 
-	public PersonalVO() {}
-	/*	this.mno = mno;
-		this.userid = userid;
-		this.pwd = pwd;
-		this.authority = authority;*/
+	public PersonalVO() {
+
+	}
+	
+	
+	
+	
+	
+	
+	
+
+
+
 	public PersonalVO(MemberVO vo,String email, Date joindate){
 		this.email = email;
 		this.joindate = joindate;
@@ -124,6 +132,14 @@ public class PersonalVO {
 
 	public void setJoindate(Date joindate) {
 		this.joindate = joindate;
+	}
+	
+	
+	
+	// 조승현 연습 
+	
+	public PersonalVO(MsgVO vo,String nickname){
+		this. nickname = nickname;
 	}
 
 } // end class PersonalVO

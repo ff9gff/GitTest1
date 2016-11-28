@@ -147,7 +147,7 @@ $(document).ready(function(){
 	
 	$('#sendBtn').click(function(){
 	var sendText = $('#msg_content').val(); 
-		alert('공지사항 전송 성공');
+		alert('공지사항 전송 성공'+ sendText);
 		
 		
 		
