@@ -479,8 +479,8 @@
  	function callFileUploader (){
  		console.log("callFileUploader ......");
  		oFileUploader = new jindo.FileUploader(jindo.$("uploadInputBox"),{
- 			sUrl  : '/project03/tourRegister/photoUpload', //파일업로드시 동작되는 컨트롤러 url
- 			sCallback : '../resources/smarteditor/photo_uploader/popup/callback.html',  //업로드 이후  redirect 페이지 url
+ 			sUrl  : '/project03/photoUpload', //파일업로드시 동작되는 컨트롤러 url
+ 			sCallback : 'resources/smarteditor/photo_uploader/popup/callback.html',  //업로드 이후  redirect 페이지 url
 
  	    	sFiletype : "*.jpg;*.png;*.bmp;*.gif",						//허용할 파일의 형식. ex) "*", "*.*", "*.jpg", 구분자(;)	
  	    	sMsgNotAllowedExt : 'JPG, GIF, PNG, BMP 확장자만 가능합니다',	//허용할 파일의 형식이 아닌경우에 띄워주는 경고창의 문구

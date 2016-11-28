@@ -60,7 +60,7 @@ public class TourRegisterController {
 	
 	@Autowired
 	private TourSearchService tourSelectService;
-
+/*
 	// 단일파일업로드
 	@RequestMapping(value = "/photoUpload", method = RequestMethod.POST)
 	public String photoUpload(HttpServletRequest request, TourRegisterVO vo2, PhotoVO vo) {
@@ -101,7 +101,7 @@ public class TourRegisterController {
 			e.printStackTrace();
 		}
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
-	}
+	}*/
 	
 	@RequestMapping(value = "/FTourRegister", method = RequestMethod.GET)
 	   public String tourRegister3(int trip_no, Model model) {
