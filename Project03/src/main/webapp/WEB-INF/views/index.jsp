@@ -376,15 +376,13 @@ http://www.templatemo.com/tm-406-flex
 
 					$(data).each(function() {
 	
-						list += 'ㅋㅋㅋ' /* '<c:forEach var="region" items="${regionlist }">'
-								+ '<div class="portfolio-item col-md-3 col-sm-6">'
+						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="FTourRegister?trip_no=${region.content_no}">' + data +'<img src="${region.img_url}" width="300" height="200"></a>'
+								+ '<a href="FTourRegister?trip_no=${'+ this.content_no + '}"><img src="${'+ this.img_url + '}" width="300" height="200"></a>'
 								+ '</figure>'
 								+ '</div>'
-								+ '</div>'
-								+ '</c:forEach>' */;
+								+ '</div>';
 					});
 	
 					$('#regionsearch').html(list);
@@ -404,15 +402,13 @@ http://www.templatemo.com/tm-406-flex
 
 					$(data).each(function() {
 	
-						list += 'ㅎㅎㅎ' /* '<c:forEach var="region" items="${regionlist }">'
-								+ '<div class="portfolio-item col-md-3 col-sm-6">'
+						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
 								+ '<a href="FTourRegister?trip_no=${region.content_no}"><img src="${region.img_url}" width="300" height="200"></a>'
 								+ '</figure>'
 								+ '</div>'
-								+ '</div>'
-								+ '</c:forEach>' */;
+								+ '</div>';
 					});
 	
 					$('#regionsearch').html(list);
