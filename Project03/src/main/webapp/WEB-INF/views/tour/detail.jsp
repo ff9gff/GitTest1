@@ -248,7 +248,6 @@ font-size: 12px;
 	<tr><td colspan="2" id="profile_introduce" style="padding-top: 0;">자기소개</td></tr>
 	<tr><td colspan="2" style="text-align: right;"><button id="profile_button2">자세히▶</button></td></tr>
 </table>
-
 </div>
 
 <h1>여행공고글</h1>
