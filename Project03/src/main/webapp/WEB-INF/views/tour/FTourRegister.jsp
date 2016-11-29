@@ -21,137 +21,55 @@
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-		<script src="../resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+		<script src="../resources/theme/js/bootstrap.js"></script>
+		<script src="../resources/theme/js/plugins.js"></script>
+		<script src="../resources/theme/js/main.js"></script>
+
 		
-		<style>
-			.searchRegion {
-				display: none;
-			}
-			
-			.wrap textarea {
-				width: 100%;
-			}
-		</style>
-	</head>
-	
-	<body>
-		<%@ include file="../top_header.jspf"  %>
+<style>
+.main-header{
+ top: 30;
+}	
+</style>
+</head>
+<body>
+<!-- 회원가입/로그인 부분 -->
+<%@ include file="../top_header.jspf"  %>
 
-		<div class="site-main" id="sTop" style="background-color: green;">
-			<div class="site-header">
-				<!-- /.container -->
-				<div class="main-header">
-					<div class="container">
-						<div id="menu-wrapper">
-							<div class="row">
-								<div class="logo-wrapper col-md-2 col-sm-2">
-									<h1>
-										<a href="#">hello </a>
-									</h1>
-								</div>
-								<!-- /.logo-wrapper -->
-								<div class="col-md-10 col-sm-10 main-menu text-right">
-									<div class="toggle-menu visible-sm visible-xs">
-										<i class="fa fa-bars"></i>
-									</div>
-									
-									<ul class="menu-first">
-										<li><a href="../index">메인</a></li>
-										<li><a href="../admin">관리자</a></li>
-										<li><a href="../login">로그인</a></li>
-									</ul>
-								</div>
-								<!-- /.main-menu -->
-							</div>
-							<!-- /.row -->
-						</div>
-						<!-- /#menu-wrapper -->
-					</div>
-					<!-- /.container -->
-				</div>
-				<!-- /.main-header -->
-			</div>
-			
-			<!-- /.site-header -->
-			<div class="site-slider">
-			
-			<div class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>여행 등록 정보 확인</h2>
-								<br /> <br />
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- /.flexslider -->
-			</div>
-			<!-- /.slider -->
-		</div>
-		<!-- /.site-slider -->
-	</div>
-	<!-- /.site-main -->
-
-	<script>
-		$(function() {
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-		});
-	</script>
-	
-	<script>
-		$(function() { //전역변수선언
-			var editor_object = [];
-			nhn.husky.EZCreator.createInIFrame({
-				oAppRef : editor_object,
-				elPlaceHolder : "smarteditor",
-				sSkinURI : "../resources/smarteditor/SmartEditor2Skin.html",
-				htParams : {
-					// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseToolbar : true,
-					// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseVerticalResizer : true,
-					// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-					bUseModeChanger : true,
-				}
-			});
-
-			//전송버튼 클릭이벤트
-			$("#updatebutton").click(function() {
-				//id가 smarteditor인 textarea에 에디터에서 대입
-				editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
-				// 이부분에 에디터 validation 검증
-				
-				//폼 submit
-				$("#frm").submit();
-			})
-			
-			$("#homebutton").click(function() {
-				location = '/index';
-			})
-			
-			$("#deletebutton").click(function() {
-				location = 'GoRegister';
-			})
-			
-		})
-	</script>
-
-	<div class="content-section" id="services">
+	<!-- 헤더 메인부분 -->
+	<div class="main-header">
 		<div class="container">
-			<div class="row">
-			
-				<!-- /.heading-section -->
-				<div class="heading-section">
-					<h2>여행정보ㅎㅎ</h2>
-				</div>
+			<div id="menu-wrapper">
+				<div class="row">
+					<div class="logo-wrapper col-md-2 col-sm-2">
+						<h1>
+							<a href="#">hello </a>
+						</h1>
+					</div>
+					<!-- /.logo-wrapper -->
+					<div class="col-md-10 col-sm-10 main-menu text-right">
+						<div class="toggle-menu visible-sm visible-xs">
+							<i class="fa fa-bars"></i>
+						</div>
 
-				<div class="wrap">				
+						<ul class="menu-first">
+							<li><a href="../index">메인</a></li>
+							<li><a href="../admin">관리자</a></li>
+							<li><a href="../login">로그인</a></li>
+						</ul>
+					</div>
+					<!-- /.main-menu -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#menu-wrapper -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.main-header -->
+
+
+	<div class="wrap">				
 						
 						<form action="TourRegisterComplete" method="post" id="frm">
 						
@@ -168,50 +86,37 @@
 							성별 조건: <input type="text" id="condition_sex" name="condition_sex" value="${tourVO.condition_sex}" placeholder="성별조건"> <br /> <br />
 						
 							연령 조건: <input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
-							
-				
-							 <br />
-							
+			
 							<textarea name="content" id="smarteditor" rows="10" readonly="readonly"
 								cols="100" style="width: 766px; height: 412px;">${tourVO.content}	
 							</textarea><br /><br />									
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							<input type="text" id="condition_age" name="condition_age" value="${tourVO.condition_age}" placeholder="나이조건"> <br /> <br />
+							
 						</form>	
 
 					
 				</div>
 				
 			
-				
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /#services -->
 
 
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-xs-12 text-left">
-					<span>Copyright &copy; 2014 Company Name</span>
-				</div>
-				<!-- /.text-center -->
-				<div class="col-md-4 hidden-xs text-right">
-					<a href="#top" id="go-top">Back to top</a>
-				</div>
-				<!-- /.text-center -->
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /#footer -->
 
 
-	<script src="../resources/theme/js/bootstrap.js"></script>
-	<script src="../resources/theme/js/plugins.js"></script>
-	<script src="../resources/theme/js/main.js"></script>
+
 
 </body>
 </html>

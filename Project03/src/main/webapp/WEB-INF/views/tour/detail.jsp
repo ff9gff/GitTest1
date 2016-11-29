@@ -5,9 +5,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>같이가자</title>
+<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
+
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="../resources/theme/js/bootstrap.js"></script>
+		<script src="../resources/theme/js/plugins.js"></script>
+		<script src="../resources/theme/js/main.js"></script>
+
+
 <style>
+.main-header{
+ top: 30px;
+}
 .menu{
   width:800px;
   margin: 0 auto;
@@ -30,12 +49,14 @@
 	margin-bottom:10px;
 	padding-bottom:5px;
 	border-bottom:1px dotted #999999;
+	
 }
+
 .reply_body{
 	margin-left:20px;
 }
 .re_reply_body{
-	margin-left:80px;
+	margin-left:60px;
 }
 .btns{
 	float: right;
@@ -44,6 +65,7 @@
 .regdate,.btn_div,.btn_reply,.btn_update,.btn_delete{
 	font-size: 10pt;
 	color:#757575;
+	font-weight: normal;
 }
 .btn_reply,.btn_update,.btn_delete{
 	text-decoration:none;
@@ -61,10 +83,11 @@
 }
 .applicant_panel,.applicant_button{
 	display: inline-block;
+	vertical-align: middle;
 }
 .applicant_panel{
 	width: 100%;
-	height: 150px;
+	height: 100%;
 	padding:0;
 	overflow: auto;
 	overflow-x:hidden;
@@ -74,6 +97,8 @@
 width: 100%;
 	height: 100%;
 	padding:0;
+	margin: 0;
+	 border:0;
 }
 
 #applicants{
@@ -116,16 +141,19 @@ width: 100%;
 	width: 16%;
 }
 .apply_panel_table{
-	width: 70%;
+	width: 490px;
+	height: 100%;
 	background-color: lightgray;
 	padding: 0;
 
 }
 .apply_panel_btns{
-	width: 100px;
+	width: 80px;
+
 }
 .apply_panel{
 	width: 700px;
+	height: 180px;
 }
 .join{
 	font-weight: 800;
@@ -157,6 +185,7 @@ margin: 0;
 	color: #000000;
 	text-decoration:none;
 	font-weight: 800;
+	font-size: 15px;
 }
 .btn_context{
 text-decoration:none;
@@ -250,25 +279,68 @@ font-size: 12px;
 </table>
 </div>
 
+<!-- 회원가입/로그인 부분 -->
+<%@ include file="../top_header.jspf"  %>
+
+	<!-- 헤더 메인부분 -->
+	<div class="main-header">
+		<div class="container">
+			<div id="menu-wrapper">
+				<div class="row">
+					<div class="logo-wrapper col-md-2 col-sm-2">
+						<h1>
+							<a href="#">hello </a>
+						</h1>
+					</div>
+					<!-- /.logo-wrapper -->
+					<div class="col-md-10 col-sm-10 main-menu text-right">
+						<div class="toggle-menu visible-sm visible-xs">
+							<i class="fa fa-bars"></i>
+						</div>
+
+						<ul class="menu-first">
+							<li><a href="../index">메인</a></li>
+							<li><a href="../admin">관리자</a></li>
+							<li><a href="../login">로그인</a></li>
+						</ul>
+					</div>
+					<!-- /.main-menu -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#menu-wrapper -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.main-header -->
+<div style="height: 100px;">안보여어</div>
 <h1>여행공고글</h1>
-<div>여행 공고 내용 아직 업데이트안됨여</div>
+<div class="menu">Content</div>
+<div>
+	<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
+trip_no: ${tourVO.trip_no}<br/>
+mno: ${tourVO.mno}<br/>
+title:${tourVO.title}<br/>
+start_date: ${tourVO.start_date}<br/>
+end_date: ${tourVO.end_date}<br/>
+condition_sex:${tourVO.condition_sex}<br/>
+condition_age: ${tourVO.condition_age}<br/>
+content:${tourVO.content}
+	
+</div>
 <h1>신청 리스트 부분↓</h1>
 <div class="menu">Apply for</div>
 <table class="apply_panel">
-	<tr style="padding: 0;">
-		<td rowspan="3" class="apply_panel_table">
+	<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
+	<tr style="padding: 0;height: 150px;">
+		<td class="apply_panel_table">
 			<div class="applicant_panel">
 				<table id="applicants"></table>
 			</div>
 		</td>
-		<td colspan="2" style="padding: 0; height: 10%; text-align: center;"><span id="span_join"></span></td>
-	</tr>	
-	<tr>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
-	</tr>
-
-
+	</tr>	
 </table>
 
 <div class="menu">Comment</div>

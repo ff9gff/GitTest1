@@ -294,7 +294,7 @@ http://www.templatemo.com/tm-406-flex
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '<a href="tour/detail?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>';
@@ -320,7 +320,7 @@ http://www.templatemo.com/tm-406-flex
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '<a href="tour/detail?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>';
