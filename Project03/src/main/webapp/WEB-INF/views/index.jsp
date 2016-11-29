@@ -212,25 +212,14 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#services -->
 
-	<script>
-		$(function() {
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-			
-			$("#start_date2, #end_date2").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-		});
-	</script>
-
-
-
 	<div class="content-section" id="portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
 					<h2>여행 검색 (여행지 & 여행기간)</h2>
+					<br /> <br /><br />	<br />	
+					
+					<h4><a href="tour/tourBoard">전체보기</a></h4>
 					<br /> <br /><br /><br />	
 					
 					<p>
@@ -247,12 +236,7 @@ http://www.templatemo.com/tm-406-flex
 					</p>
 
 					<p>
-					<div>
-						<form action="tour/GoRegister" method="post">
-							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
-						</form>
-						<button type="button" id="tour_register">여행 등록하러 가기</button> <br /><br /><br />
-					</div>
+						<button type="button" id="tour_register">여행 등록</button> <br /><br /><br />
 					</p>
 				</div>
 				<!-- /.heading-section -->
@@ -265,8 +249,6 @@ http://www.templatemo.com/tm-406-flex
 			</div>
 			</p>
 
-
-	
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
@@ -383,22 +365,19 @@ http://www.templatemo.com/tm-406-flex
 				}
 			}); 
 			
+			$('#tour_register').click(function() {
+				
+				location = 'tour/GoRegister';
+				
+			});
 			
-			// 여행 검색 버튼 처리			
-			$('#period_search').click(function(){
-				
-				var start_date = $('#start_date').val();
-				var end_date = $('#end_date').val();
-				
-				if (start_date == "" || end_date == "") {
-					alert('검색할 기간을 선택하세요');		
-				} else {	
-					
-					alert('기간 검색 메소드 호출');
-					getThumnails_By_Period();
-						
-				}
-			}); 
+			$("#start_date, #end_date").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+			
+			$("#start_date2, #end_date2").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
 		});
 	</script>
 

@@ -128,16 +128,15 @@ http://www.templatemo.com/tm-406-flex
 	<!-- /.site-main -->
 
 
-	<script>
-		$(function() {
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-		});
-	</script>
+	
 	
 	<script>
 		$(function() { //전역변수선언
+			
+			$("#start_date, #end_date").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+			
 			var editor_object = [];
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef : editor_object,
@@ -261,11 +260,6 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/bootstrap.js"></script>
 	<script src="../resources/theme/js/plugins.js"></script>
 	<script src="../resources/theme/js/main.js"></script>
-	
-	<script>
-		console.log($('#se2_iframe').val());
-	</script>
-
 
 </body>
 </html>

@@ -116,13 +116,9 @@ public class TourRegisterController {
 
 	   }
 
-	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
-	@RequestMapping(value = "/GoRegister", method = RequestMethod.POST)
-	public String createRegister() {
-		return "tour/TourRegister";
-	}
+	
 
-	// 등록하기 전에 여행 일정을 수정해야 한다?
+	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
 	public String createRegister2() {
 		return "tour/TourRegister";
@@ -213,5 +209,11 @@ public class TourRegisterController {
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "tour/TourRegister";
+	}
+	
+	@RequestMapping(value = "/tourBoard", method = RequestMethod.GET)
+	public String tourBoard() {
+		logger.info("여행선택 전체게시판");
+		return "tour/TourBoard";
 	}
 }
