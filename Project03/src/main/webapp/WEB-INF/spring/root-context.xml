@@ -17,10 +17,12 @@
 	<!-- Oracle Connection Pool Data Source 빈 -->
 	<bean id="ds" class="oracle.jdbc.pool.OracleDataSource">
 	   <property name="dataSourceName" value="ds" />
-	   <property name="URL" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" />
+	   <property name="URL" value="jdbc:oracle:thin:@192.168.11.3:1521:xe" />
 	   <property name="user" value="scott" />
 	   <property name="password" value="tiger" />
 	</bean>
+	<!-- <property name="URL" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" /> -->
+	
 	
 	<!-- MyBatis SqlSessionFactory 빈 -->
 	<!-- 오라클 DataSource 객체를 사용해서 생성 -->

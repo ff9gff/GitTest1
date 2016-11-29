@@ -248,7 +248,7 @@ http://www.templatemo.com/tm-406-flex
 
 					<p>
 					<div>
-						<form action="tourRegister/GoRegister" method="post">
+						<form action="tour/GoRegister" method="post">
 							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
 						</form>
 					</div>
@@ -323,7 +323,7 @@ http://www.templatemo.com/tm-406-flex
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="tourRegister/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>';
@@ -349,7 +349,7 @@ http://www.templatemo.com/tm-406-flex
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="tourRegister/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>';

@@ -31,7 +31,7 @@ import edu.spring.project03.service.TourRegisterService;
 import edu.spring.project03.service.TourSearchService;
 
 @Controller
-@RequestMapping(value="/tourRegister")
+@RequestMapping(value="/tour")
 public class TourRegisterController {
 	private static final Logger logger = LoggerFactory.getLogger(TourRegisterController.class);
 	
@@ -112,20 +112,20 @@ public class TourRegisterController {
 
 	      model.addAttribute("tourVO", tourVO);
 	      
-	      return "tourRegister/FTourRegister";
+	      return "tour/FTourRegister";
 
 	   }
 
 	// 여행 일정 등록하러 가기: TourRegister.jsp 소환
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.POST)
 	public String createRegister() {
-		return "tourRegister/TourRegister";
+		return "tour/TourRegister";
 	}
 
 	// 등록하기 전에 여행 일정을 수정해야 한다?
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
 	public String createRegister2() {
-		return "tourRegister/TourRegister";
+		return "tour/TourRegister";
 	}
 
 	// 여행 일정이 잘 작성되었는지 확인하러 가자
@@ -212,6 +212,6 @@ public class TourRegisterController {
 	//
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
-		return "tourRegister/TourRegister";
+		return "tour/TourRegister";
 	}
 }

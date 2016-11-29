@@ -22,82 +22,112 @@ import edu.spring.project03.service.TourSearchService;
 
 @Controller
 public class TourSearchController {
-   private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
+	private static final Logger logger = LoggerFactory.getLogger(TourSearchController.class);
 
-   @Autowired
-   private TourSearchService tourSelectService;
+	@Autowired
+	private TourSearchService tourSelectService;
 
-   @RequestMapping(value = "/index", method = RequestMethod.GET)
-   public void main() {
-      logger.info("index.jsp 소환");
-   }
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public void main() {
+		logger.info("index.jsp 소환");
+	}
 
-   // 지역 검색 Ajax 처리
-   // 해당 지역 검색 메소드
-   @RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
-   public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("region_name") String region_name) {
-      logger.info("여행 지역: " + region_name);
-      ResponseEntity<List<ImgVO>> entity = null;
+	// 지역 검색 Ajax 처리
+	// 해당 지역 검색 메소드
+	@RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("region_name") String region_name) {
+		logger.info("여행 지역: " + region_name);
+		ResponseEntity<List<ImgVO>> entity = null;
 
-      List<ImgVO> list = tourSelectService.read_region(region_name);
+		List<ImgVO> list = tourSelectService.read_region(region_name);
 
-      if (list != null) {
-         // select 성공 한것이다.
-         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-         logger.info("지역 검색 성공 ");
-      } else {
-         // select 실패이다.
-         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-         logger.info("지역 검색 실패 ");
-      }
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("지역 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역 검색 실패 ");
+		}
 
-      logger.info("entity " + entity.getBody());
-      // logger.info("list.mno "+ list.get(0).getUserid());
-      // 출력 됨
-      return entity;
-   }
+		logger.info("entity " + entity.getBody());
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
 
-   // 기간 검색 Ajax 처리
-   // 해당 기간 검색 메소드
-   @RequestMapping(value = "/index/{start_date}/{end_date}", method = RequestMethod.GET)
-   public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@PathVariable("start_date") String start_date, @PathVariable("end_date") String end_date) {
+	// 기간 검색 Ajax 처리
+	// 해당 기간 검색 메소드
+	@RequestMapping(value = "/index/{start_date}/{end_date}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@PathVariable("region_name") String region_name,
+			@PathVariable("start_date") String start_date, @PathVariable("end_date") String end_date) {
+		logger.info("여행 지역: " + region_name);
+		logger.info("시작 날짜: " + start_date);
+		logger.info("종료 날짜: " + end_date);
 
-      logger.info("시작 날짜: " + start_date);
-      logger.info("종료 날짜: " + end_date);
+		ResponseEntity<List<ImgVO>> entity = null;
 
-      ResponseEntity<List<ImgVO>> entity = null;
+		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
 
-      TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+		List<ImgVO> list = tourSelectService.read_region_date(vo2);
 
-      List<ImgVO> list = tourSelectService.read_region_date(vo2);
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("기간 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("기간 검색 실패 ");
+		}
 
-      if (list != null) {
-         // select 성공 한것이다.
-         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-         logger.info("기간 검색 성공 ");
-      } else {
-         // select 실패이다.
-         entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-         logger.info("기간 검색 실패 ");
-      }
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
 
-      logger.info("entity " + entity);
-      // logger.info("list.mno "+ list.get(0).getUserid());
-      // 출력 됨
-      return entity;
-   }
+	@RequestMapping(value = "/index/{region_name}/{start_date}/{end_date}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxDatailTest(@PathVariable("start_date") String start_date,
+			@PathVariable("end_date") String end_date) {
 
-   // 웹사이트에서 동일한 부분 코드 수정
+		logger.info("시작 날짜: " + start_date);
+		logger.info("종료 날짜: " + end_date);
 
-   // 이클립스에서 동일한 부분 코드 수정
-   // 이클립스에서 커밋앤푸쉬하려니 불가능!
-   // 뭐지? 이상하네 싶어서 중앙리파지토리에서 pull을 했더니
-   // 웹사이트, 이클립스에서 수정한 부분이 모두 뜬다!
-   // 선택을 해야 한다! 뭐가 더 나은 코드인지 확인 후 필터링
-   // 필터링이 다 됐으면 add to index를 하고
-   // 커밋앤푸시를 하면 반영 완료!
+		ResponseEntity<List<ImgVO>> entity = null;
 
-   // 커밋만 하면 로컬리파지토리에만 저장된다.
-   // 로컬에서 푸시를 해야 git허브에 저장된다
+		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+
+		List<ImgVO> list = tourSelectService.read_region_date(vo2);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("기간 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("기간 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
+	// 웹사이트에서 동일한 부분 코드 수정
+
+	// 이클립스에서 동일한 부분 코드 수정
+	// 이클립스에서 커밋앤푸쉬하려니 불가능!
+	// 뭐지? 이상하네 싶어서 중앙리파지토리에서 pull을 했더니
+	// 웹사이트, 이클립스에서 수정한 부분이 모두 뜬다!
+	// 선택을 해야 한다! 뭐가 더 나은 코드인지 확인 후 필터링
+	// 필터링이 다 됐으면 add to index를 하고
+	// 커밋앤푸시를 하면 반영 완료!
+
+	// 커밋만 하면 로컬리파지토리에만 저장된다.
+	// 로컬에서 푸시를 해야 git허브에 저장된다
 
 }
