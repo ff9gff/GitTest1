@@ -32,9 +32,32 @@
   margin: 0 auto;
   color: #F4511E;
   border-bottom:3px solid #F4511E;
-  font-size: 30px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+#content{
+  width:800px;
+  margin: 0 auto;
+}
+#content_title{
+width:800px;
+  margin: 0 auto;
+  color: #F4511E;
+  font-size: 30px;
+  font-weight: bold;
+}
+#content_smalltitle{
+	width:800px;
+  margin: 0 auto;
+   font-size: 15px;
+}
+#content_condition{
+	width:800px;
+ 	margin: 0 auto;
+ 	border-top: 1px solid lightgray;
+ 	border-bottom: 1px solid lightgray;
+ 	text-align: center;
 }
 .reply_panel,.apply_panel{
   width:800px;
@@ -94,8 +117,9 @@
 	margin: 0;
 }
 .applicant_button{
-width: 100%;
+width: 95%;
 	height: 100%;
+	font-weight:bold;
 	padding:0;
 	margin: 0;
 	 border:0;
@@ -149,6 +173,7 @@ width: 100%;
 }
 .apply_panel_btns{
 	width: 80px;
+	text-align: center;
 
 }
 .apply_panel{
@@ -280,7 +305,8 @@ font-size: 12px;
 </div>
 
 <!-- 회원가입/로그인 부분 -->
-<%@ include file="../top_header.jspf"  %>
+	<%@ include file="../top_header.jspf"  %>
+
 
 	<!-- 헤더 메인부분 -->
 	<div class="main-header">
@@ -313,22 +339,24 @@ font-size: 12px;
 		<!-- /.container -->
 	</div>
 	<!-- /.main-header -->
-<div style="height: 100px;">안보여어</div>
-<h1>여행공고글</h1>
+<div style="height: 150px;">안보여어</div>
+
+
+<div id=content_title>${tourVO.title}</div>
+<div id=content_smalltitle></div>
+<table id=content_condition>
+	<tr>
+		<td id="betwwenDay"></td>
+		<td>성별: ${tourVO.condition_sex}</td>
+		<td>나이: ${tourVO.condition_age}</td>
+	</tr>	
+</table>
 <div class="menu">Content</div>
-<div>
-	<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
-trip_no: ${tourVO.trip_no}<br/>
-mno: ${tourVO.mno}<br/>
-title:${tourVO.title}<br/>
-start_date: ${tourVO.start_date}<br/>
-end_date: ${tourVO.end_date}<br/>
-condition_sex:${tourVO.condition_sex}<br/>
-condition_age: ${tourVO.condition_age}<br/>
-content:${tourVO.content}
-	
+<input hidden id="start_date" value="${tourVO.start_date}"/>
+<input hidden id="end_date" value="${tourVO.end_date}"/>
+<div id="content">
+${tourVO.content}
 </div>
-<h1>신청 리스트 부분↓</h1>
 <div class="menu">Apply for</div>
 <table class="apply_panel">
 	<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
@@ -360,7 +388,7 @@ content:${tourVO.content}
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var trip_no = 1;
+	var trip_no = ${tourVO.trip_no};
 	
 	// wm_tour_reply 리스트
 	replylist=[];
@@ -943,6 +971,25 @@ $('#context_msg').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
 	alert(amno+'번째 회원 쪽지보내기');
 });
+
+var date1 = $('#start_date').val();
+var date2 = $('#end_date').val();
+
+var dateArray1 = date1.split(" ");
+var dateArray2 = date2.split(" ");
+
+$('#content_smalltitle').text(dateArray1[0]+" ~ "+dateArray2[0]);
+
+var startArray = dateArray1[0].split("-");
+var endArray = dateArray2[0].split("-");
+
+var startObj = new Date(startArray[0], Number(startArray[1])-1, startArray[2]);
+var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
+
+var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
+
+$('#betwwenDay').text(betweenDay+"박 "+(betweenDay+1)+"일");
+console.log("betweenDay:"+betweenDay);
 
 
 
