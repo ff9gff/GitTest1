@@ -185,11 +185,11 @@ public class TourRegisterController {
 
 	// insert 후 수정할지 말지 정하는 페이지. 수정 누르면 수정(TourRegisterUpdate) 페이지로 넘어간다
 	@RequestMapping(value = "/TourRegisterComplete", method = RequestMethod.POST)
-	public String tourUpdate(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile,
+	public String tourUpdate(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
 			ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
-		logger.info("전에 등록된 이미지: " + imgvo.getImg_url());
+		
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
@@ -283,28 +283,9 @@ public class TourRegisterController {
 	}
 	
 	@RequestMapping("/cancelTourRegister3")
-	public String tourRegisterConfirm(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
-			ModelMap modelMap, Model model) {
+	public String tourRegisterConfirm() {		
 		
-		/*ImageFile fileInfo = imageService.save(imageFile);*/
-		
-
-/*		if (fileInfo != null) {
-			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-		} else {
-			logger.info("대실패 ");
-
-		}*/
-
-		if (tourregistervo != null && regionvo != null) {
-
-			model.addAttribute("vo", tourregistervo);
-			model.addAttribute("vo2", regionvo);
-			/*modelMap.put("imageFile", fileInfo);*/
-		}
-		
-		
-		return "tour/TourRegisterConfirm";
+		return "/TourRegisterComplete";
 	}
 
 	@RequestMapping(value = "/tourBoard", method = RequestMethod.GET)
