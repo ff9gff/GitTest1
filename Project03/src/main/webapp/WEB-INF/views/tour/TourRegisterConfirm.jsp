@@ -156,9 +156,9 @@
 							
 							<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'	>"><br>
 						
-							<input type="hidden" name="trip_no" value="104" readonly="readonly" /> 
+							<input type="hidden" name="trip_no" value="${vo.trip_no}" readonly="readonly" /> 
 								
-							<input type="hidden" name="mno" value="112" readonly="readonly" /> 
+							<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 						
 							<input type="text" name="title" style="width: 60%" value="${vo.title}" placeholder="제목" readonly="readonly"/><br /> <br /> 
 						

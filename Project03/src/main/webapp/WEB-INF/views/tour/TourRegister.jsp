@@ -192,7 +192,7 @@ http://www.templatemo.com/tm-406-flex
 					
 						대문 이미지: <input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					
-						<input type="hidden" name="mno" value="112" readonly="readonly" /> 
+						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 					
 						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
 					

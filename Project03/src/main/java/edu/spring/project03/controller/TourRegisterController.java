@@ -127,9 +127,7 @@ public class TourRegisterController {
 
 		if (tourregistervo != null && regionvo != null) {
 
-			model.addAttribute("vo", tourregistervo);
-			model.addAttribute("vo2", regionvo);
-			modelMap.put("imageFile", fileInfo);
+			logger.info("mno 확인: " + tourregistervo.getMno());
 
 			// 이상 없으면 여행등록 DB insert!
 			int result = service.create(tourregistervo);
@@ -142,7 +140,17 @@ public class TourRegisterController {
 						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
 						0);
 				int content_no = service.readTrip_no(tourregistervo);
-				logger.info("insert content_no" + content_no);
+				logger.info("insert content_no: " + content_no);
+				
+				tourregistervo = new TourRegisterVO(content_no, tourregistervo.getMno(), tourregistervo.getTitle(), tourregistervo.getCondition_sex(), tourregistervo.getCondition_age(),
+						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
+						0);
+				
+				model.addAttribute("vo", tourregistervo);
+				model.addAttribute("vo2", regionvo);
+				modelMap.put("imageFile", fileInfo);
+				
+				
 
 				ImgVO imgvo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 				int result2 = service.createThumnail(imgvo);
