@@ -148,7 +148,7 @@
 			
 				<!-- /.heading-section -->
 				<div class="heading-section">
-					<h2>여행정보</h2>
+					<h2>여행정보ㅎㅎ</h2>
 				</div>
 
 				<div class="wrap">				
