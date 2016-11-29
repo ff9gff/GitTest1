@@ -60,9 +60,7 @@ public class TourSearchController {
 	// 기간 검색 Ajax 처리
 	// 해당 기간 검색 메소드
 	@RequestMapping(value = "/index/{start_date}/{end_date}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@PathVariable("region_name") String region_name,
-			@PathVariable("start_date") String start_date, @PathVariable("end_date") String end_date) {
-		logger.info("여행 지역: " + region_name);
+	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@PathVariable("start_date") String start_date, @PathVariable("end_date") String end_date) {
 		logger.info("시작 날짜: " + start_date);
 		logger.info("종료 날짜: " + end_date);
 
@@ -116,6 +114,8 @@ public class TourSearchController {
 		// 출력 됨
 		return entity;
 	}
+	
+	
 
 	// 웹사이트에서 동일한 부분 코드 수정
 

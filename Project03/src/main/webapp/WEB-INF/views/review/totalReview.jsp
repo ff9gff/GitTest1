@@ -40,12 +40,113 @@ http://www.templatemo.com/tm-406-flex
 </style>
 </head>
 <body>
-	<!--[if lt IE 7]>
-            <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-        <![endif]-->
         
     
     <%@ include file="../top_header.jsp" %>
+    
+    	<script>
+	
+		$(document).ready(function() {
+
+			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
+			function getThumnails_By_Region() {
+				
+				var url = '/project03/index/' + $('#region_name').val();
+
+				$.getJSON(url, function(data) {
+					var list = '';
+
+					$(data).each(function() {
+	
+						list += '<div class="portfolio-item col-md-3 col-sm-6">'
+								+ '<div class="portfolio-thumb">'
+								+ '<figure>'
+								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '</figure>'
+								+ '</div>'
+								+ '</div>';
+					});
+	
+					$('#toursearch').html(list);
+
+				});// end getJSON()
+
+			};//end of getThumnails()
+			
+			
+			// 기간 검색: 해당 기간의 여행정보 썸네일들을 읽어오는 함수 정의 
+			function getThumnails_By_Period() {
+				
+				var url = '/project03/index/' + $('#start_date').val() + "/" + $('#end_date').val();
+				
+				$.getJSON(url, function(data) {
+					var list = '';
+
+					$(data).each(function() {
+	
+						list += '<div class="portfolio-item col-md-3 col-sm-6">'
+								+ '<div class="portfolio-thumb">'
+								+ '<figure>'
+								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '</figure>'
+								+ '</div>'
+								+ '</div>';
+					});
+	
+					$('#toursearch').html(list);
+
+				});// end getJSON()
+
+			};//end of getThumnails()
+			
+			
+			
+			// 지역 검색 버튼 처리
+			$('#region_search').click(function() {
+	
+				var region_name = $('#region_name').val();
+	
+				if (region_name == "") {
+					alert('검색할 지역을 입력하세요');
+				} else {
+					alert('지역 검색 메소드 호출 ');
+					getThumnails_By_Region();
+				}
+	
+			});
+		
+
+			// 기간 검색 버튼 처리			
+			$('#period_search').click(function(){
+				
+				var start_date = $('#start_date').val();
+				var end_date = $('#end_date').val();
+				
+				if (start_date == "" || end_date == "") {
+					alert('검색할 기간을 선택하세요');		
+				} else {	
+					
+					alert('기간 검색 메소드 호출');
+					getThumnails_By_Period();
+						
+				}
+			}); 
+			
+			$('#tour_register').click(function() {
+				
+				location = 'tour/GoRegister';
+				
+			});
+			
+			$("#start_date, #end_date").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+			
+			$("#start_date2, #end_date2").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+		});
+	</script>
     
 	<div class="site-main" id="sTop">
 		<div class="site-header">
