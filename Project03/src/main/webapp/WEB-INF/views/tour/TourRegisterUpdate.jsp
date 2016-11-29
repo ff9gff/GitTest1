@@ -68,9 +68,9 @@
 									</div>
 									
 									<ul class="menu-first">
-										<li><a href="index">메인</a></li>
-										<li><a href="admin">관리자</a></li>
-										<li><a href="login">로그인</a></li>
+										<li><a href="../index">메인</a></li>
+										<li><a href="../admin">관리자</a></li>
+										<li><a href="../login">로그인</a></li>
 									</ul>
 								</div>
 								<!-- /.main-menu -->
@@ -146,11 +146,11 @@
 			})
 			
 			$("#cancelbutton").click(function() {
-				location = 'cancelTourRegister';
+				location = 'cancelTourRegister2';
 			})
 			
 			$("#homebutton").click(function() {
-				location = 'index';
+				location = '/index';
 			})
 		})
 	</script>
@@ -171,7 +171,14 @@
 							<c:choose>
 								<c:when test="${imageFile != null }">
 								
+								<ul>
+									<li>파일 ID : ${imageFile.id }</li>
+									<li>저장된 파일 이름 : ${imageFile.fileName }</li>
+									<li>파일 길이 : ${imageFile.contentLength }</li>
+									<li>MIME 타입 : ${imageFile.contentType }</li>
+								</ul>
 								
+								<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100" style="display: none">
 								</c:when>
 							</c:choose><br /><br />
 							

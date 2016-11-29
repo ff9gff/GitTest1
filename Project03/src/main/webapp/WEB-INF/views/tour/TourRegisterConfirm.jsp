@@ -56,9 +56,9 @@
 									</div>
 									
 									<ul class="menu-first">
-										<li><a href="index">메인</a></li>
-										<li><a href="admin">관리자</a></li>
-										<li><a href="login">로그인</a></li>
+										<li><a href="../index">메인</a></li>
+										<li><a href="../admin">관리자</a></li>
+										<li><a href="../login">로그인</a></li>
 									</ul>
 								</div>
 								<!-- /.main-menu -->
@@ -114,11 +114,11 @@
 			})
 			
 			$("#homebutton").click(function() {
-				location = '/index';
+				location = '../index';
 			})
 			
-			$("#deletebutton").click(function() {
-				location = 'GoRegister';
+			$("#cancelbutton").click(function() {
+				location = 'cancelTourRegister2';
 			})
 			
 		})
@@ -154,7 +154,9 @@
 								</c:when>
 							</c:choose><br /><br />
 							
-							<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'	>"><br>
+							<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'	>" style="display: none"><br>
+							
+							<input type="hidden" name=img_url" value="${vo3.img_url }" readonly="readonly" />
 						
 							<input type="hidden" name="trip_no" value="${vo.trip_no}" readonly="readonly" /> 
 								

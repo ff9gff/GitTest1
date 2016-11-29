@@ -113,7 +113,7 @@ public class TourRegisterController {
 
 	// 여행 일정 insert!
 	@RequestMapping(value = "/TourRegisterInsert", method = RequestMethod.POST)
-	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
+	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile,
 			ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
@@ -152,8 +152,10 @@ public class TourRegisterController {
 				
 				
 
-				ImgVO imgvo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = service.createThumnail(imgvo);
+				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+				int result2 = service.createThumnail(imagevo);
+				model.addAttribute("vo3", imagevo);
+				logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());
 
 				if (result2 == 1) {
 					logger.info("썸네일 등록 성공");
@@ -183,13 +185,15 @@ public class TourRegisterController {
 
 	// insert 후 수정할지 말지 정하는 페이지. 수정 누르면 수정(TourRegisterUpdate) 페이지로 넘어간다
 	@RequestMapping(value = "/TourRegisterComplete", method = RequestMethod.POST)
-	public String tourUpdate(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
+	public String tourUpdate(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile,
 			ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
+		logger.info("전에 등록된 이미지: " + imgvo.getImg_url());
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+			
 		} else {
 			logger.info("대실패 ");
 
@@ -198,7 +202,7 @@ public class TourRegisterController {
 		if (tourregistervo != null && regionvo != null) {
 
 			model.addAttribute("vo", tourregistervo);
-			model.addAttribute("vo2", regionvo);
+			model.addAttribute("vo2", regionvo);			
 			modelMap.put("imageFile", fileInfo);
 		}
 
@@ -271,6 +275,36 @@ public class TourRegisterController {
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "tour/TourRegister";
+	}
+	
+	@RequestMapping("/cancelTourRegister2")
+	public String gotourRegister() {
+		return "tour/TourRegister";
+	}
+	
+	@RequestMapping("/cancelTourRegister3")
+	public String tourRegisterConfirm(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
+			ModelMap modelMap, Model model) {
+		
+		/*ImageFile fileInfo = imageService.save(imageFile);*/
+		
+
+/*		if (fileInfo != null) {
+			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+		} else {
+			logger.info("대실패 ");
+
+		}*/
+
+		if (tourregistervo != null && regionvo != null) {
+
+			model.addAttribute("vo", tourregistervo);
+			model.addAttribute("vo2", regionvo);
+			/*modelMap.put("imageFile", fileInfo);*/
+		}
+		
+		
+		return "tour/TourRegisterConfirm";
 	}
 
 	@RequestMapping(value = "/tourBoard", method = RequestMethod.GET)
