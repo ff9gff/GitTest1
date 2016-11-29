@@ -10,7 +10,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>같이가자</title>
+<title>아이디 찾기 홈</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- 
@@ -67,20 +67,19 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>로그인</h2>
-					<br />
-					<br />
+					<h2>내 정보에 등록된 휴대폰 / 이메일로 찾기</h2>
+					<br/><br/>
 					
-					<form action="login-post" method="post">
-						<input type="text" name="userid" id="userid" placeholder="아이디" required /><br/><br/>
-						<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required /><br/><br/>
-						<input type="submit" value="로그인" /><br/><br/>
+					<form action="find_id" method="get">
+						<input type="text" name="name" id="name" placeholder="이름을 입력해 주세요." required /><br/><br/>
+						<input type="email" name="email" id="email" placeholder="이메일 주소를 입력해 주세요." required /><br/><br/>
+						<input type="submit" value="다음단계" /><br/><br/>
 						
 						<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
 						<input type="hidden" name="query" value="<%=request.getQueryString()%>" />
 					</form>
 					
-					<a href="find_id">아이디</a>·<a>비밀번호 찾기</a>&nbsp;&nbsp;<a href="member_register01">회원가입</a>
+					<a>비밀번호 찾기</a>&nbsp;&nbsp;<a href="member_register01">회원가입</a>
 					
 
 				</div>

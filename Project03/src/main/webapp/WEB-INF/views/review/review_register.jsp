@@ -124,23 +124,17 @@
 
 				<div class="wrap">
 		
-					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
+					<form action="create_review" method="post" id="frm" enctype="multipart/form-data">
 					
 						대문 이미지: <input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					
-						<input type="hidden" name="mno" value="112" readonly="readonly" /> 
+						<input type="hidden" name="mno" value="${mno }" readonly="readonly" /> 
 					
 						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
-					
-						<input type="text" name="region_name" style="width: 60%" placeholder="지역"/><br /> <br />
-			
-						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
-						~ 
-						<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
 						
 						<textarea name="content" id="smarteditor" rows="10"
 							cols="100" style="width: 766px; height: 412px;">	
-						</textarea><br /><br />		
+						</textarea><br/><br/>		
 													
 					</form>	
 
@@ -182,11 +176,6 @@
 
 <script>
 $(document).ready(function() {
-	$(function() {
-		$("#start_date, #end_date").datepicker({
-			dateFormat : 'yy-mm-dd'
-		});
-	});
 	
 	$(function() { //전역변수선언
 		var editor_object = [];
@@ -218,13 +207,8 @@ $(document).ready(function() {
 			location = 'totalReview';
 		})
 
-	});
-	
-	console.log($('#se2_iframe').val());	
+	});	
 });
 </script>
-
-
-
 </body>
 </html>

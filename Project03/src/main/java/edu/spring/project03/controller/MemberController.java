@@ -177,6 +177,15 @@ public class MemberController {
 
 		return "redirect:/";
 
-	} // end signUp(membervo, personalvo, attr)	
+	} // end signUp(membervo, personalvo, attr)
+	
+	@RequestMapping(value = "find_id", method = RequestMethod.GET)
+	public void findId(){
+		
+//		Model model, HttpServletRequest request, HttpServletResponse response		
+//		String name = request.getParameter("name");
+//		String email = request.getParameter("email");
+		
+	} // end findId()
 
 } // end class MemberController
