@@ -137,7 +137,7 @@
 
 				<div class="wrap">				
 						
-						<form action="TourRegisterComplete" method="post" id="frm">
+						<form action="TourRegisterComplete" method="post" id="frm" enctype="multipart/form-data">
 						
 							<c:choose>
 								<c:when test="${imageFile != null }">
@@ -150,12 +150,15 @@
 								</ul>
 								 --%>
 								<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
+								
 								</c:when>
 							</c:choose><br /><br />
+							
+							<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'	>"><br>
 						
-							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
+							<input type="hidden" name="trip_no" value="104" readonly="readonly" /> 
 								
-							<input type="hidden" name="mno" value="2" readonly="readonly" /> 
+							<input type="hidden" name="mno" value="112" readonly="readonly" /> 
 						
 							<input type="text" name="title" style="width: 60%" value="${vo.title}" placeholder="제목" readonly="readonly"/><br /> <br /> 
 						
@@ -171,7 +174,10 @@
 							
 				
 							 <br />
-							
+							<textarea name="content"  rows="10"
+							cols="100" style="width: 766px; height: 412px; display: none">
+								${vo.content}		
+							</textarea>
 							${vo.content}	
 							<br /><br />	
 															

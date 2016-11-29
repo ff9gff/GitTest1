@@ -188,7 +188,7 @@ http://www.templatemo.com/tm-406-flex
 
 				<div class="wrap">
 		
-					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
+					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
 					
 						대문 이미지: <input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					
