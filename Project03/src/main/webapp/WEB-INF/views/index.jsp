@@ -266,19 +266,7 @@ http://www.templatemo.com/tm-406-flex
 			</p>
 
 
-			<p>
-			<div class="row">
-				<c:forEach var="image" items="${imageList}">
-					<div class="portfolio-item col-md-3 col-sm-6">
-						<div class="portfolio-thumb">
-							<a href="tourRegister/FTourRegister"><img src="${image.img_url}"
-								width="300" height="200"></a>
-						</div>
-						<!-- /.portfolio-thumb -->
-					</div>
-				</c:forEach>
-			</div>
-			</p>
+	
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
@@ -324,7 +312,7 @@ http://www.templatemo.com/tm-406-flex
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '<a href="tour/detail?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>';
@@ -350,7 +338,7 @@ http://www.templatemo.com/tm-406-flex
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 								+ '<div class="portfolio-thumb">'
 								+ '<figure>'
-								+ '<a href="tour/FTourRegister?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
+								+ '<a href="tour/detail?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
 								+ '</figure>'
 								+ '</div>'
 								+ '</div>';

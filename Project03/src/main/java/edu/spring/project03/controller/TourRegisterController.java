@@ -112,7 +112,7 @@ public class TourRegisterController {
 
 	      model.addAttribute("tourVO", tourVO);
 	      
-	      return "tour/FTourRegister";
+	      return "tour/detail";
 
 	   }
 
