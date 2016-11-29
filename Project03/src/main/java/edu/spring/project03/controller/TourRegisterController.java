@@ -103,7 +103,7 @@ public class TourRegisterController {
 		return "redirect:" + callback + "?callback_func=" + callback_func + file_result;
 	}*/
 	
-	@RequestMapping(value = "/FTourRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	   public String tourRegister3(int trip_no, Model model) {
 	      logger.info("FTourRegister.jsp 소환");
 	      logger.info("trip_no: " + trip_no);
