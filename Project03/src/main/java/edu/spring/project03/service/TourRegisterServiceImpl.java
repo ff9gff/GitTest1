@@ -42,4 +42,22 @@ public class TourRegisterServiceImpl implements TourRegisterService {
 		return tourRegisterDAO.insertRegion(vo);
 	}
 
+	@Override
+	public int update(TourRegisterVO vo) {
+		// TODO Auto-generated method stub
+		return tourRegisterDAO.update(vo);
+	}
+	
+	@Override
+	public int updateThumnail(ImgVO vo) {
+		// TODO Auto-generated method stub
+		return tourRegisterDAO.updateThumnail(vo);	
+	}
+	
+	@Override
+	public int updateRegion(RegionVO vo) {
+		// TODO Auto-generated method stub
+		return tourRegisterDAO.updateRegion(vo);
+	}
+
 }

@@ -42,5 +42,24 @@ public class TourRegisterDAOImpl implements TourRegisterDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.insert(NAMESPACE + ".insert-region", vo);
 	}
+	
+	@Override
+	public int update(TourRegisterVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE + ".update-register", vo);
+	}
+	
+	@Override
+	public int updateThumnail(ImgVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE + ".update-thumnail", vo);
+	}
+	
+	@Override
+	public int updateRegion(RegionVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE + ".update-region", vo);
+	}
+
 
 }

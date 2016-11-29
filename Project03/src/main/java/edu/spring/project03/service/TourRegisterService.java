@@ -16,5 +16,15 @@ public interface TourRegisterService {
 	// 여행 장소 등록
 	public abstract int createRegion(RegionVO vo);
 	
+	// 여행 수정
+	public abstract int update(TourRegisterVO vo);
+	
+	// 썸네일 수정
+	public abstract int updateThumnail(ImgVO vo);
+	
+	// 지역 수정
+	public abstract int updateRegion(RegionVO vo);
+	
+	
 
 }
