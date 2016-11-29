@@ -51,7 +51,7 @@ public class TourReviewController {
 		
 	} // end totalReview()
 	
-	@RequestMapping(value = "create_review", method = RequestMethod.POST)
+	@RequestMapping(value = "/create_review", method = RequestMethod.POST)
 	public void CreateReview(ReviewVO reviewvo, @RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 		
 		ImageFile fileInfo = imageService.save(imageFile);				
