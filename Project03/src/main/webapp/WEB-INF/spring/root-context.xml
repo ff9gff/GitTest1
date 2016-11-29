@@ -22,6 +22,7 @@
 	   <property name="password" value="tiger" />
 	</bean>
 	<!-- <property name="URL" value="jdbc:oracle:thin:@127.0.0.1:1521:xe" /> -->
+	<!-- <property name="URL" value="jdbc:oracle:thin:@192.168.11.3:1521:xe" /> -->
 	
 	
 	<!-- MyBatis SqlSessionFactory 빈 -->
