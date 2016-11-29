@@ -251,6 +251,7 @@ http://www.templatemo.com/tm-406-flex
 						<form action="tour/GoRegister" method="post">
 							<input type="submit" value="여행 등록하러 가기" /> <br /> <br />
 						</form>
+						<button type="button" id="tour_register">여행 등록하러 가기</button> <br /><br /><br />
 					</div>
 					</p>
 				</div>
@@ -379,6 +380,23 @@ http://www.templatemo.com/tm-406-flex
 		
 
 			// 기간 검색 버튼 처리			
+			$('#period_search').click(function(){
+				
+				var start_date = $('#start_date').val();
+				var end_date = $('#end_date').val();
+				
+				if (start_date == "" || end_date == "") {
+					alert('검색할 기간을 선택하세요');		
+				} else {	
+					
+					alert('기간 검색 메소드 호출');
+					getThumnails_By_Period();
+						
+				}
+			}); 
+			
+			
+			// 여행 검색 버튼 처리			
 			$('#period_search').click(function(){
 				
 				var start_date = $('#start_date').val();
