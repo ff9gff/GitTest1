@@ -14,6 +14,20 @@
 	
 	</select>
 
+	<select id="select_main_trip_title" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour 
+        where start_date <![CDATA[<]]> to_date(#{end_date},'YYYY-MM-DD')+1
+        and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD')
+	
+	</select>
+ 
+ 	<select id="select_main_trip_region" resultType="edu.spring.project03.domain.RegionVO">
+ 		select * from wm_tour_region
+ 		where trip_no in (select trip_no from wm_tour 
+                            where start_date <![CDATA[<]]> to_date(#{end_date},'YYYY-MM-DD')+1
+                            and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD'))
+ 	</select>
+
 	<select id="select_trip_region" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
 		where content_no in (select trip_no from wm_tour_region

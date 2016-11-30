@@ -232,14 +232,15 @@ color: #000000;
 	width: 410px;
 	height: 130px;
 	margin: 10px;
+	
 }
 #profile_image{
-	width:30%;
-	height:30%;
+	width: 30%;
 	padding-right: 5px;
 	padding-bottom: 0;
 	padding-left: 0;
 	padding-top: 0;
+	vertical-align: middle;
 
 }
 #profile_button1{
@@ -305,8 +306,8 @@ font-size: 12px;
 	font-weight: bold;
 }
 #profile_profile_img{
-	width: 100%;
-	height: 100%;
+	width: 120px;
+	height: 120px;
 	vertical-align: middle;
 	display: inline-block;
 	border-radius: 70px;
