@@ -80,8 +80,9 @@ public class TourRegisterController {
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
 
 			model.addAttribute("tourVO", tourVO);
-			model.addAttribute("tourPersonal", person);
-			model.addAttribute("tourImg", img);
+			model.addAttribute("inserterNickname", person.getNickname());
+			model.addAttribute("inserterIntro", person.getIntroduce());
+			model.addAttribute("inserterImg", img.getImg_url());
 		}
 
 		return "tour/detail";

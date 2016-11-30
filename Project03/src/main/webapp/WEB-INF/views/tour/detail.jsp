@@ -282,7 +282,22 @@ font-size: 12px;
 .condition_text{
 	margin-bottom: 10px;
 }
-
+.content_profile_img{
+	width: 80px;
+	height: 80px;
+	vertical-align: middle;
+	display: inline-block;
+	border: 3px solid #F4511E;
+border-radius: 70px;
+-moz-border-radius: 70px;
+-khtml-border-radius: 70px;
+-webkit-border-radius: 70px;
+	
+}
+.content_profile_text{
+	color: gray;
+	font-weight: bold;
+}
 </style>
 </head>
 <body>
@@ -354,8 +369,8 @@ font-size: 12px;
 		<div id=content_title>${tourVO.title}</div>
 		<div id=content_smalltitle></div>
 	</div>
-	<div style="width: 110px; height: 100px; display: inline-block; vertical-align: middle;">
-	프로필사진
+	<div id="content_profile" style="width: 110px; height: 100px; display: inline-block;text-align:center; vertical-align: middle;">
+	
 	</div>
 </div>
 <table id=content_condition>
@@ -1030,6 +1045,11 @@ switch(con_age){
 	default: break;
 }// end switch
 
+var mno_nickname = '${inserterNickname}';
+var mno_intro = '${inserterIntro}';
+var mno_img = '${inserterImg}';
+
+$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 
 
 }); // end document.ready();
