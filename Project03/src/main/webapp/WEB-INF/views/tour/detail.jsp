@@ -26,6 +26,7 @@
 <style>
 .main-header{
  top: 30px;
+ z-index:98;
 }
 .menu{
   width:800px;
@@ -976,6 +977,21 @@ $('#context_profile').on('click','.btn_context',function(){
 	
 	var alistno = $('#context_listno').val();
 	var atype = $('#context_type').val();
+	var amno = $('#context_mno').val();
+	console.log('mno: '+amno);
+	
+	var src = '';
+	
+	var url3 = '/project03/tour/detail/apply/profile/'+amno;
+	console.log(url3);
+	$.getJSON(url3, function(data){
+			src = data;
+		 console.log(src);
+		 $('#profile_image').html('<img src="'+src+'" id="profile_img"/>');
+	});
+	
+	
+	
 	if(atype=='reply'){
 		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(replylist[alistno].person["introduce"]);

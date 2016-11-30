@@ -2,6 +2,7 @@ package edu.spring.project03.persistence;
 
 import java.util.List;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourJoinVO;
 
@@ -16,5 +17,7 @@ public interface TourJoinDAO {
 	public abstract int updateApproval(int approval, int list_no);
 	// 신청
 	public abstract int insertApproval(int trip_no, int mno);
+	
+	public abstract ImgVO selectProfile(int mno);
 	
 }
