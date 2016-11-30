@@ -25,6 +25,15 @@
 		where trip_no = #{trip_no}
 	</select>
 
+	<select id="select_trip_person" resultType="edu.spring.project03.domain.PersonalVO">
+		select * from wm_personal
+		where mno = #{mno}
+	</select>
+	
+	<select id="select_trip_profile" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type=3 and content_no = #{mno}
+	</select>
 
 
 	

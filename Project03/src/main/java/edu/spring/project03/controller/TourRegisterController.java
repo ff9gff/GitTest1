@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.spring.project03.domain.ImageFile;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.PhotoVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
@@ -69,8 +70,17 @@ public class TourRegisterController {
 		logger.info("trip_no: " + trip_no);
 
 		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
+		
+		if(tourVO != null){
+			ImgVO img = tourSelectService.read_trip_profile(tourVO.getMno());
+			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
+			
+			model.addAttribute("tourVO", tourVO);
+			model.addAttribute("tourPersonal", person);
+			model.addAttribute("tourImg", img);
+		}
 
-		model.addAttribute("tourVO", tourVO);
+		
 
 		return "tour/detail";
 
