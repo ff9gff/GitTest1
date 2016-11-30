@@ -190,7 +190,12 @@ http://www.templatemo.com/tm-406-flex
 		
 					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
 					
-						대문 이미지: <input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+						  <label for="imageFile">썸네일 이미지</label><br/>       
+					      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+					            
+					      <div id="image_preview">
+					      <img src="#" id="profile-image" style="display: none;" /><br/>
+					      </div><br/>      
 					
 						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 					
@@ -260,6 +265,29 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/bootstrap.js"></script>
 	<script src="../resources/theme/js/plugins.js"></script>
 	<script src="../resources/theme/js/main.js"></script>
+	
+	<script>
+	$('#imageFile').on('change', function() {
+	      
+	      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	      
+	      //배열에 추출한 확장자가 존재하는지 체크
+	      if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+	         resetFormElement($(this)); //폼 초기화
+	         window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+	      } else {
+	         file = $('#imageFile').prop("files")[0];
+	         blobURL = window.URL.createObjectURL(file);
+	         $('#image_preview img').attr('src', blobURL);
+	         document.getElementById("profile-image").style.display = "inline";
+	         $('#image_preview img').attr('width', '300px');
+	         $('#image_preview img').attr('height', '400px');
+	         document.getElementById("btn_profile-image_remove").style.display = "inline";
+	         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+	         $('#image_preview').show(); //업로드한 이미지 미리보기
+	      }
+	   });
+	</script>
 
 </body>
 </html>

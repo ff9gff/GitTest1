@@ -69,8 +69,10 @@
       <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
             
       <div id="image_preview">
-      <img src="#" id="profile-image" width="300px" height="400px"/><br/>
-      <a href="#">Remove</a>
+      <!-- <img src="#" id="profile-image" width="300px" height="400px"/><br/> -->
+      <img src="#" id="profile-image" style="display: none;" /><br/>
+      <!-- <button type="button" id="btn_profile-image_remove" style="display: none;">Remove</button> -->
+      <a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
       </div><br/>      
       
       <label for="introduce">자기소개</label><br/>
@@ -253,7 +255,6 @@ $(document).ready(function() {
          alert('이메일 인증 및 이메일 인증번호 확인을 해 주세요!');
       }       
    });   
-
    $("#submit_Cancel").click(function() {
       location = '../index';
    });
@@ -263,7 +264,6 @@ $(document).ready(function() {
    It emplements very basic validation using the file extension.
    If the filename passes validation it will show the image using it's blob URL and will hide the input field and show a delete button to allow the user to remove the image
    */
-
    $('#imageFile').on('change', function() {
       
       ext = $(this).val().split('.').pop().toLowerCase(); //확장자
@@ -276,22 +276,24 @@ $(document).ready(function() {
          file = $('#imageFile').prop("files")[0];
          blobURL = window.URL.createObjectURL(file);
          $('#image_preview img').attr('src', blobURL);
-         $('#image_preview').slideDown(); //업로드한 이미지 미리보기
-         //$('#image_preview').show(); //업로드한 이미지 미리보기
-         $(this).slideUp(); //파일 양식 감춤
-         //$(this).hide(); //파일 양식 감춤
+         document.getElementById("profile-image").style.display = "inline";
+         $('#image_preview img').attr('width', '300px');
+         $('#image_preview img').attr('height', '400px');
+         document.getElementById("btn_profile-image_remove").style.display = "inline";
+         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+         $('#image_preview').show(); //업로드한 이미지 미리보기
       }
    });
-
+   
    /**
    onclick event handler for the delete button.
    It removes the image, clears and unhides the file input field.
    */
    $('#image_preview a').bind('click', function() {
-      resetFormElement($('#image'));
-      $('#imageFile').slideDown(); //파일 양식 보여줌
+      resetFormElement($('#imageFile'));
+      //$('#image').slideDown(); //파일 양식 보여줌
       $(this).parent().slideUp(); //미리 보기 영역 감춤
-      return false; //기본 이벤트 막지
+      //return false; //기본 이벤트 막지
    });
       
 
@@ -302,18 +304,16 @@ $(document).ready(function() {
    * @param e jQuery object
    */
    function resetFormElement(e) {
-      alert("reset폼 삭제 하기")
-      $('#profile-image').innerHTML = '';
-/*       e.wrap('<img>').closest('img').get(0).reset(); 
+      e.wrap('<form>').closest('form').get(0).reset(); 
       //리셋하려는 폼양식 요소를 폼(<form>) 으로 감싸고 (wrap()) , 
       //감싼 폼 ( closest('form')) 에서 Dom요소를 반환받고 ( get(0) ),
       //DOM에서 제공하는 초기화하는 메서드 reset()을 호출
-      e.unwrap(); //감싼 <form> 태그를 제거 */
+      e.unwrap(); //감싼 <form> 태그를 제거
    }
-   
-   
-   
 
+   
+   
+   
 });
 </script>
 

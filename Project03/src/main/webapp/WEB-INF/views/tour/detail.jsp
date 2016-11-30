@@ -1056,7 +1056,7 @@ var mno_img = '${inserterImg}';
 var trip_region='';
 
 
-$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
+$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 
 var mno_region =new Array();
 $(function(){

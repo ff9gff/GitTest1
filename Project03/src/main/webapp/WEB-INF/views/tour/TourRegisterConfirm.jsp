@@ -96,17 +96,12 @@
 	</div>
 	<!-- /.site-main -->
 
-	<script>
-		$(function() {
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-		});
-	</script>
 	
 	<script>
-		$(function() { //전역변수선언
+
 		
+		$(document).ready(function() {
+			
 			//전송버튼 클릭이벤트
 			$("#updatebutton").click(function() {			
 				//폼 submit
@@ -120,11 +115,23 @@
 			$("#cancelbutton").click(function() {
 				
 				var trip_no = ${vo.trip_no};
-				location = ''
-				history.back();
+				alert("여행 번호: " + trip_no);
+				getDeleteTour();
+				location = '../index';
 			})
-			
-		})
+
+			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
+			function getDeleteTour() {
+				
+				var url = '/project03/tour/TourRegisterInsert/' + ${vo.trip_no};
+
+				$.getJSON(url, function(){
+					alert("삭제되었습니다");
+				});// end getJSON()
+
+			};//end of getThumnails()
+		
+		});
 	</script>
 
 
@@ -189,7 +196,7 @@
 						</form>	
 						
 					<input type="button" id="updatebutton" value="수정" />
-					<input type="button" id="cancelbutton" value="취소" />
+					<input type="button" id="cancelbutton" value="삭제" />
 					<input type="button" id="homebutton" value="홈으로" />
 					
 				</div>
