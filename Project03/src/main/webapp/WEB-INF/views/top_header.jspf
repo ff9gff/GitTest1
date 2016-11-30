@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <style>
-b {
-	display: inline-block;
-}
 #mini_header {
 	display: inline-block;
 	float: right;
@@ -30,6 +27,9 @@ b {
 			
 			<c:if test="${not empty login_id }">
 				<%-- 세션에 로그인 정보가 있는 경우 --%>
+				<c:if test="${authority == 3 }">
+				<button id="btnAdministrator">관리자</button>
+				</c:if>
 				<button id="btnMypage">마이페이지</button>		
 				<button id="btnLogout">로그아웃</button><br/>
 			</c:if>	
@@ -45,6 +45,10 @@ $(document).ready(function() {
 	$('#btnLogin').click(function() {
 		location = '/project03/member/login';
 	});
+	
+	$('btnAdministrator').click(function() {
+		location = '/project03/';
+	})
 	
 	$('#btnMypage').click(function() {
 		location = '/project03/';
