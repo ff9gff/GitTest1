@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourJoinVO;
 
@@ -52,4 +53,10 @@ public class TourJoinDAOImple implements TourJoinDAO {
 		return sqlSession.insert(NAMESPACE+".insert", value);
 	}
 
+	@Override
+	public ImgVO selectProfile(int mno) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE+".selectProfile", mno);
+	}
+	
 }

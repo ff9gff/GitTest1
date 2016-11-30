@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourJoinVO;
 import edu.spring.project03.service.TourJoinService;
@@ -62,6 +63,21 @@ public class TourJoinRESTController {
 		}else{ // select 실패
 			entity = new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
 		}// end if
+		return entity;
+	}
+	
+	// 해당 프로필의 이미지 주소를 읽어오는 메소드
+	@RequestMapping(value="/profile/{no}", method=RequestMethod.GET)
+	public ResponseEntity<String> readImg(@PathVariable("no") Integer mno){
+		ImgVO src = service.readProfile(mno);
+		System.out.println("src:"+src.getImg_url());
+		ResponseEntity<String> entity = null;
+		if(src != null){ // select 성공
+			entity = new ResponseEntity<>(src.getImg_url(), HttpStatus.OK);
+		}else{ // select 실패
+			entity = new ResponseEntity<>(src.getImg_url(), HttpStatus.BAD_REQUEST);
+		}// end if
+		
 		return entity;
 	}
 	
