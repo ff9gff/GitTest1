@@ -1049,7 +1049,7 @@ var mno_nickname = '${inserterNickname}';
 var mno_intro = '${inserterIntro}';
 var mno_img = '${inserterImg}';
 
-$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
+$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 
 
 }); // end document.ready();
