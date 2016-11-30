@@ -118,7 +118,10 @@
 			})
 			
 			$("#cancelbutton").click(function() {
-				location = 'cancelTourRegister2';
+				
+				var trip_no = ${vo.trip_no};
+				location = ''
+				history.back();
 			})
 			
 		})

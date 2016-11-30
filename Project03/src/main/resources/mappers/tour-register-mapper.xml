@@ -39,6 +39,18 @@
 
 	<update id="update-region"> update wm_tour_region set region_name =
 		#{region_name} where trip_no = #{trip_no} </update>
+		
+	<delete id="delete-register">
+		delete from wm_tour where trip_no = #{trip_no}
+	</delete>
+	
+	<delete id="delete-thumnail">
+		delete from wm_image where content_no = #{trip_no} and board_type = 1
+	</delete>
+	
+	<delete id="delete-region">
+		delete from wm_tour_region where trip_no = #{trip_no}
+	</delete>
 
 
 
