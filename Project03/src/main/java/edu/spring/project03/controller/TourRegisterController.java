@@ -260,6 +260,18 @@ public class TourRegisterController {
 
 		if (result == 1) {
 			logger.info("여행 삭제 성공");
+			int result2 = tourRegisterService.deleteThumnail(trip_no);
+			
+			if (result2 == 1) {
+				logger.info("썸네일 삭제 성공");
+				int result3 = tourRegisterService.deleteRegion(trip_no);
+				
+				if (result3 == 1) {
+					logger.info("장소 삭제 성공");
+				}
+			}
+			
+			
 		} else {
 			logger.info("여행 삭제 실패");
 		}
@@ -274,6 +286,18 @@ public class TourRegisterController {
 
 		if (result == 1) {
 			logger.info("여행 삭제 성공");
+			int result2 = tourRegisterService.deleteThumnail(trip_no);
+			
+			if (result2 == 1) {
+				logger.info("썸네일 삭제 성공");
+				int result3 = tourRegisterService.deleteRegion(trip_no);
+				
+				if (result3 == 1) {
+					logger.info("장소 삭제 성공");
+				}
+			}
+			
+			
 		} else {
 			logger.info("여행 삭제 실패");
 		}
