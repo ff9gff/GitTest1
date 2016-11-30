@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
 
@@ -13,69 +14,79 @@ import edu.spring.project03.domain.PersonalVO;
 @Repository // 스프링에서 DAO Componet 빈으로 관리
 public class MemberDAOImpl implements MemberDAO {
 
-	private static final String NAMESPACE = "edu.spring.project03.MemberMapper";
-	private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
+   private static final String NAMESPACE = "edu.spring.project03.MemberMapper";
+   private static final Logger logger = LoggerFactory.getLogger(MemberDAOImpl.class);
 
-	// DB insert/update/delete/select 동작들은
-	// SqlSession 객체를 사용해서 이루어지게 됨
-	@Autowired
-	private SqlSession sqlSession;
+   // DB insert/update/delete/select 동작들은
+   // SqlSession 객체를 사용해서 이루어지게 됨
+   @Autowired
+   private SqlSession sqlSession;
 
-	/*
-	 * MemberVO
-	 */
-	@Override
-	public MemberVO login(MemberVO membervo) {
-		logger.info("login() 호출...");
+   /*
+    * MemberVO
+    */
+   @Override
+   public MemberVO login(MemberVO membervo) {
+      logger.info("login() 호출...");
 
-		return sqlSession.selectOne(NAMESPACE + ".login", membervo);
-	} // end login(vo)
+      return sqlSession.selectOne(NAMESPACE + ".login", membervo);
+   } // end login(vo)
 
-	@Override
-	public String selectUserid(String userid) {
-		logger.info("selectUserid() 호출...");
+   @Override
+   public String selectUserid(String userid) {
+      logger.info("selectUserid() 호출...");
 
-		return sqlSession.selectOne(NAMESPACE + ".select-by-userid", userid);
-	} // end select(userid)
+      return sqlSession.selectOne(NAMESPACE + ".select-by-userid", userid);
+   } // end select(userid)
 
-	@Override
-	public int insertMember(MemberVO membervo) {
-		int member_result = sqlSession.insert(NAMESPACE + ".member-insert", membervo);
+   @Override
+   public int insertMember(MemberVO membervo) {
+      int member_result = sqlSession.insert(NAMESPACE + ".member-insert", membervo);
 
-		return member_result;
-	} // end insertMember(membervo)
+      return member_result;
+   } // end insertMember(membervo)
 
-	@Override
-	public int selectUserMno(String userid) {
+   @Override
+   public int selectUserMno(String userid) {
 
-		return sqlSession.selectOne(NAMESPACE + ".select-by-userid2", userid); // Mno
-																				// 리턴
-	} // end selectUserMno
+      return sqlSession.selectOne(NAMESPACE + ".select-by-userid2", userid); // Mno
+                                                            // 리턴
+   } // end selectUserMno
 
-	/*
-	 * PersonalVO
-	 */
-	@Override
-	public String selectNickname(String nickname) {
-		logger.info("selectNickname() 호출...");
+   /*
+    * PersonalVO
+    */
+   @Override
+   public String selectNickname(String nickname) {
+      logger.info("selectNickname() 호출...");
 
-		return sqlSession.selectOne(NAMESPACE + ".select-by-nickname", nickname);
-	} // end select(nickname)
+      return sqlSession.selectOne(NAMESPACE + ".select-by-nickname", nickname);
+   } // end select(nickname)
 
-	@Override
-	public int insertPersional(PersonalVO personalvo) {
+   @Override
+   public int insertPersional(PersonalVO personalvo) {
 
-		return sqlSession.insert(NAMESPACE + ".personal-insert", personalvo);
-	}// end insertPersional(personalvo)
+      return sqlSession.insert(NAMESPACE + ".personal-insert", personalvo);
+   }// end insertPersional(personalvo)
+   
+   
+   /*
+    * ImgVO
+    */
+   @Override
+   public int insertProfile(ImgVO imgvo) {
 
-	/***
-	 * 
-	 */
+      return sqlSession.insert(NAMESPACE + ".profile-insert", imgvo);
+   } // end insertProfile(imgvo)
 
-	@Override
-	public MemberVO select(int mno) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+   /***
+    * 
+    */
+
+   @Override
+   public MemberVO select(int mno) {
+      // TODO Auto-generated method stub
+      return null;
+   }
 
 } // end class MemberDAOImpl
