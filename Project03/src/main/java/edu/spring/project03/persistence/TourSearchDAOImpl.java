@@ -52,4 +52,10 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	public ImgVO select_trip_profile(int mno) {
 		return sqlSession.selectOne(NAMESPACE2+".select_trip_profile", mno);
 	}
+	
+	@Override
+	public List<String> select_trip_region_name(int trip_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2+".select_trip_region_name", trip_no);
+	}
 }

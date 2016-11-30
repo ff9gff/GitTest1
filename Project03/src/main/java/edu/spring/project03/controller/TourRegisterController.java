@@ -107,11 +107,13 @@ public class TourRegisterController {
 		if(tourVO != null){
 			ImgVO img = tourSelectService.read_trip_profile(tourVO.getMno());
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
+			List<String> region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
 			
 			model.addAttribute("tourVO", tourVO);
 			model.addAttribute("inserterNickname", person.getNickname());
 			model.addAttribute("inserterIntro", person.getIntroduce());
 			model.addAttribute("inserterImg", img.getImg_url());
+			model.addAttribute("inserterRegion", region);
 		}
 
 		

@@ -19,4 +19,6 @@ public interface TourSearchService {
 	public abstract ImgVO read_trip_profile(int mno);
 	
 	public abstract PersonalVO read_trip_person(int mno);
+	
+	public abstract List<String> read_trip_region_name(int trip_no);
 }

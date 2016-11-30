@@ -215,19 +215,22 @@ text-decoration:none;
 color: #000000;
 }
 #profilemenu{
-width: 400px;
-height: 120px;
+	width: 430px;
+	height: 150px;
 	position: absolute;
 	background-color: #FFFFFF;
 	border:solid 1px #ccc; 
 	position: absolute;
 	box-shadow: 0px 1px 20px #333;
 	z-index:100; 
+	text-align: center;
+	vertical-align: middle;
+
 }
 #profilemenu table{
-	width: 100%;
-	height: 100%;
-	padding: 10px;
+	width: 410px;
+	height: 130px;
+	margin: 10px;
 }
 #profile_image{
 	width:30%;
@@ -245,17 +248,21 @@ color: #686767;
 font-size: 12px;
 }
 #profile_button2{
-border: 1px solid #d8d6d6;
+border: #FFFFFF;
 background-color: #FFFFFF;
 color: #686767;
 font-size: 10px;
+font-weight: bold;
+
 }
 #profile_nickname{
+text-align: left;
 color: #444343;
 font-weight: 800;
 font-size: 20px;
 }
 #profile_introduce{
+text-align: left;
 color: #a8a6a6;
 font-size: 12px;
 }
@@ -287,12 +294,10 @@ font-size: 12px;
 	height: 80px;
 	vertical-align: middle;
 	display: inline-block;
-	border: 3px solid #F4511E;
-border-radius: 70px;
--moz-border-radius: 70px;
--khtml-border-radius: 70px;
--webkit-border-radius: 70px;
-	
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-khtml-border-radius: 70px;
+	-webkit-border-radius: 70px;
 }
 .content_profile_text{
 	color: gray;
@@ -317,14 +322,14 @@ border-radius: 70px;
 
 <div id="profilemenu" hidden>
 	<table>
-	<tr>
-		<td rowspan="3" id="profile_image">프로필 사진</td>
-		<td id="profile_nickname" style="text-align: justify;">닉네임</td>
-		<td colspan="2" style="text-align: right;"><button id="profile_button1">X</button></td>
-	</tr>
-	<tr><td colspan="2" id="profile_introduce" style="padding-top: 0;">자기소개</td></tr>
-	<tr><td colspan="2" style="text-align: right;"><button id="profile_button2">자세히▶</button></td></tr>
-</table>
+		<tr>
+			<td rowspan="3" id="profile_image">프로필 사진</td>
+			<td id="profile_nickname">닉네임</td>
+			<td colspan="2" style="text-align: right;"><button id="profile_button1">X</button></td>
+		</tr>
+		<tr><td colspan="2" id="profile_introduce" style="padding-top: 0;">자기소개</td></tr>
+		<tr><td colspan="2" style="text-align: right;vertical-align: middle;"><button id="profile_button2">자세히▶</button></td></tr>
+	</table>
 </div>
 
 <!-- 회원가입/로그인 부분 -->
@@ -1008,7 +1013,7 @@ var date2 = $('#end_date').val();
 var dateArray1 = date1.split(" ");
 var dateArray2 = date2.split(" ");
 
-$('#content_smalltitle').text(dateArray1[0]+" ~ "+dateArray2[0]);
+
 
 var startArray = dateArray1[0].split("-");
 var endArray = dateArray2[0].split("-");
@@ -1048,8 +1053,29 @@ switch(con_age){
 var mno_nickname = '${inserterNickname}';
 var mno_intro = '${inserterIntro}';
 var mno_img = '${inserterImg}';
+var trip_region='';
+
 
 $('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
+
+var mno_region =new Array();
+$(function(){
+	<c:forEach items="${inserterRegion}" var="region">
+		var json = new Object();
+		json = "${region}";
+		mno_region.push(json);
+	</c:forEach>
+	
+	for(var i=0; i<mno_region.length; i++){
+		trip_region+='#'+mno_region[i]+" ";
+	}
+	
+
+	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
+});
+
+
+
 
 
 }); // end document.ready();

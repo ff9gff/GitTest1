@@ -20,4 +20,5 @@ public interface TourSearchDAO {
 	
 	public abstract TourRegisterVO select_trip_by_no(int trip_no);
 
+	public abstract List<String> select_trip_region_name(int trip_no);
 }

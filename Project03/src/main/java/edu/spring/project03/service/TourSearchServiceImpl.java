@@ -50,4 +50,10 @@ public class TourSearchServiceImpl implements TourSearchService {
 		// TODO Auto-generated method stub
 		return dao.select_trip_profile(mno);
 	}
+	
+	@Override
+	public List<String> read_trip_region_name(int trip_no) {
+		// TODO Auto-generated method stub
+		return dao.select_trip_region_name(trip_no);
+	}
 }
