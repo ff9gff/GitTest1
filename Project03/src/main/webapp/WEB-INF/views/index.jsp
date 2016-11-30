@@ -337,6 +337,32 @@ http://www.templatemo.com/tm-406-flex
 
 			};//end of getThumnails()
 			
+			// 사진 밑에 제목, 지역 출력
+			function getThumnails_By_Period() {
+				
+				var url = '/project03/index/' + $('#start_date').val() + "/" + $('#end_date').val();
+				
+				$.getJSON(url, function(data) {
+					var list = '';
+
+					$(data).each(function() {
+	
+						list += '<div class="portfolio-item col-md-3 col-sm-6">'
+								+ '<div class="portfolio-thumb">'
+								+ '<figure>'
+								+ '<div>제목: ' + this.content_no + '</div>'
+								+ '<div>지역: ' + this.content_no + '</div>'
+								+ '</figure>'
+								+ '</div>'
+								+ '</div>';
+					});
+	
+					$('#tourinfo').html(list);
+
+				});// end getJSON()
+
+			};//end of getThumnails()
+			
 			
 			
 			// 지역 검색 버튼 처리

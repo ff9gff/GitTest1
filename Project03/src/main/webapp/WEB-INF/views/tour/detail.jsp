@@ -235,7 +235,6 @@ color: #000000;
 }
 #profile_image{
 	width:30%;
-	border: 1px solid #d8d6d6;
 	padding-right: 5px;
 	padding-bottom: 0;
 	padding-left: 0;
@@ -303,6 +302,16 @@ font-size: 12px;
 .content_profile_text{
 	color: gray;
 	font-weight: bold;
+}
+#profile_profile_img{
+	width: 100%;
+	height: 100%;
+		vertical-align: middle;
+	display: inline-block;
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-khtml-border-radius: 70px;
+	-webkit-border-radius: 70px;
 }
 </style>
 </head>
@@ -994,7 +1003,9 @@ $('#context_profile').on('click','.btn_context',function(){
 			},
 			success: function(result){
 					src = result;
-					 $('#profile_image').html('<img src="../'+src+'" id="profile_img"/>');
+
+					 $('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');
+
 				
 			}
 	});
