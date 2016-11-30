@@ -274,6 +274,12 @@ font-size: 12px;
 	color:#6d6f70;
 	font-weight: bold;
 }
+.condition_img{
+	width: 50px;
+	height: 50px;
+	vertical-align: middle;
+	display: inline-block;
+}
 
 </style>
 </head>
@@ -346,9 +352,9 @@ font-size: 12px;
 <div id=content_smalltitle></div>
 <table id=content_condition>
 	<tr>
-		<td id="betwwenDay"></td>
-		<td>성별: ${tourVO.condition_sex}</td>
-		<td>나이: ${tourVO.condition_age}</td>
+		<td id="condition_date"><img src="../resources/theme/images/date.png" class="condition_img"/><div>??</div></td>
+		<td id="condition_sex"><img src="../resources/theme/images/date.png" class="condition_img"/></td>
+		<td id="condition_age"></td>
 	</tr>	
 </table>
 <div class="menu">Content</div>
@@ -972,6 +978,7 @@ $('#context_msg').on('click','.btn_context',function(){
 	alert(amno+'번째 회원 쪽지보내기');
 });
 
+// 날짜 계산
 var date1 = $('#start_date').val();
 var date2 = $('#end_date').val();
 
@@ -988,8 +995,14 @@ var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
 
 var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
 
-$('#betwwenDay').text(betweenDay+"박 "+(betweenDay+1)+"일");
-console.log("betweenDay:"+betweenDay);
+// 조건 띄우기
+var con_sex = ${tourVO.condition_sex};
+var con_age = ${tourVO.condition_age};
+
+$('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
+switch(con_sex){
+	case 0: 
+}// end switch
 
 
 

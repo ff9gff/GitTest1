@@ -205,8 +205,8 @@ http://www.templatemo.com/tm-406-flex
 						<div>
 							성별 조건: <br />
 							남자 <input type="radio" name="condition_sex" value="1" /> 
-							여자 <input type="radio" name="condition_sex" value="2" /> 
-							조건없음 <input type="radio" name="condition_sex" value="3" />
+							여자 <input type="radio" name="condition_sex" value="0" /> 
+							조건없음 <input type="radio" name="condition_sex" value="2" />
 						</div><br />
 					
 						<div>
@@ -214,7 +214,7 @@ http://www.templatemo.com/tm-406-flex
 							20대 <input type="radio" name="condition_age" value="1" /> 
 							30대 <input type="radio" name="condition_age" value="2" /> 
 							40대 <input type="radio" name="condition_age" value="3" /> 
-							50대 <input type="radio" name="condition_age" value="4" />
+							조건없음 <input type="radio" name="condition_age" value="4" />
 						 </div><br />		 
 						 
 						
