@@ -63,24 +63,26 @@ public class TourRegisterController {
 
 	@Autowired
 	private TourSearchService tourSelectService;
-	
+
+	@Autowired
+	private TourRegisterService tourRegisterService;
+
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String tourRegister3(int trip_no, Model model) {
 		logger.info("FTourRegister.jsp 소환");
 		logger.info("trip_no: " + trip_no);
 
 		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
-		
-		if(tourVO != null){
+
+		if (tourVO != null) {
+			logger.info("mno: " + tourVO.getMno());
 			ImgVO img = tourSelectService.read_trip_profile(tourVO.getMno());
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
-			
+
 			model.addAttribute("tourVO", tourVO);
 			model.addAttribute("tourPersonal", person);
 			model.addAttribute("tourImg", img);
 		}
-
-		
 
 		return "tour/detail";
 
@@ -248,46 +250,32 @@ public class TourRegisterController {
 		return "tour/TourRegisterConfirm";
 	}
 
-	// 여행 정보 삭제 후 TourRegister로 돌아간다
-	@RequestMapping(value = "/TourRegisterDelete", method = RequestMethod.POST)
-	public String tourRegisterDelete(TourRegisterVO tourregistervo, RegionVO regionvo,
-			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
+	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다
+	@RequestMapping(value = "/TourRegisterInsert/{trip_no}", method = RequestMethod.GET)
+	public void ajaxDeleteTest(@PathVariable("trip_no") int trip_no) {
+		logger.info("여행 번호: " + trip_no);
 
-		ImageFile fileInfo = imageService.save(imageFile);
+		int result = tourRegisterService.delete(trip_no);
 
-		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-
-		if (tourregistervo != null && regionvo != null) {
-
-			model.addAttribute("vo", tourregistervo);
-			model.addAttribute("vo2", regionvo);
-			modelMap.put("imageFile", fileInfo);
-
-			logger.info("제목: " + tourregistervo.getTitle());
-			logger.info("mno: " + tourregistervo.getMno());
-			logger.info("trip_no: " + tourregistervo.getTrip_no());
-
-			int result = service.delete(tourregistervo.getTrip_no());
-			int result2 = service.deleteThumnail(tourregistervo.getTrip_no());
-			int result3 = service.deleteRegion(tourregistervo.getTrip_no());
-
-			if (result == 1) { // 여행등록 DB insert 성공
-				logger.info("여행 삭제 성공");	
-			}
-			
-			if (result2 == 1) { // 여행등록 DB insert 성공
-				logger.info("썸네일 삭제 성공");	
-			}
-			
-			if (result3 == 1) { // 여행등록 DB insert 성공
-				logger.info("지약 삭제 성공");	
-			}
-
+		if (result == 1) {
+			logger.info("여행 삭제 성공");
 		} else {
-			logger.info("응 실패^^");
+			logger.info("여행 삭제 실패");
 		}
+	}
 
-		return "tour/TourRegister";
+	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다
+	@RequestMapping(value = "/TourRegisterCheck/{trip_no}", method = RequestMethod.GET)
+	public void ajaxDeleteTest2(@PathVariable("trip_no") int trip_no) {
+		logger.info("여행 번호: " + trip_no);
+
+		int result = tourRegisterService.delete(trip_no);
+
+		if (result == 1) {
+			logger.info("여행 삭제 성공");
+		} else {
+			logger.info("여행 삭제 실패");
+		}
 	}
 
 	//
