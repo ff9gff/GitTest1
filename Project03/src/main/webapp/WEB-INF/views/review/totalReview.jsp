@@ -391,13 +391,13 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/plugins.js"></script>
 	<script src="../resources/theme/js/main.js"></script>
 	<script>
-	$(document).ready(function() {
-		$('#btn_create_review').click(function() {
-			location = 'review_register';
+		$(document).ready(function() {
+			$('#btn_create_review').click(function() {
+				location = 'review_register';
+				
+			});
 			
 		});
-		
-	});
 	
 	</script>
 </body>

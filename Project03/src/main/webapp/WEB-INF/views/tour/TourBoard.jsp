@@ -41,7 +41,6 @@ http://www.templatemo.com/tm-406-flex
 <script src="../../js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
-</style>
 </head>
 <body>
 
@@ -193,11 +192,10 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#footer -->
 
-
-
 	<script src="../resources/theme/js/bootstrap.js"></script>
 	<script src="../resources/theme/js/plugins.js"></script>
 	<script src="../resources/theme/js/main.js"></script>
+	
 	<script>
 		$(document).ready(function() {
 			$('#btn_detail_search').click(function() {

@@ -994,7 +994,7 @@ $('#context_profile').on('click','.btn_context',function(){
 			},
 			success: function(result){
 					src = result;
-					 $('#profile_image').html('<img src="'+src+'" id="profile_img"/>');
+					 $('#profile_image').html('<img src="../'+src+'" id="profile_img"/>');
 				
 			}
 	});
