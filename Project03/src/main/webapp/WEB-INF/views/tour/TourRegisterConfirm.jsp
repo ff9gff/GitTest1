@@ -120,6 +120,7 @@
 			$("#cancelbutton").click(function() {
 				
 				var trip_no = ${vo.trip_no};
+				alert("여행 번호: " + trip_no);
 				location = ''
 				history.back();
 			})
@@ -189,7 +190,7 @@
 						</form>	
 						
 					<input type="button" id="updatebutton" value="수정" />
-					<input type="button" id="cancelbutton" value="취소" />
+					<input type="button" id="cancelbutton" value="삭제" />
 					<input type="button" id="homebutton" value="홈으로" />
 					
 				</div>
