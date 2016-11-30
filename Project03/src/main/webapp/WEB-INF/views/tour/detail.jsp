@@ -391,6 +391,7 @@ font-size: 12px;
 <div id="content">
 ${tourVO.content}
 </div>
+
 <div class="menu">Apply for</div>
 <table class="apply_panel">
 	<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>

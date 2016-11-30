@@ -303,9 +303,49 @@ http://www.templatemo.com/tm-406-flex
 					$('#toursearch').html(list);
 
 				});// end getJSON()
+				
+				/* // wm_image 리스트
+				imagelist = [];
+				// wm_tour 리스트
+				tourlist = [];
+				joincount=0;
+				
+				var url1 = '/project03/index/imageList/' + $('#region_name').val();
+				$.getJSON(url1, function(data){
+					$(data).each(function(){
+						imagelist.push({content_no: this.content_no, approval: this.approval, person:{}});	
+						
+					});
+					
+					var url2 = '/project03/index/tourList/' + $('#region_name').val();
+					$.getJSON(url2, function(data){
+						$(data).each(function(){
+							tourlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce})
+						
+						
+						});
+						
+						var url3 = '/project03/index/tourList/' + $('#region_name').val();
+						$.getJSON(url2, function(data){
+							$(data).each(function(){
+								tourlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce})
+							
+							
+							});
+							for(var i=0; i<applylist.length; i++){
+								for(var j=0; j<personlist.length; j++){
+									if(applylist[i].mno == personlist[j].mno){
+										applylist[i].person = personlist[j];	
+									}
+								}// end for(j)
+							}// end for(i)
+						});
+						getAllApply();
+					}); // end getJSON
+				}); // end getJSON
 
-			};//end of getThumnails()
-			
+			};//end of getThumnails() */
+			};
 			
 			// 기간 검색: 해당 기간의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getThumnails_By_Period() {
