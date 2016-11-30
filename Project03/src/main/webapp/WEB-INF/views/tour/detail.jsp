@@ -41,15 +41,13 @@
   margin: 0 auto;
 }
 #content_title{
-width:800px;
-  margin: 0 auto;
+ width:670px;
   color: #F4511E;
   font-size: 30px;
   font-weight: bold;
 }
 #content_smalltitle{
-	width:800px;
-  margin: 0 auto;
+ width:670px;
    font-size: 15px;
 }
 #content_condition{
@@ -351,9 +349,15 @@ font-size: 12px;
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
 
-
-<div id=content_title>${tourVO.title}</div>
-<div id=content_smalltitle></div>
+<div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
+	<div style=" display: inline-block; vertical-align: middle;">
+		<div id=content_title>${tourVO.title}</div>
+		<div id=content_smalltitle></div>
+	</div>
+	<div style="width: 110px; height: 100px; display: inline-block; vertical-align: middle;">
+	프로필사진
+	</div>
+</div>
 <table id=content_condition>
 	<tr>
 		<td id="condition_date"><img src="../resources/theme/images/date.png" class="condition_img"/><div>??</div></td>
