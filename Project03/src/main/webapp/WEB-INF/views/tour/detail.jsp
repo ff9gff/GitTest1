@@ -984,14 +984,20 @@ $('#context_profile').on('click','.btn_context',function(){
 	var src = '';
 	
 	var url3 = '/project03/tour/detail/apply/profile/'+amno;
-	console.log(url3);
-	$.getJSON(url3, function(data){
-			src = data;
-		 console.log(src);
-		 $('#profile_image').html('<img src="'+src+'" id="profile_img"/>');
+	
+	$.ajax({
+		type:'Get',
+		url: '/project03/tour/detail/apply/profile/'+amno,
+		headers:{
+			'Content-Type':'application/json',
+			'X-HTTP-Method-Override':'GET'
+			},
+			success: function(result){
+					src = result;
+					 $('#profile_image').html('<img src="'+src+'" id="profile_img"/>');
+				
+			}
 	});
-	
-	
 	
 	if(atype=='reply'){
 		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
@@ -1000,6 +1006,9 @@ $('#context_profile').on('click','.btn_context',function(){
 		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
 	}
+	
+	
+
 	$('#overlay, #profilemenu').show();
 
 	$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 

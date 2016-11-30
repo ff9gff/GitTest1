@@ -70,12 +70,12 @@ public class TourJoinRESTController {
 	@RequestMapping(value="/profile/{no}", method=RequestMethod.GET)
 	public ResponseEntity<String> readImg(@PathVariable("no") Integer mno){
 		ImgVO src = service.readProfile(mno);
-		System.out.println("src:"+src.getImg_url());
+		String address = src.getImg_url();
 		ResponseEntity<String> entity = null;
 		if(src != null){ // select 성공
-			entity = new ResponseEntity<>(src.getImg_url(), HttpStatus.OK);
+			entity = new ResponseEntity<>(address, HttpStatus.OK);
 		}else{ // select 실패
-			entity = new ResponseEntity<>(src.getImg_url(), HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(address, HttpStatus.BAD_REQUEST);
 		}// end if
 		
 		return entity;
