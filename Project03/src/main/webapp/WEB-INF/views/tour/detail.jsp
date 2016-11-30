@@ -235,6 +235,7 @@ color: #000000;
 }
 #profile_image{
 	width:30%;
+	height:30%;
 	padding-right: 5px;
 	padding-bottom: 0;
 	padding-left: 0;
@@ -306,7 +307,7 @@ font-size: 12px;
 #profile_profile_img{
 	width: 100%;
 	height: 100%;
-		vertical-align: middle;
+	vertical-align: middle;
 	display: inline-block;
 	border-radius: 70px;
 	-moz-border-radius: 70px;
