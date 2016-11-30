@@ -275,10 +275,14 @@ font-size: 12px;
 	font-weight: bold;
 }
 .condition_img{
-	width: 50px;
-	height: 50px;
+	width: 40px;
+	height: 40px;
 	vertical-align: middle;
 	display: inline-block;
+	margin-top: 10px;
+}
+.condition_text{
+	margin-bottom: 10px;
 }
 
 </style>
@@ -1001,7 +1005,25 @@ var con_age = ${tourVO.condition_age};
 
 $('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
 switch(con_sex){
-	case 0: 
+	case 0: $('#condition_sex').html('<img src="../resources/theme/images/female.png" class="condition_img"/><div class="condition_text">여자 만</div>');
+			break;
+	case 1: $('#condition_sex').html('<img src="../resources/theme/images/male.png" class="condition_img"/><div class="condition_text">남자 만</div>');
+			break;
+	case 2: $('#condition_sex').html('<img src="../resources/theme/images/people.png" class="condition_img"/><div class="condition_text">누구나</div>');
+			break;
+	default: break;
+}// end switch
+
+switch(con_age){
+	case 1: $('#condition_age').html('<img src="../resources/theme/images/20age.png" class="condition_img"/><div class="condition_text">20대 만</div>');
+		break;
+	case 2: $('#condition_age').html('<img src="../resources/theme/images/30age.png" class="condition_img"/><div class="condition_text">30대 만</div>');
+		break;
+	case 3: $('#condition_age').html('<img src="../resources/theme/images/40age.png" class="condition_img"/><div class="condition_text">40대 이상 만</div>');
+		break;
+	case 4: $('#condition_age').html('<img src="../resources/theme/images/freeage.png" class="condition_img"/><div class="condition_text">누구나</div>');
+		break;
+	default: break;
 }// end switch
 
 
