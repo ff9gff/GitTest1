@@ -146,6 +146,7 @@
 			})
 			
 			$("#cancelbutton").click(function() {
+				location = '../index';
 				history.back();
 			})
 			

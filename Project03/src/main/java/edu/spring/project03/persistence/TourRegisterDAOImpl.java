@@ -61,5 +61,23 @@ public class TourRegisterDAOImpl implements TourRegisterDAO {
 		return sqlSession.update(NAMESPACE + ".update-region", vo);
 	}
 
+	@Override
+	public int delete(int trip_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE + ".delete-register", trip_no);
+	}
+
+	@Override
+	public int deleteThumnail(int trip_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE + ".delete-thumnail", trip_no);
+	}
+
+	@Override
+	public int deleteRegion(int trip_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE + ".delete-region", trip_no);
+	}
+
 
 }

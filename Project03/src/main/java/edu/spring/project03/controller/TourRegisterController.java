@@ -1,16 +1,20 @@
 package edu.spring.project03.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -113,8 +117,8 @@ public class TourRegisterController {
 
 	// 여행 일정 insert!
 	@RequestMapping(value = "/TourRegisterInsert", method = RequestMethod.POST)
-	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile,
-			ModelMap modelMap, Model model) {
+	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
+			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
 
@@ -141,16 +145,15 @@ public class TourRegisterController {
 						0);
 				int content_no = service.readTrip_no(tourregistervo);
 				logger.info("insert content_no: " + content_no);
-				
-				tourregistervo = new TourRegisterVO(content_no, tourregistervo.getMno(), tourregistervo.getTitle(), tourregistervo.getCondition_sex(), tourregistervo.getCondition_age(),
+
+				tourregistervo = new TourRegisterVO(content_no, tourregistervo.getMno(), tourregistervo.getTitle(),
+						tourregistervo.getCondition_sex(), tourregistervo.getCondition_age(),
 						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
 						0);
-				
+
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);
 				modelMap.put("imageFile", fileInfo);
-				
-				
 
 				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 				int result2 = service.createThumnail(imagevo);
@@ -189,11 +192,10 @@ public class TourRegisterController {
 			ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
-		
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-			
+
 		} else {
 			logger.info("대실패 ");
 
@@ -202,7 +204,7 @@ public class TourRegisterController {
 		if (tourregistervo != null && regionvo != null) {
 
 			model.addAttribute("vo", tourregistervo);
-			model.addAttribute("vo2", regionvo);			
+			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);
 		}
 
@@ -211,8 +213,8 @@ public class TourRegisterController {
 
 	// 여행 정보 수정 후 TourRegisterConfirm로 돌아간다
 	@RequestMapping(value = "/TourRegisterCheck", method = RequestMethod.POST)
-	public String tourRegisterCheck(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
-			ModelMap modelMap, Model model) {
+	public String tourRegisterCheck(TourRegisterVO tourregistervo, RegionVO regionvo,
+			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
 
@@ -223,12 +225,10 @@ public class TourRegisterController {
 			model.addAttribute("vo", tourregistervo);
 			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);
-			
+
 			logger.info("제목: " + tourregistervo.getTitle());
 			logger.info("mno: " + tourregistervo.getMno());
 			logger.info("trip_no: " + tourregistervo.getTrip_no());
-			
-			
 
 			int result = service.update(tourregistervo);
 
@@ -271,20 +271,62 @@ public class TourRegisterController {
 		return "tour/TourRegisterConfirm";
 	}
 
+	// 여행 정보 삭제 후 TourRegister로 돌아간다
+	@RequestMapping(value = "/TourRegisterDelete", method = RequestMethod.POST)
+	public String tourRegisterDelete(TourRegisterVO tourregistervo, RegionVO regionvo,
+			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
+
+		ImageFile fileInfo = imageService.save(imageFile);
+
+		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+
+		if (tourregistervo != null && regionvo != null) {
+
+			model.addAttribute("vo", tourregistervo);
+			model.addAttribute("vo2", regionvo);
+			modelMap.put("imageFile", fileInfo);
+
+			logger.info("제목: " + tourregistervo.getTitle());
+			logger.info("mno: " + tourregistervo.getMno());
+			logger.info("trip_no: " + tourregistervo.getTrip_no());
+
+			int result = service.delete(tourregistervo.getTrip_no());
+			int result2 = service.deleteThumnail(tourregistervo.getTrip_no());
+			int result3 = service.deleteRegion(tourregistervo.getTrip_no());
+
+			if (result == 1) { // 여행등록 DB insert 성공
+				logger.info("여행 삭제 성공");	
+			}
+			
+			if (result2 == 1) { // 여행등록 DB insert 성공
+				logger.info("썸네일 삭제 성공");	
+			}
+			
+			if (result3 == 1) { // 여행등록 DB insert 성공
+				logger.info("지약 삭제 성공");	
+			}
+
+		} else {
+			logger.info("응 실패^^");
+		}
+
+		return "tour/TourRegister";
+	}
+
 	//
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "tour/TourRegister";
 	}
-	
+
 	@RequestMapping("/cancelTourRegister2")
 	public String gotourRegister() {
 		return "tour/TourRegister";
 	}
-	
+
 	@RequestMapping("/cancelTourRegister3")
-	public String tourRegisterConfirm() {		
-		
+	public String tourRegisterConfirm() {
+
 		return "/TourRegisterComplete";
 	}
 

@@ -60,4 +60,22 @@ public class TourRegisterServiceImpl implements TourRegisterService {
 		return tourRegisterDAO.updateRegion(vo);
 	}
 
+	@Override
+	public int delete(int trip_no) {
+		// TODO Auto-generated method stub
+		return tourRegisterDAO.delete(trip_no);
+	}
+	
+	@Override
+	public int deleteThumnail(int trip_no) {
+		// TODO Auto-generated method stub
+		return tourRegisterDAO.deleteThumnail(trip_no);
+	}
+
+	@Override
+	public int deleteRegion(int trip_no) {
+		// TODO Auto-generated method stub
+		return tourRegisterDAO.deleteRegion(trip_no);
+	}
+
 }
