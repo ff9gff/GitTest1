@@ -75,7 +75,7 @@ public class TourRegisterController {
 			ImgVO img = tourSelectService.read_trip_profile(tourVO.getMno());
 			logger.info("img: " + img);
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
-			List<String> region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
+			String region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
 			model.addAttribute("tourVO", tourVO);
 			model.addAttribute("inserterNickname", person.getNickname());
 			model.addAttribute("inserterIntro", person.getIntroduce());
@@ -83,6 +83,7 @@ public class TourRegisterController {
 			model.addAttribute("inserterImg", img.getImg_url());
 			logger.info("inserterImg: " + img.getImg_url());
 			model.addAttribute("inserterRegion", region);
+			logger.info("inserterRegion: " + region);
 		}
 
 		return "tour/detail";
