@@ -4,7 +4,7 @@ public class ImageFile {
 	/**
 	 * 업로드한 이미지 파일이 저장될 경로
 	 */
-	public static final String IMAGE_DIR = "C:/Study/lab-web/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Project03/resources/photo_upload/";
+	public static final String IMAGE_DIR = "G:/study/lab_Git/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/Project03/resources/photo_upload/";
 
 	private String id;
 	private String contentType;
