@@ -126,8 +126,6 @@ public class TourRegisterController {
 				logger.info("insert content_no: " + content_no);
 
 				tourregistervo = tourSelectService.readRegisterData(content_no);
-				
-				
 
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);

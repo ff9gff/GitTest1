@@ -51,6 +51,11 @@
 		select region_name from wm_tour_region
 		where trip_no = #{trip_no}
 	</select>
+	
+	<select id="select_register_data" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
+		where trip_no = #{trip_no}
+	</select>
 
 	
 

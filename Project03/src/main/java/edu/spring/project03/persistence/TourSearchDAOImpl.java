@@ -71,6 +71,6 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	@Override
 	public TourRegisterVO select_register_data(int trip_no) {
 		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne(NAMESPACE2 + ".select_register_data", trip_no);
 	}
 }
