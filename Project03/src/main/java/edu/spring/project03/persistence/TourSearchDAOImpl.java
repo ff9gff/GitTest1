@@ -20,20 +20,13 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	@Autowired
 	private SqlSession sqlSession;
 	
-	@Override
-	public List<ImgVO> select_region(String region) {
-		List<ImgVO> list = sqlSession.selectList(NAMESPACE2 + ".select_trip_region", region);
-		return list;
-	}
 
 	@Override
 	public List<ImgVO> select_region_date(TourRegisterVO vo) {
-		List<ImgVO> list = sqlSession.selectList(NAMESPACE2 + ".select_trip_date", vo);
+		List<ImgVO> list = sqlSession.selectList(NAMESPACE2 + ".select_main_trip_image", vo);
 		return list;
 	}
 	
-
-
 	@Override
 	public TourRegisterVO select_trip_by_no(int trip_no) {
 		TourRegisterVO vo = sqlSession.selectOne(NAMESPACE2 + ".select_trip_by_no", trip_no);
@@ -72,5 +65,28 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	public TourRegisterVO select_register_data(int trip_no) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE2 + ".select_register_data", trip_no);
+	}
+	
+	
+	
+	@Override
+	public List<ImgVO> select_region(String region) {
+		region = "%" + region + "%";
+		List<ImgVO> list = sqlSession.selectList(NAMESPACE2 + ".select_main_image_region", region);
+		return list;
+	}
+
+	@Override
+	public List<TourRegisterVO> select_main_title_region(String region) {
+		// TODO Auto-generated method stub
+		region = "%" + region + "%";
+		return sqlSession.selectList(NAMESPACE2 + ".select_main_title_region", region);
+	}
+
+	@Override
+	public List<RegionVO> select_main_region_region(String region) {
+		// TODO Auto-generated method stub
+		region = "%" + region + "%";
+		return sqlSession.selectList(NAMESPACE2 + ".select_main_region_region", region);
 	}
 }

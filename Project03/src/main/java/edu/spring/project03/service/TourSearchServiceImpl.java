@@ -70,4 +70,16 @@ public class TourSearchServiceImpl implements TourSearchService {
 		// TODO Auto-generated method stub
 		return dao.select_register_data(trip_no);
 	}
+
+	@Override
+	public List<TourRegisterVO> read_main_title_region(String region) {
+		// TODO Auto-generated method stub
+		return dao.select_main_title_region(region);
+	}
+
+	@Override
+	public List<RegionVO> read_main_region_region(String region) {
+		// TODO Auto-generated method stub
+		return dao.select_main_region_region(region);
+	}
 }
