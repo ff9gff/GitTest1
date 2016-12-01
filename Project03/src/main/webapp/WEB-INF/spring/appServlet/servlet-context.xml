@@ -46,7 +46,11 @@
 	
 	
 	<context:component-scan base-package="edu.spring.project03" />
+	<context:component-scan base-package="edu.spring.project03.controller" />
+	
+	<!-- 삭제 가능할듯.. 일단 컨트롤러 없는거.. 하... -->
 	<context:component-scan base-package="edu.spring.project03.service" />
+	
 	
 	
 	

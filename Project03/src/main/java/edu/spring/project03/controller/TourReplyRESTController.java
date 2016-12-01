@@ -1,3 +1,4 @@
+
 package edu.spring.project03.controller;
 
 import java.util.List;
@@ -13,12 +14,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourReplyVO;
 
 import edu.spring.project03.service.TourReplyService;
 
 @RestController
-@RequestMapping(value = "/tour/detail")
+@RequestMapping(value = "/tour/detail/reply")
 public class TourReplyRESTController {
 	// private static Logger logger =
 	// LoggerFactory.getLogger(TourReplyRESTController.class);
@@ -53,6 +55,19 @@ public class TourReplyRESTController {
 
 		return entity;
 	}// end readReplies()
+	
+	// 해당 신청자의 프로필을 읽어오는 메소드
+	@RequestMapping(value="/person/{no}", method=RequestMethod.GET)
+	public ResponseEntity<List<PersonalVO>> readPerson(@PathVariable("no") Integer trip_no){
+		List<PersonalVO> list = service.readPerson(trip_no);
+		ResponseEntity<List<PersonalVO>> entity = null;
+		if(list != null){ // select 성공
+			entity = new ResponseEntity<>(list, HttpStatus.OK);
+		}else{ // select 실패
+			entity = new ResponseEntity<>(list, HttpStatus.BAD_REQUEST);
+		}// end if
+		return entity;
+	}
 
 	// 해당 댓글을 수정
 	@RequestMapping(value = "/{no}", method = RequestMethod.PUT)

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+][]<%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -80,12 +80,12 @@ http://www.templatemo.com/tm-406-flex
 									<i class="fa fa-bars"></i>
 								</div>
 								<ul class="menu-first">
-									<li class="active"><a href="#">메인</a></li>
+									<li class="active"><a href="../index">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="MyPage">마이페이지</a></li>
-									<li><a href="admin">관리자</a></li>
-									<li><a href="member/login">로그인</a></li>
+									<li><a href="../MyPage">마이페이지</a></li>
+									<li><a href="../admin">관리자</a></li>
+									<li><a href="../member/login">로그인</a></li>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -128,16 +128,15 @@ http://www.templatemo.com/tm-406-flex
 	<!-- /.site-main -->
 
 
-	<script>
-		$(function() {
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-		});
-	</script>
+	
 	
 	<script>
 		$(function() { //전역변수선언
+			
+			$("#start_date, #end_date").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
+			
 			var editor_object = [];
 			nhn.husky.EZCreator.createInIFrame({
 				oAppRef : editor_object,
@@ -189,11 +188,16 @@ http://www.templatemo.com/tm-406-flex
 
 				<div class="wrap">
 		
-					<form action="TourRegisterConfirm" method="post" id="frm" enctype="multipart/form-data">
+					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
 					
-						대문 이미지: <input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+						  <label for="imageFile">썸네일 이미지</label><br/>       
+					      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+					            
+					      <div id="image_preview">
+					      <img src="#" id="profile-image" style="display: none;" /><br/>
+					      </div><br/>      
 					
-						<input type="hidden" name="mno" value="112" readonly="readonly" /> 
+						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 					
 						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
 					
@@ -206,8 +210,8 @@ http://www.templatemo.com/tm-406-flex
 						<div>
 							성별 조건: <br />
 							남자 <input type="radio" name="condition_sex" value="1" /> 
-							여자 <input type="radio" name="condition_sex" value="2" /> 
-							조건없음 <input type="radio" name="condition_sex" value="3" />
+							여자 <input type="radio" name="condition_sex" value="0" /> 
+							조건없음 <input type="radio" name="condition_sex" value="2" />
 						</div><br />
 					
 						<div>
@@ -215,7 +219,7 @@ http://www.templatemo.com/tm-406-flex
 							20대 <input type="radio" name="condition_age" value="1" /> 
 							30대 <input type="radio" name="condition_age" value="2" /> 
 							40대 <input type="radio" name="condition_age" value="3" /> 
-							50대 <input type="radio" name="condition_age" value="4" />
+							조건없음 <input type="radio" name="condition_age" value="4" />
 						 </div><br />		 
 						 
 						
@@ -263,9 +267,27 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/main.js"></script>
 	
 	<script>
-		console.log($('#se2_iframe').val());
+	$('#imageFile').on('change', function() {
+	      
+	      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	      
+	      //배열에 추출한 확장자가 존재하는지 체크
+	      if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+	         resetFormElement($(this)); //폼 초기화
+	         window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+	      } else {
+	         file = $('#imageFile').prop("files")[0];
+	         blobURL = window.URL.createObjectURL(file);
+	         $('#image_preview img').attr('src', blobURL);
+	         document.getElementById("profile-image").style.display = "inline";
+	         $('#image_preview img').attr('width', '300px');
+	         $('#image_preview img').attr('height', '400px');
+	         document.getElementById("btn_profile-image_remove").style.display = "inline";
+	         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+	         $('#image_preview').show(); //업로드한 이미지 미리보기
+	      }
+	   });
 	</script>
-
 
 </body>
 </html>

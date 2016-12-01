@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.persistence.TourSearchDAO;
 
@@ -39,4 +40,20 @@ public class TourSearchServiceImpl implements TourSearchService {
 		return vo;
 	}
 
+	@Override
+	public PersonalVO read_trip_person(int mno) {
+		return dao.select_trip_person(mno);
+	}
+	
+	@Override
+	public ImgVO read_trip_profile(int mno) {
+		// TODO Auto-generated method stub
+		return dao.select_trip_profile(mno);
+	}
+	
+	@Override
+	public List<String> read_trip_region_name(int trip_no) {
+		// TODO Auto-generated method stub
+		return dao.select_trip_region_name(trip_no);
+	}
 }

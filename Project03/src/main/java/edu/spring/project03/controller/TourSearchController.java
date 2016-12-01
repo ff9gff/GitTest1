@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,42 +30,6 @@ public class TourSearchController {
 		logger.info("index.jsp 소환");
 	}
 
-	@RequestMapping(value = "/datepickTest2", method = RequestMethod.POST)
-	public String notAjaxPeriodTest(Model model, String start_date, String end_date) {
-		logger.info("startDate: " + start_date);
-		logger.info("endDate: " + end_date);
-
-		TourRegisterVO vo = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
-
-		List<ImgVO> list = tourSelectService.read_region_date(vo);
-
-		model.addAttribute("periodList", list);
-
-		return "index";
-	}
-
-	@RequestMapping(value = "/regionTest2", method = RequestMethod.POST)
-	public String notAjaxRegionTest(Model model, String region_name) {
-		logger.info("region: " + region_name);
-
-		List<ImgVO> regionList = tourSelectService.read_region(region_name);
-
-		model.addAttribute("regionList", regionList);
-
-		return "index";
-	}
-
-	@RequestMapping(value = "tourRegister/FTourRegister", method = RequestMethod.GET)
-	public void tourRegister3(int trip_no, Model model) {
-		logger.info("FTourRegister.jsp 소환");
-		logger.info("trip_no: " + trip_no);
-
-		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
-
-		model.addAttribute("tourVO", tourVO);
-
-	}
-
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
 	@RequestMapping(value = "/index/{region_name}", method = RequestMethod.GET)
@@ -87,7 +49,7 @@ public class TourSearchController {
 			logger.info("지역 검색 실패 ");
 		}
 
-		logger.info("entity " + entity);
+		logger.info("entity " + entity.getBody());
 		// logger.info("list.mno "+ list.get(0).getUserid());
 		// 출력 됨
 		return entity;
@@ -95,12 +57,8 @@ public class TourSearchController {
 
 	// 기간 검색 Ajax 처리
 	// 해당 기간 검색 메소드
-	@RequestMapping(value = "/datepickTest", method = RequestMethod.POST)
-	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@RequestBody TourRegisterVO vo) {
-
-		String start_date = vo.getStart_date();
-		String end_date = vo.getEnd_date();
-
+	@RequestMapping(value = "/index/{start_date}/{end_date}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@PathVariable("start_date") String start_date, @PathVariable("end_date") String end_date) {
 		logger.info("시작 날짜: " + start_date);
 		logger.info("종료 날짜: " + end_date);
 

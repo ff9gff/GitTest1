@@ -56,9 +56,9 @@
 									</div>
 									
 									<ul class="menu-first">
-										<li><a href="index">메인</a></li>
-										<li><a href="admin">관리자</a></li>
-										<li><a href="login">로그인</a></li>
+										<li><a href="../index">메인</a></li>
+										<li><a href="../admin">관리자</a></li>
+										<li><a href="../login">로그인</a></li>
 									</ul>
 								</div>
 								<!-- /.main-menu -->
@@ -96,17 +96,12 @@
 	</div>
 	<!-- /.site-main -->
 
-	<script>
-		$(function() {
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
-		});
-	</script>
 	
 	<script>
-		$(function() { //전역변수선언
+
 		
+		$(document).ready(function() {
+			
 			//전송버튼 클릭이벤트
 			$("#updatebutton").click(function() {			
 				//폼 submit
@@ -114,14 +109,29 @@
 			})
 			
 			$("#homebutton").click(function() {
-				location = '/index';
+				location = '../index';
 			})
 			
-			$("#deletebutton").click(function() {
-				location = 'GoRegister';
+			$("#cancelbutton").click(function() {
+				
+				var trip_no = ${vo.trip_no};
+				alert("여행 번호: " + trip_no);
+				getDeleteTour();
+				location = '../index';
 			})
-			
-		})
+
+			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
+			function getDeleteTour() {
+				
+				var url = '/project03/tour/TourRegisterInsert/' + ${vo.trip_no};
+
+				$.getJSON(url, function(){
+					alert("삭제되었습니다");
+				});// end getJSON()
+
+			};//end of getThumnails()
+		
+		});
 	</script>
 
 
@@ -137,7 +147,7 @@
 
 				<div class="wrap">				
 						
-						<form action="TourRegisterComplete" method="post" id="frm">
+						<form action="TourRegisterComplete" method="post" id="frm" enctype="multipart/form-data">
 						
 							<c:choose>
 								<c:when test="${imageFile != null }">
@@ -150,12 +160,17 @@
 								</ul>
 								 --%>
 								<img src="${pageContext.request.contextPath}/image/${imageFile.id}" width="100" height="100">
+								
 								</c:when>
 							</c:choose><br /><br />
+							
+							<input type="file" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'	>" style="display: none"><br>
+							
+							<input type="hidden" name=img_url" value="${vo3.img_url }" readonly="readonly" />
 						
-							<input type="hidden" name="trip_no" value="1" readonly="readonly" /> 
+							<input type="hidden" name="trip_no" value="${vo.trip_no}" readonly="readonly" /> 
 								
-							<input type="hidden" name="mno" value="2" readonly="readonly" /> 
+							<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 						
 							<input type="text" name="title" style="width: 60%" value="${vo.title}" placeholder="제목" readonly="readonly"/><br /> <br /> 
 						
@@ -171,14 +186,17 @@
 							
 				
 							 <br />
-							
+							<textarea name="content"  rows="10"
+							cols="100" style="width: 766px; height: 412px; display: none">
+								${vo.content}		
+							</textarea>
 							${vo.content}	
 							<br /><br />	
 															
 						</form>	
 						
 					<input type="button" id="updatebutton" value="수정" />
-					<input type="button" id="cancelbutton" value="취소" />
+					<input type="button" id="cancelbutton" value="삭제" />
 					<input type="button" id="homebutton" value="홈으로" />
 					
 				</div>

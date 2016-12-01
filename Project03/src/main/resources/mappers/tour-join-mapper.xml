@@ -26,6 +26,11 @@
 		insert into wm_tour_join (trip_no, mno, approval)
 		values(#{trip_no},#{mno},0)
 	</insert>
+	
+	<select id="selectProfile" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type=3 and content_no = #{mno}
+	</select>
 
 
 </mapper>

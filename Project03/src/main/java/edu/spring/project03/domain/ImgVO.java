@@ -50,8 +50,12 @@ public class ImgVO {
 		this.img_url = img_url;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return img_url;
+	}
 	
-
 	
 
 }

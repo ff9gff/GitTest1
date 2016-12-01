@@ -5,17 +5,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <title>같이가자</title>
+<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
+
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="../resources/theme/js/bootstrap.js"></script>
+		<script src="../resources/theme/js/plugins.js"></script>
+		<script src="../resources/theme/js/main.js"></script>
+
+
 <style>
+.main-header{
+ top: 30px;
+ z-index:98;
+}
 .menu{
   width:800px;
   margin: 0 auto;
   color: #F4511E;
   border-bottom:3px solid #F4511E;
-  font-size: 30px;
+  font-size: 17px;
   font-weight: bold;
   margin-bottom: 20px;
+}
+#content{
+  width:800px;
+  margin: 0 auto;
+}
+#content_title{
+ width:670px;
+  color: #F4511E;
+  font-size: 30px;
+  font-weight: bold;
+}
+#content_smalltitle{
+ width:670px;
+   font-size: 15px;
+}
+#content_condition{
+	width:800px;
+ 	margin: 0 auto;
+ 	border-top: 1px solid lightgray;
+ 	border-bottom: 1px solid lightgray;
+ 	text-align: center;
 }
 .reply_panel,.apply_panel{
   width:800px;
@@ -30,12 +71,14 @@
 	margin-bottom:10px;
 	padding-bottom:5px;
 	border-bottom:1px dotted #999999;
+	
 }
+
 .reply_body{
 	margin-left:20px;
 }
 .re_reply_body{
-	margin-left:80px;
+	margin-left:60px;
 }
 .btns{
 	float: right;
@@ -44,6 +87,7 @@
 .regdate,.btn_div,.btn_reply,.btn_update,.btn_delete{
 	font-size: 10pt;
 	color:#757575;
+	font-weight: normal;
 }
 .btn_reply,.btn_update,.btn_delete{
 	text-decoration:none;
@@ -61,22 +105,26 @@
 }
 .applicant_panel,.applicant_button{
 	display: inline-block;
+	vertical-align: middle;
 }
 .applicant_panel{
-	width: 450px;
-	height: 150px;
+	width: 100%;
+	height: 100%;
 	padding:0;
 	overflow: auto;
 	overflow-x:hidden;
 	margin: 0;
 }
 .applicant_button{
-width: 100px;
-	height: 150px;
+width: 95%;
+	height: 100%;
+	font-weight:bold;
 	padding:0;
+	margin: 0;
+	 border:0;
 }
 
-#applicants table {ddddd
+#applicants{
     width:100%;
     margin:0;
     border:0;
@@ -101,25 +149,35 @@ width: 100px;
 	background-color:#fdfdfd;
     border: 1px solid #6d6f70;
 }
+.apply_notdata{
+	background-color: lightgray;
+	border: 1px solid lightgray;
+}
+
 .table_check{
-	width: 30px;
+	width: 8%;
 }
 .table_name,.table_com{
-	width: 130px;
+	width: 30%;
 }
 .table_sex,.table_age{
-	width: 70px;
+	width: 16%;
 }
 .apply_panel_table{
-	width: 450px;
+	width: 490px;
+	height: 100%;
 	background-color: lightgray;
+	padding: 0;
 
 }
 .apply_panel_btns{
-	width: 100px;
+	width: 80px;
+	text-align: center;
+
 }
 .apply_panel{
 	width: 700px;
+	height: 180px;
 }
 .join{
 	font-weight: 800;
@@ -151,38 +209,213 @@ margin: 0;
 	color: #000000;
 	text-decoration:none;
 	font-weight: 800;
+	font-size: 15px;
 }
 .btn_context{
 text-decoration:none;
 color: #000000;
 }
+#profilemenu{
+	width: 430px;
+	height: 150px;
+	position: absolute;
+	background-color: #FFFFFF;
+	border:solid 1px #ccc; 
+	position: absolute;
+	box-shadow: 0px 1px 20px #333;
+	z-index:100; 
+	text-align: center;
+	vertical-align: middle;
 
+}
+#profilemenu table{
+	width: 410px;
+	height: 130px;
+	margin: 10px;
+	
+}
+#profile_image{
+	width: 30%;
+	padding-right: 5px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-top: 0;
+	vertical-align: middle;
+
+}
+#profile_button1{
+border:#FFFFFF;
+background-color: #FFFFFF;
+color: #686767;
+font-size: 12px;
+}
+#profile_button2{
+border: #FFFFFF;
+background-color: #FFFFFF;
+color: #686767;
+font-size: 10px;
+font-weight: bold;
+
+}
+#profile_nickname{
+text-align: left;
+color: #444343;
+font-weight: 800;
+font-size: 20px;
+}
+#profile_introduce{
+text-align: left;
+color: #a8a6a6;
+font-size: 12px;
+}
+#overlay{
+	background-color: #000;
+ 	bottom: 0; left: 0;
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+	position: fixed;
+	right: 0; top: 0;
+	z-index: 99; display:none;
+}
+#span_join{
+	color:#6d6f70;
+	font-weight: bold;
+}
+.condition_img{
+	width: 40px;
+	height: 40px;
+	vertical-align: middle;
+	display: inline-block;
+	margin-top: 10px;
+}
+.condition_text{
+	margin-bottom: 10px;
+}
+.content_profile_img{
+	width: 80px;
+	height: 80px;
+	vertical-align: middle;
+	display: inline-block;
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-khtml-border-radius: 70px;
+	-webkit-border-radius: 70px;
+}
+.content_profile_text{
+	color: gray;
+	font-weight: bold;
+}
+#profile_profile_img{
+	width: 120px;
+	height: 120px;
+	vertical-align: middle;
+	display: inline-block;
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-khtml-border-radius: 70px;
+	-webkit-border-radius: 70px;
+}
 </style>
 </head>
 <body>
+<div id="overlay"></div>
+
 <div id="contextmenu" hidden>
 	<input hidden type="number" name="mno" id="context_mno"/>
+	<input hidden type="number" name="listno" id="context_listno"/>
+	<input hidden type="text" id="context_type"/>
 	<ul id="context_ul">
 		<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
 		<li id="context_board"><a href="#this" class="btn_context">게시글보기</a></li>
 		<li id="context_msg"><a href="#this" class="btn_context">쪽지보내기</a></li>
 	</ul>
 </div>
-<h1>여행공고글</h1>
-<div>여행 공고 내용 아직 업데이트안됨여</div>
-<h1>신청 리스트 부분↓</h1>
+
+
+<div id="profilemenu" hidden>
+	<table>
+		<tr>
+			<td rowspan="3" id="profile_image">프로필 사진</td>
+			<td id="profile_nickname">닉네임</td>
+			<td colspan="2" style="text-align: right;"><button id="profile_button1">X</button></td>
+		</tr>
+		<tr><td colspan="2" id="profile_introduce" style="padding-top: 0;">자기소개</td></tr>
+		<tr><td colspan="2" style="text-align: right;vertical-align: middle;"><button id="profile_button2">자세히▶</button></td></tr>
+	</table>
+</div>
+
+<!-- 회원가입/로그인 부분 -->
+	<%@ include file="../top_header.jspf"  %>
+
+
+	<!-- 헤더 메인부분 -->
+	<div class="main-header">
+		<div class="container">
+			<div id="menu-wrapper">
+				<div class="row">
+					<div class="logo-wrapper col-md-2 col-sm-2">
+						<h1>
+							<a href="#">hello </a>
+						</h1>
+					</div>
+					<!-- /.logo-wrapper -->
+					<div class="col-md-10 col-sm-10 main-menu text-right">
+						<div class="toggle-menu visible-sm visible-xs">
+							<i class="fa fa-bars"></i>
+						</div>
+
+						<ul class="menu-first">
+							<li><a href="../index">메인</a></li>
+							<li><a href="../admin">관리자</a></li>
+							<li><a href="../login">로그인</a></li>
+						</ul>
+					</div>
+					<!-- /.main-menu -->
+				</div>
+				<!-- /.row -->
+			</div>
+			<!-- /#menu-wrapper -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /.main-header -->
+<div style="height: 150px;">안보여어</div>
+
+<div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
+	<div style=" display: inline-block; vertical-align: middle;">
+		<div id=content_title>${tourVO.title}</div>
+		<div id=content_smalltitle></div>
+	</div>
+	<div id="content_profile" style="width: 110px; height: 100px; display: inline-block;text-align:center; vertical-align: middle;">
+	
+	</div>
+</div>
+<table id=content_condition>
+	<tr>
+		<td id="condition_date"><img src="../resources/theme/images/date.png" class="condition_img"/><div>??</div></td>
+		<td id="condition_sex"><img src="../resources/theme/images/date.png" class="condition_img"/></td>
+		<td id="condition_age"></td>
+	</tr>	
+</table>
+<div class="menu">Content</div>
+<input hidden id="start_date" value="${tourVO.start_date}"/>
+<input hidden id="end_date" value="${tourVO.end_date}"/>
+<div id="content">
+${tourVO.content}
+</div>
+
 <div class="menu">Apply for</div>
 <table class="apply_panel">
-	<tr>
+	<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
+	<tr style="padding: 0;height: 150px;">
 		<td class="apply_panel_table">
 			<div class="applicant_panel">
-				<span id="span_join"></span>
 				<table id="applicants"></table>
 			</div>
 		</td>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
 		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
-	</tr>
+	</tr>	
 </table>
 
 <div class="menu">Comment</div>
@@ -202,30 +435,63 @@ color: #000000;
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var trip_no = 1;
+	var trip_no = ${tourVO.trip_no};
 	
-	getAllReplies();
+	// wm_tour_reply 리스트
+	replylist=[];
+	// wm_personal 리스트
+	reply_personlist=[];
+	 getReplyAlldata();
 	
+	// 댓글 리스트+개인정보 리스트 합체
+	function getReplyAlldata(){
+		// wm_tour_reply 리스트
+		replylist=[];
+		// wm_personal 리스트
+		reply_personlist=[];
+		
+		var url1= '/project03/tour/detail/reply/all/'+trip_no;
+		$.getJSON(url1, function(data1){
+			$(data1).each(function(){
+				replylist.push({rno:this.rno, parentrno:this.parentrno, trip_no:this.trip_no, mno: this.mno, rcontent:this.rcontent, regdate:this.regdate, person:{}});
+			});// end data.each();
+			
+			var url2= '/project03/tour/detail/reply/person/'+trip_no;
+			$.getJSON(url2, function(data2){
+				$(data2).each(function(){
+				reply_personlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce});
+				});// end data.each();
+			
+			for(var i=0; i<replylist.length; i++){
+				for(var j=0; j<reply_personlist.length; j++){
+					if(replylist[i].mno == reply_personlist[j].mno){
+						replylist[i].person = reply_personlist[j];	
+					};
+				};// end for(j)
+			};// end for(i)
+			getAllReplies();
+			});// end getJSON url2
+		});// end getJSON url1
+	};// getReplyAlldata();
+
 	// DB에서 해당 글번호(trip_no)의 모든 댓글을 읽어오는 함수 정의
 	function getAllReplies(){
-		var url = '/project03/tour/detail/all/'+trip_no;
-		
-		$.getJSON(url, function(data){
 			var list= '';
 			/*data의 개수만큼 function()의 내용을 반복해서 수행*/
-			$(data).each(function(){
+
+			for(var i = 0; i<replylist.length; i++){
 				// date 타입으로 변환
-				var date = new Date(this.regdate);
+				var date = new Date(replylist[i].regdate);
 				var dateString = date.toLocaleDateString();
-				var parentrno = this.rno;
+				var parentrno = replylist[i].rno;
 				
-				if(this.parentrno == 0){
+				if(replylist[i].parentrno == 0){
 				// list에 html추가 - 댓글만
-				list +='<li class="reply_list" data-rno="'+this.rno+'" data-parent="'+this.parentrno+'">'
+				list +='<li class="reply_list" data-rno="'+replylist[i].rno+'" data-parent="'+replylist[i].parentrno+'">'
 					+'<dl class="reply_body">'
 						+'<dt class="icno">'+'</dt>'
 						+'<dt class="reply_header">'
-							+'<strong class="nickname">'+this.mno+'번째회원</strong>'
+							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
 								+'<a href="#this" class="btn_reply">답글</a>'
@@ -235,14 +501,14 @@ $(document).ready(function(){
 								+'<a href="#this" class="btn_delete">삭제</a>'
 							+'</span>'
 						+'</dt>'
-						+'<dd class="rcontent">'+this.rcontent+'</dd>'
+						+'<dd class="rcontent">'+replylist[i].rcontent+'</dd>'
 						+'<dd>'
 							+'<div class="rcon_modify" style="display: none;">'
-								+'<input type="hidden" class="update_rno" value="'+this.rno+'"/>'
+								+'<input type="hidden" class="update_rno" value="'+replylist[i].rno+'"/>'
 								+'<table class="update_table">'
 									+'<tbody>'
 										+'<tr>'
-											+'<td><textarea cols="90" rows="3" class="update_textarea">'+this.rcontent+'</textarea></td>'
+											+'<td><textarea cols="90" rows="3" class="update_textarea">'+replylist[i].rcontent+'</textarea></td>'
 											+'<td><input type="button" class="update_commit" value="수정완료"/></td>'
 										+'</tr>'
 									+'</tbody>'
@@ -251,13 +517,13 @@ $(document).ready(function(){
 						+'</dd>'
 					+'</dl>'
 				+'</li>'
-				+'<li class="reply_insert" style="display: none;" id="'+this.rno+'">'
+				+'<li class="reply_insert" style="display: none;" id="'+replylist[i].rno+'">'
 					+'<div class="re_reply_body">'
-						+'<input type="hidden" class="parent_rno" value="'+this.rno+'"/>'
+						+'<input type="hidden" class="parent_rno" value="'+replylist[i].rno+'"/>'
 						+'<table class="reply_table">'
 							+'<tbody>'
 								+'<tr>'
-									+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
+									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong></td>'
 									+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 								+'</tr>'
@@ -267,17 +533,17 @@ $(document).ready(function(){
 				+'</li>';
 		
 					// 대댓글
-					$(data).each(function(){
+					for(var j=0; j<replylist.length; j++){
 						// date 타입으로 변환
-						var date = new Date(this.regdate);
+						var date = new Date(replylist[j].regdate);
 						var dateString = date.toLocaleDateString();
 						
-						if(this.parentrno == parentrno){
-							list +='<li class="reply_list" data-rno="'+this.rno+'" data-parent="'+this.parentrno+'">'
+						if(replylist[j].parentrno == parentrno){
+							list +='<li class="reply_list" data-rno="'+replylist[j].rno+'" data-parent="'+replylist[j].parentrno+'">'
 							+'<dl class="re_reply_body">'
 								+'<dt class="icno">'+'</dt>'
 								+'<dt class="reply_header">'
-									+'<strong class="nickname">'+this.mno+'번째회원</strong>'
+									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong>'
 									+'<span class="regdate">'+dateString+'</span>'
 									+'<span class="btns">'
 										+'<a href="#this" class="btn_reply">답글</a>'
@@ -287,14 +553,14 @@ $(document).ready(function(){
 										+'<a href="#this" class="btn_delete">삭제</a>'
 									+'</span>'
 								+'</dt>'
-								+'<dd class="rcontent">'+this.rcontent+'</dd>'
+								+'<dd class="rcontent">'+replylist[j].rcontent+'</dd>'
 								+'<dd>'
 									+'<div class="rcon_modify" style="display: none;">'
-										+'<input type="hidden" class="update_rno" value="'+this.rno+'"/>'
+										+'<input type="hidden" class="update_rno" value="'+replylist[j].rno+'"/>'
 										+'<table class="update_table">'
 											+'<tbody>'
 												+'<tr>'
-													+'<td><textarea cols="90" rows="3" class="update_textarea">'+this.rcontent+'</textarea></td>'
+													+'<td><textarea cols="90" rows="3" class="update_textarea">'+replylist[j].rcontent+'</textarea></td>'
 													+'<td><input type="button" class="update_commit" value="수정완료"/></td>'
 												+'</tr>'
 											+'</tbody>'
@@ -303,13 +569,13 @@ $(document).ready(function(){
 								+'</dd>'
 							+'</dl>'
 						+'</li>'
-						+'<li class="reply_insert" style="display: none;" id="'+this.rno+'">'
+						+'<li class="reply_insert" style="display: none;" id="'+replylist[j].rno+'">'
 							+'<div class="re_reply_body">'
-								+'<input type="hidden" class="parent_rno" value="'+this.parentrno+'"/>'
+								+'<input type="hidden" class="parent_rno" value="'+replylist[j].parentrno+'"/>'
 								+'<table class="reply_table">'
 									+'<tbody>'
 										+'<tr>'
-											+'<td><strong class="nickname">'+this.mno+'번째회원</strong></td>'
+											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong></td>'
 											+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 										+'</tr>'
@@ -317,17 +583,15 @@ $(document).ready(function(){
 								+'</table>'
 							+'</div>'
 						+'</li>';
-						}// end if
-					});// end data.each(); 
+						};// end if
+					};// end for(j); 
 				
-				} // end if(this.parentrno == 'null')
+				}; // end if(this.parentrno == 'null')
 				
-			});// end data.each();
+			};// end for(i)
 			
 			$('#replies').html(list);
 			
-		});// end getJSON
-		
 	}; // end getAllReplies()
 	
 	// 댓글 입력 버튼 처리
@@ -340,7 +604,7 @@ $(document).ready(function(){
 			
 			$.ajax({
 				type: 'post',
-				url: '/project03/tour/detail',
+				url: '/project03/tour/detail/reply',
 				headers:{
 					'Content-Type':'application/json',
 					'X-HTTP-Method-Override':'POST'
@@ -355,7 +619,7 @@ $(document).ready(function(){
 					if(result == 1){
 						alert('댓글 입력 성공');
 					}
-					getAllReplies();
+					getReplyAlldata();
 					$('#rcontent').val('');
 				}
 			});// end ajax
@@ -401,7 +665,7 @@ $(document).ready(function(){
 	
 		$.ajax({
 			type:'put',
-			url:'/project03/tour/detail/'+update_rno,
+			url:'/project03/tour/detail/reply/'+update_rno,
 			headers:{
 				'Content-Type':'application/json',
 				'X-Http-Method-Ovveride':'PUT'
@@ -413,7 +677,7 @@ $(document).ready(function(){
 			success: function(result){
 				if(result == 'success'){
 					alert('댓글이 수정되었습니다.');
-					getAllReplies();
+					getReplyAlldata();
 				}
 			}
 		});// end ajax
@@ -444,7 +708,7 @@ $(document).ready(function(){
 		
 		$.ajax({
 			type: 'post',
-			url: '/project03/tour/detail',
+			url: '/project03/tour/detail/reply',
 			headers:{
 				'Content-Type':'application/json',
 				'X-HTTP-Method-Override':'POST'
@@ -458,8 +722,9 @@ $(document).ready(function(){
 			success: function(result){
 				if(result == 1){
 					alert('답글 입력 성공');
+					getReplyAlldata();
 				}
-				getAllReplies();
+				
 			}
 		});// end ajax
 		
@@ -476,7 +741,7 @@ $(document).ready(function(){
 		if(check == true){
 			$.ajax({
 				type:'delete',
-				url:'/project03/tour/detail/'+rno+'/'+parent,
+				url:'/project03/tour/detail/reply/'+rno+'/'+parent,
 				headers:{
 					'Content-Type':'application/json',
 					'X-HTTP-Method-Override':'DELETE'
@@ -484,21 +749,14 @@ $(document).ready(function(){
 				success: function(result){
 					if(result == 'success'){
 						alert('댓글이 삭제됐습니다.');
-						getAllReplies();
+						getReplyAlldata();
 					}
 				}
 			});
 		}// end if
 	});// end reply delete
-	
-}); // end document.ready
-</script>
-
-<%-- 신청부분 --%>
-<script>
-$(document).ready(function(){
-	var trip_no = 1;
-	
+		
+	<%-- 신청부분 --%>
 	// wm_tour_join 리스트
 	var applylist = [];
 	// wm_personal 리스트
@@ -540,7 +798,7 @@ $(document).ready(function(){
 				getAllApply();
 			}); // end getJSON
 		}); // end getJSON
-	}// end getAllApply()
+	}// end getAlldata()
 	
 	function getAllApply(){
 		var tr ='<tr class="apply_th">'
@@ -550,7 +808,9 @@ $(document).ready(function(){
 					+'<th class="table_age">나이</th>'
 					+'<th class="table_com">수락여부</th>'
 				+'</tr>' 
-		
+		if(applylist[0] == null){
+			tr+= '<tr class="apply_notdata" style="height:130px;"><td colspan="5" class="apply_notdata">신청자가 없습니다.</td></tr>';
+		}else{
 		for(var i=0; i<applylist.length; i++){
 			if(applylist[i].approval == 0){
 					tr+= '<tr class="apply_td">';
@@ -560,7 +820,7 @@ $(document).ready(function(){
 				tr+= '<tr class="apply_td" style="background-color:#DBD9D9 ">';
 				tr+='<td class="table_check"><input class="test" name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
 			}
-					tr+='<td class="table_name"><a href="#this" class="btn_nickname" data-rno="'+applylist[i].mno+'">'+applylist[i].person["nickname"]+'</a></td>'
+					tr+='<td class="table_name"><a href="#this" class="btn_nickname" data-rno="'+applylist[i].mno+'" data-listno="'+i+'">'+applylist[i].person["nickname"]+'</a></td>'
 					+'<td class="table_sex">';
 					if(applylist[i].person["sex"] == 0){
 						tr+='여자'+'</td>';
@@ -574,9 +834,9 @@ $(document).ready(function(){
 						tr+='<td class="table_com"><span class="join">수락완료</span></td></tr>';
 					}
 		}// end for(i)
-	
+		}
 		$('#applicants').html(tr);
-		$('#span_join').html(joincount+"명 수락완료");
+		$('#span_join').html("현재까지 "+joincount+"명 수락완료");
 				
 	}// end getAllApply()
 	
@@ -626,7 +886,8 @@ $(document).ready(function(){
 	$('#apply_ok').on('click',$(this),function(){
 		var chkObj = document.getElementsByName("rowCheck");
 		var rowCnt = chkObj.length - 1;
-		var test= false;
+		var success= false;
+		var fail = 0;
 		for(var i=0; i<=rowCnt; i++){
 			if(chkObj[i].checked == true){
 				var no = chkObj[i].value;
@@ -647,22 +908,25 @@ $(document).ready(function(){
 							}
 					}
 				});// end ajax
+				success = true;
 			}// end if
-			test = true;
+			if(chkObj[i].checked == false){
+				fail++;
+			}
 		}// end for
 
-		if(test){
+		if(success){
 			alert('수락이 완료되었습니다.');
 			getAlldata();
+		}
+		if(fail > rowCnt){
+			alert('신청자를 체크해주세요');
 		}
 
 	}); // end apply_ok click
 
 	
-	
-}); // end document.ready();
-</script>
-<script>
+
 
 // menu에 마우스가 올라갔을때 색 바꾸기
 $('#context_ul').on('mouseover','li',function(){
@@ -675,19 +939,43 @@ $('#context_ul').on('mouseout','li',function(){
 // 다른 곳 클릭시 메뉴 사라지기
 $(document).click(function(e){		
 	if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
-		!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length){
+		!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length &&
+		!$('#replies .reply_list .nickname').has(e.target).length &&
+		!$('#replies .reply_list .nickname .btn_nickname').has(e.target).length){
 			$('#contextmenu').hide();
 			$('#context_mno').val(null);
 	} 
 });
 
-// 닉네임 클릭시 메뉴 보이기
+// 수락에서 - 닉네임 클릭시 메뉴 보이기
 $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 	// e.pageX
 	// a 태그안의 mno 불러오기
 	var amno = $(this).attr('data-rno');
+	var alistno = $(this).attr('data-listno');
 	// 메뉴 input에 mno숨겨넣기
 	$('#context_mno').val(amno);
+	$('#context_listno').val(alistno);
+	$('#context_type').val("apply");
+	// a 태그의 위치
+	var atag = $(this).offset();
+	var menubox = $('#contextmenu');
+	menubox.css("left", (atag.left+30) +"px");
+	menubox.css("top", (atag.top+10) +"px");
+	menubox.show();
+			 
+});	
+
+// 댓글에서 - 닉네임 클릭시 메뉴 보이기
+$('#replies').on('click','.reply_list .btn_nickname',function(){
+	// e.pageX
+	// a 태그안의 mno 불러오기
+	var amno = $(this).attr('data-rno');
+	var alistno = $(this).attr('data-listno');
+	// 메뉴 input에 mno숨겨넣기
+	$('#context_mno').val(amno);
+	$('#context_listno').val(alistno);
+	$('#context_type').val("reply");
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
@@ -698,9 +986,54 @@ $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 });	
 
 $('#context_profile').on('click','.btn_context',function(){
+	
+	var alistno = $('#context_listno').val();
+	var atype = $('#context_type').val();
 	var amno = $('#context_mno').val();
-	alert(amno+'번째 회원 프로필');
+	console.log('mno: '+amno);
+	
+	var src = '';
+	
+	var url3 = '/project03/tour/detail/apply/profile/'+amno;
+	
+	$.ajax({
+		type:'Get',
+		url: '/project03/tour/detail/apply/profile/'+amno,
+		headers:{
+			'Content-Type':'application/json',
+			'X-HTTP-Method-Override':'GET'
+			},
+			success: function(result){
+					src = result;
+
+					 $('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');
+
+				
+			}
+	});
+	
+	if(atype=='reply'){
+		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
+		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
+	}else{
+		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
+		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
+	}
+	
+	
+
+	$('#overlay, #profilemenu').show();
+
+	$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
+	$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
 });
+
+// 프로필 창 닫기
+$('#overlay, #profile_button1').click(function(e){ 
+    e.preventDefault(); 
+    $('#profilemenu, #overlay').hide(); 
+}); 
+
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
@@ -712,6 +1045,79 @@ $('#context_msg').on('click','.btn_context',function(){
 	alert(amno+'번째 회원 쪽지보내기');
 });
 
+// 날짜 계산
+var date1 = $('#start_date').val();
+var date2 = $('#end_date').val();
+
+var dateArray1 = date1.split(" ");
+var dateArray2 = date2.split(" ");
+
+
+
+var startArray = dateArray1[0].split("-");
+var endArray = dateArray2[0].split("-");
+
+var startObj = new Date(startArray[0], Number(startArray[1])-1, startArray[2]);
+var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
+
+var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
+
+// 조건 띄우기
+var con_sex = ${tourVO.condition_sex};
+var con_age = ${tourVO.condition_age};
+
+$('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
+switch(con_sex){
+	case 0: $('#condition_sex').html('<img src="../resources/theme/images/female.png" class="condition_img"/><div class="condition_text">여자 만</div>');
+			break;
+	case 1: $('#condition_sex').html('<img src="../resources/theme/images/male.png" class="condition_img"/><div class="condition_text">남자 만</div>');
+			break;
+	case 2: $('#condition_sex').html('<img src="../resources/theme/images/people.png" class="condition_img"/><div class="condition_text">누구나</div>');
+			break;
+	default: break;
+}// end switch
+
+switch(con_age){
+	case 1: $('#condition_age').html('<img src="../resources/theme/images/20age.png" class="condition_img"/><div class="condition_text">20대 만</div>');
+		break;
+	case 2: $('#condition_age').html('<img src="../resources/theme/images/30age.png" class="condition_img"/><div class="condition_text">30대 만</div>');
+		break;
+	case 3: $('#condition_age').html('<img src="../resources/theme/images/40age.png" class="condition_img"/><div class="condition_text">40대 이상 만</div>');
+		break;
+	case 4: $('#condition_age').html('<img src="../resources/theme/images/freeage.png" class="condition_img"/><div class="condition_text">누구나</div>');
+		break;
+	default: break;
+}// end switch
+
+var mno_nickname = '${inserterNickname}';
+var mno_intro = '${inserterIntro}';
+var mno_img = '${inserterImg}';
+var trip_region='';
+
+
+$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
+
+var mno_region =new Array();
+$(function(){
+	<c:forEach items="${inserterRegion}" var="region">
+		var json = new Object();
+		json = "${region}";
+		mno_region.push(json);
+	</c:forEach>
+	
+	for(var i=0; i<mno_region.length; i++){
+		trip_region+='#'+mno_region[i]+" ";
+	}
+	
+
+	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
+});
+
+
+
+
+
+}); // end document.ready();
 </script>
 
 

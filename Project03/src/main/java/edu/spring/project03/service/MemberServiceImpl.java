@@ -3,6 +3,7 @@ package edu.spring.project03.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.persistence.MemberDAO;
@@ -11,54 +12,63 @@ import edu.spring.project03.persistence.MemberDAO;
 @Service // 스프링 프레임워크가 Service bean으로 관리하는 클래스
 public class MemberServiceImpl implements MemberService {
 
-	@Autowired
-	private MemberDAO memberDAO;
+   @Autowired
+   private MemberDAO memberDAO;
 
-	/*
-	 * MemberVO
-	 */
+   /*
+    * MemberVO
+    */
 
-	@Override
-	public MemberVO login(MemberVO membervo) {
+   @Override
+   public MemberVO login(MemberVO membervo) {
 
-		return memberDAO.login(membervo);
-	} // end login(vo)
+      return memberDAO.login(membervo);
+   } // end login(vo)
 
-	@Override
-	public String readUserid(String userid) {
+   @Override
+   public String readUserid(String userid) {
 
-		return memberDAO.selectUserid(userid);
-	} // end readUserid(userid)
+      return memberDAO.selectUserid(userid);
+   } // end readUserid(userid)
 
-	@Override
-	public int createMember(MemberVO membervo) {
+   @Override
+   public int createMember(MemberVO membervo) {
 
-		return memberDAO.insertMember(membervo);
-	} // end createMember(membervo)
+      return memberDAO.insertMember(membervo);
+   } // end createMember(membervo)
 
-	@Override
-	public int readMnobyUserid(String userid) {
+   @Override
+   public int readMnobyUserid(String userid) {
 
-		return memberDAO.selectUserMno(userid);
-	} // end readMember(userid)
+      return memberDAO.selectUserMno(userid);
+   } // end readMember(userid)
 
-	/*
-	 * PersonalVO
-	 */
-	@Override
-	public String readNickname(String nickname) {
+   /*
+    * PersonalVO
+    */
+   @Override
+   public String readNickname(String nickname) {
 
-		return memberDAO.selectNickname(nickname);
-	} // end readNickname(nickname)
+      return memberDAO.selectNickname(nickname);
+   } // end readNickname(nickname)
 
-	@Override
-	public int createPersional(PersonalVO personalvo) {
+   @Override
+   public int createPersional(PersonalVO personalvo) {
 
-		return memberDAO.insertPersional(personalvo);
-	} // end createPersional(personalvo)
+      return memberDAO.insertPersional(personalvo);
+   } // end createPersional(personalvo)
+   
+   /*
+    * 
+    */
+   @Override
+   public int createProfile(ImgVO imgvo) {
+      
+      return memberDAO.insertProfile(imgvo);
+   } // end createProfile(imgvo)
 
-	/**
-	 * 
-	 */
+   /**
+    * 
+    */
 
 } // end class MemberServiceImpl

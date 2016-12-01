@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 @Repository
@@ -41,5 +42,20 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 		TourRegisterVO vo = sqlSession.selectOne(NAMESPACE2 + ".select_trip_by_no", trip_no);
 		return vo;
 	}
+	
+	@Override
+	public PersonalVO select_trip_person(int mno) {
+		return sqlSession.selectOne(NAMESPACE2+".select_trip_person", mno);
+	}
 
+	@Override
+	public ImgVO select_trip_profile(int mno) {
+		return sqlSession.selectOne(NAMESPACE2+".select_trip_profile", mno);
+	}
+	
+	@Override
+	public List<String> select_trip_region_name(int trip_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2+".select_trip_region_name", trip_no);
+	}
 }
