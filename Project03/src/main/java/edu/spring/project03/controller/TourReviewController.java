@@ -77,14 +77,20 @@ public class TourReviewController {
 				int reviewNo = tourReviewService.readReview_no(reviewvo);
 				logger.info("reviewNo : " + reviewNo);
 				
+//				reviewvo = tourReviewService.readRegisterData(reviewNo);
 				
+				model.addAttribute("reviewvo", reviewvo);
+				model.addAttribute("reviewregionvo", reviewregionvo);
+				modelMap.put("imageFile", fileInfo);
 				
+				ImgVO imagevo = new ImgVO(ReviewRegisterID, reviewNo, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+				
+//				if()
 				
 			} // end if(review_result == 1)
 			
 //			
-//			model.addAttribute("reviewvo", reviewvo);
-//			modelMap.put("imageFile", fileInfo);
+
 //			
 //			
 //			if (result == 1) { // 여행등록 DB insert 성공
@@ -93,7 +99,7 @@ public class TourReviewController {
 //				int content_no = tourReviewService.readReview_no(reviewvo);
 //				
 //				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자		
-//				ImgVO imgvo = new ImgVO(ReviewRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+//				
 //				int result2 = tourReviewService.createThumnail(imgvo);
 //
 //				if (result2 == 1) {
