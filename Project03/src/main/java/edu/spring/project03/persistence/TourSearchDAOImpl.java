@@ -67,4 +67,10 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE2 + ".select_main_trip_region", vo);
 	}
+
+	@Override
+	public TourRegisterVO select_register_data(int trip_no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

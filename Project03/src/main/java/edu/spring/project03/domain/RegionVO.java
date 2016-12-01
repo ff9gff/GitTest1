@@ -41,7 +41,12 @@ public class RegionVO {
 	}
 	
 	
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return region_name;
+	}
+
 	
 	
 	

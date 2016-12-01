@@ -24,4 +24,6 @@ public interface TourSearchDAO {
 	// 메인 썸네일 검색(사진 밑에 나올 제목/지역)
 	public abstract List<TourRegisterVO> select_main_title_info(TourRegisterVO vo);
 	public abstract List<RegionVO> select_main_region_info(TourRegisterVO vo);
+	
+	public abstract TourRegisterVO select_register_data(int trip_no);
 }
