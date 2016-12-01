@@ -343,6 +343,12 @@ font-size: 12px;
 	text-align: center;
 	vertical-align: middle;
 }
+.reply_panel_under{
+	width: 100%;
+	height: 100%;
+	background-color: lightgray;
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -460,11 +466,23 @@ ${tourVO.content}
 
 
 <div class="menu">Comment</div>
-<div class="reply_panel">
-	<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
-	<input hidden type="number" name="mno" id="mno" value="${mno}" required/>
-	<button type="button" id="btn_Create">댓글 입력</button>
-</div>
+<c:if test="${not empty login_id && authority ne 0 }">
+	<div class="reply_panel">
+		<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
+		<input hidden type="number" name="mno" id="mno" value="${mno}" required/>
+		<button type="button" id="btn_Create">댓글 입력</button>
+	</div>
+</c:if>
+<c:if test="${empty login_id }">
+	<div class="reply_panel">
+		<p class="reply_panel_under">로그인 사용자만 사용가능합니다.</p>
+	</div>
+</c:if>
+<c:if test="${not empty login_id && authority eq 0 }">
+	<div class="reply_panel">
+		<p class="reply_panel_under">승인된 사용자만 사용가능합니다.</p>
+	</div>
+</c:if>
 <div class="reply_panel">
 	<ul id="replies"></ul>
 </div>
@@ -479,9 +497,8 @@ $(document).ready(function(){
 	var sessionmno = ${mno};
 	var sessionaut= ${authority};
 	//var sessionnick=${login_nickname};
-	var sessionnick='testnick';
+	var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
 	var trip_no = ${tourVO.trip_no};
-	
 	
 	// wm_tour_reply 리스트
 	replylist=[];
@@ -1046,25 +1063,46 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 
 // 여행 신청하기
 $('#joinmenu_apply').click(function(){
-	var mnoString = $('#mno').val();
-	$.ajax({
-		type:'post',
-		url:'/project03/tour/detail/apply/insert/'+trip_no+'/'+mnoString,
-		headers:{
-			'Content-Type':'application/json',
-			'X-HTTP-Method-Override':'POST'
-		},
-		data: JSON.stringify({
-			trip_no: trip_no,
-			mno: mnoString
-		}),
-		success: function(result){
-			if(result == 1){
-				alert('여행 신청 성공');
-				getAlldata();
+	// 승인된 인간만 누를 수 있도록
+	if(sessionaut != 0){
+		// 중복 안되게
+		var apply_value = false;
+		var length = 0;
+		for(var i=0; i<applylist.length; i++){
+			if(applylist[i].mno != sessionmno){
+				length++;
+				if(length == applylist.length){
+					apply_value = true;
+				}
 			}
 		}
-	});// end ajax;
+		
+		if(apply_value){
+			var mnoString = $('#mno').val();
+			$.ajax({
+				type:'post',
+				url:'/project03/tour/detail/apply/insert/'+trip_no+'/'+mnoString,
+				headers:{
+					'Content-Type':'application/json',
+					'X-HTTP-Method-Override':'POST'
+				},
+				data: JSON.stringify({
+					trip_no: trip_no,
+					mno: mnoString
+				}),
+				success: function(result){
+					if(result == 1){
+						alert('여행 신청 성공');
+						getAlldata();
+					}
+				}
+			});// end ajax;
+		}else{
+			alert("이미 신청한 여행입니다");
+		}	
+	}else{
+		alert("승인된 회원만 신청이 가능합니다.");
+	}
 });
 
 
