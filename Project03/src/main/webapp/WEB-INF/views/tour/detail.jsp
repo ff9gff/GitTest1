@@ -221,7 +221,6 @@ color: #000000;
 	position: absolute;
 	background-color: #FFFFFF;
 	border:solid 1px #ccc; 
-	position: absolute;
 	box-shadow: 0px 1px 20px #333;
 	z-index:100; 
 	text-align: center;
@@ -315,6 +314,33 @@ font-size: 12px;
 	-khtml-border-radius: 70px;
 	-webkit-border-radius: 70px;
 }
+
+#joinmenu{
+	border: 2px dotted lightgray;
+	width: 200px;
+	height: 110px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	  position: fixed;
+  margin: 0 auto;
+  top: 400px;
+  right: 20px;
+}
+#joinmenu_apply{
+	width: 170px;
+	height: 50px;
+	background-color: #ec523f;
+  color: white;
+  font-weight: 700;
+}
+#joinmenu_count{
+	margin-top: 10px;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
+}
 </style>
 </head>
 <body>
@@ -343,6 +369,7 @@ font-size: 12px;
 		<tr><td colspan="2" style="text-align: right;vertical-align: middle;"><button id="profile_button2">자세히▶</button></td></tr>
 	</table>
 </div>
+
 
 <!-- 회원가입/로그인 부분 -->
 	<%@ include file="../top_header.jspf"  %>
@@ -380,6 +407,12 @@ font-size: 12px;
 	</div>
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
+
+
+<div id="joinmenu">
+	<p id="joinmenu_count">몇명이 참여중이다</p>
+	<button id="joinmenu_apply">신청하기</button>
+</div>
 
 <div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
 	<div style=" display: inline-block; vertical-align: middle;">
@@ -1112,7 +1145,6 @@ $(function(){
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
 });
-
 
 
 
