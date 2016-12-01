@@ -44,9 +44,9 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	}
 	
 	@Override
-	public List<String> select_trip_region_name(int trip_no) {
+	public String select_trip_region_name(int trip_no) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(NAMESPACE2+".select_trip_region_name", trip_no);
+		return sqlSession.selectOne(NAMESPACE2+".select_trip_region_name", trip_no);
 	}
 
 	@Override

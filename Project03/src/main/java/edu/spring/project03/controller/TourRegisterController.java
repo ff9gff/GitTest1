@@ -75,7 +75,7 @@ public class TourRegisterController {
 			ImgVO img = tourSelectService.read_trip_profile(tourVO.getMno());
 			logger.info("img: " + img);
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
-			List<String> region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
+			String region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
 			model.addAttribute("tourVO", tourVO);
 			model.addAttribute("inserterNickname", person.getNickname());
 			model.addAttribute("inserterIntro", person.getIntroduce());
@@ -83,6 +83,7 @@ public class TourRegisterController {
 			model.addAttribute("inserterImg", img.getImg_url());
 			logger.info("inserterImg: " + img.getImg_url());
 			model.addAttribute("inserterRegion", region);
+			logger.info("inserterRegion: " + region);
 		}
 
 		return "tour/detail";
@@ -133,11 +134,12 @@ public class TourRegisterController {
 
 				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 				int result2 = tourRegisterService.createThumnail(imagevo);
-				model.addAttribute("vo3", imagevo);
-				logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());
 
 				if (result2 == 1) {
-					logger.info("썸네일 등록 성공");
+					logger.info("썸네일 등록 성공");					
+					
+					model.addAttribute("vo3", imagevo);
+					logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
 
 					String region_name = regionvo.getRegion_name();
 					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);

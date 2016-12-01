@@ -19,7 +19,7 @@ public interface TourSearchDAO {
 
 	public abstract TourRegisterVO select_trip_by_no(int trip_no);
 
-	public abstract List<String> select_trip_region_name(int trip_no);
+	public abstract String select_trip_region_name(int trip_no);
 
 	// 메인 썸네일 기간검색(사진 밑에 나올 제목/지역)
 	public abstract List<TourRegisterVO> select_main_title_info(TourRegisterVO vo);

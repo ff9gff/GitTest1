@@ -494,11 +494,12 @@ ${tourVO.content}
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var sessionmno = ${mno};
-	var sessionaut= ${authority};
-	//var sessionnick=${login_nickname};
-	var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
 	var trip_no = ${tourVO.trip_no};
+
+		var sessionmno = '<%=(String)session.getAttribute("mno")%>';
+		var sessionaut= '<%=(String)session.getAttribute("authority")%>';
+		var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
+	
 	
 	// wm_tour_reply 리스트
 	replylist=[];
@@ -1218,18 +1219,12 @@ var trip_region='';
 
 $('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 
-var mno_region =new Array();
+var trip_region_name = '${inserterRegion}';
 $(function(){
-	<c:forEach items="${inserterRegion}" var="region">
-		var json = new Object();
-		json = "${region}";
-		mno_region.push(json);
-	</c:forEach>
-	
+		var mno_region = trip_region_name.split(",");
 	for(var i=0; i<mno_region.length; i++){
 		trip_region+='#'+mno_region[i]+" ";
 	}
-	
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
 });
