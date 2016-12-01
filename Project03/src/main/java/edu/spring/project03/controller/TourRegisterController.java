@@ -64,6 +64,7 @@ public class TourRegisterController {
 	@Autowired
 	private TourRegisterService tourRegisterService;
 
+	// 메인에서 지역/기간 검색 후 뜨는 사진을 클릭했을 때 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String tourRegister3(int trip_no, Model model) {
 		logger.info("FTourRegister.jsp 소환");
@@ -87,18 +88,20 @@ public class TourRegisterController {
 
 	}
 
-	// 여행 일정 등록하러 가자
+	// 메인에서 "여행 등록하러 가기" 클릭 --> 새로운 여행 일정 등록하러 가기
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
 	public String createRegister2() {
 		return "tour/TourRegister";
 	}
 
-	// 여행 일정 insert!
+	// 새 여행 일정 등록 / DB insert!
 	@RequestMapping(value = "/TourRegisterInsert", method = RequestMethod.POST)
 	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
+		
+		logger.info(""+regionvo);
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
@@ -164,7 +167,7 @@ public class TourRegisterController {
 
 	}
 
-	// insert 후 수정할지 말지 정하는 페이지. 수정 누르면 수정(TourRegisterUpdate) 페이지로 넘어간다
+	// DB insert 후 수정할지 말지 정하는 페이지. 수정 누르면 수정(TourRegisterUpdate) 페이지로 넘어간다
 	@RequestMapping(value = "/TourRegisterComplete", method = RequestMethod.POST)
 	public String tourUpdate(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
 			ModelMap modelMap, Model model) {
@@ -249,7 +252,7 @@ public class TourRegisterController {
 		return "tour/TourRegisterConfirm";
 	}
 
-	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다
+	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다(detail)
 	@RequestMapping(value = "/TourRegisterInsert/{trip_no}", method = RequestMethod.GET)
 	public void ajaxDeleteTest(@PathVariable("trip_no") int trip_no) {
 		logger.info("여행 번호: " + trip_no);
@@ -275,7 +278,7 @@ public class TourRegisterController {
 		}
 	}
 
-	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다
+	// 여행 정보 등록 후 수정페이지에서 삭제하려고 할 때 : 삭제 후 TourRegister로 돌아간다
 	@RequestMapping(value = "/TourRegisterCheck/{trip_no}", method = RequestMethod.GET)
 	public void ajaxDeleteTest2(@PathVariable("trip_no") int trip_no) {
 		logger.info("여행 번호: " + trip_no);
@@ -301,7 +304,7 @@ public class TourRegisterController {
 		}
 	}
 
-	//
+	
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "tour/TourRegister";
@@ -314,7 +317,6 @@ public class TourRegisterController {
 
 	@RequestMapping("/cancelTourRegister3")
 	public String tourRegisterConfirm() {
-
 		return "/TourRegisterComplete";
 	}
 
