@@ -216,7 +216,7 @@ ul {
 		
 		var mno_img = '${inserterImg}';
 		
-		$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/>');
+		$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/>');
 		alert(mno_img);
 		</script>
 	
