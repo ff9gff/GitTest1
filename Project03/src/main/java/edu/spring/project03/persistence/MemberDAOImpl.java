@@ -69,6 +69,12 @@ public class MemberDAOImpl implements MemberDAO {
       return sqlSession.insert(NAMESPACE + ".personal-insert", personalvo);
    }// end insertPersional(personalvo)
    
+   @Override
+	public String getNickname(int mno) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".get-nickname", mno);
+	} // end getNicknamemno)
+   
    
    /*
     * ImgVO
