@@ -24,8 +24,8 @@ public class TourJoinRESTController {
 	private TourJoinService service;
 
 	// 신청하기
-	@RequestMapping(method = RequestMethod.POST)
-	public ResponseEntity<Integer> createApply(@RequestBody int trip_no, @RequestBody int mno) {
+	@RequestMapping(value="/insert/{trip}/{mno}", method = RequestMethod.POST)
+	public ResponseEntity<Integer> createApply(@PathVariable("trip") Integer trip_no, @PathVariable("mno") Integer mno) {
 		ResponseEntity<Integer> entity = null;
 		int result = service.create(trip_no, mno);
 
