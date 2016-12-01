@@ -21,6 +21,8 @@ public interface MemberDAO {
 
    public abstract int insertPersional(PersonalVO personalvo);
    
+   public abstract String getNickname(int mno);
+   
    
    // ImgVO
    public abstract int insertProfile(ImgVO imgvo);
