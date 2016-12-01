@@ -170,81 +170,58 @@ http://www.templatemo.com/tm-406-flex
 			$("#homebutton").click(function() {
 				location = '../index';
 			})
-			
-/* 			$('#region_plus2').click(function() {
-		     	 
-		 		alert("지역 추가???")
-			    $('#add_region2').append('<br/><input type="text" class="region" name="region_name" style="width: 60%" placeholder="지역"/>' + 
-					'<button type="button" class="region_delete">지역 삭제</button><br/>'); 		 	
 
-		 		$('.region_delete').click(function() {
-			 		var test = $('#add_region2').text();
-			 		console.log(test);
-			  	});
-		   	});
-	 */
-	         $('#addOption').click(function() {
-	        	 alert("?!");
+	        $('#addOption').click(function() {
+	        	alert("?!");
 	            $('#regionTable > tbody:last').append('<tr><td><input type="text" name="region_name" style="width: 60%" placeholder="지역"/></td></tr>');
-	         });
+	        });
 
-	         $('#delOption').click(function() {
-	            $('#regionTable > tbody:last > tr:last').remove();
-	         });
+	        $('#delOption').click(function() {
+	        	$('#regionTable > tbody:last > tr:last').remove();
+	        });
 
-			
-	 	
-
-			
 		})
 	</script>
 
 
 
 
-   <div class="content-section" id="services">
-      <div class="container">
-         <div class="row">
+	<div class="content-section" id="services">
+		<div class="container">
+        	<div class="row">
          
             <!-- /.heading-section -->
             <div class="heading-section">
-               <h2>여행 등록</h2>
+            	<h2>여행 등록</h2>
             </div>
 
 				<div class="wrap">
 		
 					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
 					
-						  <label for="imageFile">썸네일 이미지</label><br/>       
-					      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+						<label for="imageFile">썸네일 이미지</label><br/>       
+					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					            
-					      <div id="image_preview">
-					      <img src="#" id="profile-image" style="display: none;" /><br/>
-					      </div><br/>      
+					    <div id="image_preview">
+					    	<img src="#" id="profile-image" style="display: none;" /><br/>
+					    </div><br/>      
 					
-							<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
+						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 						
-							<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
+						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
 					
 							
-							<div id="region_plus">
-								<table id="regionTable">
-									<tr>
-										<td><input type="text" name="region_name" style="width: 100%" placeholder="지역"/></td>
-									</tr>
-									<tbody></tbody>
-								</table>
-								<button type="button" id="addOption">지역 추가</button>
-								<button type="button" id="delOption">지역 삭제</button><br /> 
-								
-							</div>
-							
-							
-					
-					
-						
-						
-			
+						<div id="region_plus">
+							<table id="regionTable">
+								<tr>
+									<td><input type="text" name="region_name" style="width: 100%" placeholder="지역"/></td>
+								</tr>
+								<tbody></tbody>
+							</table>
+							<button type="button" id="addOption">지역 추가</button>
+							<button type="button" id="delOption">지역 삭제</button><br /> 	
+						</div>
+	
 						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
 						~ 
 						<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
@@ -310,43 +287,29 @@ http://www.templatemo.com/tm-406-flex
 	
 	<script>
 	
-	$(document).ready(function() {
-		$('#imageFile').on('change', function() {
+		$(document).ready(function() {
+			$('#imageFile').on('change', function() {
+			      
+		      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
 		      
-	      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
-	      
-	      //배열에 추출한 확장자가 존재하는지 체크
-	      if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-	         resetFormElement($(this)); //폼 초기화
-	         window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-	      } else {
-	         file = $('#imageFile').prop("files")[0];
-	         blobURL = window.URL.createObjectURL(file);
-	         $('#image_preview img').attr('src', blobURL);
-	         document.getElementById("profile-image").style.display = "inline";
-	         $('#image_preview img').attr('width', '300px');
-	         $('#image_preview img').attr('height', '400px');
-	         document.getElementById("btn_profile-image_remove").style.display = "inline";
-	         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
-	         $('#image_preview').show(); //업로드한 이미지 미리보기
-	      }
-	   });
+		      //배열에 추출한 확장자가 존재하는지 체크
+		      if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+		         resetFormElement($(this)); //폼 초기화
+		         window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+		      } else {
+		         file = $('#imageFile').prop("files")[0];
+		         blobURL = window.URL.createObjectURL(file);
+		         $('#image_preview img').attr('src', blobURL);
+		         document.getElementById("profile-image").style.display = "inline";
+		         $('#image_preview img').attr('width', '300px');
+		         $('#image_preview img').attr('height', '400px');
+		         document.getElementById("btn_profile-image_remove").style.display = "inline";
+		         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+		         $('#image_preview').show(); //업로드한 이미지 미리보기
+		      }
+		   });
 	
-	
-
-       $('#region_plus').click(function() {
-      	 
-     		alert("지역 추가???")
-        /*   $('#optionTable > tbody:last').append('<tr><td><input type="text" name="o_title" placeholder="옵션제목" /></td>'
-                         + '<td><input type="text" name="o_cont" placeholder="옵션내용" /></td>'
-                         + '<td><input type="number" name="o_stock" placeholder="옵션재고" value="0" /></td></tr>'); */
-       });
-
-       $('#delOption').click(function() {
-          /* $('#optionTable > tbody:last > tr:last').remove(); */
-       });
-
-	});
+		});
 	
 	</script>
 

@@ -132,11 +132,11 @@ public class TourSearchController {
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
-			logger.info("기간  - 제목 검색 성공 ");
+			logger.info("기간  - 지역 검색 성공 ");
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("기간  - 제목 검색 실패 ");
+			logger.info("기간  - 지역 검색 실패 ");
 		}
 
 		logger.info("entity " + entity);
