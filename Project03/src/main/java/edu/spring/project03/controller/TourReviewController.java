@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.spring.project03.domain.ImageFile;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
 import edu.spring.project03.service.ImageService;
 import edu.spring.project03.service.ImageView;
@@ -51,9 +52,11 @@ public class TourReviewController {
 		
 	} // end totalReview()
 	
-	@RequestMapping(value = "/create_review", method = RequestMethod.POST)
-	public void CreateReview(ReviewVO reviewvo, @RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
+	@RequestMapping(value = "/review_detail", method = RequestMethod.POST)
+	public void CreateReview(ReviewVO reviewvo, ReviewRegionVO reviewregionvo, ImgVO imgvo, 
+			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 		
+		// 썸네일 이미지 등록!
 		ImageFile fileInfo = imageService.save(imageFile);				
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
@@ -62,36 +65,50 @@ public class TourReviewController {
 
 		}
 		
-		if (reviewvo != null) {
+		if (reviewvo != null && reviewregionvo != null) {
 			
-			model.addAttribute("reviewvo", reviewvo);
-			modelMap.put("imageFile", fileInfo);
+			logger.info("mno 확인: " + reviewvo.getMno());
 			
 			// 이상 없으면 여행등록 DB insert!
-			int result = tourReviewService.createReview(reviewvo);
-	
-			if (result == 1) { // 여행등록 DB insert 성공
-				logger.info("리뷰 등록 성공");
+			int review_result = tourReviewService.createReview(reviewvo);
+			
+			if(review_result == 1) { // 후기 등록 DB insert 성공
 				
-				int content_no = tourReviewService.readReview_no(reviewvo);
+				int reviewNo = tourReviewService.readReview_no(reviewvo);
+				logger.info("reviewNo : " + reviewNo);
 				
-				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자		
-				ImgVO imgvo = new ImgVO(ReviewRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = tourReviewService.createThumnail(imgvo);
-
-				if (result2 == 1) {
-					logger.info("썸네일 등록 성공");					
-				} else {
-					logger.info("썸네일 등록 실패");
-				}
 				
-			} else { // DB insert 실패
-				logger.info("리뷰 등록 실패");
-			}
-
-		} else {
-			logger.info("reviewvo null!");
-		}
+				
+				
+			} // end if(review_result == 1)
+			
+//			
+//			model.addAttribute("reviewvo", reviewvo);
+//			modelMap.put("imageFile", fileInfo);
+//			
+//			
+//			if (result == 1) { // 여행등록 DB insert 성공
+//				logger.info("리뷰 등록 성공");
+//				
+//				int content_no = tourReviewService.readReview_no(reviewvo);
+//				
+//				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자		
+//				ImgVO imgvo = new ImgVO(ReviewRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+//				int result2 = tourReviewService.createThumnail(imgvo);
+//
+//				if (result2 == 1) {
+//					logger.info("썸네일 등록 성공");					
+//				} else {
+//					logger.info("썸네일 등록 실패");
+//				}
+//				
+//			} else { // DB insert 실패
+//				logger.info("리뷰 등록 실패");
+//			}
+//
+//		} else {
+//			logger.info("reviewvo null!");
+	}
 		
 	} // end CreateReview()
 	

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
 
 @Repository
@@ -31,15 +32,14 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		return sqlSession.selectOne(NAMESPACE + ".select-review_no", reviewvo);
 	} // end selectReview_no(reviewvo)
 	
-	
 	/**
-	 * BestVO 
-	 */		
+	 * ReviewRegionVO
+	 */
 	@Override
-	public int insertBest(BestVO bestvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	} // end insertBest(bestvo)
+	public int insertRegion(ReviewRegionVO reviewRegionvo) {
+
+		return sqlSession.insert(NAMESPACE + ".insert-region", reviewRegionvo);
+	} // end insertRegion(reviewRegionvo)
 	
 	
 	/**
@@ -49,8 +49,17 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	public int insertThumnail(ImgVO imgvo) {
 
 		return sqlSession.insert(NAMESPACE + ".insert-thumnail", imgvo);
-	} // end insertThumnail(vo)
+	} // end insertThumnail(vo)	
 	
+	
+	/**
+	 * BestVO 
+	 */		
+	@Override
+	public int insertBest(BestVO bestvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	} // end insertBest(bestvo)
 	
 	
 } // end class TourReviewDAOImpl

@@ -23,6 +23,8 @@ public interface MemberService {
 
    public abstract int createPersional(PersonalVO personalvo);
    
+   public abstract String getNickname(int mno);
+   
    
    // ImgVO
    public abstract int createProfile(ImgVO imgvo);

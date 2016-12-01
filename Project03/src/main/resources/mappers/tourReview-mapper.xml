@@ -13,6 +13,11 @@
 	    insert into wm_image(board_type, content_no, img_url)
 		values (#{board_type}, #{content_no}, #{img_url})
     </insert>
+    
+    <insert id="insert-region">
+		insert into WM_REVIEW_REGION(review_no, region_name)
+		values (#{review_no}, #{region_name})
+	</insert>
    
 <!-- Update -->
 

@@ -6,10 +6,12 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.service.MemberService;
 
 // login-post 컨트롤러 메소드 실행 전/후에 동작할 인터셉터
 public class LoginInterceptor extends HandlerInterceptorAdapter {
@@ -19,6 +21,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 	private static final String SESSION_ATTR_ID = "login_id";
 	private static final String SESSION_ATTR_MNO = "mno";
 	private static final String SESSION_ATTR_AUTHORITY = "authority";
+	private static final String SESSION_ATTR_NICKNAME = "login_nickname";
+	
+	@Autowired
+	private MemberService memberservice;
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -73,6 +79,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			logger.info(String.valueOf("Mno : " + result.getMno()));
 			session.setAttribute(SESSION_ATTR_AUTHORITY, String.valueOf(result.getAuthority()));
 			logger.info(String.valueOf("Authority : " + result.getAuthority()));
+			
+			String nickname = memberservice.getNickname(result.getMno());
+			
+			if(nickname != null){
+				session.setAttribute(SESSION_ATTR_NICKNAME, nickname);
+				logger.info("nickname : " + nickname);
+			}
+			
+			
 			
 
 			// 기존에 최종 요청 주소(dest)가 있는 경우는 해당 페이지로 이동
