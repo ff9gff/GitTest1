@@ -50,14 +50,14 @@ ul {
 					style="width: 110px; height: 100px; display: inline-block; text-align: center; vertical-align: middle;">
 
 				</div>
-
+				
 			</div>		
-			<div style="display: inline-block; width: 63%; height: 220px; margin-top:20px; margin: 10px; vertical-align: top;">
+			<div style="display: inline-block; width: 63%; height: 290px; margin-top:20px; margin: 10px; vertical-align: top;">
 					<input type="text" Class="personal" value="${vo.nickname }" readonly="readonly" /><br/>
 					<input type="text" Class="personal" value="${vo.age }" readonly="readonly" /><br/>
 					<input type="text" Class="personal" value="${vo.sex }" readonly="readonly" /><br/>
-					<input type="text" Class="personal" value="${vo.email }" readonly="readonly" /><br/>
-					<input type="text" Class="personal" value="${vo.introduce }" readonly="readonly" />				
+					<input type="text" Class="personal" value="${vo.email }" readonly="readonly" /><br/>					
+					<textarea rows="" cols="" readonly="readonly" style="width: 100%; height: 100px">${vo.introduce }</textarea>				
 			</div>
 			<div style="display: inline-block; width: 5%; height: 220px; margin-top:20px; margin: 10px; vertical-align: top;" >
 			<input type="button" id="updatePersonal" value="수정" />
@@ -161,9 +161,14 @@ ul {
 		})
 	</script> -->
 	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	
 	<script>
 	
 		$(document).ready(function() {
+			
+			
+		
 
 			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getThumnails_By_Mno() {
@@ -207,11 +212,12 @@ ul {
 				}
 	
 			});
-		});
+		});		
 		
 		var mno_img = '${inserterImg}';
 		
 		$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/>');
+		alert(mno_img);
 		</script>
 	
 	

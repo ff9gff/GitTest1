@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.service.MypageService;
+import edu.spring.project03.service.TourSearchService;
 
 
 @Controller
@@ -29,6 +30,9 @@ public class MypageController {
 	
 	@Autowired
 	private MypageService mypageService; 
+	
+	@Autowired
+	private TourSearchService tourSelectService;
 	
 	@RequestMapping(value="/MyPage", method=RequestMethod.GET )
 	public void selectPesrsonal(HttpServletRequest req, Model model) {		
@@ -41,6 +45,14 @@ public class MypageController {
 		logger.info("나이 : " + vo.getAge());
 		logger.info("자기소개 : " + vo.getIntroduce());
 		logger.info("이메일 : " + vo.getEmail());
+		
+		/*ImgVO img = tourSelectService.read_trip_profile(mno);
+		model.addAttribute("inserterImg", img.getImg_url());
+		logger.info("inserterImg: " + img.getImg_url());*/
+		
+		ImgVO src = mypageService.readProfile(mno);
+		model.addAttribute("inserterImg", src.getImg_url());
+		logger.info("src: " + src);
 		
 		model.addAttribute("vo", vo);
 		
@@ -74,9 +86,10 @@ public class MypageController {
 	}
 	
 	// 해당 프로필의 이미지 주소를 읽어오는 메소드
-	@RequestMapping(value="/mypageprofile/{mno}", method=RequestMethod.GET)
+	@RequestMapping(value="/MyPageProfile/{mno}", method=RequestMethod.GET)
 	public ResponseEntity<String> readImg(@PathVariable("mno") int mno){
 		ImgVO src = mypageService.readProfile(mno);
+		logger.info("src: " + src);
 		String address = src.getImg_url();
 		ResponseEntity<String> entity = null;
 		if(src != null){ // select 성공
