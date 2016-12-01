@@ -478,7 +478,8 @@ ${tourVO.content}
 $(document).ready(function(){
 	var sessionmno = ${mno};
 	var sessionaut= ${authority};
-	var sessionnick=${login_nickname};
+	//var sessionnick=${login_nickname};
+	var sessionnick='testnick';
 	var trip_no = ${tourVO.trip_no};
 	
 	
@@ -539,8 +540,9 @@ $(document).ready(function(){
 							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
-								+'<a href="#this" class="btn_reply">답글</a>';
-								
+							if(sessionaut != 0){
+								list +='<a href="#this" class="btn_reply">답글</a>';
+							}	
 							if(replylist[i].mno == sessionmno){
 								list +='<span class="btn_div">|</span>'
 								+'<a href="#this" class="btn_update">수정</a>';
@@ -595,8 +597,10 @@ $(document).ready(function(){
 								+'<dt class="reply_header">'
 									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong>'
 									+'<span class="regdate">'+dateString+'</span>'
-									+'<span class="btns">'
-										+'<a href="#this" class="btn_reply">답글</a>';
+									+'<span class="btns">';
+									if(sessionaut != 0){
+										list +='<a href="#this" class="btn_reply">답글</a>';
+									}
 										if(replylist[j].mno == sessionmno){
 											list +='<span class="btn_div">|</span>'
 											+'<a href="#this" class="btn_update">수정</a>';
