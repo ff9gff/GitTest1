@@ -63,6 +63,7 @@
 
 		<section id="main">
 
+	<form action="">
 			<table id="checkboxTestTbl" border="1px">
 				<caption>유저 정보 확인</caption>
 				<colgroup>
@@ -78,9 +79,10 @@
 				
 				
 				<tr>
-					<th><input type="checkbox"></th>
+					<th>번호</th>
 					<th>유저 번호</th>
 					<th>유저 아이디</th>
+					<th>유저 연락처</th>
 					<th>유저 이메일</th>
 					<th>유저 가입날짜</th>
 				</tr>
@@ -88,71 +90,66 @@
 		
 				<c:forEach var="vo" items="${newMemberList}">
 				
-					<tr>
-						<td><input type="checkbox"></td>
+					<tr class= "select0">
+						<td >${x=x+1 }</td>
 						<td>${vo.mno }</td>
 						<td>${vo.userid }</td>
-						<td>userEmail1</td>
-						<td>JoinDate!
-						</td>
+						<td>${vo.phone }</td>
+						<td>${vo.email }</td>
+					        <td>
+	       						 <fmt:formatDate value="${vo.joindate }" 
+	          						  pattern="yyyy-MM-dd HH:mm:ss"/>
+        					</td>
 			
 					</tr>
-				
-				
+			
 				
 				</c:forEach>
-				<tr>
+				<tr class= "select0">
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user1</th>
+					<th>userphone</th>
 					<th>userEmail1</th>
 					<th>JoinDate1</th>
 				</tr>
-				<tr>
+				<tr class= "select0">
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user2</th>
-					
+					<th>userphone</th>
 					<th>userEmail2</th>
 					<th>JoinDate2</th>
 				</tr>
-				<tr>
+				<tr class= "select0">
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user3</th>
+					<th>userphone</th>
 					<th>userEmail3</th>
 					<th>JoinDate3</th>
 				</tr>
-				<tr>
+				<tr class= "select0">
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user4</th>
+					<th>userphone</th>
 					<th>userEmail4</th>
 					<th>JoinDate5</th>
 				</tr>
-				<tr>
+				<tr class= "select0">
 					<th><input type="checkbox" /></th>
 					<th>#</th>
 					<th>user5</th>
+					<th>userphone</th>
 					<th>userEmail5</th>
 					<th>JoinDate5</th>
 				</tr>
 
-
-
 			</table>
-
-
-
-			<div id="selectOption">
-				<select id="dropDownType">
-					<option value="none">--</option>
-					<option value="agree">승인</option>
-					<option value="banish">탈퇴</option>
-					<option value="audi">Audi</option>
-				</select> <input type="submit" value="저장" id="saveMyUser">
-			</div>
-
+  
+				<input type="button" value="수락" id="saveMyUser">
+					</form>
 		</section>
 
 		<aside id="sidebar">
@@ -165,12 +162,34 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
 	<script type="text/javascript">
-		$('#checkboxTestTbl > tr > th >input: checked').each(function(index) {
-			alert($(this).val());
-		})
+	
 		
 		
 		
+		
+		$('#saveMyUser').click(function(){
+			
+			$.ajax({
+				type:'put',
+				url:'/project03/users/updateLevelOne',
+				headers:{
+					'Content-Type':'application/json',
+					'X-Http-Method-Ovveride':'PUT'
+				}
+				
+				
+			});
+			
+			
+			
+			
+			
+			
+			
+			
+			$('.select0').empty();
+			
+		});//end saveMyuser
 	</script>
 
 

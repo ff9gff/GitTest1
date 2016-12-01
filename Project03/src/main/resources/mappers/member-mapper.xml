@@ -91,6 +91,11 @@
 	
 	
 	
+	
+	
+	
+<!-- 조승현 쪽지 보내는 부분 mapper입니다.  -->
+	
 	<!--  Msg Text를 보내는 mapper  -->
 	<select  id="selectMsg" resultType="edu.spring.project03.domain.MsgVO">
 	select sd_mno , msg_content , msg_date from WM_MSG where rc_Mno =#{mno} <!-- 수정해야하는 부분입니다.  -->
@@ -117,8 +122,15 @@ order by m.msg_no
  
  
  
+<!--  보낸 메일함 을 말합니다.  -->
 
+<select id="selectSendMsg" resultType="edu.spring.project03.domain.MsgDTO">
+select m.msg_no, p.nickname, m.msg_content, m.msg_date
+from wm_msg m, wm_personal p
+where m.rc_mno = p.mno and m.sd_mno = #{mno}
+order by m.msg_no
 
+</select>
 
 
 

@@ -7,6 +7,19 @@
   
  
  
+ <select id="realDomainAdmin" resultType="edu.spring.project03.domain.DomainDTO">
+ 
+  select m.mno , m.userid , p.phone , p.email , p.joindate
+  from WM_MEMBER m , WM_PERSONAL p 
+  where m.mno = p.mno and m.AUTHORITY =0
+  order by m.mno
+ 
+ 
+ </select>
+ 
+ 
+ 
+ 
  <select id="userLevel12" resultType="edu.spring.project03.domain.MemberVO">
  
  	select mno from WM_Member where AUTHORITY=1 or  AUTHORITY=2
@@ -31,6 +44,7 @@
   
   
   </select>
+  
   
   
   
@@ -75,10 +89,19 @@ UPDATE WM_MEMBER set AUTHORITY = 0 WHERE MNO = #{mno};
   </insert>
   
   
- 
+ <!--  등급이 0 인에들을 먼저 받슴니다,   integer로 받음 -->
+  
+  <select id="selectLevelZero" resultType="Integer">
+ select mno from WM_Member where AUTHORITY=0
+
+  </select>
   
   
+  <!-- 위 에서 받은 mno를 가지고 업데이트를 할 것이다.  -->
   
+  <update id="upgradeLevelOne">
+  	update WM_MEMBER set AUTHORITY = 1 where mno = #{mno}
+  </update>
   
   
   </mapper>

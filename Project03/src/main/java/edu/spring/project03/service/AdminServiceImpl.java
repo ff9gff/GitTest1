@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.persistence.AdminDAO;
 
@@ -41,7 +42,7 @@ public class AdminServiceImpl implements AdminService{
 		int result=0;  
 		List<MemberVO> user12List =aDao.readAllUser12();//get(0).toString()
 		logger.info("sendAllUserMessage 지나요 user12List.size() -> "+user12List.size()); //Integer.parseInt(args[0]);
-		logger.info("sendAllUserMessage toString "+ user12List.get(1)); 
+		//logger.info("sendAllUserMessage toString "+ user12List.get(0)); 
 		logger.info("msg_content-> "+msg_content);
 		//logger.info("sendAllUserMessage 지나요 "+ user12List.get(0).toString());
 		//logger.info("sew 버여져 "+user12List.get(0).intValue());
@@ -50,6 +51,32 @@ public class AdminServiceImpl implements AdminService{
 		result =aDao.sendAllUserMsg(user12List.get(i).getMno(), msg_content);
 		
 		}
+		return result;
+	}
+
+
+	@Override
+	public List<DomainDTO> readAdminDomain() {
+		logger.info("여기는 지금 adminService에 있는 readAdminDomain입니다.");
+		List<DomainDTO> list = aDao.readRealDAdmim();
+		return list;
+	}
+
+
+	@Override
+	public List<Integer> readLevelZero() {
+	  
+		List<Integer> list = aDao.readlevelZero();
+		logger.info("레벨이 0 인 애들을 부릅니다. "+  list.size());
+ 		return list;
+ 		
+	}
+
+
+	@Override
+	public int updateLevelOne(int mno) {
+		int result = 0;
+		 result = aDao.updateLevelOne(mno);
 		return result;
 	}
 

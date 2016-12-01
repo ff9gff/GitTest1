@@ -52,6 +52,8 @@ textarea {
        	<button id="user_search">찾기</button>
       </p>
       
+      <div id= "result_nick">
+      </div>
       <p class="text">
         <textarea name="msg_content" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
       </p>
@@ -69,21 +71,53 @@ textarea {
   <br>
   <br>
   <form action="myMsg" method="get">
-  <input type="submit" id="nextPage" value="쪽지함으로 갑시다 이제">
+  <input type="submit" id="nextPage" value="받은 쪽지함으로 갑시다 이제">
   </form>
   
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
- <script type="text/javascript">
+  <br>
+  <br>
+    <form action="MySendMsg" method="get">
+  <input type="submit" id="mySendMsg" value="보낸쪽지함으로 갑시다 이제">
+  </form>
   
- 	$(document).ready(function(){
- 		
- 		
+  
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
+ <script type="text/javascript">
+  $(document).ready(function(){
+ 		 		
  		$('#nextPage').click(function(){
+ 		 			
+ 		}); // end next Page 
+ 		
+ 		 		
+ 		// 닉네임 중복 체크
+ 		$('#nickname').change(function() {
+ 			alert("닉네임 중복 체크");
+ 			
+ 			$.ajax({
+ 				type: 'post',
+ 				url: './member/checknick',
+ 				headers: {
+ 					'Content-Type': 'application/json',
+ 					'X-HTTP-Method-Override': 'POST'
+ 				},
+ 				data: JSON.stringify({
+ 					nickname: $('#nickname').val()
+ 				}),
+ 				success: function(response) {
+ 					if (response == 'NOK') {
+ 							<%-- 유저 정보가 있는 경우 --%>
+ 					} else {					
+ 						alert("존재하지 않는 사용자 입니다. 다시 입력하세요.");
+ 						$('#nickname').val("");
+ 					}
+ 				}
+ 			
+ 			});
+ 			
+ 		}); 
  			
 
- 			
- 			
- 		});
  		
  		
  		

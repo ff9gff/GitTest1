@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 
 @Repository
@@ -66,7 +67,28 @@ public class AdminDAOImpl implements AdminDAO {
 		return result;
 	}
 
-	
+	@Override
+	public List<DomainDTO> readRealDAdmim() {
+		//이젠 진짜 화면에 출력 할 것을 말한다.
+		logger.info("여기는 현재 adminDAOimple 입니다. ");
+		List<DomainDTO> list = sqlSession.selectList(NAMESPACE+".realDomainAdmin");
+		return list;
+
+	}
+
+	@Override  //  유저 정보 입니다. 
+	public List<Integer> readlevelZero() {
+		 List<Integer> list = sqlSession.selectList(NAMESPACE+".selectLevelZero");
+		return list;
+	}
+
+	@Override
+	public int updateLevelOne(int mno) {
+	  
+		int result = 0;
+		result  = sqlSession.update(NAMESPACE+".upgradeLevelOne" ,mno); 
+	  return result;
+	}
 	
 	
 }//end class 

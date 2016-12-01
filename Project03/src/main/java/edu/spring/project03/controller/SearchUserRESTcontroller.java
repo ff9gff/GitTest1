@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.service.AdminService;
 import edu.spring.project03.service.SearchUserService;
 
 @RestController
@@ -24,6 +25,8 @@ public class SearchUserRESTcontroller {
 	@Autowired
 	private SearchUserService suRestService;
 
+	@Autowired
+	private AdminService adminService;
 	@RequestMapping(value = "/all/{userid}", method = RequestMethod.GET)
 	public ResponseEntity<List<MemberVO>> readSearchUser(@PathVariable("userid") String userid) {
 		logger.info("read My Search user ->" + userid);
@@ -48,4 +51,38 @@ public class SearchUserRESTcontroller {
 
 	}
 
+	
+	@RequestMapping(value="updateLevelOne" , method=RequestMethod.PUT)
+	public int upgradeLevel1(){
+		
+		logger.info("여기야 여기 살려죠 update ");
+		List<Integer> list =adminService.readLevelZero();
+		
+		logger.info(list.get(0).toString());
+		int result =0 ;
+		for (int i = 0 ; i < list.size(); i++){
+		 
+			adminService.updateLevelOne(Integer.parseInt(list.get(i).toString()));
+		
+		}
+		
+		if(list.size() !=0){
+			return 1;
+		}
+		
+		logger.info("result "+result);
+		
+		return 0;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }// end clas\s

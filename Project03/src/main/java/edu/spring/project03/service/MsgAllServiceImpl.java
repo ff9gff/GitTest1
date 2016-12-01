@@ -57,6 +57,16 @@ public class MsgAllServiceImpl implements MsgAllService {
 	}
 
 
+	@Override
+	public List<MsgDTO> readSendMsg(int mno) {
+		logger.info("여기는 mno sendMsg" + mno);
+		List<MsgDTO> read = msgAlldao.readAllsend(mno);
+		logger.info("read의 사이즈는 " + read.size());
+		
+		return read;
+	}
+
+
 
 
 
