@@ -29,6 +29,18 @@ ul {
 .personal {
 	border:none;
 }
+
+.content_profile_img{
+	width: 100%;
+	height: 220px;
+	vertical-align: middle;
+	display: inline-block;
+	border-radius: 70px;
+	-moz-border-radius: 70px;
+	-khtml-border-radius: 70px;
+	-webkit-border-radius: 70px;
+	margin: auto;
+}
 </style>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -47,7 +59,7 @@ ul {
 			<div style="display: inline-block; width: 25%; height: 220px; margin-top:20px; margin: 10px; vertical-align: top;">
 
 				<div id="content_profile"
-					style="width: 110px; height: 100px; display: inline-block; text-align: center; vertical-align: middle;">
+					style="display: inline-block; text-align: center; vertical-align: middle;">
 
 				</div>
 				
@@ -216,7 +228,7 @@ ul {
 		
 		var mno_img = '${inserterImg}';
 		
-		$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/>');
+		$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/>');
 		alert(mno_img);
 		</script>
 	
