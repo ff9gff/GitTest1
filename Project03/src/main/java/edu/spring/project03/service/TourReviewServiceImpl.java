@@ -18,8 +18,9 @@ public class TourReviewServiceImpl implements TourReviewService {
 	@Autowired
 	private TourReviewDAO tourReviewDAO;
 	
-	
-	// Create	
+	/**
+	 * Create
+	 */
 	@Override
 	public int createReview(ReviewVO reviewvo) {
 		logger.info("createReview() 호출...");
@@ -42,8 +43,9 @@ public class TourReviewServiceImpl implements TourReviewService {
 	} // end createRegion(reviewregionvo)
 	
 	
-	
-	// Read	
+	/**
+	 * Read
+	 */
 	@Override
 	public int readReview_no(ReviewVO reviewvo) {
 		logger.info("readReview_no() 호출...");
@@ -51,6 +53,23 @@ public class TourReviewServiceImpl implements TourReviewService {
 		return tourReviewDAO.selectReview_no(reviewvo);
 	} // end readReview_no(reviewvo)
 	
+	@Override
+	public ReviewVO readReviewRegisterData(int review_no) {
+		logger.info("readRegisterData() 호출...");
+		
+		return tourReviewDAO.selectReviewRegister_data(review_no);
+	} // end readRegisterData(int review_no)
+
+	
+	
+	/**
+	 * Update
+	 */
+	
+	
+	/**
+	 * Delete
+	 */
 	
 	
 	

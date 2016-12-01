@@ -27,7 +27,7 @@ public interface TourSearchService {
 	public abstract List<TourRegisterVO> read_main_title_info(TourRegisterVO vo);
 	public abstract List<RegionVO> read_main_region_info(TourRegisterVO vo);
 	
-	public abstract TourRegisterVO readRegisterData(int trip_no);
+	public abstract TourRegisterVO readRegisterData(int trip_no); // ok
 	
 	// 메인 썸네일 지역검색(사진 밑에 나올 제목/지역)
 	public abstract List<TourRegisterVO> read_main_title_region(String region);
