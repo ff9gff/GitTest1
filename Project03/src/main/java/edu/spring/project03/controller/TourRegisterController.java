@@ -49,9 +49,6 @@ public class TourRegisterController {
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
 
-	@Autowired
-	private TourRegisterService service;
-
 	@Resource(name = "imageView")
 	ImageView imageView;
 
@@ -115,29 +112,25 @@ public class TourRegisterController {
 			logger.info("mno 확인: " + tourregistervo.getMno());
 
 			// 이상 없으면 여행등록 DB insert!
-			int result = service.create(tourregistervo);
+			int result = tourRegisterService.create(tourregistervo);
 
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 등록 성공");
 
 				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자
-				tourregistervo = new TourRegisterVO(0, tourregistervo.getMno(), tourregistervo.getTitle(), 0, 0,
-						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
-						0);
-				int content_no = service.readTrip_no(tourregistervo);
+				int content_no = tourRegisterService.readTrip_no(tourregistervo);
 				logger.info("insert content_no: " + content_no);
 
-				tourregistervo = new TourRegisterVO(content_no, tourregistervo.getMno(), tourregistervo.getTitle(),
-						tourregistervo.getCondition_sex(), tourregistervo.getCondition_age(),
-						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
-						0);
+				tourregistervo = tourSelectService.readRegisterData(content_no);
+				
+				
 
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);
 				modelMap.put("imageFile", fileInfo);
 
 				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = service.createThumnail(imagevo);
+				int result2 = tourRegisterService.createThumnail(imagevo);
 				model.addAttribute("vo3", imagevo);
 				logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());
 
@@ -146,7 +139,7 @@ public class TourRegisterController {
 
 					String region_name = regionvo.getRegion_name();
 					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
-					int result3 = service.createRegion(regionvo2);
+					int result3 = tourRegisterService.createRegion(regionvo2);
 
 					if (result3 == 1) {
 						logger.info("장소 등록 성공");
@@ -211,7 +204,7 @@ public class TourRegisterController {
 			logger.info("mno: " + tourregistervo.getMno());
 			logger.info("trip_no: " + tourregistervo.getTrip_no());
 
-			int result = service.update(tourregistervo);
+			int result = tourRegisterService.update(tourregistervo);
 
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 수정 성공");
@@ -220,18 +213,18 @@ public class TourRegisterController {
 				tourregistervo = new TourRegisterVO(0, tourregistervo.getMno(), tourregistervo.getTitle(), 0, 0,
 						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
 						0);
-				int content_no = service.readTrip_no(tourregistervo);
+				int content_no = tourRegisterService.readTrip_no(tourregistervo);
 				logger.info("update content_no" + content_no);
 
 				ImgVO imgvo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = service.updateThumnail(imgvo);
+				int result2 = tourRegisterService.updateThumnail(imgvo);
 
 				if (result2 == 1) {
 					logger.info("썸네일 수정 성공");
 
 					String region_name = regionvo.getRegion_name();
 					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
-					int result3 = service.updateRegion(regionvo2);
+					int result3 = tourRegisterService.updateRegion(regionvo2);
 
 					if (result3 == 1) {
 						logger.info("장소 수정 성공");
