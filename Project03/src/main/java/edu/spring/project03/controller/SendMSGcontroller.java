@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -43,7 +44,7 @@ public class SendMSGcontroller {
 		return "redirect:admin";
 	}
 
-	/////////////// 테스트 컨트롤러
+	//메세지 함을 확인 합니다. 일단 mno를 6으로 설정합니다. 나중에 합칠 경우에 대비해서 미리 적어 둔다 . 
 	@RequestMapping(value = "/myMsg", method = RequestMethod.GET)
 	public void stres(Model model) {
 
@@ -53,39 +54,53 @@ public class SendMSGcontroller {
 
 		logger.info("가자 " + allList.size());
 		logger.info(" 값 " + allList.get(0).getNickname());
-
-		// List<MsgVO> msgList = msgAllService.readMyMsg(mno);
-		// //String nickname = msgAllService.readNickname(mno);
-		// //List<String> nicknames = new ArrayList<>();
-		//
-		//
-		// logger.info("msgList 사이즈 " + msgList.size());
-		// for(int i =0 ; i< msgList.size(); i++){
-		//
-		// nicknames.add(msgAllService.readNickname(msgList.get(i).getSd_mno()));
-		// }
-		//
-		//
-		// List<PersonalVO> allList = new ArrayList<>();
-		//
-		//
-		// MsgVO vo2 =null;
-		// for(int j= 0 ; j < msgList.size();j++){
-		//
-		//
-		// vo2 = new MsgVO(0, msgList.get(j).getSd_mno(), mno/*여기는 나중에 수정 */,
-		// msgList.get(j).getMsg_content(),msgList.get(j).getMsg_date());
-		//
-		// PersonalVO vo = new PersonalVO(vo2,nicknames.get(j));
-		// allList.add(vo);
-		// }
-		// logger.info("se" + msgList.get(0).getMsg_content());
-		//
-		// allList.get(0).getMsg().setMsg_content("sw");
-		//// logger.info(allList.get(0).getMsg().getMsg_content());
-		//
+		
 		model.addAttribute("allList", allList);
 
+		
+	}//end 
+	
+	
+	
+	//MySendMsg
+	@RequestMapping(value = "/MySendMsg", method = RequestMethod.GET)
+	public void sendMyMsg(Model model) {
+
+		int mno = 1; // 임시 보관함 //< 6 일단 내용이 지금 많은  공지사항 admin으로 생각하자 
+
+		List<MsgDTO> allList = msgAllService.readSendMsg(mno);
+
+		logger.info("가자 " + allList.size());
+		logger.info(" 값 " + allList.get(0).getNickname());
+		
+		model.addAttribute("allList", allList);
+
+		
+	}//end 
+	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value="/testMyGet" ,method=RequestMethod.GET)
+	public void test022(@ModelAttribute("postdata") String postdata){
+		
+		
+		logger.info("userSearch2 호출 팝업 나와라 ");
+		logger.info("안녕하세요 " + postdata);
+		
+
+		
 	}
+	
+	
+	
+	
+	
+
+	
+	
 
 }

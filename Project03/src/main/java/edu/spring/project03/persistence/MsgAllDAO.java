@@ -13,4 +13,6 @@ public interface MsgAllDAO {
 	public abstract String selectNick(int mno);
 	
 	public abstract List<MsgDTO> readAllget(int mno);
+	
+	public abstract List<MsgDTO> readAllsend(int mno);
 }

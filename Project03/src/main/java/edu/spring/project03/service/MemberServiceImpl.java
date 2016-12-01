@@ -58,6 +58,12 @@ public class MemberServiceImpl implements MemberService {
       return memberDAO.insertPersional(personalvo);
    } // end createPersional(personalvo)
    
+   @Override
+	public String getNickname(int mno) {
+
+		return memberDAO.getNickname(mno);
+	} // end getNickname(mno)
+   
    /*
     * 
     */

@@ -124,7 +124,7 @@
 
 				<div class="wrap">
 		
-					<form action="create_review" method="post" id="frm" enctype="multipart/form-data">
+					<form action="review_detail" method="post" id="frm" enctype="multipart/form-data">
 					
 						<label for="imageFile">썸네일 이미지</label><br/>       
 					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
@@ -135,7 +135,20 @@
 					
 						<input type="hidden" name="mno" value="${mno }" readonly="readonly" /> 
 					
-						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
+						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br/> <br/>
+						
+						<div id="region_plus">
+							<table id="regionTable">
+								<tr>
+									<td>
+										<input type="text" name="region_name" placeholder="지역" />
+										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
+									</td>
+								</tr>
+							</table>						
+						</div>
+						
+						 
 						
 						<textarea name="content" id="smarteditor" rows="10"
 							cols="100" style="width: 766px; height: 412px;">	
@@ -180,6 +193,24 @@
 <!-- 	<script src="../resources/theme/js/main.js"></script> -->
 
 <script>
+//Row 추가
+function insRow() {
+  oTbl = document.getElementById("regionTable");
+  var oRow = oTbl.insertRow();
+  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+  var oCell = oRow.insertCell();
+  
+  //삽입될 Form Tag
+  var frmTag = "<input type=text name=region_name placeholder=지역>";
+  frmTag += " <input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
+  oCell.innerHTML = frmTag;
+}
+
+//Row 삭제
+function removeRow() {
+  oTbl.deleteRow(oTbl.clickedRowIndex);
+}
+
 $(document).ready(function() {
 	
 	$('#imageFile').on('change', function() {
@@ -203,7 +234,7 @@ $(document).ready(function() {
 	      }
 	   });	
 	
-	$(function() { //전역변수선언
+	
 		var editor_object = [];
 		nhn.husky.EZCreator.createInIFrame({
 			oAppRef : editor_object,
@@ -218,7 +249,13 @@ $(document).ready(function() {
 				bUseModeChanger : true,
 			}
 		});
-
+		
+		// Region Table
+		var oTbl;
+		
+				
+		
+		
 		//전송버튼 클릭이벤트
 		$("#savebutton").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
@@ -233,7 +270,7 @@ $(document).ready(function() {
 			location = 'totalReview';
 		})
 
-	});	
+		
 });
 </script>
 </body>

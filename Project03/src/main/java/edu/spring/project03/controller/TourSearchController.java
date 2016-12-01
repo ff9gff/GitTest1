@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
-
+import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 import edu.spring.project03.service.TourSearchService;
@@ -58,38 +56,10 @@ public class TourSearchController {
 	}
 
 	// 기간 검색 Ajax 처리
-	// 해당 기간 검색 메소드
-	@RequestMapping(value = "/index/{start_date}/{end_date}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxPeriodTest(@PathVariable("start_date") String start_date, @PathVariable("end_date") String end_date) {
-		logger.info("시작 날짜: " + start_date);
-		logger.info("종료 날짜: " + end_date);
-
-		ResponseEntity<List<ImgVO>> entity = null;
-
-		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
-
-		List<ImgVO> list = tourSelectService.read_region_date(vo2);
-
-		if (list != null) {
-			// select 성공 한것이다.
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("기간 검색 성공 ");
-		} else {
-			// select 실패이다.
-			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("기간 검색 실패 ");
-		}
-
-		logger.info("entity " + entity);
-		// logger.info("list.mno "+ list.get(0).getUserid());
-		// 출력 됨
-		return entity;
-	}
-
-	@RequestMapping(value = "/index/{region_name}/{start_date}/{end_date}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxDatailTest(@PathVariable("start_date") String start_date,
+	// 해당 기간 썸네일 이미지 검색 메소드
+	@RequestMapping(value = "/index/image/{start_date}/{end_date}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxPeriodImageTest(@PathVariable("start_date") String start_date,
 			@PathVariable("end_date") String end_date) {
-
 		logger.info("시작 날짜: " + start_date);
 		logger.info("종료 날짜: " + end_date);
 
@@ -102,11 +72,11 @@ public class TourSearchController {
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("기간 검색 성공 ");
+			logger.info("기간 이미지 검색 성공 ");
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("기간 검색 실패 ");
+			logger.info("기간 이미지 검색 실패 ");
 		}
 
 		logger.info("entity " + entity);
@@ -114,8 +84,66 @@ public class TourSearchController {
 		// 출력 됨
 		return entity;
 	}
-	
-	
+
+	// 기간 검색 Ajax 처리
+	// 해당 기간 썸네일 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/index/title/{start_date}/{end_date}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxPeriodTitleTest(@PathVariable("start_date") String start_date,
+			@PathVariable("end_date") String end_date) {
+		logger.info("시작 날짜: " + start_date);
+		logger.info("종료 날짜: " + end_date);
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+
+		List<TourRegisterVO> list = tourSelectService.read_main_title_info(vo2);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+			logger.info("기간  - 제목 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("기간  - 제목 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
+	// 기간 검색 Ajax 처리
+	// 해당 기간 썸네일 이미지 아래 지역 검색 메소드
+	@RequestMapping(value = "/index/region/{start_date}/{end_date}", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxPeriodRegionTest(@PathVariable("start_date") String start_date,
+			@PathVariable("end_date") String end_date) {
+		logger.info("시작 날짜: " + start_date);
+		logger.info("종료 날짜: " + end_date);
+
+		ResponseEntity<List<RegionVO>> entity = null;
+
+		TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, 0, 0, null, null, start_date, end_date, 0);
+
+		List<RegionVO> list = tourSelectService.read_main_region_info(vo2);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+			logger.info("기간  - 지역 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("기간  - 지역 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
 

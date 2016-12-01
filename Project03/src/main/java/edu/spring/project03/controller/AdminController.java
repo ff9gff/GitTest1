@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.MsgVO;
 import edu.spring.project03.service.AdminService;
@@ -30,10 +31,17 @@ public class AdminController {
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
 	public void callAdmin(Model model) {
+		
 
-		List<MemberVO> list = adminService.newUserList();
-		model.addAttribute("newMemberList", list);
+//		List<MemberVO> list = adminService.newUserList();
+//		model.addAttribute("newMemberList", list);
+//		logger.info("admin.jsp 소환 ");
+		
+		//여기를 수정하겠습니다. 11.28 수정 완료 부분 
+		List<DomainDTO> list2 = adminService.readAdminDomain();
 		logger.info("admin.jsp 소환 ");
+		model.addAttribute("newMemberList", list2);
+		
 
 	}
 	

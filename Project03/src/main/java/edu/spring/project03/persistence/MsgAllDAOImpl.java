@@ -50,7 +50,15 @@ public class MsgAllDAOImpl implements MsgAllDAO{
 	public List<MsgDTO> readAllget(int mno) {
 		logger.info("select Msg DTO닉네임 입니다. ");
 		
-		return sqlSession.selectList(NAMESPACE+".selectNickname", mno);
+		return sqlSession.selectList(NAMESPACE+".selectGetMsg", mno);
+	}
+
+	@Override
+	public List<MsgDTO> readAllsend(int mno) {
+		
+		logger.info("select Msg DTO send name 닉네임 입니다. ");
+
+		return sqlSession.selectList(NAMESPACE+".selectSendMsg", mno);
 	}
 	
 	

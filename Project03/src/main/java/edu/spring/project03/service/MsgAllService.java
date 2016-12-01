@@ -13,4 +13,10 @@ public interface MsgAllService {
 	
 	//아래 이게 진짜다 위에는 지울 예정 ? 
 	public abstract List<MsgDTO> readGetMsg(int mno); 
+	
+	public abstract List<MsgDTO> readSendMsg(int mno); 
+	
+	
+	
+	
 }

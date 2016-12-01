@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -221,7 +222,6 @@ color: #000000;
 	position: absolute;
 	background-color: #FFFFFF;
 	border:solid 1px #ccc; 
-	position: absolute;
 	box-shadow: 0px 1px 20px #333;
 	z-index:100; 
 	text-align: center;
@@ -232,14 +232,15 @@ color: #000000;
 	width: 410px;
 	height: 130px;
 	margin: 10px;
+	
 }
 #profile_image{
-	width:30%;
-	height:30%;
+	width: 30%;
 	padding-right: 5px;
 	padding-bottom: 0;
 	padding-left: 0;
 	padding-top: 0;
+	vertical-align: middle;
 
 }
 #profile_button1{
@@ -305,14 +306,42 @@ font-size: 12px;
 	font-weight: bold;
 }
 #profile_profile_img{
-	width: 100%;
-	height: 100%;
+	width: 120px;
+	height: 120px;
 	vertical-align: middle;
 	display: inline-block;
 	border-radius: 70px;
 	-moz-border-radius: 70px;
 	-khtml-border-radius: 70px;
 	-webkit-border-radius: 70px;
+}
+
+#joinmenu{
+	background-color: #FFFFFF;
+	border: 2px dotted lightgray;
+	width: 200px;
+	height: 110px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	  position: fixed;
+  margin: 0 auto;
+  top: 400px;
+  right: 20px;
+}
+#joinmenu_apply{
+	width: 170px;
+	height: 50px;
+	background-color: #ec523f;
+  color: white;
+  font-weight: 700;
+}
+#joinmenu_count{
+	margin-top: 10px;
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	vertical-align: middle;
 }
 </style>
 </head>
@@ -342,6 +371,7 @@ font-size: 12px;
 		<tr><td colspan="2" style="text-align: right;vertical-align: middle;"><button id="profile_button2">자세히▶</button></td></tr>
 	</table>
 </div>
+
 
 <!-- 회원가입/로그인 부분 -->
 	<%@ include file="../top_header.jspf"  %>
@@ -380,6 +410,13 @@ font-size: 12px;
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
 
+<c:if test="${mno ne tourVO.mno}">
+	<div id="joinmenu">
+		<p id="joinmenu_count">몇명이 참여중이다</p>
+		<button id="joinmenu_apply">신청하기</button>
+	</div>
+</c:if>
+
 <div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
 	<div style=" display: inline-block; vertical-align: middle;">
 		<div id=content_title>${tourVO.title}</div>
@@ -396,30 +433,36 @@ font-size: 12px;
 		<td id="condition_age"></td>
 	</tr>	
 </table>
+
+<c:if test="${mno eq tourVO.mno}">
+	<div class="menu">Apply for</div>
+	<table class="apply_panel">
+		<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
+		<tr style="padding: 0;height: 150px;">
+			<td class="apply_panel_table">
+				<div class="applicant_panel">
+					<table id="applicants"></table>
+				</div>
+			</td>
+			<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
+			<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
+		</tr>	
+	</table>
+</c:if>
 <div class="menu">Content</div>
 <input hidden id="start_date" value="${tourVO.start_date}"/>
 <input hidden id="end_date" value="${tourVO.end_date}"/>
 <div id="content">
 ${tourVO.content}
 </div>
-<div class="menu">Apply for</div>
-<table class="apply_panel">
-	<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
-	<tr style="padding: 0;height: 150px;">
-		<td class="apply_panel_table">
-			<div class="applicant_panel">
-				<table id="applicants"></table>
-			</div>
-		</td>
-		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="apply_ok">수락하기</button></td>
-		<td class="apply_panel_btns"><button type="button" class="applicant_button" id="trip_end">마감</button></td>
-	</tr>	
-</table>
+
+
+
 
 <div class="menu">Comment</div>
 <div class="reply_panel">
 	<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
-	<input hidden type="number" name="mno" id="mno" value="1" required/>
+	<input hidden type="number" name="mno" id="mno" value="${mno}" required/>
 	<button type="button" id="btn_Create">댓글 입력</button>
 </div>
 <div class="reply_panel">
@@ -433,7 +476,11 @@ ${tourVO.content}
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
+	var sessionmno = ${mno};
+	var sessionaut= ${authority};
+	var sessionnick=${login_nickname};
 	var trip_no = ${tourVO.trip_no};
+	
 	
 	// wm_tour_reply 리스트
 	replylist=[];
@@ -492,12 +539,17 @@ $(document).ready(function(){
 							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
-								+'<a href="#this" class="btn_reply">답글</a>'
-								+'<span class="btn_div">|</span>'
-								+'<a href="#this" class="btn_update">수정</a>'
-								+'<span class="btn_div">|</span>'
-								+'<a href="#this" class="btn_delete">삭제</a>'
-							+'</span>'
+								+'<a href="#this" class="btn_reply">답글</a>';
+								
+							if(replylist[i].mno == sessionmno){
+								list +='<span class="btn_div">|</span>'
+								+'<a href="#this" class="btn_update">수정</a>';
+							}
+							if(replylist[i].mno == sessionmno || sessionaut==2 || sessionaut==3){
+								list+='<span class="btn_div">|</span>'
+								+'<a href="#this" class="btn_delete">삭제</a>';
+							}
+							list+='</span>'
 						+'</dt>'
 						+'<dd class="rcontent">'+replylist[i].rcontent+'</dd>'
 						+'<dd>'
@@ -521,7 +573,7 @@ $(document).ready(function(){
 						+'<table class="reply_table">'
 							+'<tbody>'
 								+'<tr>'
-									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong></td>'
+									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+sessionmno+'" data-listno="'+i+'">'+sessionnick+'</a></strong></td>'
 									+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 								+'</tr>'
@@ -544,12 +596,16 @@ $(document).ready(function(){
 									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong>'
 									+'<span class="regdate">'+dateString+'</span>'
 									+'<span class="btns">'
-										+'<a href="#this" class="btn_reply">답글</a>'
-										+'<span class="btn_div">|</span>'
-										+'<a href="#this" class="btn_update">수정</a>'
-										+'<span class="btn_div">|</span>'
-										+'<a href="#this" class="btn_delete">삭제</a>'
-									+'</span>'
+										+'<a href="#this" class="btn_reply">답글</a>';
+										if(replylist[j].mno == sessionmno){
+											list +='<span class="btn_div">|</span>'
+											+'<a href="#this" class="btn_update">수정</a>';
+										}
+										if(replylist[j].mno == sessionmno || sessionaut==2 || sessionaut==3){
+											list+='<span class="btn_div">|</span>'
+											+'<a href="#this" class="btn_delete">삭제</a>';
+										}
+									list+='</span>'
 								+'</dt>'
 								+'<dd class="rcontent">'+replylist[j].rcontent+'</dd>'
 								+'<dd>'
@@ -573,7 +629,7 @@ $(document).ready(function(){
 								+'<table class="reply_table">'
 									+'<tbody>'
 										+'<tr>'
-											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong></td>'
+											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+sessionmno+'" data-listno="'+j+'">'+sessionnick+'</a></strong></td>'
 											+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
 											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 										+'</tr>'
@@ -799,6 +855,7 @@ $(document).ready(function(){
 	}// end getAlldata()
 	
 	function getAllApply(){
+		$('#joinmenu_count').text("현재까지 "+applylist.length+"명 신청중입니다.");
 		var tr ='<tr class="apply_th">'
 					+'<th class="table_check"><input id="allCheck" type="checkbox"/></th>'
 					+'<th class="table_name">신청자</th>'
@@ -896,10 +953,10 @@ $(document).ready(function(){
 						'Content-Type':'application/json',
 						'X-Http-Method-Ovveride':'PUT'
 					},
-					data: JSON.stringify({
+				/* 	data: JSON.stringify({
 						approval: 1,
 						list_no: no
-					}),
+					}), */
 					success: function(result){
 							if(result == 'success'){
 								
@@ -983,6 +1040,30 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 			 
 });	
 
+// 여행 신청하기
+$('#joinmenu_apply').click(function(){
+	var mnoString = $('#mno').val();
+	$.ajax({
+		type:'post',
+		url:'/project03/tour/detail/apply/insert/'+trip_no+'/'+mnoString,
+		headers:{
+			'Content-Type':'application/json',
+			'X-HTTP-Method-Override':'POST'
+		},
+		data: JSON.stringify({
+			trip_no: trip_no,
+			mno: mnoString
+		}),
+		success: function(result){
+			if(result == 1){
+				alert('여행 신청 성공');
+				getAlldata();
+			}
+		}
+	});// end ajax;
+});
+
+
 $('#context_profile').on('click','.btn_context',function(){
 	
 	var alistno = $('#context_listno').val();
@@ -1003,7 +1084,9 @@ $('#context_profile').on('click','.btn_context',function(){
 			},
 			success: function(result){
 					src = result;
+
 					 $('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');
+
 				
 			}
 	});
@@ -1108,7 +1191,6 @@ $(function(){
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
 });
-
 
 
 

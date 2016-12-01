@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
 import edu.spring.project03.persistence.TourReviewDAO;
 
@@ -17,6 +18,8 @@ public class TourReviewServiceImpl implements TourReviewService {
 	@Autowired
 	private TourReviewDAO tourReviewDAO;
 	
+	
+	// Create	
 	@Override
 	public int createReview(ReviewVO reviewvo) {
 		logger.info("createReview() 호출...");
@@ -32,7 +35,18 @@ public class TourReviewServiceImpl implements TourReviewService {
 	} // end createThumnail(imgvo)
 	
 	@Override
+	public int createRegion(ReviewRegionVO reviewregionvo) {
+		logger.info("createRegion() 호출...");
+		
+		return tourReviewDAO.insertRegion(reviewregionvo);
+	} // end createRegion(reviewregionvo)
+	
+	
+	
+	// Read	
+	@Override
 	public int readReview_no(ReviewVO reviewvo) {
+		logger.info("readReview_no() 호출...");
 
 		return tourReviewDAO.selectReview_no(reviewvo);
 	} // end readReview_no(reviewvo)

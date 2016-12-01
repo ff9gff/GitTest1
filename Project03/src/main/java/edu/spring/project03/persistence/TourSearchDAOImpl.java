@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
+import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 @Repository
@@ -31,11 +32,7 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 		return list;
 	}
 	
-	@Override
-	public List<ImgVO> select_region_image(ImgVO vo) {
-		List<ImgVO> list = sqlSession.selectList(NAMESPACE2 + ".select_trip_region_image", vo);
-		return list;
-	}
+
 
 	@Override
 	public TourRegisterVO select_trip_by_no(int trip_no) {
@@ -57,5 +54,17 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	public List<String> select_trip_region_name(int trip_no) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE2+".select_trip_region_name", trip_no);
+	}
+
+	@Override
+	public List<TourRegisterVO> select_main_title_info(TourRegisterVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2 + ".select_main_trip_title", vo);
+	}
+
+	@Override
+	public List<RegionVO> select_main_region_info(TourRegisterVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2 + ".select_main_trip_region", vo);
 	}
 }

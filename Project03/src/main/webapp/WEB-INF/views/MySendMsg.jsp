@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>      
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -31,7 +31,7 @@ li {
 <body>
 
 <table>
-<caption>받은 쪽지함</caption>
+<caption>보낸 쪽지함</caption>
     <tr>
         <th>번호</th>
         <th>작성자</th>
@@ -86,7 +86,24 @@ li {
 </table>
 	<br/>
 	
+<script type="text/javascript">
 
+
+function OpenPop(url,name,width,height)
+{
+	 alert('hi');
+    window.open("", "pop", "width=600, height=400"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
+    document.form2.action = "testMyGet"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.
+    document.form2.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
+    document.form2.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
+    document.form2.submit(); // target에 쏜다.
+
+    
+}
+
+
+</script>
+	
 	
 	
 
@@ -167,24 +184,6 @@ $(document).ready(function() {
 </script>
 
 
-<script type="text/javascript">
-
-
-function OpenPop(url,name,width,height)
-{
-	 alert('여기는 send Msg 입니다. alert');
-    window.open("", "pop", "width=600, height=400"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
-    document.form2.action = "testMyGet"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.
-    document.form2.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
-    document.form2.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
-    document.form2.submit(); // target에 쏜다.
-
-    
-}
-
-
-</script>
-	
 
 
 
