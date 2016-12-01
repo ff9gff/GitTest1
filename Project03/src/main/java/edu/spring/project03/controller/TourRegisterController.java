@@ -99,6 +99,8 @@ public class TourRegisterController {
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
+		
+		logger.info(""+regionvo);
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());

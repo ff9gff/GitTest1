@@ -313,22 +313,31 @@ http://www.templatemo.com/tm-406-flex
 			// 기간 검색: 해당 기간의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getThumnails_By_Period() {
 				
-				var url = '/project03/index/' + $('#start_date').val() + "/" + $('#end_date').val();
+				// wm_image 리스트
+				imageList = [];
+				// wm_tour 리스트(제목)
+				titleList = [];
+				// wm_tour_region 리스트(지역)
+				regionList = [];
 				
-				$.getJSON(url, function(data) {
-					var list = '';
-
+				var url1 = '/project03/index/image/' + $('#start_date').val() + "/" + $('#end_date').val();
+				$.getJSON(url1, function(data) {
 					$(data).each(function() {
-	
-						list += '<div class="portfolio-item col-md-3 col-sm-6">'
-								+ '<div class="portfolio-thumb">'
-								+ '<figure>'
-								+ '<a href="tour/detail?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
-								+ '<div>제목: ' + this.content_no + '</div>'
-								+ '<div>지역: ' + this.content_no + '</div>'
-								+ '</figure>'
-								+ '</div>'
-								+ '</div>';
+						imageList.push({board_type: this.board_type});	
+					});
+					
+					var url2 = '/project03/index/title/' + $('#start_date').val() + "/" + $('#end_date').val();
+					$.getJSON(url2, function(data) {
+						$(data).each(function() {
+							titleList.push({});	
+						});
+						
+						var url3 = '/project03/index/region/' + $('#start_date').val() + "/" + $('#end_date').val();
+						$.getJSON(url3, function(data) {
+							$(data).each(function() {
+								regionList.push({});	
+							});
+						});
 					});
 	
 					$('#toursearch').html(list);
@@ -363,18 +372,14 @@ http://www.templatemo.com/tm-406-flex
 				
 				if (start_date == "" || end_date == "") {
 					alert('검색할 기간을 선택하세요');		
-				} else {	
-					
+				} else {				
 					alert('기간 검색 메소드 호출');
-					getThumnails_By_Period();
-						
+					getThumnails_By_Period();			
 				}
 			}); 
 			
 			$('#tour_register').click(function() {
-				
 				location = 'tour/GoRegister';
-				
 			});
 			
 			$("#start_date, #end_date").datepicker({
