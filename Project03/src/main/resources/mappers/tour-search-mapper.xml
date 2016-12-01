@@ -4,8 +4,30 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.spring.project03.TourSearchMapper">
+	
+	
+	<select id="select_main_image_region" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type = 1 and content_no in (select trip_no from wm_tour_region
+												where region_name like #{region_name})
+	</select>
 
-	<select id="select_trip_date" resultType="edu.spring.project03.domain.ImgVO">
+	<select id="select_main_title_region" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour 
+        where trip_no in (select trip_no from wm_tour_region
+						  where region_name like #{region_name})
+	</select>
+ 
+ 	<select id="select_main_region_region" resultType="edu.spring.project03.domain.RegionVO">
+ 		select * from wm_tour_region
+ 		where trip_no in (select trip_no from wm_tour_region
+						  where region_name like #{region_name})
+ 	</select>
+	
+	
+
+
+	<select id="select_main_trip_image" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
 		where board_type = 1 and content_no in (select trip_no from wm_tour 
                             					where start_date <![CDATA[<]]> to_date(#{end_date},'YYYY-MM-DD')+1
@@ -49,6 +71,11 @@
 	
 	<select id="select_trip_region_name" resultType = "String">
 		select region_name from wm_tour_region
+		where trip_no = #{trip_no}
+	</select>
+	
+	<select id="select_register_data" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
 		where trip_no = #{trip_no}
 	</select>
 

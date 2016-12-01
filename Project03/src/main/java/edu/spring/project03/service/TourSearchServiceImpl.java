@@ -48,7 +48,7 @@ public class TourSearchServiceImpl implements TourSearchService {
 	}
 	
 	@Override
-	public List<String> read_trip_region_name(int trip_no) {
+	public String read_trip_region_name(int trip_no) {
 		// TODO Auto-generated method stub
 		return dao.select_trip_region_name(trip_no);
 	}
@@ -69,5 +69,17 @@ public class TourSearchServiceImpl implements TourSearchService {
 	public TourRegisterVO readRegisterData(int trip_no) {
 		// TODO Auto-generated method stub
 		return dao.select_register_data(trip_no);
+	}
+
+	@Override
+	public List<TourRegisterVO> read_main_title_region(String region) {
+		// TODO Auto-generated method stub
+		return dao.select_main_title_region(region);
+	}
+
+	@Override
+	public List<RegionVO> read_main_region_region(String region) {
+		// TODO Auto-generated method stub
+		return dao.select_main_region_region(region);
 	}
 }
