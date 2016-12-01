@@ -77,13 +77,16 @@ public class TourRegisterController {
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
 			String region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
 			model.addAttribute("tourVO", tourVO);
+			if(person != null){
 			model.addAttribute("inserterNickname", person.getNickname());
 			model.addAttribute("inserterIntro", person.getIntroduce());
-			logger.info("inserterIntro: " + person.getIntroduce());
+			}
+			if(img != null){
 			model.addAttribute("inserterImg", img.getImg_url());
-			logger.info("inserterImg: " + img.getImg_url());
+			}
+			if(region != null){
 			model.addAttribute("inserterRegion", region);
-			logger.info("inserterRegion: " + region);
+			}
 		}
 
 		return "tour/detail";

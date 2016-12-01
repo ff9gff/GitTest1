@@ -26,5 +26,12 @@
 		select review_no from wm_review
 		where (title = #{title} and content = #{content} and mno = #{mno})
 	</select>
+	
+	<select id="select_review-register_data" resultType="edu.spring.project03.domain.ReviewVO">
+		select * from wm_review
+		where review_no = #{review_no }
+	</select>
+	
+<!-- Delete -->
     
 </mapper>
