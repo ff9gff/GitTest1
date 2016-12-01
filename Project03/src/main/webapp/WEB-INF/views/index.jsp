@@ -323,8 +323,6 @@ http://www.templatemo.com/tm-406-flex
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				
-	
 				var url1 = '/project03/index/image/' + $('#start_date').val() + "/" + $('#end_date').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
@@ -341,7 +339,13 @@ http://www.templatemo.com/tm-406-flex
 						var url3 = '/project03/index/region/' + $('#start_date').val() + "/" + $('#end_date').val();
 						$.getJSON(url3, function(data3) {
 							$(data3).each(function() {
-								regionList.push({region_name: this.region_name, trip_no: this.trip_no});	
+								var name = this.region_name.split(",");
+								var tagname = '';
+								for(var i=0; i<name.length; i++){
+									tagname +="#"+name[i]+" ";
+								}
+								
+								regionList.push({region_name: tagname, trip_no: this.trip_no});	
 							});
 						
 							for (var i = 0; i < imageList.length; i++) {
