@@ -416,7 +416,7 @@ font-size: 12px;
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
 
-<c:if test="${mno ne tourVO.mno}">
+<c:if test="${mno ne tourVO.mno && not empty login_id}">
 	<div id="joinmenu">
 		<p id="joinmenu_count">몇명이 참여중이다</p>
 		<button id="joinmenu_apply">신청하기</button>
@@ -1065,14 +1065,14 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 // 여행 신청하기
 $('#joinmenu_apply').click(function(){
 	// 승인된 인간만 누를 수 있도록
-	if(sessionaut != 0){
+	if(sessionaut != 0 ){
 		// 중복 안되게
 		var apply_value = false;
 		var length = 0;
 		for(var i=0; i<applylist.length; i++){
 			if(applylist[i].mno != sessionmno){
 				length++;
-				if(length == applylist.length){
+				if(length == applylist.length || applylist.length==0){
 					apply_value = true;
 				}
 			}
