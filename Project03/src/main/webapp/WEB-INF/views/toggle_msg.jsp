@@ -37,17 +37,21 @@ textarea{
 </style>
 </head>
 <body>
+
 <div style="width: 380px; height: 480px;">
 	<div id="msg_header"><img src="../resources/theme/images/msg.png" style="width: 30px; height: 30px;">쪽찌쓰기</div>
-	<input type="text" value="관리자(히든)" hidden/>
+	<input type="text" value="${msg_setter }" />
 	<div id="msg_send">
-		<span>받는사람</span><span>지구</span>
+		<span style="font-weight: 800;">받는사람</span><span>${msg_getnick }</span>
 	</div>
 	<div id="msg_text">
 		<textarea>내용이다</textarea>
 	</div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
 
+</script>
 </body>
 </html>

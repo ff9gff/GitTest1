@@ -361,6 +361,7 @@ font-size: 12px;
 
 <div id="contextmenu" hidden>
 	<input hidden type="number" name="mno" id="context_mno"/>
+	<input hidden type="text" name="context_nickname" id="context_nickname"/>
 	<input hidden type="number" name="listno" id="context_listno"/>
 	<input hidden type="text" id="context_type"/>
 	<ul id="context_ul">
@@ -423,7 +424,11 @@ font-size: 12px;
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
 
-<button id="popup">열러라 팝업창</button>
+<form id="msg_form" method="post" action="toggle_msg" target="msg">
+	<input type="hidden" id="msg_setter" name="msg_setter" value="${mno }"/>
+	<input type="hidden" id="msg_getter" name="msg_getter"/>
+	<input type="hedden" id="msg_getnick" name="msg_getnick"/>
+</form>
 
 <c:if test="${mno ne tourVO.mno && not empty login_id}">
 	<div id="joinmenu">
@@ -1043,6 +1048,7 @@ $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 	$('#context_mno').val(amno);
 	$('#context_listno').val(alistno);
 	$('#context_type').val("apply");
+	$('#context_nickname').val($(this).text());
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
@@ -1062,6 +1068,7 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 	$('#context_mno').val(amno);
 	$('#context_listno').val(alistno);
 	$('#context_type').val("reply");
+	$('#context_nickname').val($(this).text());
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
@@ -1177,8 +1184,15 @@ $('#context_board').on('click','.btn_context',function(){
 });
 
 $('#context_msg').on('click','.btn_context',function(){
+	var msg_nickname = $('#context_nickname').val();
 	var amno = $('#context_mno').val();
-	alert(amno+'번째 회원 쪽지보내기');
+	var msg_setter =  $('#msg_setter').val();
+	$('#msg_getter').val(amno);
+	$('#msg_getnick').val(msg_nickname);
+	var f = document.getElementById('msg_form');
+	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
+	window.open('',"msg" ,popOption);
+	f.submit();
 });
 
 // 날짜 계산
@@ -1243,11 +1257,7 @@ $(function(){
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
 });
 
-$('#popup').click(function(){
-	var popUrl = "toggle_msg";
-	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
-	window.open(popUrl,"쪽지다" ,popOption);
-});
+
 
 
 }); // end document.ready();
