@@ -1,15 +1,25 @@
 package edu.spring.project03.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.request;
+
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.util.UrlPathHelper;
 
 import edu.spring.project03.domain.MsgDTO;
 
@@ -34,14 +44,32 @@ public class SendMSGcontroller {
 
 	// 메세지 보내는 코드
 	@RequestMapping(value = "/sendMsgU", method = RequestMethod.POST)
-	public String sendMSGU(String sd_mno, String nickname, String msg_content) {
-
+	public String sendMSGU(int sd_mno, String nickname, String msg_content,String sd_url, RedirectAttributes attr, HttpServletRequest request) {
+		System.out.println("msg_userid - > " + sd_mno);
+		System.out.println("msg_nickname - > " + nickname);
 		logger.info("userid - > " + sd_mno); // content 넘어 가는 거 확인
 		logger.info("neckname " + nickname);
 		logger.info("msg_content" + msg_content);
+		
+		String requestUrl = request.getRequestURI().toString();
+		System.out.println("requestUrl:"+requestUrl);
+	
+		
+		String sendUrl = "redirect:"+sd_url;
+		System.out.println("어디서 부른거니!111 =====> "+sendUrl);
+		
+		
 
-		searchUserService.sendMsgTO(sd_mno, nickname, msg_content);
-		return "redirect:admin";
+		int result = searchUserService.sendMsgTO(sd_mno, nickname, msg_content);
+		
+		if(result ==1){
+			attr.addFlashAttribute("insert_result","success");
+		}else{
+			attr.addFlashAttribute("insert_result","fail");
+		}
+		
+		return sendUrl;
+	
 	}
 
 	//메세지 함을 확인 합니다. 일단 mno를 6으로 설정합니다. 나중에 합칠 경우에 대비해서 미리 적어 둔다 . 

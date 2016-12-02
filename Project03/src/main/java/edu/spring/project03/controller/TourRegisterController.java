@@ -105,6 +105,13 @@ public class TourRegisterController {
 		
 		return "toggle_msg";
 	}
+	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
+	public String toggleMsg() {
+	
+		
+		return "toggle_msg";
+	}
 
 	// 메인에서 "여행 등록하러 가기" 클릭 --> 새로운 여행 일정 등록하러 가기
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
