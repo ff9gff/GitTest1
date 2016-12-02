@@ -380,7 +380,7 @@ font-size: 12px;
 
 
 <!-- 회원가입/로그인 부분 -->
-	<%@ include file="../top_header.jspf"  %>
+	<%@ include file="../top_header.jsp"  %>
 
 
 	<!-- 헤더 메인부분 -->
@@ -415,6 +415,8 @@ font-size: 12px;
 	</div>
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
+
+<button id="popup">열러라 팝업창</button>
 
 <c:if test="${mno ne tourVO.mno && not empty login_id}">
 	<div id="joinmenu">
@@ -1234,7 +1236,11 @@ $(function(){
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
 });
 
-
+$('#popup').click(function(){
+	var popUrl = "toggle_msg";
+	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
+	window.open(popUrl,"쪽지다" ,popOption);
+});
 
 
 }); // end document.ready();
