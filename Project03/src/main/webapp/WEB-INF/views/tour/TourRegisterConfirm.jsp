@@ -119,6 +119,10 @@
 				getDeleteTour();
 				location = '../index';
 			})
+			
+			$("#okbutton").click(function() {
+				location = '../tour/TourBoard';
+			})
 
 			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getDeleteTour() {
@@ -197,6 +201,7 @@
 						
 					<input type="button" id="updatebutton" value="수정" />
 					<input type="button" id="cancelbutton" value="삭제" />
+					<input type="button" id="okbutton" value="확인" />
 					<input type="button" id="homebutton" value="홈으로" />
 					
 				</div>

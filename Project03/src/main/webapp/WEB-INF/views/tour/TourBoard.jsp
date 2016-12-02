@@ -112,21 +112,21 @@ http://www.templatemo.com/tm-406-flex
 				<div>
 	
 						<p>
-							<input type="text" id="region_name" name="region_name"
-								placeholder="지역이름">
+							<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+							<button type="button" id="region_search">장소 검색</button>
+						</p>
+
+						<br /><br />
+					
+						<p>	
+							<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
+							<input type="text" id="end_date" name="end_date" placeholder="종료일">
+							<button type="button" id="period_search">기간 검색</button> <br /><br /><br />
 						</p>
 	
 						<br />
 	
-						<p>
-							<input type="text" id="start_date" name="start_date"
-								placeholder="시작일"> ~ <input type="text" id="end_date"
-								name="end_date" placeholder="종료일">
-						</p>
-	
-						<br />
-	
-						<div>
+						<!-- <div>
 							성별 조건: <br /> 남자 <input type="radio" name="condition_sex"
 								value="1" /> 여자 <input type="radio" name="condition_sex"
 								value="2" /> 조건없음 <input type="radio" name="condition_sex"
@@ -141,20 +141,12 @@ http://www.templatemo.com/tm-406-flex
 								value="2" /> 40대 <input type="radio" name="condition_age"
 								value="3" /> 50대 <input type="radio" name="condition_age"
 								value="4" />
-						</div>
+						</div> -->
 		
 						<br />
 						
-					<button type="button" id="region_search">검색하기</button>
 				</div>
 				
-				<br />
-				
-				
-					
-				<br /> <br />
-
-
 				<div class="row" id="tourDetailSearch">
 					
 					<!-- /.col-md-3 -->
@@ -268,7 +260,7 @@ http://www.templatemo.com/tm-406-flex
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url1	 = '/project03/index/regionimage/' + $('#region_name').val();
+				var url1 = '/project03/index/regionimage/' + $('#region_name').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
 						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
@@ -415,7 +407,7 @@ http://www.templatemo.com/tm-406-flex
 		
 
 			// 기간 검색 버튼 처리			
-			$('#region_search').click(function(){
+			$('#period_search').click(function(){
 				
 				var start_date = $('#start_date').val();
 				var end_date = $('#end_date').val();
