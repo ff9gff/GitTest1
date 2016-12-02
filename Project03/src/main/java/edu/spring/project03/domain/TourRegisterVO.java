@@ -117,5 +117,11 @@ public class TourRegisterVO {
 	public void setExpire(int expire) {
 		this.expire = expire;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return title;
+	}
 
 }

@@ -49,9 +49,6 @@ public class TourRegisterController {
 	// 커밋만 하면 로컬리파지토리에만 저장된다.
 	// 로컬에서 푸시를 해야 git허브에 저장된다
 
-	@Autowired
-	private TourRegisterService service;
-
 	@Resource(name = "imageView")
 	ImageView imageView;
 
@@ -64,41 +61,52 @@ public class TourRegisterController {
 	@Autowired
 	private TourRegisterService tourRegisterService;
 
+	// 메인에서 지역/기간 검색 후 뜨는 사진을 클릭했을 때 
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String tourRegister3(int trip_no, Model model) {
 		logger.info("FTourRegister.jsp 소환");
 		logger.info("trip_no: " + trip_no);
 
 		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
+		
 
 		if (tourVO != null) {
 			logger.info("mno: " + tourVO.getMno());
 			ImgVO img = tourSelectService.read_trip_profile(tourVO.getMno());
+			logger.info("img: " + img);
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
-			List<String> region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
+			String region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
 			model.addAttribute("tourVO", tourVO);
+			if(person != null){
 			model.addAttribute("inserterNickname", person.getNickname());
 			model.addAttribute("inserterIntro", person.getIntroduce());
+			}
+			if(img != null){
 			model.addAttribute("inserterImg", img.getImg_url());
+			}
+			if(region != null){
 			model.addAttribute("inserterRegion", region);
+			}
 		}
 
 		return "tour/detail";
 
 	}
 
-	// 여행 일정 등록하러 가자
+	// 메인에서 "여행 등록하러 가기" 클릭 --> 새로운 여행 일정 등록하러 가기
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
 	public String createRegister2() {
 		return "tour/TourRegister";
 	}
 
-	// 여행 일정 insert!
+	// 새 여행 일정 등록 / DB insert!
 	@RequestMapping(value = "/TourRegisterInsert", method = RequestMethod.POST)
 	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		ImageFile fileInfo = imageService.save(imageFile);
+		
+		logger.info(""+regionvo);
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
@@ -112,38 +120,33 @@ public class TourRegisterController {
 			logger.info("mno 확인: " + tourregistervo.getMno());
 
 			// 이상 없으면 여행등록 DB insert!
-			int result = service.create(tourregistervo);
+			int result = tourRegisterService.create(tourregistervo);
 
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 등록 성공");
 
 				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자
-				tourregistervo = new TourRegisterVO(0, tourregistervo.getMno(), tourregistervo.getTitle(), 0, 0,
-						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
-						0);
-				int content_no = service.readTrip_no(tourregistervo);
+				int content_no = tourRegisterService.readTrip_no(tourregistervo);
 				logger.info("insert content_no: " + content_no);
 
-				tourregistervo = new TourRegisterVO(content_no, tourregistervo.getMno(), tourregistervo.getTitle(),
-						tourregistervo.getCondition_sex(), tourregistervo.getCondition_age(),
-						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
-						0);
+				tourregistervo = tourSelectService.readRegisterData(content_no);
 
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);
 				modelMap.put("imageFile", fileInfo);
 
 				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = service.createThumnail(imagevo);
-				model.addAttribute("vo3", imagevo);
-				logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());
+				int result2 = tourRegisterService.createThumnail(imagevo);
 
 				if (result2 == 1) {
-					logger.info("썸네일 등록 성공");
+					logger.info("썸네일 등록 성공");					
+					
+					model.addAttribute("vo3", imagevo);
+					logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
 
 					String region_name = regionvo.getRegion_name();
 					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
-					int result3 = service.createRegion(regionvo2);
+					int result3 = tourRegisterService.createRegion(regionvo2);
 
 					if (result3 == 1) {
 						logger.info("장소 등록 성공");
@@ -164,7 +167,7 @@ public class TourRegisterController {
 
 	}
 
-	// insert 후 수정할지 말지 정하는 페이지. 수정 누르면 수정(TourRegisterUpdate) 페이지로 넘어간다
+	// DB insert 후 수정할지 말지 정하는 페이지. 수정 누르면 수정(TourRegisterUpdate) 페이지로 넘어간다
 	@RequestMapping(value = "/TourRegisterComplete", method = RequestMethod.POST)
 	public String tourUpdate(TourRegisterVO tourregistervo, RegionVO regionvo, @RequestParam MultipartFile imageFile,
 			ModelMap modelMap, Model model) {
@@ -208,7 +211,7 @@ public class TourRegisterController {
 			logger.info("mno: " + tourregistervo.getMno());
 			logger.info("trip_no: " + tourregistervo.getTrip_no());
 
-			int result = service.update(tourregistervo);
+			int result = tourRegisterService.update(tourregistervo);
 
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 수정 성공");
@@ -217,18 +220,18 @@ public class TourRegisterController {
 				tourregistervo = new TourRegisterVO(0, tourregistervo.getMno(), tourregistervo.getTitle(), 0, 0,
 						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
 						0);
-				int content_no = service.readTrip_no(tourregistervo);
+				int content_no = tourRegisterService.readTrip_no(tourregistervo);
 				logger.info("update content_no" + content_no);
 
 				ImgVO imgvo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = service.updateThumnail(imgvo);
+				int result2 = tourRegisterService.updateThumnail(imgvo);
 
 				if (result2 == 1) {
 					logger.info("썸네일 수정 성공");
 
 					String region_name = regionvo.getRegion_name();
 					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
-					int result3 = service.updateRegion(regionvo2);
+					int result3 = tourRegisterService.updateRegion(regionvo2);
 
 					if (result3 == 1) {
 						logger.info("장소 수정 성공");
@@ -249,7 +252,7 @@ public class TourRegisterController {
 		return "tour/TourRegisterConfirm";
 	}
 
-	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다
+	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다(detail)
 	@RequestMapping(value = "/TourRegisterInsert/{trip_no}", method = RequestMethod.GET)
 	public void ajaxDeleteTest(@PathVariable("trip_no") int trip_no) {
 		logger.info("여행 번호: " + trip_no);
@@ -275,7 +278,7 @@ public class TourRegisterController {
 		}
 	}
 
-	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다
+	// 여행 정보 등록 후 수정페이지에서 삭제하려고 할 때 : 삭제 후 TourRegister로 돌아간다
 	@RequestMapping(value = "/TourRegisterCheck/{trip_no}", method = RequestMethod.GET)
 	public void ajaxDeleteTest2(@PathVariable("trip_no") int trip_no) {
 		logger.info("여행 번호: " + trip_no);
@@ -301,7 +304,7 @@ public class TourRegisterController {
 		}
 	}
 
-	//
+	
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "tour/TourRegister";
@@ -314,7 +317,6 @@ public class TourRegisterController {
 
 	@RequestMapping("/cancelTourRegister3")
 	public String tourRegisterConfirm() {
-
 		return "/TourRegisterComplete";
 	}
 

@@ -8,12 +8,10 @@ public interface TourRegisterService {
 
 	// 여행 등록(내용 등록)
 	public abstract int create(TourRegisterVO vo);
-
-	// 여행 등록(썸네일 이미지 등록)
-	public abstract int createThumnail(ImgVO vo);
-
+	// 여행 등록 후 썸네일/장소 등록을 위해 trip_no 찾기
 	public abstract int readTrip_no(TourRegisterVO vo);
-
+	// 썸네일 이미지 등록
+	public abstract int createThumnail(ImgVO vo);
 	// 여행 장소 등록
 	public abstract int createRegion(RegionVO vo);
 

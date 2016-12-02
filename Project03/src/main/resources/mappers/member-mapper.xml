@@ -44,6 +44,10 @@
       values(#{mno}, #{name}, #{sex}, #{age}, #{nickname}, #{phone}, #{address},
       #{introduce}, #{email})
    </insert>
+   
+   <select id="get-nickname" resultType="String">
+      select nickname from wm_personal where mno = #{mno}
+   </select>
 
    <!-- WM_IMAGE -->
    <insert id="profile-insert">
