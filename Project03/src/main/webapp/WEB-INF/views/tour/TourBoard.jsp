@@ -97,7 +97,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>이벤트</h2>
+								<h2>참여하고 싶은 여행을 검색해보세요</h2>
 							</div>
 						</li>
 					</ul>
@@ -113,66 +113,29 @@ http://www.templatemo.com/tm-406-flex
 
 	<div class="content-section" id="services">
 		<div class="container">
-			<div class="row">
-				<div class="heading-section col-md-12 text-center">
-					<h2>여행 게시판</h2>
-					<p>참여하고 싶은 여행을 검색해보세요</p>
-				</div>
-				<!-- /.heading-section -->
-			</div>
-			<!-- /.row -->
+			<div>
 
-			<div class="row">
-				<button id="btn_create_tour"
-					style="float: right; margin-right: 13px">여행 등록</button>
-			</div>
-
-			<div id="best_top4">
-
-				<h3 class="h3" style="font: bold;">여행 조건 상세 검색</h3>
+				<h3 class="h2" style="font: bold;">여행 조건 상세 검색 <button id="btn_create_tour" style="float: right; margin-right: 13px">여행 등록</button> </h3>
+				
 				<br /><br />
 
 				<div>
-	
-						<p>
-							<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-							<button type="button" id="region_search">장소 검색</button>
-						</p>
+					<p>
+						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+						<button type="button" id="region_search">장소 검색</button>
+					</p>
 
-						<br /><br />
-					
-						<p>	
-							<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-							<input type="text" id="end_date" name="end_date" placeholder="종료일">
-							<button type="button" id="period_search">기간 검색</button> <br /><br /><br />
-						</p>
-	
-						<br />
-	
-						<!-- <div>
-							성별 조건: <br /> 남자 <input type="radio" name="condition_sex"
-								value="1" /> 여자 <input type="radio" name="condition_sex"
-								value="2" /> 조건없음 <input type="radio" name="condition_sex"
-								value="3" />
-						</div>
-	
-						<br />
-	
-						<div>
-							연령 조건: <br /> 20대 <input type="radio" name="condition_age"
-								value="1" /> 30대 <input type="radio" name="condition_age"
-								value="2" /> 40대 <input type="radio" name="condition_age"
-								value="3" /> 50대 <input type="radio" name="condition_age"
-								value="4" />
-						</div> -->
-		
-						<br />
+					<br /><br />
+				
+					<p>	
+						<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
+						<input type="text" id="end_date" name="end_date" placeholder="종료일">
+						<button type="button" id="period_search">기간 검색</button> <br /><br /><br />
+					</p>
 						
 				</div>
 				
 				<div class="row" id="tourDetailSearch">
-					
-					<!-- /.col-md-3 -->
 				</div>
 				<!-- /.row -->
 			</div>
