@@ -51,6 +51,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public ReviewVO selectReviewRegister_data(int review_no) {
 		
+		System.out.println("리뷰 번호: " + review_no);
 		return sqlSession.selectOne(NAMESPACE + "select_review-register_data", review_no);
 	} // end selectRegister_data(review_no)
 	

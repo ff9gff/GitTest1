@@ -6,7 +6,10 @@ public class ReviewRegionVO {
 	private String region_name;
 	private int region_no;
 	
-	public ReviewRegionVO() {}
+	public ReviewRegionVO() {
+		
+	}
+	
 	public ReviewRegionVO(int review_no, String region_name, int region_no) {
 		this.review_no = review_no;
 		this.region_name = region_name;

@@ -78,11 +78,14 @@ public class TourReviewController {
 				int review_no = tourReviewService.readReview_no(reviewvo);
 				logger.info("reviewNo : " + review_no);
 
-				reviewvo = tourReviewService.readReviewRegisterData(review_no);
-				model.addAttribute("reviewvo", reviewvo);
+				/*reviewvo = tourReviewService.readReviewRegisterData(review_no);
+				model.addAttribute("reviewvo", reviewvo);*/
 
 				String region_name = reviewregionvo.getRegion_name();
+				logger.info("후기 지역: " + region_name);
+				
 				ReviewRegionVO reviewRegionvo2 = new ReviewRegionVO(review_no, region_name, 0);
+				
 				int reviewRegion_result = tourReviewService.createRegion(reviewRegionvo2);
 				if (reviewRegion_result == 1) {
 				
@@ -91,7 +94,7 @@ public class TourReviewController {
 					model.addAttribute("reviewRegionvo", reviewRegionvo2);
 
 					ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-					int image_result = tourReviewService.createThumnail(imgvo);
+					int image_result = tourReviewService.createThumnail(imagevo);
 
 					if (image_result == 1) {
 						logger.info("썸네일 등록 성공");

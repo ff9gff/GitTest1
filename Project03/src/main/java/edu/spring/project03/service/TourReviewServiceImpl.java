@@ -56,6 +56,7 @@ public class TourReviewServiceImpl implements TourReviewService {
 	@Override
 	public ReviewVO readReviewRegisterData(int review_no) {
 		logger.info("readRegisterData() 호출...");
+		logger.info("review_no: " + review_no);
 		
 		return tourReviewDAO.selectReviewRegister_data(review_no);
 	} // end readRegisterData(int review_no)
