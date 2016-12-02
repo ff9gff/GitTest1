@@ -1069,14 +1069,19 @@ $('#joinmenu_apply').click(function(){
 		// 중복 안되게
 		var apply_value = false;
 		var length = 0;
+		
+		if(applylist.length==0){
+			apply_value = true;
+		}
 		for(var i=0; i<applylist.length; i++){
 			if(applylist[i].mno != sessionmno){
 				length++;
-				if(length == applylist.length || applylist.length==0){
+				if(length == applylist.length){
 					apply_value = true;
-				}
+				}	
 			}
 		}
+		console.log(apply_value + ", " + length + ", " + applylist.length);
 		
 		if(apply_value){
 			var mnoString = $('#mno').val();
