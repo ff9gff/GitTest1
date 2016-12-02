@@ -132,8 +132,6 @@ ul {
 					var list = '';
 
 					$(data).each(function() {
-						
-					alert("리스트 출력")
 					
 						console.log("this.content_no:"+this.content_no);
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
@@ -153,14 +151,12 @@ ul {
 			
 			// mno 검색 버튼 처리
 			$('#mytour').click(function() {
-				alert("나와라");
-	
+
 				var mytour_mno = ${mno};
 	
 				if (mytour_mno == "") {
 					alert('검색할 mno을 입력하세요');
 				} else {
-					alert('mno 검색 메소드 호출 ');
 					getThumnails_By_Mno();
 				}
 	

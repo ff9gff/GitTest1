@@ -29,7 +29,90 @@ public class TourSearchController {
 	public void main() {
 		logger.info("index.jsp 소환");
 	}
+	
+	// 지역 검색 Ajax 처리
+		// 해당 지역 검색 메소드
+		@RequestMapping(value = "/index/defaultimage/", method = RequestMethod.GET)
+		public ResponseEntity<List<ImgVO>> ajaxTotalImageTest() {
+			
+			ResponseEntity<List<ImgVO>> entity = null;
 
+			// List<ImgVO> list = tourSelectService.read_region(region_name);
+
+			if (list != null) {
+				// select 성공 한것이다.
+				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+				logger.info("지역 검색 성공 ");
+			} else {
+				// select 실패이다.
+				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+				logger.info("지역 검색 실패 ");
+			}
+
+			logger.info("entity " + entity.getBody());
+			// logger.info("list.mno "+ list.get(0).getUserid());
+			// 출력 됨
+			return entity;
+		}
+
+		// 지역 검색 Ajax 처리
+		// 해당 지역 썸네일 이미지 아래 제목 검색 메소드
+		@RequestMapping(value = "/index/defaulttitle/", method = RequestMethod.GET)
+		public ResponseEntity<List<TourRegisterVO>> ajaxTotalTitleTest(@PathVariable("region_name") String region_name) {
+			
+			logger.info("여행 지역: " + region_name);
+			ResponseEntity<List<TourRegisterVO>> entity = null;
+
+		    List<TourRegisterVO> list = tourSelectService.read_main_title_region(region_name);
+
+			if (list != null) {
+				// select 성공 한것이다.
+				entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+				logger.info("지역  - 제목 검색 성공 ");
+			} else {
+				// select 실패이다.
+				entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+				logger.info("지역  - 제목 검색 실패 ");
+			}
+
+			logger.info("entity " + entity);
+			// logger.info("list.mno "+ list.get(0).getUserid());
+			// 출력 됨
+			return entity;
+		}
+
+		// 지역 검색 Ajax 처리
+		// 해당 지역 썸네일 이미지 아래 지역 검색 메소드
+		@RequestMapping(value = "/index/defaultregion/{region_name}", method = RequestMethod.GET)
+		public ResponseEntity<List<RegionVO>> ajaxTotalRegionTest(@PathVariable("region_name") String region_name) {
+			logger.info("여행 지역: " + region_name);
+
+			ResponseEntity<List<RegionVO>> entity = null;
+
+
+			List<RegionVO> list = tourSelectService.read_main_region_region(region_name);
+
+			if (list != null) {
+				// select 성공 한것이다.
+				entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+				logger.info("지역  - 지역 검색 성공 ");
+			} else {
+				// select 실패이다.
+				entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+				logger.info("지역  - 지역 검색 실패 ");
+			}
+
+			logger.info("entity " + entity);
+			// logger.info("list.mno "+ list.get(0).getUserid());
+			// 출력 됨
+			return entity;
+		}
+	
+	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
 	@RequestMapping(value = "/index/regionimage/{region_name}", method = RequestMethod.GET)

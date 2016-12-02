@@ -38,7 +38,7 @@ textarea{
 </head>
 <body>
 <div style="width: 380px; height: 480px;">
-	<div id="msg_header"><img src="../resources/theme/images/msg.png" style="width: 30px; height: 30px;">쪽찌쓰기</div>
+	<div id="msg_header"><img src="../resources/theme/images/msg.PNG" style="width: 30px; height: 30px;">쪽찌쓰기</div>
 	<input type="text" value="관리자(히든)" hidden/>
 	<div id="msg_send">
 		<span>받는사람</span><span>지구</span>
