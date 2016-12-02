@@ -1,7 +1,5 @@
 package edu.spring.project03.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -196,14 +194,11 @@ public class TourRegisterController {
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-
 		} else {
 			logger.info("대실패 ");
-
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			model.addAttribute("vo", tourregistervo);
 			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);
@@ -340,8 +335,16 @@ public class TourRegisterController {
 		return "/TourRegisterComplete";
 	}
 
+	// index.jsp 에서 여행 게시판으로 갈때
 	@RequestMapping(value = "/tourBoard", method = RequestMethod.GET)
-	public String tourBoard() {
+	public String maintotourBoard() {
+		logger.info("여행선택 전체게시판");
+		return "tour/TourBoard";
+	}
+	
+	// 여행 등록 후 여행 게시판으로 갈때
+	@RequestMapping(value = "/TourBoard", method = RequestMethod.GET)
+	public String insertAftertourBoard() {
 		logger.info("여행선택 전체게시판");
 		return "tour/TourBoard";
 	}
