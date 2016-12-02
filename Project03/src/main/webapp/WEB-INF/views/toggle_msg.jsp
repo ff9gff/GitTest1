@@ -7,28 +7,44 @@
 <title>Insert title here</title>
 <style>
 #msg_header{
-	color: #ff5d3d; 
+	color:  #ff5d3d;
 	font-weight: bold; 
-	text-align: center;
 	font-size: 20px;
-	height: 40px;
+	height: 30px;
 	padding-top: 10px;
 }
 #msg_send{
-	border-top: 1px solid gray;
-}
 
+	border-bottom: 1px dotted lightgray;
+	height: 25px;
+	padding-top: 10px;
+
+}
+span{
+	padding-left: 25px;
+	padding-top: 5px;
+}
+#msg_text{
+	padding-left: 20px;
+	padding-top: 20px;
+}
+textarea{
+	 min-width:340px; 
+	 max-width:340px; 
+	 min-height:340px; 
+	 max-height:340px
+}
 </style>
 </head>
 <body>
 <div style="width: 380px; height: 480px;">
-	<div id="msg_header">쪽찌쓰기</div>
-	<input type="text" value="관리자(히든)"/>
+	<div id="msg_header"><img src="../resources/theme/images/msg.png" style="width: 30px; height: 30px;">쪽찌쓰기</div>
+	<input type="text" value="관리자(히든)" hidden/>
 	<div id="msg_send">
 		<span>받는사람</span><span>지구</span>
 	</div>
 	<div id="msg_text">
-		<textarea rows="20" cols="10">내용이다</textarea>
+		<textarea>내용이다</textarea>
 	</div>
 </div>
 
