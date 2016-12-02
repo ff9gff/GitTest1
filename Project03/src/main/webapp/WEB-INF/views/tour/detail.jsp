@@ -352,6 +352,11 @@ font-size: 12px;
 </style>
 </head>
 <body>
+
+<!-- 회원가입/로그인 부분 -->
+	<%@ include file="../top_header.jspf"  %>
+
+
 <div id="overlay"></div>
 
 <div id="contextmenu" hidden>
@@ -380,7 +385,9 @@ font-size: 12px;
 
 
 <!-- 회원가입/로그인 부분 -->
+
 	<%@ include file="../top_header.jsp"  %>
+
 
 
 	<!-- 헤더 메인부분 -->

@@ -42,7 +42,7 @@ http://www.templatemo.com/tm-406-flex
 <body>
         
     
-    <%@ include file="../top_header.jsp" %>
+    <%@ include file="../top_header.jspf" %>
     
     	<script>
 	

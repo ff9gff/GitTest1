@@ -124,7 +124,7 @@
 
 				<div class="wrap">
 		
-					<form action="review_detail" method="post" id="frm" enctype="multipart/form-data">
+					<form action="review_register" method="post" id="frm" enctype="multipart/form-data">
 					
 						<label for="imageFile">썸네일 이미지</label><br/>       
 					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>

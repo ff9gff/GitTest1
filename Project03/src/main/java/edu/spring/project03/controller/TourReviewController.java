@@ -40,8 +40,8 @@ public class TourReviewController {
 	@Autowired
 	private ImageService imageService;
 
-	@RequestMapping(value = "/totalReview", method = RequestMethod.GET)
-	public void totalReview() {
+	@RequestMapping(value = "/reviewBoard", method = RequestMethod.GET)
+	public void reviewBoard() {
 		// totalReview 페이지 이동
 
 	} // end totalReview()
@@ -52,8 +52,8 @@ public class TourReviewController {
 
 	} // end totalReview()
 
-	@RequestMapping(value = "/review_detail", method = RequestMethod.POST)
-	public void CreateReview(ReviewVO reviewvo, ReviewRegionVO reviewregionvo, ImgVO imgvo,
+	@RequestMapping(value = "/review_register", method = RequestMethod.POST)
+	public String CreateReview(ReviewVO reviewvo, ReviewRegionVO reviewregionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
 		// 썸네일 이미지 주소 생성
@@ -113,7 +113,8 @@ public class TourReviewController {
 				logger.info("후기 등록실패");
 			} // end if(review_result == 1)
 		} // end if (reviewvo != null && reviewregionvo != null)
-
+		
+		return"redirect:review_detail";
 	} // end CreateReview()
 	
 	
