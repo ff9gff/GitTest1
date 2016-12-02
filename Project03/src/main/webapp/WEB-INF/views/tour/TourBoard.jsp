@@ -48,11 +48,6 @@ http://www.templatemo.com/tm-406-flex
 
 	<div class="site-main" id="sTop">
 		<div class="site-header">
-			<div class="container">
-
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
 			<div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
@@ -68,9 +63,12 @@ http://www.templatemo.com/tm-406-flex
 									<i class="fa fa-bars"></i>
 								</div>
 								<ul class="menu-first">
-									<li><a href="index">메인</a></li>
+									<li class="active"><a href="index">메인</a></li>
+									<li><a href="#services">후기</a></li>
+									<li><a href="#portfolio">찾기</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
-									<li><a href="login">로그인</a></li>
+									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -84,6 +82,31 @@ http://www.templatemo.com/tm-406-flex
 			<!-- /.main-header -->
 		</div>
 		<!-- /.site-header -->
+		<div class="site-slider">
+			<div class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<div class="overlay"></div> <img
+							src="../resources/theme/images/slide1.jpg" alt="">
+							<div class="slider-caption visible-md visible-lg">
+								<h2>같이가자</h2>
+							</div>
+						</li>
+						<li>
+							<div class="overlay"></div> <img
+							src="../resources/theme/images/slide2.jpg" alt="">
+							<div class="slider-caption visible-md visible-lg">
+								<h2>이벤트</h2>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- /.flexslider -->
+			</div>
+			<!-- /.slider -->
+		</div>
+		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
 

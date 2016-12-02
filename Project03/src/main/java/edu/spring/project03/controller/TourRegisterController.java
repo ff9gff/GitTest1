@@ -1,7 +1,5 @@
 package edu.spring.project03.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -189,14 +187,11 @@ public class TourRegisterController {
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-
 		} else {
 			logger.info("대실패 ");
-
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			model.addAttribute("vo", tourregistervo);
 			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);
