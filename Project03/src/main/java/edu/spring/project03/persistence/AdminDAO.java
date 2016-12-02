@@ -26,4 +26,24 @@ public interface AdminDAO {
 	// 업데이트 하는 섭니다. 
 	public abstract int updateLevelOne(int mno);
 	
+	
+	// 유저의 정보를 레벨 2 로 관리자로 만듭니다. 
+	public abstract int updateLevelTwo(int mno);
+	
+	//블랙 리스트 다운 그래이드 
+	public abstract int downGradeTwo(int mno);
+	
+	
+	//전체 유저를 보여주는 화면입니다. user level =1 
+	public abstract List<DomainDTO> dominAlluserLeb1();
+	
+	
+	//전체 유저를 보여주는 화면입니다. user level =2 
+	public abstract List<DomainDTO> dominAllsubAdmin();
+	
+	//강등되는 회원에 대해서 소개하는 것입니다. 
+	public abstract int downGradeLevelMSG(int mno);
+	
+	//관리자로 승격하는 소개하는 말입니다,. 
+	public abstract int updateLevelTwoMSG(int mno);
 }

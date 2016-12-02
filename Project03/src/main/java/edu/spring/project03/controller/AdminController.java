@@ -78,7 +78,7 @@ public class AdminController {
 		
 		logger.info("vo "+ vo.getMsg_content());
 		//@ModelAttribute("msg_content")
-		
+		 
 		logger.info("msg.content 나와라 !"+msg_content);
 		if(msg_content ==null){
 			msg_content ="공지사항입니다.";
@@ -91,6 +91,35 @@ public class AdminController {
 		return "redirect:AdminMsg";
 	}
 	
+	
+
+	
+	
+	
+	
+	@RequestMapping(value="/AllMyUser" ,method=RequestMethod.GET)
+	public void AllMyUser(Model model){
+		
+		//여기서 세팅을 한다. 
+		//AllMyUser로 보내기 
+		List<DomainDTO> list2 = adminService.allMyActivUser();
+		logger.info("All 나의 활동 유저 페이지로 가자 소환 ");
+		model.addAttribute("newMemberList", list2);
+	}
+	@RequestMapping(value="/AllMySubAdmin" ,method=RequestMethod.GET)
+	public void AllMySubAdmin(Model model){
+		//AllMyUser로 보내기 
+		List<DomainDTO> list2 = adminService.allMySubAdminActivUser();
+		logger.info("All 나의 활동 유저 페이지로 가자 소환 ");
+		model.addAttribute("newMemberList", list2);
+		
+	}
+	
+	/*					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+				</li>
+				
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
+				</li>*/
 	
 	
 	

@@ -149,7 +149,7 @@ $(document).ready(function(){
  		 			    	+'<td id="mno_id('+table_len+')" value='+this.mno+'>' +this.mno+'</td>'
  		 			    	+'<td id="userid_id('+table_len+')">' +this.userid+'</td>'
  			   	 			+'<td><input type="button" id="upgrade" value="관리자" onclick="upgrade_row('+table_len+')"/>'
- 			   	 			+'<input type="button" id="delete" value="강퇴" onclick="delete_row('+table_len+')"/></td>'	
+ 			   	 			+'<input type="button" id="delete('+table_len+')" value="강퇴" onclick="delete_row('+table_len+')"/></td>'	
  		 			    +'</tr>';
  			  }); /*반복문 끝 */
  			
@@ -168,28 +168,118 @@ $(document).ready(function(){
 		 
 		 alert("안녕하세요 .");
 		 
+		 
+		 
+
 	 };
  				 
  	   
  	   
- 	   
- 	   
- 	   
- 	   
- 		
+ 	  
+	
+	
+	 
  		
  	});//end docu
  	
- 	
- 	
+
  	
  	</script>
 
 
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
+	
  	<script type="text/javascript">
  	
+ 	
+ 	function delete_row(no){
+		 
+ 		
+ 		
+		 alert("하이 " + no);
+		 var url1 =
+			   '/project03/users/deluser/'+no;
+//url: '/ex03/replies/' + rno,
+		 
+		 $.ajax({
+			 type:'get',
+			 url : url1,
+			 headers:{
+				 'Content-Type': 'application/json',
+					'X-HTTP-Method-Override': 'GET'
+			 },
+			 data: JSON.stringify({
+					no: no,
+				})
+			 
+			 
+			 
+			 
+			 
+		 });
+		 
+		 
+		 
+	 }//end delete _ row 
+ 	   
+ 	
+ 	
+	 function upgrade_row(no){
+		 
+	 		
+	 		
+		 alert("하이 " + no);
+		 var url1 =
+			   '/project03/users/num/'+no;
+//url: '/ex03/replies/' + rno,
+		 
+		 $.ajax({
+			 type:'get',
+			 url : url1,
+			 headers:{
+				 'Content-Type': 'application/json',
+					'X-HTTP-Method-Override': 'GET'
+			 },
+			 data: JSON.stringify({
+					no: no,
+				})
+			 
+			 
+			 
+			 
+			 
+		 });
+		 
+		 
+		 
+	 }//end delete _ row 
+ 	   
+ 	
+	 
+ 	
+ /*	
+ 	$('#btnUpdate').click(function() {
+		frm.attr('action', 'update'); // attr('속성이름', '속성값')
+		frm.attr('method', 'post');
+		frm.submit();
+	});
+ 
+ 
+ 
+	function delete_row(no)
+ 	{
+ 	 	
+ 		//	var name=document.getElementById("mno_id("+no+")").val;
+ 		alert('gggg' + no + name);
+ 	 	document.action = "testMyGet"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.	
+ 	 	//document.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
+ 	 	document.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
+ 	 	document.submit(); // target에 쏜다.
+ 	
+ 	}
+ 	*/
+ 
+ 	<%--
  	function delete_row22(no){
  		var name=document.getElementById("mno_id("+no+")").value();
  		
@@ -201,14 +291,14 @@ $(document).ready(function(){
  		
  	};
  	
- 	<%--
+ 	
  	var name_data=name.innerHTML;
  		name.innerHTML="<input type='text' id='mno_id("+no+")' value='"+name_data+"'>";
  		var name_val=document.getElementById("mno_id("+no+')').value;
  		document.getElementById("mno_id("+no+")").innerHTML=name_val;
  	
  	
- 	--%>
+
  	
 
  	function delete_row111(no)
@@ -241,19 +331,7 @@ $(document).ready(function(){
  	
  	
  	
- 	function delete_row(no)
- 	{
- 	 	
- 	var name=document.getElementById("mno_id("+no+")");
- 		
- 	 var name_data=name.innerHTML;
  
- 		
- 	 name.innerHTML="<input type='text' id='mno_id("+no+")' value='"+name_data+"'>";
- 	
-
- 	test(no);
- 	}
  	
  	
  	function test(no){
@@ -293,7 +371,7 @@ $(document).ready(function(){
  	
  	
  	
- 	
+ 	 	--%>
  	
  	</script>
 	

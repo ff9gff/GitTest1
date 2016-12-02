@@ -46,9 +46,9 @@ $(document).ready(function() {
 		location = '/project03/member/login';
 	});
 	
-	$('btnAdministrator').click(function() {
-		location = '/project03/';
-	})
+	$('#btnAdministrator').click(function() {
+		location = '/project03/admin';
+	});
 	
 	$('#btnMypage').click(function() {
 		location = '/project03/';

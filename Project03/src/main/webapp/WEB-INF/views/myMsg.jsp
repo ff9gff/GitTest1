@@ -13,13 +13,16 @@ table, th, td {
     border: 1px solid gray;
     border-collapse: collapse;
 }
+
 th {
     background-color: lightpink;
     border-left: 1px solid white;
 }
+
 ul {
     list-style-type: none;
 }
+
 li {
     display: inline-block;
 }
@@ -39,40 +42,17 @@ li {
         <th>받은 시간</th>
     </tr>
     
-    <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-   		 <td>안녕하세요 <td>
-   		 <td>2012/51/545</td>
-   	</tr>
-    
-      <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-    	<td>안녕하세요 <td>
-    	<td>2012/51/545</td>
-    </tr>
-      <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-    	<td>안녕하세요 <td>
-    	<td>2012/51/545</td>
-    </tr>
-      <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-   		 <td>안녕하세요 <td>
-   		 <td>2012/51/545</td>
-    </tr>
 
-    
     <!-- model.addAttribute("allList", allList); -->
     <c:forEach var="vo" items="${allList}">
     <tr>
-        <td><input type="checkbox"></td>
+        <td>${x=x+1 }</td>
         <td>${vo.nickname }</td>
         <td><form id="form2" name="form2">
         <input type="hidden" name="postdata" size="10" maxlength="10" value="${vo.msg_no }"/>   
+ 	    
+  	  	 		 	
+ 	  	   		
         </form>     
         <a href="javascript:OpenPop('', '', '', '');">${vo.msg_content }</a></td>
         <td>
@@ -87,10 +67,7 @@ li {
 	<br/>
 	
 
-	
-	
 
-	
 	
 <ul class="pageLinks">
     <c:if test="${pageMaker.hasPrev }">
@@ -129,6 +106,26 @@ $(document).ready(function() {
 
 	
 	var frm = $('#pageForm');
+	
+	var form2 = $('#form2');
+		
+		
+	
+	
+	function OpenPop(url,name,width,height)
+	{
+		 alert('여기는 send Msg 입니다. alert');
+	    window.open("", "pop", "width=600, height=400"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
+	    form2.action = "testMyGet"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.
+	    form2.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
+	    form2.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
+		form2.submit(); // target에 쏜다.
+
+	    
+	}
+	
+	
+	
 	<%--
     // table 안의 tr 안의 td 안의 a 태그 click 커스터마이징
     $('table tr td a').click(function() {
@@ -139,7 +136,7 @@ $(document).ready(function() {
     	frm.attr('method', 'get');
     	frm.submit();
     });
-	--%>
+	
 	// 클래스 pageLinks 안의 li 태그 안의 a 태그를 찾아서 click 이벤트를 커스터마이징
 	$('.pageLinks li a').click(function() {
 		event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
@@ -157,7 +154,7 @@ $(document).ready(function() {
 	
 	
 
-
+--%>
 
 	
 	

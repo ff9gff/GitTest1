@@ -23,4 +23,19 @@ public interface AdminService {
 	
 	// update 
 	public int updateLevelOne(int mno);
+	
+	//관리자로 승격합니다 . 
+	public int updateLevelTwo(int mno);
+	
+	//블랙리스트 입니다. 
+	
+	public int downGradeLevel(int mno);
+	
+	
+	// admin에 있는  모습에 level 1인 사람들의 모든 모습 
+	public List<DomainDTO> allMyActivUser();
+	
+	//admin에 있는 모습에 level 2인 사람들의 모습 
+	public List<DomainDTO> allMySubAdminActivUser();
+	
 }

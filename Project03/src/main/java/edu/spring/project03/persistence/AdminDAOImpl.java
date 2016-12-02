@@ -89,6 +89,43 @@ public class AdminDAOImpl implements AdminDAO {
 		result  = sqlSession.update(NAMESPACE+".upgradeLevelOne" ,mno); 
 	  return result;
 	}
+
+	@Override
+	public int updateLevelTwo(int mno) {
+		int result = sqlSession.update(NAMESPACE+".upgradeLevelTwo", mno);
+		return result;
+	}
+
+	@Override
+	public int downGradeTwo(int mno) {
+		
+		return sqlSession.update(NAMESPACE+".downGradeLevel", mno);
+	}
+
+	@Override
+	public List<DomainDTO> dominAlluserLeb1() {
+		
+		return sqlSession.selectList(NAMESPACE+".realDomainAdminAllUser");
+	}
+
+	@Override
+	public List<DomainDTO> dominAllsubAdmin() {
+	
+		return sqlSession.selectList(NAMESPACE+".realDomainSubMyAdmin");
+	}
+
+	@Override
+	public int downGradeLevelMSG(int mno) {
+	
+		return sqlSession.insert(NAMESPACE+".downGradeLevelMSG", mno);
+		
+	}
+
+	@Override
+	public int updateLevelTwoMSG(int mno) {
+		
+		return sqlSession.insert(NAMESPACE+".upgradeLevelTwoMSG", mno);
+	}
 	
 	
 }//end class 

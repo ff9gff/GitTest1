@@ -39,42 +39,30 @@ li {
         <th>받은 시간</th>
     </tr>
     
-    <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-   		 <td>안녕하세요 <td>
-   		 <td>2012/51/545</td>
-   	</tr>
-    
-      <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-    	<td>안녕하세요 <td>
-    	<td>2012/51/545</td>
-    </tr>
-      <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-    	<td>안녕하세요 <td>
-    	<td>2012/51/545</td>
-    </tr>
-      <tr>
-    	<td><input type="checkbox"></td>
-    	<td>보낸사람1</td>
-   		 <td>안녕하세요 <td>
-   		 <td>2012/51/545</td>
-    </tr>
-
-    
     <!-- model.addAttribute("allList", allList); -->
     <c:forEach var="vo" items="${allList}">
     <tr>
-        <td><input type="checkbox"></td>
+        <td>${x=x+1 }</td>
         <td>${vo.nickname }</td>
         <td><form id="form2" name="form2">
         <input type="hidden" name="postdata" size="10" maxlength="10" value="${vo.msg_no }"/>   
+        
+
+    	<%-- String stringValue= request.getParameter("msg_content"); 
+    	
+			if(stringValue.length()>= 15){
+			
+			stringValue = stringValue.substring(0,10) + "....";
+			
+			
+		}//end string 
+    	
+    stringValue +="ss";
+    	--%>
+        
+        
         </form>     
-        <a href="javascript:OpenPop('', '', '', '');">${vo.msg_content }</a></td>
+        <a href="javascript:OpenPop('', '', '', '');"><%--=stringValue --%> ${vo.msg_content }</a></td>
         <td>
       	   <fmt:formatDate value="${vo.msg_date }" 
 	            pattern="yyyy-MM-dd HH:mm:ss"/>

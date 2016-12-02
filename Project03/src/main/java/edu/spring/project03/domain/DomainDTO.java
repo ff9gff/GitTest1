@@ -10,12 +10,61 @@ public class DomainDTO {
 	private String phone;
 	private String email;
 	private Date joindate;
-	
+	private String nickname;
 	
 	
 public DomainDTO() {
-	// TODO 자동 생성된 생성자 스텁
+
 }
+
+
+
+
+
+
+
+
+
+
+public DomainDTO(int mno, String userid, String nickname, String phone, String email, Date joindate) {
+
+	this.mno = mno;
+	this.userid = userid;
+	this.nickname = nickname;
+	this.phone = phone;
+	this.email = email;
+	this.joindate = joindate;
+}
+
+
+
+
+
+
+
+
+
+
+public String getNickname() {
+	return nickname;
+}
+
+
+
+
+
+
+
+
+
+
+public void setNickname(String nickname) {
+	this.nickname = nickname;
+}
+
+
+
+
 
 
 

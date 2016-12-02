@@ -80,6 +80,41 @@ public class AdminServiceImpl implements AdminService{
 		return result;
 	}
 
+
+	@Override
+	public int updateLevelTwo(int mno) {
+		int result = aDao.updateLevelTwo(mno);
+		 logger.info("level 2 로 승격 " + result);
+		 aDao.updateLevelTwoMSG(mno); // 메세지 보내는 부분 입니다. 
+		 
+		return result;
+	}//end level 2 
+
+
+	@Override
+	public int downGradeLevel(int mno) {
+		int result =aDao.downGradeTwo(mno);
+		//Msg를 보내는 부분입니다. 
+					aDao.downGradeLevelMSG(mno);
+		return result;
+	}
+
+
+	@Override
+	public List<DomainDTO> allMyActivUser() {
+		
+		return aDao.dominAlluserLeb1();
+	}
+
+
+	@Override
+	public List<DomainDTO> allMySubAdminActivUser() {
+		
+		return aDao.dominAllsubAdmin();
+	}
+	
+	
+
 	
 	
 }//end class 

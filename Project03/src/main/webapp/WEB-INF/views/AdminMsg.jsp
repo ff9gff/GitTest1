@@ -77,27 +77,26 @@ padding-left: 655px
 	
 	<nav id ="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem">
-				<a Class ="mylink" href="admin.jsp">가입승인</a>
+	<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
-			
-				<li Class="menuItem">
-				<a Class ="mylink" href="AdminMsg.jsp">공지사항</a>
+
+				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
-				
-				<li Class="menuItem">
-				<a Class="mylink" href="MyUserInfo.jsp">유저 정보</a>
-				</li>
-			<%-- 
-				<li Class="menuItem">
-				<a Class ="mylink" href="http://www.baidu.com/">바이두</a>
+
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+
+				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
 				</li>
 				
-				<li Class="menuItem">
-				<a Class ="mylink" href="http://www.yahoo.com/">야후</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
 				</li>
-			
-				--%>	
+				
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
+				</li>
+				
+				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				</li>
+
 			</ul>	
 		
 		</nav>

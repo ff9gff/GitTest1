@@ -17,6 +17,24 @@
  
  </select>
  
+ <select id="realDomainAdminAllUser" resultType="edu.spring.project03.domain.DomainDTO">
+    select m.mno , m.userid  , p.nickname, p.phone , p.email , p.joindate
+  from WM_MEMBER m , WM_PERSONAL p 
+  where m.mno = p.mno and m.AUTHORITY =1
+  order by m.mno
+
+ </select>
+ 
+ 
+  <select id="realDomainSubMyAdmin" resultType="edu.spring.project03.domain.DomainDTO">
+    select m.mno , m.userid  , p.nickname, p.phone , p.email , p.joindate
+  from WM_MEMBER m , WM_PERSONAL p 
+  where m.mno = p.mno and m.AUTHORITY =2
+  order by m.mno
+
+ </select>
+ 
+ 
  
  
  
@@ -34,9 +52,7 @@
  
   </insert>
   
-  
-  
-  
+
   <select id="newUser" resultType="edu.spring.project03.domain.MemberVO">
   
   
@@ -103,5 +119,41 @@ UPDATE WM_MEMBER set AUTHORITY = 0 WHERE MNO = #{mno};
   	update WM_MEMBER set AUTHORITY = 1 where mno = #{mno}
   </update>
   
+  
+  <!--  레벨 2로 관리자 모드로 올린다,  -->
+  
+  
+    <update id="upgradeLevelTwo">
+  	update WM_MEMBER set AUTHORITY = 2 where mno = #{mno}
+  </update>
+  
+  
+   <!-- 블랙리스트를 그냥 지우기 보다는 레벨등급을 낮춰 버리자 . -->
+
+      <update id="downGradeLevel">
+  	update WM_MEMBER set AUTHORITY = -1 where mno = #{mno}
+  </update>
+  
+  
+  
+  
+  <!-- 일반회원으로 낮추는 작업을 합니다.  -->
+  
+  <insert id="downGradeLevelMSG">
+   insert into WM_MSG (sd_mno , rc_mno , msg_content) values 
+ (1,#{mno} ,'일반회원으로 강등되었습니다. 관련문의는 이메일로 연락주세요.')
+  
+
+  </insert>
+  
+  <!-- 관리자로 승격합니다. -->
+  
+  <insert id="upgradeLevelTwoMSG">
+  
+   insert into WM_MSG (sd_mno , rc_mno , msg_content) values 
+ (1,#{mno} ,'관리자로 임명되었습니다.')
+  
+  
+  </insert>
   
   </mapper>
