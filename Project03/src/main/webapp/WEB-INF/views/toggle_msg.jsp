@@ -39,8 +39,11 @@ textarea{
 <body>
 
 <div style="width: 380px; height: 480px;">
-	<div id="msg_header"><img src="../resources/theme/images/msg.png" style="width: 30px; height: 30px;">쪽찌쓰기</div>
-	<input type="text" value="${msg_setter }" />
+
+
+	
+	<div id="msg_header"><img src="../resources/theme/images/msg.PNG" style="width: 30px; height: 30px;">쪽찌쓰기</div>
+<input type="text" value="${msg_setter }" />
 	<div id="msg_send">
 		<span style="font-weight: 800;">받는사람</span><span>${msg_getnick }</span>
 	</div>

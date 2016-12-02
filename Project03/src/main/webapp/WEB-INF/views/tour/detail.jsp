@@ -387,10 +387,6 @@ font-size: 12px;
 
 <!-- 회원가입/로그인 부분 -->
 
-	<%@ include file="../top_header.jsp"  %>
-
-
-
 	<!-- 헤더 메인부분 -->
 	<div class="main-header">
 		<div class="container">

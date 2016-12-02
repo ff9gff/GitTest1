@@ -89,4 +89,22 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 		region = "%" + region + "%";
 		return sqlSession.selectList(NAMESPACE2 + ".select_main_region_region", region);
 	}
+
+	@Override
+	public List<ImgVO> select_default_image() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2 + ".select_default_image", null);
+	}
+
+	@Override
+	public List<TourRegisterVO> select_default_title() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2 + ".select_default_title", null);
+	}
+
+	@Override
+	public List<RegionVO> select_default_region() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE2 + ".select_default_region", null);
+	}
 }

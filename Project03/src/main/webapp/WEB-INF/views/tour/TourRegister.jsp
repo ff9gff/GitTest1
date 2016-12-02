@@ -81,12 +81,12 @@ http://www.templatemo.com/tm-406-flex
 									<i class="fa fa-bars"></i>
 								</div>
 								<ul class="menu-first">
-									<li class="active"><a href="../index">메인</a></li>
+									<li class="active"><a href="index">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="../MyPage">마이페이지</a></li>
-									<li><a href="../admin">관리자</a></li>
-									<li><a href="../member/login">로그인</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
+									<li><a href="admin">관리자</a></li>
+									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -152,6 +152,27 @@ http://www.templatemo.com/tm-406-flex
 					bUseModeChanger : true,
 				}
 			});
+			
+			$('#imageFile').on('change', function() {
+			      
+		    	ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+		      
+		      	//배열에 추출한 확장자가 존재하는지 체크
+		      	if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+		        	resetFormElement($(this)); //폼 초기화
+		         	window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+		      	} else {
+		        	file = $('#imageFile').prop("files")[0];
+		         	blobURL = window.URL.createObjectURL(file);
+			        $('#image_preview img').attr('src', blobURL);
+			        document.getElementById("profile-image").style.display = "inline";
+			        $('#image_preview img').attr('width', '300px');
+			        $('#image_preview img').attr('height', '300px');
+			        document.getElementById("btn_profile-image_remove").style.display = "inline";
+			        //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+			        $('#image_preview').show(); //업로드한 이미지 미리보기
+		     	}
+			});
  
 			//전송버튼 클릭이벤트
 			$("#savebutton").click(function() {
@@ -172,7 +193,7 @@ http://www.templatemo.com/tm-406-flex
 			})
  
 	        $('#addOption').click(function() {
-	            $('#regionTable > tbody:last').append('<tr><td><input type="text" name="region_name" style="width: 60%" placeholder="지역"/></td></tr>');
+	            $('#regionTable > tbody:last').append('<tr><td><input type="text" name="region_name" style="width: 100%" placeholder="지역"/></td></tr>');
 	        });
  
 	        $('#delOption').click(function() {
@@ -197,14 +218,13 @@ http://www.templatemo.com/tm-406-flex
 				<div class="wrap">
 		
 					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
-					
-						
-						  <label for="imageFile">썸네일 이미지</label><br/>       
-					      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+			
+						<label for="imageFile">썸네일 이미지</label><br/>       
+					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					            
-					      <div id="image_preview">
+					    <div id="image_preview">
 					      <img src="#" id="profile-image" style="display: none;" /><br/>
-					      </div><br/>      
+					    </div><br/>      
 					
 						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 						
@@ -218,9 +238,9 @@ http://www.templatemo.com/tm-406-flex
 								</tr>
 								<tbody></tbody>
 							</table>
-							<button type="button" id="addOption">지역 추가</button>
-							<button type="button" id="delOption">지역 삭제</button><br /> 	
+							<br /> 	
 						</div>
+						<button type="button" id="addOption">지역 추가</button><button type="button" id="delOption">지역 삭제</button><br /> <br /> 
 	
 						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
 						~ 
@@ -285,29 +305,6 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/plugins.js"></script>
 	<script src="../resources/theme/js/main.js"></script>
 	
-	<script>
-	
-	$('#imageFile').on('change', function() {
-	      
-	      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
-	      
-	      //배열에 추출한 확장자가 존재하는지 체크
-	      if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-	         resetFormElement($(this)); //폼 초기화
-	         window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-	      } else {
-	         file = $('#imageFile').prop("files")[0];
-	         blobURL = window.URL.createObjectURL(file);
-	         $('#image_preview img').attr('src', blobURL);
-	         document.getElementById("profile-image").style.display = "inline";
-	         $('#image_preview img').attr('width', '300px');
-	         $('#image_preview img').attr('height', '400px');
-	         document.getElementById("btn_profile-image_remove").style.display = "inline";
-	         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
-	         $('#image_preview').show(); //업로드한 이미지 미리보기
-	      }
-	   });
-	</script>
  
 </body>
 </html>

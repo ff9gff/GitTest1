@@ -82,4 +82,22 @@ public class TourSearchServiceImpl implements TourSearchService {
 		// TODO Auto-generated method stub
 		return dao.select_main_region_region(region);
 	}
+
+	@Override
+	public List<ImgVO> read_default_image() {
+		// TODO Auto-generated method stub
+		return dao.select_default_image();
+	}
+
+	@Override
+	public List<TourRegisterVO> read_default_title() {
+		// TODO Auto-generated method stub
+		return dao.select_default_title();
+	}
+
+	@Override
+	public List<RegionVO> read_default_region() {
+		// TODO Auto-generated method stub
+		return dao.select_default_region();
+	}
 }

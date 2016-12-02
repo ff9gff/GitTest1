@@ -4,8 +4,22 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="edu.spring.project03.TourSearchMapper">
+
+	<!-- 디폴트로 뿌려주는 게시글 -->
+	<select id="select_default_image" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image 
+		where board_type = 1
+	</select>
 	
+	<select id="select_default_title" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
+	</select>
 	
+	<select id="select_default_region" resultType="edu.spring.project03.domain.RegionVO">
+		select * from wm_tour_region
+	</select>
+	
+	<!-- 지역 검색 -->
 	<select id="select_main_image_region" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
 		where board_type = 1 and content_no in (select trip_no from wm_tour_region
@@ -26,7 +40,7 @@
 	
 	
 
-
+	<!-- 기간 검색 -->
 	<select id="select_main_trip_image" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
 		where board_type = 1 and content_no in (select trip_no from wm_tour 
@@ -47,8 +61,33 @@
                             and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD'))
  	</select>
 
+	<!-- 상세 검색 1. 성별/나이 검색  -->
+	<select id="select-detail-thumnail">
+		select * from wm_image
+		where content_no in (select trip_no from wm_tour
+							 where condition_sex = #{condition_sex} or condition_age = #{condition_age}) and board_type = 1
+	</select>
+	
+	<select id="select-detail-stitle">
+		select * from wm_tour
+		where trip_no in (select trip_no from wm_tour
+							 where condition_sex = #{condition_sex} or condition_age = #{condition_age})
+	</select>
+	
+	<select id="select-detail-sregion">
+		select * from wm_tour_region
+		where trip_no in (select trip_no from wm_tour
+					      where condition_sex = #{condition_sex} or condition_age = #{condition_age})
+	</select>
+	
+	
 
 
+
+
+
+
+	
 	<select id="select_trip_region" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
 		where content_no in (select trip_no from wm_tour_region

@@ -29,7 +29,87 @@ public class TourSearchController {
 	public void main() {
 		logger.info("index.jsp 소환");
 	}
+	
+	// 지역 검색 Ajax 처리
+		// 해당 지역 검색 메소드
+		@RequestMapping(value = "/index/defaultimage", method = RequestMethod.GET)
+		public ResponseEntity<List<ImgVO>> ajaxTotalImageTest() {
+			
+			ResponseEntity<List<ImgVO>> entity = null;
 
+			List<ImgVO> list = tourSelectService.read_default_image();
+
+			if (list != null) {
+				// select 성공 한것이다.
+				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+				logger.info("지역 전체 검색 성공 ");
+			} else {
+				// select 실패이다.
+				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+				logger.info("지역 전체 검색 실패 ");
+			}
+
+			logger.info("entity " + entity.getBody());
+			// logger.info("list.mno "+ list.get(0).getUserid());
+			// 출력 됨
+			return entity;
+		}
+
+		// 지역 검색 Ajax 처리
+		// 해당 지역 썸네일 이미지 아래 제목 검색 메소드
+		@RequestMapping(value = "/index/defaulttitle", method = RequestMethod.GET)
+		public ResponseEntity<List<TourRegisterVO>> ajaxTotalTitleTest() {
+
+			ResponseEntity<List<TourRegisterVO>> entity = null;
+
+		    List<TourRegisterVO> list = tourSelectService.read_default_title();
+
+			if (list != null) {
+				// select 성공 한것이다.
+				entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+				logger.info("제목 전체 검색 성공 ");
+			} else {
+				// select 실패이다.
+				entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+				logger.info("제목 전체 검색 실패 ");
+			}
+
+			logger.info("entity " + entity);
+			// logger.info("list.mno "+ list.get(0).getUserid());
+			// 출력 됨
+			return entity;
+		}
+
+		// 지역 검색 Ajax 처리
+		// 해당 지역 썸네일 이미지 아래 지역 검색 메소드
+		@RequestMapping(value = "/index/defaultregion", method = RequestMethod.GET)
+		public ResponseEntity<List<RegionVO>> ajaxTotalRegionTest() {
+
+			ResponseEntity<List<RegionVO>> entity = null;
+
+			List<RegionVO> list = tourSelectService.read_default_region();
+
+			if (list != null) {
+				// select 성공 한것이다.
+				entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+				logger.info("지역 전체 검색 성공 ");
+			} else {
+				// select 실패이다.
+				entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+				logger.info("지역  전체 검색 실패 ");
+			}
+
+			logger.info("entity " + entity);
+			// logger.info("list.mno "+ list.get(0).getUserid());
+			// 출력 됨
+			return entity;
+		}
+	
+	
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
 	@RequestMapping(value = "/index/regionimage/{region_name}", method = RequestMethod.GET)
