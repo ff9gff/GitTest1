@@ -12,5 +12,7 @@ public interface MypageDAO {
 	public abstract List<ImgVO> select_mno(int mno);
 	
 	public abstract ImgVO selectProfile(int mno);
+	
+	public abstract List<ImgVO> select_join_mno(int mno);
 
 }

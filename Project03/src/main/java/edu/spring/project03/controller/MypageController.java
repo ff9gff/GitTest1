@@ -65,18 +65,26 @@ public class MypageController {
 
 		logger.info("mno: " + mno);
 		ResponseEntity<List<ImgVO>> entity = null;
+		ResponseEntity<List<ImgVO>> joinentity = null;
 
 		List<ImgVO> list = mypageService.read_mno(mno);
+		List<ImgVO> joinlist = mypageService.read_join_mno(mno);
 		model.addAttribute("list", list);
+		model.addAttribute("joinlist", joinlist);
 
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.OK);
 			logger.info("mno 검색 성공 ");
+			logger.info("joinentity " + joinentity.getBody());
+			return joinentity;
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.OK);
 			logger.info("mno 검색 실패 ");
+			
 		}
 
 		logger.info("entity " + entity.getBody());
@@ -84,22 +92,5 @@ public class MypageController {
 		// 출력 됨
 		return entity;
 	}
-	
-	// 해당 프로필의 이미지 주소를 읽어오는 메소드
-	@RequestMapping(value="/MyPageProfile/{mno}", method=RequestMethod.GET)
-	public ResponseEntity<String> readImg(@PathVariable("mno") int mno){
-		ImgVO src = mypageService.readProfile(mno);
-		logger.info("src: " + src);
-		String address = src.getImg_url();
-		ResponseEntity<String> entity = null;
-		if(src != null){ // select 성공
-			entity = new ResponseEntity<>(address, HttpStatus.OK);
-		}else{ // select 실패
-			entity = new ResponseEntity<>(address, HttpStatus.BAD_REQUEST);
-		}// end if
-		
-		return entity;
-	}
-	
 	
 }

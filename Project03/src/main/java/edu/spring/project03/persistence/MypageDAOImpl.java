@@ -35,4 +35,10 @@ public class MypageDAOImpl implements MypageDAO {
 		return sqlSession.selectOne(NAMESPACE+".selectProfile", mno);
 	}
 
+	@Override
+	public List<ImgVO> select_join_mno(int mno) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".selectJoin", mno);
+	}
+
 }

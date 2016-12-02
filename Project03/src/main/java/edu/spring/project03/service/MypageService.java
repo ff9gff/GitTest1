@@ -12,5 +12,7 @@ public interface MypageService {
 	public abstract List<ImgVO> read_mno(int mno);
 	
 	public abstract ImgVO readProfile(int mno);
+	
+	public abstract List<ImgVO> read_join_mno(int mno);
 
 }

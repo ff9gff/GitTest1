@@ -33,4 +33,10 @@ public class MypageServiceImpl implements MypageService {
 		return mypageDAO.selectProfile(mno);
 	}
 
+	@Override
+	public List<ImgVO> read_join_mno(int mno) {
+		// TODO Auto-generated method stub
+		return mypageDAO.select_join_mno(mno);
+	}
+
 }
