@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.MsgDTO;
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.PaginationCriteria;
 import edu.spring.project03.persistence.MsgAllDAO;
 
 @Service
@@ -64,6 +65,13 @@ public class MsgAllServiceImpl implements MsgAllService {
 		logger.info("read의 사이즈는 " + read.size());
 		
 		return read;
+	}
+
+
+	@Override
+	public List<MsgDTO> readSendMsg2(PaginationCriteria x) {
+		
+		return msgAlldao.readAllget2(x);
 	}
 
 

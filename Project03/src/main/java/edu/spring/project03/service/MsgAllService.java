@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.spring.project03.domain.MsgDTO;
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.PaginationCriteria;
 
 public interface MsgAllService {
 
@@ -16,7 +17,7 @@ public interface MsgAllService {
 	
 	public abstract List<MsgDTO> readSendMsg(int mno); 
 	
-	
+	public abstract List<MsgDTO> readSendMsg2(PaginationCriteria x); 
 	
 	
 }

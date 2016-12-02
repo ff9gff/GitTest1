@@ -156,4 +156,14 @@ UPDATE WM_MEMBER set AUTHORITY = 0 WHERE MNO = #{mno};
   
   </insert>
   
+  <!-- 페이징 처리 하는 부분  -->
+  <select resultType="edu.spring.project03.domain.MsgDTO" id="pageListsendMsg"> 
+  select a.msg_no, a.nickname, a.msg_content, a.msg_date from 
+  ( select rownum rn, m.msg_no, p.nickname, m.msg_content, m.msg_date from wm_msg m, wm_personal p
+  where m.rc_mno = p.mno and m.sd_mno = #{mno}
+   order by m.msg_no )a 
+   
+   where rn between #{start} and #{end}
+    </select>
+  
   </mapper>

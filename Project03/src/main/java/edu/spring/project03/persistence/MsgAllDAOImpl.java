@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.MsgDTO;
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.PaginationCriteria;
 
 @Repository
 public class MsgAllDAOImpl implements MsgAllDAO{
@@ -59,6 +60,12 @@ public class MsgAllDAOImpl implements MsgAllDAO{
 		logger.info("select Msg DTO send name 닉네임 입니다. ");
 
 		return sqlSession.selectList(NAMESPACE+".selectSendMsg", mno);
+	}
+
+	@Override
+	public List<MsgDTO> readAllget2(PaginationCriteria x) {
+	 
+		return sqlSession.selectList(NAMESPACE+".pageListsendMsg" , x );
 	}
 	
 	

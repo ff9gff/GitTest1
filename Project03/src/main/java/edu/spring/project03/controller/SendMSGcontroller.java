@@ -44,6 +44,7 @@ public class SendMSGcontroller {
 		return "redirect:admin";
 	}
 
+	
 	//메세지 함을 확인 합니다. 일단 mno를 6으로 설정합니다. 나중에 합칠 경우에 대비해서 미리 적어 둔다 . 
 	@RequestMapping(value = "/myMsg", method = RequestMethod.GET)
 	public void stres(Model model) {
