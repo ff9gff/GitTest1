@@ -97,6 +97,7 @@ ul {
 					value="${mno}" />
 				<button type="button" id="mytour" style="font-weight: bold; background-color: transparent;">내 여행 리스트</button>
 				<button type="button" id="mytourReview" style="font-weight: bold; background-color: transparent;">내 후기 리스트</button>
+				<button type="button" id="tourchoose" style="font-weight: bold; background-color: transparent;">내 선택 리스트</button>
 				
 				<div class="row" id="toursearch" style="width: 1026px; margin-top: 30px;"></div>
 				
@@ -126,28 +127,91 @@ ul {
 			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getThumnails_By_Mno() {
 				
-				var url = '/project03/MyPage/' + ${mno};
-
-				$.getJSON(url, function(data) {
-					var list = '';
-
-					$(data).each(function() {
-					
-						console.log("this.content_no:"+this.content_no);
-						list += '<div class="portfolio-item col-md-3 col-sm-6">'
-								+ '<div class="portfolio-thumb">'
-								+ '<figure>'
-								+ '<a href="tour/detail?trip_no=' + this.content_no + '"><img src="' + this.img_url + '" width="300" height="200">'
-								+ '</figure>'
-								+ '</div>'
-								+ '</div>';
+				// 등록된 게시물 리스트
+				List = [];
+				
+				// 선택한 게시물 리스트
+				JoinList = [];
+				
+				var url = '/project03/MyPage/list/' + ${mno};
+				$.getJSON(url, function(data1) {
+					$(data1).each(function() {
+						List.push({img_url: this.img_url, content_no: this.content_no, joinlist: {}})
+						alert("list 동작");	
 					});
-	
-					$('#toursearch').html(list);
-
+					
+					getAllThumnail();
+					
 				});// end getJSON()
-
+			
 			};//end of getThumnails()
+			
+			
+			function getThumnails_By_ChooseMno() {
+												
+				// 선택한 게시물 리스트
+				JoinList = [];
+								
+				var url2 = '/project03/MyPage/joinlist/' + ${mno};
+				$.getJSON(url2, function(data2){
+					alert("joinlist 동작");
+					$(data2).each(function() {
+						alert("???");
+						JoinList.push({img_url: this.img_url, content_no: this.content_no})
+							
+					});	
+									
+				});
+					
+					
+					
+					getChooseThumnail();
+					
+			
+				});// end getJSON()
+			
+			};//end of getThumnails()
+			
+			function getThumnail() {
+				
+				var list = '';
+				
+				for(var i = 0; i<List.length; i++){
+
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<div class="portfolio-thumb">'
+						+ '<figure>'
+						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="' + List[i].img_url + '" width="300" height="200">'
+						+ '</figure>'
+						+ '</div>'
+						+ '</div>';
+				}
+				
+				$('#toursearch').html(list);				
+	
+				//end of getThumnails()
+			};
+			
+			function getChooseThumnail() {
+				
+				var list = '';
+				
+				for(var i = 0; i<JoinList.length; i++){
+
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<div class="portfolio-thumb">'
+						+ '<figure>'
+						+ '<a href="tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="' + JoinList[i].img_url + '" width="300" height="200">'
+						+ '</figure>'
+						+ '</div>'
+						+ '</div>';
+				}
+				
+				
+				$('#toursearch').html(list);				
+	
+				//end of getThumnails()
+			};
 			
 			// mno 검색 버튼 처리
 			$('#mytour').click(function() {
@@ -158,6 +222,18 @@ ul {
 					alert('검색할 mno을 입력하세요');
 				} else {
 					getThumnails_By_Mno();
+				}
+	
+			});
+			
+			$('#tourchoose').click(function() {
+
+				var tourchoose_mno = ${mno};
+	
+				if (tourchoose_mno == "") {
+					alert('검색할 mno을 입력하세요');
+				} else {
+					getThumnails_By_ChooseMno();
 				}
 	
 			});

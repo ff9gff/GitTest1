@@ -60,29 +60,28 @@ public class MypageController {
 	
 	// mno 검색 Ajax 처리
 	// 해당 mno 검색 메소드
-	@RequestMapping(value = "/MyPage/{mno}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("mno") int mno, Model model) {
+	@RequestMapping(value = "/MyPage/list/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxlistTest(@PathVariable("mno") int mno, Model model) {
 
 		logger.info("mno: " + mno);
 		ResponseEntity<List<ImgVO>> entity = null;
-		ResponseEntity<List<ImgVO>> joinentity = null;
+		
 
 		List<ImgVO> list = mypageService.read_mno(mno);
-		List<ImgVO> joinlist = mypageService.read_join_mno(mno);
+		
 		model.addAttribute("list", list);
-		model.addAttribute("joinlist", joinlist);
+		
 
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.OK);
-			logger.info("mno 검색 성공 ");
-			logger.info("joinentity " + joinentity.getBody());
-			return joinentity;
+			
+			logger.info("mno 검색 성공 ");			
+			/*return joinentity;*/
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.OK);
+			
 			logger.info("mno 검색 실패 ");
 			
 		}
@@ -91,6 +90,31 @@ public class MypageController {
 		// logger.info("list.mno "+ list.get(0).getUserid());
 		// 출력 됨
 		return entity;
+	}
+	
+	@RequestMapping(value = "/MyPage/joinlist/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxjoinlistTest(@PathVariable("mno") int mno, Model model) {
+
+		logger.info("mno222: " + mno);
+		ResponseEntity<List<ImgVO>> joinentity = null;
+
+		List<ImgVO> joinlist = mypageService.read_join_mno(mno);
+		model.addAttribute("joinlist", joinlist);
+
+		
+		if (joinlist != null) {
+			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.OK);
+			logger.info("joinmno 검색 성공 ");
+		} else {
+			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.BAD_REQUEST);
+			logger.info("hoinmno 검색 실패 ");
+		}
+		
+				
+		logger.info("joinentity " + joinentity.getBody());
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return joinentity;
 	}
 	
 }
