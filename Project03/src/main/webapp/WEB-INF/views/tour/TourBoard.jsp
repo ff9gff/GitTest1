@@ -90,7 +90,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>같이가자</h2>
+								<h2>여행 게시판</h2>
 							</div>
 						</li>
 						<li>
@@ -400,7 +400,7 @@ http://www.templatemo.com/tm-406-flex
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
-							+ '<a href="tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="200">'
+							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="200">'
 							+ '<div>제목: ' + imageList[i].tour + '</div>'
 							+ '<div>지역: ' + imageList[i].city + '</div>'	
 							+ '</figure>'
