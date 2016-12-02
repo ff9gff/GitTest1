@@ -466,10 +466,6 @@ http://www.templatemo.com/tm-406-flex
 			$("#start_date, #end_date").datepicker({
 				dateFormat : 'yy-mm-dd'
 			});
-			
-			$("#start_date2, #end_date2").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
 		});
 	</script>
 
