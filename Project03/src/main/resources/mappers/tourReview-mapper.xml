@@ -32,6 +32,27 @@
 		where review_no = #{review_no}
 	</select>
 	
+	<select id="select_review_by_no" resultType="edu.spring.project03.domain.ReviewVO">
+		select * from wm_review
+		where review_no = #{review no}
+	</select>
+	
+	<select id="select_review_personal" resultType="edu.spring.project03.domain.PersonalVO">
+		select * from wm_personal
+		where mno = #{mno}
+	</select>
+	
+	<select id="select_reivew_profile" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type=3 and content_no = #{mno}
+	</select>
+	
+	<select id="select_review_region_name" resultType="String">
+		select region_name from wm_review_region
+		where review_no = #{review_no}
+	</select>
+	
+	
 <!-- Delete -->
     
 </mapper>

@@ -2,6 +2,7 @@ package edu.spring.project03.persistence;
 
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
@@ -16,6 +17,11 @@ public interface TourReviewDAO {
 	// select
 	public abstract int selectReview_no(ReviewVO reviewvo);
 	public abstract ReviewVO selectReviewRegister_data(int review_no);
+	
+	public abstract ImgVO select_review_profile(int mno);
+	public abstract PersonalVO select_review_personal(int mno);
+	public abstract ReviewVO select_review_by_no(int review_no);
+	public abstract String select_review_region_name(int review_no);
 	
 	// update
 	
