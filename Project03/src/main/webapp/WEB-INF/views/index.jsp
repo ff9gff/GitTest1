@@ -216,41 +216,26 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>여행 검색 (여행지 & 여행기간)</h2>
+					<h2>여행 리스트</h2>
 					<br /> <br /><br />	<br />	
 					
-					<h4><a href="tour/tourBoard">전체보기</a></h4>
-					<br /> <br /><br /><br />	
-					
-					<p>
-						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-						<button type="button" id="region_search">장소 검색</button><br />
-					</p>
+					<h2><a href="tour/tourBoard">여행 검색하러 가기</a></h2>
+					<br /> <br /><br />
+					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2>
+					<!-- <button type="button" id="tour_register">여행 등록</button> <br /><br /><br />
 
-					<br /><br />
-					
-					<p>	
-						<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-						<input type="text" id="end_date" name="end_date" placeholder="종료일">
-						<button type="button" id="period_search">기간 검색</button> <br /><br /><br />
-					</p>
-
-					<p>
-						<button type="button" id="tour_register">여행 등록</button> <br /><br /><br />
-					</p>
+			$('#tour_register').click(function() {
+				location = 'tour/GoRegister';
+			}); -->
+			
 				</div>
 				<!-- /.heading-section -->
 			</div>
 			<!-- /.row -->
 
-			<p>
-			<div class="row" id="toursearch">
+			<div class="row" id="tourDetailSearch">
 
 			</div>
-			<div class="row" id="tourinfo">
-
-			</div>
-			</p>
 
 			<!-- /.row -->
 		</div>
@@ -282,12 +267,12 @@ http://www.templatemo.com/tm-406-flex
 
 	<script>
 	
-	
-	
 		$(document).ready(function() {
-
-			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
-			function getThumnails_By_Region() {
+			
+			getThumnails_By_Default();
+			
+			// 디폴트로 나오는 게시글
+			function getThumnails_By_Default() {
 				
 				// wm_image 리스트
 				imageList = [];
@@ -296,20 +281,20 @@ http://www.templatemo.com/tm-406-flex
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url1	 = '/project03/index/regionimage/' + $('#region_name').val();
+				var url1 = '/project03/index/defaultimage';
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
-					var url2 = '/project03/index/regiontitle/' + $('#region_name').val();
+					var url2 = '/project03/index/defaulttitle';
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
-						var url3 = '/project03/index/regionregion/' + $('#region_name').val();
+						var url3 = '/project03/index/defaultregion';
 						$.getJSON(url3, function(data3) {
 							$(data3).each(function() {
 								var name = this.region_name.split(",");
@@ -325,6 +310,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -332,99 +319,36 @@ http://www.templatemo.com/tm-406-flex
 										} 
 									}	
 								}	
-							}
-							
-							
-							getAllThumnail();
-						});
-							
-						
-					});
-
-				});// end getJSON()
-
-			};//end of getThumnails()
-			
-			
-			
-			// 기간 검색: 해당 기간의 여행정보 썸네일들을 읽어오는 함수 정의 
-			function getThumnails_By_Period() {
-				
-				// wm_image 리스트
-				imageList = [];
-				// wm_tour 리스트(제목)
-				titleList = [];
-				// wm_tour_region 리스트(지역)
-				regionList = [];
-				
-				var url1 = '/project03/index/periodimage/' + $('#start_date').val() + "/" + $('#end_date').val();
-				$.getJSON(url1, function(data1) {
-					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
-					});
-					
-					var url2 = '/project03/index/periodtitle/' + $('#start_date').val() + "/" + $('#end_date').val();
-					$.getJSON(url2, function(data2) {
-						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
-						});
-						console.log(titleList);
-						
-						var url3 = '/project03/index/periodregion/' + $('#start_date').val() + "/" + $('#end_date').val();
-						$.getJSON(url3, function(data3) {
-							$(data3).each(function() {
-								var name = this.region_name.split(",");
-								var tagname = '';
-								for(var i=0; i<name.length; i++){
-									tagname +="#"+name[i]+" ";
-								}
-								
-								regionList.push({region_name: tagname, trip_no: this.trip_no});	
-							});
-						
-							for (var i = 0; i < imageList.length; i++) {
-								for (var j = 0; j < titleList.length; j++) {
-									if (imageList[i].content_no == titleList[j].trip_no) {
-										imageList[i].tour = titleList[j].title;
-									} 
-									for (var k = 0; k < regionList.length; k++) {
-										if (imageList[i].content_no == regionList[k].trip_no) {
-											imageList[i].city = regionList[k].region_name;
-										} 
-									}	
-								}	
-							}
-							
+							}	
 							
 							getAllThumnail();
 						});
-							
-						
+
 					});
-
+		
 				});// end getJSON()
-
+		
 			};//end of getThumnails()
-			
+
 			function getAllThumnail() {
 				
 				var list = '';
 				
-				console.log(imageList[0].tour["title"]);
 				for(var i = 0; i<imageList.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
-							+ '<a href="tour/detail?trip_no=' + imageList[i].content_no + '"><img src="' + imageList[i].img_url + '" width="300" height="200">'
+							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="' + imageList[i].img_url + '" width="300" height="240">'
 							+ '<div>제목: ' + imageList[i].tour + '</div>'
-							+ '<div>지역: ' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 							+ '</figure>'
 							+ '</div>'
 							+ '</div>';
 				}
 
-				$('#toursearch').html(list);
+				$('#tourDetailSearch').html(list);
 	
 				//end of getThumnails()
 			};
@@ -458,10 +382,6 @@ http://www.templatemo.com/tm-406-flex
 					getThumnails_By_Period();			
 				}
 			}); 
-			
-			$('#tour_register').click(function() {
-				location = 'tour/GoRegister';
-			});
 			
 			$("#start_date, #end_date").datepicker({
 				dateFormat : 'yy-mm-dd'

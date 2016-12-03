@@ -1,5 +1,7 @@
 package edu.spring.project03.persistence;
 
+import java.util.List;
+
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
@@ -26,6 +28,15 @@ public interface TourReviewDAO {
 	// update
 	
 	// delete
+	
+	
+	// 디폴트 ?개 후기
+	// 1. 사진 뿌리기
+	public abstract List<ImgVO> select_review_default_image();
+	// 2. 제목 뿌리기
+	public abstract List<ReviewVO> select_review_default_title();
+	// 3. 지역 뿌리기
+	public abstract List<ReviewRegionVO> select_review_default_region();
 	
 	
 	/**

@@ -72,5 +72,11 @@ public class ReviewVO {
 		this.regdate = regdate;
 	}
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return title;
+	}
+	
 	
 } // end class ReviewVO

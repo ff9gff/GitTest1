@@ -63,7 +63,7 @@ http://www.templatemo.com/tm-406-flex
 									<i class="fa fa-bars"></i>
 								</div>
 								<ul class="menu-first">
-									<li class="active"><a href="index">메인</a></li>
+									<li><a href="index">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
 									<li><a href="MyPage">마이페이지</a></li>
@@ -115,23 +115,22 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div>
 
-				<h3 class="h2" style="font: bold;">여행 조건 상세 검색 <button id="btn_create_tour" style="float: right; margin-right: 13px">여행 등록</button> </h3>
+				<h3 class="h2" style="font: bold;">여행 조건 상세 검색 </h3>
 				
 				<br /><br />
 
 				<div>
-					<p>
-						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-						<button type="button" id="region_search">장소 검색</button>
-					</p>
-
-					<br /><br />
-				
-					<p>	
-						<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-						<input type="text" id="end_date" name="end_date" placeholder="종료일">
-						<button type="button" id="period_search">기간 검색</button> <br /><br /><br />
-					</p>
+					<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+					<button type="button" id="region_search">장소 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
+					<input type="text" id="end_date" name="end_date" placeholder="종료일">
+					<button type="button" id="period_search">기간 검색</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<button id="btn_create_tour" style="float: right; margin-right: 13px">여행 등록</button>
+					<br /><br /><br />
+					
+					
 						
 				</div>
 				
@@ -168,10 +167,6 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/main.js"></script>
 	
 	<script>
-	
-		
-			
-		
 		$(document).ready(function() {
 			
 			getThumnails_By_Default();
@@ -189,13 +184,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/defaultimage';
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/defaulttitle';
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
@@ -215,6 +210,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -222,13 +219,11 @@ http://www.templatemo.com/tm-406-flex
 										} 
 									}	
 								}	
-							}
-							
+							}	
 							
 							getAllThumnail();
 						});
-							
-						
+
 					});
 		
 				});// end getJSON()
@@ -249,13 +244,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/regionimage/' + $('#region_name').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/regiontitle/' + $('#region_name').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
@@ -275,6 +270,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -310,13 +307,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/periodimage/' + $('#start_date').val() + "/" + $('#end_date').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/periodtitle/' + $('#start_date').val() + "/" + $('#end_date').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
@@ -336,6 +333,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -363,9 +362,10 @@ http://www.templatemo.com/tm-406-flex
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
-							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="200">'
+							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240">'
 							+ '<div>제목: ' + imageList[i].tour + '</div>'
-							+ '<div>지역: ' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 							+ '</figure>'
 							+ '</div>'
 							+ '</div>';

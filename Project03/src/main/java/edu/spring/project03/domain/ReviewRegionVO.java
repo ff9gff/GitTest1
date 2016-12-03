@@ -37,5 +37,11 @@ public class ReviewRegionVO {
 		this.region_no = region_no;
 	}	
 	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return region_name;
+	}
+	
 	
 } // end class ReviewRegionVO

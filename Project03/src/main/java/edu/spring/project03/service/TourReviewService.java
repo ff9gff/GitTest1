@@ -1,5 +1,7 @@
 package edu.spring.project03.service;
 
+import java.util.List;
+
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
@@ -25,6 +27,16 @@ public interface TourReviewService {
 	// Update
 	
 	// Delete
+	
+	
+	
+	// 후기게시판 디폴트 후기 ?개 띄우기
+	// 1. 사진 이미지 가져오기
+	public abstract List<ImgVO> read_review_default_image();
+	// 2. 제목 가져오기
+	public abstract List<ReviewVO> read_review_default_title();
+	// 3. 지역 가져오기
+	public abstract List<ReviewRegionVO> read_review_default_region();
 	
 	
 	

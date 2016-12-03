@@ -42,14 +42,29 @@
 		where mno = #{mno}
 	</select>
 	
-	<select id="select_reivew_profile" resultType="edu.spring.project03.domain.ImgVO">
+	<select id="select_review_profile" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
-		where board_type=3 and content_no = #{mno}
+		where board_type=2 and content_no = #{mno}
 	</select>
 	
 	<select id="select_review_region_name" resultType="String">
 		select region_name from wm_review_region
 		where review_no = #{review_no}
+	</select>
+	
+	
+	
+	
+
+	<select id="select_default_review_image" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type = 2 order by content_no desc
+	</select>
+	<select id="select_default_review_title" resultType="edu.spring.project03.domain.ReviewVO">
+		select * from wm_review order by review_no desc
+	</select>
+	<select id="select_default_review_region" resultType="edu.spring.project03.domain.ReviewRegionVO">
+		select * from wm_review_region order by review_no desc
 	</select>
 	
 	

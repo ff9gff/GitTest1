@@ -1,5 +1,7 @@
 package edu.spring.project03.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,11 +66,8 @@ public class TourReviewServiceImpl implements TourReviewService {
 	
 	@Override
 	public ReviewVO read_review_by_no(int review_no) {
-		logger.info("read_review_by_no() 호출...");
-		
-		ReviewVO reviewvo = tourReviewDAO.select_review_by_no(review_no);
-		
-		return reviewvo;
+		logger.info("씨발 뭔데: " + review_no);
+		return tourReviewDAO.select_review_by_no(review_no);
 	} // end read_review_by_no(review_no)
 	
 	@Override
@@ -80,7 +79,7 @@ public class TourReviewServiceImpl implements TourReviewService {
 	
 	@Override
 	public ImgVO read_review_profile(int mno) {
-		logger.info("read_review_profile() 호출...");
+		logger.info("뭐 씨발아 뭐: " + mno);
 		
 		return tourReviewDAO.select_review_profile(mno);
 	} // end read_review_profile(mno)
@@ -91,6 +90,28 @@ public class TourReviewServiceImpl implements TourReviewService {
 		
 		return tourReviewDAO.select_review_region_name(review_no);
 	} // end read_review_region_name(review_no)
+
+	
+	// 디폴트 ?개 후기 사진
+	@Override
+	public List<ImgVO> read_review_default_image() {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_default_image();
+	}
+
+	// 디폴트 ?개 후기 제목
+	@Override
+	public List<ReviewVO> read_review_default_title() {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_default_title();
+	}
+
+	// 디폴트 ?개 후기 지역
+	@Override
+	public List<ReviewRegionVO> read_review_default_region() {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_default_region();
+	}
 	
 	
 	/**
