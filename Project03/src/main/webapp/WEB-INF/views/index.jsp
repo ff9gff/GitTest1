@@ -134,78 +134,11 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.heading-section -->
 			</div>
 			<!-- /.row -->
-			<div class="row">
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-1">
-						<div class="service-icon">
-							<i class="fa fa-file-code-o"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3>HTML5 Coding</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Enim, assumenda, eveniet, consectetur, ex doloribus veniam
-									asperiores incidunt mollitia placeat aniet.</p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-2">
-						<div class="service-icon">
-							<i class="fa fa-paper-plane-o"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3></h3>
-								<p></p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-3">
-						<div class="service-icon">
-							<i class="fa fa-institution"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3></h3>
-								<p></p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-4">
-						<div class="service-icon">
-							<i class="fa fa-flask"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3></h3>
-								<p></p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
+			<div class="row" id="TopReview">
+			
+			
 			</div>
+				
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
@@ -264,30 +197,91 @@ http://www.templatemo.com/tm-406-flex
 	
 		$(document).ready(function() {
 			
-			getThumnails_By_Default();
+			
+			getThumnails_By_Default_REVIEW();
+			getThumnails_By_Default_TOUR();
+			
+			
 			
 			// 디폴트로 나오는 게시글
-			function getThumnails_By_Default() {
+			function getThumnails_By_Default_REVIEW() {
 				
 				// wm_image 리스트
-				imageList = [];
+				ReviewImage = [];
 				// wm_tour 리스트(제목)
-				titleList = [];
+				ReviewTitle = [];
 				// wm_tour_region 리스트(지역)
-				regionList = [];
+				ReviewRegion = [];
+				
+				var url1 = '/project03/review/defaultimage';
+				$.getJSON(url1, function(data1) {
+					$(data1).each(function() {
+						ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+					});
+					
+					var url2 = '/project03/review/defaulttitle';
+					$.getJSON(url2, function(data2) {
+						$(data2).each(function() {
+							ReviewTitle.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+						});
+						console.log(ReviewTitle);
+						
+						var url3 = '/project03/review/defaultregion';
+						$.getJSON(url3, function(data3) {
+							$(data3).each(function() {
+								var name = this.region_name.split(",");
+								var tagname = '';
+								for(var i=0; i<name.length; i++){
+									tagname +="#"+name[i]+" ";
+								}
+								
+								ReviewRegion.push({region_name: tagname, review_no: this.review_no});	
+							});
+						
+							for (var i = 0; i < ReviewImage.length; i++) {
+								for (var j = 0; j < ReviewTitle.length; j++) {
+									if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
+										ReviewImage[i].tour = ReviewTitle[j].title;
+									} 
+									for (var k = 0; k < ReviewRegion.length; k++) {
+										if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
+											ReviewImage[i].city = ReviewRegion[k].region_name;
+										} 
+									}	
+								}	
+							}	
+							
+							getAllThumnail_REVIEW();
+						});
+		
+					});
+		
+				});// end getJSON()
+		
+			};//end of getThumnails()
+			
+			// 디폴트로 나오는 게시글
+			function getThumnails_By_Default_TOUR() {
+				
+				// wm_image 리스트
+				TourImage = [];
+				// wm_tour 리스트(제목)
+				TourTitle = [];
+				// wm_tour_region 리스트(지역)
+				TourRegion = [];
 				
 				var url1 = '/project03/index/defaultimage';
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+						TourImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/defaulttitle';
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+							TourTitle.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
-						console.log(titleList);
+						console.log(TourTitle);
 						
 						var url3 = '/project03/index/defaultregion';
 						$.getJSON(url3, function(data3) {
@@ -298,25 +292,25 @@ http://www.templatemo.com/tm-406-flex
 									tagname +="#"+name[i]+" ";
 								}
 								
-								regionList.push({region_name: tagname, trip_no: this.trip_no});	
+								TourRegion.push({region_name: tagname, trip_no: this.trip_no});	
 							});
 						
-							for (var i = 0; i < imageList.length; i++) {
-								for (var j = 0; j < titleList.length; j++) {
-									if (imageList[i].content_no == titleList[j].trip_no) {
-										imageList[i].tour = titleList[j].title;
-										imageList[i].condition_sex = titleList[j].condition_sex;
-										imageList[i].condition_age = titleList[j].condition_age;
+							for (var i = 0; i < TourImage.length; i++) {
+								for (var j = 0; j < TourTitle.length; j++) {
+									if (TourImage[i].content_no == TourTitle[j].trip_no) {
+										TourImage[i].tour = TourTitle[j].title;
+										TourImage[i].condition_sex = TourTitle[j].condition_sex;
+										TourImage[i].condition_age = TourTitle[j].condition_age;
 									} 
-									for (var k = 0; k < regionList.length; k++) {
-										if (imageList[i].content_no == regionList[k].trip_no) {
-											imageList[i].city = regionList[k].region_name;
+									for (var k = 0; k < TourRegion.length; k++) {
+										if (TourImage[i].content_no == TourRegion[k].trip_no) {
+											TourImage[i].city = TourRegion[k].region_name;
 										} 
 									}	
 								}	
 							}	
 							
-							getAllThumnail();
+							getAllThumnail_TOUR();
 						});
 
 					});
@@ -324,20 +318,44 @@ http://www.templatemo.com/tm-406-flex
 				});// end getJSON()
 		
 			};//end of getThumnails()
-
-			function getAllThumnail() {
+			
+			
+			function getAllThumnail_REVIEW() {
 				
 				var list = '';
 				
-				for(var i = 0; i<imageList.length; i++){
+				for(var i = 0; i<ReviewImage.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
-							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="' + imageList[i].img_url + '" width="300" height="240">'
-							+ '<div>제목: ' + imageList[i].tour + '</div>'
-							+ '<div>' + imageList[i].city + '</div>'	
-							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+							+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="' + ReviewImage[i].img_url + '" width="300" height="240">'
+							+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
+							+ '<div>' + ReviewImage[i].city + '</div>'	
+							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+							+ '</figure>'
+							+ '</div>'
+							+ '</div>';
+				}
+
+				$('#TopReview').html(list);
+
+				//end of getThumnails()
+			};
+
+			function getAllThumnail_TOUR() {
+				
+				var list = '';
+				
+				for(var i = 0; i<TourImage.length; i++){
+
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+							+ '<div class="portfolio-thumb">'
+							+ '<figure>'
+							+ '<a href="../tour/detail?trip_no=' + TourImage[i].content_no + '"><img src="' + TourImage[i].img_url + '" width="300" height="240">'
+							+ '<div>제목: ' + TourImage[i].tour + '</div>'
+							+ '<div>' + TourImage[i].city + '</div>'	
+							+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
 							+ '</figure>'
 							+ '</div>'
 							+ '</div>';
@@ -346,37 +364,11 @@ http://www.templatemo.com/tm-406-flex
 				$('#tourDetailSearch').html(list);
 			};
 			
-			// 지역 검색 버튼 처리
-			$('#region_search').click(function() {
-	
-				var region_name = $('#region_name').val();
-	
-				if (region_name == "") {
-					alert('검색할 지역을 입력하세요');
-				} else {
-					alert('지역 검색 메소드 호출 ');
-					getThumnails_By_Region();
-				}
-			});
-		
-
-			// 기간 검색 버튼 처리			
-			$('#period_search').click(function(){
-				
-				var start_date = $('#start_date').val();
-				var end_date = $('#end_date').val();
-				
-				if (start_date == "" || end_date == "") {
-					alert('검색할 기간을 선택하세요');		
-				} else {				
-					alert('기간 검색 메소드 호출');
-					getThumnails_By_Period();			
-				}
-			}); 
 			
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
+			
+			
+			
+			
 		});
 	</script>
 
