@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
+import edu.spring.project03.domain.RegionVO;
+import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.MypageService;
 import edu.spring.project03.service.TourSearchService;
 
@@ -77,7 +79,7 @@ public class MypageController {
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
 			
 			logger.info("mno 검색 성공 ");			
-			/*return joinentity;*/
+			
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
@@ -91,6 +93,55 @@ public class MypageController {
 		// 출력 됨
 		return entity;
 	}
+	
+	// mno 검색 Ajax 처리
+	// 해당 mno 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/MyPage/title/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxtitleTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+	    List<TourRegisterVO> list = mypageService.read_mytour_title(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+			logger.info("제목 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("제목 전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+	
+	@RequestMapping(value = "/MyPage/region/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxregionTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<RegionVO>> entity = null;
+
+		List<RegionVO> list = mypageService.read_mytour_region(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+			logger.info("지역 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역  전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}	
+
 	
 	@RequestMapping(value = "/MyPage/joinlist/{mno}", method = RequestMethod.GET)
 	public ResponseEntity<List<ImgVO>> ajaxjoinlistTest(@PathVariable("mno") int mno, Model model) {

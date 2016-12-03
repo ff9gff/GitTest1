@@ -43,6 +43,10 @@ ul {
 	-webkit-border-radius: 70px;
 	margin: auto;
 }
+
+#tourchoose {
+	
+}
 </style>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -129,18 +133,58 @@ ul {
 				
 				// 등록된 게시물 리스트
 				List = [];
-				
-				// 선택한 게시물 리스트
-				JoinList = [];
+				// wm_tour 리스트(제목)
+				titleList = [];
+				// wm_tour_region 리스트(지역)
+				regionList = [];
 				
 				var url = '/project03/MyPage/list/' + ${mno};
 				$.getJSON(url, function(data1) {
 					$(data1).each(function() {
-						List.push({img_url: this.img_url, content_no: this.content_no, joinlist: {}})
-						alert("list 동작");	
-					});
+						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+							
 					
-					getAllThumnail();
+						var urltitle = '/project03/MyPage/title/' + ${mno};
+						$.getJSON(urltitle, function(datatitle) {
+							$(datatitle).each(function() {
+								titleList.push({trip_no: this.trip_no, title: this.title});
+								
+							});
+							
+							
+							var urlregion = '/project03/MyPage/region/' + ${mno};
+							$.getJSON(urlregion, function(dataregion) {
+								$(dataregion).each(function() {
+									var name = this.region_name.split(",");
+									var tagname = '';
+									for(var i=0; i<name.length; i++){
+										tagname +="#"+name[i]+" ";
+									}
+									
+									regionList.push({region_name: tagname, trip_no: this.trip_no});	
+								});
+							
+								for (var i = 0; i < List.length; i++) {
+									for (var j = 0; j < titleList.length; j++) {
+										if (List[i].content_no == titleList[j].trip_no) {
+											List[i].tour = titleList[j].title;
+										} 
+										for (var k = 0; k < regionList.length; k++) {
+											if (List[i].content_no == regionList[k].trip_no) {
+												List[i].city = regionList[k].region_name;
+											} 
+										}	
+									}	
+								}
+								
+							});
+								
+							
+						});
+				
+				});
+					
+					getThumnail();
 					
 				});// end getJSON()
 			
@@ -158,16 +202,11 @@ ul {
 					$(data2).each(function() {
 						alert("???");
 						JoinList.push({img_url: this.img_url, content_no: this.content_no})
-							
-					});	
 									
-				});
-					
-					
+					});					
 					
 					getChooseThumnail();
 					
-			
 				});// end getJSON()
 			
 			};//end of getThumnails()
@@ -182,6 +221,8 @@ ul {
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
 						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="' + List[i].img_url + '" width="300" height="200">'
+						+ '<div>제목: ' + List[i].tour + '</div>'
+						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
 						+ '</div>'
 						+ '</div>';
@@ -242,7 +283,7 @@ ul {
 		var mno_img = '${inserterImg}';
 		
 		$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/>');
-		alert(mno_img);
+		
 		</script>
 	
 	

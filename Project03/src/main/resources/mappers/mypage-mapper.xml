@@ -28,5 +28,17 @@
 		where content_no in (select trip_no from wm_tour_join
 		where mno = #{mno})
 	</select>
+	
+	<select id="select_mytour_title" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour
+		where trip_no in (select trip_no from wm_tour
+		where mno = #{mno})
+	</select>
+	
+	<select id="select_mytour_region" resultType="edu.spring.project03.domain.RegionVO">
+ 		select * from wm_tour_region
+ 		where trip_no in (select trip_no from wm_tour
+		where mno = #{mno})
+ 	</select>
 
 </mapper>
