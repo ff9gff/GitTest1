@@ -225,7 +225,7 @@ http://www.templatemo.com/tm-406-flex
 	
 
 		// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
-		function getThumnails_By_Region() {
+		function getThumnails_By_Region_REVIEW() {
 			
 			// wm_image 리스트
 			ReviewImage = [];
@@ -317,7 +317,7 @@ http://www.templatemo.com/tm-406-flex
 				alert('검색할 지역을 입력하세요');
 			} else {
 				alert('지역 검색 메소드 호출 ');
-				getThumnails_By_Region();
+				getThumnails_By_Region_REVIEW();
 			}
 
 		});
