@@ -82,5 +82,10 @@ public class TestController {
 	public String myPage() {
 		return "MyPage";
 	}
+	
+	@RequestMapping(value = "/index", method = RequestMethod.GET)
+	public void main() {
+		logger.info("index.jsp 소환");
+	}
 
 }

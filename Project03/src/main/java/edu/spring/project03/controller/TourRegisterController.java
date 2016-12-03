@@ -1,7 +1,5 @@
 package edu.spring.project03.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -105,6 +103,13 @@ public class TourRegisterController {
 		
 		return "toggle_msg";
 	}
+	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
+	public String toggleMsg() {
+	
+		
+		return "toggle_msg";
+	}
 
 	// 메인에서 "여행 등록하러 가기" 클릭 --> 새로운 여행 일정 등록하러 가기
 	@RequestMapping(value = "/GoRegister", method = RequestMethod.GET)
@@ -117,6 +122,8 @@ public class TourRegisterController {
 	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
+		
+		// 썸네일 이미지 주소 생성
 		ImageFile fileInfo = imageService.save(imageFile);
 		
 		logger.info(""+regionvo);
@@ -129,12 +136,10 @@ public class TourRegisterController {
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			logger.info("mno 확인: " + tourregistervo.getMno());
 
 			// 이상 없으면 여행등록 DB insert!
 			int result = tourRegisterService.create(tourregistervo);
-
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 등록 성공");
 
@@ -189,14 +194,11 @@ public class TourRegisterController {
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-
 		} else {
 			logger.info("대실패 ");
-
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			model.addAttribute("vo", tourregistervo);
 			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);

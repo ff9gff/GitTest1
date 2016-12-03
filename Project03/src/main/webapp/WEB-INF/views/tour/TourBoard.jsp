@@ -48,11 +48,6 @@ http://www.templatemo.com/tm-406-flex
 
 	<div class="site-main" id="sTop">
 		<div class="site-header">
-			<div class="container">
-
-				<!-- /.row -->
-			</div>
-			<!-- /.container -->
 			<div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
@@ -69,8 +64,11 @@ http://www.templatemo.com/tm-406-flex
 								</div>
 								<ul class="menu-first">
 									<li><a href="index">메인</a></li>
+									<li><a href="#services">후기</a></li>
+									<li><a href="#portfolio">찾기</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
-									<li><a href="login">로그인</a></li>
+									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -84,72 +82,59 @@ http://www.templatemo.com/tm-406-flex
 			<!-- /.main-header -->
 		</div>
 		<!-- /.site-header -->
+		<div class="site-slider">
+			<div class="slider">
+				<div class="flexslider">
+					<ul class="slides">
+						<li>
+							<div class="overlay"></div> <img
+							src="../resources/theme/images/slide1.jpg" alt="">
+							<div class="slider-caption visible-md visible-lg">
+								<h2>여행 게시판</h2>
+							</div>
+						</li>
+						<li>
+							<div class="overlay"></div> <img
+							src="../resources/theme/images/slide2.jpg" alt="">
+							<div class="slider-caption visible-md visible-lg">
+								<h2>참여하고 싶은 여행을 검색해보세요</h2>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- /.flexslider -->
+			</div>
+			<!-- /.slider -->
+		</div>
+		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
 
 
 	<div class="content-section" id="services">
 		<div class="container">
-			<div class="row">
-				<div class="heading-section col-md-12 text-center">
-					<h2>여행 게시판</h2>
-					<p>참여하고 싶은 여행을 검색해보세요</p>
-				</div>
-				<!-- /.heading-section -->
-			</div>
-			<!-- /.row -->
+			<div>
 
-			<div class="row">
-				<button id="btn_create_tour"
-					style="float: right; margin-right: 13px">여행 등록</button>
-			</div>
-
-			<div id="best_top4">
-
-				<h3 class="h3" style="font: bold;">여행 조건 상세 검색</h3>
+				<h3 class="h2" style="font: bold;">여행 조건 상세 검색 </h3>
+				
 				<br /><br />
 
 				<div>
-	
-						<p>
-							<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-							<button type="button" id="region_search">장소 검색</button>
-						</p>
-
-						<br /><br />
+					<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+					<button type="button" id="region_search">장소 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
-						<p>	
-							<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-							<input type="text" id="end_date" name="end_date" placeholder="종료일">
-							<button type="button" id="period_search">기간 검색</button> <br /><br /><br />
-						</p>
-	
-						<br />
-	
-						<!-- <div>
-							성별 조건: <br /> 남자 <input type="radio" name="condition_sex"
-								value="1" /> 여자 <input type="radio" name="condition_sex"
-								value="2" /> 조건없음 <input type="radio" name="condition_sex"
-								value="3" />
-						</div>
-	
-						<br />
-	
-						<div>
-							연령 조건: <br /> 20대 <input type="radio" name="condition_age"
-								value="1" /> 30대 <input type="radio" name="condition_age"
-								value="2" /> 40대 <input type="radio" name="condition_age"
-								value="3" /> 50대 <input type="radio" name="condition_age"
-								value="4" />
-						</div> -->
-		
-						<br />
+					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
+					<input type="text" id="end_date" name="end_date" placeholder="종료일">
+					<button type="button" id="period_search">기간 검색</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					
+					<button id="btn_create_tour" style="float: right; margin-right: 13px">여행 등록</button>
+					<br /><br /><br />
+					
+					
 						
 				</div>
 				
 				<div class="row" id="tourDetailSearch">
-					
-					<!-- /.col-md-3 -->
 				</div>
 				<!-- /.row -->
 			</div>
@@ -182,10 +167,6 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/main.js"></script>
 	
 	<script>
-	
-		
-			
-		
 		$(document).ready(function() {
 			
 			getThumnails_By_Default();
@@ -203,13 +184,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/defaultimage';
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/defaulttitle';
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
@@ -229,6 +210,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -236,13 +219,11 @@ http://www.templatemo.com/tm-406-flex
 										} 
 									}	
 								}	
-							}
-							
+							}	
 							
 							getAllThumnail();
 						});
-							
-						
+
 					});
 		
 				});// end getJSON()
@@ -263,13 +244,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/regionimage/' + $('#region_name').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/regiontitle/' + $('#region_name').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
@@ -289,6 +270,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -324,13 +307,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/periodimage/' + $('#start_date').val() + "/" + $('#end_date').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/periodtitle/' + $('#start_date').val() + "/" + $('#end_date').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
@@ -350,6 +333,8 @@ http://www.templatemo.com/tm-406-flex
 								for (var j = 0; j < titleList.length; j++) {
 									if (imageList[i].content_no == titleList[j].trip_no) {
 										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -377,9 +362,10 @@ http://www.templatemo.com/tm-406-flex
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
-							+ '<a href="tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="200">'
+							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240">'
 							+ '<div>제목: ' + imageList[i].tour + '</div>'
-							+ '<div>지역: ' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 							+ '</figure>'
 							+ '</div>'
 							+ '</div>';

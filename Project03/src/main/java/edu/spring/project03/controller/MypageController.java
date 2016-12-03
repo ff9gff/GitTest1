@@ -2,7 +2,6 @@ package edu.spring.project03.controller;
 
 import java.util.List;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -37,7 +36,7 @@ public class MypageController {
 	private TourSearchService tourSelectService;
 	
 	@RequestMapping(value="/MyPage", method=RequestMethod.GET )
-	public void selectPesrsonal(HttpServletRequest req, Model model) {		
+	public String selectPesrsonal(HttpServletRequest req, Model model) {		
 		HttpSession session = req.getSession();
 		int mno = Integer.valueOf(session.getAttribute("mno").toString());
 		logger.info("mno: " + mno);
@@ -58,6 +57,7 @@ public class MypageController {
 		
 		model.addAttribute("vo", vo);
 		
+		return "MyPage";
 	}
 	
 	// mno 검색 Ajax 처리

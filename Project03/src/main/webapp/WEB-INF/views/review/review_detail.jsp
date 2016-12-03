@@ -341,7 +341,7 @@
 <body>
 
 <!-- 회원가입/로그인 부분 -->
-	<%@ include file="../top_header.jspf"  %>
+	<%@ include file="../top_header.jspf" %>
 
 <div id="overlay"></div>
 

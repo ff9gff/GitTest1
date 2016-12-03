@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,20 +40,31 @@ textarea{
 
 <div style="width: 380px; height: 480px;">
 
-
-	
-	<div id="msg_header"><img src="../resources/theme/images/msg.PNG" style="width: 30px; height: 30px;">ÂÊÂî¾²±â</div>
-<input type="text" value="${msg_setter }" />
-	<div id="msg_send">
-		<span style="font-weight: 800;">¹Þ´Â»ç¶÷</span><span>${msg_getnick }</span>
-	</div>
-	<div id="msg_text">
-		<textarea>³»¿ëÀÌ´Ù</textarea>
-	</div>
+	<form id="msg_form" method="post" action="../sendMsgU">
+		<div id="msg_header">
+			<img src="../resources/theme/images/msg.PNG" style="width: 30px; height: 30px;">ìª½ì°Œì“°ê¸°
+		</div>
+		<input type="hidden" name="sd_mno" value="${msg_setter }" />
+		<input type="hidden" name="sd_url" value="tour/toggle_msg" />
+		<div id="msg_send">
+			<span style="font-weight: 800;">ë°›ëŠ”ì‚¬ëžŒ</span><input name="nickname" value="${msg_getnick }"/>
+		</div>
+		<div id="msg_text">
+			<textarea name="msg_content"></textarea>
+		</div>
+	</form>
+	<button id="send_button">ë³´ë‚´ê¸°</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+
+$('#send_button').click(function(){
+	var f = document.getElementById('msg_form');
+	f.submit();
+
+	//self.close();
+});
 
 </script>
 </body>

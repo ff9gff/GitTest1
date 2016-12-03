@@ -1,11 +1,14 @@
 package edu.spring.project03.persistence;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
 
@@ -52,8 +55,36 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	public ReviewVO selectReviewRegister_data(int review_no) {
 		
 		System.out.println("리뷰 번호: " + review_no);
-		return sqlSession.selectOne(NAMESPACE + "select_review-register_data", review_no);
+		return sqlSession.selectOne(NAMESPACE + ".select_review-register_data", review_no);
 	} // end selectRegister_data(review_no)
+	
+	@Override
+	public ReviewVO select_review_by_no(int review_no) {
+		
+		ReviewVO reviewvo = sqlSession.selectOne(NAMESPACE + ".select_review_by_no", review_no);
+
+		return reviewvo;
+	} // end select_review_by_no(review_no)
+	
+	@Override
+	public PersonalVO select_review_personal(int mno) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_review_personal", mno);
+	} // end select_review_personal(mno)
+	
+	@Override
+	public ImgVO select_review_profile(int mno) {
+
+		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
+	} // end select_review_profile(mno)
+	
+	@Override
+	public String select_review_region_name(int review_no) {
+
+		return sqlSession.selectOne(NAMESPACE + ".select_review_region_name", review_no);
+	} // end select_review_region_name(review_no)
+	
+	
 	
 	/**
 	 * update
@@ -77,6 +108,59 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	} // end insertBest(bestvo)
+	
+	
+	
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// 후기 게시판 - 디폴트 ?개 후기
+	// 이미지 가져오기
+	@Override
+	public List<ImgVO> select_review_default_image() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_default_review_image");
+	}
+
+	// 제목 가져오기
+	@Override
+	public List<ReviewVO> select_review_default_title() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_default_review_title");
+	}
+
+	// 지역 가져오기
+	@Override
+	public List<ReviewRegionVO> select_review_default_region() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_default_review_region");
+	}
+
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	// 후기 게시판 - 지역 검색
+	// 이미지 가져오기
+	@Override
+	public List<ImgVO> select_review_region_image(String region_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_region_search_image", region_name);
+	}
+
+	// 제목 가져오기
+	@Override
+	public List<ReviewVO> select_review_region_title(String region_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_region_search_title", region_name);
+	}
+
+	// 지역 가져오기
+	@Override
+	public List<ReviewRegionVO> select_review_region_region(String region_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
+	}
 	
 	
 } // end class TourReviewDAOImpl

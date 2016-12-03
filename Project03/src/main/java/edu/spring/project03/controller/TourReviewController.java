@@ -50,7 +50,6 @@ public class TourReviewController {
 	@RequestMapping(value = "/review_register", method = RequestMethod.GET)
 	public void reviewRegister() {
 		// review_register.jsp 페이지 이동
-
 	} // end reviewRegister()
 
 	@RequestMapping(value = "/review_register", method = RequestMethod.POST)
@@ -73,12 +72,13 @@ public class TourReviewController {
 		if (reviewvo != null && reviewregionvo != null) {
 			logger.info("mno 확인: " + reviewvo.getMno());
 
-			// 이상 없으면 여행등록 DB insert!
+			// 이상 없으면 후기등록 DB insert!
 			int review_result = tourReviewService.createReview(reviewvo);
 			if (review_result == 1) { // 후기 등록 DB insert 성공
 				logger.info("후기 등록 성공");
 
-				/*int */review_no = tourReviewService.readReview_no(reviewvo);
+				// 썸네일과 장소를 등록하기 위해 review_no를 가져오자
+				review_no = tourReviewService.readReview_no(reviewvo);
 				logger.info("reviewNo : " + review_no);
 
 				/*reviewvo = tourReviewService.readReviewRegisterData(review_no);
@@ -120,6 +120,7 @@ public class TourReviewController {
 		return"redirect:review_detail?review_no=" + review_no;
 	} // end CreateReview()
 	
+	
 	@RequestMapping(value = "/review_detail", method = RequestMethod.GET)
 	public String reviewDetail(int review_no, Model model) {		
 		// review_detail.jsp 페이지 이동
@@ -127,35 +128,35 @@ public class TourReviewController {
 		logger.info("reviewDetail() 호출...");
 		logger.info("review_no : " + review_no);
 		
-//		ReviewVO reviewvo = tourReviewService.read_review_by_no(review_no);
-//		
-//		if(reviewvo != null) {
-//			logger.info("reviewvo.getMno" + reviewvo.getMno());
-//			
-//			ImgVO img = tourReviewService.read_trip_profile(reviewvo.getMno());
-//			logger.info("img: " + img);
-//			
-//			PersonalVO personalvo = tourReviewService.read_trip_person(reviewvo.getMno());
-//			String region = tourReviewService.read_trip_region_name(reviewvo.getReview_no());
-//			
-//			model.addAttribute("reviewvo", reviewvo);
-//			
-//			if(personalvo != null){
-//			model.addAttribute("inserterNickname", personalvo.getNickname());
-//			model.addAttribute("inserterIntro", personalvo.getIntroduce());
-//			}
-//			
-//			if(img != null){
-//			model.addAttribute("inserterImg", img.getImg_url());
-//			}
-//			
-//			if(region != null){
-//			model.addAttribute("inserterRegion", region);
-//			}			
-//		} // end if
+		ReviewVO reviewvo = tourReviewService.read_review_by_no(review_no);
 		
+		if(reviewvo != null) {
+			logger.info("reviewvo.getMno" + reviewvo.getMno());
+			
+			ImgVO img = tourReviewService.read_review_profile(reviewvo.getMno());
+			logger.info("img: " + img);
+			
+			PersonalVO personalvo = tourReviewService.read_review_personal(reviewvo.getMno());
+			String region = tourReviewService.read_review_region_name(reviewvo.getReview_no());
+			
+			model.addAttribute("reviewvo", reviewvo);
+			
+			if(personalvo != null){
+			model.addAttribute("inserterNickname", personalvo.getNickname());
+			model.addAttribute("inserterIntro", personalvo.getIntroduce());
+			}
+			
+			if(img != null){
+			model.addAttribute("inserterImg", img.getImg_url());
+			}
+			
+			if(region != null){
+			model.addAttribute("inserterRegion", region);
+			}			
+		} // end if		
 		
 		return "review/review_detail";
+		
 	} // end reviewDetail()
 	
 	
