@@ -222,17 +222,12 @@ http://www.templatemo.com/tm-406-flex
 					<h2><a href="tour/tourBoard">여행 검색하러 가기</a></h2>
 					<br /> <br /><br />
 					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2>
-					<!-- <button type="button" id="tour_register">여행 등록</button> <br /><br /><br />
-
-			$('#tour_register').click(function() {
-				location = 'tour/GoRegister';
-			}); -->
-			
 				</div>
 				<!-- /.heading-section -->
 			</div>
-			<!-- /.row -->
-
+			
+			<br />	<br />	
+			
 			<div class="row" id="tourDetailSearch">
 
 			</div>
@@ -349,10 +344,7 @@ http://www.templatemo.com/tm-406-flex
 				}
 
 				$('#tourDetailSearch').html(list);
-	
-				//end of getThumnails()
 			};
-			
 			
 			// 지역 검색 버튼 처리
 			$('#region_search').click(function() {
@@ -365,7 +357,6 @@ http://www.templatemo.com/tm-406-flex
 					alert('지역 검색 메소드 호출 ');
 					getThumnails_By_Region();
 				}
-	
 			});
 		
 
