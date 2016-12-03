@@ -38,6 +38,14 @@ public interface TourReviewService {
 	// 3. 지역 가져오기
 	public abstract List<ReviewRegionVO> read_review_default_region();
 	
+	// 후기게시판 - 지역검색 
+	// 1. 사진 이미지 가져오기
+	public abstract List<ImgVO> read_review_region_image(String region_name);
+	// 2. 제목 가져오기
+	public abstract List<ReviewVO> read_review_region_title(String region_name);
+	// 3. 지역 가져오기
+	public abstract List<ReviewRegionVO> read_review_region_region(String region_name);
+	
 	
 	
 	

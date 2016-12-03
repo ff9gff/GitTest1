@@ -237,13 +237,13 @@ $(document).ready(function() {
 			var url1 = '/project03/review/regionimage/' + $('#region_name').val();
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+					imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
 				});
 				
 				var url2 = '/project03/review/regiontitle/' + $('#region_name').val();
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						titleList.push({trip_no: this.trip_no, title: this.title});	
+						titleList.push({review_no: this.review_no, title: this.title});	
 					});
 					console.log(titleList);
 					
@@ -256,18 +256,16 @@ $(document).ready(function() {
 								tagname +="#"+name[i]+" ";
 							}
 							
-							regionList.push({region_name: tagname, trip_no: this.trip_no});	
+							regionList.push({region_name: tagname, review_no: this.review_no});	
 						});
 					
 						for (var i = 0; i < imageList.length; i++) {
 							for (var j = 0; j < titleList.length; j++) {
-								if (imageList[i].content_no == titleList[j].trip_no) {
+								if (imageList[i].content_no == titleList[j].review_no) {
 									imageList[i].tour = titleList[j].title;
-									imageList[i].condition_sex = titleList[j].condition_sex;
-									imageList[i].condition_age = titleList[j].condition_age;
 								} 
 								for (var k = 0; k < regionList.length; k++) {
-									if (imageList[i].content_no == regionList[k].trip_no) {
+									if (imageList[i].content_no == regionList[k].review_no) {
 										imageList[i].city = regionList[k].region_name;
 									} 
 								}	

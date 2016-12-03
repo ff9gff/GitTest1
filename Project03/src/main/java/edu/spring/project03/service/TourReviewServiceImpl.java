@@ -112,6 +112,24 @@ public class TourReviewServiceImpl implements TourReviewService {
 		// TODO Auto-generated method stub
 		return tourReviewDAO.select_review_default_region();
 	}
+
+	@Override
+	public List<ImgVO> read_review_region_image(String region_name) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_region_image(region_name);
+	}
+
+	@Override
+	public List<ReviewVO> read_review_region_title(String region_name) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_region_title(region_name);
+	}
+
+	@Override
+	public List<ReviewRegionVO> read_review_region_region(String region_name) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_region_region(region_name);
+	}
 	
 	
 	/**

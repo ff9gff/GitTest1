@@ -55,16 +55,34 @@
 	
 	
 	
-
+	<!-- 후기 게시판 디폴트 ?개 후기 뿌리기 -->
+	<!-- 1. 이미지 가져오기 -->
 	<select id="select_default_review_image" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image
 		where board_type = 2 order by content_no desc
 	</select>
+	<!-- 2. 제목 가져오기 -->
 	<select id="select_default_review_title" resultType="edu.spring.project03.domain.ReviewVO">
 		select * from wm_review order by review_no desc
 	</select>
+	<!-- 3. 지역 가져오기 -->
 	<select id="select_default_review_region" resultType="edu.spring.project03.domain.ReviewRegionVO">
 		select * from wm_review_region order by review_no desc
+	</select>
+	
+	<!-- 후기 게시판 지역 검색 -->
+	<!-- 1. 이미지 가져오기 -->
+	<select id="select_region_search_image" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type = 2 and content_no in (select review_no from wm_review_region where region_name = #{region_name}) order by content_no desc
+	</select>
+	<!-- 2. 제목 가져오기 -->
+	<select id="select_region_search_title" resultType="edu.spring.project03.domain.ReviewVO">
+		select * from wm_review where review_no in (select review_no from wm_review_region where region_name = #{region_name}) order by review_no desc
+	</select>
+	<!-- 3. 지역 가져오기 -->
+	<select id="select_region_search_region" resultType="edu.spring.project03.domain.ReviewRegionVO">
+		select * from wm_review_region where region_name = #{region_name} order by review_no desc
 	</select>
 	
 	

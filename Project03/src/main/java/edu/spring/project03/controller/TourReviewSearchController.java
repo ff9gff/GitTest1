@@ -98,23 +98,22 @@ public class TourReviewSearchController {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	/*// 지역 검색 Ajax 처리
-	// 해당 지역 검색 메소드
+	// 후기 게시판 - 지역검색 - 이미지 가져오기
 	@RequestMapping(value = "/review/regionimage/{region_name}", method = RequestMethod.GET)
 	public ResponseEntity<List<ImgVO>> ajaxReviewRegionImageTest(@PathVariable("region_name") String region_name) {
-		logger.info("여행 지역: " + region_name);
+
 		ResponseEntity<List<ImgVO>> entity = null;
 
-		List<ImgVO> list = tourReviewService.read_review_region_region_name(region_name);
+		List<ImgVO> list = tourReviewService.read_review_region_image(region_name);
 
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("지역 검색 성공 ");
+			logger.info("후기 이미지 검색 성공 ");
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("지역 검색 실패 ");
+			logger.info("후기 이미지 검색 실패 ");
 		}
 
 		logger.info("entity " + entity.getBody());
@@ -123,24 +122,22 @@ public class TourReviewSearchController {
 		return entity;
 	}
 
-	// 지역 검색 Ajax 처리
-	// 해당 지역 썸네일 이미지 아래 제목 검색 메소드
+	// 후기 게시판 - 지역검색 - 제목 가져오기
 	@RequestMapping(value = "/review/regiontitle/{region_name}", method = RequestMethod.GET)
-	public ResponseEntity<List<TourRegisterVO>> ajaxReviewRegionTitleTest(@PathVariable("region_name") String region_name) {
+	public ResponseEntity<List<ReviewVO>> ajaxReviewRegionTitleTest(@PathVariable("region_name") String region_name) {
 
-		logger.info("여행 지역: " + region_name);
-		ResponseEntity<List<TourRegisterVO>> entity = null;
+		ResponseEntity<List<ReviewVO>> entity = null;
 
-		List<TourRegisterVO> list = tourReviewService.read_review_region_title(region_name);
+		List<ReviewVO> list = tourReviewService.read_review_region_title(region_name);
 
 		if (list != null) {
 			// select 성공 한것이다.
-			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
-			logger.info("지역  - 제목 검색 성공 ");
+			entity = new ResponseEntity<List<ReviewVO>>(list, HttpStatus.OK);
+			logger.info("후기 제목 검색 성공 ");
 		} else {
 			// select 실패이다.
-			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("지역  - 제목 검색 실패 ");
+			entity = new ResponseEntity<List<ReviewVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("후기 제목 검색 실패 ");
 		}
 
 		logger.info("entity " + entity);
@@ -149,24 +146,22 @@ public class TourReviewSearchController {
 		return entity;
 	}
 
-	// 지역 검색 Ajax 처리
-	// 해당 지역 썸네일 이미지 아래 지역 검색 메소드
+	// 후기 게시판 - 지역검색 - 지역 가져오기
 	@RequestMapping(value = "/review/regionregion/{region_name}", method = RequestMethod.GET)
-	public ResponseEntity<List<RegionVO>> ajaxReviewRegionRegionTest(@PathVariable("region_name") String region_name) {
-		logger.info("여행 지역: " + region_name);
+	public ResponseEntity<List<ReviewRegionVO>> ajaxReviewRegionRegionTest(@PathVariable("region_name") String region_name) {
 
-		ResponseEntity<List<RegionVO>> entity = null;
+		ResponseEntity<List<ReviewRegionVO>> entity = null;
 
-		List<RegionVO> list = tourReviewService.read_review_region_region(region_name);
+		List<ReviewRegionVO> list = tourReviewService.read_review_region_region(region_name);
 
 		if (list != null) {
 			// select 성공 한것이다.
-			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
-			logger.info("지역  - 지역 검색 성공 ");
+			entity = new ResponseEntity<List<ReviewRegionVO>>(list, HttpStatus.OK);
+			logger.info("후기 지역 검색 성공 ");
 		} else {
 			// select 실패이다.
-			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("지역  - 지역 검색 실패 ");
+			entity = new ResponseEntity<List<ReviewRegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("후기 지역 검색 실패 ");
 		}
 
 		logger.info("entity " + entity);
@@ -174,10 +169,8 @@ public class TourReviewSearchController {
 		// 출력 됨
 		return entity;
 	}
-*/
-	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// 웹사이트에서 동일한 부분 코드 수정
 

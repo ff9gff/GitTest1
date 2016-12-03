@@ -35,4 +35,5 @@ public interface TourSearchDAO {
 	public abstract List<ImgVO> select_default_image();
 	public abstract List<TourRegisterVO> select_default_title();
 	public abstract List<RegionVO> select_default_region();
+	
 }

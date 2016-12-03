@@ -114,26 +114,52 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	
-	// 디폴트 ?개 후기 이미지
+	// 후기 게시판 - 디폴트 ?개 후기
+	// 이미지 가져오기
 	@Override
 	public List<ImgVO> select_review_default_image() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + ".select_default_review_image");
 	}
 
-	// 디폴트 ?개 후기 제목
+	// 제목 가져오기
 	@Override
 	public List<ReviewVO> select_review_default_title() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + ".select_default_review_title");
 	}
 
-	// 디폴트 ?개 후기 지역
+	// 지역 가져오기
 	@Override
 	public List<ReviewRegionVO> select_review_default_region() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE + ".select_default_review_region");
+	}
+
+	
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	
+	// 후기 게시판 - 지역 검색
+	// 이미지 가져오기
+	@Override
+	public List<ImgVO> select_review_region_image(String region_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_region_search_image", region_name);
+	}
+
+	// 제목 가져오기
+	@Override
+	public List<ReviewVO> select_review_region_title(String region_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_region_search_title", region_name);
+	}
+
+	// 지역 가져오기
+	@Override
+	public List<ReviewRegionVO> select_review_region_region(String region_name) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
 	}
 	
 	

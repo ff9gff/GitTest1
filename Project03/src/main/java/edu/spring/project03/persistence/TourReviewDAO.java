@@ -30,13 +30,21 @@ public interface TourReviewDAO {
 	// delete
 	
 	
-	// 디폴트 ?개 후기
+	// 후기 게시판 - 디폴트 ?개 후기
 	// 1. 사진 뿌리기
 	public abstract List<ImgVO> select_review_default_image();
 	// 2. 제목 뿌리기
 	public abstract List<ReviewVO> select_review_default_title();
 	// 3. 지역 뿌리기
 	public abstract List<ReviewRegionVO> select_review_default_region();
+	
+	// 후기 게시판 - 지역검색
+	// 1. 사진 뿌리기
+	public abstract List<ImgVO> select_review_region_image(String region_name);
+	// 2. 제목 뿌리기
+	public abstract List<ReviewVO> select_review_region_title(String region_name);
+	// 3. 지역 뿌리기
+	public abstract List<ReviewRegionVO> select_review_region_region(String region_name);
 	
 	
 	/**
