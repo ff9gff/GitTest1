@@ -118,18 +118,18 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /.site-main -->
 
+	<br /><br />	
 
 	<div class="content-section" id="services">
+		<br /><br />	
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>Top 4 Review</h2>
-					<p>당신만의 멋진 후기를 보여주세요</p>
+					<h2>Top 4 Review</h2><br/><br/>
+					<h1>당신만의 멋진 후기를 보여주세요</h1>
 				</div>
 				<div class="heading-section col-md-12 text-center">
-					<h4>
-						<a href="review/reviewBoard">전체보기</a>
-					</h4>
+					<h2><a href="review/reviewBoard">전체보기</a></h2>
 				</div>
 				<!-- /.heading-section -->
 			</div>
@@ -144,16 +144,19 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.container -->
 	</div>
 	<!-- /#services -->
+	
+	<br /><br />
 
 	<div class="content-section" id="portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>여행 리스트</h2>
-					<br /> <br /><br />	<br />	
-					
+					<h2>여행 리스트</h2><br/><br/>
+					<h1>함께 여행할 사람들을 찾아보세요</h1>
+				</div>
+				<div class="heading-section col-md-12 text-center"> 
 					<h2><a href="tour/tourBoard">여행 검색하러 가기</a></h2>
-					<br /> <br /><br />
+					<br /><br />
 					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2>
 				</div>
 				<!-- /.heading-section -->
