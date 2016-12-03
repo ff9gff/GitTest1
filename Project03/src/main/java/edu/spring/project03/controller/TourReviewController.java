@@ -50,7 +50,6 @@ public class TourReviewController {
 	@RequestMapping(value = "/review_register", method = RequestMethod.GET)
 	public void reviewRegister() {
 		// review_register.jsp 페이지 이동
-
 	} // end reviewRegister()
 
 	@RequestMapping(value = "/review_register", method = RequestMethod.POST)
@@ -73,11 +72,12 @@ public class TourReviewController {
 		if (reviewvo != null && reviewregionvo != null) {
 			logger.info("mno 확인: " + reviewvo.getMno());
 
-			// 이상 없으면 여행등록 DB insert!
+			// 이상 없으면 후기등록 DB insert!
 			int review_result = tourReviewService.createReview(reviewvo);
 			if (review_result == 1) { // 후기 등록 DB insert 성공
 				logger.info("후기 등록 성공");
 
+				// 썸네일과 장소를 등록하기 위해 review_no를 가져오자
 				review_no = tourReviewService.readReview_no(reviewvo);
 				logger.info("reviewNo : " + review_no);
 

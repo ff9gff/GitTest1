@@ -122,6 +122,8 @@ public class TourRegisterController {
 	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
+		
+		// 썸네일 이미지 주소 생성
 		ImageFile fileInfo = imageService.save(imageFile);
 		
 		logger.info(""+regionvo);
@@ -134,12 +136,10 @@ public class TourRegisterController {
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			logger.info("mno 확인: " + tourregistervo.getMno());
 
 			// 이상 없으면 여행등록 DB insert!
 			int result = tourRegisterService.create(tourregistervo);
-
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 등록 성공");
 
