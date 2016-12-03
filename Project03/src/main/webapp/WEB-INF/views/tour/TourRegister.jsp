@@ -132,6 +132,28 @@ http://www.templatemo.com/tm-406-flex
 	
 	
 	<script>
+	
+		// Region Table
+		var oTbl;
+	
+		//Row 추가
+		function insRow() {
+		  oTbl = document.getElementById("regionTable");
+		  var oRow = oTbl.insertRow();
+		  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+		  var oCell = oRow.insertCell();
+		  
+		  //삽입될 Form Tag
+		  var frmTag = "<input type=text name=region_name placeholder=지역>";
+		  frmTag += " <input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
+		  oCell.innerHTML = frmTag;
+		}
+	
+		//Row 삭제
+		function removeRow() {
+		  oTbl.deleteRow(oTbl.clickedRowIndex);
+		}
+
 		$(function() { //전역변수선언
 			
 			$("#start_date, #end_date").datepicker({
@@ -234,13 +256,13 @@ http://www.templatemo.com/tm-406-flex
 						<div id="region_plus">
 							<table id="regionTable">
 								<tr>
-									<td><input type="text" name="region_name" style="width: 100%" placeholder="지역"/></td>
+									<td>
+										<input type="text" name="region_name" placeholder="지역" />
+										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
+									</td>
 								</tr>
-								<tbody></tbody>
-							</table>
-							<br /> 	
-						</div>
-						<button type="button" id="addOption">지역 추가</button><button type="button" id="delOption">지역 삭제</button><br /> <br /> 
+							</table>						
+						</div> <br /> 
 	
 						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
 						~ 

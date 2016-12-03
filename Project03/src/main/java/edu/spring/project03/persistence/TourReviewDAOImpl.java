@@ -3,9 +3,12 @@ package edu.spring.project03.persistence;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.controller.TourRegisterController;
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
@@ -15,6 +18,8 @@ import edu.spring.project03.domain.ReviewVO;
 @Repository
 public class TourReviewDAOImpl implements TourReviewDAO {
 	
+	private static final Logger logger = LoggerFactory.getLogger(TourReviewDAOImpl.class);
+
 	private static final String NAMESPACE = "edu.spring.Project03.TourReviewMapper";
 	
 	@Autowired
@@ -74,7 +79,8 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	
 	@Override
 	public ImgVO select_review_profile(int mno) {
-
+		logger.info("몇번이니: " + mno);
+		
 		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
 	} // end select_review_profile(mno)
 	
@@ -145,6 +151,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public List<ImgVO> select_review_region_image(String region_name) {
 		// TODO Auto-generated method stub
+		region_name = "%" + region_name + "%";
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_image", region_name);
 	}
 
@@ -152,6 +159,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public List<ReviewVO> select_review_region_title(String region_name) {
 		// TODO Auto-generated method stub
+		region_name = "%" + region_name + "%";
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_title", region_name);
 	}
 
@@ -159,6 +167,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public List<ReviewRegionVO> select_review_region_region(String region_name) {
 		// TODO Auto-generated method stub
+		region_name = "%" + region_name + "%";
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
 	}
 	

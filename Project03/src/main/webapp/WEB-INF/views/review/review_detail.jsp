@@ -406,7 +406,7 @@
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
 
-<c:if test="${mno ne tourVO.mno && not empty login_id}">
+<c:if test="${mno ne reviewvo.mno && not empty login_id}">
 	<div id="joinmenu">
 		<p id="joinmenu_count">몇명이 참여중이다</p>
 		<button id="joinmenu_apply">신청하기</button>
@@ -415,7 +415,7 @@
 
 <div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
 	<div style=" display: inline-block; vertical-align: middle;">
-		<div id=content_title>${tourVO.title}</div>
+		<div id=content_title>${reviewvo.title}</div>
 		<div id=content_smalltitle></div>
 	</div>
 	<div id="content_profile" style="width: 110px; height: 100px; display: inline-block;text-align:center; vertical-align: middle;">
@@ -430,7 +430,7 @@
 	</tr>	
 </table>
 
-<c:if test="${mno eq tourVO.mno}">
+<c:if test="${mno eq reviewvo.mno}">
 	<div class="menu">Apply for</div>
 	<table class="apply_panel">
 		<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
@@ -449,7 +449,7 @@
 <input hidden id="start_date" value="${tourVO.start_date}"/>
 <input hidden id="end_date" value="${tourVO.end_date}"/>
 <div id="content">
-${tourVO.content}
+${reviewvo.content}
 </div>
 
 
@@ -484,7 +484,7 @@ ${tourVO.content}
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var trip_no = ${tourVO.trip_no};
+	var review_no = ${reviewvo.review_no};
 
 		var sessionmno = '<%=(String)session.getAttribute("mno")%>';
 		var sessionaut= '<%=(String)session.getAttribute("authority")%>';

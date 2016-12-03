@@ -81,9 +81,9 @@ public class TourReviewController {
 				review_no = tourReviewService.readReview_no(reviewvo);
 				logger.info("reviewNo : " + review_no);
 
-				/*reviewvo = tourReviewService.readReviewRegisterData(review_no);
-				model.addAttribute("reviewvo", reviewvo);*/
-
+				reviewvo = tourReviewService.readReviewRegisterData(review_no);
+				model.addAttribute("reviewvo", reviewvo);
+				
 				String region_name = reviewregionvo.getRegion_name();
 				logger.info("후기 지역: " + region_name);
 				
@@ -94,15 +94,17 @@ public class TourReviewController {
 				
 					logger.info("후기 지역 등록 성공");
 
-//					model.addAttribute("reviewRegionvo", reviewRegionvo2);
+					model.addAttribute("reviewregionvo", reviewRegionvo2);
 
 					ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 					int image_result = tourReviewService.createThumnail(imagevo);
 
+					
+					
 					if (image_result == 1) {
 						logger.info("썸네일 등록 성공");
 
-//						model.addAttribute("imagevo", imagevo);
+						model.addAttribute("imagevo", imagevo);
 						logger.info("imagevo 주소 : " + imagevo);
 					} else {
 
@@ -131,7 +133,7 @@ public class TourReviewController {
 		ReviewVO reviewvo = tourReviewService.read_review_by_no(review_no);
 		
 		if(reviewvo != null) {
-			logger.info("reviewvo.getMno" + reviewvo.getMno());
+			logger.info("reviewvo.getMno: " + reviewvo.getMno());
 			
 			ImgVO img = tourReviewService.read_review_profile(reviewvo.getMno());
 			logger.info("img: " + img);
