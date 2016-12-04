@@ -293,7 +293,7 @@ http://www.templatemo.com/tm-406-flex
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240">'
+						+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
 						+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
 						+ '<div>' + ReviewImage[i].city + '</div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
