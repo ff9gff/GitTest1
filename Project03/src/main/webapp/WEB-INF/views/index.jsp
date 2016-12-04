@@ -2,53 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
+
 <head>
 <meta charset="utf-8">
 <title>같이가자</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 
-Flex Template 
-http://www.templatemo.com/tm-406-flex
--->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
-<script
-	src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
-<style>
-.searchRegion {
-	display: none;
-}
-
-.row {
-	
-}
-</style>
 </head>
 <body>
 
@@ -61,9 +34,7 @@ http://www.templatemo.com/tm-406-flex
 					<div id="menu-wrapper">
 						<div class="row">
 							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
+								<h1> <a href="#">With&nbsp;Me</a> </h1>
 							</div>
 							<!-- /.logo-wrapper -->
 							<div class="col-md-10 col-sm-10 main-menu text-right">
@@ -96,7 +67,7 @@ http://www.templatemo.com/tm-406-flex
 					<ul class="slides">
 						<li>
 							<div class="overlay"></div> <img
-							src="resources/theme/images/slide1.jpg" alt="">
+							src="resources/theme/images/theme3.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>같이가자</h2>
 							</div>
@@ -134,12 +105,11 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.heading-section -->
 			</div>
 			<br />	<br />	
-			<!-- /.row -->
+		
 			<div class="row" id="TopReview">
 			
-			
+	
 			</div>
-				
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
@@ -175,8 +145,6 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#portfolio -->
 
-
-
 	<div id="footer">
 		<div class="container">
 			<div class="row">
@@ -195,26 +163,21 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#footer -->
 
-
-
 	<script>
 	
 		$(document).ready(function() {
-			
-			
+
 			getThumnails_By_Default_REVIEW();
 			getThumnails_By_Default_TOUR();
 			
-			
-			
-			// 디폴트로 나오는 게시글
+			// 디폴트로 나오는 후기 게시글 데이터를 가져오기
 			function getThumnails_By_Default_REVIEW() {
 				
 				// wm_image 리스트
 				ReviewImage = [];
-				// wm_tour 리스트(제목)
+				// wm_review 리스트(제목)
 				ReviewTitle = [];
-				// wm_tour_region 리스트(지역)
+				// wm_review_region 리스트(지역)
 				ReviewRegion = [];
 				
 				var url1 = '/project03/review/defaultimage';
@@ -264,7 +227,7 @@ http://www.templatemo.com/tm-406-flex
 		
 			};//end of getThumnails()
 			
-			// 디폴트로 나오는 게시글
+			// 디폴트로 나오는 여행 게시글 데이터를 가져오기
 			function getThumnails_By_Default_TOUR() {
 				
 				// wm_image 리스트
@@ -323,13 +286,10 @@ http://www.templatemo.com/tm-406-flex
 		
 			};//end of getThumnails()
 			
-			
+			// 가져온 후기 데이터를 뿌려주자
 			function getAllThumnail_REVIEW() {
-				
 				var list = '';
-				
 				for(var i = 0; i < 4; i++){
-
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
@@ -343,16 +303,12 @@ http://www.templatemo.com/tm-406-flex
 				}
 
 				$('#TopReview').html(list);
-
-				//end of getThumnails()
 			};
 
+			// 가져온 여행 데이터를 뿌려주자
 			function getAllThumnail_TOUR() {
-				
 				var list = '';
-				
 				for(var i = 0; i < 4; i++){
-
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
@@ -367,15 +323,8 @@ http://www.templatemo.com/tm-406-flex
 
 				$('#tourDetailSearch').html(list);
 			};
-			
-			
-			
-			
-			
-			
 		});
 	</script>
-
 
 	<script src="resources/theme/js/bootstrap.js"></script>
 	<script src="resources/theme/js/plugins.js"></script>
