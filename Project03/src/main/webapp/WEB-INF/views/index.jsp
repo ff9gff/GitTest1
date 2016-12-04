@@ -133,6 +133,7 @@ http://www.templatemo.com/tm-406-flex
 				</div>
 				<!-- /.heading-section -->
 			</div>
+			<br />	<br />	
 			<!-- /.row -->
 			<div class="row" id="TopReview">
 			
@@ -155,9 +156,9 @@ http://www.templatemo.com/tm-406-flex
 					<h1>함께 여행할 사람들을 찾아보세요</h1>
 				</div>
 				<div class="heading-section col-md-12 text-center"> 
-					<h2><a href="tour/tourBoard">여행 검색하러 가기</a></h2>
-					<br /><br />
-					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2>
+					<h2><a href="tour/tourBoard">전체보기</a></h2>
+					<!-- <br /><br />
+					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2> -->
 				</div>
 				<!-- /.heading-section -->
 			</div>
@@ -327,7 +328,7 @@ http://www.templatemo.com/tm-406-flex
 				
 				var list = '';
 				
-				for(var i = 0; i<ReviewImage.length; i++){
+				for(var i = 0; i < 4; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
@@ -350,7 +351,7 @@ http://www.templatemo.com/tm-406-flex
 				
 				var list = '';
 				
-				for(var i = 0; i<TourImage.length; i++){
+				for(var i = 0; i < 4; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
