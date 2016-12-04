@@ -24,18 +24,21 @@
 		select * from wm_image
 		where board_type = 1 and content_no in (select trip_no from wm_tour_region
 												where region_name like #{region_name})
+		order by content_no desc
 	</select>
 
 	<select id="select_main_title_region" resultType="edu.spring.project03.domain.TourRegisterVO">
 		select * from wm_tour 
         where trip_no in (select trip_no from wm_tour_region
 						  where region_name like #{region_name})
+		order by trip_no desc
 	</select>
  
  	<select id="select_main_region_region" resultType="edu.spring.project03.domain.RegionVO">
  		select * from wm_tour_region
  		where trip_no in (select trip_no from wm_tour_region
 						  where region_name like #{region_name})
+		order by trip_no desc
  	</select>
 	
 	
