@@ -163,7 +163,7 @@ http://www.templatemo.com/tm-406-flex
 	<script>
 	
 	$(document).ready(function() {
-			
+		// 디폴트로 나오는 게시글 함수 실행	
 		getThumnails_By_Default_REVIEW();
 		
 		// 디폴트로 나오는 게시글
@@ -171,14 +171,16 @@ http://www.templatemo.com/tm-406-flex
 			
 			// wm_image 리스트
 			ReviewImage = [];
-			// wm_tour 리스트(제목)
+			// wm_review 리스트(제목)
 			ReviewTitle = [];
-			// wm_tour_region 리스트(지역)
+			// wm_review_region 리스트(지역)
 			ReviewRegion = [];
 			
+			// ReviewSearchController의 review/defaultimage 메소드 실행
 			var url1 = '/project03/review/defaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
+					// 데이터들을 배열에 저장
 					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
 				});
 				
@@ -224,14 +226,15 @@ http://www.templatemo.com/tm-406-flex
 		};//end of getThumnails()
 	
 
-		// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
+		
+		// 지역 검색: 해당 지역의 후기 정보 썸네일들을 읽어오는 함수 정의 
 		function getThumnails_By_Region_REVIEW() {
 			
 			// wm_image 리스트
 			ReviewImage = [];
-			// wm_tour 리스트(제목)
+			// wm_review 리스트(제목)
 			ReviewTitle = [];
-			// wm_tour_region 리스트(지역)
+			// wm_review_region 리스트(지역)
 			ReviewRegion = [];
 			
 			var url1 = '/project03/review/regionimage/' + $('#region_name').val();

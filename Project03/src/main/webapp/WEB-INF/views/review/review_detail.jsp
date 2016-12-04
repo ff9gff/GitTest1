@@ -1179,32 +1179,7 @@ var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
 
 var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
 
-// 조건 띄우기
-var con_sex = ${tourVO.condition_sex};
-var con_age = ${tourVO.condition_age};
 
-$('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
-switch(con_sex){
-	case 0: $('#condition_sex').html('<img src="../resources/theme/images/female.png" class="condition_img"/><div class="condition_text">여자 만</div>');
-			break;
-	case 1: $('#condition_sex').html('<img src="../resources/theme/images/male.png" class="condition_img"/><div class="condition_text">남자 만</div>');
-			break;
-	case 2: $('#condition_sex').html('<img src="../resources/theme/images/people.png" class="condition_img"/><div class="condition_text">누구나</div>');
-			break;
-	default: break;
-}// end switch
-
-switch(con_age){
-	case 1: $('#condition_age').html('<img src="../resources/theme/images/20age.png" class="condition_img"/><div class="condition_text">20대 만</div>');
-		break;
-	case 2: $('#condition_age').html('<img src="../resources/theme/images/30age.png" class="condition_img"/><div class="condition_text">30대 만</div>');
-		break;
-	case 3: $('#condition_age').html('<img src="../resources/theme/images/40age.png" class="condition_img"/><div class="condition_text">40대 이상 만</div>');
-		break;
-	case 4: $('#condition_age').html('<img src="../resources/theme/images/freeage.png" class="condition_img"/><div class="condition_text">누구나</div>');
-		break;
-	default: break;
-}// end switch
 
 var mno_nickname = '${inserterNickname}';
 var mno_intro = '${inserterIntro}';
