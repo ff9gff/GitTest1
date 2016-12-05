@@ -34,7 +34,7 @@ public interface TourSearchService {
 	public abstract List<RegionVO> read_main_region_region(String region);
 	
 	
-	// 기본으로 뿌려줄 이미지
+	// 메인 페이지 여행 기본으로 뿌려줄 이미지
 	public abstract List<ImgVO> read_default_image();
 	public abstract List<TourRegisterVO> read_default_title();
 	public abstract List<RegionVO> read_default_region();

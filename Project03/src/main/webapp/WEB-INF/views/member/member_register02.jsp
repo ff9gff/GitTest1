@@ -24,7 +24,7 @@
 
 <title>같이가자</title>
 </head>
-<body>
+<body background="../resources/theme/images/test2.jpg">
 
 <img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
 <img src="../resources/theme/images/Sign_up02.png" style="height: 75px"/><br/>
