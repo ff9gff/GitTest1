@@ -184,7 +184,13 @@
 							~ 
 							<input type="text" id="end_date" name="end_date" value="${vo.end_date}" placeholder="종료일" readonly="readonly"> <br /> <br />
 							
-							성별 조건: <input type="text" id="condition_sex" name="condition_sex" value="${vo.condition_sex}" placeholder="성별조건" readonly="readonly"> <br /> <br />
+							성별 조건: 
+							<c:if test="${vo.condition_sex eq 1}">
+								<input type="text" id="condition_sex" name="condition_sex" value="남자" placeholder="성별조건" readonly="readonly"> <br /> <br />							
+							</c:if>
+							<c:if test="${vo.condition_sex eq 2}">
+								<input type="text" id="condition_sex" name="condition_sex" value="여자" placeholder="성별조건" readonly="readonly"> <br /> <br />							
+							</c:if>
 						
 							연령 조건: <input type="text" id="condition_age" name="condition_age" value="${vo.condition_age}" placeholder="나이조건" readonly="readonly"> <br /> <br />
 							

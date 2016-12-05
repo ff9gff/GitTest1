@@ -2,53 +2,26 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
+
 <head>
 <meta charset="utf-8">
 <title>같이가자</title>
 <meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- 
-Flex Template 
-http://www.templatemo.com/tm-406-flex
--->
-<link
-	href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
-	rel='stylesheet' type='text/css'>
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 
-<link rel="stylesheet"
-	href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
-<script
-	src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-
-<style>
-.searchRegion {
-	display: none;
-}
-
-.row {
-	
-}
-</style>
 </head>
 <body>
 
@@ -61,9 +34,7 @@ http://www.templatemo.com/tm-406-flex
 					<div id="menu-wrapper">
 						<div class="row">
 							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
+								<h1> <a href="#">같&nbsp;이&nbsp;가&nbsp;자</a> </h1>
 							</div>
 							<!-- /.logo-wrapper -->
 							<div class="col-md-10 col-sm-10 main-menu text-right">
@@ -118,41 +89,47 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /.site-main -->
 
+	<br /><br />	
 
 	<div class="content-section" id="services">
+		<br /><br />	
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>Top 4 Review</h2>
-					<p>당신만의 멋진 후기를 보여주세요</p>
+					<h2>Top 4 Review</h2><br/><br/>
+					<h1>당신만의 멋진 후기를 보여주세요</h1>
 				</div>
 				<div class="heading-section col-md-12 text-center">
-					<h4>
-						<a href="review/reviewBoard">전체보기</a>
-					</h4>
+					<h2><a href="review/reviewBoard">전체보기</a></h2>
 				</div>
 				<!-- /.heading-section -->
 			</div>
+
 			<!-- /.row -->
-			<div class="row" id="topReview">
-				
+			<br />	<br />	
+		
+			<div class="row" id="TopReview">
+
 			</div>
 			<!-- /.row -->
 		</div>
 		<!-- /.container -->
 	</div>
 	<!-- /#services -->
+	
+	<br /><br />
 
 	<div class="content-section" id="portfolio">
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>여행 리스트</h2>
-					<br /> <br /><br />	<br />	
-					
-					<h2><a href="tour/tourBoard">여행 검색하러 가기</a></h2>
-					<br /> <br /><br />
-					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2>
+					<h2>여행 리스트</h2><br/><br/>
+					<h1>함께 여행할 사람들을 찾아보세요</h1>
+				</div>
+				<div class="heading-section col-md-12 text-center"> 
+					<h2><a href="tour/tourBoard">전체보기</a></h2>
+					<!-- <br /><br />
+					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2> -->
 				</div>
 				<!-- /.heading-section -->
 			</div>
@@ -168,8 +145,6 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.container -->
 	</div>
 	<!-- /#portfolio -->
-
-
 
 	<div id="footer">
 		<div class="container">
@@ -189,36 +164,94 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#footer -->
 
-
-
 	<script>
 	
-		$(document).ready(function() {
+	
+	
+
+
+			getThumnails_By_Default_REVIEW();
+			getThumnails_By_Default_TOUR();
 			
-			getThumnails_By_Default();
-			
-			// 디폴트로 나오는 게시글
-			function getThumnails_By_Default() {
+			// 디폴트로 나오는 후기 게시글 데이터를 가져오기
+			function getThumnails_By_Default_REVIEW() {
 				
 				// wm_image 리스트
-				imageList = [];
+				ReviewImage = [];
+				// wm_review 리스트(제목)
+				ReviewTitle = [];
+				// wm_review_region 리스트(지역)
+				ReviewRegion = [];
+				
+				var url1 = '/project03/review/defaultimage';
+				$.getJSON(url1, function(data1) {
+					$(data1).each(function() {
+						ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+					});
+					
+					var url2 = '/project03/review/defaulttitle';
+					$.getJSON(url2, function(data2) {
+						$(data2).each(function() {
+							ReviewTitle.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+						});
+						console.log(ReviewTitle);
+						
+						var url3 = '/project03/review/defaultregion';
+						$.getJSON(url3, function(data3) {
+							$(data3).each(function() {
+								var name = this.region_name.split(",");
+								var tagname = '';
+								for(var i=0; i<name.length; i++){
+									tagname +="#"+name[i]+" ";
+								}
+								
+								ReviewRegion.push({region_name: tagname, review_no: this.review_no});	
+							});
+						
+							for (var i = 0; i < ReviewImage.length; i++) {
+								for (var j = 0; j < ReviewTitle.length; j++) {
+									if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
+										ReviewImage[i].tour = ReviewTitle[j].title;
+									} 
+									for (var k = 0; k < ReviewRegion.length; k++) {
+										if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
+											ReviewImage[i].city = ReviewRegion[k].region_name;
+										} 
+									}	
+								}	
+							}	
+							
+							getAllThumnail_REVIEW();
+						});
+		
+					});
+		
+				});// end getJSON()
+		
+			};//end of getThumnails()
+			
+			// 디폴트로 나오는 여행 게시글 데이터를 가져오기
+			function getThumnails_By_Default_TOUR() {
+				
+				// wm_image 리스트
+				TourImage = [];
 				// wm_tour 리스트(제목)
-				titleList = [];
+				TourTitle = [];
 				// wm_tour_region 리스트(지역)
-				regionList = [];
+				TourRegion = [];
 				
 				var url1 = '/project03/index/defaultimage';
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+						TourImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
 					var url2 = '/project03/index/defaulttitle';
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+							TourTitle.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
-						console.log(titleList);
+						console.log(TourTitle);
 						
 						var url3 = '/project03/index/defaultregion';
 						$.getJSON(url3, function(data3) {
@@ -229,25 +262,25 @@ http://www.templatemo.com/tm-406-flex
 									tagname +="#"+name[i]+" ";
 								}
 								
-								regionList.push({region_name: tagname, trip_no: this.trip_no});	
+								TourRegion.push({region_name: tagname, trip_no: this.trip_no});	
 							});
 						
-							for (var i = 0; i < imageList.length; i++) {
-								for (var j = 0; j < titleList.length; j++) {
-									if (imageList[i].content_no == titleList[j].trip_no) {
-										imageList[i].tour = titleList[j].title;
-										imageList[i].condition_sex = titleList[j].condition_sex;
-										imageList[i].condition_age = titleList[j].condition_age;
+							for (var i = 0; i < TourImage.length; i++) {
+								for (var j = 0; j < TourTitle.length; j++) {
+									if (TourImage[i].content_no == TourTitle[j].trip_no) {
+										TourImage[i].tour = TourTitle[j].title;
+										TourImage[i].condition_sex = TourTitle[j].condition_sex;
+										TourImage[i].condition_age = TourTitle[j].condition_age;
 									} 
-									for (var k = 0; k < regionList.length; k++) {
-										if (imageList[i].content_no == regionList[k].trip_no) {
-											imageList[i].city = regionList[k].region_name;
+									for (var k = 0; k < TourRegion.length; k++) {
+										if (TourImage[i].content_no == TourRegion[k].trip_no) {
+											TourImage[i].city = TourRegion[k].region_name;
 										} 
 									}	
 								}	
 							}	
 							
-							getAllThumnail();
+							getAllThumnail_TOUR();
 						});
 
 					});
@@ -255,20 +288,37 @@ http://www.templatemo.com/tm-406-flex
 				});// end getJSON()
 		
 			};//end of getThumnails()
-
-			function getAllThumnail() {
-				
+			
+			// 가져온 후기 데이터를 뿌려주자
+			function getAllThumnail_REVIEW() {
 				var list = '';
-				
-				for(var i = 0; i<imageList.length; i++){
-
+				for(var i = 0; i < 4; i++){
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+ '<div class="portfolio-thumb">'
 							+ '<figure>'
-							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="' + imageList[i].img_url + '" width="300" height="240">'
-							+ '<div>제목: ' + imageList[i].tour + '</div>'
-							+ '<div>' + imageList[i].city + '</div>'	
-							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+							+ '<a href="review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
+							+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
+							+ '<div>' + ReviewImage[i].city + '</div>'	
+							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+							+ '</figure>'
+							+ '</div>'
+							+ '</div>';
+				}
+
+				$('#TopReview').html(list);
+			};
+
+			// 가져온 여행 데이터를 뿌려주자
+			function getAllThumnail_TOUR() {
+				var list = '';
+				for(var i = 0; i < 4; i++){
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+							+ '<div class="portfolio-thumb">'
+							+ '<figure>'
+							+ '<a href="tour/detail?trip_no=' + TourImage[i].content_no + '"><img src="' + TourImage[i].img_url + '" width="300" height="240"><br/>'
+							+ '<div>제목: ' + TourImage[i].tour + '</div>'
+							+ '<div>' + TourImage[i].city + '</div>'	
+							+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
 							+ '</figure>'
 							+ '</div>'
 							+ '</div>';
@@ -276,10 +326,8 @@ http://www.templatemo.com/tm-406-flex
 
 				$('#tourDetailSearch').html(list);
 			};
-		
-		});
-	</script>
 
+	</script>
 
 	<script src="resources/theme/js/bootstrap.js"></script>
 	<script src="resources/theme/js/plugins.js"></script>

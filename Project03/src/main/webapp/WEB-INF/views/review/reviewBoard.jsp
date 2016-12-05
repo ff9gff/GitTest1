@@ -97,7 +97,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
-								<h2>후기 게시판이라고 씨방새들아</h2>
+								<h2>후기를 적어 공유해봅시다</h2>
 							</div>
 						</li>
 					</ul>
@@ -162,9 +162,12 @@ http://www.templatemo.com/tm-406-flex
 	
 	<script>
 	
-$(document).ready(function() {
+	$(document).ready(function() {
+		// 디폴트로 나오는 게시글 함수 실행	
+		getThumnails_By_Default_REVIEW();
+		getThumnails_By_Region_REVIEW();
 		
-	getThumnails_By_Default_REVIEW();
+
 	
 	// 디폴트로 나오는 게시글
 	function getThumnails_By_Default_REVIEW() {
@@ -214,7 +217,7 @@ $(document).ready(function() {
 						}	
 					}	
 					
-					getAllThumnail();
+					getAllThumnail_REVIEW();
 				});
 
 			});
@@ -228,26 +231,28 @@ $(document).ready(function() {
 		function getThumnails_By_Region_REVIEW() {
 			
 			// wm_image 리스트
-			imageList = [];
-			// wm_tour 리스트(제목)
-			titleList = [];
-			// wm_tour_region 리스트(지역)
-			regionList = [];
+			ReviewImage = [];
+			// wm_review 리스트(제목)
+			ReviewTitle = [];
+			// wm_review_region 리스트(지역)
+			ReviewRegion = []; 
 			
-			var url1 = '/project03/review/regionimage/' + $('#region_name').val();
+			// ReviewSearchController의 review/defaultimage 메소드 실행
+			var url1 = '/project03/review/defaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+					// 데이터들을 배열에 저장
+					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
 				});
 				
-				var url2 = '/project03/review/regiontitle/' + $('#region_name').val();
+				var url2 = '/project03/review/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						titleList.push({review_no: this.review_no, title: this.title});	
+						ReviewTitle.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 					});
-					console.log(titleList);
+					console.log(ReviewTitle);
 					
-					var url3 = '/project03/review/regionregion/' + $('#region_name').val();
+					var url3 = '/project03/review/defaultregion';
 					$.getJSON(url3, function(data3) {
 						$(data3).each(function() {
 							var name = this.region_name.split(",");
@@ -256,46 +261,44 @@ $(document).ready(function() {
 								tagname +="#"+name[i]+" ";
 							}
 							
-							regionList.push({region_name: tagname, review_no: this.review_no});	
+							ReviewRegion.push({region_name: tagname, review_no: this.review_no});	
 						});
 					
-						for (var i = 0; i < imageList.length; i++) {
-							for (var j = 0; j < titleList.length; j++) {
-								if (imageList[i].content_no == titleList[j].review_no) {
-									imageList[i].tour = titleList[j].title;
+						for (var i = 0; i < ReviewImage.length; i++) {
+							for (var j = 0; j < ReviewTitle.length; j++) {
+								if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
+									ReviewImage[i].tour = ReviewTitle[j].title;
 								} 
-								for (var k = 0; k < regionList.length; k++) {
-									if (imageList[i].content_no == regionList[k].review_no) {
-										imageList[i].city = regionList[k].region_name;
+								for (var k = 0; k < ReviewRegion.length; k++) {
+									if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
+										ReviewImage[i].city = ReviewRegion[k].region_name;
 									} 
 								}	
 							}	
-						}
-
-						getAllThumnail();
-					});
+						}	
 						
-					
+						getAllThumnail_REVIEW();
+					});
+	
 				});
-
+	
 			});// end getJSON()
-
+	
 		};//end of getThumnails()
 		
 		
-		
-		function getAllThumnail() {
+		function getAllThumnail_REVIEW() {
 			
 			var list = '';
 			
-			for(var i = 0; i<imageList.length; i++){
+			for(var i = 0; i<ReviewImage.length; i++){
 
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240">'
-						+ '<div>제목: ' + imageList[i].tour + '</div>'
-						+ '<div>' + imageList[i].city + '</div>'	
+						+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
+						+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
+						+ '<div>' + ReviewImage[i].city + '</div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+ '</figure>'
 						+ '</div>'
