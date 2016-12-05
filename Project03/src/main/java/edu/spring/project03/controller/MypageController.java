@@ -58,6 +58,20 @@ public class MypageController {
 		return "MyPage";
 	}
 	
+	@RequestMapping(value="/UserPage/{mno}", method=RequestMethod.GET )
+	public String selectUserPesrsonal(@PathVariable("mno") Integer mno, Model model) {		
+		
+		PersonalVO vo = mypageService.selectpersonal(mno);
+		
+		ImgVO src = mypageService.readProfile(mno);
+		model.addAttribute("inserterImg", src.getImg_url());
+		logger.info("src: " + src);
+		
+		model.addAttribute("vo", vo);
+		
+		return "MyPage";
+	}
+	
 	// mno 검색 Ajax 처리
 	// 해당 mno 검색 메소드
 	@RequestMapping(value = "/MyPage/{mno}", method = RequestMethod.GET)
