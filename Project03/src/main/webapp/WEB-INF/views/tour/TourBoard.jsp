@@ -40,6 +40,13 @@ http://www.templatemo.com/tm-406-flex
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
+<style>
+	#hiddenSearch {
+		display: none;
+	}
+
+</style>
+
 
 </head>
 <body>
@@ -115,9 +122,9 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div>
 
-				<h3 class="h2" style="font: bold;">여행 조건 상세 검색 </h3>
+				<h3 class="h2" style="font: bold;">여행 조건 검색 </h3>
 				
-				<br /><br />
+				<br />
 
 				<div>
 					<input type="text" id="region_name" name="region_name" placeholder="지역이름">
@@ -127,10 +134,36 @@ http://www.templatemo.com/tm-406-flex
 					<input type="text" id="end_date" name="end_date" placeholder="종료일">
 					<button type="button" id="period_search">기간 검색</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					
+					
 					<button id="btn_create_tour" style="float: right; margin-right: 13px">여행 등록</button>
 					<br /><br /><br />
 					
+					<button type="button" id="show_detail_search">상세 검색 열기/닫기</button><br /><br />
 					
+					<div id='hiddenSearch'>
+						<form action="" method="get" id="selectSearch">
+						
+							<h3 class="h2" style="font: bold;">상세 검색 </h3><br />
+							 
+							<input type="text" id="start_date" name="start_date" placeholder="시작일"><br /><br />
+									
+							<label>성별 조건:</label>
+							남자 <input type="radio" name="condition_sex" value="1" /> 
+							여자 <input type="radio" name="condition_sex" value="0" /> 
+							조건없음 <input type="radio" name="condition_sex" value="2" /><br /><br />
+						
+							<label>연령 조건:</label>
+							20대 <input type="radio" name="condition_age" value="1" /> 
+							30대 <input type="radio" name="condition_age" value="2" /> 
+							40대 <input type="radio" name="condition_age" value="3" /> 
+							조건없음 <input type="radio" name="condition_age" value="4" /><br /><br />
+						
+							<button type="button" id="do_detail_search">상세 검색</button>
+
+						</form>
+					</div>
+					
+					<br /><br />
 						
 				</div>
 				
@@ -280,13 +313,11 @@ http://www.templatemo.com/tm-406-flex
 										} 
 									}	
 								}	
-							}
-							
-							
+							}		
+
 							getAllThumnail();
 						});
-							
-						
+								
 					});
 
 				});// end getJSON()
@@ -354,6 +385,71 @@ http://www.templatemo.com/tm-406-flex
 
 			};//end of getThumnails()
 			
+			
+			// 상세 검색
+			function getThumnails_By_Detail_Search() {
+				
+				// wm_image 리스트
+				imageList = [];
+				// wm_tour 리스트(제목)
+				titleList = [];
+				// wm_tour_region 리스트(지역)
+				regionList = [];
+				
+				var url1 = '/project03/index/detailsearch/' + $('#region_name').val() + "/" + $('#start_date').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val()
+				$.getJSON(url1, function(data1) {
+					$(data1).each(function() {
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+					});
+					
+					var url2 = '/project03/index/periodtitle/' + $('#start_date').val() + "/" + $('#end_date').val();
+					$.getJSON(url2, function(data2) {
+						$(data2).each(function() {
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+						});
+						console.log(titleList);
+						
+						var url3 = '/project03/index/periodregion/' + $('#start_date').val() + "/" + $('#end_date').val();
+						$.getJSON(url3, function(data3) {
+							$(data3).each(function() {
+								var name = this.region_name.split(",");
+								var tagname = '';
+								for(var i=0; i<name.length; i++){
+									tagname +="#"+name[i]+" ";
+								}
+								
+								regionList.push({region_name: tagname, trip_no: this.trip_no});	
+							});
+						
+							for (var i = 0; i < imageList.length; i++) {
+								for (var j = 0; j < titleList.length; j++) {
+									if (imageList[i].content_no == titleList[j].trip_no) {
+										imageList[i].tour = titleList[j].title;
+										imageList[i].condition_sex = titleList[j].condition_sex;
+										imageList[i].condition_age = titleList[j].condition_age;
+									} 
+									for (var k = 0; k < regionList.length; k++) {
+										if (imageList[i].content_no == regionList[k].trip_no) {
+											imageList[i].city = regionList[k].region_name;
+										} 
+									}	
+								}	
+							}
+							
+							getAllThumnail();
+						});
+					
+					});
+
+				});// end getJSON()
+
+			};//end of getThumnails()
+			
+			
+			
+			
+			
+			
 			function getAllThumnail() {
 				
 				var list = '';
@@ -376,6 +472,10 @@ http://www.templatemo.com/tm-406-flex
 	
 				//end of getThumnails()
 			};
+			
+			
+			
+			
 			
 			
 			// 지역 검색 버튼 처리
@@ -406,6 +506,26 @@ http://www.templatemo.com/tm-406-flex
 					getThumnails_By_Period();			
 				}
 			}); 
+			
+			
+			var count = 0;
+			// 상세 검색 보여주기 버튼 처리			
+			$('#show_detail_search').click(function() {
+				if (count == 0) {
+					$('#hiddenSearch').show();	
+					count = 1;
+				} else {
+					$('#hiddenSearch').hide();	
+					count = 0;
+				}
+			});
+			
+			$('#do_detail_search').click(function() {	
+				$('#selectSearch').submit();
+			});
+			
+			
+	
 			
 			$("#start_date, #end_date").datepicker({
 				dateFormat : 'yy-mm-dd'

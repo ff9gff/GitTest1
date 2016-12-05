@@ -195,6 +195,32 @@ http://www.templatemo.com/tm-406-flex
 			        $('#image_preview').show(); //업로드한 이미지 미리보기
 		     	}
 			});
+			
+			/**
+			onclick event handler for the delete button.
+			It removes the image, clears and unhides the file input field.
+			*/
+			$('#image_preview a').bind('click', function() {
+			   resetFormElement($('#imageFile'));
+			   //$('#image').slideDown(); //파일 양식 보여줌
+			   $(this).parent().slideUp(); //미리 보기 영역 감춤
+			   //return false; //기본 이벤트 막지
+			});
+			      
+
+			/** 
+			* 폼요소 초기화 
+			* Reset form element
+			* 
+			* @param e jQuery object
+			*/
+			function resetFormElement(e) {
+			   e.wrap('<form>').closest('form').get(0).reset(); 
+			   //리셋하려는 폼양식 요소를 폼(<form>) 으로 감싸고 (wrap()) , 
+			   //감싼 폼 ( closest('form')) 에서 Dom요소를 반환받고 ( get(0) ),
+			   //DOM에서 제공하는 초기화하는 메서드 reset()을 호출
+			   e.unwrap(); //감싼 <form> 태그를 제거
+			}
  
 			//전송버튼 클릭이벤트
 			$("#savebutton").click(function() {
@@ -245,7 +271,8 @@ http://www.templatemo.com/tm-406-flex
 					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 					            
 					    <div id="image_preview">
-					      <img src="#" id="profile-image" style="display: none;" /><br/>
+					    	<img src="#" id="profile-image" style="display: none;" /><br/>
+					    	<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
 					    </div><br/>      
 					
 						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 

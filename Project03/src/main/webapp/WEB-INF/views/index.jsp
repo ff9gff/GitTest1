@@ -42,6 +42,15 @@
 	margin-right: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	 
+}
+
+#condition_age{
+	display: inline-block;
+	z-index:100; 
+	width:40px; 
+	height:40px;
+	
 }
 
 </style>
@@ -162,6 +171,7 @@
 	<!-- /#services -->
 	
 	<br />
+	
 
 	<div class="content-section" id="portfolio">
 		<div class="container">
@@ -461,8 +471,11 @@
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+'<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
-								+'<img src="' + TourImage[i].img_url + '" style="width=300; height=240; z-index=99;">'
-								+'<div><img src="../resources/theme/images/main_female.png" style="width=20; height=20; z-index=100;"></div>'
+								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
+								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">'
+									+'<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">'
+									+'<p id="condition_age">10</p>'
+								+'</div>'
 							+ '</div>'
 								+ '<div>제목: ' + TourImage[i].tour + '</div>'
 								+ '<div>' + TourImage[i].city + '</div>'	
@@ -472,7 +485,7 @@
 
 						+ '</div>';
 			}
- 
+
 			$('#TourDetail').html(list);
 		};
 		
