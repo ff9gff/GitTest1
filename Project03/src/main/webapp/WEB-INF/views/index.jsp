@@ -296,6 +296,7 @@
 			} else {
 				length = 4;
 			}
+			// 무조건 4개만 뿌린다!
 			
 			for(var i = 0; i < length; i++){
 		
@@ -325,6 +326,7 @@
 			} else {
 				length = 4;
 			}
+			// 무조건 4개만 뿌린다!
 			
 			for(var i = 0; i < length; i++){
 				/* console.log(TourImage[i].content_no); */
