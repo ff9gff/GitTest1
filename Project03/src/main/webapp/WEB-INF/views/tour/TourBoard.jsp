@@ -70,10 +70,10 @@ http://www.templatemo.com/tm-406-flex
 									<i class="fa fa-bars"></i>
 								</div>
 								<ul class="menu-first">
-									<li><a href="../index">메인</a></li>
+									<li><a href="index">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="../MyPage">마이페이지</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
 									<li><a href="member/login">로그인</a></li>
 								</ul>
@@ -141,28 +141,27 @@ http://www.templatemo.com/tm-406-flex
 					<button type="button" id="show_detail_search">상세 검색 열기/닫기</button><br /><br />
 					
 					<div id='hiddenSearch'>
-						<form action="" method="get" id="selectSearch">
 						
-							<h3 class="h2" style="font: bold;">상세 검색 </h3><br />
-							
-							<input type="text" id="region_name2" name="region_name" placeholder="지역이름">
-							
-							<input type="text" id="start_date2" name="start_date" placeholder="시작일"><br /><br />
-									
-							<label>성별 조건:</label>
-							남자 <input type="radio" name="condition_sex" value="1" /> 
-							여자 <input type="radio" name="condition_sex" value="0" /> 
-							조건없음 <input type="radio" name="condition_sex" value="2" /><br /><br />
 						
-							<label>연령 조건:</label>
-							20대 <input type="radio" name="condition_age" value="1" /> 
-							30대 <input type="radio" name="condition_age" value="2" /> 
-							40대 <input type="radio" name="condition_age" value="3" /> 
-							조건없음 <input type="radio" name="condition_age" value="4" /><br /><br />
+						<h3 class="h2" style="font: bold;">상세 검색 </h3><br />
 						
-							<button type="button" id="do_detail_search">상세 검색</button>
+						<input type="text" id="region_name2" name="region_name2" placeholder="지역이름">
+						 
+						<input type="text" id="start_date2" name="start_date2" placeholder="시작일"><br /><br />
+								
+						<label>성별 조건:</label>
+						남자 <input type="radio" name="condition_sex" id="condition_sex" value="1" /> 
+						여자 <input type="radio" name="condition_sex" id="condition_sex" value="0" /> 
+						조건없음 <input type="radio" name="condition_sex" value="2" /><br /><br />
+					
+						<label>연령 조건:</label>
+						20대 <input type="radio" name="condition_age" id="condition_age" value="1" /> 
+						30대 <input type="radio" name="condition_age" id="condition_age" value="2" /> 
+						40대 <input type="radio" name="condition_age" id="condition_age" value="3" /> 
+						조건없음 <input type="radio" name="condition_age" id="condition_age" value="4" /><br /><br />
+					
+						<button type="button" id="do_detail_search">상세 검색</button>
 
-						</form>
 					</div>
 					
 					<br /><br />
@@ -398,20 +397,20 @@ http://www.templatemo.com/tm-406-flex
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url1 = '/project03/index/detailsearch/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val()
+				var url1 = '/project03/index/detailsearchImage/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
 						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
 					});
 					
-					var url2 = '/project03/index/periodtitle/' + $('#start_date').val() + "/" + $('#end_date').val();
+					var url2 = '/project03/index/detailsearchTitle/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
 							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
 						});
 						console.log(titleList);
 						
-						var url3 = '/project03/index/periodregion/' + $('#start_date').val() + "/" + $('#end_date').val();
+						var url3 = '/project03/index/detailsearchRegion/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val();
 						$.getJSON(url3, function(data3) {
 							$(data3).each(function() {
 								var name = this.region_name.split(",");
@@ -527,13 +526,11 @@ http://www.templatemo.com/tm-406-flex
 			});
 			
 			
-			$("#start_date2").datepicker({
+			$("#start_date, #end_date").datepicker({
 				dateFormat : 'yy-mm-dd'
 			});
 			
-	
-			
-			$("#start_date, #end_date").datepicker({
+			$("#start_date2").datepicker({
 				dateFormat : 'yy-mm-dd'
 			});
 			

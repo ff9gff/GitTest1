@@ -66,31 +66,35 @@
                             and end_date <![CDATA[>=]]> to_date(#{start_date},'YYYY-MM-DD'))
     	order by trip_no desc
  	</select>
-
-	<!-- 상세 검색 1. 성별/나이 검색  -->
-	<select id="select-detail-thumnail">
-		select * from wm_image
-		where content_no in (select trip_no from wm_tour
-							 where condition_sex = #{condition_sex} or condition_age = #{condition_age}) and board_type = 1
-		order by content_no desc
+	
+	<!-- 상세 검색 -->
+	<!-- 1 0 0 0 -->
+	<select id='select_detail_search_1000' resultType="edu.spring.project03.domain.ImgVO">
+		select img_url from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, c.img_url
+		from wm_tour_region a, wm_tour b, wm_image c
+		where a.region_name like #{region_name2} and b.start_date is not null and b.condition_sex is not null and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no);
 	</select>
 	
-	<select id="select-detail-stitle">
-		select * from wm_tour
-		where trip_no in (select trip_no from wm_tour
-							 where condition_sex = #{condition_sex} or condition_age = #{condition_age})
-		order by trip_no desc
+	<!-- 1 1 0 0 -->
+	<select id='select_detail_search_1100' resultType="edu.spring.project03.domain.ImgVO">
+		select img_url from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, c.img_url
+		from wm_tour_region a, wm_tour b, wm_image c
+		where a.region_name like #{region_name2} b.start_date = #{start_date2} and b.condition_sex is not null and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no);
 	</select>
 	
-	<select id="select-detail-sregion">
-		select * from wm_tour_region
-		where trip_no in (select trip_no from wm_tour
-					      where condition_sex = #{condition_sex} or condition_age = #{condition_age})
-		order by trip_no desc
+	<!-- 1 1 1 0 -->
+	<select id='select_detail_search_1110' resultType="edu.spring.project03.domain.ImgVO">
+		select img_url from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, c.img_url
+		from wm_tour_region a, wm_tour b, wm_image c
+		where a.region_name like #{region_name2} b.start_date = #{start_date2} and b.condition_sex = #{condition_sex} and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no);
 	</select>
 	
-	
-
+	<!-- 1 1 1 1 -->
+	<select id='select_detail_search_1111' resultType="edu.spring.project03.domain.ImgVO">
+		select img_url from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, c.img_url
+		from wm_tour_region a, wm_tour b, wm_image c
+		where a.region_name like #{region_name2} b.start_date = #{start_date2} and b.condition_sex = #{condition_sex} and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no);
+	</select>
 
 
 
@@ -128,6 +132,8 @@
 		select * from wm_tour
 		where trip_no = #{trip_no}
 	</select>
+	
+	
 
 	
 

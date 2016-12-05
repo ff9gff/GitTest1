@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.DetailSearchDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
@@ -106,5 +107,55 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 	public List<RegionVO> select_default_region() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(NAMESPACE2 + ".select_default_region", null);
+	}
+
+	@Override
+	public List<ImgVO> select_detail_search_image(String region_name, String start_date, int condition_sex,	int condition_age) {
+		/*if (region_name == null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, 99, 99);
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date == null && condition_sex != 99 && condition_age != 99) {
+			return sqlSession.selectList(NAMESPACE2 + ".select_detail_search_start_date", vo);
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			
+		} else if (region_name != null && start_date != null && condition_sex != 99 && condition_age != 99) {
+			
+		}*/
+		return null;
+		
+	}
+
+	@Override
+	public List<TourRegisterVO> select_detail_search_title(String region_name, String start_date, int condition_sex, int condition_age) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RegionVO> select_detail_search_region(String region_name, String start_date, int condition_sex,	int condition_age) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

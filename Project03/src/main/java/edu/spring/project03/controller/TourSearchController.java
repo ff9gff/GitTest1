@@ -273,40 +273,54 @@ public class TourSearchController {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// 기간 검색 Ajax 처리
-	// 해당 기간 썸네일 이미지 아래 지역 검색 메소드
-	@RequestMapping(value = "/index/detailsearch/{region_name}/{start_date}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
-	public ResponseEntity<List<RegionVO>> ajaxDetailSearchTest(@PathVariable("region_name") String region_name,
-			@PathVariable("start_date") String start_date, @PathVariable("condition_sex") int condition_sex,
+	// 상세 검색 Ajax 처리
+	@RequestMapping(value = "/index/detailsearchImage/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxDetailSearchImageTest(@PathVariable("region_name2") String region_name,
+			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
 			@PathVariable("condition_age") int condition_age) {
 		logger.info("여행 지역: " + region_name);
 		logger.info("시작 날짜: " + start_date);
 		logger.info("성별 구분: " + condition_sex);
 		logger.info("나이 구분: " + condition_age);
 		
+		List<ImgVO> list = tourSelectService.read_detail_search_image(region_name, start_date, condition_sex, condition_age);
+
+		ResponseEntity<List<ImgVO>> entity = null;
+
+		return entity;
+	}
+
+	// 상세 검색 Ajax 처리
+	@RequestMapping(value = "/index/detailsearchTitle/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxDetailSearchTitleTest(@PathVariable("region_name2") String region_name,
+			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
+			@PathVariable("condition_age") int condition_age) {
+		logger.info("여행 지역: " + region_name);
+		logger.info("시작 날짜: " + start_date);
+		logger.info("성별 구분: " + condition_sex);
+		logger.info("나이 구분: " + condition_age);
+		
+		List<TourRegisterVO> list = tourSelectService.read_detail_search_title(region_name, start_date, condition_sex, condition_age);
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+		return entity;
+	}
+
+	// 상세 검색 Ajax 처리
+	@RequestMapping(value = "/index/detailsearchRegion/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxDetailSearchRegionTest(@PathVariable("region_name2") String region_name,
+			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
+			@PathVariable("condition_age") int condition_age) {
+		logger.info("여행 지역: " + region_name);
+		logger.info("시작 날짜: " + start_date);
+		logger.info("성별 구분: " + condition_sex);
+		logger.info("나이 구분: " + condition_age);
+		
+		List<RegionVO> list = tourSelectService.read_detail_search_region(region_name, start_date, condition_sex, condition_age);
 
 		ResponseEntity<List<RegionVO>> entity = null;
 
-		/*if (region_name == "") {
-			TourRegisterVO vo2 = new TourRegisterVO(0, 0, null, condition_sex, condition_age, null, null, start_date, null, 0);
-			
-		} else if ()
-
-		List<RegionVO> list = tourSelectService.read_main_region_info(vo2);
-
-		if (list != null) {
-			// select 성공 한것이다.
-			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
-			logger.info("기간  - 지역 검색 성공 ");
-		} else {
-			// select 실패이다.
-			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
-			logger.info("기간  - 지역 검색 실패 ");
-		}
-
-		logger.info("entity " + entity);
-		// logger.info("list.mno "+ list.get(0).getUserid());
-*/		// 출력 됨
 		return entity;
 	}
 
