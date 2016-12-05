@@ -24,7 +24,83 @@ public class TourReviewSearchController {
 	@Autowired
 	private TourReviewService tourReviewService;
 
-	// 디폴트 ?개 후기 이미지
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// 메인 페이지 디폴트 조회수 Top 4 후기 이미지
+	@RequestMapping(value = "/review/Topdefaultimage", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxReviewTopImageTest() {
+
+		ResponseEntity<List<ImgVO>> entity = null;
+
+		List<ImgVO> list = tourReviewService.read_review_top_image();
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("Top후기 이미지 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("Top후기 이미지 검색 실패 ");
+		}
+
+		logger.info("entity " + entity.getBody());
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
+	// 디폴트 ?개 후기 제목
+	@RequestMapping(value = "/review/Topdefaulttitle", method = RequestMethod.GET)
+	public ResponseEntity<List<ReviewVO>> ajaxReviewTopTitleTest() {
+
+		ResponseEntity<List<ReviewVO>> entity = null;
+
+		List<ReviewVO> list = tourReviewService.read_review_top_title();
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ReviewVO>>(list, HttpStatus.OK);
+			logger.info("Top후기 제목 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ReviewVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("Top후기 제목 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
+	// 디폴트 ?개 후기 지역
+	@RequestMapping(value = "/review/Topdefaultregion", method = RequestMethod.GET)
+	public ResponseEntity<List<ReviewRegionVO>> ajaxReviewTopRegionTest() {
+
+		ResponseEntity<List<ReviewRegionVO>> entity = null;
+
+		List<ReviewRegionVO> list = tourReviewService.read_review_top_region();
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ReviewRegionVO>>(list, HttpStatus.OK);
+			logger.info("Top후기 지역  검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ReviewRegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("Top후기 지역  검색 성공 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// 메인 페이지 디폴트 최신순 4개 후기 이미지
 	@RequestMapping(value = "/review/defaultimage", method = RequestMethod.GET)
 	public ResponseEntity<List<ImgVO>> ajaxReviewTotalImageTest() {
 
@@ -148,7 +224,8 @@ public class TourReviewSearchController {
 
 	// 후기 게시판 - 지역검색 - 지역 가져오기
 	@RequestMapping(value = "/review/regionregion/{region_name}", method = RequestMethod.GET)
-	public ResponseEntity<List<ReviewRegionVO>> ajaxReviewRegionRegionTest(@PathVariable("region_name") String region_name) {
+	public ResponseEntity<List<ReviewRegionVO>> ajaxReviewRegionRegionTest(
+			@PathVariable("region_name") String region_name) {
 
 		ResponseEntity<List<ReviewRegionVO>> entity = null;
 

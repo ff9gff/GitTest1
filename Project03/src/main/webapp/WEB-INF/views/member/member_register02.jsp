@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>같이가자</title>
 </head>
-<body>
+<body background="../resources/theme/images/test2.jpg">
 
 
 
