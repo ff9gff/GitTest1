@@ -288,7 +288,17 @@
 		// 가져온 후기 데이터를 뿌려주자
 		function getAllThumnail_REVIEW() {
 			var list = '';
-			for(var i = 0; i < 4; i++){
+			
+			var length = 0;
+			
+			if (ReviewImage.length < 4) {
+				length = ReviewImage.length;
+			} else {
+				length = 4;
+			}
+			
+			for(var i = 0; i < length; i++){
+		
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
@@ -307,7 +317,16 @@
 		// 가져온 여행 데이터를 뿌려주자
 		function getAllThumnail_TOUR() {
 			var list = '';
-			for(var i = 0; i < TourImage.length; i++){
+			
+			var length = 0;
+			
+			if (TourImage.length < 4) {
+				length = TourImage.length;
+			} else {
+				length = 4;
+			}
+			
+			for(var i = 0; i < length; i++){
 				/* console.log(TourImage[i].content_no); */
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
