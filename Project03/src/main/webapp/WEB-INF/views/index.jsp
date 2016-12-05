@@ -134,77 +134,8 @@ http://www.templatemo.com/tm-406-flex
 				<!-- /.heading-section -->
 			</div>
 			<!-- /.row -->
-			<div class="row">
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-1">
-						<div class="service-icon">
-							<i class="fa fa-file-code-o"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3>HTML5 Coding</h3>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-									Enim, assumenda, eveniet, consectetur, ex doloribus veniam
-									asperiores incidunt mollitia placeat aniet.</p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-2">
-						<div class="service-icon">
-							<i class="fa fa-paper-plane-o"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3></h3>
-								<p></p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-3">
-						<div class="service-icon">
-							<i class="fa fa-institution"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3></h3>
-								<p></p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
-				<div class="col-md-3 col-sm-6" style="display: inline">
-					<div class="service-item" id="service-4">
-						<div class="service-icon">
-							<i class="fa fa-flask"></i>
-						</div>
-						<!-- /.service-icon -->
-						<div class="service-content">
-							<div class="inner-service">
-								<h3></h3>
-								<p></p>
-							</div>
-						</div>
-						<!-- /.service-content -->
-					</div>
-					<!-- /#service-1 -->
-				</div>
-				<!-- /.col-md-3 -->
+			<div class="row" id="topReview">
+				
 			</div>
 			<!-- /.row -->
 		</div>
@@ -345,38 +276,7 @@ http://www.templatemo.com/tm-406-flex
 
 				$('#tourDetailSearch').html(list);
 			};
-			
-			// 지역 검색 버튼 처리
-			$('#region_search').click(function() {
-	
-				var region_name = $('#region_name').val();
-	
-				if (region_name == "") {
-					alert('검색할 지역을 입력하세요');
-				} else {
-					alert('지역 검색 메소드 호출 ');
-					getThumnails_By_Region();
-				}
-			});
 		
-
-			// 기간 검색 버튼 처리			
-			$('#period_search').click(function(){
-				
-				var start_date = $('#start_date').val();
-				var end_date = $('#end_date').val();
-				
-				if (start_date == "" || end_date == "") {
-					alert('검색할 기간을 선택하세요');		
-				} else {				
-					alert('기간 검색 메소드 호출');
-					getThumnails_By_Period();			
-				}
-			}); 
-			
-			$("#start_date, #end_date").datepicker({
-				dateFormat : 'yy-mm-dd'
-			});
 		});
 	</script>
 

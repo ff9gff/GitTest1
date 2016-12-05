@@ -164,10 +164,10 @@ http://www.templatemo.com/tm-406-flex
 	
 $(document).ready(function() {
 		
-	getThumnails_By_Default();
+	getThumnails_By_Default_REVIEW();
 	
 	// 디폴트로 나오는 게시글
-	function getThumnails_By_Default() {
+	function getThumnails_By_Default_REVIEW() {
 		
 		// wm_image 리스트
 		imageList = [];
@@ -225,7 +225,7 @@ $(document).ready(function() {
 	
 
 		// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
-		function getThumnails_By_Region() {
+		function getThumnails_By_Region_REVIEW() {
 			
 			// wm_image 리스트
 			imageList = [];
@@ -317,7 +317,7 @@ $(document).ready(function() {
 				alert('검색할 지역을 입력하세요');
 			} else {
 				alert('지역 검색 메소드 호출 ');
-				getThumnails_By_Region();
+				getThumnails_By_Region_REVIEW();
 			}
 
 		});
