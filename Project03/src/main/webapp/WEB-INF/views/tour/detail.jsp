@@ -1224,7 +1224,8 @@ $('#overlay, #profile_button1').click(function(e){
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
-	alert(amno+'번째 회원 게시글 보기');
+	var url = '/project03/UserPage/'+amno;
+	location.href  = url;
 });
 
 $('#context_msg').on('click','.btn_context',function(){
