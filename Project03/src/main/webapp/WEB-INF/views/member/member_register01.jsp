@@ -24,14 +24,19 @@
 		
 <title>같이가자</title>
 </head>
-<body>
+<body background="../resources/theme/images/KakaoTalk_sky.jpg">
 
+<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
 <img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
 <img src="../resources/theme/images/Sign_up01.png" style="height: 75px"/><br/>
+</div>
 
-	<h2 style="font-size: medium; font-style: oblique;">이용약관</h2>
-<div style="text-align: center">
-	<textarea rows="12" cols="120" readonly="readonly">
+<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
+	<div>
+		<h2 style="font-size: medium; font-style: oblique; color: black;">이용약관</h2>
+	</div>
+
+	<textarea rows="12" cols="120" readonly="readonly" style="margin-top: 5px">
 같이가자 및 같이가자 관련 제반 서비스의 이용과 관련하여 필요한 사항을 규정합니다.
 제 1조 (목적)
 이 약관은 같이가자(주)(이하 "회사")가 제공하는 같이가자 및 같이가자 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -76,10 +81,10 @@
 	
 	<div style="text-align: center;">		
 		<input type="radio" id="btn_member_stipulation_agree" name="stipulation" value="agree" />
-		<label for="btn_member_stipulation_agree">동의 합니다</label>
+		<label for="btn_member_stipulation_agree" style="color: black;">동의 합니다</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio" id="btn_member_stipulation_disagree" name="stipulation" value="disagree" />
-		<label for="btn_member_stipulation_disagree">동의하지 않습니다</label>				
+		<label for="btn_member_stipulation_disagree" style="color: black;">동의하지 않습니다</label>				
 	</div>
 	
 </div>
@@ -87,9 +92,12 @@
 	<br/>
 
 
-	<h2 style="font-size: medium; font-style: oblique;">개인정보취급방침</h2>
-<div>
-	<textarea rows="12" cols="120" readonly="readonly">
+<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
+	<div>
+		<h2 style="font-size: medium; font-style: oblique; color: black;">개인정보취급방침</h2>
+	</div>
+
+	<textarea rows="12" cols="120" readonly="readonly" style="margin-top: 5px">
 같이가자 (주)(이하 “회사” 또는 “같이가자” 라 함)는 통신비밀보호법, 전기통신사업법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보취급방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.
 
 같이가자의 개인정보취급방침은 다음과 같은 내용을 담고 있습니다.
@@ -124,7 +132,7 @@
 
 2. 개인정보의 수집 및 이용목적
 가. 회원관리
-회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인, 개인식별, 불량회원(동행친구 이용약관 제19조 제1항 중 제11조 제1항 각 호에 해당하는 위반사유로 인한 영구이용정지 및 제19조 제2항에 따라 계약해지된 영구이용정지 회원)의 부정 이용방지와 비인가 사용방지, 가입의사 확인, 가입 및 가입횟수 제한, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달
+회원제 서비스 이용 및 제한적 본인 확인제에 따른 본인확인, 개인식별, 불량회원(같이가자 이용약관 제19조 제1항 중 제11조 제1항 각 호에 해당하는 위반사유로 인한 영구이용정지 및 제19조 제2항에 따라 계약해지된 영구이용정지 회원)의 부정 이용방지와 비인가 사용방지, 가입의사 확인, 가입 및 가입횟수 제한, 분쟁 조정을 위한 기록보존, 불만처리 등 민원처리, 고지사항 전달
 나. 신규 서비스 개발 및 마케팅, 광고에 활용
  신규 서비스 개발 및 맞춤 서비스 제공, 통계학적 특성에 따른 서비스 제공 및 광고 게재, 서비스의 유효성 확인, 이벤트 및 광고성 정보 제공 및 참여기회 제공, 접속빈도 파악, 회원의 서비스이용에 대한 통계
 
@@ -143,17 +151,8 @@
  보존 이유 : 부정 이용 방지
  보존 기간 : 2년
 
-  나. 관련법령에 의한 정보보유 사유
+ 나. 관련법령에 의한 정보보유 사유
  상법, 전자상거래 등에서의 소비자보호에 관한 법률 등 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한 일정한 기간 동안 회원정보를 보관합니다. 이 경우 회사는 보관하는 정보를 그 보관의 목적으로만 이용하며 보존기간은 아래와 같습니다.
-- 계약 또는 청약철회 등에 관한 기록 
- 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 
- 보존 기간 : 5년 
-- 대금결제 및 재화 등의 공급에 관한 기록 
- 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 
- 보존 기간 : 5년 
-- 소비자의 불만 또는 분쟁처리에 관한 기록 
- 보존 이유 : 전자상거래 등에서의 소비자보호에 관한 법률 
- 보존 기간 : 3년
 - 본인확인에 관한 기록 
  보존 이유 : 정보통신망 이용촉진 및 정보보호 등에 관한 법률 
  보존 기간 : 6개월
@@ -179,7 +178,7 @@
 
 8. 개인정보 자동 수집 장치의 설치/운영 및 거부에 관한 사항 회사는 개인화되고 맞춤화된 서비스를 제공하기 위해서 이용자의 정보를 저장하고 수시로 불러오는 '쿠키(cookie)'를 사용합니다. 쿠키는 웹사이트를 운영하는데 이용되는 서버가 이용자의 브라우저에게 보내는 아주 작은 텍스트 파일로 이용자 컴퓨터의 하드디스크에 저장됩니다. 
 가. 쿠키의 사용 목적 
- 이용자들의 로그인 및 최근접속기록을 토대로 동행친구 유저간 상호 커뮤니케이션 시의 편리한 기능을 제공하기 위하여 활용됩니다. 
+ 이용자들의 로그인 및 최근접속기록을 토대로 같이가자 유저간 상호 커뮤니케이션 시의 편리한 기능을 제공하기 위하여 활용됩니다. 
 나. 쿠키의 설치/운영 및 거부 
 - 이용자는 쿠키 설치에 대한 선택권을 가지고 있습니다. 따라서 이용자는 웹브라우저에서 옵션을 설정함으로써 모든 쿠키를 허용하거나, 쿠키가 저장될 때마다 확인을 거치거나, 아니면 모든 쿠키의 저장을 거부할 수도 있습니다. 
 - 다만, 쿠키의 저장을 거부할 경우에는 이용에 어려움이 있을 수 있습니다. 
@@ -190,16 +189,16 @@
 
 9. 개인정보의 기술적/관리적 보호 대책회사는 이용자들의 개인정보를 취급함에 있어 개인정보가 분실, 도난, 누출, 변조 또는 훼손되지 않도록 안전성 확보를 위하여 다음과 같은 기술적/관리적 대책을 강구하고 있습니다.
 가. 비밀번호 암호화
-동행친구 회원 아이디(ID)의 비밀번호는 암호화되어 저장 및 관리되고 있어 본인만이 알고 있으며, 개인정보의 확인 및 변경도 비밀번호를 알고 있는 본인에 의해서만 가능합니다.
+같이가자 회원 아이디(ID)의 비밀번호는 암호화되어 저장 및 관리되고 있어 본인만이 알고 있으며, 개인정보의 확인 및 변경도 비밀번호를 알고 있는 본인에 의해서만 가능합니다.
 나. 해킹 등에 대비한 대책
 회사는 해킹이나 컴퓨터 바이러스 등에 의해 회원의 개인정보가 유출되거나 훼손되는 것을 막기 위해 최선을 다하고 있습니다. 
 개인정보의 훼손에 대비해서 자료를 수시로 백업하고 있고, 최신 백신프로그램을 이용하여 이용자들의 개인정보나 자료가 누출되거나 손상되지 않도록 방지하고 있으며, 암호화통신 등을 통하여 네트워크상에서 개인정보를 안전하게 전송할 수 있도록 하고 있습니다. 
 그리고 침입차단시스템을 이용하여 외부로부터의 무단 접근을 통제하고 있으며, 기타 시스템적으로 보안성을 확보하기 위한 가능한 모든 기술적 장치를 갖추려 노력하고 있습니다.
 다. 취급 직원의 최소화 및 교육
- 회사의 개인정보관련 취급 직원은 담당자에 한정시키고 있고 이를 위한 별도의 비밀번호를 부여하여 정기적으로 갱신하고 있으며, 담당자에 대한 수시 교육을 통하여 동행친구 개인정보취급방침의 준수를 항상 강조하고 있습니다. 
+ 회사의 개인정보관련 취급 직원은 담당자에 한정시키고 있고 이를 위한 별도의 비밀번호를 부여하여 정기적으로 갱신하고 있으며, 담당자에 대한 수시 교육을 통하여 같이가자 개인정보취급방침의 준수를 항상 강조하고 있습니다. 
 라. 개인정보보호전담기구의 운영
- 그리고 사내 개인정보보호전담기구 등을 통하여 동행친구 개인정보취급방침의 이행사항 및 담당자의 준수여부를 확인하여 문제가 발견될 경우 즉시 수정하고 바로 잡을 수 있도록 노력하고 있습니다.
-단, 이용자 본인의 부주의나 인터넷상의 문제로 ID, 비밀번호, 주민등록번호 등 개인정보가 유출되어 발생한 문제에 대해 회사는 일체의 책임을 지지 않습니다. PC방 등 외부 장소에서 동행친구를 사용하실 경우 완전히 로그아웃 하신 후 웹 브라우저의 창을 닫아 주십시오. 정상적으로 로그아웃을 하시지 않은 경우 회원님의 정보가 고스란히 남을 수 있습니다.
+ 그리고 사내 개인정보보호전담기구 등을 통하여 같이가자 개인정보취급방침의 이행사항 및 담당자의 준수여부를 확인하여 문제가 발견될 경우 즉시 수정하고 바로 잡을 수 있도록 노력하고 있습니다.
+단, 이용자 본인의 부주의나 인터넷상의 문제로 ID, 비밀번호, 주민등록번호 등 개인정보가 유출되어 발생한 문제에 대해 회사는 일체의 책임을 지지 않습니다. PC방 등 외부 장소에서 같이가자를 사용하실 경우 완전히 로그아웃 하신 후 웹 브라우저의 창을 닫아 주십시오. 정상적으로 로그아웃을 하시지 않은 경우 회원님의 정보가 고스란히 남을 수 있습니다.
 
 10. 개인정보관리책임자 및 담당자의 연락처귀하께서는 회사의 서비스를 이용하시며 발생하는 모든 개인정보보호 관련 민원을 개인정보관리책임자 혹은 담당부서로 신고하실 수 있습니다.
 회사는 이용자들의 신고사항에 대해 신속하게 충분한 답변을 드릴 것입니다. 
@@ -213,12 +212,12 @@
  부칙이 약관은 20XX년 XX월 XX일부터 적용됩니다
 	</textarea><br/>
 	
-	<div style="text-align: center;">		
+	<div style="width: 800px; margin: 0 auto; vertical-align: middle; text-align: center;">		
 		<input type="radio" id="btn_personal_information_agree" name="information" value="agree" />
-		<label for="btn_personal_information_agree">동의 합니다</label>
+		<label for="btn_personal_information_agree" style="color: black;">동의 합니다</label>
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<input type="radio" id="btn_personal_information_disagree" name="information" value="disagree" />
-		<label for="btn_personal_information_disagree">동의하지 않습니다</label>						
+		<label for="btn_personal_information_disagree" style="color: black;">동의하지 않습니다</label>						
 	</div>
 
 </div>
@@ -226,10 +225,9 @@
 	<br/>
 	
 	<div style="text-align: center;">
-<!-- 	<div style="width: 600px  ;margin: 0 auto;"> -->
-	<button id="confirm" style="width: 100px">확인</button>
+	<button id="confirm" style="width: 100px; color: black;">확인</button>
 	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button id="cancel" style="width: 100px">취소</button>	
+	<button id="cancel" style="width: 100px; color: black;">취소</button>	
 	</div>
 	
 <div id="footer" style="margin-top: 50px">

@@ -24,17 +24,18 @@
 
 <title>같이가자</title>
 </head>
-<body background="../resources/theme/images/test2.jpg">
+<body background="../resources/theme/images/KakaoTalk_sky.jpg">
 
+<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
 <img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
 <img src="../resources/theme/images/Sign_up02.png" style="height: 75px"/><br/>
 
 
 	<form id ="register_form" name="register_form" action="sign_up" method="post" enctype="multipart/form-data">
    
-   		<span style="margin-left: 50px"><p style="color: red; display: inline;">(*)</p> 항목은 반드시 입력해 주세요.</span><br>
+   		<span><p style="color: red; display: inline;">(*)</p> 항목은 반드시 입력해 주세요.</span><br>
    		
-   		<div style="margin-left: 100px">   		
+   		<div style="margin-left: 50px">   		
    		
 	   		<label for="userid">아이디<p style="color: red; display: inline;">(*)</p></label><br>
 			<input type="text" pattern="[A-Za-z0-9]*" style="ime-mode: disabled;" id="userid" name="userid" placeholder="아이디" />
@@ -108,6 +109,7 @@
       		<button type="button" id="submit_Cancel">가입취소</button>
 		</div>      
    </form>
+</div>
    
 <div id="footer" style="margin-top: 50px">
 	<div class="col-md-8 col-xs-12 text-left">
