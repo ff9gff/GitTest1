@@ -11,6 +11,8 @@ public interface MypageDAO {
 	
 	public abstract PersonalVO selectpersonal(int mno);
 	
+	public abstract List<PersonalVO> selectPerson(int mno);
+	
 	public abstract List<ImgVO> select_mno(int mno);
 	
 	public abstract ImgVO selectProfile(int mno);

@@ -26,6 +26,12 @@ public class MypageDAOImpl implements MypageDAO {
 	}
 	
 	@Override
+	public List<PersonalVO> selectPerson(int mno) {
+
+		return sqlSession.selectList(NAMESPACE + ".select-personalbymno", mno);
+	}
+	
+	@Override
 	public List<ImgVO> select_mno(int mno) {
 		List<ImgVO> list = sqlSession.selectList(NAMESPACE + ".select_trip_mno", mno);
 		return list;

@@ -8,10 +8,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet"
-	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
+<script src="/resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<script src="/resources/theme/js/bootstrap.js"></script>
+<script src="/resources/theme/js/plugins.js"></script>
+<script src="/resources/theme/js/main.js"></script>
+
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
@@ -55,6 +68,43 @@ ul {
 </head>
 
 <body>
+
+<div class="site-header">
+			<div class="main-header">
+				<div class="container">
+					<div id="menu-wrapper">
+						<div class="row">
+							<div class="logo-wrapper col-md-2 col-sm-2">
+								<h1> <a href="#">같&nbsp;이&nbsp;가&nbsp;자</a> </h1>
+							</div>
+							<!-- /.logo-wrapper -->
+							<div class="col-md-10 col-sm-10 main-menu text-right">
+								<div class="toggle-menu visible-sm visible-xs">
+									<i class="fa fa-bars"></i>
+								</div>
+								<ul class="menu-first">
+									<li><a href="index">메인</a></li>
+									<li><a href="#services">후기</a></li>
+									<li><a href="tour/tourBoard">찾기</a></li>
+									<li><a href="MyPage">마이페이지</a></li>
+									<li><a href="admin">관리자</a></li>
+									<li><a href="member/login">로그인</a></li>
+								</ul>
+							</div>
+							<!-- /.main-menu -->
+						</div>
+						<!-- /.row -->
+					</div>
+					<!-- /#menu-wrapper -->
+				</div>
+				<!-- /.container -->
+			</div>
+			<!-- /.main-header -->
+		</div>
+
+
+
+
 	<header style="background-color: #F79F12; height: 60px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
 		<p><a href="index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
@@ -203,9 +253,9 @@ ul {
 								
 				var url2 = '/project03/MyPage/joinlist/' + ${mno};
 				$.getJSON(url2, function(data2){
-					alert("joinlist 동작");
+					
 					$(data2).each(function() {
-						alert("???");
+						
 						JoinList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 						
 						var urltitle = '/project03/MyPage/jointitle/' + ${mno};
@@ -255,7 +305,7 @@ ul {
 			
 			function getThumnail() {
 				
-				var list = '';
+				var list = '';				
 				
 				for(var i = 0; i<List.length; i++){
 
@@ -311,6 +361,7 @@ ul {
 	
 			});
 			
+			// 내가 신청한 게시물 보기 버튼
 			$('#tourchoose').click(function() {
 
 				var tourchoose_mno = ${mno};
@@ -322,6 +373,12 @@ ul {
 				}
 	
 			});
+			
+			$('#updatePersonal').click(function() {
+				var mno = ${mno};				
+				location = 'updatePersonal/' + mno;
+			});
+						
 		});		
 		
 		var mno_img = '${inserterImg}';

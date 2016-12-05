@@ -6,8 +6,7 @@
 <mapper namespace="edu.spring.Project03.MypageMapper">
 
 	<select id="select-personalbymno" resultType="personalVO">
-		select sex, age, nickname, introduce, email
-		from wm_personal
+		select * from wm_personal
 		where mno = #{mno}
 	</select>
 

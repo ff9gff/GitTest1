@@ -1,8 +1,11 @@
 package edu.spring.project03.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -20,17 +24,22 @@ import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
+import edu.spring.project03.service.MemberService;
 import edu.spring.project03.service.MypageService;
 import edu.spring.project03.service.TourSearchService;
 
 
 @Controller
+@RequestMapping(value = "/")
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	@Autowired
-	private MypageService mypageService; 
+	private MypageService mypageService;
+	
+	@Autowired
+	private MemberService memberService;
 		
 	@RequestMapping(value="/MyPage", method=RequestMethod.GET )
 	public String selectPesrsonal(HttpServletRequest req, Model model) {		
@@ -40,7 +49,7 @@ public class MypageController {
 		PersonalVO vo = mypageService.selectpersonal(mno);
 		logger.info("닉네임 : " + vo.getNickname());
 		logger.info("성별 : " + vo.getSex());
-		logger.info("나이 : " + vo.getAge());
+		logger.info("나이 : " + vo.getAge()); 
 		logger.info("자기소개 : " + vo.getIntroduce());
 		logger.info("이메일 : " + vo.getEmail());
 		
@@ -54,7 +63,7 @@ public class MypageController {
 		
 		model.addAttribute("vo", vo);
 		
-		return "MyPage";
+		return "mypage/MyPage";
 	}
 	
 	// mno 검색 Ajax 처리
@@ -211,7 +220,30 @@ public class MypageController {
 		// logger.info("list.mno "+ list.get(0).getUserid());
 		// 출력 됨
 		return entity;
-	}	
+	}
+	
+//////////////////////////////프로필 수정 작업 중.../////////////////////////////////////	
+	@RequestMapping(value = "updatePersonal/{mno}", method = RequestMethod.GET)
+	public String readPerson(@PathVariable("mno") int mno) {
+		return "mypage/updatePersonal";
+		
+	}
+	
+	@RequestMapping(value = "checknick", method = RequestMethod.POST)
+	public void checkid(@RequestBody PersonalVO vo, HttpServletRequest request, HttpServletResponse response)
+	      throws IOException {
+
+	   logger.info("userid: " + vo.getNickname());
+
+	   String checknick = memberService.readNickname(vo.getNickname());
+	   logger.info("checkid : " + checknick);
+
+	   PrintWriter out = response.getWriter();
+
+	   if (checknick != null) {
+	      out.print("NOK");
+	   } // end if
+	}
 	
 	
 }

@@ -24,6 +24,12 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
+	public List<PersonalVO> readPerson(int mno) {
+	
+		return mypageDAO.selectPerson(mno);
+	}
+	
+	@Override
 	public List<ImgVO> read_mno(int mno) {
 		List<ImgVO> list = mypageDAO.select_mno(mno);
 		return list;
