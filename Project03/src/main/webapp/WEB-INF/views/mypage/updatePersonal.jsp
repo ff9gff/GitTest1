@@ -18,28 +18,28 @@
 		<label for="female">여자 </label> <br><br>
 		 
 		<label for="age">나이</label><br> 
-		<input type="text" pattern="[0-9]*" id="age" name="age" placeholder="나이" /><br><br>
+		<input type="text" pattern="[0-9]*" id="age" name="age" value="${vo.age }" /><br><br>
 		 
 		<label for="nickname">넥네임이름</label><br> 
-		<input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요">
+		<input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요" value="${vo.nickname }">
 		<div id="result_nick"></div><br/><br/>
 				 
 		<label for="phone">핸드폰 번호</label><br> 
-		<input type="text" id="phone" name="phone" placeholder="핸드폰 번호"><br><br> 
+		<input type="text" id="phone" name="phone" placeholder="핸드폰 번호" value="${vo.phone }"><br><br> 
 		
 		<input type="text" id="postcode" class="postcodify_postcode5" placeholder="우편번호"> 
 		<input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
-		<input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 "><br> 
+		<input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " value="${vo.address }"><br> 
 		<input type="text" id="address2" name="address2" placeholder="상세주소">
 		<input type="hidden" id="address" name="address" readonly="readonly" />
 		<br>
 		<br> 
 		<label for="email">이메일</label><br /> 
-		<input type="email" id="email" name="email" placeholder="이메일 입력" />
+		<input type="email" id="email" name="email" placeholder="이메일 입력" value="${vo.email }"/>
 		
 		<br>
 		<br> 
-		<label for="imageFile">프로필 이미지</label><br /> 
+		<%-- <label for="imageFile">프로필 이미지</label><br /> 
 		<input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 
 		<div id="image_preview">
@@ -47,14 +47,14 @@
 			<img src="#" id="profile-image" style="display: none;" /><br />
 			<!-- <button type="button" id="btn_profile-image_remove" style="display: none;">Remove</button> -->
 			<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
-		</div>
+		</div> --%>
 		<br /> <label for="introduce">자기소개</label><br />
-		<textarea id="introduce" name="introduce" cols="100" rows="15"></textarea>
+		<textarea id="introduce" name="introduce" cols="100" rows="15">${vo.introduce }</textarea>
 		<br>
 		<br>
 
-		<button type="button" id="submit_OK">회원가입</button>
-		<button type="button" id="submit_Cancel">가입취소</button>
+		<button type="button" id="submit_OK">프로필 수정</button>
+		<button type="button" id="submit_Cancel">취소</button>
 	</form>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>

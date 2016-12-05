@@ -238,7 +238,18 @@ public class MypageController {
 	
 //////////////////////////////프로필 수정 작업 중.../////////////////////////////////////	
 	@RequestMapping(value = "updatePersonal/{mno}", method = RequestMethod.GET)
-	public String readPerson(@PathVariable("mno") int mno) {
+	public String readPerson(@PathVariable("mno") int mno, Model model) {
+		
+		logger.info("mno: " + mno);
+		PersonalVO vo = mypageService.selectpersonal(mno);
+		logger.info("닉네임 : " + vo.getNickname());
+		logger.info("성별 : " + vo.getSex());
+		logger.info("나이 : " + vo.getAge()); 
+		logger.info("자기소개 : " + vo.getIntroduce());
+		logger.info("이메일 : " + vo.getEmail());
+		
+		model.addAttribute("vo", vo);
+		
 		return "mypage/updatePersonal";
 		
 	}
