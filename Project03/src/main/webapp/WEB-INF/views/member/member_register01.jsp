@@ -1,17 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
+
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="../resources/theme/js/bootstrap.js"></script>
+		<script src="../resources/theme/js/plugins.js"></script>
+		<script src="../resources/theme/js/main.js"></script>
+		
 <title>같이가자</title>
 </head>
 <body>
-<h1>member_register01.jsp</h1>
-	<h2>이용약관</h2>
-	<div>
-	<textarea rows="15" cols="250">
+
+<img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
+<img src="../resources/theme/images/Sign_up01.png" style="height: 75px"/><br/>
+
+	<h2 style="font-size: medium; font-style: oblique;">이용약관</h2>
+<div style="text-align: center">
+	<textarea rows="12" cols="120" readonly="readonly">
 같이가자 및 같이가자 관련 제반 서비스의 이용과 관련하여 필요한 사항을 규정합니다.
 제 1조 (목적)
 이 약관은 같이가자(주)(이하 "회사")가 제공하는 같이가자 및 같이가자 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -54,16 +74,22 @@
 ⑨ "회사"는 "정회원"이 “안전동행” 서비스 내의 상호간에 "동의"를 체크함으로써 상대방의 개인 정보를 확인할 수 있도록 합니다.
 	</textarea><br/>
 	
-	<input type="radio" id="btn_member_stipulation_agree" name="stipulation" value="agree"  />
-	<label for="btn_member_stipulation_agree">동의합니다</label>
-	<input type="radio" id="btn_member_stipulation_disagree" name="stipulation" value="disagree"  />
-	<label for="btn_member_stipulation_disagree">동의하지않습니다</label>
+	<div style="text-align: center;">		
+		<input type="radio" id="btn_member_stipulation_agree" name="stipulation" value="agree" />
+		<label for="btn_member_stipulation_agree">동의 합니다</label>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" id="btn_member_stipulation_disagree" name="stipulation" value="disagree" />
+		<label for="btn_member_stipulation_disagree">동의하지 않습니다</label>				
 	</div>
+	
+</div>
+	
+	<br/>
 
 
-	<h2>개인정보취급방침</h2>
-	<div>
-	<textarea rows="15" cols="250">
+	<h2 style="font-size: medium; font-style: oblique;">개인정보취급방침</h2>
+<div>
+	<textarea rows="12" cols="120" readonly="readonly">
 같이가자 (주)(이하 “회사” 또는 “같이가자” 라 함)는 통신비밀보호법, 전기통신사업법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보취급방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.
 
 같이가자의 개인정보취급방침은 다음과 같은 내용을 담고 있습니다.
@@ -160,7 +186,9 @@
 - 쿠키 설치 허용 여부를 지정하는 방법(Internet Explorer의 경우) 
 ① [도구] 메뉴에서 [인터넷 옵션]을 선택합니다. 
 ② [개인정보 탭]을 클릭합니다. 
-③ [개인정보취급 수준]을 설정하시면 됩니다. 9. 개인정보의 기술적/관리적 보호 대책회사는 이용자들의 개인정보를 취급함에 있어 개인정보가 분실, 도난, 누출, 변조 또는 훼손되지 않도록 안전성 확보를 위하여 다음과 같은 기술적/관리적 대책을 강구하고 있습니다.
+③ [개인정보취급 수준]을 설정하시면 됩니다.
+
+9. 개인정보의 기술적/관리적 보호 대책회사는 이용자들의 개인정보를 취급함에 있어 개인정보가 분실, 도난, 누출, 변조 또는 훼손되지 않도록 안전성 확보를 위하여 다음과 같은 기술적/관리적 대책을 강구하고 있습니다.
 가. 비밀번호 암호화
 동행친구 회원 아이디(ID)의 비밀번호는 암호화되어 저장 및 관리되고 있어 본인만이 알고 있으며, 개인정보의 확인 및 변경도 비밀번호를 알고 있는 본인에 의해서만 가능합니다.
 나. 해킹 등에 대비한 대책
@@ -185,17 +213,31 @@
  부칙이 약관은 20XX년 XX월 XX일부터 적용됩니다
 	</textarea><br/>
 	
-	<input type="radio" id="btn_personal_information_agree" name="information" value="agree"  />
-	<label for="btn_personal information_agree">동의합니다.</label>
-	<input type="radio" id="btn_personal_information_disagree" name="information" value="disagree"  />
-	<label for="btn_personal information_disagree">동의하지않습니다.</label>
+	<div style="text-align: center;">		
+		<input type="radio" id="btn_personal_information_agree" name="information" value="agree" />
+		<label for="btn_personal_information_agree">동의 합니다</label>
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input type="radio" id="btn_personal_information_disagree" name="information" value="disagree" />
+		<label for="btn_personal_information_disagree">동의하지 않습니다</label>						
+	</div>
+
+</div>
+	
+	<br/>
+	
+	<div style="text-align: center;">
+<!-- 	<div style="width: 600px  ;margin: 0 auto;"> -->
+	<button id="confirm" style="width: 100px">확인</button>
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	<button id="cancel" style="width: 100px">취소</button>	
 	</div>
 	
-	<button id="confirm">확인</button>
-	<button id="cancel">취소</button>
+<div id="footer" style="margin-top: 50px">
+	<div class="col-md-8 col-xs-12 text-left">
+		<span style="margin-left: 0px">Copyright &copy; 2014 Company Name</span>
+	</div>
+</div>
 
-<!-- JQuery CDN -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function() {
 	
@@ -219,8 +261,6 @@ $(document).ready(function() {
 	});	
 });
 </script>	
-	
-	
 
 </body>
 </html>
