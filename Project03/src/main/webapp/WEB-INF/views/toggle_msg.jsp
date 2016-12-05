@@ -12,6 +12,7 @@
 	font-size: 20px;
 	height: 30px;
 	padding-top: 10px;
+	padding-left: 20px;
 }
 #msg_send{
 
@@ -34,6 +35,10 @@ textarea{
 	 min-height:340px; 
 	 max-height:340px
 }
+#msg_setter{
+	border: 1px solid #FFFFFF;
+	padding-left: 10px;
+}
 </style>
 </head>
 <body>
@@ -42,12 +47,12 @@ textarea{
 
 	<form id="msg_form" method="post" action="../sendMsgU">
 		<div id="msg_header">
-			<img src="../resources/theme/images/msg.PNG" style="width: 30px; height: 30px;">쪽찌쓰기
+			<img src="../resources/theme/images/msg.PNG" style="width: 20px; height: 20px;">쪽지쓰기
 		</div>
 		<input type="hidden" name="sd_mno" value="${msg_setter }" />
-		<input type="hidden" name="sd_url" value="tour/toggle_msg" />
+		<input type="hidden" name="sd_url" value="${msg_address }" />
 		<div id="msg_send">
-			<span style="font-weight: 800;">받는사람</span><input name="nickname" value="${msg_getnick }"/>
+			<span style="font-weight: 800;">받는사람</span><input name="nickname" id="msg_setter"  value="${msg_getnick }"/>
 		</div>
 		<div id="msg_text">
 			<textarea name="msg_content"></textarea>
@@ -58,13 +63,26 @@ textarea{
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+$(document).ready(function(){
+	$('#send_button').click(function(){
+		var f = document.getElementById('msg_form');
+		f.submit();
+	
+		//self.close();
+	});
+	
+	if ('${insert_result}' == 'success') {
+		alert('쪽지 보내기 성공!');
+		self.close();
+		
+	} else if ('${insert_result}' == 'fail') {
+		alert('쪽지 보내기 실패!');
+		self.close();
+	}
 
-$('#send_button').click(function(){
-	var f = document.getElementById('msg_form');
-	f.submit();
-
-	//self.close();
 });
+
+
 
 </script>
 </body>

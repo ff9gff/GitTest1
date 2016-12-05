@@ -85,6 +85,11 @@
 	float: right;
 	margin-right: 20px;
 }
+
+.reply_commit,.update_commit{
+	vertical-align: middle;
+	margin-top: 20px;
+}
 .regdate,.btn_div,.btn_reply,.btn_update,.btn_delete{
 	font-size: 10pt;
 	color:#757575;
@@ -418,12 +423,13 @@ font-size: 12px;
 		<!-- /.container -->
 	</div>
 	<!-- /.main-header -->
-<div style="height: 150px;">안보여어</div>
+<div style="height: 150px;"></div>
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
 	<input type="hidden" id="msg_setter" name="msg_setter" value="${mno }"/>
 	<input type="hidden" id="msg_getter" name="msg_getter"/>
-	<input type="hedden" id="msg_getnick" name="msg_getnick"/>
+	<input type="hidden" id="msg_getnick" name="msg_getnick"/>
+	<input type="hidden" id="msg_address" name="msg_address" value="tour/toggle_msg"/>
 </form>
 
 <c:if test="${mno ne tourVO.mno && not empty login_id}">
@@ -604,7 +610,7 @@ $(document).ready(function(){
 							+'<tbody>'
 								+'<tr>'
 									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+sessionmno+'" data-listno="'+i+'">'+sessionnick+'</a></strong></td>'
-									+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
+									+'<td><textarea cols="80" rows="3" class="reply_textarea"></textarea></td>'
 									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 								+'</tr>'
 							+'</tbody>'
@@ -662,7 +668,7 @@ $(document).ready(function(){
 									+'<tbody>'
 										+'<tr>'
 											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+sessionmno+'" data-listno="'+j+'">'+sessionnick+'</a></strong></td>'
-											+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
+											+'<td><textarea cols="80" rows="3" class="reply_textarea"></textarea></td>'
 											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 										+'</tr>'
 									+'</tbody>'
