@@ -21,7 +21,30 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<style>
+.portfolio-item{
+	height: 320px;
+	width: 320px;
+	border: 1px solid gray;
+	margin: 5px;
+	padding: 0;
+}
+#TourDetail,#TopReview{
+	width: 1330px;
+}
 
+.portfolio-thumb{
+	width: 300px;
+	height: 240px;
+	vertical-align: middle;
+	border: 1px solid gray;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+</style>
 </head>
 <body>
 
@@ -331,17 +354,19 @@
 			for(var i = 0; i < length; i++){
 				/* console.log(TourImage[i].content_no); */
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+ '<div class="portfolio-thumb">'
-						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + TourImage[i].content_no + '"><img src="' + TourImage[i].img_url + '" width="300" height="240"><br/>'
-						+ '<div>제목: ' + TourImage[i].tour + '</div>'
-						+ '<div>' + TourImage[i].city + '</div>'	
-						+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
-						+ '</figure>'
-						+ '</div>'
+						+'<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
+							+ '<div class="portfolio-thumb">'
+								+'<img src="' + TourImage[i].img_url + '" style="width=300; height=240; z-index=99;">'
+								+'<div><img src="../resources/theme/images/main_female.png" style="width=20; height=20; z-index=100;"></div>'
+							+ '</div>'
+								+ '<div>제목: ' + TourImage[i].tour + '</div>'
+								+ '<div>' + TourImage[i].city + '</div>'	
+								+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
+							
+						+'</a>'
 						+ '</div>';
 			}
-
+ 
 			$('#TourDetail').html(list);
 		};
 		
