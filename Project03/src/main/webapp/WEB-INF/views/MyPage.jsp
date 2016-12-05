@@ -91,7 +91,7 @@ ul {
 				</div>
 				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${vo.introduce }
 				</textarea>
-				
+					
 			</div>
 				<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />
 		</div>	
@@ -150,7 +150,7 @@ ul {
 								titleList.push({trip_no: this.trip_no, title: this.title});
 								
 							});
-							
+							console.log(titleList);
 							
 							var urlregion = '/project03/MyPage/region/' + ${mno};
 							$.getJSON(urlregion, function(dataregion) {
@@ -175,6 +175,7 @@ ul {
 										}	
 									}	
 								}
+								
 								
 							});
 								
@@ -213,7 +214,7 @@ ul {
 								titleList.push({trip_no: this.trip_no, title: this.title});
 								
 							});
-							
+							console.log(titleList);
 							
 							var urlregion = '/project03/MyPage/joinregion/' + ${mno};
 							$.getJSON(urlregion, function(dataregion) {
