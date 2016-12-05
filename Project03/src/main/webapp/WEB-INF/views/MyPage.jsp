@@ -13,6 +13,7 @@
 <link rel="stylesheet"
 	href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <style type="text/css">
 #dropDownType {
@@ -95,15 +96,14 @@ ul {
 				<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />
 		</div>	
 
-			<div style="display: block; width: 1026px; margin-top: 16px;">
+			<div style="display: block; width: 100%; margin-top: 16px; text-align: left; margin-left: auto; margin-right: auto">
 				<p></p>
-				<input type="hidden" id="mytour_mno" name="mytour_mno"
-					value="${mno}" />
+				<input type="hidden" id="mytour_mno" name="mytour_mno" value="${mno}" />
 				<button type="button" id="mytour" style="font-weight: bold; background-color: transparent;">내 여행 리스트</button>
 				<button type="button" id="mytourReview" style="font-weight: bold; background-color: transparent;">내 후기 리스트</button>
 				<button type="button" id="tourchoose" style="font-weight: bold; background-color: transparent;">내 선택 리스트</button>
 				
-				<div class="row" id="toursearch" style="width: 1026px; margin-top: 30px;"></div>
+				<div class="row" id="toursearch" style="width: 97%; margin-top: 30px; margin-left: auto; margin-right: auto"></div>
 				
 
 
@@ -139,8 +139,8 @@ ul {
 				regionList = [];
 				
 				var url = '/project03/MyPage/list/' + ${mno};
-				$.getJSON(url, function(data1) {
-					$(data1).each(function() {
+				$.getJSON(url, function(datalist) {
+					$(datalist).each(function() {
 						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 							
 					
@@ -159,8 +159,7 @@ ul {
 									var tagname = '';
 									for(var i=0; i<name.length; i++){
 										tagname +="#"+name[i]+" ";
-									}
-									
+									}									
 									regionList.push({region_name: tagname, trip_no: this.trip_no});	
 								});
 							
@@ -195,15 +194,57 @@ ul {
 												
 				// 선택한 게시물 리스트
 				JoinList = [];
+				// wm_tour 리스트(제목)
+				titleList = [];
+				// wm_tour_region 리스트(지역)
+				regionList = [];
+
 								
 				var url2 = '/project03/MyPage/joinlist/' + ${mno};
 				$.getJSON(url2, function(data2){
 					alert("joinlist 동작");
 					$(data2).each(function() {
 						alert("???");
-						JoinList.push({img_url: this.img_url, content_no: this.content_no})
-									
-					});					
+						JoinList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						
+						var urltitle = '/project03/MyPage/jointitle/' + ${mno};
+						$.getJSON(urltitle, function(datatitle) {
+							$(datatitle).each(function() {
+								titleList.push({trip_no: this.trip_no, title: this.title});
+								
+							});
+							
+							
+							var urlregion = '/project03/MyPage/joinregion/' + ${mno};
+							$.getJSON(urlregion, function(dataregion) {
+								$(dataregion).each(function() {
+									var name = this.region_name.split(",");
+									var tagname = '';
+									for(var i=0; i<name.length; i++){
+										tagname +="#"+name[i]+" ";
+									}									
+									regionList.push({region_name: tagname, trip_no: this.trip_no});	
+								});
+							
+								for (var i = 0; i < JoinList.length; i++) {
+									for (var j = 0; j < titleList.length; j++) {
+										if (JoinList[i].content_no == titleList[j].trip_no) {
+											JoinList[i].tour = titleList[j].title;
+										} 
+										for (var k = 0; k < regionList.length; k++) {
+											if (JoinList[i].content_no == regionList[k].trip_no) {
+												JoinList[i].city = regionList[k].region_name;
+											} 
+										}	
+									}	
+								}
+								
+							});
+								
+							
+						});
+				
+				});
 					
 					getChooseThumnail();
 					
@@ -243,6 +284,8 @@ ul {
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
 						+ '<a href="tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="' + JoinList[i].img_url + '" width="300" height="200">'
+						+ '<div>제목: ' + JoinList[i].tour + '</div>'
+						+ '<div>지역: ' + JoinList[i].city + '</div>'			
 						+ '</figure>'
 						+ '</div>'
 						+ '</div>';

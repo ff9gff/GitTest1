@@ -84,7 +84,7 @@ http://www.templatemo.com/tm-406-flex
 									<li class="active"><a href="index">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="MyPage">마이페이지</a></li>
+									<li><a href="../MyPage">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
 									<li><a href="member/login">로그인</a></li>
 								</ul>

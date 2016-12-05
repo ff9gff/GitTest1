@@ -31,10 +31,7 @@ public class MypageController {
 	
 	@Autowired
 	private MypageService mypageService; 
-	
-	@Autowired
-	private TourSearchService tourSelectService;
-	
+		
 	@RequestMapping(value="/MyPage", method=RequestMethod.GET )
 	public String selectPesrsonal(HttpServletRequest req, Model model) {		
 		HttpSession session = req.getSession();
@@ -167,5 +164,54 @@ public class MypageController {
 		// 출력 됨
 		return joinentity;
 	}
+	
+	// mno 검색 Ajax 처리
+	// 해당 mno 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/MyPage/jointitle/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxjointitleTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+	    List<TourRegisterVO> list = mypageService.read_mytour_title(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+			logger.info("제목 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("제목 전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+		
+	@RequestMapping(value = "/MyPage/joinregion/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxjoinregionTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<RegionVO>> entity = null;
+
+		List<RegionVO> list = mypageService.read_mytour_region(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+			logger.info("지역 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역  전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}	
+	
 	
 }
