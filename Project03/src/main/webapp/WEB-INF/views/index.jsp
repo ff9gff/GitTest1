@@ -25,9 +25,9 @@
 .portfolio-item{
 	height: 320px;
 	width: 320px;
-	border: 1px solid gray;
 	margin: 5px;
 	padding: 0;
+	box-shadow: 0px 1px 10px gray;
 }
 #TourDetail,#TopReview{
 	width: 1330px;
@@ -37,11 +37,12 @@
 	width: 300px;
 	height: 240px;
 	vertical-align: middle;
-	border: 1px solid gray;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-top: 5px;
 	margin-bottom: 5px;
+	border: 1px solid lightgray;
+	
 	 
 }
 
@@ -50,7 +51,32 @@
 	z-index:100; 
 	width:40px; 
 	height:40px;
-	
+	background-color: #4e4e4f;
+	font-weight: 600;
+	font-size: 25px;
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: top;
+}
+
+#tour_title{
+	font-size: 20px;
+	font-weight: bold;
+	color: #4e4e4f;
+	margin-left: 10px;
+	font-family:monospace
+}
+
+#tour_region{
+	font-size: 15px;
+	color: ligthgray;
+	margin-left: 10px;
+	font-family:monospace
+}
+
+#img_tour{
+	-webkit-filter: opacity(1.5) sepia(.4);
+   filter: opacity(1.5) sepia(.4); 
 }
 
 </style>
@@ -472,15 +498,32 @@
 						+'<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
 								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
-								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">'
-									+'<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">'
-									+'<p id="condition_age">10</p>'
-								+'</div>'
+								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
+								switch(TourImage[i].condition_sex){
+									case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									case 1: list+='<img src="resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									case 2: list+='<img src="resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									default: break;
+								}	
+								switch(TourImage[i].condition_age){
+								case 1: list+='<p id="condition_age">20</p>';
+									break;
+								case 2: list+='<p id="condition_age">30</p>';
+									break;
+								case 3: list+='<p id="condition_age">40↑</p>';
+									break;
+								case 4: list+='<p id="condition_age">All</p>';
+									break;
+								default: break;
+							}
+									
+								list+='</div>'
 							+ '</div>'
-								+ '<div>제목: ' + TourImage[i].tour + '</div>'
-								+ '<div>' + TourImage[i].city + '</div>'	
-								+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
-							
+								+ '<div id="tour_title">' + TourImage[i].tour + '</div>'
+								+ '<div id="tour_region">' + TourImage[i].city + '</div>'			
 						+'</a>'
 
 						+ '</div>';
