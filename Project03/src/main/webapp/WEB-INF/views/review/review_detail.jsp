@@ -406,7 +406,7 @@
 	<!-- /.main-header -->
 <div style="height: 150px;">안보여어</div>
 
-<c:if test="${mno ne tourVO.mno && not empty login_id}">
+<c:if test="${mno ne reviewvo.mno && not empty login_id}">
 	<div id="joinmenu">
 		<p id="joinmenu_count">몇명이 참여중이다</p>
 		<button id="joinmenu_apply">신청하기</button>
@@ -415,7 +415,7 @@
 
 <div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
 	<div style=" display: inline-block; vertical-align: middle;">
-		<div id=content_title>${tourVO.title}</div>
+		<div id=content_title>${reviewvo.title}</div>
 		<div id=content_smalltitle></div>
 	</div>
 	<div id="content_profile" style="width: 110px; height: 100px; display: inline-block;text-align:center; vertical-align: middle;">
@@ -430,7 +430,7 @@
 	</tr>	
 </table>
 
-<c:if test="${mno eq tourVO.mno}">
+<c:if test="${mno eq reviewvo.mno}">
 	<div class="menu">Apply for</div>
 	<table class="apply_panel">
 		<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
@@ -449,7 +449,7 @@
 <input hidden id="start_date" value="${tourVO.start_date}"/>
 <input hidden id="end_date" value="${tourVO.end_date}"/>
 <div id="content">
-${tourVO.content}
+${reviewvo.content}
 </div>
 
 
@@ -484,7 +484,7 @@ ${tourVO.content}
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var trip_no = ${tourVO.trip_no};
+	var review_no = ${reviewvo.review_no};
 
 		var sessionmno = '<%=(String)session.getAttribute("mno")%>';
 		var sessionaut= '<%=(String)session.getAttribute("authority")%>';
@@ -1179,32 +1179,7 @@ var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
 
 var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
 
-// 조건 띄우기
-var con_sex = ${tourVO.condition_sex};
-var con_age = ${tourVO.condition_age};
 
-$('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
-switch(con_sex){
-	case 0: $('#condition_sex').html('<img src="../resources/theme/images/female.png" class="condition_img"/><div class="condition_text">여자 만</div>');
-			break;
-	case 1: $('#condition_sex').html('<img src="../resources/theme/images/male.png" class="condition_img"/><div class="condition_text">남자 만</div>');
-			break;
-	case 2: $('#condition_sex').html('<img src="../resources/theme/images/people.png" class="condition_img"/><div class="condition_text">누구나</div>');
-			break;
-	default: break;
-}// end switch
-
-switch(con_age){
-	case 1: $('#condition_age').html('<img src="../resources/theme/images/20age.png" class="condition_img"/><div class="condition_text">20대 만</div>');
-		break;
-	case 2: $('#condition_age').html('<img src="../resources/theme/images/30age.png" class="condition_img"/><div class="condition_text">30대 만</div>');
-		break;
-	case 3: $('#condition_age').html('<img src="../resources/theme/images/40age.png" class="condition_img"/><div class="condition_text">40대 이상 만</div>');
-		break;
-	case 4: $('#condition_age').html('<img src="../resources/theme/images/freeage.png" class="condition_img"/><div class="condition_text">누구나</div>');
-		break;
-	default: break;
-}// end switch
 
 var mno_nickname = '${inserterNickname}';
 var mno_intro = '${inserterIntro}';

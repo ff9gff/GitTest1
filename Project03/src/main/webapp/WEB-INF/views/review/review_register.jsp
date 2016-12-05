@@ -146,9 +146,7 @@
 									</td>
 								</tr>
 							</table>						
-						</div>
-						
-						 
+						</div><br />
 						
 						<textarea name="content" id="smarteditor" rows="10"
 							cols="100" style="width: 766px; height: 412px;">	
