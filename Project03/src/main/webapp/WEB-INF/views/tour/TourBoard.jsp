@@ -144,8 +144,10 @@ http://www.templatemo.com/tm-406-flex
 						<form action="" method="get" id="selectSearch">
 						
 							<h3 class="h2" style="font: bold;">상세 검색 </h3><br />
-							 
-							<input type="text" id="start_date" name="start_date" placeholder="시작일"><br /><br />
+							
+							<input type="text" id="region_name2" name="region_name" placeholder="지역이름">
+							
+							<input type="text" id="start_date2" name="start_date" placeholder="시작일"><br /><br />
 									
 							<label>성별 조건:</label>
 							남자 <input type="radio" name="condition_sex" value="1" /> 
@@ -396,7 +398,7 @@ http://www.templatemo.com/tm-406-flex
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url1 = '/project03/index/detailsearch/' + $('#region_name').val() + "/" + $('#start_date').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val()
+				var url1 = '/project03/index/detailsearch/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val()
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
 						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
@@ -521,9 +523,13 @@ http://www.templatemo.com/tm-406-flex
 			});
 			
 			$('#do_detail_search').click(function() {	
-				$('#selectSearch').submit();
+				getThumnails_By_Detail_Search();
 			});
 			
+			
+			$("#start_date2").datepicker({
+				dateFormat : 'yy-mm-dd'
+			});
 			
 	
 			

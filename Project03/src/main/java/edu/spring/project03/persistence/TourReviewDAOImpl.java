@@ -78,14 +78,11 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 	@Override
 	public ImgVO select_review_profile(int mno) {
-		logger.info("몇번이니: " + mno);
-
 		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
 	} // end select_review_profile(mno)
 
 	@Override
 	public String select_review_region_name(int review_no) {
-
 		return sqlSession.selectOne(NAMESPACE + ".select_review_region_name", review_no);
 	} // end select_review_region_name(review_no)
 

@@ -66,7 +66,6 @@ public class TourReviewServiceImpl implements TourReviewService {
 	
 	@Override
 	public ReviewVO read_review_by_no(int review_no) {
-		logger.info("씨발 뭔데: " + review_no);
 		return tourReviewDAO.select_review_by_no(review_no);
 	} // end read_review_by_no(review_no)
 	
@@ -79,8 +78,6 @@ public class TourReviewServiceImpl implements TourReviewService {
 	
 	@Override
 	public ImgVO read_review_profile(int mno) {
-		logger.info("뭐 씨발아 뭐: " + mno);
-		
 		return tourReviewDAO.select_review_profile(mno);
 	} // end read_review_profile(mno)
 	
