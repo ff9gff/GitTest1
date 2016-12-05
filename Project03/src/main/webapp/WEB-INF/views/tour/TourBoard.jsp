@@ -167,6 +167,7 @@ http://www.templatemo.com/tm-406-flex
 	<script src="../resources/theme/js/main.js"></script>
 	
 	<script>
+	
 		$(document).ready(function() {
 			
 			getThumnails_By_Default();

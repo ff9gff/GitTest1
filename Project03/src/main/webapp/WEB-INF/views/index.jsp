@@ -21,7 +21,30 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<style>
+.portfolio-item{
+	height: 320px;
+	width: 320px;
+	border: 1px solid gray;
+	margin: 5px;
+	padding: 0;
+}
+#TourDetail,#TopReview{
+	width: 1330px;
+}
 
+.portfolio-thumb{
+	width: 300px;
+	height: 240px;
+	vertical-align: middle;
+	border: 1px solid gray;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+</style>
 </head>
 <body>
 
@@ -99,14 +122,10 @@
 					<h2>Top 4 Review</h2><br/><br/>
 					<h1>당신만의 멋진 후기를 보여주세요</h1>
 				</div>
-				<div class="heading-section col-md-12 text-center">
-					<h2><a href="review/reviewBoard">전체보기</a></h2>
-				</div>
-				<!-- /.heading-section -->
 			</div>
 
 			<!-- /.row -->
-			<br />	<br />	
+			<br />
 		
 			<div class="row" id="TopReview">
 
@@ -115,9 +134,34 @@
 		</div>
 		<!-- /.container -->
 	</div>
+	
+	<div class="content-section" id="services">
+		<br /><br />	
+		<div class="container">
+			<div class="row">
+				<div class="heading-section col-md-12 text-center">
+					<h2>Recent Review</h2><br/><br/>
+					<h1>최신 후기를 살펴보세요</h1>
+				</div>
+				<div class="heading-section col-md-12 text-center">
+					<h2><a href="review/reviewBoard">전체보기</a></h2>
+				</div>
+				<!-- /.heading-section -->
+			</div>
+
+			<!-- /.row -->
+			<br />
+			
+			<div class="row" id="RecentReview">
+			
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
 	<!-- /#services -->
 	
-	<br /><br />
+	<br />
 
 	<div class="content-section" id="portfolio">
 		<div class="container">
@@ -134,9 +178,9 @@
 				<!-- /.heading-section -->
 			</div>
 			
-			<br />	<br />	
+			<br />
 			
-			<div class="row" id="tourDetailSearch">
+			<div class="row" id="TourDetail">
 
 			</div>
 
@@ -166,166 +210,273 @@
 
 	<script>
 	
-	
-	
-
-
-			getThumnails_By_Default_REVIEW();
-			getThumnails_By_Default_TOUR();
+	$(document).ready(function() {
+		
+		getThumnails_By_Default_TOUR();
+		getThumnails_By_Default_TOPREVIEW();
+		getThumnails_By_Default_RECENTREVIEW();
+		
+		// 디폴트로 나오는 후기 게시글 데이터를 가져오기
+		function getThumnails_By_Default_TOPREVIEW() {
 			
-			// 디폴트로 나오는 후기 게시글 데이터를 가져오기
-			function getThumnails_By_Default_REVIEW() {
+			// wm_image 배열
+			TopReviewImage = [];
+			// wm_review 배열(제목)
+			TopReviewTitle = [];
+			// wm_review_region 배열(지역)
+			TopReviewRegion = [];
+			
+			var url1 = '/project03/review/Topdefaultimage';
+			$.getJSON(url1, function(data1) {
+				$(data1).each(function() {
+					TopReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+				});
 				
-				// wm_image 리스트
-				ReviewImage = [];
-				// wm_review 리스트(제목)
-				ReviewTitle = [];
-				// wm_review_region 리스트(지역)
-				ReviewRegion = [];
-				
-				var url1 = '/project03/review/defaultimage';
-				$.getJSON(url1, function(data1) {
-					$(data1).each(function() {
-						ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+				var url2 = '/project03/review/Topdefaulttitle';
+				$.getJSON(url2, function(data2) {
+					$(data2).each(function() {
+						TopReviewTitle.push({review_no: this.review_no, title: this.title});	
 					});
+					console.log(TopReviewTitle);
 					
-					var url2 = '/project03/review/defaulttitle';
-					$.getJSON(url2, function(data2) {
-						$(data2).each(function() {
-							ReviewTitle.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+					var url3 = '/project03/review/Topdefaultregion';
+					$.getJSON(url3, function(data3) {
+						$(data3).each(function() {
+							var name = this.region_name.split(",");
+							var tagname = '';
+							for(var i=0; i<name.length; i++){
+								tagname +="#"+name[i]+" ";
+							}
+							
+							TopReviewRegion.push({region_name: tagname, review_no: this.review_no});	
 						});
-						console.log(ReviewTitle);
-						
-						var url3 = '/project03/review/defaultregion';
-						$.getJSON(url3, function(data3) {
-							$(data3).each(function() {
-								var name = this.region_name.split(",");
-								var tagname = '';
-								for(var i=0; i<name.length; i++){
-									tagname +="#"+name[i]+" ";
-								}
-								
-								ReviewRegion.push({region_name: tagname, review_no: this.review_no});	
-							});
-						
-							for (var i = 0; i < ReviewImage.length; i++) {
-								for (var j = 0; j < ReviewTitle.length; j++) {
-									if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
-										ReviewImage[i].tour = ReviewTitle[j].title;
+					
+						for (var i = 0; i < TopReviewImage.length; i++) {
+							for (var j = 0; j < TopReviewTitle.length; j++) {
+								if (TopReviewImage[i].content_no == TopReviewTitle[j].review_no) {
+									TopReviewImage[i].tour = TopReviewTitle[j].title;
+								} 
+								for (var k = 0; k < TopReviewRegion.length; k++) {
+									if (TopReviewImage[i].content_no == TopReviewRegion[k].review_no) {
+										TopReviewImage[i].city = TopReviewRegion[k].region_name;
 									} 
-									for (var k = 0; k < ReviewRegion.length; k++) {
-										if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
-											ReviewImage[i].city = ReviewRegion[k].region_name;
-										} 
-									}	
 								}	
 							}	
-							
-							getAllThumnail_REVIEW();
-						});
-		
+						}	
+						
+						getAllThumnail_TOPREVIEW();
 					});
+	
+				});
+	
+			});// end getJSON()
+	
+		};//end of getThumnails()
 		
-				});// end getJSON()
-		
-			};//end of getThumnails()
+		// 디폴트로 나오는 후기 게시글 데이터를 가져오기
+		function getThumnails_By_Default_RECENTREVIEW() {
 			
-			// 디폴트로 나오는 여행 게시글 데이터를 가져오기
-			function getThumnails_By_Default_TOUR() {
+			// wm_image 배열
+			RecentReviewImage = [];
+			// wm_review 배열(제목)
+			RecentReviewTitle = [];
+			// wm_review_region 배열(지역)
+			RecentReviewRegion = [];
+			
+			var url1 = '/project03/review/defaultimage';
+			$.getJSON(url1, function(data1) {
+				$(data1).each(function() {
+					RecentReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+				});
 				
-				// wm_image 리스트
-				TourImage = [];
-				// wm_tour 리스트(제목)
-				TourTitle = [];
-				// wm_tour_region 리스트(지역)
-				TourRegion = [];
-				
-				var url1 = '/project03/index/defaultimage';
-				$.getJSON(url1, function(data1) {
-					$(data1).each(function() {
-						TourImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+				var url2 = '/project03/review/defaulttitle';
+				$.getJSON(url2, function(data2) {
+					$(data2).each(function() {
+						RecentReviewTitle.push({review_no: this.review_no, title: this.title});	
 					});
+					console.log(RecentReviewTitle);
 					
-					var url2 = '/project03/index/defaulttitle';
-					$.getJSON(url2, function(data2) {
-						$(data2).each(function() {
-							TourTitle.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+					var url3 = '/project03/review/defaultregion';
+					$.getJSON(url3, function(data3) {
+						$(data3).each(function() {
+							var name = this.region_name.split(",");
+							var tagname = '';
+							for(var i=0; i<name.length; i++){
+								tagname +="#"+name[i]+" ";
+							}
+							
+							RecentReviewRegion.push({region_name: tagname, review_no: this.review_no});	
 						});
-						console.log(TourTitle);
-						
-						var url3 = '/project03/index/defaultregion';
-						$.getJSON(url3, function(data3) {
-							$(data3).each(function() {
-								var name = this.region_name.split(",");
-								var tagname = '';
-								for(var i=0; i<name.length; i++){
-									tagname +="#"+name[i]+" ";
-								}
-								
-								TourRegion.push({region_name: tagname, trip_no: this.trip_no});	
-							});
-						
-							for (var i = 0; i < TourImage.length; i++) {
-								for (var j = 0; j < TourTitle.length; j++) {
-									if (TourImage[i].content_no == TourTitle[j].trip_no) {
-										TourImage[i].tour = TourTitle[j].title;
-										TourImage[i].condition_sex = TourTitle[j].condition_sex;
-										TourImage[i].condition_age = TourTitle[j].condition_age;
+					
+						for (var i = 0; i < RecentReviewImage.length; i++) {
+							for (var j = 0; j < RecentReviewTitle.length; j++) {
+								if (RecentReviewImage[i].content_no == RecentReviewTitle[j].review_no) {
+									RecentReviewImage[i].tour = RecentReviewTitle[j].title;
+								} 
+								for (var k = 0; k < RecentReviewRegion.length; k++) {
+									if (RecentReviewImage[i].content_no == RecentReviewRegion[k].review_no) {
+										RecentReviewImage[i].city = RecentReviewRegion[k].region_name;
 									} 
-									for (var k = 0; k < TourRegion.length; k++) {
-										if (TourImage[i].content_no == TourRegion[k].trip_no) {
-											TourImage[i].city = TourRegion[k].region_name;
-										} 
-									}	
 								}	
 							}	
-							
-							getAllThumnail_TOUR();
-						});
-
+						}	
+						
+						getAllThumnail_RECENTREVIEW();
 					});
+	
+				});
+	
+			});// end getJSON()
+	
+		};//end of getThumnails()
 		
-				});// end getJSON()
-		
-			};//end of getThumnails()
+		// 디폴트로 나오는 여행 게시글 데이터를 가져오기
+		function getThumnails_By_Default_TOUR() {
 			
-			// 가져온 후기 데이터를 뿌려주자
-			function getAllThumnail_REVIEW() {
-				var list = '';
-				for(var i = 0; i < 4; i++){
-					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+			// wm_image 배열
+			TourImage = [];
+			// wm_tour 배열(제목)
+			TourTitle = [];
+			// wm_tour_region 배열(지역)
+			TourRegion = [];
+
+			var url1 = '/project03/index/defaultimage';
+			$.getJSON(url1, function(data1) {
+				$(data1).each(function() {
+					TourImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+				});
+				console.log(TourImage);
+				
+				var url2 = '/project03/index/defaulttitle';
+				$.getJSON(url2, function(data2) {
+					$(data2).each(function() {
+						TourTitle.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+					});	
+					
+					var url3 = '/project03/index/defaultregion';
+					$.getJSON(url3, function(data3) {
+						$(data3).each(function() {
+							var name = this.region_name.split(",");
+							var tagname = '';
+							for(var i=0; i<name.length; i++){
+								tagname +="#"+name[i]+" ";
+							}
+							
+							TourRegion.push({region_name: tagname, trip_no: this.trip_no});	
+						});
+					
+						for (var i = 0; i < TourImage.length; i++) {
+							for (var j = 0; j < TourTitle.length; j++) {
+								if (TourImage[i].content_no == TourTitle[j].trip_no) {
+									TourImage[i].tour = TourTitle[j].title;
+									TourImage[i].condition_sex = TourTitle[j].condition_sex;
+									TourImage[i].condition_age = TourTitle[j].condition_age;
+								} 
+								for (var k = 0; k < TourRegion.length; k++) {
+									if (TourImage[i].content_no == TourRegion[k].trip_no) {
+										TourImage[i].city = TourRegion[k].region_name;
+									} 
+								}	
+							}	
+						}		
+						
+						getAllThumnail_TOUR();
+					});
+				});
+			});// end getJSON()	
+		};//end of getThumnails()
+		
+		
+		// 가져온 TOP후기 데이터를 뿌려주자
+		function getAllThumnail_TOPREVIEW() {
+			var list = '';
+			
+			var length = 0;
+			
+			if (TopReviewImage.length < 4) {
+				length = TopReviewImage.length;
+			} else {
+				length = 4;
+			}
+			// 무조건 4개만 뿌린다!
+			
+			for(var i = 0; i < length; i++){
+		
+				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<div class="portfolio-thumb">'
+						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '"><img src="' + TopReviewImage[i].img_url + '" width="300" height="240"><br/>'
+						+ '<div>제목: ' + TopReviewImage[i].tour + '</div>'
+						+ '<div>' + TopReviewImage[i].city + '</div>'	
+						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+ '</div>'
+						+ '</div>';
+			}
+
+			$('#TopReview').html(list);
+		};
+		
+		// 가져온 최신후기 데이터를 뿌려주자
+		function getAllThumnail_RECENTREVIEW() {
+			var list = '';
+			
+			var length = 0;
+			
+			if (RecentReviewImage.length < 4) {
+				length = RecentReviewImage.length;
+			} else {
+				length = 4;
+			}
+			// 무조건 4개만 뿌린다!
+			
+			for(var i = 0; i < length; i++){
+		
+				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<div class="portfolio-thumb">'
+						+ '<a href="review/review_detail?review_no=' + RecentReviewImage[i].content_no + '"><img src="' + RecentReviewImage[i].img_url + '" width="300" height="240"><br/>'
+						+ '<div>제목: ' + RecentReviewImage[i].tour + '</div>'
+						+ '<div>' + RecentReviewImage[i].city + '</div>'	
+						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+ '</div>'
+						+ '</div>';
+			}
+
+			$('#RecentReview').html(list);
+		};
+
+		// 가져온 여행 데이터를 뿌려주자
+		function getAllThumnail_TOUR() {
+			var list = '';
+			
+			var length = 0;
+			
+			if (TourImage.length < 8) {
+				length = TourImage.length;
+			} else {
+				length = 8;
+			}
+			// 무조건 4개만 뿌린다!
+			
+			for(var i = 0; i < length; i++){
+				/* console.log(TourImage[i].content_no); */
+				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+'<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
-							+ '<figure>'
-							+ '<a href="review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
-							+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
-							+ '<div>' + ReviewImage[i].city + '</div>'	
-							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-							+ '</figure>'
+								+'<img src="' + TourImage[i].img_url + '" style="width=300; height=240; z-index=99;">'
+								+'<div><img src="../resources/theme/images/main_female.png" style="width=20; height=20; z-index=100;"></div>'
 							+ '</div>'
-							+ '</div>';
-				}
+								+ '<div>제목: ' + TourImage[i].tour + '</div>'
+								+ '<div>' + TourImage[i].city + '</div>'	
+								+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
+							
+						+'</a>'
 
-				$('#TopReview').html(list);
-			};
-
-			// 가져온 여행 데이터를 뿌려주자
-			function getAllThumnail_TOUR() {
-				var list = '';
-				for(var i = 0; i < 4; i++){
-					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-							+ '<div class="portfolio-thumb">'
-							+ '<figure>'
-							+ '<a href="tour/detail?trip_no=' + TourImage[i].content_no + '"><img src="' + TourImage[i].img_url + '" width="300" height="240"><br/>'
-							+ '<div>제목: ' + TourImage[i].tour + '</div>'
-							+ '<div>' + TourImage[i].city + '</div>'	
-							+ '<div>' + TourImage[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + TourImage[i].condition_age + '</div>'
-							+ '</figure>'
-							+ '</div>'
-							+ '</div>';
-				}
-
-				$('#tourDetailSearch').html(list);
-			};
+						+ '</div>';
+			}
+ 
+			$('#TourDetail').html(list);
+		};
+		
+	});
 
 	</script>
 
