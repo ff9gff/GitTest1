@@ -2,6 +2,7 @@ package edu.spring.project03.service;
 
 import java.util.List;
 
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
@@ -40,8 +41,6 @@ public interface TourSearchService {
 	public abstract List<RegionVO> read_default_region();
 	
 	// 여행 상세검색
-	public abstract List<ImgVO> read_detail_search_image(String region_name, String start_date, int condition_sex, int condition_age);
-	public abstract List<TourRegisterVO> read_detail_search_title(String region_name, String start_date, int condition_sex, int condition_age);
-	public abstract List<RegionVO> read_detail_search_region(String region_name, String start_date, int condition_sex, int condition_age);
-	
+	public abstract List<DetailSearchResultDTO> read_detail_search_image(String region_name, String start_date, int condition_sex, int condition_age);
+
 }

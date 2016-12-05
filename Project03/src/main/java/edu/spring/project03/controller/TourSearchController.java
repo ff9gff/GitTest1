@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
@@ -274,55 +275,36 @@ public class TourSearchController {
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// 상세 검색 Ajax 처리
-	@RequestMapping(value = "/index/detailsearchImage/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxDetailSearchImageTest(@PathVariable("region_name2") String region_name,
-			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
+	@RequestMapping(value = "/index/detailsearchImage/{region_name}/{start_date}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
+	public ResponseEntity<List<DetailSearchResultDTO>> ajaxDetailSearchImageTest(@PathVariable("region_name") String region_name,
+			@PathVariable("start_date") String start_date, @PathVariable("condition_sex") int condition_sex,
 			@PathVariable("condition_age") int condition_age) {
 		logger.info("여행 지역: " + region_name);
 		logger.info("시작 날짜: " + start_date);
 		logger.info("성별 구분: " + condition_sex);
-		logger.info("나이 구분: " + condition_age);
+		logger.info("나이 구분: " + condition_age);		
 		
-		List<ImgVO> list = tourSelectService.read_detail_search_image(region_name, start_date, condition_sex, condition_age);
+		List<DetailSearchResultDTO> list = tourSelectService.read_detail_search_image(region_name, start_date, condition_sex, condition_age);
 
-		ResponseEntity<List<ImgVO>> entity = null;
+		ResponseEntity<List<DetailSearchResultDTO>> entity = null;
 
+		if (list != null) {	
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<DetailSearchResultDTO>>(list, HttpStatus.OK);
+			logger.info("상세검색(지역) 이미지 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<DetailSearchResultDTO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("상세검색(지역) 이미지 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
 		return entity;
 	}
 
-	// 상세 검색 Ajax 처리
-	@RequestMapping(value = "/index/detailsearchTitle/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
-	public ResponseEntity<List<TourRegisterVO>> ajaxDetailSearchTitleTest(@PathVariable("region_name2") String region_name,
-			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
-			@PathVariable("condition_age") int condition_age) {
-		logger.info("여행 지역: " + region_name);
-		logger.info("시작 날짜: " + start_date);
-		logger.info("성별 구분: " + condition_sex);
-		logger.info("나이 구분: " + condition_age);
-		
-		List<TourRegisterVO> list = tourSelectService.read_detail_search_title(region_name, start_date, condition_sex, condition_age);
-
-		ResponseEntity<List<TourRegisterVO>> entity = null;
-
-		return entity;
-	}
-
-	// 상세 검색 Ajax 처리
-	@RequestMapping(value = "/index/detailsearchRegion/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
-	public ResponseEntity<List<RegionVO>> ajaxDetailSearchRegionTest(@PathVariable("region_name2") String region_name,
-			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
-			@PathVariable("condition_age") int condition_age) {
-		logger.info("여행 지역: " + region_name);
-		logger.info("시작 날짜: " + start_date);
-		logger.info("성별 구분: " + condition_sex);
-		logger.info("나이 구분: " + condition_age);
-		
-		List<RegionVO> list = tourSelectService.read_detail_search_region(region_name, start_date, condition_sex, condition_age);
-
-		ResponseEntity<List<RegionVO>> entity = null;
-
-		return entity;
-	}
+	
 
 	// 웹사이트에서 동일한 부분 코드 수정
 

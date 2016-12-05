@@ -149,17 +149,21 @@ http://www.templatemo.com/tm-406-flex
 						 
 						<input type="text" id="start_date2" name="start_date2" placeholder="시작일"><br /><br />
 								
-						<label>성별 조건:</label>
-						남자 <input type="radio" name="condition_sex" id="condition_sex" value="1" /> 
-						여자 <input type="radio" name="condition_sex" id="condition_sex" value="0" /> 
-						조건없음 <input type="radio" name="condition_sex" value="2" /><br /><br />
+						<div>
+							성별 조건: <br />
+							남자 <input type="radio" name="condition_sex" id="condition_sex" value="1" /> 
+							여자 <input type="radio" name="condition_sex" id="condition_sex" value="0" /> 
+							조건없음 <input type="radio" name="condition_sex" id="condition_sex" value="2" />
+						</div><br />
 					
-						<label>연령 조건:</label>
-						20대 <input type="radio" name="condition_age" id="condition_age" value="1" /> 
-						30대 <input type="radio" name="condition_age" id="condition_age" value="2" /> 
-						40대 <input type="radio" name="condition_age" id="condition_age" value="3" /> 
-						조건없음 <input type="radio" name="condition_age" id="condition_age" value="4" /><br /><br />
-					
+						<div>
+							연령 조건: <br />
+							20대 <input type="radio" name="condition_age" id="condition_age" value="1" /> 
+							30대 <input type="radio" name="condition_age" id="condition_age" value="2" /> 
+							40대 <input type="radio" name="condition_age" id="condition_age" value="3" /> 
+							조건없음 <input type="radio" name="condition_age" id="condition_age"  value="4" />
+						 </div><br />		 
+						
 						<button type="button" id="do_detail_search">상세 검색</button>
 
 					</div>
@@ -397,51 +401,27 @@ http://www.templatemo.com/tm-406-flex
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url1 = '/project03/index/detailsearchImage/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val();
+				var region_name = $('#region_name2').val();
+				var start_date = $('#start_date2').val();
+				var condition_sex = $('input:radio[name=condition_sex]:checked').val();
+				var condition_age = $('input:radio[name=condition_age]:checked').val();
+				
+				if (region_name == '') {
+					region_name = '없음';
+				}
+				
+				if (start_date == '') {
+					start_date = '없음';
+				}
+				
+				var url1 = '/project03/index/detailsearchImage/' + region_name + "/" + start_date + "/" + condition_sex + "/" + condition_age;
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex});	
 					});
 					
-					var url2 = '/project03/index/detailsearchTitle/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val();
-					$.getJSON(url2, function(data2) {
-						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
-						});
-						console.log(titleList);
+					getAllThumnail_detail_search();
 						
-						var url3 = '/project03/index/detailsearchRegion/' + $('#region_name2').val() + "/" + $('#start_date2').val() + "/" + $('#condition_sex').val() + "/" + $('#condition_age').val();
-						$.getJSON(url3, function(data3) {
-							$(data3).each(function() {
-								var name = this.region_name.split(",");
-								var tagname = '';
-								for(var i=0; i<name.length; i++){
-									tagname +="#"+name[i]+" ";
-								}
-								
-								regionList.push({region_name: tagname, trip_no: this.trip_no});	
-							});
-						
-							for (var i = 0; i < imageList.length; i++) {
-								for (var j = 0; j < titleList.length; j++) {
-									if (imageList[i].content_no == titleList[j].trip_no) {
-										imageList[i].tour = titleList[j].title;
-										imageList[i].condition_sex = titleList[j].condition_sex;
-										imageList[i].condition_age = titleList[j].condition_age;
-									} 
-									for (var k = 0; k < regionList.length; k++) {
-										if (imageList[i].content_no == regionList[k].trip_no) {
-											imageList[i].city = regionList[k].region_name;
-										} 
-									}	
-								}	
-							}
-							
-							getAllThumnail();
-						});
-					
-					});
-
 				});// end getJSON()
 
 			};//end of getThumnails()
@@ -463,6 +443,29 @@ http://www.templatemo.com/tm-406-flex
 							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240"><br/>'
 							+ '<div>제목: ' + imageList[i].tour + '</div>'
 							+ '<div>' + imageList[i].city + '</div>'	
+							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+							+ '</figure>'
+							+ '</div>'
+							+ '</div>';
+				}
+
+				$('#tourDetailSearch').html(list);
+	
+				//end of getThumnails()
+			};
+			
+			function getAllThumnail_detail_search(){
+				
+				var list = '';
+				
+				for(var i = 0; i<imageList.length; i++){
+
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+							+ '<div class="portfolio-thumb">'
+							+ '<figure>'
+							+ '<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240"><br/>'
+							+ '<div>제목: ' + imageList[i].title + '</div>'
+							+ '<div>' + imageList[i].region_name + '</div>'	
 							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 							+ '</figure>'
 							+ '</div>'
