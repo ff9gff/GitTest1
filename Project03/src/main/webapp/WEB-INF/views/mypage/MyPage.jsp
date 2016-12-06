@@ -61,13 +61,53 @@ ul {
 #tourchoose {
 	
 }
+
+#profilemenu{
+	width: 600px;
+	height: 200px;
+	position: absolute;
+	background-color: #FFFFFF;
+	border:solid 1px #ccc; 
+	box-shadow: 0px 1px 20px #333;
+	z-index:100; 
+	text-align: center;
+	vertical-align: middle;
+
+}
+
+#profilemenu table{
+	width: 580px;
+	height: 170px;
+	margin: 10px;
+	
+}
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+<link rel="stylesheet" href="<c:url value="../resources/theme/css/mystyle1.css"/>">
 
 </head>
 
 <body>
+
+
+<div id="profilemenu" hidden>
+<form id ="profileimage_form" name="profileimage_form" action="MyPage/imageupload" method="post" enctype="multipart/form-data">
+	<input hidden type="number" name="mno" id="profile_mno"/>
+	<table>
+		<tr>
+			<td rowspan="3" id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>	      
+			
+			<td style="text-align: right; width: 325.6px"><button id="profile_button1">X</button></td>
+		</tr>
+		
+		<tr><td  style="text-align: right; float: right;"><input type="file" id="imageFile" name="imageFile" style="width: 325.6px;"></td></tr>
+		 
+		<tr><td  style="text-align: right;vertical-align: middle;"><button id="profile_button2">수정</button></td></tr>
+		
+	</table>
+</form>
+</div>
+
 
 <div class="site-header">
 			<div class="main-header">
@@ -86,7 +126,7 @@ ul {
 									<li><a href="index">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="tour/tourBoard">찾기</a></li>
-									<li><a href="MyPage">마이페이지</a></li>
+									<li><a href="#">마이페이지</a></li>
 									<li><a href="admin">관리자</a></li>
 									<li><a href="member/login">로그인</a></li>
 								</ul>
@@ -122,6 +162,17 @@ ul {
 						style="display: inline-block; text-align: center; vertical-align: middle; padding-top: 14px;">
 
 					</div>
+					
+					
+					<div id="contextmenu">
+						<input hidden type="number" name="mno" id="context_mno"/>
+
+						<ul id="context_ul">
+							<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
+
+						</ul>
+					</div>
+					
 
 				</div>
 
@@ -143,7 +194,14 @@ ul {
 				</textarea>
 					
 			</div>
-				<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />
+			
+			<c:if test="${mno eq vo.mno }">
+				<div>
+				 <input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />	
+				</div>
+			</c:if>
+			
+				
 		</div>	
 
 			<div style="display: block; width: 100%; margin-top: 16px; text-align: left; margin-left: auto; margin-right: auto">
@@ -176,7 +234,7 @@ ul {
 		$(document).ready(function() {
 			
 			
-			/* getThumnails_By_Mno(); */
+			getThumnails_By_Mno();
 
 			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getThumnails_By_Mno() {
@@ -358,7 +416,7 @@ ul {
 			// 내가 신청한 게시물 보기 버튼
 			$('#tourchoose').click(function() {
 
-		
+				$('#toursearch').html('');
 				getThumnails_By_ChooseMno();
 				
 	
@@ -368,6 +426,83 @@ ul {
 				var mno = ${mno};				
 				location = 'updatePersonal/' + mno;
 			});
+			
+			
+			
+			
+			$('#context_profile').on('click','.btn_context',function(){				
+			
+				var amno = ${mno};
+				
+				var mno_img = '${inserterImg}';
+				
+				$('#profile_image').html('<img src="../'+mno_img+'" id="profile_profile_img"/>');
+				
+				
+			/* 	$.ajax({
+					type:'Get',
+					url: '/project03/mypage/profile/' + amno,
+					headers:{
+						'Content-Type':'application/json',
+						'X-HTTP-Method-Override':'GET'
+						},
+						success: function(result){
+								src = result;
+								
+
+								 $('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');
+
+							
+						}
+				}); */
+				
+
+				$('#profilemenu').show();
+
+				$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
+				$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
+				
+				
+			});
+			
+			
+			// 프로필 창 닫기
+			$('#profile_button1').click(function(e){ 
+			    e.preventDefault(); 
+			    $('#profilemenu').hide(); 
+			});
+			
+			
+			
+			$('#imageFile').on('change', function() {
+			      
+			      ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+			      
+			      //배열에 추출한 확장자가 존재하는지 체크
+			      if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+			         resetFormElement($(this)); //폼 초기화
+			         window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+			      } else {
+			         file = $('#imageFile').prop("files")[0];
+			         blobURL = window.URL.createObjectURL(file);
+			         $('#image_preview img').attr('src', blobURL);
+			         document.getElementById("profile-image").style.display = "inline";
+			         $('#image_preview img').attr('width', '250px');
+			         $('#image_preview img').attr('height', '160px');
+			         document.getElementById("btn_profile-image_remove").style.display = "inline";
+			         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+			         $('#image_preview').show(); //업로드한 이미지 미리보기
+			      }
+			   });
+			
+			 			 
+			 $('#profile_button2').click(function() {	     
+			         
+			         $("#profileimage_form").submit();
+			             
+			   });
+			
+			
 						
 		});		
 		

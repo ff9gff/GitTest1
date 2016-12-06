@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -19,13 +20,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
+import edu.spring.project03.domain.ImageFile;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
+import edu.spring.project03.service.ImageService;
 import edu.spring.project03.service.MemberService;
 import edu.spring.project03.service.MypageService;
+import edu.spring.project03.service.TourJoinService;
+import edu.spring.project03.service.TourRegisterService;
 import edu.spring.project03.service.TourSearchService;
 
 
@@ -35,11 +42,21 @@ public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
+	public static final String SAVE_IMAGE_DIR = "resources/photo_upload/";
+	
+	private int TourRegisterID = 3;
+	
 	@Autowired
 	private MypageService mypageService;
 	
 	@Autowired
 	private MemberService memberService;
+		
+	@Autowired
+	private ImageService imageService;
+	
+	@Autowired
+	private TourRegisterService tourRegisterService;
 		
 	@RequestMapping(value="/MyPage", method=RequestMethod.GET )
 	public String selectPesrsonal(HttpServletRequest req, Model model) {		
@@ -269,6 +286,36 @@ public class MypageController {
 	      out.print("NOK");
 	   } // end if
 	}
+	
+	
+	
+	// 해당 프로필의 이미지 업데이트 메소드
+	@RequestMapping(value = "MyPage/imageupload", method = RequestMethod.POST)
+	public String prifleimageupdate (HttpServletRequest req, @RequestParam MultipartFile imageFile) {
+		HttpSession session = req.getSession();
+		int mno = Integer.valueOf(session.getAttribute("mno").toString());
+		
+		logger.info("prifleimageupdate() 호출...");
+		logger.info("prifleimageupdate() 호출..." + mno);
+		logger.info("prifleimageupdate() 호출..." + imageFile);
+		
+		ImageFile fileInfo = imageService.save(imageFile);
+		
+		/*logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());*/
+		
+		
+		ImgVO imgvo = new ImgVO(TourRegisterID, mno, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+		int result2 = tourRegisterService.updateThumnail(imgvo);
+		
+		if (result2 == 1) {
+			logger.info("썸네일 수정 성공");
+		} else {
+			logger.info("썸네일 수정 실패");
+		}
+
+		return "MyPage";
+	}
+	
 	
 	
 }
