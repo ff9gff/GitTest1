@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewReplyVO;
 import edu.spring.project03.service.TourReviewReplyService;
@@ -41,6 +42,9 @@ public class TourReviewReplyRESTController {
 	// 해당 게시글의 모든 댓글 목록을 읽어오는 메소드
 	@RequestMapping(value = "/all/{no}", method = RequestMethod.GET)
 	public ResponseEntity<List<ReviewReplyVO>> readReplies(@PathVariable("no") Integer review_no) {
+		
+		System.out.println("##### review_no : " + review_no);
+		
 		List<ReviewReplyVO> list = reviewReplyService.read(review_no);
 		ResponseEntity<List<ReviewReplyVO>> entity = null;
 		
@@ -107,7 +111,22 @@ public class TourReviewReplyRESTController {
 		} // end if(result == 1)
 
 		return entity;
-	}// end deleteReply()	
+	}// end deleteReply()
+	
+	// 해당 프로필의 이미지 주소를 읽어오는 메소드
+	@RequestMapping(value = "/profile/{no}", method = RequestMethod.GET)
+	public ResponseEntity<String> readImg(@PathVariable("no") Integer mno) {
+		ImgVO src = reviewReplyService.readProfile(mno);
+		String address = src.getImg_url();
+		ResponseEntity<String> entity = null;
+		if (src != null) { // select 성공
+			entity = new ResponseEntity<>(address, HttpStatus.OK);
+		} else { // select 실패
+			entity = new ResponseEntity<>(address, HttpStatus.BAD_REQUEST);
+		} // end if
+
+		return entity;
+	} // end readImg()
 	
 
 }// end class TourReviewReplyRESTController

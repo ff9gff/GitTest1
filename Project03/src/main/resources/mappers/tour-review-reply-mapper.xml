@@ -11,12 +11,12 @@
 	<select id="select" resultType="edu.spring.project03.domain.ReviewReplyVO">
 		select * from wm_review_reply
 		where review_no = #{review_no}
-		order by rno
+		order by rno asc
 	</select>
 	
 	<select id = "selectperson" resultType="edu.spring.project03.domain.PersonalVO">
 		select * from wm_personal
-		where mno in (select mno from wm_review_reply where trip_no = #{trip_no})
+		where mno in (select mno from wm_review_reply where review_no = #{review_no})
 	</select>
 	
 	<update id="update">
@@ -34,5 +34,11 @@
 		delete from wm_review_reply
 		where parentrno = #{parentrno}
 	</delete>
+	
+	<select id="selectProfile" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image
+		where board_type=3 and content_no = #{mno}
+	</select>
+	
 
 </mapper>
