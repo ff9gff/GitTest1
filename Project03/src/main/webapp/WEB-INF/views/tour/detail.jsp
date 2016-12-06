@@ -477,15 +477,21 @@ font-size: 12px;
 ${tourVO.content}
 </div>
 
-<c:if test="${mno eq tourVO.mno}">
 	<div class="menu">
-		<form action="TourBoardUpdate" method="post" id="frm">
-			<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
-			<input type="button" id='updateButton' value='수정'/>
-			<input type="button" id='deleteButton' value='삭제'/>
-		</form>
+		<c:if test="${mno eq tourVO.mno}">
+			<form action="TourBoardUpdate" method="post" id="frm1" style="display: inline-block;">
+				<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
+				<input type="button" id='updateButton' value='수정' />
+			</form>
+		</c:if>
+		
+		<c:if test="${mno eq tourVO.mno or authority >= 2}" >
+			<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
+				<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
+				<input type="button" id='deleteButton' value='삭제' />
+			</form>
+		</c:if>
 	</div>
-</c:if>
 
 <div class="menu">Comment</div>
 

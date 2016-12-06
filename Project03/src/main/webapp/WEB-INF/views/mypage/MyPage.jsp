@@ -91,11 +91,11 @@ ul {
 
 
 <div id="profilemenu" hidden>
-<form id ="profileimage_form" name="profileimage_form" action="MyPage/imageupload" method="post" enctype="multipart/form-data">
+<form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
 	<input hidden type="number" name="mno" id="profile_mno"/>
 	<table>
 		<tr>
-			<td rowspan="3" id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>	      
+			<!-- <td rowspan="3" id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>	 -->      
 			
 			<td style="text-align: right; width: 325.6px"><button id="profile_button1">X</button></td>
 		</tr>
@@ -246,13 +246,13 @@ ul {
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url = '/project03/MyPage/list/' + ${mno};
+				var url = '/project03/mypage/MyPage/list/' + ${mno};
 				$.getJSON(url, function(datalist) {
 					$(datalist).each(function() {
 						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 							
 					
-						var urltitle = '/project03/MyPage/title/' + ${mno};
+						var urltitle = '/project03/mypage/MyPage/title/' + ${mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
 								titleList.push({trip_no: this.trip_no, title: this.title});
@@ -260,7 +260,7 @@ ul {
 							});
 							console.log(titleList);
 							
-							var urlregion = '/project03/MyPage/region/' + ${mno};
+							var urlregion = '/project03/mypage/MyPage/region/' + ${mno};
 							$.getJSON(urlregion, function(dataregion) {
 								$(dataregion).each(function() {
 									var name = this.region_name.split(",");
@@ -308,14 +308,14 @@ ul {
 				regionList = [];
 
 								
-				var url2 = '/project03/MyPage/joinlist/' + ${mno};
+				var url2 = '/project03/mypage/MyPage/joinlist/' + ${mno};
 				$.getJSON(url2, function(data2){
 					
 					$(data2).each(function() {
 						
 						JoinList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 						
-						var urltitle = '/project03/MyPage/jointitle/' + ${mno};
+						var urltitle = '/project03/mypage/MyPage/jointitle/' + ${mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
 								titleList.push({trip_no: this.trip_no, title: this.title});
@@ -323,7 +323,7 @@ ul {
 							});
 							console.log(titleList);
 							
-							var urlregion = '/project03/MyPage/joinregion/' + ${mno};
+							var urlregion = '/project03/mypage/MyPage/joinregion/' + ${mno};
 							$.getJSON(urlregion, function(dataregion) {
 								$(dataregion).each(function() {
 									var name = this.region_name.split(",");
@@ -369,7 +369,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="' + List[i].img_url + '" width="300" height="200">'
+						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
@@ -391,7 +391,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="' + JoinList[i].img_url + '" width="300" height="200">'
+						+ '<a href="tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../' + JoinList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + JoinList[i].tour + '</div>'
 						+ '<div>지역: ' + JoinList[i].city + '</div>'			
 						+ '</figure>'
@@ -508,7 +508,7 @@ ul {
 		
 		var mno_img = '${inserterImg}';
 		
-		$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/>');
+		$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/>');
 		
 	</script>
 	

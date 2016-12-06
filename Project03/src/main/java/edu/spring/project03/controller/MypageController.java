@@ -37,7 +37,7 @@ import edu.spring.project03.service.TourSearchService;
 
 
 @Controller
-@RequestMapping(value = "/")
+@RequestMapping(value = "/mypage")
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
@@ -290,8 +290,8 @@ public class MypageController {
 	
 	
 	// 해당 프로필의 이미지 업데이트 메소드
-	@RequestMapping(value = "MyPage/imageupload", method = RequestMethod.POST)
-	public String prifleimageupdate (HttpServletRequest req, @RequestParam MultipartFile imageFile) {
+	@RequestMapping(value = "MyPage", method = RequestMethod.POST)
+	public void prifleimageupdate (HttpServletRequest req, @RequestParam MultipartFile imageFile) {
 		HttpSession session = req.getSession();
 		int mno = Integer.valueOf(session.getAttribute("mno").toString());
 		
@@ -313,7 +313,7 @@ public class MypageController {
 			logger.info("썸네일 수정 실패");
 		}
 
-		return "MyPage";
+		
 	}
 	
 	
