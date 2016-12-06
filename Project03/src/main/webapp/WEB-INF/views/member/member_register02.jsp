@@ -283,11 +283,22 @@ $(document).ready(function() {
       }      
    });
    
+   /*
+   <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+   */
+   
+   
+   
    $('#submit_OK').click(function() {
       if(final_check == 1) {
          alert('인증번호 확인 ok!');
          var address = $('#address1').val() + " " + $('#address2').val();
          $('#address').val(address);
+         
+         if($('#imageFile').val() == null || $('#imageFile').val() == ""){
+        	 alert('프로필 이미지가 등록되지 않았습니다.');
+        	 $('#image_preview img').attr('src', "${pageContext.request.contextPath}/image/default-profile.jpg");
+         }
          
          $("#register_form").submit();         
       } else {

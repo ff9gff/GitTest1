@@ -225,16 +225,15 @@ ul {
 										}	
 									}	
 								}
-								
+								getThumnail();
 								
 							});
 								
 							
 						});
 				
-				});
+					});
 					
-					getThumnail();
 					
 				});// end getJSON()
 			
@@ -289,7 +288,7 @@ ul {
 										}	
 									}	
 								}
-								
+								getChooseThumnail();
 							});
 								
 							
@@ -297,7 +296,7 @@ ul {
 				
 				});
 					
-					getChooseThumnail();
+				
 					
 				});// end getJSON()
 			
