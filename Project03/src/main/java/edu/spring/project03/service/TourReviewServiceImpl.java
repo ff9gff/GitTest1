@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
@@ -144,6 +145,12 @@ public class TourReviewServiceImpl implements TourReviewService {
 	public List<ReviewRegionVO> read_review_top_region() {
 		// TODO Auto-generated method stub
 		return tourReviewDAO.select_review_top_region();
+	}
+
+	@Override
+	public List<NickReviewSearchResultDTO> read_review_by_nickname(String nickname) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_by_nickname(nickname);
 	}
 	
 	

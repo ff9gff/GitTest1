@@ -3,6 +3,7 @@ package edu.spring.project03.service;
 import java.util.List;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
@@ -45,7 +46,7 @@ public interface TourReviewService {
 	public abstract List<ReviewRegionVO> read_review_default_region();
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// 메인/후기게시판 디폴트 후기 4개 조회수순 띄우기
 	// 1. 사진 이미지 가져오기
 	public abstract List<ImgVO> read_review_top_image();
@@ -55,7 +56,7 @@ public interface TourReviewService {
 
 	// 3. 지역 가져오기
 	public abstract List<ReviewRegionVO> read_review_top_region();
-	
+
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	// 후기게시판 - 지역검색
@@ -67,5 +68,9 @@ public interface TourReviewService {
 
 	// 3. 지역 가져오기
 	public abstract List<ReviewRegionVO> read_review_region_region(String region_name);
+
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String nickname);
 
 } // end interface TourReviewService
