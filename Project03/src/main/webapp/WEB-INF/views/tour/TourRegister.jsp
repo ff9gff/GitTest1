@@ -151,7 +151,7 @@ http://www.templatemo.com/tm-406-flex
 					
 						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 						
-						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
+						<input type="text" name="title" style="width: 70%; border: 2px solid #f45c3a; border-radius: 10px; " placeholder="제목"/><br /> <br /> 
 					
 							
 						<div id="region_plus">
@@ -164,11 +164,11 @@ http://www.templatemo.com/tm-406-flex
 								</tr>
 							</table>						
 						</div> <br /> 
-	
-						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
+						<div style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px;padding: 2px; ">
+						<input type="text" id="start_date" name="start_date" placeholder="시작일" style="border:none;"> 
 						~ 
-						<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
-						
+						<input type="text" id="end_date" name="end_date" placeholder="종료일" style="border:none;"> <br /> <br />
+						</div>
 						<div>
 							성별 조건: <br />
 							남자 <input type="radio" name="condition_sex" value="1" /> 
