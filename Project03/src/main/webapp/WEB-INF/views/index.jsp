@@ -72,14 +72,7 @@
 	font-family:monospace
 }
 
-#img_tour{
-	-webkit-filter: opacity(1.5) sepia(.4);
-   filter: opacity(1.5) sepia(.4); 
-}
-.img_view{
-	-webkit-filter: opacity(1.5) sepia(.4);
-   filter: opacity(1.5) sepia(.4);
-}
+
 
 </style>
 </head>

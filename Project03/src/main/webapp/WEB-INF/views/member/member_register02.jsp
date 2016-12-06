@@ -93,6 +93,7 @@
 	      <label for="imageFile">프로필 이미지</label><br/>       
 	      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 	            
+	            
 	      <div id="image_preview">
 	      <img src="#" id="profile-image" style="display: none;" /><br/>
 	      <a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
@@ -344,11 +345,6 @@ $(document).ready(function() {
          alert('인증번호 확인 ok!');
          var address = $('#address1').val() + " " + $('#address2').val();
          $('#address').val(address);
-         
-         if($('#imageFile').val() == null || $('#imageFile').val() == ""){
-        	 alert('프로필 이미지가 등록되지 않았습니다.');
-        	 $('#imageFile').val("value=<img src='../resources/theme/images/default-profile.jpg' width='100' height='100'>");
-         }
          
          $("#register_form").submit();         
       } else {

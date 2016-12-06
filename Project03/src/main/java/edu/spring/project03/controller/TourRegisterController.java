@@ -131,6 +131,7 @@ public class TourRegisterController {
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+			logger.info("이미지 길이: " + fileInfo.getFileName().length());
 		} else {
 			logger.info("대실패 ");
 
@@ -153,28 +154,42 @@ public class TourRegisterController {
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);
 				modelMap.put("imageFile", fileInfo);
-
-				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = tourRegisterService.createThumnail(imagevo);
-
-				if (result2 == 1) {
-					logger.info("썸네일 등록 성공");					
+				
+				if (fileInfo.getFileName().length() < 40) {
 					
-					model.addAttribute("vo3", imagevo);
-					logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
-
-					String region_name = regionvo.getRegion_name();
-					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
-					int result3 = tourRegisterService.createRegion(regionvo2);
-
-					if (result3 == 1) {
-						logger.info("장소 등록 성공");
+					ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + "default-profile.jpg");
+					int result2 = tourRegisterService.createThumnail(imagevo);
+					if (result2 == 1) {
+						logger.info("기본 썸네일 등록 성공");		
+					} else {
+						logger.info("기본 썸네일 등록 실패");		
 					}
-
+					
 				} else {
-					logger.info("썸네일 등록 실패");
-				}
 
+					ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+					int result2 = tourRegisterService.createThumnail(imagevo);
+	
+					if (result2 == 1) {
+						logger.info("직접 썸네일 등록 성공");			
+						
+						
+						
+						model.addAttribute("vo3", imagevo);
+						logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
+	
+						String region_name = regionvo.getRegion_name();
+						RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
+						int result3 = tourRegisterService.createRegion(regionvo2);
+	
+						if (result3 == 1) {
+							logger.info("장소 등록 성공");
+						}
+	
+					} else {
+						logger.info("직접 썸네일 등록 실패");
+					}
+				}
 			} else { // DB insert 실패
 				logger.info("여행 등록 실패");
 			}
@@ -216,6 +231,8 @@ public class TourRegisterController {
 		ImageFile fileInfo = imageService.save(imageFile);
 
 		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+		
+		
 
 		if (tourregistervo != null && regionvo != null) {
 
