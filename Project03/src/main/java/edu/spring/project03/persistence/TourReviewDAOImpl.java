@@ -33,18 +33,39 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 		return sqlSession.insert(NAMESPACE + ".insert-review", reviewvo);
 	} // end insertReview(reviewvo)
+	
+	@Override
+	public int insertThumnail(ImgVO imgvo) {
+
+		return sqlSession.insert(NAMESPACE + ".insert-thumnail", imgvo);
+	} // end insertThumnail(vo)
 
 	@Override
 	public int insertRegion(ReviewRegionVO reviewRegionvo) {
 
 		return sqlSession.insert(NAMESPACE + ".insert-region", reviewRegionvo);
 	} // end insertRegion(reviewRegionvo)
+	
+	
+	/**
+	 * update
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/**
+	 * delete
+	 */
+	
+	
 
-	@Override
-	public int insertThumnail(ImgVO imgvo) {
-
-		return sqlSession.insert(NAMESPACE + ".insert-thumnail", imgvo);
-	} // end insertThumnail(vo)
 
 	/**
 	 * select
@@ -55,6 +76,11 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		return sqlSession.selectOne(NAMESPACE + ".select-review_no", reviewvo);
 	} // end selectReview_no(reviewvo)
 
+	
+	
+	/**
+	 * select
+	 */	
 	@Override
 	public ReviewVO selectReviewRegister_data(int review_no) {
 
@@ -173,6 +199,45 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		// TODO Auto-generated method stub
 		region_name = "%" + region_name + "%";
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	@Override
+	public int updateReview(ReviewVO reviewvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateThumnail(ImgVO imgvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int updateRegion(ReviewRegionVO reviewRegionvo) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteReview(int review_no) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteThumnail(int review_no) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteRegion(int review_no) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 } // end class TourReviewDAOImpl
