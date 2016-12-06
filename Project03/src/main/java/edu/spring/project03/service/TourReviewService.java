@@ -79,6 +79,6 @@ public interface TourReviewService {
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String nickname);
+	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname);
 
 } // end interface TourReviewService

@@ -250,16 +250,32 @@ public class TourReviewSearchController {
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-	// 후기 게시판 - 지역검색 - 지역 가져오기
-	@RequestMapping(value = "/review/nickname/{nickname}", method = RequestMethod.GET)
-	public ResponseEntity<List<NickReviewSearchResultDTO>> ajaxReviewNicknameTest(@PathVariable("nickname") String nickname) {
+	// 후기 게시판 - 지역/닉네임 선택 검색
+	@RequestMapping(value = "/review/nickname/{region_name}/{nickname}", method = RequestMethod.GET)
+	public ResponseEntity<List<NickReviewSearchResultDTO>> ajaxReviewNicknameTest(@PathVariable("region_name") String region_name, @PathVariable("nickname") String nickname) {
 
+		logger.info("여행 지역: " + region_name);
+		logger.info("닉네임: " + nickname);
+		
 		ResponseEntity<List<NickReviewSearchResultDTO>> entity = null;
 		
-		List<NickReviewSearchResultDTO> list = tourReviewService.read_review_by_nickname(nickname);
-
+		List<NickReviewSearchResultDTO> list = tourReviewService.read_review_by_nickname(region_name, nickname);
 		
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<NickReviewSearchResultDTO>>(list, HttpStatus.OK);
+			logger.info("후기 선택 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<NickReviewSearchResultDTO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("후기 선택 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
 		return entity;
+
 	}
 
 	// 웹사이트에서 동일한 부분 코드 수정

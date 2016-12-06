@@ -70,7 +70,7 @@ public interface TourReviewDAO {
 	public abstract List<ReviewRegionVO> select_review_region_region(String region_name);
 	
 	// 후기 게시판 - 닉네임 검색
-	public abstract List<NickReviewSearchResultDTO> select_review_by_nickname(String nickname);
+	public abstract List<NickReviewSearchResultDTO> select_review_by_nickname(String region_name, String nickname);
 	
 	
 	/**

@@ -210,9 +210,9 @@ public class TourReviewServiceImpl implements TourReviewService {
 	}
 
 	@Override
-	public List<NickReviewSearchResultDTO> read_review_by_nickname(String nickname) {
+	public List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname) {
 		// TODO Auto-generated method stub
-		return tourReviewDAO.select_review_by_nickname(nickname);
+		return tourReviewDAO.select_review_by_nickname(region_name, nickname);
 	}
 
 
