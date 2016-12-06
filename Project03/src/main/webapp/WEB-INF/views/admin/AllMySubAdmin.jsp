@@ -29,8 +29,9 @@
 
 <body>
 	<header id="top">
-		<h1>관리자님 안녕하세요</h1>
-		<p>Test 화면입니다.</p>
+		<div>&nbsp;</div>
+		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
 
 

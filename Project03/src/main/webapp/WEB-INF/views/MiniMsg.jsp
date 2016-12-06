@@ -12,7 +12,7 @@
 
 보낸이 :  
  
- ${getname }
+${getname }
 ${ value }
 <br>
 <br>

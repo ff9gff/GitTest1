@@ -3,9 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<%-- 이것은 쪽지 보내기 디자인 입니다.  --%>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 #feedback-page{
 	text-align:center;
@@ -81,21 +85,21 @@
 	background-repeat: no-repeat;
 }
 
-#nickname{
+#email{
 	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#nickname:focus{
+#email:focus{
 	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
 	background-size: 30px 30px;
   background-position: 11px 8px;
 	background-repeat: no-repeat;
 }
 
-#comment{
+#msg_content{
 	background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
 	background-size: 30px 30px;
 	background-position: 11px 8px;
@@ -114,7 +118,7 @@ input:focus, textarea:focus {
 	background-color:white;
 }
 
-#button-blue{
+#sendBtn{
 	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 	float:left;
 	width: 100%;
@@ -132,7 +136,7 @@ input:focus, textarea:focus {
   font-weight:700;
 }
 
-#button-blue:hover{
+#sendBtn:hover{
 	background-color: rgba(0,0,0,0);
 	color: #0493bd;
 }
@@ -170,122 +174,87 @@ input:focus, textarea:focus {
 }s
 
 
-
-
-
-
-
-
-
-
 </style>
 </head>
 <body>
 
+<div id="form-main">
+  <div id="form-div">
+  
+  
+     <form class="form" name="form1" id="form1" action="sendAllMyUser" method="post">
+      
+      <p class="name">
+        <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="관리자" id="adminId" readonly="readonly" />
+      </p>
+      
+      <p class="allMyUser">
+        <input name="text" type="text" class="validate[required,custom[email]] feedback-input" id="email" placeholder="모든 사용자" readonly="readonly" />
+       
+      </p>
+      
+      <p class="text">
+        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="msg_content"   placeholder="Comment"></textarea>
+     	<input type="hidden" id="value" name="value">
+      </p>
+      
+      
+      <div class="submit">
+        <input type="button" value="SEND" id="sendBtn"/> <%-- submit 에서 버튼으로 바꿈  --%>
+        <div class="ease"></div>
+      </div>
+    </form>
+  </div>
+</div>
 
-	<div id="form-main">
-	  <div id="form-div">
-    		<form class="form" id="form1" action="sendMsgU" method="post" >
-      
-    	  <p class="name">
-       		 <input name="sd_mno" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" id="name" />
-      		</p>
-      
-     		 <p class="userClass">
-        	<input name="nickname" type="text" class="validate[required,custom[email]] feedback-input" id="nickname" placeholder="받는 사람" />
-       	
-      		</p>
-      
-      		<div id= "result_nick">
-     		 </div>
-      		<p class="text">
-        	<textarea name="msg_content" class="validate[required,length[6,300]] feedback-input" id="comment" placeholder="Comment"></textarea>
-      			</p>
-      
-      
-     		 <div class="submit">
-      	  <input type="submit" value="SEND" id="button-blue"/>
-      	  <div class="ease"></div>
-     	 </div>
-   		 </form>
- 	 </div>
-	 </div>
-  
-  
-  <br>
-  <br>
-  <form action="myMsg" method="get">
-  <input type="submit" id="nextPage" value="받은 쪽지함으로 갑시다 이제">
-  </form>
-  
-  <br>
-  <br>
-    <form action="MySendMsg" method="get">
-  <input type="submit" id="mySendMsg" value="보낸쪽지함으로 갑시다 이제">
-  </form>
-  
-  
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
- <script type="text/javascript">
-  $(document).ready(function(){
- 		 		
- 		$('#nextPage').click(function(){
- 		 			
- 		}); // end next Page 
- 		
- 		 		
- 		// 닉네임 중복 체크
- 		$('#nickname').change(function() {
- 			alert("닉네임 중복 체크");
- 			
- 			$.ajax({
- 				type: 'post',
- 				url: './member/checknick',
- 				headers: {
- 					'Content-Type': 'application/json',
- 					'X-HTTP-Method-Override': 'POST'
- 				},
- 				data: JSON.stringify({
- 					nickname: $('#nickname').val()
- 				}),
- 				success: function(response) {
- 					if (response == 'NOK') {
- 							<%-- 유저 정보가 있는 경우 --%>
- 					} else {					
- 						alert("존재하지 않는 사용자 입니다. 다시 입력하세요.");
- 						$('#nickname').val("");
- 					}
- 				}
- 			
- 			});
- 			
- 		}); 
- 			
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
+<script type="text/javascript">
+$(document).ready(function(){
+	
+		var frm = $('#form1');
+		
+		$('#sendBtn').click(function(){//sendBtn
+		var sendText = $('#msg_content').val(); 
+		alert('공지사항 전송 성공'+ sendText);
+		//<input type="hidden" id="value" name="value">
+		$("#value").val(sendText);
+		frm.submit();
+		
+		
+		
+		
+		/*	
+				alert(sendText);
+		frm.attr('action','sendAllMyUser');
+		frm.attr('method','post');
+		frm.submit();
+		
+		
+		
+		
+		$('#btnUpdate').click(function() {
+		frm.attr('action', 'update'); // attr('속성이름', '속성값')
+		frm.attr('method', 'post');
+		frm.submit();
+		
+		
+	
+	});
+		*/
+	});
+	
+	
+	
+});
 
- 		
- 		
- 		
- 		
- 		
- 		
- 		
- 	}); // end docu
- 	
- 	
- 
- 
- 
-  
-  
- 
-  
-  
-  
-  </script>
-  
-  
-  
-  
-  
+//comment
+
+
+
+
+</script>
+
+
+
 </body>
 </html>

@@ -27,8 +27,9 @@
 
 <body>
 	<header id="top">
-		<h1>관리자님 안녕하세요</h1>
-		<p></p>
+		<div>&nbsp;</div>
+		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
 	
 
@@ -99,11 +100,6 @@
 
 
 	</table>
-		<aside id="sidebar">
-			<img alt="고양이" src="resources/theme/images/css_cat.jpg" style="width: 170px" /> 
-			<img alt="강아지" src="resources/theme/images/css_dog.jpg" style="width: 170px" />
-			<img alt="백조" src="resources/theme/images/css_swan.jpg" style="width: 170px" />
-		</aside>
 
 	
 		</section>
