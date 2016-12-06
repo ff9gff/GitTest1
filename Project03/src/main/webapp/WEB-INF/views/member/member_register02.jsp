@@ -14,7 +14,6 @@
 		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
 		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 
-		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -336,29 +335,24 @@ $(document).ready(function() {
    }
 
    
-   /*
-   <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
-   */  
-   
    $('#submit_OK').click(function() {
       if(final_check == 1) {
          alert('인증번호 확인 ok!');
          var address = $('#address1').val() + " " + $('#address2').val();
          $('#address').val(address);
          
-         $("#register_form").submit();         
+         $("#register_form").submit();
       } else {
          alert('이메일 인증 및 이메일 인증번호 확인을 해 주세요!');
       }       
    });   
+
    $("#submit_Cancel").click(function() {
       location = '../index';
    });
-   
-   
+
 });
 </script>
-
 
 </body>
 </html>
