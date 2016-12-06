@@ -165,7 +165,13 @@ select msg_content from WM_Msg where sd_mno=1 and MSG_CHECK =3 order by  MSG_DAT
 
 </select>
 
+<!-- 관리자가 받은 자료 입니다. Msg 내가 나한테 -->
 
+<select id="selectToMSGFromMSGSelf" resultType="edu.spring.project03.domain.AdminMsgDTO">
+
+select msg_content , MSG_DATE , MSG_NO from WM_Msg where sd_mno=1 and rc_mno=1 order by  MSG_DATE  DESC
+
+</select>
 
 
 

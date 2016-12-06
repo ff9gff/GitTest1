@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 
@@ -131,6 +132,12 @@ public class AdminDAOImpl implements AdminDAO {
 	public List<String> adminMSGAll() {
 		
 		return sqlSession.selectList(NAMESPACE+".selectContextAdminMSG");
+	}
+
+	@Override
+	public List<AdminMsgDTO> adminMSGALL2() {
+		// TODO 자동 생성된 메소드 스텁
+		return sqlSession.selectList(NAMESPACE+".selectToMSGFromMSGSelf");
 	}
 	
 	

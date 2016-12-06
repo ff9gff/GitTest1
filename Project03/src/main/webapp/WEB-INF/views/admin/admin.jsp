@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,12 +14,12 @@
 
 <style type="text/css">
 
-#menuBar{
-
- margin-top:30px;
-
+#top{
+		background-image: url("../resources/theme/images/slide1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding: 15px;
 }
-
 
 
 #form-main{
@@ -56,7 +57,9 @@
 	<header id="top">
 		<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
+		
 		</header>
 
 		<div Class="wrapper">
@@ -65,10 +68,11 @@
 			<ul id="menuList">
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
-
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
+				
+						
+				
+				<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">공지사항</a>
 				</li>
-
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
@@ -239,7 +243,7 @@
 		            seconds = "0" + seconds;
 		        }
 		document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
-		    }
+		    };
 		
 		
 		

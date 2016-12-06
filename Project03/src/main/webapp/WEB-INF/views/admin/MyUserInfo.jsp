@@ -8,7 +8,12 @@
 <title>Insert title here</title>
 </head>
 <style type="text/css">
-
+#top{
+		background-image: url("../resources/theme/images/slide1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding: 15px;
+}
 #dropDownType {
 	width: 50px
 }
@@ -27,8 +32,9 @@
 
 <body>
 	<header id="top">
-		<div>&nbsp;</div>
+				<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
 	
@@ -43,7 +49,10 @@
 
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
-
+	
+	
+				<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+				</li>
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
 				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
@@ -82,7 +91,7 @@
 		<colgroup>
 			<col width="100px">
 			<col width="100px">
-			<col width="200px">
+			<col width="110px">
 		</colgroup>
 
 

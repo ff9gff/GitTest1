@@ -11,7 +11,12 @@
 
 
 <style type="text/css">
-
+#top{
+		background-image: url("../resources/theme/images/slide1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding: 15px;
+}
 
 
 #dropDownType {
@@ -29,8 +34,9 @@
 
 <body>
 	<header id="top">
-		<div>&nbsp;</div>
+			<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
 
@@ -45,6 +51,8 @@
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
 
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+				</li>
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
 				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
@@ -120,11 +128,7 @@
 					</form>
 		</section>
 
-		<aside id="sidebar">
-			<img alt="고양이" src="resources/theme/images/css_cat.jpg" style="width: 170px" /> 
-			<img alt="강아지" src="resources/theme/images/css_dog.jpg" style="width: 170px" />
-			<img alt="백조" src="resources/theme/images/css_swan.jpg" style="width: 170px" />
-		</aside>
+	
 
 	</div>
 
@@ -187,6 +191,33 @@ function update(x){
  
  */
 
+setInterval("dpTime()",1000);
+function dpTime(){
+   var now = new Date();
+    hours = now.getHours();
+    minutes = now.getMinutes();
+    seconds = now.getSeconds();
+
+    if (hours > 12){
+        hours -= 12;
+    ampm = "오후 ";
+    }else{
+        ampm = "오전 ";
+    }
+    if (hours < 10){
+        hours = "0" + hours;
+    }
+    if (minutes < 10){
+        minutes = "0" + minutes;
+    }
+    if (seconds < 10){
+        seconds = "0" + seconds;
+    }
+document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
+};
+
+
+ 
 </script>
 
 
