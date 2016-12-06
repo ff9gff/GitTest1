@@ -72,24 +72,15 @@ public class PageMaker {
 		this.totalCount = totalCount;
 	}
 	
-	public void setPageData() {
-		System.out.println("ssss"+totalCount);
-//		int ss= 0;
-//		criteria.setPerPage(3);
-//		System.out.println(criteria.getPerPage());
-//		ss =criteria.getPerPage();
-//		if(ss == 0){
-//			System.out.println("null");
-//		}else{
-//			System.out.println("NOtnull");
-//		}
-//		System.out.println("ssss"+criteria.getPerPage());
+	
+	public void setMSGPageData(){
+		
 		int maxPageLink = (int)
-				Math.ceil((double)totalCount / 3/*criteria.getPerPage()*/);
+				Math.ceil((double)totalCount / msgcriteria.getPerPage());
 	
 		System.out.println("ssss"+maxPageLink);
 		int temp = (int)
-				(Math.ceil(/*criteria.getPage()*/3 / (double) numOfPageLink) 
+				(Math.ceil(msgcriteria.getPage() / (double) numOfPageLink) 
 						* numOfPageLink);
 		System.out.println("sssss"+temp);
 		if (temp < maxPageLink) {
@@ -107,7 +98,53 @@ public class PageMaker {
 			hasPrev = true;
 		}
 		
-		if (endPageNum * /*criteria.getPerPage()*/ 3 < totalCount) {
+		if (endPageNum * msgcriteria.getPerPage() < totalCount) {
+			hasNext= true;
+		} else {
+			hasNext= false;
+		}
+	}
+		
+		
+	
+	public void setPageData() {
+		System.out.println("ssss"+totalCount);
+//		int ss= 0;
+//		criteria.setPerPage(3);
+//		System.out.println(criteria.getPerPage());
+//		ss =criteria.getPerPage();
+//		if(ss == 0){
+//			System.out.println("null");
+//		}else{
+//			System.out.println("NOtnull");
+//		}
+//		System.out.println("ssss"+criteria.getPerPage());
+		//System.out.println(""+criteria.getPage());
+
+		int maxPageLink = (int)
+				Math.ceil((double)totalCount / 10/*criteria.getPerPage()*/);
+	
+		System.out.println("ssss"+maxPageLink);
+		int temp = (int)
+				(Math.ceil(criteria.getPage() / (double) numOfPageLink) 
+						* numOfPageLink);
+		System.out.println("sssss"+temp);
+		if (temp < maxPageLink) {
+			endPageNum = temp;
+		} else {
+			endPageNum = maxPageLink;
+		}
+		
+		startPageNum = 
+				((endPageNum - 1) / numOfPageLink) * numOfPageLink + 1;
+		
+		if (startPageNum == 1) {
+			hasPrev = false;
+		} else {
+			hasPrev = true;
+		}
+		
+		if (endPageNum * /*criteria.getPerPage()*/ 10 < totalCount) {
 			hasNext= true;
 		} else {
 			hasNext= false;

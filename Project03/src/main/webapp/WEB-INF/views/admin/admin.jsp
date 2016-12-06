@@ -13,6 +13,30 @@
 
 <style type="text/css">
 
+#menuBar{
+
+ margin-top:30px;
+
+}
+
+
+
+#form-main{
+	
+	padding-left:35px;
+	padding-right:35px;
+	padding-top:35px;
+	padding-bottom:50px;
+	float: left;
+	left: 50%;
+	position: absolute;
+  margin-top:30px;
+	margin-left: -500px;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+	
+	
+}
 
 
 #dropDownType {
@@ -30,35 +54,12 @@
 
 <body>
 	<header id="top">
-		<h1>관리자님 안녕하세요</h1>
-		<p id="dpTime"></p>
-		
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-		
-		
-		
-		
-		
-	</header>
+		<div>&nbsp;</div>
+		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<p id="dpTime">&nbsp;&nbsp;</p>
+		</header>
 
-
-	<div Class="wrapper">
+		<div Class="wrapper">
 
 		<nav id="menuBar">
 			<ul id="menuList">
@@ -82,17 +83,13 @@
 				
 				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
 				</li>
-
-
-
 			</ul>
-
 		</nav>
-
-
+		
 		<section id="main">
-
-	<form action="">
+	
+	
+	<form id="form-main">
 			<table id="checkboxTestTbl" border="1px">
 				<caption>유저 정보 확인</caption>
 				<colgroup>
@@ -104,8 +101,8 @@
 
 				</colgroup>
 	
-				
-				
+			
+			
 				
 				<tr>
 					<th>번호</th>
@@ -181,20 +178,13 @@
 					</form>
 		</section>
 
-		<aside id="sidebar">
-			<img alt="고양이" src="resources/theme/images/css_cat.jpg" style="width: 170px" /> 
-			<img alt="강아지" src="resources/theme/images/css_dog.jpg" style="width: 170px" />
-			<img alt="백조" src="resources/theme/images/css_swan.jpg" style="width: 170px" />
-		</aside>
 
-	</div>
-
+	
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
 	<script type="text/javascript">
 	
 		
-		
-		
+
 		
 		$('#saveMyUser').click(function(){
 			
@@ -209,13 +199,7 @@
 				
 			});
 			
-			
-			
-			
-			
-			
-			
-			
+	
 			$('.select0').empty();
 			
 		});//end saveMyuser

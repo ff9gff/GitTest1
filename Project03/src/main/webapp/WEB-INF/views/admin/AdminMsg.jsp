@@ -9,13 +9,21 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <!-- 외부 css 파일을 링크 -->
-<link rel="stylesheet" href="css/mystyle1.css"/>
+<link rel="stylesheet" href="theme/css/mystyle1.css"/>
 <style type="text/css">
+
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+#feedback-page{
+	text-align:center;
+}
+
 #form-main{
 	width:100%;
 	float:left;
 	padding-top:0px;
 }
+
 #form-div {
 	background-color:rgba(72,72,72,0.4);
 	padding-left:35px;
@@ -32,6 +40,75 @@
   -webkit-border-radius: 7px;
 }
 
+.feedback-input {
+	color:#3c3c3c;
+	font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+	font-size: 18px;
+	border-radius: 0;
+	line-height: 22px;
+	background-color: #fbfbfb;
+	padding: 13px 13px 13px 54px;
+	margin-bottom: 10px;
+	width:100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+.feedback-input:focus{
+	background: #fff;
+	box-shadow: 0;
+	border: 3px solid #3498db;
+	color: #3498db;
+	outline: none;
+  padding: 13px 13px 13px 54px;
+}
+
+.focused{
+	color:#30aed6;
+	border:#30aed6 solid 3px;
+}
+
+/* Icons ---------------------------------- */
+#name{
+	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#name:focus{
+	background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
+	background-size: 30px 30px;
+	background-position: 8px 5px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#email{
+	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#email:focus{
+	background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
+	background-size: 30px 30px;
+  background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
+#msg_content{
+	background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
+	background-size: 30px 30px;
+	background-position: 11px 8px;
+	background-repeat: no-repeat;
+}
+
 textarea {
     width: 100%;
     height: 150px;
@@ -39,17 +116,66 @@ textarea {
     resize:vertical;
 }
 
-
-
-
-#dropDownType{
-width: 50px
+input:hover, textarea:hover,
+input:focus, textarea:focus {
+	background-color:white;
 }
 
-#selectOption{
-padding-left: 655px
-
+#sendBtn{
+	font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+	float:left;
+	width: 100%;
+	border: #fbfbfb solid 4px;
+	cursor:pointer;
+	background-color: #3498db;
+	color:white;
+	font-size:24px;
+	padding-top:22px;
+	padding-bottom:22px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
 }
+
+#sendBtn:hover{
+	background-color: rgba(0,0,0,0);
+	color: #0493bd;
+}
+	
+.submit:hover {
+	color: #3498db;
+}
+	
+.ease {
+	width: 0px;
+	height: 74px;
+	background-color: #fbfbfb;
+	-webkit-transition: .3s ease;
+	-moz-transition: .3s ease;
+	-o-transition: .3s ease;
+	-ms-transition: .3s ease;
+	transition: .3s ease;
+}
+
+.submit:hover .ease{
+  width:100%;
+  background-color:white;
+}
+
+
+@media only screen and (max-width: 580px) {
+	#form-div{
+		left: 3%;
+		margin-right: 3%;
+		width: 88%;
+		margin-left: 0;
+		padding-left: 3%;
+		padding-right: 3%;
+	}
+}s
+
 
 </style>
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -68,8 +194,9 @@ padding-left: 655px
 
 
 	<header id="top">
-		<h1>관리자님 안녕하세요 </h1>
-		<p>Test 화면입니다. </p>
+			<div>&nbsp;</div>
+		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
 	
 	
@@ -108,9 +235,10 @@ padding-left: 655px
 		
 		<section id="main">
 			
-		<h1>쪽지 보내기 화면 입니다 .</h1>
+		<h1> </h1>
 		    <div id="form-main">
   <div id="form-div">
+  
     <form class="form" name="form1" id="form1" action="sendAllMyUser" method="post">
       
       <p class="name">

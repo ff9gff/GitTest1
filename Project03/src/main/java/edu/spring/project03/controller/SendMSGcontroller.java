@@ -95,7 +95,8 @@ public class SendMSGcontroller {
 		
 		maker.setTotalCount(msgAllService.getNumOfRecords(mno));
 		
-		maker.setPageData();
+		//maker.setPageData();
+		maker.setMSGPageData();
 		model.addAttribute("pageMaker", maker);
 	
 		//http://localhost:8181/ex02/board/list-page?page=3 
@@ -141,7 +142,7 @@ public class SendMSGcontroller {
 		 
 		 maker.setTotalCount(msgAllService.pageGetMsgOfRecords(mno));
 		//List<MsgDTO> allList = msgAllService.readSendMsg(mno);
-		 maker.setPageData();
+		 maker.setMSGPageData();
 		model.addAttribute("pageMaker", maker);
 		 
 		for (MsgDTO dto : allList) {

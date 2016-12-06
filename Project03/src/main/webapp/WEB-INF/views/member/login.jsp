@@ -32,6 +32,10 @@ http://www.templatemo.com/tm-406-flex
 
 
 <style>
+
+
+
+
 	.searchRegion {
 		display: none;
 	}
@@ -50,6 +54,8 @@ http://www.templatemo.com/tm-406-flex
     }        
     <!-- a:link: 클릭하지 않은 링크 a:visited: 한번 클릭했던 혹은 다녀갔던 링크 a:hover: 링크를 클릭하려고 마우스를 가져갔을 때 decoration: 밑줄 none: 없는 상태 underline: 있는 상태 -->
     
+    
+
 </style>
 </head>
 <body>

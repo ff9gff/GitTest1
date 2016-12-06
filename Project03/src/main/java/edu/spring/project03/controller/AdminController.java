@@ -1,6 +1,7 @@
 package edu.spring.project03.controller;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -21,6 +22,7 @@ import edu.spring.project03.service.SearchUserService;
 
 @Controller
 
+@RequestMapping(value="/admin")
 public class AdminController {
 	private static final Logger logger =
 			LoggerFactory.getLogger(AdminController.class);
@@ -44,7 +46,6 @@ public class AdminController {
 		List<DomainDTO> list2 = adminService.readAdminDomain();
 		logger.info("admin.jsp 소환 ");
 		model.addAttribute("newMemberList", list2);
-		
 
 	}
 	
@@ -92,7 +93,7 @@ public class AdminController {
 		logger.info("메세지 보내기 결과 입니다. "+ result);
 		
 		return "redirect:AdminMsg";
-	}
+	}//
 	
 	
 
@@ -124,7 +125,8 @@ public class AdminController {
 		
 		List<String> list = adminService.allAdminMSG();
 		
-		Set<String>  msgContext = new HashSet<>();
+		Set<String>  msgContext = new LinkedHashSet<>(); 
+				//HashSet<>();
 		
 		for(int i=0 ; i < list.size(); i++){
 			msgContext.add(list.get(i).toString());
@@ -134,8 +136,15 @@ public class AdminController {
 		
 		
 		
-	}
+	}//end 
 	
+	//MiniSendToAllMyUser
+	
+	@RequestMapping(value="/MiniSendToAllMyUser", method=RequestMethod.GET)
+	public void MiniSendToAllMyUserpage(){
+		logger.info("안녕 새창이야 .");
+				
+	}
 	
 	
 	
