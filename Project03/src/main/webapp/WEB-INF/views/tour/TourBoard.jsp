@@ -534,10 +534,6 @@ http://www.templatemo.com/tm-406-flex
 				
 				// wm_image 리스트
 				imageList = [];
-				// wm_tour 리스트(제목)
-				titleList = [];
-				// wm_tour_region 리스트(지역)
-				regionList = [];
 				
 				var region_name = $('#region_name2').val();
 				var start_date = $('#start_date2').val();
@@ -556,10 +552,11 @@ http://www.templatemo.com/tm-406-flex
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
 						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex});	
+			
 					});
 					
 					getAllThumnail_detail_search();
-						
+	
 				});// end getJSON()
 
 			};//end of getThumnails()
@@ -576,16 +573,16 @@ http://www.templatemo.com/tm-406-flex
 				for(var i = 0; i<imageList.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+'<a href="tour/detail?trip_no=' + imageList[i].content_no + '">'
+						+'<a href="../tour/detail?trip_no=' + imageList[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
-								+'<img src="' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
+								+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
 								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
 								switch(imageList[i].condition_sex){
-									case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 0: list+='<img src="../resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
 										break;
-									case 1: list+='<img src="resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 1: list+='<img src="../resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
 										break;
-									case 2: list+='<img src="resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 2: list+='<img src="../resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
 										break;
 									default: break;
 								}	
@@ -619,19 +616,22 @@ http://www.templatemo.com/tm-406-flex
 				
 				var list = '';
 				
+				alert("이미지 URL: " + imageList[0].img_url);
+				console.log("컨텐츠 넘버: " + imageList[0].trip_no);
+				
 				for(var i = 0; i<imageList.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+'<a href="tour/detail?trip_no=' + imageList[i].content_no + '">'
+						+'<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '">'
 							+ '<div class="portfolio-thumb">'
-								+'<img src="' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
+								+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
 								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
 								switch(imageList[i].condition_sex){
-									case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 0: list+='<img src="../resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
 										break;
-									case 1: list+='<img src="resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 1: list+='<img src="../resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
 										break;
-									case 2: list+='<img src="resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 2: list+='<img src="../resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
 										break;
 									default: break;
 								}	
@@ -649,8 +649,8 @@ http://www.templatemo.com/tm-406-flex
 									
 								list+='</div>'
 							+ '</div>'
-								+ '<div class="tour_title">' + imageList[i].tour + '</div>'
-								+ '<div class="tour_region">' + imageList[i].city + '</div>'			
+								+ '<div class="tour_title">' + imageList[i].title + '</div>'
+								+ '<div class="tour_region">' + imageList[i].region_name + '</div>'			
 						+'</a>'
 
 						+ '</div>';
