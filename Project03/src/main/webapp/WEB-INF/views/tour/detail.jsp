@@ -255,18 +255,17 @@ color: #686767;
 font-size: 12px;
 }
 #profile_button2{
-border: #FFFFFF;
-background-color: #FFFFFF;
-color: #686767;
-font-size: 10px;
-font-weight: bold;
-
+	border: #FFFFFF;
+	background-color: #FFFFFF;
+	color: #686767;
+	font-size: 10px;
+	font-weight: bold;
 }
 #profile_nickname{
-text-align: left;
-color: #444343;
-font-weight: 800;
-font-size: 20px;
+	text-align: left;
+	color: #444343;
+	font-weight: 800;
+	font-size: 20px;
 }
 #profile_introduce{
 text-align: left;
@@ -1042,6 +1041,8 @@ $(document).click(function(e){
 	} 
 });
 
+<c:if test="${not empty login_id}">
+
 // 수락에서 - 닉네임 클릭시 메뉴 보이기
 $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 	// e.pageX
@@ -1103,6 +1104,8 @@ $('#content_profile').on('click',$(this),function(){
 	menubox.show();
 			 
 });	
+
+</c:if>
 
 // 여행 신청하기
 $('#joinmenu_apply').click(function(){
