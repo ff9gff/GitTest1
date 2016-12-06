@@ -283,21 +283,6 @@ $(document).ready(function() {
       }      
    });
    
-   $('#submit_OK').click(function() {
-      if(final_check == 1) {
-         alert('인증번호 확인 ok!');
-         var address = $('#address1').val() + " " + $('#address2').val();
-         $('#address').val(address);
-         
-         $("#register_form").submit();         
-      } else {
-         alert('이메일 인증 및 이메일 인증번호 확인을 해 주세요!');
-      }       
-   });   
-   $("#submit_Cancel").click(function() {
-      location = '../index';
-   });
-   
    /** 
    onchange event handler for the file input field.
    It emplements very basic validation using the file extension.
@@ -348,7 +333,31 @@ $(document).ready(function() {
       //DOM에서 제공하는 초기화하는 메서드 reset()을 호출
       e.unwrap(); //감싼 <form> 태그를 제거
    }
+
    
+   /*
+   <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+   */  
+   
+   $('#submit_OK').click(function() {
+      if(final_check == 1) {
+         alert('인증번호 확인 ok!');
+         var address = $('#address1').val() + " " + $('#address2').val();
+         $('#address').val(address);
+         
+         if($('#imageFile').val() == null || $('#imageFile').val() == ""){
+        	 alert('프로필 이미지가 등록되지 않았습니다.');
+        	 $('#imageFile').val("value=<img src='../resources/theme/images/default-profile.jpg' width='100' height='100'>");
+         }
+         
+         $("#register_form").submit();         
+      } else {
+         alert('이메일 인증 및 이메일 인증번호 확인을 해 주세요!');
+      }       
+   });   
+   $("#submit_Cancel").click(function() {
+      location = '../index';
+   });
    
    
 });
