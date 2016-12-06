@@ -4,8 +4,8 @@ import java.util.List;
 
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
-import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
 
@@ -13,21 +13,34 @@ public interface TourReviewDAO {
 	
 	// insert
 	public abstract int insertReview(ReviewVO reviewvo);
-	public abstract int insertRegion(ReviewRegionVO reviewRegionvo);
 	public abstract int insertThumnail(ImgVO imgvo);
-		
-	// select
-	public abstract int selectReview_no(ReviewVO reviewvo);
-	public abstract ReviewVO selectReviewRegister_data(int review_no);
-	
-	public abstract ImgVO select_review_profile(int mno);
-	public abstract PersonalVO select_review_personal(int mno);
-	public abstract ReviewVO select_review_by_no(int review_no);
-	public abstract String select_review_region_name(int review_no);
+	public abstract int insertRegion(ReviewRegionVO reviewRegionvo);
 	
 	// update
+	public abstract int updateReview(ReviewVO reviewvo);
+	public abstract int updateThumnail(ImgVO imgvo);
+	public abstract int updateRegion(ReviewRegionVO reviewRegionvo);	
 	
 	// delete
+	public abstract int deleteReview(int review_no);
+	public abstract int deleteThumnail(int review_no);
+	public abstract int deleteRegion(int review_no);
+
+	
+	// select
+	public abstract int selectReview_no(ReviewVO reviewvo);
+	public abstract ReviewVO selectReviewRegister_data(int review_no);	
+	
+	
+	public abstract ReviewVO select_review_by_no(int review_no);
+	public abstract ImgVO select_review_profile(int mno);
+	public abstract PersonalVO select_review_personal(int mno);
+	public abstract String select_review_region_name(int review_no);
+	
+	
+	// select
+
+
 	
 	
 	// 메인/후기 게시판 - 디폴트 4개 후기 등록순 뿌리기
@@ -56,11 +69,26 @@ public interface TourReviewDAO {
 	// 3. 지역 뿌리기
 	public abstract List<ReviewRegionVO> select_review_region_region(String region_name);
 	
+	// 후기 게시판 - 닉네임 검색
+	public abstract List<NickReviewSearchResultDTO> select_review_by_nickname(String region_name, String nickname);
+	
 	
 	/**
 	 * BestVO 
 	 */	
 	public abstract int insertBest(BestVO bestvo);	
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	/**
+	 * 이 아래 에서 새로운 Imple을 작성하시오!
+	 */
 	
 	
 } // end interface TourReviewDAO

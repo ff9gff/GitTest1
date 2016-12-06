@@ -44,7 +44,128 @@ http://www.templatemo.com/tm-406-flex
 	#hiddenSearch {
 		display: none;
 	}
+.portfolio-item{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+}
+.portfolio-item:hover{
+	border: 3px solid #ff5028;
+}
+#TourDetail,#TopReview{
+	width: 1330px;
+}
 
+.portfolio-thumb{
+	width: 300px;
+	height: 240px;
+	vertical-align: middle;
+	margin-bottom: 5px;
+
+}
+
+#img_age{
+	display: inline-block;
+	z-index:100; 
+	width:40px; 
+	height:40px;
+	background-color: #4e4e4f;
+	font-weight: 600;
+	font-size: 25px;
+	color: #FFFFFF;
+	text-align: center;
+	vertical-align: top;
+}
+
+.tour_title{
+	font-size: 20px;
+	font-weight: bold;
+	color: #4e4e4f;
+	margin-left: 10px;
+	font-family:monospace
+}
+
+.tour_region{
+	font-size: 15px;
+	color: ligthgray;
+	margin-left: 10px;
+	font-family:monospace
+}
+#region_select{
+	width: 700px;
+	border: 1px solid #ff5028;
+}
+#region_name{
+	width: 600px;
+	border: 0;
+}
+#region_search{
+	float: right;
+	display: inline-block;
+	width: 90px;
+	border: 0;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+.inside_div_conditon{
+	width: 280px;
+	margin: 10px;
+}
+#btn_create_tour{
+	width: 100%;
+	height: 100%;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+	border: none;
+	font-size: 20px;
+}
+.date{
+	width: 133px;
+	display: inline-block;
+}
+#period_search{
+	width: 280px;
+	height: 25px;
+	padding: 0;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	border: none;
+	font-size: 15px;
+}
+#condition_table tr{
+	height: 40px;
+}
+#condition_table th{
+	width: 40px;
+}
+#do_detail_search{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	background-color: #848484;
+	color: #FFFFFF;
+	border: none;
+	font-size: 15px;
+}
+#show_detail_search{
+	
+	display: inline-block;
+	width: 90px;
+	height: 42px;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#condition_box{
+	 position: fixed;
+  margin: 0 auto;
+  top: 400px;
+  right: 20px;
+}
 </style>
 
 
@@ -127,48 +248,65 @@ http://www.templatemo.com/tm-406-flex
 				<br />
 
 				<div>
-					<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-					<button type="button" id="region_search">장소 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<div id="region_select" style="display: inline-block;">
+						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+						<button type="button" id="region_search">장소 검색</button>
+					</div>
+					<button type="button" id="show_detail_search">기간 검색</button>
 					
-					<input type="text" id="start_date" name="start_date" placeholder="시작일"> ~ 
-					<input type="text" id="end_date" name="end_date" placeholder="종료일">
-					<button type="button" id="period_search">기간 검색</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					
-					
-					<button id="btn_create_tour" style="float: right; margin-right: 13px">여행 등록</button>
-					<br /><br /><br />
-					
-					<button type="button" id="show_detail_search">상세 검색 열기/닫기</button><br /><br />
-					
-					<div id='hiddenSearch'>
-						
-						
-						<h3 class="h2" style="font: bold;">상세 검색 </h3><br />
-						
-						<input type="text" id="region_name2" name="region_name2" placeholder="지역이름">
-						 
-						<input type="text" id="start_date2" name="start_date2" placeholder="시작일"><br /><br />
-								
-						<div>
-							성별 조건: <br />
-							남자 <input type="radio" name="condition_sex" id="condition_sex" value="1" /> 
-							여자 <input type="radio" name="condition_sex" id="condition_sex" value="0" /> 
-							조건없음 <input type="radio" name="condition_sex" id="condition_sex" value="2" />
-						</div><br />
-					
-						<div>
-							연령 조건: <br />
-							20대 <input type="radio" name="condition_age" id="condition_age" value="1" /> 
-							30대 <input type="radio" name="condition_age" id="condition_age" value="2" /> 
-							40대 <input type="radio" name="condition_age" id="condition_age" value="3" /> 
-							조건없음 <input type="radio" name="condition_age" id="condition_age"  value="4" />
-						 </div><br />		 
-						
-						<button type="button" id="do_detail_search">상세 검색</button>
-
+					<div id='hiddenSearch' hidden="hidden" style="border: 1px solid #ff5028; width: 300px; position: absolute;">
+						<div class="inside_div_conditon" style="heigth: 100px;">
+							<input type="text" id="start_date" name="start_date" class="date" placeholder="시작일"><p style="font-size: 20px; width: 10px; display: inline-block;">~</p> 
+							<input type="text" id="end_date" name="end_date"  class="date" placeholder="종료일">
+							<button type="button" id="period_search">검색</button>
+						</div>
 					</div>
 					
-					<br /><br />
+					
+					<div id="condition_box" style="width: 300px; height: 310px; border: 1px solid gray;">
+						<div class="inside_div_conditon" style="height: 50px;">
+							<button id="btn_create_tour">여행 등록</button>
+						</div>
+						<div class="inside_div_conditon" style="height: 30px; border-top: 1px dotted gray;">
+							<p style="font-size: 16px; font-weight: bold;">상세검색</p>
+						</div>
+						<div class="inside_div_conditon" style="height: 150px;">
+							<table id="condition_table">
+								<tr>
+									<th>지역</th>
+									<td><input type="text" id="region_name2" name="region_name2" placeholder="지역이름" style="height: 30px; width:230px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid gray;"></td>
+								</tr>
+								<tr>
+									<th>기간</th>
+									<td><input type="text" id="start_date2" name="start_date2" placeholder="시작일" style="height: 30px; width:230px; border-left: none; border-right: none; border-top: none; border-bottom: 1px solid gray;"></td>
+								</tr>
+								<tr>		
+									<th>성별</th>						
+									<td>
+									<input type="radio" name="condition_sex" id="condition_sex" value="1" />남자  
+									<input type="radio" name="condition_sex" id="condition_sex" value="0" />여자  
+									<input type="radio" name="condition_sex" id="condition_sex" value="2" checked="checked" />조건없음 
+									</td>
+								</tr>
+								<tr>
+									<th>연령</th>
+									<td>
+									<input type="radio" name="condition_age" id="condition_age" value="1" />20대  
+									 <input type="radio" name="condition_age" id="condition_age" value="2" />30대 
+									<input type="radio" name="condition_age" id="condition_age" value="3" />40대 이상  
+									 <input type="radio" name="condition_age" id="condition_age"  value="4" checked="checked" />조건없음
+									</td>
+								 </tr>		 
+						</table>
+						</div>
+						<div class="inside_div_conditon" style="height: 30px;">
+							<button type="button" id="do_detail_search">상세 검색</button>
+						</div>
+						
+					</div>
+					
+					
+				
 						
 				</div>
 				
@@ -396,10 +534,6 @@ http://www.templatemo.com/tm-406-flex
 				
 				// wm_image 리스트
 				imageList = [];
-				// wm_tour 리스트(제목)
-				titleList = [];
-				// wm_tour_region 리스트(지역)
-				regionList = [];
 				
 				var region_name = $('#region_name2').val();
 				var start_date = $('#start_date2').val();
@@ -418,10 +552,11 @@ http://www.templatemo.com/tm-406-flex
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
 						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex});	
+			
 					});
 					
 					getAllThumnail_detail_search();
-						
+	
 				});// end getJSON()
 
 			};//end of getThumnails()
@@ -438,15 +573,38 @@ http://www.templatemo.com/tm-406-flex
 				for(var i = 0; i<imageList.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+'<a href="../tour/detail?trip_no=' + imageList[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
-							+ '<figure>'
-							+ '<a href="../tour/detail?trip_no=' + imageList[i].content_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240"><br/>'
-							+ '<div>제목: ' + imageList[i].tour + '</div>'
-							+ '<div>' + imageList[i].city + '</div>'	
-							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-							+ '</figure>'
+								+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
+								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
+								switch(imageList[i].condition_sex){
+									case 0: list+='<img src="../resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									case 1: list+='<img src="../resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									case 2: list+='<img src="../resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									default: break;
+								}	
+								switch(imageList[i].condition_age){
+								case 1: list+='<p id="img_age">20</p>';
+									break;
+								case 2: list+='<p id="img_age">30</p>';
+									break;
+								case 3: list+='<p id="img_age">40↑</p>';
+									break;
+								case 4: list+='<p id="img_age">All</p>';
+									break;
+								default: break;
+							}
+									
+								list+='</div>'
 							+ '</div>'
-							+ '</div>';
+								+ '<div class="tour_title">' + imageList[i].tour + '</div>'
+								+ '<div class="tour_region">' + imageList[i].city + '</div>'			
+						+'</a>'
+
+						+ '</div>';
 				}
 
 				$('#tourDetailSearch').html(list);
@@ -461,15 +619,38 @@ http://www.templatemo.com/tm-406-flex
 				for(var i = 0; i<imageList.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+'<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '">'
 							+ '<div class="portfolio-thumb">'
-							+ '<figure>'
-							+ '<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '"><img src="../' + imageList[i].img_url + '" width="300" height="240"><br/>'
-							+ '<div>제목: ' + imageList[i].title + '</div>'
-							+ '<div>' + imageList[i].region_name + '</div>'	
-							+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-							+ '</figure>'
+								+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
+								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
+								switch(imageList[i].condition_sex){
+									case 0: list+='<img src="../resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									case 1: list+='<img src="../resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									case 2: list+='<img src="../resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+										break;
+									default: break;
+								}	
+								switch(imageList[i].condition_age){
+								case 1: list+='<p id="img_age">20</p>';
+									break;
+								case 2: list+='<p id="img_age">30</p>';
+									break;
+								case 3: list+='<p id="img_age">40↑</p>';
+									break;
+								case 4: list+='<p id="img_age">All</p>';
+									break;
+								default: break;
+							}
+									
+								list+='</div>'
 							+ '</div>'
-							+ '</div>';
+								+ '<div class="tour_title">' + imageList[i].title + '</div>'
+								+ '<div class="tour_region">' + imageList[i].region_name + '</div>'			
+						+'</a>'
+
+						+ '</div>';
 				}
 
 				$('#tourDetailSearch').html(list);
@@ -509,19 +690,25 @@ http://www.templatemo.com/tm-406-flex
 					alert('기간 검색 메소드 호출');
 					getThumnails_By_Period();			
 				}
+				$('#show_detail_search').hide();
 			}); 
 			
 			
-			var count = 0;
+			var show = true;
 			// 상세 검색 보여주기 버튼 처리			
 			$('#show_detail_search').click(function() {
-				if (count == 0) {
-					$('#hiddenSearch').show();	
-					count = 1;
-				} else {
-					$('#hiddenSearch').hide();	
-					count = 0;
+				if(show){
+					var buttonOffset = $(this).offset();
+					console.log(buttonOffset);
+					$('#hiddenSearch').css("left", (buttonOffset.left+30)+"px");
+					$('#hiddenSearch').css("top", (buttonOffset.tip+20)+"px");
+					$('#hiddenSearch').show();
+					show=false;
+				}else{
+					$('#hiddenSearch').hide();
+					show=true;
 				}
+			
 			});
 			
 			$('#do_detail_search').click(function() {	
