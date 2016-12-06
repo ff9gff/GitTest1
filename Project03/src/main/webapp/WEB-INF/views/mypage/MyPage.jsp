@@ -157,9 +157,9 @@ ul {
 				
 
 
-			</div>
+				</div>
 		
-	</div>
+			</div>
 
 
 	<!-- <script type="text/javascript">
@@ -176,7 +176,7 @@ ul {
 		$(document).ready(function() {
 			
 			
-			getThumnails_By_Mno();
+			/* getThumnails_By_Mno(); */
 
 			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
 			function getThumnails_By_Mno() {
@@ -294,7 +294,7 @@ ul {
 							
 						});
 				
-				});
+					});
 					
 				
 					
@@ -329,7 +329,7 @@ ul {
 				var list = '';
 				
 				for(var i = 0; i<JoinList.length; i++){
-
+					
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
@@ -350,26 +350,17 @@ ul {
 			// mno 검색 버튼 처리
 			$('#mytour').click(function() {
 
-				var mytour_mno = ${mno};
-	
-				if (mytour_mno == "") {
-					alert('검색할 mno을 입력하세요');
-				} else {
-					getThumnails_By_Mno();
-				}
-	
+				$('#toursearch').html('');				
+				getThumnails_By_Mno();
+				
 			});
 			
 			// 내가 신청한 게시물 보기 버튼
 			$('#tourchoose').click(function() {
 
-				var tourchoose_mno = ${mno};
-	
-				if (tourchoose_mno == "") {
-					alert('검색할 mno을 입력하세요');
-				} else {
-					getThumnails_By_ChooseMno();
-				}
+		
+				getThumnails_By_ChooseMno();
+				
 	
 			});
 			
@@ -384,7 +375,7 @@ ul {
 		
 		$('#content_profile').html('<img src="'+mno_img+'" class="content_profile_img"/>');
 		
-		</script>
+	</script>
 	
 	
 
