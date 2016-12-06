@@ -616,9 +616,6 @@ http://www.templatemo.com/tm-406-flex
 				
 				var list = '';
 				
-				alert("이미지 URL: " + imageList[0].img_url);
-				console.log("컨텐츠 넘버: " + imageList[0].trip_no);
-				
 				for(var i = 0; i<imageList.length; i++){
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
