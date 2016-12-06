@@ -24,10 +24,13 @@
 <style>
 .portfolio-item{
 	height: 320px;
-	width: 320px;
+	width: 302px;
 	margin: 5px;
 	padding: 0;
-	box-shadow: 0px 1px 10px gray;
+	border: 1px solid lightgray;
+}
+.portfolio-item:hover{
+	border: 3px solid #ff5028;
 }
 #TourDetail,#TopReview{
 	width: 1330px;
@@ -37,13 +40,8 @@
 	width: 300px;
 	height: 240px;
 	vertical-align: middle;
-	margin-left: 10px;
-	margin-right: 10px;
-	margin-top: 5px;
 	margin-bottom: 5px;
-	border: 1px solid lightgray;
-	
-	 
+
 }
 
 #condition_age{
@@ -59,7 +57,7 @@
 	vertical-align: top;
 }
 
-#tour_title{
+.tour_title{
 	font-size: 20px;
 	font-weight: bold;
 	color: #4e4e4f;
@@ -67,7 +65,7 @@
 	font-family:monospace
 }
 
-#tour_region{
+.tour_region{
 	font-size: 15px;
 	color: ligthgray;
 	margin-left: 10px;
@@ -77,6 +75,10 @@
 #img_tour{
 	-webkit-filter: opacity(1.5) sepia(.4);
    filter: opacity(1.5) sepia(.4); 
+}
+.img_view{
+	-webkit-filter: opacity(1.5) sepia(.4);
+   filter: opacity(1.5) sepia(.4);
 }
 
 </style>
@@ -439,12 +441,14 @@
 			for(var i = 0; i < length; i++){
 		
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+ '<div class="portfolio-thumb">'
-						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '"><img src="' + TopReviewImage[i].img_url + '" width="300" height="240"><br/>'
-						+ '<div>제목: ' + TopReviewImage[i].tour + '</div>'
-						+ '<div>' + TopReviewImage[i].city + '</div>'	
-						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-						+ '</div>'
+						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '">'
+							+ '<div class="portfolio-thumb">'
+									+'<img src="' + TopReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
+							+ '</div>'
+							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
+							+ '<div class="tour_region">' + TopReviewImage[i].city + '</div>'	
+							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+'</a>'
 						+ '</div>';
 			}
 
@@ -467,12 +471,15 @@
 			for(var i = 0; i < length; i++){
 		
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<a href="review/review_detail?review_no=' + RecentReviewImage[i].content_no + '">'
 						+ '<div class="portfolio-thumb">'
-						+ '<a href="review/review_detail?review_no=' + RecentReviewImage[i].content_no + '"><img src="' + RecentReviewImage[i].img_url + '" width="300" height="240"><br/>'
-						+ '<div>제목: ' + RecentReviewImage[i].tour + '</div>'
-						+ '<div>' + RecentReviewImage[i].city + '</div>'	
-						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+								+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
+						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
+						+ '<div class="tour_region">' + RecentReviewImage[i].city + '</div>'	
+						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						
+						+'</a>'
 						+ '</div>';
 			}
 
@@ -522,8 +529,8 @@
 									
 								list+='</div>'
 							+ '</div>'
-								+ '<div id="tour_title">' + TourImage[i].tour + '</div>'
-								+ '<div id="tour_region">' + TourImage[i].city + '</div>'			
+								+ '<div class="tour_title">' + TourImage[i].tour + '</div>'
+								+ '<div class="tour_region">' + TourImage[i].city + '</div>'			
 						+'</a>'
 
 						+ '</div>';
@@ -532,6 +539,8 @@
 			$('#TourDetail').html(list);
 		};
 		
+		
+
 	});
 
 	</script>
