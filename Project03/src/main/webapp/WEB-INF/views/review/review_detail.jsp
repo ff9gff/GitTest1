@@ -408,31 +408,36 @@ width: 95%;
 	<input type="hidden" id="msg_address" name="msg_address" value="tour/toggle_msg"/><!-- 수정 -->
 </form>
 
-<c:if test="${mno ne tourVO.mno && not empty login_id}"><!-- 작성자가 좋아요 안되게 하고 다른 사람은 좋아요 하게 넣기 해야 되는 부분 -->
+<!-- 작성자가 좋아요 안되게 하고 다른 사람은 좋아요 하게 넣기 해야 되는 부분 -->
+<%-- <c:if test="${mno ne tourVO.mno && not empty login_id}">
 	<div id="joinmenu">
 		<p id="joinmenu_count">몇명이 참여중이다</p>
 		<button id="joinmenu_apply">신청하기</button>
 	</div>
-</c:if>
+</c:if> --%>
 
 <div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
 	<div style=" display: inline-block; vertical-align: middle;">
-		<div id=content_title>${tourVO.title}</div>
+		<div id=content_title>${reviewVO.title}</div>
 		<div id=content_smalltitle></div>
 	</div>
-	<div id="content_profile" style="width: 110px; height: 100px; display: inline-block;text-align:center; vertical-align: middle;">
 	
+	<div id="content_profile" style="width: 110px; height: 100px; display: inline-block;text-align:center; vertical-align: middle;">
 	</div>
 </div>
-<table id=content_condition><!--  필요 없음 -->
+
+<!-- 조회수 들어가게 해야 되는 부분 -->
+<!-- <table id=content_condition> 필요 없음
 	<tr>
 		<td id="condition_date"><img src="../resources/theme/images/date.png" class="condition_img"/><div>??</div></td>
 		<td id="condition_sex"><img src="../resources/theme/images/date.png" class="condition_img"/></td>
 		<td id="condition_age"></td>
 	</tr>	
-</table>
+</table> -->
 
-<c:if test="${mno eq tourVO.mno}"> <!-- 날려야 하는 부분 --> 
+<!-- TourRegister 에서 Apply for 부분 -->
+<!-- 날려야 하는 부분 -->
+<%-- <c:if test="${mno eq tourVO.mno}"> 
 	<div class="menu">Apply for</div>
 	<table class="apply_panel">
 		<tr style="padding: 0; height: 30px; text-align: center;"><td colspan="3" ><span id="span_join"></span></td></tr>
@@ -447,15 +452,17 @@ width: 95%;
 		</tr>	
 	</table>
 </c:if>
+ --%>
+
+
 <div class="menu">Content</div>
-<input hidden id="start_date" value="${tourVO.start_date}"/>
-<input hidden id="end_date" value="${tourVO.end_date}"/>
+<!-- 작성일자가 들어가야 하는 곳 같다. -->
+<%-- <input hidden id="start_date" value="${reviewVO.start_date}"/>
+<input hidden id="end_date" value="${reviewVO.end_date}"/> --%>
+
 <div id="content">
-${tourVO.content}
+${reviewVO.content}
 </div>
-
-
-
 
 <div class="menu">Comment</div>
 <c:if test="${not empty login_id && authority ne 0 }">
@@ -475,46 +482,42 @@ ${tourVO.content}
 		<p class="reply_panel_under">승인된 사용자만 사용가능합니다.</p>
 	</div>
 </c:if>
+
+
 <div class="reply_panel">
 	<ul id="replies"></ul>
 </div>
 
 
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var trip_no = ${tourVO.trip_no}; // 수정 
+	
+	var review_no = ${reviewVO.review_no};
+	
+	var sessionmno = '<%=(String)session.getAttribute("mno")%>';
+	var sessionaut = '<%=(String)session.getAttribute("authority")%>';
+	var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
+	
+	
+	replylist=[]; // wm_review_reply 리스트	
+	reply_personlist=[]; // wm_personal 리스트
 
-		
-		var sessionmno = '<%=(String)session.getAttribute("mno")%>';
-		var sessionaut= '<%=(String)session.getAttribute("authority")%>';
-		var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
-	
-	
-	// wm_tour_reply 리스트
-	replylist=[];
-	// wm_personal 리스트
-	reply_personlist=[];
-	 getReplyAlldata();
+	getReplyAlldata();
 	
 	// 댓글 리스트+개인정보 리스트 합체
-	function getReplyAlldata(){
-		// wm_tour_reply 리스트
-		replylist=[];
-		// wm_personal 리스트
-		reply_personlist=[];
+	function getReplyAlldata(){		
+		replylist=[]; // wm_review_reply 리스트		
+		reply_personlist=[]; // wm_personal 리스트
 		
-		<%-- 수정 --%>
-		var url1= '/project03/tour/detail/reply/all/'+trip_no;
+		var url1= '/project03/review/detail/reply/all/'+review_no;
 		$.getJSON(url1, function(data1){
 			$(data1).each(function(){
-				replylist.push({rno:this.rno, parentrno:this.parentrno, trip_no:this.trip_no, mno: this.mno, rcontent:this.rcontent, regdate:this.regdate, person:{}});
+				replylist.push({rno:this.rno, parentrno:this.parentrno, review_no:this.review_no, mno: this.mno, rcontent:this.rcontent, regdate:this.regdate, person:{}});
 			});// end data.each();
 			
-			var url2= '/project03/tour/detail/reply/person/'+trip_no;
+			var url2= '/project03/review/detail/reply/person/'+review_no;
 			$.getJSON(url2, function(data2){
 				$(data2).each(function(){
 				reply_personlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce});
@@ -525,14 +528,15 @@ $(document).ready(function(){
 					if(replylist[i].mno == reply_personlist[j].mno){
 						replylist[i].person = reply_personlist[j];	
 					};
-				};// end for(j)
-			};// end for(i)
+				}; // end for(j)
+			}; // end for(i)
 			getAllReplies();
-			});// end getJSON url2
-		});// end getJSON url1
-	};// getReplyAlldata();
-
-	// DB에서 해당 글번호(trip_no)의 모든 댓글을 읽어오는 함수 정의
+			}); // end getJSON url2
+		}); // end getJSON url1
+	}; // getReplyAlldata();
+	
+	
+	// DB에서 해당 글번호(review_no)의 모든 댓글을 읽어오는 함수 정의
 	function getAllReplies(){
 			var list= '';
 			/*data의 개수만큼 function()의 내용을 반복해서 수행*/
@@ -653,20 +657,20 @@ $(document).ready(function(){
 								+'</table>'
 							+'</div>'
 						+'</li>';
-						};// end if
-					};// end for(j); 
-				
+						}; // end if
+					}; // end for(j)
 				}; // end if(this.parentrno == 'null')
-				
 			};// end for(i)
 			
 			$('#replies').html(list);
 			
 	}; // end getAllReplies()
+
 	
 	// 댓글 입력 버튼 처리
 	$('#btn_Create').click(function(){
 		var rtextString = $('#rcontent').val();
+		
 		if(rtextString == ""){
 			alert('댓글 내용을 입력하세요');
 		}else{
@@ -675,14 +679,14 @@ $(document).ready(function(){
 			<%-- 수정 --%>
 			$.ajax({
 				type: 'post',
-				url: '/project03/tour/detail/reply',
+				url: '/project03/review/detail/reply',
 				headers:{
 					'Content-Type':'application/json',
 					'X-HTTP-Method-Override':'POST'
 				},
 				data: JSON.stringify({
 					parentrno: null,
-					trip_no: trip_no,
+					review_no: review_no,
 					mno: mnoString,
 					rcontent: rtextString
 				}),
@@ -693,12 +697,10 @@ $(document).ready(function(){
 					getReplyAlldata();
 					$('#rcontent').val('');
 				}
-			});// end ajax
-		}
-		
-	});// end btn_create()
+			}); // end ajax
+		}		
+	}); // end btn_create()
 	
-
 
 	// 댓글 수정 처리 - 수정 눌렀을때 보이기/숨기기/글자바꾸기
 	$('#replies').on('click','.reply_list .btn_update',function(){
@@ -723,20 +725,18 @@ $(document).ready(function(){
 			// 수정하는 textarea 나타내기
 			var targetdiv = targetbody.children().children('.rcon_modify');
 			targetdiv.hide();
-
 		}// end if
-
 	});// end update
 	
-	// 수정 완료하기
 	
+	// 수정 완료하기	
 	$('#replies').on('click','.reply_list .update_commit',function(){
 		var update_rno = $(this).parent().parent().parent().parent().parent().children('.update_rno').val();
 		var update_text = $(this).parent().parent().children().children('.update_textarea').val();
 	
 		$.ajax({
 			type:'put',
-			url:'/project03/tour/detail/reply/'+update_rno,
+			url:'/project03/review/detail/reply/'+update_rno,
 			headers:{
 				'Content-Type':'application/json',
 				'X-Http-Method-Ovveride':'PUT'
@@ -751,9 +751,9 @@ $(document).ready(function(){
 					getReplyAlldata();
 				}
 			}
-		});// end ajax
+		}); // end ajax
 		
-	});// end 수정완료
+	}); // end 수정완료
 
 	
 	// 대댓글 처리 - 답글 눌렀을때 보이기/숨기기/글자바꾸기
@@ -769,6 +769,7 @@ $(document).ready(function(){
 			$(this).text('답글');
 		}
 	});// end 대댓글 처리
+
 	
 	// 대댓글 입력 완료
 	$('#replies').on('click','.reply_insert .re_reply_body .reply_table .reply_commit',function(){
@@ -776,17 +777,17 @@ $(document).ready(function(){
 		var targetparent = targetdiv.children('.parent_rno').val();
 		var replycontent = targetdiv.children('.reply_table').children().children().children().children('.reply_textarea').val();
 		var mnoString = $('#mno').val();
-		
+				
 		$.ajax({
 			type: 'post',
-			url: '/project03/tour/detail/reply',
+			url: '/project03/review/detail/reply',
 			headers:{
 				'Content-Type':'application/json',
 				'X-HTTP-Method-Override':'POST'
 			},
 			data: JSON.stringify({
 				parentrno: targetparent,
-				trip_no: trip_no,
+				review_no: review_no,
 				mno: mnoString,
 				rcontent: replycontent
 			}),
@@ -794,11 +795,9 @@ $(document).ready(function(){
 				if(result == 1){
 					alert('답글 입력 성공');
 					getReplyAlldata();
-				}
-				
+				}				
 			}
-		});// end ajax
-		
+		}); // end ajax		
 	}); // end 대댓글 입력
 
 
@@ -812,7 +811,7 @@ $(document).ready(function(){
 		if(check == true){
 			$.ajax({
 				type:'delete',
-				url:'/project03/tour/detail/reply/'+rno+'/'+parent,
+				url:'/project03/review/detail/reply/'+rno+'/'+parent,
 				headers:{
 					'Content-Type':'application/json',
 					'X-HTTP-Method-Override':'DELETE'
@@ -824,21 +823,22 @@ $(document).ready(function(){
 					}
 				}
 			});
-		}// end if
-	});// end reply delete
-		
-	<%-- 신청부분 --%>
-	// wm_tour_join 리스트
-	var applylist = [];
-	// wm_personal 리스트
-	var personlist = [];
-	// 수락한 인원
-	var joincount=0;
+		} // end if
+	}); // end reply delete
 
-	getAlldata();
 	
-	// DB에서 해당 글번호(trip_no)의 모든 신청자들을 읽어오는 함수 정의
-	function getAlldata(){
+<%-- 신청부분 --%>
+	// wm_tour_join 리스트
+	// var applylist = [];
+	// wm_personal 리스트
+	// var personlist = [];
+	// 수락한 인원
+	// var joincount=0;
+
+//	getAlldata();
+	
+	// DB에서 해당 글번호(review_no)의 모든 신청자들을 읽어오는 함수 정의
+/* 	function getAlldata(){
 		// wm_tour_join 리스트
 		applylist = [];
 		// wm_personal 리스트
@@ -911,10 +911,10 @@ $(document).ready(function(){
 		$('#span_join').html("현재까지 "+joincount+"명 수락완료");
 				
 	}// end getAllApply()
-	
+ */	
 	
 	// 체크박스 전체 선택
-	$('#applicants').on('click','#allCheck',function(){
+/* 	$('#applicants').on('click','#allCheck',function(){
 		var chkObj = document.getElementsByName("rowCheck");
 	      var rowCnt = chkObj.length - 1;
 	      var check = $(this).context.checked;
@@ -937,10 +937,10 @@ $(document).ready(function(){
 	      }
 	 
 	}); // 체크박스 전체선택 끝
-	
+ */	
 	
 	// 체크박스 선택시 색깔바꾸기 
-	$('#applicants').on('click','.apply_td .table_check .check',function(){
+/* 	$('#applicants').on('click','.apply_td .table_check .check',function(){
 		var obj = document.getElementsByName("rowCheck");
 		for(var i=0; i<obj.length; i++){
 			if(obj[i].checked == true){
@@ -952,10 +952,10 @@ $(document).ready(function(){
 			}
 		}
 	});
-		
+ */		
 	
 	// 수락하기
-	$('#apply_ok').on('click',$(this),function(){
+/* 	$('#apply_ok').on('click',$(this),function(){
 		var chkObj = document.getElementsByName("rowCheck");
 		var rowCnt = chkObj.length - 1;
 		var success= false;
@@ -970,18 +970,18 @@ $(document).ready(function(){
 						'Content-Type':'application/json',
 						'X-Http-Method-Ovveride':'PUT'
 					},
-				/* 	data: JSON.stringify({
-						approval: 1,
-						list_no: no
-					}), */
+				// 	data: JSON.stringify({
+				//		approval: 1,
+				//		list_no: no
+				//	}), 
 					success: function(result){
 							if(result == 'success'){
 								
 							}
 					}
-				});// end ajax
+				}); // end ajax
 				success = true;
-			}// end if
+			} // end if
 			if(chkObj[i].checked == false){
 				fail++;
 			}
@@ -996,20 +996,32 @@ $(document).ready(function(){
 		}
 
 	}); // end apply_ok click
+ */
 
-	
 
-
+ 
 // menu에 마우스가 올라갔을때 색 바꾸기
 $('#context_ul').on('mouseover','li',function(){
 	$(this).context.style.backgroundColor='#ffdfaf';
 });
+
 $('#context_ul').on('mouseout','li',function(){
 	$(this).context.style.backgroundColor='#FFFFFF';
 });
 
+
+//다른 곳 클릭시 메뉴 사라지기
+$(document).click(function(e){		
+	if(!$('#replies .reply_list .nickname').has(e.target).length &&
+	   !$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
+	   !$('#content_profile').has(e.target).length){			
+			$('#contextmenu').hide();
+			$('#context_mno').val(null);
+	}
+});
+
 <%-- 수정 applicANTS 삭제 --%>
-// 다른 곳 클릭시 메뉴 사라지기
+/* //다른 곳 클릭시 메뉴 사라지기
 $(document).click(function(e){		
 	if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
 		!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length &&
@@ -1019,11 +1031,17 @@ $(document).click(function(e){
 			$('#contextmenu').hide();
 			$('#context_mno').val(null);
 	} 
-});
+}); */
 
+
+
+
+
+
+ 
 <%-- 필요 없음 --%>
 // 수락에서 - 닉네임 클릭시 메뉴 보이기
-$('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
+/* $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 	// e.pageX
 	// a 태그안의 mno 불러오기
 	var amno = $(this).attr('data-rno');
@@ -1038,43 +1056,46 @@ $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
 	var menubox = $('#contextmenu');
 	menubox.css("left", (atag.left+30) +"px");
 	menubox.css("top", (atag.top+10) +"px");
-	menubox.show();
-			 
+	menubox.show();			 
 });	
-
+ */
+ 
 // 댓글에서 - 닉네임 클릭시 메뉴 보이기
 $('#replies').on('click','.reply_list .btn_nickname',function(){
 	// e.pageX
 	// a 태그안의 mno 불러오기
 	var amno = $(this).attr('data-rno');
 	var alistno = $(this).attr('data-listno');
+	
 	// 메뉴 input에 mno숨겨넣기
 	$('#context_mno').val(amno);
 	$('#context_listno').val(alistno);
 	$('#context_type').val("reply");
 	$('#context_nickname').val($(this).text());
+	
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
 	menubox.css("left", (atag.left+30) +"px");
 	menubox.css("top", (atag.top+10) +"px");
-	menubox.show();
-			 
-});	
+	menubox.show();			 
+});
 
 // 작성자 - 클릭시 메뉴 보이기
 $('#content_profile').on('click',$(this),function(){
 	// e.pageX
 	// a 태그안의 mno 불러오기
-	var amno = ${tourVO.mno};
+	var amno = ${reviewVO.mno};
 	var anick = '${inserterNickname}';
 	
 	var alistno = 0;
+	
 	// 메뉴 input에 mno숨겨넣기
 	$('#context_mno').val(amno);
 	$('#context_listno').val(alistno);
 	$('#context_type').val("inserter");
 	$('#context_nickname').val(anick);
+	
 	// a 태그의 위치
 	var atag = $(this).offset();
 	var menubox = $('#contextmenu');
@@ -1086,7 +1107,7 @@ $('#content_profile').on('click',$(this),function(){
 
 
 <%-- 좋아요 했을때 하는 부분 js --%>
-// 여행 신청하기
+/* // 여행 신청하기
 $('#joinmenu_apply').click(function(){
 	// 승인된 인간만 누를 수 있도록
 	if(sessionaut != 0 ){
@@ -1134,10 +1155,10 @@ $('#joinmenu_apply').click(function(){
 		alert("승인된 회원만 신청이 가능합니다.");
 	}
 });
+ */
 
 
-$('#context_profile').on('click','.btn_context',function(){
-	
+$('#context_profile').on('click','.btn_context',function(){	
 	var alistno = $('#context_listno').val();
 	var atype = $('#context_type').val();
 	var amno = $('#context_mno').val();
@@ -1148,54 +1169,56 @@ $('#context_profile').on('click','.btn_context',function(){
 	
 	var src = '';
 	
-	var url3 = '/project03/tour/detail/apply/profile/'+amno;
+	var url3 = '/project03/review/detail/reply/profile/'+amno;
 	
 	$.ajax({
 		type:'Get',
-		url: '/project03/tour/detail/apply/profile/'+amno,
+		url: '/project03/review/detail/reply/profile/'+amno,
 		headers:{
 			'Content-Type':'application/json',
 			'X-HTTP-Method-Override':'GET'
 			},
 			success: function(result){
 					src = result;
-
-					 $('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');
-
-				
+					
+					$('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');				
 			}
-	});
-		
-		
-	
-	
+	});	
 	
 	if(atype=='reply'){
 		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
-	}else if(atype='contextmenu'){
-		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
-		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
-	}else{
+	} else {
 		$('#profile_nickname').text(anick);
 		$('#profile_introduce').text(intro);
 	}
 	
-	
+/* 	if(atype=='reply'){
+		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
+		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
+	} else if(atype='contextmenu'){
+		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
+		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
+	} else{
+		$('#profile_nickname').text(anick);
+		$('#profile_introduce').text(intro);
+	} */
 
+	
 	$('#overlay, #profilemenu').show();
 
 	$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
 	$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
 	
-	
 });
 
+ 
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
 	var url = '/project03/UserPage/'+amno;
 	location.href  = url;
 });
+
 
 // 프로필 창 닫기
 $('#overlay, #profile_button1').click(function(e){ 
@@ -1210,6 +1233,7 @@ $('#context_board').on('click','.btn_context',function(){
 	location.href  = url;
 });
 
+
 $('#context_msg').on('click','.btn_context',function(){
 	var msg_nickname = $('#context_nickname').val();
 	var amno = $('#context_mno').val();
@@ -1222,14 +1246,13 @@ $('#context_msg').on('click','.btn_context',function(){
 	f.submit();
 });
 
+
 // 날짜 계산
-var date1 = $('#start_date').val();
+/* var date1 = $('#start_date').val();
 var date2 = $('#end_date').val();
 
 var dateArray1 = date1.split(" ");
 var dateArray2 = date2.split(" ");
-
-
 
 var startArray = dateArray1[0].split("-");
 var endArray = dateArray2[0].split("-");
@@ -1238,9 +1261,10 @@ var startObj = new Date(startArray[0], Number(startArray[1])-1, startArray[2]);
 var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
 
 var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
-
+ */
+ 
 // 조건 띄우기
-var con_sex = ${tourVO.condition_sex};
+/* var con_sex = ${tourVO.condition_sex};
 var con_age = ${tourVO.condition_age};
 
 $('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
@@ -1264,32 +1288,32 @@ switch(con_age){
 	case 4: $('#condition_age').html('<img src="../resources/theme/images/freeage.png" class="condition_img"/><div class="condition_text">누구나</div>');
 		break;
 	default: break;
-}// end switch
+}// end switch */
+
+
 
 var mno_nickname = '${inserterNickname}';
 var mno_intro = '${inserterIntro}';
 var mno_img = '${inserterImg}';
-var trip_region='';
+var review_region='';
 
 
 $('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 
-var trip_region_name = '${inserterRegion}';
+var review_region_name = '${inserterRegion}';
 $(function(){
-		var mno_region = trip_region_name.split(",");
+		var mno_region = review_region_name.split(",");
 	for(var i=0; i<mno_region.length; i++){
-		trip_region+='#'+mno_region[i]+" ";
+		review_region+='#'+mno_region[i]+" ";
 	}
 
-	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
+	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/* +dateArray1[0]+" ~ "+dateArray2[0] */);
 });
-
 
 
 
 }); // end document.ready();
 </script>
-
 
 </body>
 </html>

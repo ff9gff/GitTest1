@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewReplyVO;
 
@@ -65,7 +66,13 @@ public class TourReviewReplyDAOImpl implements TourReviewReplyDAO {
 		logger.info("selectPerson() 호출...");
 		
 		return sqlSession.selectList(NAMESPACE+".selectperson", review_no);
-	} // end selectPerson(review_no)	
+	} // end selectPerson(review_no)
+	
+	@Override
+	public ImgVO selectProfile(int mno) {
+
+		return sqlSession.selectOne(NAMESPACE+".selectProfile", mno);
+	} // end selectProfile(mno)
 	
 	
 } // end class TourReviewReplyDAOImpl

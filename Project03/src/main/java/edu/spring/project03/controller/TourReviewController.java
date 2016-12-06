@@ -138,7 +138,7 @@ public class TourReviewController {
 			PersonalVO personalvo = tourReviewService.read_review_personal(reviewvo.getMno());
 			String region = tourReviewService.read_review_region_name(reviewvo.getReview_no());
 
-			model.addAttribute("reviewvo", reviewvo);
+			model.addAttribute("reviewVO", reviewvo);
 
 			if (personalvo != null) {
 				model.addAttribute("inserterNickname", personalvo.getNickname());
