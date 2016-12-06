@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.DetailSearchDTO;
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
@@ -109,12 +110,92 @@ public class TourSearchDAOImpl implements TourSearchDAO {
 		return sqlSession.selectList(NAMESPACE2 + ".select_default_region", null);
 	}
 
-	@Override
-	public List<ImgVO> select_detail_search_image(String region_name, String start_date, int condition_sex,
-			int condition_age) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<DetailSearchResultDTO> select_detail_search_image(String region_name, String start_date, int condition_sex,	int condition_age) {
+		
+		List<DetailSearchResultDTO> list = null;
+		if (!region_name.equals("없음") && start_date.equals("없음") && condition_sex == 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", null, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1000", vo);
+			
+		} else if (!region_name.equals("없음") && !start_date.equals("없음") && condition_sex == 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1100", vo);
+			
+		} else if (!region_name.equals("없음") && !start_date.equals("없음") && condition_sex != 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1110", vo);
+			
+		} else if (!region_name.equals("없음") && !start_date.equals("없음") && condition_sex != 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1111", vo);
+	
+		} else if (!region_name.equals("없음") && !start_date.equals("없음") && condition_sex == 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1101", vo);
+			
+		} else if (!region_name.equals("없음") && start_date.equals("없음") && condition_sex != 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1011", vo);
+			
+		} else if (!region_name.equals("없음") && start_date.equals("없음") && condition_sex != 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1010", vo);
+			
+		} else if (!region_name.equals("없음") && start_date.equals("없음") && condition_sex == 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO("%" + region_name + "%", start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_1001", vo);
+			
+		} else if (region_name.equals("없음") && !start_date.equals("없음") && condition_sex == 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0100", vo);
+			
+		} else if (region_name.equals("없음") && !start_date.equals("없음") && condition_sex == 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0101", vo);
+			
+		} else if (region_name.equals("없음") && !start_date.equals("없음") && condition_sex != 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0110", vo);
+			
+		} else if (region_name.equals("없음") && !start_date.equals("없음") && condition_sex != 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0111", vo);
+			
+		} else if (region_name.equals("없음") && start_date.equals("없음") && condition_sex != 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0011", vo);
+			
+		} else if (region_name.equals("없음") && start_date.equals("없음") && condition_sex != 2 && condition_age == 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0010", vo);
+			
+		} else if (region_name.equals("없음") && start_date.equals("없음") && condition_sex == 2 && condition_age != 4) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, condition_sex, condition_age);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0001", vo);
+			
+		} else if (region_name.equals("없음") && start_date.equals("없음")) {
+			
+			DetailSearchDTO vo = new DetailSearchDTO(null, start_date, 99, 99);
+			list =  sqlSession.selectList(NAMESPACE2 + ".select_detail_search_0000", vo);
+			
+		}
+		
+		return list;
 	}
 
-	
 }

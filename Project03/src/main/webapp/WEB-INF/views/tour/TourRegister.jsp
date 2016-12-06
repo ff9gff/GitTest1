@@ -127,9 +127,101 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
+
+	<div class="content-section" id="services">
+		<div class="container">
+        	<div class="row">
+         
+            <!-- /.heading-section -->
+            <div class="heading-section">
+            	<h2>여행 등록</h2>
+            </div>
  
- 
+				<div class="wrap">
+		
+					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
+			
+						<label for="imageFile">썸네일 이미지</label><br/>       
+					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+					            
+					    <div id="image_preview">
+					    	<img src="#" id="profile-image" style="display: none;" /><br/>
+					    	<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
+					    </div><br/>      
+					
+						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
+						
+						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
+					
+							
+						<div id="region_plus">
+							<table id="regionTable">
+								<tr>
+									<td>
+										<input type="text" name="region_name" placeholder="지역" />
+										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
+									</td>
+								</tr>
+							</table>						
+						</div> <br /> 
 	
+						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
+						~ 
+						<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
+						
+						<div>
+							성별 조건: <br />
+							남자 <input type="radio" name="condition_sex" value="1" /> 
+							여자 <input type="radio" name="condition_sex" value="0" /> 
+							조건없음 <input type="radio" name="condition_sex" value="2" />
+						</div><br />
+					
+						<div>
+							연령 조건: <br />
+							20대 <input type="radio" name="condition_age" value="1" /> 
+							30대 <input type="radio" name="condition_age" value="2" /> 
+							40대 <input type="radio" name="condition_age" value="3" /> 
+							조건없음 <input type="radio" name="condition_age" value="4" />
+						 </div><br />		 
+						 
+						
+						<textarea name="content" id="smarteditor" rows="10"
+							cols="100" style="width: 766px; height: 412px;">	
+						</textarea><br /><br />		
+													
+					</form>	
+ 
+					<input type="button" id="savebutton" value="작성" />
+					<input type="button" id="cancelbutton" value="취소" />
+					<input type="button" id="homebutton" value="홈으로" />
+ 
+				</div>
+ 
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#services -->
+ 
+ 
+	<div id="footer">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8 col-xs-12 text-left">
+					<span>Copyright &copy; 2014 Company Name</span>
+				</div>
+				<!-- /.text-center -->
+				<div class="col-md-4 hidden-xs text-right">
+					<a href="#top" id="go-top">Back to top</a>
+				</div>
+				<!-- /.text-center -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.container -->
+	</div>
+	<!-- /#footer -->
 	
 	<script>
 	
@@ -251,103 +343,6 @@ http://www.templatemo.com/tm-406-flex
 		})
 	</script>
  
- 
- 
- 
-	<div class="content-section" id="services">
-		<div class="container">
-        	<div class="row">
-         
-            <!-- /.heading-section -->
-            <div class="heading-section">
-            	<h2>여행 등록</h2>
-            </div>
- 
-				<div class="wrap">
-		
-					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
-			
-						<label for="imageFile">썸네일 이미지</label><br/>       
-					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
-					            
-					    <div id="image_preview">
-					    	<img src="#" id="profile-image" style="display: none;" /><br/>
-					    	<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
-					    </div><br/>      
-					
-						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
-						
-						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br /> <br /> 
-					
-							
-						<div id="region_plus">
-							<table id="regionTable">
-								<tr>
-									<td>
-										<input type="text" name="region_name" placeholder="지역" />
-										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
-									</td>
-								</tr>
-							</table>						
-						</div> <br /> 
-	
-						<input type="text" id="start_date" name="start_date" placeholder="시작일"> 
-						~ 
-						<input type="text" id="end_date" name="end_date" placeholder="종료일"> <br /> <br />
-						
-						<div>
-							성별 조건: <br />
-							남자 <input type="radio" name="condition_sex" value="1" /> 
-							여자 <input type="radio" name="condition_sex" value="0" /> 
-							조건없음 <input type="radio" name="condition_sex" value="2" />
-						</div><br />
-					
-						<div>
-							연령 조건: <br />
-							20대 <input type="radio" name="condition_age" value="1" /> 
-							30대 <input type="radio" name="condition_age" value="2" /> 
-							40대 <input type="radio" name="condition_age" value="3" /> 
-							조건없음 <input type="radio" name="condition_age" value="4" />
-						 </div><br />		 
-						 
-						
-						<textarea name="content" id="smarteditor" rows="10"
-							cols="100" style="width: 766px; height: 412px;">	
-						</textarea><br /><br />		
-													
-					</form>	
- 
-					<input type="button" id="savebutton" value="작성" />
-					<input type="button" id="cancelbutton" value="취소" />
-					<input type="button" id="homebutton" value="홈으로" />
- 
-				</div>
- 
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /#services -->
- 
- 
-	<div id="footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-xs-12 text-left">
-					<span>Copyright &copy; 2014 Company Name</span>
-				</div>
-				<!-- /.text-center -->
-				<div class="col-md-4 hidden-xs text-right">
-					<a href="#top" id="go-top">Back to top</a>
-				</div>
-				<!-- /.text-center -->
-			</div>
-			<!-- /.row -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /#footer -->
  
  
 	<script src="../resources/theme/js/bootstrap.js"></script>
