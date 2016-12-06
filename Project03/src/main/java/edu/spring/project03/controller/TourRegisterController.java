@@ -124,6 +124,8 @@ public class TourRegisterController {
 		// 썸네일 이미지 주소 생성
 		ImageFile fileInfo = imageService.save(imageFile);
 
+		int content_no = 0;
+
 		logger.info("" + regionvo);
 
 		if (fileInfo != null) {
@@ -143,7 +145,7 @@ public class TourRegisterController {
 				logger.info("여행 등록 성공");
 
 				// 썸네일과 장소를 등록하기 위해 trip_no를 가져오자
-				int content_no = tourRegisterService.readTrip_no(tourregistervo);
+				content_no = tourRegisterService.readTrip_no(tourregistervo);
 				logger.info("insert content_no: " + content_no);
 
 				tourregistervo = tourSelectService.readRegisterData(content_no);
@@ -192,7 +194,8 @@ public class TourRegisterController {
 		} else {
 			logger.info("응 실패^^");
 		}
-		return "tour/TourRegisterConfirm";
+		/* return "tour/TourRegisterConfirm"; */
+		return "redirect:detail?trip_no=" + content_no;
 
 	}
 
@@ -222,7 +225,7 @@ public class TourRegisterController {
 	@RequestMapping(value = "/TourRegisterCheck", method = RequestMethod.POST)
 	public String tourRegisterCheck(TourRegisterVO tourregistervo, RegionVO regionvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
-		
+
 		int content_no = 0;
 
 		ImageFile fileInfo = imageService.save(imageFile);
@@ -278,7 +281,7 @@ public class TourRegisterController {
 		}
 
 		return "redirect:detail?trip_no=" + content_no;
-		/*return "tour/TourRegisterConfirm";*/
+		/* return "tour/TourRegisterConfirm"; */
 	}
 
 	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다(detail)
@@ -384,7 +387,7 @@ public class TourRegisterController {
 
 	// 여행 글에서 수정페이지에서 수정!: 수정 완료하면 redirect
 	@RequestMapping(value = "/TourBoardUpdate", method = RequestMethod.POST)
-	public String UpdateTest2(TourRegisterVO vo1, RegionVO vo2) {
+	public String UpdateTest2(TourRegisterVO vo1, RegionVO vo2, @RequestParam MultipartFile imageFile) {
 
 		if (vo1 != null && vo2 != null) {
 
@@ -397,19 +400,30 @@ public class TourRegisterController {
 
 				if (result2 == 1) {
 					logger.info("장소 수정 성공");
-				}
+					
+					ImageFile fileInfo = imageService.save(imageFile);
 
+					ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+					int result3 = tourRegisterService.updateThumnail(imgvo);
+					
+					if (result3 == 1) {
+						logger.info("썸네일 수정 성공");
+					} else {
+						logger.info("썸네일 수정 실패");
+					}
+				} else {
+					logger.info("장소 수정 실패");
+				}
 			} else {
-				logger.info("썸네일 수정 실패");
+				logger.info("여행 수정 실패");
 			}
 
 		} else { // DB insert 실패
-			logger.info("여행 수정 실패");
+			logger.info("값을 못 받아 왔음");
 		}
 
 		return "redirect:detail?trip_no=" + vo1.getTrip_no();
 	}
-
 
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
