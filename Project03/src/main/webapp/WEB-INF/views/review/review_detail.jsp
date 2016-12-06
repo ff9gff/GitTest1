@@ -464,7 +464,24 @@ width: 95%;
 ${reviewVO.content}
 </div>
 
+<div class="menu" style="text-align: right;">
+	<c:if test="${mno eq reviewVO.mno}">
+		<form action="TourBoardUpdate" method="post" id="frm1" style="display: inline-block;">
+			<input type="hidden" name='trip_no' value='${reviewVO.review_no}'/>
+			<input type="button" id='updateButton' value='수정' />
+		</form>
+	</c:if>
+		
+	<c:if test="${mno eq reviewVO.mno or authority >= 2}" >
+		<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
+			<input type="hidden" name='trip_no' value='${reviewVO.review_no}'/>
+			<input type="button" id='deleteButton' value='삭제' />
+		</form>
+	</c:if>
+</div>
+
 <div class="menu">Comment</div>
+
 <c:if test="${not empty login_id && authority ne 0 }">
 	<div class="reply_panel">
 		<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
@@ -472,11 +489,13 @@ ${reviewVO.content}
 		<button type="button" id="btn_Create">댓글 입력</button>
 	</div>
 </c:if>
+
 <c:if test="${empty login_id }">
 	<div class="reply_panel">
 		<p class="reply_panel_under">로그인 사용자만 사용가능합니다.</p>
 	</div>
 </c:if>
+
 <c:if test="${not empty login_id && authority eq 0 }">
 	<div class="reply_panel">
 		<p class="reply_panel_under">승인된 사용자만 사용가능합니다.</p>
@@ -1060,6 +1079,8 @@ $(document).click(function(e){
 });	
  */
  
+/* script 에서 c:if 사용 가능!! */
+<c:if test="${not empty login_id}">
 // 댓글에서 - 닉네임 클릭시 메뉴 보이기
 $('#replies').on('click','.reply_list .btn_nickname',function(){
 	// e.pageX
@@ -1104,7 +1125,7 @@ $('#content_profile').on('click',$(this),function(){
 	menubox.show();
 			 
 });	
-
+</c:if>
 
 <%-- 좋아요 했을때 하는 부분 js --%>
 /* // 여행 신청하기
