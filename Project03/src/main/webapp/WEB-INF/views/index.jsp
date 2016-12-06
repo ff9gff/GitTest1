@@ -32,8 +32,8 @@
 .portfolio-item:hover{
 	border: 3px solid #ff5028;
 }
-#TourDetail,#TopReview{
-	width: 1330px;
+#TourDetail,#TopReview, #RecentReview{
+	width: 1330px; 	
 }
 
 .portfolio-thumb{

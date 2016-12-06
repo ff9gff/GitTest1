@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
@@ -45,6 +46,47 @@ public class TourReviewServiceImpl implements TourReviewService {
 		return tourReviewDAO.insertRegion(reviewregionvo);
 	} // end createRegion(reviewregionvo)
 	
+	/**
+	 * Update
+	 */
+	@Override
+	public int updateReview(ReviewVO reviewvo) {
+
+		return tourReviewDAO.updateReview(reviewvo);
+	} // end updateReview(reviewvo)
+	
+	@Override
+	public int updateThumnail(ImgVO imgvo) {
+
+		return tourReviewDAO.updateThumnail(imgvo);
+	} // end updateThumnail(imgvo)
+	
+	@Override
+	public int updateRegion(ReviewRegionVO reviewRegionvo) {
+
+		return tourReviewDAO.updateRegion(reviewRegionvo);
+	} // end updateRegion(reviewregionvo)
+	
+	/**
+	 * Delete
+	 */
+	@Override
+	public int deleteReview(int review_no) {
+
+		return tourReviewDAO.deleteReview(review_no);
+	} // end deleteReview(review_no)
+
+	@Override
+	public int deleteThumnail(int review_no) {
+
+		return tourReviewDAO.deleteThumnail(review_no);
+	} // end deleteThumnail(review_no)
+
+	@Override
+	public int deleteRegion(int review_no) {
+
+		return tourReviewDAO.deleteRegion(review_no);
+	} // end deleteRegion(review_no)
 	
 	/**
 	 * Read
@@ -64,10 +106,18 @@ public class TourReviewServiceImpl implements TourReviewService {
 		return tourReviewDAO.selectReviewRegister_data(review_no);
 	} // end readRegisterData(review_no)
 	
+	
 	@Override
 	public ReviewVO read_review_by_no(int review_no) {
 		return tourReviewDAO.select_review_by_no(review_no);
-	} // end read_review_by_no(review_no)
+	} // end read_review_by_no(review_no)	
+	
+	@Override
+	public ImgVO read_review_profile(int mno) {
+		logger.info("read_review_profile() 호출...");
+		
+		return tourReviewDAO.select_review_profile(mno);
+	} // end read_review_profile(mno)
 	
 	@Override
 	public PersonalVO read_review_personal(int mno) {
@@ -77,16 +127,29 @@ public class TourReviewServiceImpl implements TourReviewService {
 	} // end read_review_personal(mno)
 	
 	@Override
-	public ImgVO read_review_profile(int mno) {
-		return tourReviewDAO.select_review_profile(mno);
-	} // end read_review_profile(mno)
-	
-	@Override
 	public String read_review_region_name(int review_no) {
 		logger.info("read_review_region_name() 호출...");
 		
 		return tourReviewDAO.select_review_region_name(review_no);
 	} // end read_review_region_name(review_no)
+	
+	
+	
+	
+	
+	
+	/**
+	 * Read
+	 */
+
+	
+
+	
+
+	
+
+	
+
 
 	
 	// 디폴트 ?개 후기 사진
@@ -145,16 +208,17 @@ public class TourReviewServiceImpl implements TourReviewService {
 		// TODO Auto-generated method stub
 		return tourReviewDAO.select_review_top_region();
 	}
+
+	@Override
+	public List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_review_by_nickname(region_name, nickname);
+	}
+
+
 	
 	
-	/**
-	 * Update
-	 */
-	
-	
-	/**
-	 * Delete
-	 */
+
 	
 	
 	

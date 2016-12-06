@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -14,7 +13,6 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
 		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
-
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
@@ -22,7 +20,6 @@
 		<script src="../resources/theme/js/bootstrap.js"></script>
 		<script src="../resources/theme/js/plugins.js"></script>
 		<script src="../resources/theme/js/main.js"></script>
-
 
 <style>
 .main-header{
@@ -71,10 +68,8 @@
 #replies li{
 	margin-bottom:10px;
 	padding-bottom:5px;
-	border-bottom:1px dotted #999999;
-	
+	border-bottom:1px dotted #999999;	
 }
-
 .reply_body{
 	margin-left:20px;
 }
@@ -85,7 +80,6 @@
 	float: right;
 	margin-right: 20px;
 }
-
 .reply_commit,.update_commit{
 	vertical-align: middle;
 	margin-top: 20px;
@@ -106,8 +100,7 @@
 #btn_Create{
 	width: 90px;
 	height: 50px;
-		font-weight:bold;
-
+	font-weight:bold;
 }
 .applicant_panel,.applicant_button{
 	display: inline-block;
@@ -127,9 +120,8 @@ width: 95%;
 	font-weight:bold;
 	padding:0;
 	margin: 0;
-	 border:0;
+	border:0;
 }
-
 #applicants{
     width:100%;
     margin:0;
@@ -159,7 +151,6 @@ width: 95%;
 	background-color: lightgray;
 	border: 1px solid lightgray;
 }
-
 .table_check{
 	width: 8%;
 }
@@ -174,12 +165,10 @@ width: 95%;
 	height: 100%;
 	background-color: lightgray;
 	padding: 0;
-
 }
 .apply_panel_btns{
 	width: 80px;
 	text-align: center;
-
 }
 .apply_panel{
 	width: 700px;
@@ -207,9 +196,9 @@ width: 95%;
 	background-color: #FFFFFF;
 }
 #context_ul{
-list-style:none;
-padding: 0;
-margin: 0;
+	list-style:none;
+	padding: 0;
+	margin: 0;
 }
 .btn_nickname{
 	color: #000000;
@@ -218,8 +207,8 @@ margin: 0;
 	font-size: 15px;
 }
 .btn_context{
-text-decoration:none;
-color: #000000;
+	text-decoration:none;
+	color: #000000;
 }
 #profilemenu{
 	width: 430px;
@@ -231,13 +220,11 @@ color: #000000;
 	z-index:100; 
 	text-align: center;
 	vertical-align: middle;
-
 }
 #profilemenu table{
 	width: 410px;
 	height: 130px;
-	margin: 10px;
-	
+	margin: 10px;	
 }
 #profile_image{
 	width: 30%;
@@ -246,40 +233,38 @@ color: #000000;
 	padding-left: 0;
 	padding-top: 0;
 	vertical-align: middle;
-
 }
 #profile_button1{
-border:#FFFFFF;
-background-color: #FFFFFF;
-color: #686767;
-font-size: 12px;
+	border:#FFFFFF;
+	background-color: #FFFFFF;
+	color: #686767;
+	font-size: 12px;
 }
 #profile_button2{
-border: #FFFFFF;
-background-color: #FFFFFF;
-color: #686767;
-font-size: 10px;
-font-weight: bold;
-
+	border: #FFFFFF;
+	background-color: #FFFFFF;
+	color: #686767;
+	font-size: 10px;
+	font-weight: bold;
 }
 #profile_nickname{
-text-align: left;
-color: #444343;
-font-weight: 800;
-font-size: 20px;
+	text-align: left;
+	color: #444343;
+	font-weight: 800;
+	font-size: 20px;
 }
 #profile_introduce{
-text-align: left;
-color: #a8a6a6;
-font-size: 12px;
+	text-align: left;
+	color: #a8a6a6;
+	font-size: 12px;
 }
 #overlay{
 	background-color: #000;
- 	bottom: 0; left: 0;
+	right: 0; left: 0;	
+	top: 0; bottom: 0; 
 	opacity: 0.5;
 	filter: alpha(opacity = 50);
 	position: fixed;
-	right: 0; top: 0;
 	z-index: 99; display:none;
 }
 #span_join{
@@ -320,7 +305,6 @@ font-size: 12px;
 	-khtml-border-radius: 70px;
 	-webkit-border-radius: 70px;
 }
-
 #joinmenu{
 	background-color: #FFFFFF;
 	border: 2px dotted lightgray;
@@ -329,17 +313,17 @@ font-size: 12px;
 	text-align: center;
 	vertical-align: middle;
 	display: inline-block;
-	  position: fixed;
-  margin: 0 auto;
-  top: 400px;
-  right: 20px;
+	position: fixed;
+	margin: 0 auto;
+	top: 400px;
+	right: 20px;
 }
 #joinmenu_apply{
 	width: 170px;
 	height: 50px;
 	background-color: #ec523f;
-  color: white;
-  font-weight: 700;
+	color: white;
+	font-weight: 700;
 }
 #joinmenu_count{
 	margin-top: 10px;
@@ -355,27 +339,26 @@ font-size: 12px;
 	text-align: center;
 }
 </style>
+
 </head>
 <body>
 
 <!-- 회원가입/로그인 부분 -->
 	<%@ include file="../top_header.jspf"  %>
 
-
 <div id="overlay"></div>
 
 <div id="contextmenu" hidden>
 	<input hidden type="number" name="mno" id="context_mno"/>
 	<input hidden type="text" name="context_nickname" id="context_nickname"/>
-	<!-- <input hidden type="number" name="listno" id="context_listno"/> -->
-	<!-- <input hidden type="text" id="context_type"/> -->
+<!-- <input hidden type="number" name="listno" id="context_listno"/> -->
+<!-- <input hidden type="text" id="context_type"/> -->
 	<ul id="context_ul">
 		<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
 		<li id="context_board"><a href="#this" class="btn_context">게시글보기</a></li>
 		<li id="context_msg"><a href="#this" class="btn_context">쪽지보내기</a></li>
 	</ul>
 </div>
-
 
 <div id="profilemenu" hidden>
 	<input hidden type="number" name="mno" id="profile_mno"/>
@@ -390,40 +373,32 @@ font-size: 12px;
 	</table>
 </div>
 
-
-<!-- 회원가입/로그인 부분 -->
-
-	<!-- 헤더 메인부분 -->
-	<div class="main-header">
-		<div class="container">
-			<div id="menu-wrapper">
-				<div class="row">
-					<div class="logo-wrapper col-md-2 col-sm-2">
-						<h1>
-							<a href="#">hello </a>
-						</h1>
-					</div>
-					<!-- /.logo-wrapper -->
-					<div class="col-md-10 col-sm-10 main-menu text-right">
-						<div class="toggle-menu visible-sm visible-xs">
-							<i class="fa fa-bars"></i>
-						</div>
-
-						<ul class="menu-first">
-							<li><a href="../index">메인</a></li>
-							<li><a href="../admin">관리자</a></li>
-							<li><a href="../login">로그인</a></li>
-						</ul>
-					</div>
-					<!-- /.main-menu -->
+<!-- 헤더 메인부분 -->
+<div class="main-header">
+	<div class="container">
+		<div id="menu-wrapper">
+			<div class="row">
+				<div class="logo-wrapper col-md-2 col-sm-2">
+					<h1><a href="#">hello</a></h1>
 				</div>
-				<!-- /.row -->
+				
+				<div class="col-md-10 col-sm-10 main-menu text-right">
+					<div class="toggle-menu visible-sm visible-xs">
+						<i class="fa fa-bars"></i>
+					</div>
+				
+					<ul class="menu-first">
+						<li><a href="../index">메인</a></li>
+						<li><a href="../admin">관리자</a></li>
+						<li><a href="../login">로그인</a></li>
+					</ul>
+				</div>
 			</div>
-			<!-- /#menu-wrapper -->
 		</div>
-		<!-- /.container -->
 	</div>
-	<!-- /.main-header -->
+</div>
+
+
 <div style="height: 150px;"></div>
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
@@ -511,8 +486,9 @@ ${tourVO.content}
 <%-- 댓글 부분 script --%>
 <script>
 $(document).ready(function(){
-	var trip_no = ${tourVO.trip_no};<!-- 수정 -->
+	var trip_no = ${tourVO.trip_no}; // 수정 
 
+		
 		var sessionmno = '<%=(String)session.getAttribute("mno")%>';
 		var sessionaut= '<%=(String)session.getAttribute("authority")%>';
 		var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';

@@ -8,9 +8,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.spring.project03.controller.TourRegisterController;
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchDTO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
@@ -21,6 +22,8 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	private static final Logger logger = LoggerFactory.getLogger(TourReviewDAOImpl.class);
 
 	private static final String NAMESPACE = "edu.spring.Project03.TourReviewMapper";
+
+	private static final String NAMESPACE2 = "edu.spring.Project03.TourReviewSearchMapper";
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -35,33 +38,82 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	} // end insertReview(reviewvo)
 
 	@Override
-	public int insertRegion(ReviewRegionVO reviewRegionvo) {
-
-		return sqlSession.insert(NAMESPACE + ".insert-region", reviewRegionvo);
-	} // end insertRegion(reviewRegionvo)
-
-	@Override
 	public int insertThumnail(ImgVO imgvo) {
 
 		return sqlSession.insert(NAMESPACE + ".insert-thumnail", imgvo);
 	} // end insertThumnail(vo)
 
+	@Override
+	public int insertRegion(ReviewRegionVO reviewRegionvo) {
+
+		return sqlSession.insert(NAMESPACE + ".insert-region", reviewRegionvo);
+	} // end insertRegion(reviewRegionvo)
+
+	
+	/**
+	 * update
+	 */
+	@Override
+	public int updateReview(ReviewVO reviewvo) {
+
+		return sqlSession.update(NAMESPACE + ".update-register", reviewvo);
+	} // end updateReview(reviewvo)
+
+	@Override
+	public int updateThumnail(ImgVO imgvo) {
+		
+		return sqlSession.update(NAMESPACE + ".update-thumnail", imgvo);
+	} // end updateThumnail(imgvo)
+
+	@Override
+	public int updateRegion(ReviewRegionVO reviewRegionvo) {
+
+		return sqlSession.update(NAMESPACE + ".update-region", reviewRegionvo);
+	} // end updateRegion(reviewRegionvo)
+	
+	
+	/**
+	 * delete
+	 */
+	@Override
+	public int deleteReview(int review_no) {
+
+		return sqlSession.delete(NAMESPACE + ".delete-register", review_no);
+	} // end deleteReview(review_no)
+
+	@Override
+	public int deleteThumnail(int review_no) {
+
+		return sqlSession.delete(NAMESPACE + ".delete-thumnail", review_no);
+	} // end deleteThumnail(review_no)
+	
+	@Override
+	public int deleteRegion(int review_no) {
+
+		return sqlSession.delete(NAMESPACE + ".delete-region", review_no);
+	} // end deleteRegion(review_no)
+	
+	
+	
 	/**
 	 * select
-	 */
+	 */	
 	@Override
 	public int selectReview_no(ReviewVO reviewvo) {
 
 		return sqlSession.selectOne(NAMESPACE + ".select-review_no", reviewvo);
 	} // end selectReview_no(reviewvo)
-
+	
 	@Override
 	public ReviewVO selectReviewRegister_data(int review_no) {
+		
+		logger.info("review_no : " + review_no);
 
-		System.out.println("리뷰 번호: " + review_no);
 		return sqlSession.selectOne(NAMESPACE + ".select_review-register_data", review_no);
 	} // end selectRegister_data(review_no)
-
+	
+	
+	
 	@Override
 	public ReviewVO select_review_by_no(int review_no) {
 
@@ -69,30 +121,36 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 		return reviewvo;
 	} // end select_review_by_no(review_no)
-
+	
+	@Override
+	public ImgVO select_review_profile(int mno) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
+	} // end select_review_profile(mno)
+	
 	@Override
 	public PersonalVO select_review_personal(int mno) {
 
 		return sqlSession.selectOne(NAMESPACE + ".select_review_personal", mno);
 	} // end select_review_personal(mno)
-
-	@Override
-	public ImgVO select_review_profile(int mno) {
-		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
-	} // end select_review_profile(mno)
-
+	
 	@Override
 	public String select_review_region_name(int review_no) {
+		
 		return sqlSession.selectOne(NAMESPACE + ".select_review_region_name", review_no);
 	} // end select_review_region_name(review_no)
 
-	/**
-	 * update
-	 */
+	
+	
+	
+	
+	
 
-	/**
-	 * delete
-	 */
+
+
+
+
+
 
 	/**
 	 * BestVO
@@ -173,6 +231,39 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		// TODO Auto-generated method stub
 		region_name = "%" + region_name + "%";
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
+	}
+
+
+	@Override
+	public List<NickReviewSearchResultDTO> select_review_by_nickname(String region_name, String nickname) {
+		
+		List<NickReviewSearchResultDTO> list = null;
+		
+		if (!region_name.equals("없음") && !nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO("%" + region_name + "%", nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_11", vo);
+			
+		} else if (!region_name.equals("없음") && nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO("%" + region_name + "%", nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_10", vo);
+			
+		} else if (region_name.equals("없음") && !nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO(region_name, nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_01", vo);
+			
+		} else if (region_name.equals("없음") && nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO(region_name, nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_00", vo);
+			
+		}
+		
+		
+		return list;
+		
 	}
 
 } // end class TourReviewDAOImpl
