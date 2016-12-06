@@ -4,6 +4,7 @@ import java.util.List;
 
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.ReviewRegionVO;
@@ -55,6 +56,9 @@ public interface TourReviewDAO {
 	public abstract List<ReviewVO> select_review_region_title(String region_name);
 	// 3. 지역 뿌리기
 	public abstract List<ReviewRegionVO> select_review_region_region(String region_name);
+	
+	// 후기 게시판 - 닉네임 검색
+	public abstract List<NickReviewSearchResultDTO> select_review_by_nickname(String nickname);
 	
 	
 	/**

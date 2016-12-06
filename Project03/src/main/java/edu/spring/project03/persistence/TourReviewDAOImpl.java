@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import edu.spring.project03.controller.TourRegisterController;
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
@@ -21,6 +22,8 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	private static final Logger logger = LoggerFactory.getLogger(TourReviewDAOImpl.class);
 
 	private static final String NAMESPACE = "edu.spring.Project03.TourReviewMapper";
+	
+	private static final String NAMESPACE2 = "edu.spring.Project03.TourReviewSearchMapper";
 
 	@Autowired
 	private SqlSession sqlSession;
@@ -173,6 +176,12 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		// TODO Auto-generated method stub
 		region_name = "%" + region_name + "%";
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
+	}
+
+	@Override
+	public List<NickReviewSearchResultDTO> select_review_by_nickname(String nickname) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 } // end class TourReviewDAOImpl

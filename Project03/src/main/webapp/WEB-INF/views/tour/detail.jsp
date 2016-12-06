@@ -246,7 +246,6 @@ color: #000000;
 	padding-left: 0;
 	padding-top: 0;
 	vertical-align: middle;
-
 }
 #profile_button1{
 border:#FFFFFF;
@@ -478,10 +477,18 @@ font-size: 12px;
 ${tourVO.content}
 </div>
 
-
-
+<c:if test="${mno eq tourVO.mno}">
+	<div class="menu">
+		<form action="TourBoardUpdate" method="post" id="frm">
+			<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
+			<input type="button" id='updateButton' value='수정'/>
+			<input type="button" id='deleteButton' value='삭제'/>
+		</form>
+	</div>
+</c:if>
 
 <div class="menu">Comment</div>
+
 <c:if test="${not empty login_id && authority ne 0 }">
 	<div class="reply_panel">
 		<input type="text" name="rcontent" id="rcontent" placeholder="댓글을 입력하세요" required/>
@@ -512,16 +519,16 @@ ${tourVO.content}
 $(document).ready(function(){
 	var trip_no = ${tourVO.trip_no};
 
-		var sessionmno = '<%=(String)session.getAttribute("mno")%>';
-		var sessionaut= '<%=(String)session.getAttribute("authority")%>';
-		var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
+	var sessionmno = '<%=(String)session.getAttribute("mno")%>';
+	var sessionaut= '<%=(String)session.getAttribute("authority")%>';
+	var sessionnick='<%=(String)session.getAttribute("login_nickname")%>';
 	
 	
 	// wm_tour_reply 리스트
 	replylist=[];
 	// wm_personal 리스트
 	reply_personlist=[];
-	 getReplyAlldata();
+	getReplyAlldata();
 	
 	// 댓글 리스트+개인정보 리스트 합체
 	function getReplyAlldata(){
@@ -1305,7 +1312,15 @@ $(function(){
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+trip_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+dateArray1[0]+" ~ "+dateArray2[0]);
 });
 
+$('#updateButton').click(function() {
+	alert("여행 정보 수정하러 갑니다");
+	$('#frm').submit();
+});
 
+$('#deleteButton').click(function() {
+	alert("여행 정보 삭제하러 갑니다");
+	$('#frm').submit();
+});
 
 
 }); // end document.ready();

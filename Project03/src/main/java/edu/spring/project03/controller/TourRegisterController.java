@@ -59,14 +59,13 @@ public class TourRegisterController {
 	@Autowired
 	private TourRegisterService tourRegisterService;
 
-	// 메인에서 지역/기간 검색 후 뜨는 사진을 클릭했을 때 
+	// 메인에서 지역/기간 검색 후 뜨는 사진을 클릭했을 때
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
 	public String tourRegister3(int trip_no, Model model) {
 		logger.info("FTourRegister.jsp 소환");
 		logger.info("trip_no: " + trip_no);
 
 		TourRegisterVO tourVO = tourSelectService.read_trip_by_no(trip_no);
-		
 
 		if (tourVO != null) {
 			logger.info("mno: " + tourVO.getMno());
@@ -75,40 +74,39 @@ public class TourRegisterController {
 			PersonalVO person = tourSelectService.read_trip_person(tourVO.getMno());
 			String region = tourSelectService.read_trip_region_name(tourVO.getTrip_no());
 			model.addAttribute("tourVO", tourVO);
-			if(person != null){
-			model.addAttribute("inserterNickname", person.getNickname());
-			model.addAttribute("inserterIntro", person.getIntroduce());
+			if (person != null) {
+				model.addAttribute("inserterNickname", person.getNickname());
+				model.addAttribute("inserterIntro", person.getIntroduce());
 			}
-			if(img != null){
-			model.addAttribute("inserterImg", img.getImg_url());
+			if (img != null) {
+				model.addAttribute("inserterImg", img.getImg_url());
 			}
-			if(region != null){
-			model.addAttribute("inserterRegion", region);
+			if (region != null) {
+				model.addAttribute("inserterRegion", region);
 			}
 		}
 
 		return "tour/detail";
 
 	}
-	
+
 	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
 	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, String msg_address, Model model) {
-		System.out.println("setter: "+msg_setter);
-		System.out.println("getter: "+msg_getter);
-		System.out.println("msg_getnick: "+msg_getnick);
-		
+		System.out.println("setter: " + msg_setter);
+		System.out.println("getter: " + msg_getter);
+		System.out.println("msg_getnick: " + msg_getnick);
+
 		model.addAttribute("msg_setter", msg_setter);
 		model.addAttribute("msg_getter", msg_getter);
 		model.addAttribute("msg_getnick", msg_getnick);
 		model.addAttribute("msg_address", msg_address);
-		
+
 		return "toggle_msg";
 	}
-	
+
 	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
 	public String toggleMsg() {
-	
-		
+
 		return "toggle_msg";
 	}
 
@@ -123,11 +121,10 @@ public class TourRegisterController {
 	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
-		
 		// 썸네일 이미지 주소 생성
 		ImageFile fileInfo = imageService.save(imageFile);
-		
-		logger.info(""+regionvo);
+
+		logger.info("" + regionvo);
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
@@ -154,38 +151,36 @@ public class TourRegisterController {
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);
 				modelMap.put("imageFile", fileInfo);
-				
+
 				if (fileInfo.getFileName().length() < 40) {
-					
+
 					ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + "default-profile.jpg");
 					int result2 = tourRegisterService.createThumnail(imagevo);
 					if (result2 == 1) {
-						logger.info("기본 썸네일 등록 성공");		
+						logger.info("기본 썸네일 등록 성공");
 					} else {
-						logger.info("기본 썸네일 등록 실패");		
+						logger.info("기본 썸네일 등록 실패");
 					}
-					
+
 				} else {
 
 					ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 					int result2 = tourRegisterService.createThumnail(imagevo);
-	
+
 					if (result2 == 1) {
-						logger.info("직접 썸네일 등록 성공");			
-						
-						
-						
+						logger.info("직접 썸네일 등록 성공");
+
 						model.addAttribute("vo3", imagevo);
-						logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
-	
+						logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());
+
 						String region_name = regionvo.getRegion_name();
 						RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
 						int result3 = tourRegisterService.createRegion(regionvo2);
-	
+
 						if (result3 == 1) {
 							logger.info("장소 등록 성공");
 						}
-	
+
 					} else {
 						logger.info("직접 썸네일 등록 실패");
 					}
@@ -231,8 +226,6 @@ public class TourRegisterController {
 		ImageFile fileInfo = imageService.save(imageFile);
 
 		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-		
-		
 
 		if (tourregistervo != null && regionvo != null) {
 
@@ -295,17 +288,16 @@ public class TourRegisterController {
 		if (result == 1) {
 			logger.info("여행 삭제 성공");
 			int result2 = tourRegisterService.deleteThumnail(trip_no);
-			
+
 			if (result2 == 1) {
 				logger.info("썸네일 삭제 성공");
 				int result3 = tourRegisterService.deleteRegion(trip_no);
-				
+
 				if (result3 == 1) {
 					logger.info("장소 삭제 성공");
 				}
 			}
-			
-			
+
 		} else {
 			logger.info("여행 삭제 실패");
 		}
@@ -321,23 +313,47 @@ public class TourRegisterController {
 		if (result == 1) {
 			logger.info("여행 삭제 성공");
 			int result2 = tourRegisterService.deleteThumnail(trip_no);
-			
+
 			if (result2 == 1) {
 				logger.info("썸네일 삭제 성공");
 				int result3 = tourRegisterService.deleteRegion(trip_no);
-				
+
 				if (result3 == 1) {
 					logger.info("장소 삭제 성공");
 				}
 			}
-			
-			
+
 		} else {
 			logger.info("여행 삭제 실패");
 		}
 	}
 
-	
+	// 여행 글에서  수정페이지에서 삭제하려고 할 때 : 삭제 후 TourRegister로 돌아간다
+	@RequestMapping(value = "/TourBoardUpdate", method = RequestMethod.POST)
+	public String ajaxDeleteTest2444(int trip_no) {
+		logger.info("여행 번호: " + trip_no);
+
+		/*int result = tourRegisterService.delete(trip_no);
+
+		if (result == 1) {
+			logger.info("여행 삭제 성공");
+			int result2 = tourRegisterService.deleteThumnail(trip_no);
+
+			if (result2 == 1) {
+				logger.info("썸네일 삭제 성공");
+				int result3 = tourRegisterService.deleteRegion(trip_no);
+
+				if (result3 == 1) {
+					logger.info("장소 삭제 성공");
+				}
+			}
+
+		} else {
+			logger.info("여행 삭제 실패");
+		}*/
+		return "tour/TourBoard";
+	}
+
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {
 		return "tour/TourRegister";
@@ -359,7 +375,7 @@ public class TourRegisterController {
 		logger.info("여행선택 전체게시판");
 		return "tour/TourBoard";
 	}
-	
+
 	// 여행 등록 후 여행 게시판으로 갈때
 	@RequestMapping(value = "/TourBoard", method = RequestMethod.GET)
 	public String insertAftertourBoard() {

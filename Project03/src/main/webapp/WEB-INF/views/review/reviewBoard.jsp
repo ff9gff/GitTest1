@@ -119,16 +119,16 @@ http://www.templatemo.com/tm-406-flex
 				
 				<br /><br />
 
+				<div class="row" id="reviewDetail">
+				</div>
+				
 				<div>
 					<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-					<button type="button" id="region_search">장소 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+					<button type="button" id="region_search">장소 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="text" id="nick_name" name="nick_name" placeholder="닉네임">
+					<button type="button" id="nickname_search">닉네임 검색</button>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button id="btn_create_review" style="float: right; margin-right: 13px">후기 등록</button>
-
-				</div>
-				<br /><br />
-				<br /><br />
-				<div class="row" id="reviewDetail">
 				</div>
 				<!-- /.row -->
 			</div>
@@ -286,6 +286,25 @@ http://www.templatemo.com/tm-406-flex
 	
 		};//end of getThumnails()
 		
+		// 닉네임 검색: 닉네임 검색 후 리뷰 썸네일들을 읽어오는 함수 정의 
+		function getThumnails_By_Nickname_REVIEW() {
+			
+			// wm_image 리스트
+			NicknameReview = [];
+			// wm_review 리스트(제목)
+		
+			// ReviewSearchController의 review/defaultimage 메소드 실행
+			var url1 = '/project03/review/nickname/' + $('#nick_name').val();
+			$.getJSON(url1, function(data1) {
+				$(data1).each(function() {
+					// 데이터들을 배열에 저장
+					NicknameReview.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+				});
+				getAllThumnail_Nickname_REVIEW()
+			});// end getJSON()
+	
+		};//end of getThumnails()
+		
 		
 		function getAllThumnail_REVIEW() {
 			
@@ -294,11 +313,34 @@ http://www.templatemo.com/tm-406-flex
 			for(var i = 0; i<ReviewImage.length; i++){
 
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+					+ '<div class="portfolio-thumb">'
+					+ '<figure>'
+					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
+					+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
+					+ '<div>' + ReviewImage[i].city + '</div>'	
+					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+					+ '</figure>'
+					+ '</div>'
+					+ '</div>';
+			}
+
+			$('#reviewDetail').html(list);
+
+			//end of getThumnails()
+		};
+		
+		function getAllThumnail_Nickname_REVIEW() {
+			
+			var list = '';
+			
+			for(var i = 0; i<NicknameReview.length; i++){
+
+				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
-						+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
-						+ '<div>' + ReviewImage[i].city + '</div>'	
+						+ '<a href="../review/review_detail?review_no=' + NicknameReview[i].content_no + '"><img src="../' + NicknameReview[i].img_url + '" width="300" height="240"><br/>'
+						+ '<div>제목: ' + NicknameReview[i].tour + '</div>'
+						+ '<div>' + NicknameReview[i].city + '</div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+ '</figure>'
 						+ '</div>'
@@ -306,9 +348,7 @@ http://www.templatemo.com/tm-406-flex
 			}
 
 			$('#reviewDetail').html(list);
-
-			//end of getThumnails()
-		};
+		}
 		
 		
 		// 지역 검색 버튼 처리
@@ -323,6 +363,18 @@ http://www.templatemo.com/tm-406-flex
 				getThumnails_By_Region_REVIEW();
 			}
 
+		});
+		
+		$('#nickname_search').click(function() {
+			var nick_name = $('#nick_name').val();
+
+			if (nick_name == "") {
+				alert('검색할 닉네임을 입력하세요');
+			} else {
+				alert('닉네임 검색 메소드 호출 ');
+				getThumnails_By_Nickname_REVIEW();
+			}
+			
 		});
 		
 		$('#btn_create_review').click(function() {

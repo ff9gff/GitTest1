@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.ReviewRegionVO;
 import edu.spring.project03.domain.ReviewVO;
 import edu.spring.project03.service.TourReviewService;
@@ -248,6 +249,18 @@ public class TourReviewSearchController {
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// 후기 게시판 - 지역검색 - 지역 가져오기
+	@RequestMapping(value = "/review/nickname/{nickname}", method = RequestMethod.GET)
+	public ResponseEntity<List<NickReviewSearchResultDTO>> ajaxReviewNicknameTest(@PathVariable("nickname") String nickname) {
+
+		ResponseEntity<List<NickReviewSearchResultDTO>> entity = null;
+		
+		List<NickReviewSearchResultDTO> list = tourReviewService.read_review_by_nickname(nickname);
+
+		
+		return entity;
+	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
 
