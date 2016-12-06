@@ -348,6 +348,8 @@ $(document).ready(function() {
          if($('#imageFile').val() == null || $('#imageFile').val() == ""){
         	 alert('프로필 이미지가 등록되지 않았습니다.');
         	 $('#imageFile').val("value=<img src='../resources/theme/images/default-profile.jpg' width='100' height='100'>");
+         } else {
+        	 alert($('#imageFile').val());
          }
          
          $("#register_form").submit();         

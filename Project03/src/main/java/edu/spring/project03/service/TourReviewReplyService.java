@@ -1,5 +1,23 @@
 package edu.spring.project03.service;
 
-public interface TourReviewReplyService {
+import java.util.List;
 
+import edu.spring.project03.domain.PersonalVO;
+import edu.spring.project03.domain.ReviewReplyVO;
+
+public interface TourReviewReplyService {
+	
+	public abstract int create(ReviewReplyVO reviewreplyvo);
+	
+	public abstract List<ReviewReplyVO> read(int review_no);
+	
+	public abstract List<PersonalVO> readPerson(int review_no);
+	
+	public abstract int update(ReviewReplyVO reviewreplyvo);
+	
+	public abstract int delete(int rno);
+	
+	public abstract int allDelete(int parentrno);
+	
+		
 } // end interface TourReviewReplyService
