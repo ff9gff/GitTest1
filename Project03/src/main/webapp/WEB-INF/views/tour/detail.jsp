@@ -1321,12 +1321,12 @@ $(function(){
 
 $('#updateButton').click(function() {
 	alert("여행 정보 수정하러 갑니다");
-	$('#frm').submit();
+	$('#frm1').submit();
 });
 
 $('#deleteButton').click(function() {
 	alert("여행 정보 삭제하러 갑니다");
-	$('#frm').submit();
+	$('#frm2').submit();
 });
 
 

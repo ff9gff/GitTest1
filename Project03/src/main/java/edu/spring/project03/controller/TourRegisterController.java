@@ -328,12 +328,12 @@ public class TourRegisterController {
 		}
 	}
 
-	// 여행 글에서  수정페이지에서 삭제하려고 할 때 : 삭제 후 TourRegister로 돌아간다
-	@RequestMapping(value = "/TourBoardUpdate", method = RequestMethod.POST)
+	// 여행 글에서 수정페이지에서 삭제하려고 할 때 : 삭제 후 TourRegister로 돌아간다
+	@RequestMapping(value = "/TourBoardDelete", method = RequestMethod.POST)
 	public String ajaxDeleteTest2444(int trip_no) {
 		logger.info("여행 번호: " + trip_no);
 
-		/*int result = tourRegisterService.delete(trip_no);
+		int result = tourRegisterService.delete(trip_no);
 
 		if (result == 1) {
 			logger.info("여행 삭제 성공");
@@ -350,8 +350,24 @@ public class TourRegisterController {
 
 		} else {
 			logger.info("여행 삭제 실패");
-		}*/
+		}
 		return "tour/TourBoard";
+	}
+
+	// 여행 글에서 수정페이지에서 수정하려고 할 때 : 수정 페이지로 먼저 보낸다
+	@RequestMapping(value = "/TourBoardUpdate", method = RequestMethod.POST)
+	public String UpdateTest(int trip_no) {
+		logger.info("여행 번호: " + trip_no);
+
+		return "goUpdate";
+	}
+
+	// 여행 글에서 수정페이지에서 수정하려고 할 때 : 수정 페이지로 먼저 보낸다
+	@RequestMapping(value = "/goUpdate", method = RequestMethod.POST)
+	public String Update2Test(int trip_no) {
+		logger.info("여행 번호: " + trip_no);
+
+		return "redirect:detail?trip_no=" + trip_no;
 	}
 
 	@RequestMapping("/cancelTourRegister")
