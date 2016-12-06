@@ -14,9 +14,11 @@ body {
 }
 
 
-#top {
-	background-color: #33cc33;
-	color: white;
+#top1 {
+	
+		background-image: url("../resources/theme/images/slide1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
 	padding: 15px;
 }
 

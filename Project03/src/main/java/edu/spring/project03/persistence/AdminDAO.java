@@ -2,6 +2,7 @@ package edu.spring.project03.persistence;
 
 import java.util.List;
 
+import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 
@@ -49,4 +50,9 @@ public interface AdminDAO {
 	
 	//admin의 말씀이니라 
 	public abstract List<String> adminMSGAll();
+	
+	//admin to admin 
+	public abstract List<AdminMsgDTO> adminMSGALL2();
+	
+
 }

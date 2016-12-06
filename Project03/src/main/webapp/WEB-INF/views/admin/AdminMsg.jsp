@@ -184,13 +184,6 @@ input:focus, textarea:focus {
 
 
 <body>
-<!-- HTML5부터 문서의 구조에 의미를 두기 위해 생긴 semantic 태그 -div일정부분 대체
-1. <header>: 문서의 머리글의미 
-2. <nav> :문서의 내비게이션 메뉴
-3. <aside>: 문서의 사이드 메뉴 
-4. <section> 실제 본문에 해당 하는 주된 컨텐츠
-5. <article> 본문에 포함되는 기사(컨텐트)
-6. <footer> :문서의 꼬리글 그냥 권장 사항임 안써도 됨  -->
 
 
 	<header id="top">
@@ -207,10 +200,8 @@ input:focus, textarea:focus {
 	<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
-				</li>
-
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+		
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">공지사항</a>
 				</li>
 
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>

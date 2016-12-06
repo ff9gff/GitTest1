@@ -13,12 +13,13 @@
 
 <style type="text/css">
 
-#menuBar{
 
- margin-top:30px;
-
+#top{
+		background-image: url("../resources/theme/images/slide1.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding: 15px;
 }
-
 
 
 #form-main{
@@ -54,8 +55,9 @@
 
 <body>
 	<header id="top">
-		<div>&nbsp;</div>
+			<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
+		<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
 		</header>
 
@@ -69,6 +71,8 @@
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
 
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+				</li>
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
@@ -94,46 +98,43 @@
 	
 	-->
 	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2">
-	<a href="javascript:OpenPop('', '', '', '');">누르세요!</a>
+	<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
 	</form>
 	<table id="msgAdminMSG" border="1px">
 		<caption>관리자 지난 공지함 </caption>
 		<colgroup>
-		<col width="40px">
+		<col width="20px">
 		<col width="40px">
 		<col width="500px">
 
 		</colgroup>
 
 	<tr>
-		<th>번호</th>
+		<th><input type="checkbox" name="rowCheck"></th>
 		<th>번호</th>
 		<th>공지사항</th>
 	</tr>
 	
 
-	<c:forEach var ="vo" items="${msgContext }">
-		<tr>
-			<td><input type="checkbox"></td>
-			<td>${x=x+1 }</td>
-			<td>${vo }</td>
-		</tr>
-	
-	
-	
-	
-	
+
+	<c:forEach var="bo" items="${msgList }">
+	<tr>
+			<td><input type="checkbox" name="rowCheck" value="${bo.msg_no }"></td>
+			<td>${x= x+1}</td>
+			<td>${bo.msg_content }</td>
+	</tr>
 	</c:forEach>
-
-
-
 
 
 
 </table>
 	
+<form id="formAllmin">
+	<input type="button" id="deleteMSGbtn" value="삭제"> 
 
-		
+</form>
+
+	
 		</section>
 
 
@@ -167,7 +168,7 @@
 		        if (seconds < 10){
 		            seconds = "0" + seconds;
 		        }
-		document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
+				document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
 		    };
 		
 		
@@ -176,28 +177,135 @@
 		    function OpenPop(url,name,width,height)
 		    {
 		   		
-		    	alert('hi');
+		    	
 		        window.open("", "pop", "width=800, height=800"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
-		       // document.form1.action = "MiniSendToAllMyUser"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.
 		        document.form2.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
 		        document.form2.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
 		        document.form2.submit(); // target에 쏜다.
 		        
-		        // f.target="pop";
-		       // f.submit();
-		        
-		        //document.form1.action = "MiniSendToAllMyUser"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.
-		        //document.form1.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
-		        //document.form1.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
-		       // document.form1.submit(); // target에 쏜다.
 		         
 		        
-		    }
+		    };
+		    
+		    
+		    
+		    
+		    
+		    var tbl = $("#msgAdminMSG");
+		
+	        // 테이블 헤더에 있는 checkbox 클릭시
+	        $(":checkbox:first", tbl).click(function(){
+	            // 클릭한 체크박스가 체크상태인지 체크해제상태인지 판단
+	            if( $(this).is(":checked") ){
+	                $(":checkbox", tbl).attr("checked", "checked");
+	            }
+	            else{
+	                $(":checkbox", tbl).removeAttr("checked");
+	            }
+
+	            // 모든 체크박스에 change 이벤트 발생시키기                
+	            $(":checkbox", tbl).trigger("change");
+	        });
+	         
+	        // 헤더에 있는 체크박스외 다른 체크박스 클릭시
+	        $(":checkbox:not(:first)", tbl).click(function(){
+	            var allCnt = $(":checkbox:not(:first)", tbl).length;
+	            var checkedCnt = $(":checkbox:not(:first)", tbl).filter(":checked").length;
+	             
+	            // 전체 체크박스 갯수와 현재 체크된 체크박스 갯수를 비교해서 헤더에 있는 체크박스 체크할지 말지 판단
+	            if( allCnt==checkedCnt ){
+	                $(":checkbox:first", tbl).attr("checked", "checked");
+	            }
+	            else{
+	                $(":checkbox:first", tbl).removeAttr("checked");
+	            }
+	        }).change(function(){
+	            if( $(this).is(":checked") ){
+	                // 체크박스의 부모 > 부모 니까 tr 이 되고 tr 에 selected 라는 class 를 추가한다.
+	                $(this).parent().parent().addClass("selected");
+	            }
+	            else{
+	                $(this).parent().parent().removeClass("selected");
+	            }
+	        });
+				
+			
+	        
+	        
+
+		/////////////////////////////ajax 
+		 $('#deleteMSGbtn').click(function(){
+
+	var oTbl = document.getElementById("msgAdminMSG");
+	var chkObj = document.getElementsByName("rowCheck");
+	var rowCnt = chkObj.length - 1;
+	alert('rowCnt' + chkObj.length);  //21로 출력 된다 .
+	var success= false;
+	var fail = 0;
+	//var numbers  = [];
+	for(var i=0 ; i <= rowCnt; i++){
+		if(chkObj[i].checked == true){
+		var no = chkObj[i].value;
+		
+
+		 $.ajax({
+			 type:"delete",
+				url:'/project03/msg/numText/' +no,
+				headers:{
+					'Content-Type':'application/json',
+					'X-Http-Method-Ovveride':'DELETE'
+				}//headers
+				
+			 
+		 })//end ajax
+		
+		}//end if	
+	}; //end for 
+	
+	getAll();
+ });//end 
+ 	var frm = $("#formAllmin");
+ 	function getAll(){
+	 alert('하이루');
+		event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
+		// pageForm 안에 있는 name="page"인 요소를 찾아서
+		// 이동할 페이지 번호를 세팅
+		var targetPage = $(this).attr('href');
+		frm.find('[name="page"]').val(targetPage);
+		// 페이징 화면으로 보내기 위한 action 정보
+		frm.attr('action', 'AllAdminMSG');
+		// 페이징 화면을 처리하는 Controller의 method(요청 처리 방식)
+		frm.attr('method', 'get');
+		// 폼 양식을 서버로 전송
+		frm.submit();
+		
+	}; //end getAll(); 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		
 		
 		
 		
 		
+		
+	        
 		
 	</script>
 

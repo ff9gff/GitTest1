@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.persistence.AdminDAO;
@@ -51,6 +52,7 @@ public class AdminServiceImpl implements AdminService{
 		result =aDao.sendAllUserMsg(user12List.get(i).getMno(), msg_content);
 		
 		}
+		result= aDao.sendAllUserMsg(1, msg_content);
 		return result;
 	}
 
@@ -118,6 +120,13 @@ public class AdminServiceImpl implements AdminService{
 	public List<String> allAdminMSG() {
 	
 		return aDao.adminMSGAll();
+	}
+
+
+	@Override
+	public List<AdminMsgDTO> allAdminMSG2() {
+		
+		return aDao.adminMSGALL2();
 	}
 	
 	

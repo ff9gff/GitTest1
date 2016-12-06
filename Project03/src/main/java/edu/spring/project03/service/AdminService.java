@@ -2,6 +2,7 @@ package edu.spring.project03.service;
 
 import java.util.List;
 
+import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
 
@@ -41,6 +42,7 @@ public interface AdminService {
 	//관리자의 말씀이니라 
 	public List<String> allAdminMSG();
 	
+	public List<AdminMsgDTO> allAdminMSG2();
 	
 	
 	

@@ -20,7 +20,7 @@ public class MsgRESTController {
 	private MsgAllService msgService;
 	
 	@RequestMapping(value="/numText/{no}" , method = RequestMethod.DELETE)
-	public int DeleteTxtOne(@PathVariable("no") int no){
+	public int DeleteTxtOne(@PathVariable("no") Integer no){
 		
 		logger.info("no" + no);
 		int result = msgService.deleteSelectMSGContext(no);
@@ -39,6 +39,9 @@ public class MsgRESTController {
 		
 		
 	}
+	
+
+	
 	
 	
 	

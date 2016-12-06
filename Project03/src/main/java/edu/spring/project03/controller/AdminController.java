@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 
 import edu.spring.project03.domain.MsgVO;
@@ -92,7 +93,7 @@ public class AdminController {
 		
 		logger.info("메세지 보내기 결과 입니다. "+ result);
 		
-		return "redirect:AdminMsg";
+		return "redirect:MiniSendToAllMyUser";
 	}//
 	
 	
@@ -125,6 +126,8 @@ public class AdminController {
 		
 		List<String> list = adminService.allAdminMSG();
 		
+		List<AdminMsgDTO> msgList = adminService.allAdminMSG2();
+		
 		Set<String>  msgContext = new LinkedHashSet<>(); 
 				//HashSet<>();
 		
@@ -133,7 +136,7 @@ public class AdminController {
 		}
 		
 		model.addAttribute("msgContext",msgContext);
-		
+		model.addAttribute("msgList", msgList);
 		
 		
 	}//end 
