@@ -73,6 +73,8 @@
 	
 	
 	<!-- 상세 검색 -->
+	<!-- 지역명 / 출발일 / 성별 / 나이대 -->
+	
 	<!-- 1 0 0 0 -->
 	<select id='select_detail_search_1000' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
 		select img_url, title, region_name, trip_no from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url

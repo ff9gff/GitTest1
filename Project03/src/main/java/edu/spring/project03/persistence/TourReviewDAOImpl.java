@@ -8,9 +8,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.spring.project03.controller.TourRegisterController;
 import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.NickReviewSearchDTO;
 import edu.spring.project03.domain.NickReviewSearchResultDTO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.ReviewRegionVO;
@@ -22,7 +22,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	private static final Logger logger = LoggerFactory.getLogger(TourReviewDAOImpl.class);
 
 	private static final String NAMESPACE = "edu.spring.Project03.TourReviewMapper";
-	
+
 	private static final String NAMESPACE2 = "edu.spring.Project03.TourReviewSearchMapper";
 
 	@Autowired
@@ -36,7 +36,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 		return sqlSession.insert(NAMESPACE + ".insert-review", reviewvo);
 	} // end insertReview(reviewvo)
-	
+
 	@Override
 	public int insertThumnail(ImgVO imgvo) {
 
@@ -48,27 +48,14 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 		return sqlSession.insert(NAMESPACE + ".insert-region", reviewRegionvo);
 	} // end insertRegion(reviewRegionvo)
-	
-	
+
 	/**
 	 * update
 	 */
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	/**
 	 * delete
 	 */
-	
-	
-
 
 	/**
 	 * select
@@ -79,11 +66,9 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		return sqlSession.selectOne(NAMESPACE + ".select-review_no", reviewvo);
 	} // end selectReview_no(reviewvo)
 
-	
-	
 	/**
 	 * select
-	 */	
+	 */
 	@Override
 	public ReviewVO selectReviewRegister_data(int review_no) {
 
@@ -204,7 +189,6 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		return sqlSession.selectList(NAMESPACE + ".select_region_search_region", region_name);
 	}
 
-
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////
@@ -252,14 +236,41 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	@Override
-	public List<NickReviewSearchResultDTO> select_review_by_nickname(String nickname) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<NickReviewSearchResultDTO> select_review_by_nickname(String region_name, String nickname) {
+		
+		List<NickReviewSearchResultDTO> list = null;
+		
+		if (!region_name.equals("없음") && !nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO("%" + region_name + "%", nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_11", vo);
+			
+		} else if (!region_name.equals("없음") && nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO("%" + region_name + "%", nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_10", vo);
+			
+		} else if (region_name.equals("없음") && !nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO(region_name, nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_01", vo);
+			
+		} else if (region_name.equals("없음") && nickname.equals("없음")) {
+			
+			NickReviewSearchDTO vo = new NickReviewSearchDTO(region_name, nickname);
+			list = sqlSession.selectList(NAMESPACE2 + ".select_nickname_search_00", vo);
+			
+		}
+		
+		
+		return list;
+		
 	}
 
 } // end class TourReviewDAOImpl
