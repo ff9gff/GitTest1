@@ -112,6 +112,13 @@ public class AdminServiceImpl implements AdminService{
 		
 		return aDao.dominAllsubAdmin();
 	}
+
+
+	@Override
+	public List<String> allAdminMSG() {
+	
+		return aDao.adminMSGAll();
+	}
 	
 	
 

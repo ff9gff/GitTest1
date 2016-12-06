@@ -126,6 +126,12 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		return sqlSession.insert(NAMESPACE+".upgradeLevelTwoMSG", mno);
 	}
+
+	@Override
+	public List<String> adminMSGAll() {
+		
+		return sqlSession.selectList(NAMESPACE+".selectContextAdminMSG");
+	}
 	
 	
 }//end class 

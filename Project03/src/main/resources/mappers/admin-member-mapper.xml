@@ -47,8 +47,8 @@
   
   <insert id="sendAlluser12">
   
-    insert into WM_MSG (sd_mno , rc_mno , msg_content) values 
- (1,#{mno} ,#{msg_content})
+    insert into WM_MSG (sd_mno , rc_mno , msg_content,msg_check) values 
+ (1,#{mno} ,#{msg_content},3)
  
   </insert>
   
@@ -156,14 +156,27 @@ UPDATE WM_MEMBER set AUTHORITY = 0 WHERE MNO = #{mno};
   
   </insert>
   
-  <!-- 페이징 처리 하는 부분  -->
-  <select resultType="edu.spring.project03.domain.MsgDTO" id="pageListsendMsg"> 
-  select a.msg_no, a.nickname, a.msg_content, a.msg_date from 
-  ( select rownum rn, m.msg_no, p.nickname, m.msg_content, m.msg_date from wm_msg m, wm_personal p
-  where m.rc_mno = p.mno and m.sd_mno = #{mno}
-   order by m.msg_no )a 
-   
-   where rn between #{start} and #{end}
-    </select>
+
+<!-- 관리자가 보낸 공지사항 글에 대해서 수정하는 부분 입니다.  -->
+<select id="selectContextAdminMSG" resultType="String">
+
+
+select msg_content from WM_Msg where sd_mno=1 and MSG_CHECK =3 
+
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   </mapper>

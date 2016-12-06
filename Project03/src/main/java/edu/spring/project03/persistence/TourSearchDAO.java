@@ -30,4 +30,9 @@ public interface TourSearchDAO {
 	public abstract List<RegionVO> select_main_region_region(String region);
 	
 	public abstract TourRegisterVO select_register_data(int trip_no);
+	
+	// 디폴트로 뿌려주는 이미지/제목/지역
+	public abstract List<ImgVO> select_default_image();
+	public abstract List<TourRegisterVO> select_default_title();
+	public abstract List<RegionVO> select_default_region();
 }

@@ -93,8 +93,15 @@ public class TourRegisterController {
 
 	}
 	
-	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
-	public String toggleMsg() {
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
+	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, Model model) {
+		System.out.println("setter: "+msg_setter);
+		System.out.println("getter: "+msg_getter);
+		System.out.println("msg_getnick: "+msg_getnick);
+		
+		model.addAttribute("msg_setter", msg_setter);
+		model.addAttribute("msg_getter", msg_getter);
+		model.addAttribute("msg_getnick", msg_getnick);
 		
 		return "toggle_msg";
 	}

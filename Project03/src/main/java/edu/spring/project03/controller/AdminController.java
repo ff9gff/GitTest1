@@ -1,17 +1,20 @@
 package edu.spring.project03.controller;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.DomainDTO;
-import edu.spring.project03.domain.MemberVO;
+
 import edu.spring.project03.domain.MsgVO;
 import edu.spring.project03.service.AdminService;
 import edu.spring.project03.service.SearchUserService;
@@ -74,17 +77,17 @@ public class AdminController {
 	
 	//@ModelAttribute("msg_content") String msg_content
 	@RequestMapping(value="/sendAllMyUser", method=RequestMethod.POST)
-	public String sendUserText(String msg_content , MsgVO vo){
-		
-		logger.info("vo "+ vo.getMsg_content());
+	public String sendUserText(@ModelAttribute("msg_content") String msg_content ,@ModelAttribute("value") String value, MsgVO vo){
+		//@ModelAttribute("value") String value
+		//logger.info("vo "+ vo.getMsg_content());
 		//@ModelAttribute("msg_content")
-		 
-		logger.info("msg.content 나와라 !"+msg_content);
+		logger.info("msg.value 나와라 !"+value);
+		//logger.info("msg.content 나와라 !"+msg_content);
 		if(msg_content ==null){
 			msg_content ="공지사항입니다.";
 		}
 		
-	int result=	adminService.sendAllUserMessage(msg_content);
+	int result=	adminService.sendAllUserMessage(value);
 		
 		logger.info("메세지 보내기 결과 입니다. "+ result);
 		
@@ -114,6 +117,30 @@ public class AdminController {
 		model.addAttribute("newMemberList", list2);
 		
 	}
+	
+	@RequestMapping(value="/AllAdminMSG" ,method=RequestMethod.GET)
+	public void adminMsgAll(Model model){
+		
+		
+		List<String> list = adminService.allAdminMSG();
+		
+		Set<String>  msgContext = new HashSet<>();
+		
+		for(int i=0 ; i < list.size(); i++){
+			msgContext.add(list.get(i).toString());
+		}
+		
+		model.addAttribute("msgContext",msgContext);
+		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
 	
 	/*					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
 				</li>

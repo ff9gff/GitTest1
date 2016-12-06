@@ -83,6 +83,9 @@ padding-left: 655px
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
 
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+				</li>
+
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
 				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
@@ -108,7 +111,7 @@ padding-left: 655px
 		<h1>쪽지 보내기 화면 입니다 .</h1>
 		    <div id="form-main">
   <div id="form-div">
-    <form class="form" id="form1" action="sendAllMyUser" method="post">
+    <form class="form" name="form1" id="form1" action="sendAllMyUser" method="post">
       
       <p class="name">
         <input name="name" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="관리자" id="adminId" readonly="readonly" />
@@ -120,12 +123,13 @@ padding-left: 655px
       </p>
       
       <p class="text">
-        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="msg_content" name="msg_content"  placeholder="Comment"></textarea>
+        <textarea name="text" class="validate[required,length[6,300]] feedback-input" id="msg_content"   placeholder="Comment"></textarea>
+     	<input type="hidden" id="value" name="value">
       </p>
       
       
       <div class="submit">
-        <input type="submit" value="SEND" id="sendBtn"/> <%-- submit 에서 버튼으로 바꿈  --%>
+        <input type="button" value="SEND" id="sendBtn"/> <%-- submit 에서 버튼으로 바꿈  --%>
         <div class="ease"></div>
       </div>
     </form>
@@ -142,12 +146,14 @@ padding-left: 655px
 <script type="text/javascript">
 $(document).ready(function(){
 	
-	var frm = $('#form1');
-	
-	$('#sendBtn').click(function(){
-	var sendText = $('#msg_content').val(); 
-		alert('공지사항 전송 성공'+ sendText);
+		var frm = $('#form1');
 		
+		$('#sendBtn').click(function(){//sendBtn
+		var sendText = $('#msg_content').val(); 
+		alert('공지사항 전송 성공'+ sendText);
+		//<input type="hidden" id="value" name="value">
+		$("#value").val(sendText);
+		frm.submit();
 		
 		
 		

@@ -38,4 +38,10 @@ public interface AdminService {
 	//admin에 있는 모습에 level 2인 사람들의 모습 
 	public List<DomainDTO> allMySubAdminActivUser();
 	
+	//관리자의 말씀이니라 
+	public List<String> allAdminMSG();
+	
+	
+	
+	
 }
