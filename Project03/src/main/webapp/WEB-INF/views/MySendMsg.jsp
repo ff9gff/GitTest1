@@ -1,25 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page import="edu.spring.project03.domain.MsgVO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>      
-    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
 table, th, td {
     border: 1px solid gray;
     border-collapse: collapse;
 }
+
 th {
     background-color: lightpink;
     border-left: 1px solid white;
 }
+
 ul {
     list-style-type: none;
 }
+
 li {
     display: inline-block;
 }
@@ -30,39 +34,47 @@ li {
 </head>
 <body>
 
-<table>
-<caption>º¸³½ ÂÊÁöÇÔ</caption>
+
+
+
+
+
+
+<table id="msgTable">
+<caption>ë³´ë‚¸ ìª½ì§€í•¨</caption>
     <tr>
-        <th>¹øÈ£</th>
-        <th>ÀÛ¼ºÀÚ</th>
-        <th>³»¿ë</th>
-        <th>¹ŞÀº ½Ã°£</th>
+    	<th><input type="checkbox" name="rowCheck"></th>
+        <th>ë²ˆí˜¸</th>
+        <th>ì‘ì„±ì</th>
+        <th>ë‚´ìš©</th>
+        <th>ë°›ì€ ì‹œê°„</th>
     </tr>
     
-    <!-- model.addAttribute("allList", allList); -->
-    <c:forEach var="vo" items="${allList}">
-    <tr>
-        <td>${x=x+1 }</td>
-        <td>${vo.nickname }</td>
-        <td><form id="form2" name="form2">
-        <input type="hidden" name="postdata" size="10" maxlength="10" value="${vo.msg_no }"/>   
-        
 
-    	<%-- String stringValue= request.getParameter("msg_content"); 
+    <c:forEach var="vo" items="${allList}">
+  
+    <tr Class="selectAll">
     	
-			if(stringValue.length()>= 15){
-			
-			stringValue = stringValue.substring(0,10) + "....";
-			
-			
-		}//end string 
-    	
-    stringValue +="ss";
-    	--%>
+    	<td><input type="checkbox" name="rowCheck" value="${vo.msg_no }"></td>
+    
+  	
+        <td>${x=x+1 }</td>
+        <td>${vo.nickname }${vo.msg_no }</td>
+        	<td>
+        <form id="form2" name="form2" method='post' action="MiniMsg" target="pop">
+ 		 <input type="hidden" name="postdata"  id ="postdata${x}"  value="${vo.nickname }"/> 
+ 		 <input type="hidden"  id="value" name= "value" />
+ 		 <input type="hidden" id ="getname" name ="getname"/> 		 	
+        <input type="hidden" name="msg_no"  id ="msg_no${x}"  value="${vo.msg_no }"/>       
+        </form>       
+
+       
+        <a href="javascript:OpenPop('${x }');">${vo.msg_content }  </a>
+        
+  
         
         
-        </form>     
-        <a href="javascript:OpenPop('', '', '', '');"><%--=stringValue --%> ${vo.msg_content }</a></td>
+        	</td>
         <td>
       	   <fmt:formatDate value="${vo.msg_date }" 
 	            pattern="yyyy-MM-dd HH:mm:ss"/>
@@ -70,36 +82,11 @@ li {
     </tr>
     
     </c:forEach>
-
 </table>
-	<br/>
-	
-<script type="text/javascript">
-
-
-function OpenPop(url,name,width,height)
-{
-	 alert('hi');
-    window.open("", "pop", "width=600, height=400"); // ¸ÕÀú ºó Ã¢À» pop ¶ó´Â ÀÌ¸§À¸·Î ¿­¾î³õ°í
-    document.form2.action = "testMyGet"; // 'ÆË¾÷ÁÖ¼Ò.aspx' ¸¦ form2ÀÌ ½ÇÇàµÉ action À¸·Î ÁöÁ¤ÇÑ´Ù.
-    document.form2.target = "pop"; // ÀÌ ºÎºĞÀÌ ÇÙ½É! ¿­¾î³õÀº ºó Ã¢(pop)À» form2°¡ ³¯¾Æ°¥ targetÀ¸·Î Á¤ÇÑ´Ù.
-    document.form2.method = "get"; // target¿¡ submitÇÒ ¹æ½ÄÀ» post ¹æ½ÄÀ¸·Î ÁöÁ¤ÇÑ´Ù.
-    document.form2.submit(); // target¿¡ ½ğ´Ù.
-
-    
-}
-
-
-</script>
-	
-	
-	
-
-	
-	
+<br/>
 <ul class="pageLinks">
     <c:if test="${pageMaker.hasPrev }">
-    <li><a href="${pageMaker.startPageNum - 1 }">&laquo;ÀÌÀü</a></li>
+    <li><a href="${pageMaker.startPageNum - 1 }">&laquo;ì´ì „</a></li>
     </c:if>
     
     <c:forEach begin="${pageMaker.startPageNum }"
@@ -109,14 +96,13 @@ function OpenPop(url,name,width,height)
     </c:forEach>
     
     <c:if test="${pageMaker.hasNext }">
-    <li><a href="${pageMaker.endPageNum + 1 }">´ÙÀ½&raquo;</a></li>
+    <li><a href="${pageMaker.endPageNum + 1 }">ë‹¤ìŒ&raquo;</a></li>
     </c:if>
     
 </ul>
 
-		
-<%-- ÇöÀç ÆäÀÌÁö, ÆäÀÌÁö ´ç º¸¿©ÁÙ °Ô½Ã±Û °³¼ö¸¦ ¼­¹ö·Î º¸³»ÁÖ±â À§ÇØ¼­,
-»ç¿ëÀÚ¿¡°Ô´Â º¸ÀÌÁö ¾ÊÁö¸¸, ¼­¹ö·Î º¸³¾ Á¤º¸¸¦ ¾ç½Ä µ¥ÀÌÅÍ·Î ÀúÀåÇÏ´Â form --%>
+<%-- í˜„ì¬ í˜ì´ì§€, í˜ì´ì§€ ë‹¹ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ ê°œìˆ˜ë¥¼ ì„œë²„ë¡œ ë³´ë‚´ì£¼ê¸° ìœ„í•´ì„œ,
+ì‚¬ìš©ìì—ê²ŒëŠ” ë³´ì´ì§€ ì•Šì§€ë§Œ, ì„œë²„ë¡œ ë³´ë‚¼ ì •ë³´ë¥¼ ì–‘ì‹ ë°ì´í„°ë¡œ ì €ì¥í•˜ëŠ” form --%>
 <form id="pageForm">
     <input type="hidden" name="bno" />
     <input type="hidden" name="page" 
@@ -125,53 +111,115 @@ function OpenPop(url,name,width,height)
         value="${pageMaker.criteria.perPage }" />
 </form>
 
+<!--  //////////////////////////////////////////////// -->
+<form >
+	<input type="button" id="deleteMSGbtn" value="ì‚­ì œ"> 
 
+</form>
+	<br/>
+	
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-$(document).ready(function() {
+<script type="text/javascript">
+var frm = $('#pageForm');
+
+function OpenPop(no)
+{ 
 	
+	var getdata = document.getElementById("postdata"+no+"").value;
+	var getno = document.getElementById("msg_no"+no+"").value;
+	// <input type="hidden" name="msg_no"  id ="msg_no${x}"  value="${vo.msg_no }"/> 
+	$("#value").val(getno); 
+	$('#getname').val(getdata);
+	
+	
+	//alert(getdata+getcontent);
+
+	var f = document.getElementById('form2');
+	window.open("", "pop", "width=600, height=400");
+	f.submit(); 
 
 	
-	var frm = $('#pageForm');
-	<%--
-    // table ¾ÈÀÇ tr ¾ÈÀÇ td ¾ÈÀÇ a ÅÂ±× click Ä¿½ºÅÍ¸¶ÀÌÂ¡
-    $('table tr td a').click(function() {
-    	event.preventDefault();
-    	var bno = $(this).attr('href');
-    	frm.find('[name="bno"]').val(bno);
-    	frm.attr('action', 'detail');
-    	frm.attr('method', 'get');
-    	frm.submit();
-    });
-	--%>
-	// Å¬·¡½º pageLinks ¾ÈÀÇ li ÅÂ±× ¾ÈÀÇ a ÅÂ±×¸¦ Ã£¾Æ¼­ click ÀÌº¥Æ®¸¦ Ä¿½ºÅÍ¸¶ÀÌÂ¡
+	
+	
+	
+	
+}//end ë¶„ë…¸ 
+
+
+//<input type="button" id="deleteMSGbtn"> 
+
+ $('#deleteMSGbtn').click(function(){
+	var oTbl = document.getElementById("msgTable");
+	var chkObj = document.getElementsByName("rowCheck");
+	var rowCnt = chkObj.length - 1;
+	// var check = $(this).context.checked;
+	
+	alert('rowCnt' + chkObj.length);  //21ë¡œ ì¶œë ¥ ëœë‹¤ .
+	var success= false;
+	var fail = 0;
+	
+	for(var i=0 ; i <= rowCnt; i++){
+		if(chkObj[i].checked == true){
+		var no = chkObj[i].value;
+		 $.ajax({
+			 type:"delete",
+				url:'/project03/msg/numText/' +no,
+				headers:{
+					'Content-Type':'application/json',
+					'X-Http-Method-Ovveride':'DELETE'
+				}//headers
+			 
+			 
+		 })//end ajax
+		
+		}//end if
+		
+		
+		
+	}; //end for 
+	
+	getAll();
+ });
+ 
+
+
+
+
+
+	// í´ë˜ìŠ¤ pageLinks ì•ˆì˜ li íƒœê·¸ ì•ˆì˜ a íƒœê·¸ë¥¼ ì°¾ì•„ì„œ click ì´ë²¤íŠ¸ë¥¼ ì»¤ìŠ¤í„°ë§ˆì´ì§•
 	$('.pageLinks li a').click(function() {
-		event.preventDefault(); // ±âº» ÀÌº¥Æ® Ã³¸® ¹æ½ÄÀ» ¹æÁö(¸·À½)
-		// pageForm ¾È¿¡ ÀÖ´Â name="page"ÀÎ ¿ä¼Ò¸¦ Ã£¾Æ¼­
-		// ÀÌµ¿ÇÒ ÆäÀÌÁö ¹øÈ£¸¦ ¼¼ÆÃ
+		event.preventDefault(); // ê¸°ë³¸ ì´ë²¤íŠ¸ ì²˜ë¦¬ ë°©ì‹ì„ ë°©ì§€(ë§‰ìŒ)
+		// pageForm ì•ˆì— ìˆëŠ” name="page"ì¸ ìš”ì†Œë¥¼ ì°¾ì•„ì„œ
+		// ì´ë™í•  í˜ì´ì§€ ë²ˆí˜¸ë¥¼ ì„¸íŒ…
 		var targetPage = $(this).attr('href');
 		frm.find('[name="page"]').val(targetPage);
-		// ÆäÀÌÂ¡ È­¸éÀ¸·Î º¸³»±â À§ÇÑ action Á¤º¸
-		frm.attr('action', 'msglist-page');                     // ÂÊÁöÇÔ ÆäÀÌÁö 
-		// ÆäÀÌÂ¡ È­¸éÀ» Ã³¸®ÇÏ´Â ControllerÀÇ method(¿äÃ» Ã³¸® ¹æ½Ä)
+		// í˜ì´ì§• í™”ë©´ìœ¼ë¡œ ë³´ë‚´ê¸° ìœ„í•œ action ì •ë³´
+		frm.attr('action', 'MySendMsg');
+		// í˜ì´ì§• í™”ë©´ì„ ì²˜ë¦¬í•˜ëŠ” Controllerì˜ method(ìš”ì²­ ì²˜ë¦¬ ë°©ì‹)
 		frm.attr('method', 'get');
-		// Æû ¾ç½ÄÀ» ¼­¹ö·Î Àü¼Û
+		// í¼ ì–‘ì‹ì„ ì„œë²„ë¡œ ì „ì†¡
 		frm.submit();
 	});
 	
 	
-
-
-
+	function getAll(){
+		event.preventDefault(); // ê¸°ë³¸ ì´ë²¤íŠ¸ ì²˜ë¦¬ ë°©ì‹ì„ ë°©ì§€(ë§‰ìŒ)
+		// pageForm ì•ˆì— ìˆëŠ” name="page"ì¸ ìš”ì†Œë¥¼ ì°¾ì•„ì„œ
+		// ì´ë™í•  í˜ì´ì§€ ë²ˆí˜¸ë¥¼ ì„¸íŒ…
+		var targetPage = $(this).attr('href');
+		frm.find('[name="page"]').val(targetPage);
+		// í˜ì´ì§• í™”ë©´ìœ¼ë¡œ ë³´ë‚´ê¸° ìœ„í•œ action ì •ë³´
+		frm.attr('action', 'MySendMsg');
+		// í˜ì´ì§• í™”ë©´ì„ ì²˜ë¦¬í•˜ëŠ” Controllerì˜ method(ìš”ì²­ ì²˜ë¦¬ ë°©ì‹)
+		frm.attr('method', 'get');
+		// í¼ ì–‘ì‹ì„ ì„œë²„ë¡œ ì „ì†¡
+		frm.submit();
+		
+	}
 	
-	
-});//end docu
-
-
 </script>
-
-
+	
 
 
 

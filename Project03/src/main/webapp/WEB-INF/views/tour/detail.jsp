@@ -1248,6 +1248,7 @@ $('#context_msg').on('click','.btn_context',function(){
 	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
 	window.open('',"msg" ,popOption);
 	f.submit();
+	
 });
 
 // 날짜 계산

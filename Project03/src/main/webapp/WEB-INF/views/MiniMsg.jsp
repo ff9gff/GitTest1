@@ -10,11 +10,15 @@
 </head>
 <body>
 
-나와주세요   제발  
- 연습입니다. 값 나오나 
+보낸이 :  
  
- ${postdata }
+ ${getname }
+${ value }
+<br>
+<br>
+<br>
+<textarea rows="10" cols="40" readonly>${sendTxt }</textarea><br/>
 
- 
+
 </body>
 </html>

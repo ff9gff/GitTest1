@@ -7,19 +7,77 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<style type="text/css">
+
+#dropDownType {
+	width: 50px
+}
+
+#selectOption {
+	padding-left: 655px
+}
+</style>
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
+
+
+
+
+
 <body>
+	<header id="top">
+		<h1>관리자님 안녕하세요</h1>
+		<p></p>
+	</header>
+	
 
-	<h1>test 입니다.</h1>
 
+	<div Class="wrapper">
+
+		<nav id="menuBar">
+			<ul id="menuList">
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
+				</li>
+
+				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
+				</li>
+
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+
+				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				</li>
+				
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+				</li>
+				
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
+				</li>
+				
+				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				</li>
+
+
+
+			</ul>
+
+		</nav>
+
+
+
+		<section id="main">
 
 
 	<input type="text" name="userid" id="userid" form="btnList"
 		placeholder="찾을 유저검색">
 
-	<input type="button" id="btnList" value="찾기 2">
+	<input type="button" id="btnList" value="유저 검색">
+
+<br>
+<br>
 
 	<table id="tableTest2" border="1px">
-		<caption>유저 찾기</caption>
+		<!--<caption>유저 찾기</caption>-->
 		<colgroup>
 			<col width="100px">
 			<col width="100px">
@@ -41,41 +99,14 @@
 
 
 	</table>
+		<aside id="sidebar">
+			<img alt="고양이" src="resources/theme/images/css_cat.jpg" style="width: 170px" /> 
+			<img alt="강아지" src="resources/theme/images/css_dog.jpg" style="width: 170px" />
+			<img alt="백조" src="resources/theme/images/css_swan.jpg" style="width: 170px" />
+		</aside>
 
-		<input type="button" id="btnUpdate" value="테스트" >
-		
-
-
-
-
-
-
-<div id="wrapper">
-
-
-<table align='center' cellspacing=2 cellpadding=5 id="data_table" border=1>
-<tr>
-<th>Name</th>
-<th>Country</th>
-<th>Age</th>
-</tr>
-
-<tr>
-<td><input type="text" id="new_name"></td>
-<td><input type="text" id="new_country"></td>
-<td><input type="text" id="new_age"></td>
-<td></td>
-</tr>
-</table>
-<input type="button" class="add" onclick="add_row();" value="Add Row">
-</div>
-
-
-
-<input type="button" id="btnTest" value="테스트" >
-		
-
-
+	
+		</section>
 
 	<script
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -163,23 +194,7 @@ $(document).ready(function(){
  	   };//end of getMyUser()
  	   
 
- 	   
-	 function upgrade_member(){
-		 
-		 alert("안녕하세요 .");
-		 
-		 
-		 
 
-	 };
- 				 
- 	   
- 	   
- 	  
-	
-	
-	 
- 		
  	});//end docu
  	
 
@@ -218,7 +233,7 @@ $(document).ready(function(){
 			 
 		 });
 		 
-		 
+		 alert('강퇴했습니다.');
 		 
 	 }//end delete _ row 
  	   
@@ -250,132 +265,15 @@ $(document).ready(function(){
 			 
 		 });
 		 
-		 
+		alert('선택하신 유저를 관리자로 임명하셨습니다.');
 		 
 	 }//end delete _ row 
  	   
  	
-	 
- 	
- /*	
- 	$('#btnUpdate').click(function() {
-		frm.attr('action', 'update'); // attr('속성이름', '속성값')
-		frm.attr('method', 'post');
-		frm.submit();
-	});
- 
- 
- 
-	function delete_row(no)
- 	{
- 	 	
- 		//	var name=document.getElementById("mno_id("+no+")").val;
- 		alert('gggg' + no + name);
- 	 	document.action = "testMyGet"; // '팝업주소.aspx' 를 form2이 실행될 action 으로 지정한다.	
- 	 	//document.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
- 	 	document.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
- 	 	document.submit(); // target에 쏜다.
- 	
- 	}
- 	*/
- 
- 	<%--
- 	function delete_row22(no){
- 		var name=document.getElementById("mno_id("+no+")").value();
- 		
- 		
- 		 alert(":s" +no+"제발 값 나와라,,."+ name);
- 
- 		
- 		
- 		
- 	};
- 	
- 	
- 	var name_data=name.innerHTML;
- 		name.innerHTML="<input type='text' id='mno_id("+no+")' value='"+name_data+"'>";
- 		var name_val=document.getElementById("mno_id("+no+')').value;
- 		document.getElementById("mno_id("+no+")").innerHTML=name_val;
- 	
- 	
 
- 	
-
- 	function delete_row111(no)
- 	{
- 		
- 	var name=document.getElementById("mno_id("+no+")");
- 	
- 	 var name_data=name.innerHTML;
-
- 		
- 	name.innerHTML="<input type='text' id='mno_id("+no+")' value='"+name_data+"'>";
- 	
- 	  save_row(no);
- 	}
-
- 	
- 	
- 	function save_row(no)
- 	{
- 	
- 		var name_val=document.getElementById("mno_id("+no+')').value;
- 	
- 		var ss = $("#mno_id("+no+')').val();
- 	document.getElementById("mno_id("+no+")").innerHTML=name_val;
- 
- 
- 	 alert("test" + name_val + ss );
- 	}
- 	
- 	
- 	
- 	
- 
- 	
- 	
- 	function test(no){
- 		
- 		var name_val=document.getElementById("mno_id("+no+')').value;
- 		document.getElementById("mno_id("+no+")").innerHTML=name_val;
- 		alert("test" + ss);
- 	}
-
- 	function save_row12(no)
- 	{
- 	 var name_val=document.getElementById("name_text"+no).value;
- 	 var country_val=document.getElementById("country_text"+no).value;
- 	 var age_val=document.getElementById("age_text"+no).value;
-
- 	 document.getElementById("name_row"+no).innerHTML=name_val;
- 	 document.getElementById("country_row"+no).innerHTML=country_val;
- 	 document.getElementById("age_row"+no).innerHTML=age_val;
-
- 	 document.getElementById("edit_button"+no).style.display="block";
- 	 document.getElementById("save_button"+no).style.display="none";
- 	 
- 	 alert("test" + name_val);
- 	}
-
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	
- 	 	--%>
  	
  	</script>
 	
- 	
  
 
 </body>

@@ -46,4 +46,7 @@ public interface AdminDAO {
 	
 	//관리자로 승격하는 소개하는 말입니다,. 
 	public abstract int updateLevelTwoMSG(int mno);
+	
+	//admin의 말씀이니라 
+	public abstract List<String> adminMSGAll();
 }

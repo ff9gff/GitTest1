@@ -26,6 +26,7 @@ public class TourSearchController {
 	@Autowired
 	private TourSearchService tourSelectService;
 
+
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
 	@RequestMapping(value = "/index/defaultimage", method = RequestMethod.GET)
@@ -44,6 +45,7 @@ public class TourSearchController {
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
 			logger.info("이미지 전체 검색 실패 ");
 		}
+
 
 		logger.info("entity " + entity.getBody());
 		// logger.info("list.mno "+ list.get(0).getUserid());

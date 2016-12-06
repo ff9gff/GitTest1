@@ -3,6 +3,8 @@ package edu.spring.project03.pageutil;
 // 페이지 번호에 대한 링크를 만들기 위한 클래스
 public class PageMaker {
 	// 현재 페이지 번호, 한 페이지에 보여줄 게시글 개수
+	private MsgPaginationCriteria msgcriteria;
+	
 	private PaginationCriteria criteria;
 	// 전체 게시글 개수
 	private int totalCount;
@@ -19,6 +21,20 @@ public class PageMaker {
 	public PageMaker() {
 		numOfPageLink = 5; // 페이지 링크의 개수를 디폴트로 5개로 세팅
 	}
+
+	
+	
+	public MsgPaginationCriteria getMsgcriteria() {
+		return msgcriteria;
+	}
+
+
+
+	public void setMsgcriteria(MsgPaginationCriteria msgcriteria) {
+		this.msgcriteria = msgcriteria;
+	}
+
+
 
 	public PaginationCriteria getCriteria() {
 		return criteria;
@@ -57,11 +73,25 @@ public class PageMaker {
 	}
 	
 	public void setPageData() {
+		System.out.println("ssss"+totalCount);
+//		int ss= 0;
+//		criteria.setPerPage(3);
+//		System.out.println(criteria.getPerPage());
+//		ss =criteria.getPerPage();
+//		if(ss == 0){
+//			System.out.println("null");
+//		}else{
+//			System.out.println("NOtnull");
+//		}
+//		System.out.println("ssss"+criteria.getPerPage());
 		int maxPageLink = (int)
-				Math.ceil((double)totalCount / criteria.getPerPage());
+				Math.ceil((double)totalCount / 3/*criteria.getPerPage()*/);
+	
+		System.out.println("ssss"+maxPageLink);
 		int temp = (int)
-				(Math.ceil(criteria.getPage() / (double) numOfPageLink) 
+				(Math.ceil(/*criteria.getPage()*/3 / (double) numOfPageLink) 
 						* numOfPageLink);
+		System.out.println("sssss"+temp);
 		if (temp < maxPageLink) {
 			endPageNum = temp;
 		} else {
@@ -77,7 +107,7 @@ public class PageMaker {
 			hasPrev = true;
 		}
 		
-		if (endPageNum * criteria.getPerPage() < totalCount) {
+		if (endPageNum * /*criteria.getPerPage()*/ 3 < totalCount) {
 			hasNext= true;
 		} else {
 			hasNext= false;

@@ -10,6 +10,8 @@ import org.springframework.stereotype.Repository;
 
 import edu.spring.project03.domain.MsgDTO;
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.MsgPaginationCriteria;
+import edu.spring.project03.pageutil.PaginationCriteria;
 
 @Repository
 public class MsgAllDAOImpl implements MsgAllDAO{
@@ -60,6 +62,48 @@ public class MsgAllDAOImpl implements MsgAllDAO{
 
 		return sqlSession.selectList(NAMESPACE+".selectSendMsg", mno);
 	}
+
+	@Override
+	public List<MsgDTO> readAllget2(MsgPaginationCriteria x) {
+	 
+		return sqlSession.selectList(NAMESPACE+".pageListsendMsg" , x );
+	}
+
+	@Override
+	public int deleteSelectMSG(int mno) {
+		
+		return sqlSession.delete(NAMESPACE+".deleteSelectMSG", mno);
+	}
+
+	@Override
+	public String selectContextMSG(int mno) {
+		String ss2  =sqlSession.selectOne(NAMESPACE+".getContentMSG", mno);
+	
+		return ss2;
+	}
+
+	
+	
+	@Override
+	public int getNumOfRecords(int mno) {
+		// TODO 자동 생성된 메소드 스텁 totalcount
+		return sqlSession.selectOne(NAMESPACE+".totalcount",mno);
+	}
+
+	@Override
+	public int getMsgTotalNumOfRecords(int mno) {
+		//받은 메일함 개수를 나타 냅니다.
+		return sqlSession.selectOne(NAMESPACE+".getMsgTotalcount", mno);
+	}
+
+	
+	
+	@Override //받은 쪽지함을 만드는 페이징 처리 입니다. 
+	public List<MsgDTO> readGetPagingMSG(MsgPaginationCriteria x) {
+	
+		return sqlSession.selectList(NAMESPACE+".pageListGetMsg", x);
+	}
+	
 	
 	
 	

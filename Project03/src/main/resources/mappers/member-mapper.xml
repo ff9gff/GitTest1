@@ -145,6 +145,63 @@ order by m.msg_no
 </select>
 
 
+<!-- 쪽지함 삭제 할게요  -->
+<delete id="deleteSelectMSG">
+delete from wm_msg
+where msg_no =#{mno}
+</delete>
+
+
+<!-- 쪽지 보여주기 입니다 mno 받아서  -->
+
+<select id="getContentMSG" resultType="String">
+select msg_content from WM_MSG
+where MSG_NO= #{mno}
+
+
+</select>
+
+  <!-- 페이징 처리 하는 부분   보낸 편지함입니다. -->
+  <select resultType="edu.spring.project03.domain.MsgDTO" id="pageListsendMsg"> 
+  select a.msg_no, a.nickname, a.msg_content, a.msg_date from 
+  ( select rownum rn, m.msg_no, p.nickname, m.msg_content, m.msg_date from wm_msg m, wm_personal p
+  where m.rc_mno = p.mno and m.sd_mno = #{mno}
+   order by m.msg_no )a 
+   
+   where rn between #{start} and #{end}
+    </select>
+    
+    
+    <!-- 받은 메일 함입니다.  -->
+    <select id="pageListGetMsg" resultType="edu.spring.project03.domain.MsgDTO">
+    select a.msg_no, a.nickname, a.msg_content, a.msg_date
+	from (
+  		select rownum rn, m.msg_no, p.nickname, m.msg_content, m.msg_date
+  		from wm_msg m, wm_personal p
+  		where m.sd_mno = p.mno and m.rc_mno =#{mno}
+  		order by m.msg_no
+	) a 
+	where rn between #{start} and #{end}
+    
+    
+    
+    </select>
+    
+    
+    
+    <!-- 페이징 처리를 위한 전체 문 보낸 메일함 -->
+	<select id="totalcount" resultType="Integer">
+		
+		select count(*) from wm_msg where sd_MNO=#{mno}
+	</select>
+	
+	
+	<!-- 페이징 처리를 위한 받은 메일함 -->
+
+	<select id="getMsgTotalcount" resultType="Integer">
+		
+		select count(*) from wm_msg where rc_MNO=#{mno}    
+	</select>
 
 
 

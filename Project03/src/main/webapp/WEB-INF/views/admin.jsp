@@ -31,7 +31,30 @@
 <body>
 	<header id="top">
 		<h1>관리자님 안녕하세요</h1>
-		<p>Test 화면입니다.</p>
+		<p id="dpTime"></p>
+		
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		
+		
+		
 	</header>
 
 
@@ -45,6 +68,7 @@
 				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
 
+				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
 				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
@@ -195,6 +219,53 @@
 			$('.select0').empty();
 			
 		});//end saveMyuser
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// 실시간 시간 보내는  모습입니다. 
+		 setInterval("dpTime()",1000);
+		    function dpTime(){
+		       var now = new Date();
+		        hours = now.getHours();
+		        minutes = now.getMinutes();
+		        seconds = now.getSeconds();
+		 
+		        if (hours > 12){
+		            hours -= 12;
+		        ampm = "오후 ";
+		        }else{
+		            ampm = "오전 ";
+		        }
+		        if (hours < 10){
+		            hours = "0" + hours;
+		        }
+		        if (minutes < 10){
+		            minutes = "0" + minutes;
+		        }
+		        if (seconds < 10){
+		            seconds = "0" + seconds;
+		        }
+		document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
+		    }
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
 
 

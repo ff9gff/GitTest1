@@ -4,6 +4,8 @@ import java.util.List;
 
 import edu.spring.project03.domain.MsgDTO;
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.MsgPaginationCriteria;
+import edu.spring.project03.pageutil.PaginationCriteria;
 
 public interface MsgAllService {
 
@@ -16,7 +18,18 @@ public interface MsgAllService {
 	
 	public abstract List<MsgDTO> readSendMsg(int mno); 
 	
+	public abstract int deleteSelectMSGContext(int mno);
 	
+	// minimsg로 넘어가는 화면 입니다. 
+	public abstract String selectMSGContext(int mni);
 	
+	//페이징 처리를 위한 메소드
+	public abstract int getNumOfRecords(int mno);
 	
+	public abstract List<MsgDTO> readSendMsg2(MsgPaginationCriteria x); 
+	
+	//받은 쪽지함 서비스 
+	public abstract int pageGetMsgOfRecords(int mno);
+	
+	public abstract List<MsgDTO> readPageGetMsgTxt(MsgPaginationCriteria x); 
 }

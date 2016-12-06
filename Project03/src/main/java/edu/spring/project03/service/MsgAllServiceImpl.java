@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import edu.spring.project03.domain.MsgDTO;
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.MsgPaginationCriteria;
+import edu.spring.project03.pageutil.PaginationCriteria;
 import edu.spring.project03.persistence.MsgAllDAO;
 
 @Service
@@ -64,6 +66,50 @@ public class MsgAllServiceImpl implements MsgAllService {
 		logger.info("read의 사이즈는 " + read.size());
 		
 		return read;
+	}
+
+
+	@Override
+	public List<MsgDTO> readSendMsg2(MsgPaginationCriteria x) {
+		
+		return msgAlldao.readAllget2(x);
+		
+	}
+
+
+	@Override
+	public int deleteSelectMSGContext(int mno) {
+		 
+		return msgAlldao.deleteSelectMSG(mno);
+	}
+
+
+	@Override
+	public String selectMSGContext(int mni) {
+	String ss=	 msgAlldao.selectContextMSG(mni);
+		logger.info("text" +ss);
+		return ss;
+	}
+
+
+	@Override
+	public int getNumOfRecords(int mno) {
+		
+		return msgAlldao.getNumOfRecords(mno);
+	}
+
+
+	@Override
+	public int pageGetMsgOfRecords(int mno) {
+		// TODO 자동 생성된 메소드 스텁
+		return msgAlldao.getMsgTotalNumOfRecords(mno);
+	}
+
+
+	@Override
+	public List<MsgDTO> readPageGetMsgTxt(MsgPaginationCriteria x) {
+		// TODO 자동 생성된 메소드 스텁
+		return msgAlldao.readGetPagingMSG(x);
 	}
 
 
