@@ -38,8 +38,6 @@ public interface TourSearchDAO {
 	
 	// 여행 상세검색
 	public abstract List<ImgVO> select_detail_search_image(String region_name, String start_date, int condition_sex, int condition_age);
-	public abstract List<TourRegisterVO> select_detail_search_title(String region_name, String start_date, int condition_sex, int condition_age);
-	public abstract List<RegionVO> select_detail_search_region(String region_name, String start_date, int condition_sex, int condition_age);
 	
 	
 }

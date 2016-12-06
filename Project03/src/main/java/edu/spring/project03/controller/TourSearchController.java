@@ -290,39 +290,6 @@ public class TourSearchController {
 		return entity;
 	}
 
-	// 상세 검색 Ajax 처리
-	@RequestMapping(value = "/index/detailsearchTitle/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
-	public ResponseEntity<List<TourRegisterVO>> ajaxDetailSearchTitleTest(@PathVariable("region_name2") String region_name,
-			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
-			@PathVariable("condition_age") int condition_age) {
-		logger.info("여행 지역: " + region_name);
-		logger.info("시작 날짜: " + start_date);
-		logger.info("성별 구분: " + condition_sex);
-		logger.info("나이 구분: " + condition_age);
-		
-		List<TourRegisterVO> list = tourSelectService.read_detail_search_title(region_name, start_date, condition_sex, condition_age);
-
-		ResponseEntity<List<TourRegisterVO>> entity = null;
-
-		return entity;
-	}
-
-	// 상세 검색 Ajax 처리
-	@RequestMapping(value = "/index/detailsearchRegion/{region_name2}/{start_date2}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
-	public ResponseEntity<List<RegionVO>> ajaxDetailSearchRegionTest(@PathVariable("region_name2") String region_name,
-			@PathVariable("start_date2") String start_date, @PathVariable("condition_sex") int condition_sex,
-			@PathVariable("condition_age") int condition_age) {
-		logger.info("여행 지역: " + region_name);
-		logger.info("시작 날짜: " + start_date);
-		logger.info("성별 구분: " + condition_sex);
-		logger.info("나이 구분: " + condition_age);
-		
-		List<RegionVO> list = tourSelectService.read_detail_search_region(region_name, start_date, condition_sex, condition_age);
-
-		ResponseEntity<List<RegionVO>> entity = null;
-
-		return entity;
-	}
 
 	// 웹사이트에서 동일한 부분 코드 수정
 

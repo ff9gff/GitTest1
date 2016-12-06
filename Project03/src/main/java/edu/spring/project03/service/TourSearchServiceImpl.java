@@ -107,16 +107,5 @@ public class TourSearchServiceImpl implements TourSearchService {
 		return dao.select_detail_search_image(region_name, start_date, condition_sex, condition_age);
 	}
 
-	@Override
-	public List<TourRegisterVO> read_detail_search_title(String region_name, String start_date, int condition_sex,
-			int condition_age) {
-		return dao.select_detail_search_title(region_name, start_date, condition_sex, condition_age);
-	}
-
-	@Override
-	public List<RegionVO> read_detail_search_region(String region_name, String start_date, int condition_sex,
-			int condition_age) {
-		// TODO Auto-generated method stub
-		return dao.select_detail_search_region(region_name, start_date, condition_sex, condition_age);
-	}
+	
 }
