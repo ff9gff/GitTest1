@@ -2,6 +2,7 @@ package edu.spring.project03.service;
 
 import java.util.List;
 
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
@@ -34,9 +35,12 @@ public interface TourSearchService {
 	public abstract List<RegionVO> read_main_region_region(String region);
 	
 	
-	// 기본으로 뿌려줄 이미지
+	// 메인 페이지 여행 기본으로 뿌려줄 이미지
 	public abstract List<ImgVO> read_default_image();
 	public abstract List<TourRegisterVO> read_default_title();
 	public abstract List<RegionVO> read_default_region();
 	
+	// 여행 상세검색
+	public abstract List<DetailSearchResultDTO> read_detail_search_image(String region_name, String start_date, int condition_sex, int condition_age);
+
 }

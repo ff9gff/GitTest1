@@ -1,89 +1,129 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
 
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
+
+		
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+		<script src="../resources/theme/js/bootstrap.js"></script>
+		<script src="../resources/theme/js/plugins.js"></script>
+		<script src="../resources/theme/js/main.js"></script>
+
 <title>같이가자</title>
 </head>
-<body>
+
+<body background="../resources/theme/images/KakaoTalk_sky.jpg">
+
+<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
+<img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
+<img src="../resources/theme/images/Sign_up02.png" style="height: 75px"/><br/>
 
 
 
-   <h1>member_register02.jsp</h1>
-   <h2></h2>
-   <form id ="register_form" name="register_form" action="sign_up" method="post" enctype="multipart/form-data">
-      
-      <label for="userid">아이디</label><br>
-      <input type="text" pattern="[A-Za-z0-9]*" style="ime-mode: disabled;" id="userid" name="userid" placeholder="아이디" />
-      <div id="result_id"></div>
-      <br><br>
-      
-      <label for="pwd">비밀번호</label><br>
-      <input type="password" id="pwd" placeholder="비밀번호" /><br><br>
-      
-      <label for="pwd2">비밀번호 확인</label><br>
-      <input type="password" id="pwd2" name="pwd" placeholder="비밀번호 확인"><br>
-      <div id="check-pwd">비밀번호 확인을 위해 다시한번 입력 해 주세요</div>
-      <br>
-      
-      <label for="username">이름</label><br>
-      <input type="text" id="name" name="name" placeholder="이름을 입력해 주세요"><br><br>
-      
-      <label for="sex">성별</label><br>
-      <input type="checkbox" id="male" name="sex" value="1">
-      <label for="male">남자 </label>
-      <input type="checkbox" id="female" name="sex" value="0">
-      <label for="female">여자 </label>
-      <br><br>
-      
-      <label for="age">나이</label><br>
-      <input type="text" pattern="[0-9]*" id="age" name="age" placeholder="나이" /><br><br>
-      
-      <label for="nickname">넥네임이름</label><br>
-      <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요">
-      <div id="result_nick"></div><br><br>
-      
-      <label for="phone">핸드폰 번호</label><br>
-      <input type="text" id="phone" name="phone" placeholder="핸드폰 번호"><br><br>
-      
-      <input type="text" id="postcode" class="postcodify_postcode5" placeholder="우편번호">
-      <input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
-      <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 "><br>
-      <input type="text" id="address2" name="address2" placeholder="상세주소">
-      <input type="hidden" id="address" name="address" readonly="readonly"/>
-      <br><br>      
-      
-      <label for="email">이메일</label><br/>
-      <input type="email" id="email" name="email" placeholder="이메일 입력" />
-      <button type="button" id="btn_send_certification" name="btn_send_certification">인증번호 전송</button><br><br>
-      
-      <label for="email_certification">인증번호 입력</label><br/>
-      <input type="text" id="email_certification" placeholder="인증번호">
-      <button type="button" id="btn_check_certification">인증번호 확인</button><br><br>
-      
-      <!-- TODO : 이미지 (프로필 사진) 넣기 첨부! -->
-      
-      <label for="imageFile">프로필 이미지</label><br/>       
-      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
-            
-      <div id="image_preview">
-      <!-- <img src="#" id="profile-image" width="300px" height="400px"/><br/> -->
-      <img src="#" id="profile-image" style="display: none;" /><br/>
-      <!-- <button type="button" id="btn_profile-image_remove" style="display: none;">Remove</button> -->
-      <a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
-      </div><br/>      
-      
-      <label for="introduce">자기소개</label><br/>
-      <textarea id="introduce" name="introduce" cols="100" rows="15"></textarea><br><br>         
-
-      <button type="button" id="submit_OK">회원가입</button>      
-      <button type="button" id="submit_Cancel">가입취소</button>
+	<form id ="register_form" name="register_form" action="sign_up" method="post" enctype="multipart/form-data">
+   
+   		<span><p style="color: red; display: inline;">(*)</p> 항목은 반드시 입력해 주세요.</span><br>
+   		
+   		<div style="margin-left: 50px">   		
+   		
+	   		<label for="userid">아이디<p style="color: red; display: inline;">(*)</p></label><br>
+			<input type="text" pattern="[A-Za-z0-9]*" style="ime-mode: disabled;" id="userid" name="userid" placeholder="아이디" />
+			<div id="result_id"></div><br/>
+	      
+			<label for="pwd">비밀번호<p style="color: red; display: inline;">(*)</p></label><br>
+			<input type="password" id="pwd" placeholder="비밀번호" /><br><br>
+	      
+			<label for="pwd2">비밀번호 확인</label><br>
+			<input type="password" id="pwd2" name="pwd" placeholder="비밀번호 확인"><br>
+			<div id="check-pwd">비밀번호 확인을 위해 다시한번 입력 해 주세요</div><br/>
+	      
+			<label for="username">이름<p style="color: red; display: inline;">(*)</p></label><br>
+			<input type="text" id="name" name="name" placeholder="이름을 입력해 주세요"><br><br>
+	      
+	      <label for="sex">성별<p style="color: red; display: inline;">(*)</p></label><br>
+	      <input type="checkbox" id="male" name="sex" value="1">
+	      <label for="male">남자 </label>
+	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+	      <input type="checkbox" id="female" name="sex" value="0">
+	      <label for="female">여자 </label>
+	      <br><br>
+	      
+	      <label for="age">나이<p style="color: red; display: inline;">(*)</p></label><br>
+	      <input type="text" pattern="[0-9]*" id="age" name="age" placeholder="나이" /><br><br>
+	      
+	      <label for="nickname">넥네임이름<p style="color: red; display: inline;">(*)</p></label><br>
+	      <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요">
+	      <div id="result_nick"></div><br>
+	      
+	      <label for="phone">핸드폰 번호<p style="color: red; display: inline;">(*)</p></label><br>
+	      <input type="text" id="phone" name="phone" placeholder="핸드폰 번호"><br><br>
+	      
+	      <label for="postcode">주소<p style="color: red; display: inline;">(*)</p></label><br>
+	      <input type="text" id="postcode" class="postcodify_postcode5" placeholder="우편번호">
+	      <input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
+	      <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " style="width: 450px"><br>
+	      <input type="text" id="address2" name="address2" placeholder="상세주소" style="width: 450px">
+	      <input type="hidden" id="address" name="address" readonly="readonly"/>
+	      <br><br>      
+	      
+	      <label for="email">이메일<p style="color: red; display: inline;">(*)</p></label><br/>
+	      <input type="email" id="email" name="email" placeholder="이메일 입력" style="width: 250px" />
+	      <button type="button" id="btn_send_certification" name="btn_send_certification">인증번호 전송</button><br><br>
+	      
+	      <label for="email_certification">인증번호 입력</label><br/>
+	      <input type="text" id="email_certification" placeholder="인증번호">
+	      <button type="button" id="btn_check_certification">인증번호 확인</button><br><br>
+	
+	      <!-- TODO : 이미지 (프로필 사진) 넣기 첨부! -->      
+	      <hr style="width: 800px" />
+	      
+	      <label for="imageFile">프로필 이미지</label><br/>       
+	      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+	            
+	            
+	      <div id="image_preview">
+	      <img src="#" id="profile-image" style="display: none;" /><br/>
+	      <a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
+	      </div><br/>
+	      
+	      <label for="introduce">자기소개</label><br/>
+	      <textarea id="introduce" name="introduce" cols="100" rows="15"></textarea><br><br>         
+		
+		</div>
+		
+		<br/>
+		
+		<div style="text-align: center;">
+			<button type="button" id="submit_OK">회원가입</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      		<button type="button" id="submit_Cancel">가입취소</button>
+		</div>      
    </form>
+</div>
+   
+<div id="footer" style="margin-top: 50px">
+	<div class="col-md-8 col-xs-12 text-left">
+		<span style="margin-left: 0px">Copyright &copy; 2014 Company Name</span>
+	</div>
+	
+	<div class="col-md-4 hidden-xs text-right">
+		<a href="#top" id="go-top">Back to top</a>
+	</div>
+</div>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
 
 <script>
@@ -244,21 +284,6 @@ $(document).ready(function() {
       }      
    });
    
-   $('#submit_OK').click(function() {
-      if(final_check == 1) {
-         alert('인증번호 확인 ok!');
-         var address = $('#address1').val() + " " + $('#address2').val();
-         $('#address').val(address);
-         
-         $("#register_form").submit();         
-      } else {
-         alert('이메일 인증 및 이메일 인증번호 확인을 해 주세요!');
-      }       
-   });   
-   $("#submit_Cancel").click(function() {
-      location = '../index';
-   });
-   
    /** 
    onchange event handler for the file input field.
    It emplements very basic validation using the file extension.
@@ -296,7 +321,6 @@ $(document).ready(function() {
       //return false; //기본 이벤트 막지
    });
       
-
    /** 
    * 폼요소 초기화 
    * Reset form element
@@ -312,6 +336,24 @@ $(document).ready(function() {
    }
 
    
+   /*
+   <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+   */  
+   
+   $('#submit_OK').click(function() {
+      if(final_check == 1) {
+         alert('인증번호 확인 ok!');
+         var address = $('#address1').val() + " " + $('#address2').val();
+         $('#address').val(address);
+         
+         $("#register_form").submit();         
+      } else {
+         alert('이메일 인증 및 이메일 인증번호 확인을 해 주세요!');
+      }       
+   });   
+   $("#submit_Cancel").click(function() {
+      location = '../index';
+   });
    
    
 });

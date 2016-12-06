@@ -85,6 +85,11 @@
 	float: right;
 	margin-right: 20px;
 }
+
+.reply_commit,.update_commit{
+	vertical-align: middle;
+	margin-top: 20px;
+}
 .regdate,.btn_div,.btn_reply,.btn_update,.btn_delete{
 	font-size: 10pt;
 	color:#757575;
@@ -250,18 +255,17 @@ color: #686767;
 font-size: 12px;
 }
 #profile_button2{
-border: #FFFFFF;
-background-color: #FFFFFF;
-color: #686767;
-font-size: 10px;
-font-weight: bold;
-
+	border: #FFFFFF;
+	background-color: #FFFFFF;
+	color: #686767;
+	font-size: 10px;
+	font-weight: bold;
 }
 #profile_nickname{
-text-align: left;
-color: #444343;
-font-weight: 800;
-font-size: 20px;
+	text-align: left;
+	color: #444343;
+	font-weight: 800;
+	font-size: 20px;
 }
 #profile_introduce{
 text-align: left;
@@ -373,6 +377,7 @@ font-size: 12px;
 
 
 <div id="profilemenu" hidden>
+	<input hidden type="number" name="mno" id="profile_mno"/>
 	<table>
 		<tr>
 			<td rowspan="3" id="profile_image">프로필 사진</td>
@@ -418,12 +423,13 @@ font-size: 12px;
 		<!-- /.container -->
 	</div>
 	<!-- /.main-header -->
-<div style="height: 150px;">안보여어</div>
+<div style="height: 150px;"></div>
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
 	<input type="hidden" id="msg_setter" name="msg_setter" value="${mno }"/>
 	<input type="hidden" id="msg_getter" name="msg_getter"/>
-	<input type="hedden" id="msg_getnick" name="msg_getnick"/>
+	<input type="hidden" id="msg_getnick" name="msg_getnick"/>
+	<input type="hidden" id="msg_address" name="msg_address" value="tour/toggle_msg"/>
 </form>
 
 <c:if test="${mno ne tourVO.mno && not empty login_id}">
@@ -604,7 +610,7 @@ $(document).ready(function(){
 							+'<tbody>'
 								+'<tr>'
 									+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+sessionmno+'" data-listno="'+i+'">'+sessionnick+'</a></strong></td>'
-									+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
+									+'<td><textarea cols="80" rows="3" class="reply_textarea"></textarea></td>'
 									+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 								+'</tr>'
 							+'</tbody>'
@@ -662,7 +668,7 @@ $(document).ready(function(){
 									+'<tbody>'
 										+'<tr>'
 											+'<td><strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+sessionmno+'" data-listno="'+j+'">'+sessionnick+'</a></strong></td>'
-											+'<td><textarea cols="90" rows="3" class="reply_textarea"></textarea></td>'
+											+'<td><textarea cols="80" rows="3" class="reply_textarea"></textarea></td>'
 											+'<td><input type="button" class="reply_commit" value="답글달기"/></td>'
 										+'</tr>'
 									+'</tbody>'
@@ -1028,11 +1034,14 @@ $(document).click(function(e){
 	if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
 		!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length &&
 		!$('#replies .reply_list .nickname').has(e.target).length &&
-		!$('#replies .reply_list .nickname .btn_nickname').has(e.target).length){
+		!$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
+		!$('#content_profile').has(e.target).length){
 			$('#contextmenu').hide();
 			$('#context_mno').val(null);
 	} 
 });
+
+<c:if test="${not empty login_id}">
 
 // 수락에서 - 닉네임 클릭시 메뉴 보이기
 $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
@@ -1073,6 +1082,30 @@ $('#replies').on('click','.reply_list .btn_nickname',function(){
 	menubox.show();
 			 
 });	
+
+// 작성자 - 클릭시 메뉴 보이기
+$('#content_profile').on('click',$(this),function(){
+	// e.pageX
+	// a 태그안의 mno 불러오기
+	var amno = ${tourVO.mno};
+	var anick = '${inserterNickname}';
+	
+	var alistno = 0;
+	// 메뉴 input에 mno숨겨넣기
+	$('#context_mno').val(amno);
+	$('#context_listno').val(alistno);
+	$('#context_type').val("inserter");
+	$('#context_nickname').val(anick);
+	// a 태그의 위치
+	var atag = $(this).offset();
+	var menubox = $('#contextmenu');
+	menubox.css("left", (atag.left+30) +"px");
+	menubox.css("top", (atag.top+10) +"px");
+	menubox.show();
+			 
+});	
+
+</c:if>
 
 // 여행 신청하기
 $('#joinmenu_apply').click(function(){
@@ -1129,7 +1162,10 @@ $('#context_profile').on('click','.btn_context',function(){
 	var alistno = $('#context_listno').val();
 	var atype = $('#context_type').val();
 	var amno = $('#context_mno').val();
-	console.log('mno: '+amno);
+	var anick =$('#context_nickname').val();
+	var intro = '${inserterIntro}';
+	
+	$('#profile_mno').val(amno);
 	
 	var src = '';
 	
@@ -1150,13 +1186,20 @@ $('#context_profile').on('click','.btn_context',function(){
 				
 			}
 	});
+		
+		
+	
+	
 	
 	if(atype=='reply'){
 		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
-	}else{
+	}else if(atype='contextmenu'){
 		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
+	}else{
+		$('#profile_nickname').text(anick);
+		$('#profile_introduce').text(intro);
 	}
 	
 	
@@ -1165,6 +1208,14 @@ $('#context_profile').on('click','.btn_context',function(){
 
 	$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
 	$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
+	
+	
+});
+
+$('#profile_button2').click(function(){
+	var amno = $('#profile_mno').val();
+	var url = '/project03/UserPage/'+amno;
+	location.href  = url;
 });
 
 // 프로필 창 닫기
@@ -1176,7 +1227,8 @@ $('#overlay, #profile_button1').click(function(e){
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
-	alert(amno+'번째 회원 게시글 보기');
+	var url = '/project03/UserPage/'+amno;
+	location.href  = url;
 });
 
 $('#context_msg').on('click','.btn_context',function(){

@@ -25,31 +25,31 @@ http://www.templatemo.com/tm-406-flex
 <link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
-<script src="../resources/theme//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-<script src="../resources/theme//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
 
 
 <style>
-.searchRegion {
-	display: none;
-}
+	.searchRegion {
+		display: none;
+	}
 
-        a:link {
-            color: red;
-            text-decoration: none;
-        }       
-        a:visited {
-            color: black;
-            text-decoration: none;
-        }        
-        a:hover {
-            color: blue;
-            text-decoration: underline;
-        }        
-        <!-- a:link: 클릭하지 않은 링크 a:visited: 한번 클릭했던 혹은 다녀갔던 링크 a:hover: 링크를 클릭하려고 마우스를 가져갔을 때 decoration: 밑줄 none: 없는 상태 underline: 있는 상태 -->
-
+    a:link {
+        color: red;
+        text-decoration: none;
+    }       
+    a:visited {
+        color: black;
+        text-decoration: none;
+    }        
+    a:hover {
+        color: blue;
+        text-decoration: underline;
+    }        
+    <!-- a:link: 클릭하지 않은 링크 a:visited: 한번 클릭했던 혹은 다녀갔던 링크 a:hover: 링크를 클릭하려고 마우스를 가져갔을 때 decoration: 밑줄 none: 없는 상태 underline: 있는 상태 -->
+    
 </style>
 </head>
 <body>
@@ -57,7 +57,8 @@ http://www.templatemo.com/tm-406-flex
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
-
+	
+	
 
 
 	
@@ -98,12 +99,7 @@ http://www.templatemo.com/tm-406-flex
 			<div class="row">
 				<div class="col-md-8 col-xs-12 text-left">
 					<span>Copyright &copy; 2014 Company Name</span>
-				</div>
-				<!-- /.text-center -->
-				<div class="col-md-4 hidden-xs text-right">
-					<a href="#top" id="go-top">Back to top</a>
-				</div>
-				<!-- /.text-center -->
+				</div>				
 			</div>
 			<!-- /.row -->
 		</div>

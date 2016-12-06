@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
@@ -100,4 +101,11 @@ public class TourSearchServiceImpl implements TourSearchService {
 		// TODO Auto-generated method stub
 		return dao.select_default_region();
 	}
+
+	@Override
+	public List<DetailSearchResultDTO> read_detail_search_image(String region_name, String start_date, int condition_sex,
+			int condition_age) {
+		return dao.select_detail_search_image(region_name, start_date, condition_sex, condition_age);
+	}
+
 }

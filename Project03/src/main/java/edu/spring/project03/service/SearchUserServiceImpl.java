@@ -33,14 +33,12 @@ public class SearchUserServiceImpl implements SearchUserService {
 	}
 
 	@Override
-	public int sendMsgTO(String userid , String nickname , String msg_content) {
+	public int sendMsgTO(int sd_mno, String nickname , String msg_content) {
 
 		logger.info("SearchUserServiceimple 을 지납니다. 편지 작성 하자 디비디비딥");
-		logger.info("userid "+ userid + " getUser -> " + nickname);
 		
 		int rc_mno = suDao.searchSndUno(nickname); 
 		
-		int sd_mno = suDao.searchSndUno(userid);
 		
 		logger.info("보낸이 => "+ sd_mno +" 받는이 "+ rc_mno);
 		

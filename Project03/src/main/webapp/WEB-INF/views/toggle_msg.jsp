@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,6 +12,7 @@
 	font-size: 20px;
 	height: 30px;
 	padding-top: 10px;
+	padding-left: 20px;
 }
 #msg_send{
 
@@ -34,26 +35,54 @@ textarea{
 	 min-height:340px; 
 	 max-height:340px
 }
+#msg_setter{
+	border: 1px solid #FFFFFF;
+	padding-left: 10px;
+}
 </style>
 </head>
 <body>
 
 <div style="width: 380px; height: 480px;">
 
-
-	
-	<div id="msg_header"><img src="../resources/theme/images/msg.PNG" style="width: 30px; height: 30px;">�����</div>
-<input type="text" value="${msg_setter }" />
-	<div id="msg_send">
-		<span style="font-weight: 800;">�޴»��</span><span>${msg_getnick }</span>
-	</div>
-	<div id="msg_text">
-		<textarea>�����̴�</textarea>
-	</div>
+	<form id="msg_form" method="post" action="../sendMsgU">
+		<div id="msg_header">
+			<img src="../resources/theme/images/msg.PNG" style="width: 20px; height: 20px;">쪽지쓰기
+		</div>
+		<input type="hidden" name="sd_mno" value="${msg_setter }" />
+		<input type="hidden" name="sd_url" value="${msg_address }" />
+		<div id="msg_send">
+			<span style="font-weight: 800;">받는사람</span><input name="nickname" id="msg_setter"  value="${msg_getnick }"/>
+		</div>
+		<div id="msg_text">
+			<textarea name="msg_content"></textarea>
+		</div>
+	</form>
+	<button id="send_button">보내기</button>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+$(document).ready(function(){
+	$('#send_button').click(function(){
+		var f = document.getElementById('msg_form');
+		f.submit();
+	
+		//self.close();
+	});
+	
+	if ('${insert_result}' == 'success') {
+		alert('쪽지 보내기 성공!');
+		self.close();
+		
+	} else if ('${insert_result}' == 'fail') {
+		alert('쪽지 보내기 실패!');
+		self.close();
+	}
+
+});
+
+
 
 </script>
 </body>

@@ -146,9 +146,7 @@
 									</td>
 								</tr>
 							</table>						
-						</div>
-						
-						 
+						</div><br />
 						
 						<textarea name="content" id="smarteditor" rows="10"
 							cols="100" style="width: 766px; height: 412px;">	
@@ -193,6 +191,9 @@
 <!-- 	<script src="../resources/theme/js/main.js"></script> -->
 
 <script>
+// Region Table
+var oTbl;
+
 //Row 추가
 function insRow() {
   oTbl = document.getElementById("regionTable");
@@ -210,6 +211,7 @@ function insRow() {
 function removeRow() {
   oTbl.deleteRow(oTbl.clickedRowIndex);
 }
+
 
 $(document).ready(function() {
 	
@@ -249,12 +251,12 @@ $(document).ready(function() {
 				bUseModeChanger : true,
 			}
 		});
+
 		
-		// Region Table
+/* 		// Region Table
 		var oTbl;
-		
-				
-		
+ */		
+
 		
 		//전송버튼 클릭이벤트
 		$("#savebutton").click(function() {
@@ -268,9 +270,7 @@ $(document).ready(function() {
 		
 		$("#cancelbutton").click(function() {
 			location = 'totalReview';
-		})
-
-		
+		})		
 });
 </script>
 </body>

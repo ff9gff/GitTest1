@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
@@ -25,118 +26,85 @@ public class TourSearchController {
 	@Autowired
 	private TourSearchService tourSelectService;
 
-	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public void main() {
-		logger.info("index.jsp 소환");
+
+	// 지역 검색 Ajax 처리
+	// 해당 지역 검색 메소드
+	@RequestMapping(value = "/index/defaultimage", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxTotalImageTest() {
+
+		ResponseEntity<List<ImgVO>> entity = null;
+
+		List<ImgVO> list = tourSelectService.read_default_image();
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
+			logger.info("이미지 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("이미지 전체 검색 실패 ");
+		}
+
+
+		logger.info("entity " + entity.getBody());
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
 	}
-	
 
 	// 지역 검색 Ajax 처리
-		// 해당 지역 검색 메소드
-//		@RequestMapping(value = "/index/defaultimage/", method = RequestMethod.GET)
-//		public ResponseEntity<List<ImgVO>> ajaxTotalImageTest() {
-//			
-//			ResponseEntity<List<ImgVO>> entity = null;
-//
-//			// List<ImgVO> list = tourSelectService.read_region(region_name);
-//
-//			if (list != null) {
-//				// select 성공 한것이다.
-//				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-//				logger.info("지역 검색 성공 ");
-//			} else {
-//				// select 실패이다.
-//				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-//				logger.info("지역 검색 실패 ");
-//			}
-//
-//			logger.info("entity " + entity.getBody());
-//			// logger.info("list.mno "+ list.get(0).getUserid());
-//			// 출력 됨
-//			return entity;
-//		}
+	// 해당 지역 썸네일 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/index/defaulttitle", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxTotalTitleTest() {
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+		List<TourRegisterVO> list = tourSelectService.read_default_title();
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+			logger.info("제목 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("제목 전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
 
 	// 지역 검색 Ajax 처리
-		// 해당 지역 검색 메소드
-		@RequestMapping(value = "/index/defaultimage", method = RequestMethod.GET)
-		public ResponseEntity<List<ImgVO>> ajaxTotalImageTest() {
-			
-			ResponseEntity<List<ImgVO>> entity = null;
+	// 해당 지역 썸네일 이미지 아래 지역 검색 메소드
+	@RequestMapping(value = "/index/defaultregion", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxTotalRegionTest() {
 
-			List<ImgVO> list = tourSelectService.read_default_image();
+		ResponseEntity<List<RegionVO>> entity = null;
 
-			if (list != null) {
-				// select 성공 한것이다.
-				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-				logger.info("지역 전체 검색 성공 ");
-			} else {
-				// select 실패이다.
-				entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
-				logger.info("지역 전체 검색 실패 ");
-			}
+		List<RegionVO> list = tourSelectService.read_default_region();
 
-			logger.info("entity " + entity.getBody());
-			// logger.info("list.mno "+ list.get(0).getUserid());
-			// 출력 됨
-			return entity;
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+			logger.info("지역 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역  전체 검색 실패 ");
 		}
 
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
 
-		// 지역 검색 Ajax 처리
-		// 해당 지역 썸네일 이미지 아래 제목 검색 메소드
-		@RequestMapping(value = "/index/defaulttitle", method = RequestMethod.GET)
-		public ResponseEntity<List<TourRegisterVO>> ajaxTotalTitleTest() {
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-			ResponseEntity<List<TourRegisterVO>> entity = null;
-
-		    List<TourRegisterVO> list = tourSelectService.read_default_title();
-
-			if (list != null) {
-				// select 성공 한것이다.
-				entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
-				logger.info("제목 전체 검색 성공 ");
-			} else {
-				// select 실패이다.
-				entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
-				logger.info("제목 전체 검색 실패 ");
-			}
-
-			logger.info("entity " + entity);
-			// logger.info("list.mno "+ list.get(0).getUserid());
-			// 출력 됨
-			return entity;
-		}
-
-		// 지역 검색 Ajax 처리
-		// 해당 지역 썸네일 이미지 아래 지역 검색 메소드
-		@RequestMapping(value = "/index/defaultregion", method = RequestMethod.GET)
-		public ResponseEntity<List<RegionVO>> ajaxTotalRegionTest() {
-
-			ResponseEntity<List<RegionVO>> entity = null;
-
-			List<RegionVO> list = tourSelectService.read_default_region();
-
-			if (list != null) {
-				// select 성공 한것이다.
-				entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
-				logger.info("지역 전체 검색 성공 ");
-			} else {
-				// select 실패이다.
-				entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
-				logger.info("지역  전체 검색 실패 ");
-			}
-
-			logger.info("entity " + entity);
-			// logger.info("list.mno "+ list.get(0).getUserid());
-			// 출력 됨
-			return entity;
-		}
-	
-	
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
-	
 	// 지역 검색 Ajax 처리
 	// 해당 지역 검색 메소드
 	@RequestMapping(value = "/index/regionimage/{region_name}", method = RequestMethod.GET)
@@ -166,11 +134,11 @@ public class TourSearchController {
 	// 해당 지역 썸네일 이미지 아래 제목 검색 메소드
 	@RequestMapping(value = "/index/regiontitle/{region_name}", method = RequestMethod.GET)
 	public ResponseEntity<List<TourRegisterVO>> ajaxRegionTitleTest(@PathVariable("region_name") String region_name) {
-		
+
 		logger.info("여행 지역: " + region_name);
 		ResponseEntity<List<TourRegisterVO>> entity = null;
 
-	    List<TourRegisterVO> list = tourSelectService.read_main_title_region(region_name);
+		List<TourRegisterVO> list = tourSelectService.read_main_title_region(region_name);
 
 		if (list != null) {
 			// select 성공 한것이다.
@@ -196,7 +164,6 @@ public class TourSearchController {
 
 		ResponseEntity<List<RegionVO>> entity = null;
 
-
 		List<RegionVO> list = tourSelectService.read_main_region_region(region_name);
 
 		if (list != null) {
@@ -216,7 +183,7 @@ public class TourSearchController {
 	}
 
 	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-	
+
 	// 기간 검색 Ajax 처리
 	// 해당 기간 썸네일 이미지 검색 메소드
 	@RequestMapping(value = "/index/periodimage/{start_date}/{end_date}", method = RequestMethod.GET)
@@ -299,6 +266,38 @@ public class TourSearchController {
 			// select 실패이다.
 			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
 			logger.info("기간  - 지역 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	// 상세 검색 Ajax 처리
+	@RequestMapping(value = "/index/detailsearchImage/{region_name}/{start_date}/{condition_sex}/{condition_age}", method = RequestMethod.GET)
+	public ResponseEntity<List<DetailSearchResultDTO>> ajaxDetailSearchImageTest(@PathVariable("region_name") String region_name,
+			@PathVariable("start_date") String start_date, @PathVariable("condition_sex") int condition_sex,
+			@PathVariable("condition_age") int condition_age) {
+		logger.info("여행 지역: " + region_name);
+		logger.info("시작 날짜: " + start_date);
+		logger.info("성별 구분: " + condition_sex);
+		logger.info("나이 구분: " + condition_age);		
+		
+		List<DetailSearchResultDTO> list = tourSelectService.read_detail_search_image(region_name, start_date, condition_sex, condition_age);
+
+		ResponseEntity<List<DetailSearchResultDTO>> entity = null;
+
+		if (list != null) {	
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<DetailSearchResultDTO>>(list, HttpStatus.OK);
+			logger.info("상세검색(지역) 이미지 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<DetailSearchResultDTO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("상세검색(지역) 이미지 검색 실패 ");
 		}
 
 		logger.info("entity " + entity);

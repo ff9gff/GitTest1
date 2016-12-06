@@ -2,6 +2,7 @@ package edu.spring.project03.persistence;
 
 import java.util.List;
 
+import edu.spring.project03.domain.DetailSearchResultDTO;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
@@ -35,4 +36,8 @@ public interface TourSearchDAO {
 	public abstract List<ImgVO> select_default_image();
 	public abstract List<TourRegisterVO> select_default_title();
 	public abstract List<RegionVO> select_default_region();
+	
+	// 여행 상세검색
+	public abstract List<DetailSearchResultDTO> select_detail_search_image(String region_name, String start_date, int condition_sex, int condition_age);
+	
 }

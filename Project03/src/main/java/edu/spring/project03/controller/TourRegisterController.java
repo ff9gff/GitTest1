@@ -1,7 +1,5 @@
 package edu.spring.project03.controller;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 
 import org.slf4j.Logger;
@@ -94,7 +92,7 @@ public class TourRegisterController {
 	}
 	
 	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
-	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, Model model) {
+	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, String msg_address, Model model) {
 		System.out.println("setter: "+msg_setter);
 		System.out.println("getter: "+msg_getter);
 		System.out.println("msg_getnick: "+msg_getnick);
@@ -102,6 +100,14 @@ public class TourRegisterController {
 		model.addAttribute("msg_setter", msg_setter);
 		model.addAttribute("msg_getter", msg_getter);
 		model.addAttribute("msg_getnick", msg_getnick);
+		model.addAttribute("msg_address", msg_address);
+		
+		return "toggle_msg";
+	}
+	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
+	public String toggleMsg() {
+	
 		
 		return "toggle_msg";
 	}
@@ -117,24 +123,25 @@ public class TourRegisterController {
 	public String submit(TourRegisterVO tourregistervo, RegionVO regionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
 
+		
+		// 썸네일 이미지 주소 생성
 		ImageFile fileInfo = imageService.save(imageFile);
 		
 		logger.info(""+regionvo);
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+			logger.info("이미지 길이: " + fileInfo.getFileName().length());
 		} else {
 			logger.info("대실패 ");
 
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			logger.info("mno 확인: " + tourregistervo.getMno());
 
 			// 이상 없으면 여행등록 DB insert!
 			int result = tourRegisterService.create(tourregistervo);
-
 			if (result == 1) { // 여행등록 DB insert 성공
 				logger.info("여행 등록 성공");
 
@@ -147,28 +154,42 @@ public class TourRegisterController {
 				model.addAttribute("vo", tourregistervo);
 				model.addAttribute("vo2", regionvo);
 				modelMap.put("imageFile", fileInfo);
-
-				ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-				int result2 = tourRegisterService.createThumnail(imagevo);
-
-				if (result2 == 1) {
-					logger.info("썸네일 등록 성공");					
+				
+				if (fileInfo.getFileName().length() < 40) {
 					
-					model.addAttribute("vo3", imagevo);
-					logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
-
-					String region_name = regionvo.getRegion_name();
-					RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
-					int result3 = tourRegisterService.createRegion(regionvo2);
-
-					if (result3 == 1) {
-						logger.info("장소 등록 성공");
+					ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + "default-profile.jpg");
+					int result2 = tourRegisterService.createThumnail(imagevo);
+					if (result2 == 1) {
+						logger.info("기본 썸네일 등록 성공");		
+					} else {
+						logger.info("기본 썸네일 등록 실패");		
 					}
-
+					
 				} else {
-					logger.info("썸네일 등록 실패");
-				}
 
+					ImgVO imagevo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+					int result2 = tourRegisterService.createThumnail(imagevo);
+	
+					if (result2 == 1) {
+						logger.info("직접 썸네일 등록 성공");			
+						
+						
+						
+						model.addAttribute("vo3", imagevo);
+						logger.info("등록하는 이미지 주소: " + imagevo.getImg_url());					
+	
+						String region_name = regionvo.getRegion_name();
+						RegionVO regionvo2 = new RegionVO(content_no, region_name, 0);
+						int result3 = tourRegisterService.createRegion(regionvo2);
+	
+						if (result3 == 1) {
+							logger.info("장소 등록 성공");
+						}
+	
+					} else {
+						logger.info("직접 썸네일 등록 실패");
+					}
+				}
 			} else { // DB insert 실패
 				logger.info("여행 등록 실패");
 			}
@@ -189,14 +210,11 @@ public class TourRegisterController {
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
-
 		} else {
 			logger.info("대실패 ");
-
 		}
 
 		if (tourregistervo != null && regionvo != null) {
-
 			model.addAttribute("vo", tourregistervo);
 			model.addAttribute("vo2", regionvo);
 			modelMap.put("imageFile", fileInfo);
@@ -213,6 +231,8 @@ public class TourRegisterController {
 		ImageFile fileInfo = imageService.save(imageFile);
 
 		logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());
+		
+		
 
 		if (tourregistervo != null && regionvo != null) {
 
@@ -333,8 +353,16 @@ public class TourRegisterController {
 		return "/TourRegisterComplete";
 	}
 
+	// index.jsp 에서 여행 게시판으로 갈때
 	@RequestMapping(value = "/tourBoard", method = RequestMethod.GET)
-	public String tourBoard() {
+	public String maintotourBoard() {
+		logger.info("여행선택 전체게시판");
+		return "tour/TourBoard";
+	}
+	
+	// 여행 등록 후 여행 게시판으로 갈때
+	@RequestMapping(value = "/TourBoard", method = RequestMethod.GET)
+	public String insertAftertourBoard() {
 		logger.info("여행선택 전체게시판");
 		return "tour/TourBoard";
 	}

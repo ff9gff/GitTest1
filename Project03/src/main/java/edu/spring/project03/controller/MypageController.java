@@ -1,9 +1,11 @@
 package edu.spring.project03.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
-import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,35 +16,40 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
+import edu.spring.project03.domain.RegionVO;
+import edu.spring.project03.domain.TourRegisterVO;
+import edu.spring.project03.service.MemberService;
 import edu.spring.project03.service.MypageService;
 import edu.spring.project03.service.TourSearchService;
 
 
 @Controller
+@RequestMapping(value = "/")
 public class MypageController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MypageController.class);
 	
 	@Autowired
-	private MypageService mypageService; 
+	private MypageService mypageService;
 	
 	@Autowired
-	private TourSearchService tourSelectService;
-	
+	private MemberService memberService;
+		
 	@RequestMapping(value="/MyPage", method=RequestMethod.GET )
-	public void selectPesrsonal(HttpServletRequest req, Model model) {		
+	public String selectPesrsonal(HttpServletRequest req, Model model) {		
 		HttpSession session = req.getSession();
 		int mno = Integer.valueOf(session.getAttribute("mno").toString());
 		logger.info("mno: " + mno);
 		PersonalVO vo = mypageService.selectpersonal(mno);
 		logger.info("닉네임 : " + vo.getNickname());
 		logger.info("성별 : " + vo.getSex());
-		logger.info("나이 : " + vo.getAge());
+		logger.info("나이 : " + vo.getAge()); 
 		logger.info("자기소개 : " + vo.getIntroduce());
 		logger.info("이메일 : " + vo.getEmail());
 		
@@ -56,27 +63,49 @@ public class MypageController {
 		
 		model.addAttribute("vo", vo);
 		
+		return "mypage/MyPage";
+	}
+	
+	@RequestMapping(value="/UserPage/{mno}", method=RequestMethod.GET )
+	public String selectUserPesrsonal(@PathVariable("mno") Integer mno, Model model) {		
+		
+		PersonalVO vo = mypageService.selectpersonal(mno);
+		
+		ImgVO src = mypageService.readProfile(mno);
+		model.addAttribute("inserterImg", src.getImg_url());
+		logger.info("src: " + src);
+		
+		model.addAttribute("vo", vo);
+		
+		return "mypage/MyPage";
 	}
 	
 	// mno 검색 Ajax 처리
 	// 해당 mno 검색 메소드
-	@RequestMapping(value = "/MyPage/{mno}", method = RequestMethod.GET)
-	public ResponseEntity<List<ImgVO>> ajaxRegionTest(@PathVariable("mno") int mno, Model model) {
+	@RequestMapping(value = "/MyPage/list/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxlistTest(@PathVariable("mno") int mno, Model model) {
 
 		logger.info("mno: " + mno);
 		ResponseEntity<List<ImgVO>> entity = null;
+		
 
 		List<ImgVO> list = mypageService.read_mno(mno);
+		
 		model.addAttribute("list", list);
+		
 
 		if (list != null) {
 			// select 성공 한것이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
-			logger.info("mno 검색 성공 ");
+			
+			logger.info("mno 검색 성공 ");			
+			
 		} else {
 			// select 실패이다.
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.BAD_REQUEST);
+			
 			logger.info("mno 검색 실패 ");
+			
 		}
 
 		logger.info("entity " + entity.getBody());
@@ -85,20 +114,160 @@ public class MypageController {
 		return entity;
 	}
 	
-	// 해당 프로필의 이미지 주소를 읽어오는 메소드
-	@RequestMapping(value="/MyPageProfile/{mno}", method=RequestMethod.GET)
-	public ResponseEntity<String> readImg(@PathVariable("mno") int mno){
-		ImgVO src = mypageService.readProfile(mno);
-		logger.info("src: " + src);
-		String address = src.getImg_url();
-		ResponseEntity<String> entity = null;
-		if(src != null){ // select 성공
-			entity = new ResponseEntity<>(address, HttpStatus.OK);
-		}else{ // select 실패
-			entity = new ResponseEntity<>(address, HttpStatus.BAD_REQUEST);
-		}// end if
-		
+	// mno 검색 Ajax 처리
+	// 해당 mno 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/MyPage/title/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxtitleTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+	    List<TourRegisterVO> list = mypageService.read_mytour_title(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+			logger.info("제목 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("제목 전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
 		return entity;
+	}
+	
+	@RequestMapping(value = "/MyPage/region/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxregionTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<RegionVO>> entity = null;
+
+		List<RegionVO> list = mypageService.read_mytour_region(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+			logger.info("지역 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역  전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}	
+
+	
+	@RequestMapping(value = "/MyPage/joinlist/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxjoinlistTest(@PathVariable("mno") int mno, Model model) {
+
+		logger.info("mno222: " + mno);
+		ResponseEntity<List<ImgVO>> joinentity = null;
+
+		List<ImgVO> joinlist = mypageService.read_join_mno(mno);
+		model.addAttribute("joinlist", joinlist);
+
+		
+		if (joinlist != null) {
+			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.OK);
+			logger.info("joinmno 검색 성공 ");
+		} else {
+			joinentity = new ResponseEntity<List<ImgVO>>(joinlist, HttpStatus.BAD_REQUEST);
+			logger.info("hoinmno 검색 실패 ");
+		}
+		
+				
+		logger.info("joinentity " + joinentity.getBody());
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return joinentity;
+	}
+	
+	// mno 검색 Ajax 처리
+	// 해당 mno 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/MyPage/jointitle/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<TourRegisterVO>> ajaxjointitleTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<TourRegisterVO>> entity = null;
+
+	    List<TourRegisterVO> list = mypageService.read_mytour_title(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.OK);
+			logger.info("제목 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<TourRegisterVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("제목 전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+		
+	@RequestMapping(value = "/MyPage/joinregion/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<RegionVO>> ajaxjoinregionTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<RegionVO>> entity = null;
+
+		List<RegionVO> list = mypageService.read_mytour_region(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.OK);
+			logger.info("지역 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<RegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역  전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+	
+//////////////////////////////프로필 수정 작업 중.../////////////////////////////////////	
+	@RequestMapping(value = "updatePersonal/{mno}", method = RequestMethod.GET)
+	public String readPerson(@PathVariable("mno") int mno, Model model) {
+		
+		logger.info("mno: " + mno);
+		PersonalVO vo = mypageService.selectpersonal(mno);
+		logger.info("닉네임 : " + vo.getNickname());
+		logger.info("성별 : " + vo.getSex());
+		logger.info("나이 : " + vo.getAge()); 
+		logger.info("자기소개 : " + vo.getIntroduce());
+		logger.info("이메일 : " + vo.getEmail());
+		
+		model.addAttribute("vo", vo);
+		
+		return "mypage/updatePersonal";
+		
+	}
+	
+	@RequestMapping(value = "checknick", method = RequestMethod.POST)
+	public void checkid(@RequestBody PersonalVO vo, HttpServletRequest request, HttpServletResponse response)
+	      throws IOException {
+
+	   logger.info("userid: " + vo.getNickname());
+
+	   String checknick = memberService.readNickname(vo.getNickname());
+	   logger.info("checkid : " + checknick);
+
+	   PrintWriter out = response.getWriter();
+
+	   if (checknick != null) {
+	      out.print("NOK");
+	   } // end if
 	}
 	
 	
