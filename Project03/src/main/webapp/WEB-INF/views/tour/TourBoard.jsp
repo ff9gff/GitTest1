@@ -657,12 +657,8 @@ http://www.templatemo.com/tm-406-flex
 	
 				//end of getThumnails()
 			};
-			
-			
-			
-			
-			
-			
+						
+
 			// 지역 검색 버튼 처리
 			$('#region_search').click(function() {
 	

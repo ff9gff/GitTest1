@@ -399,12 +399,13 @@ public class TourRegisterController {
 
 				if (result2 == 1) {
 					logger.info("장소 수정 성공");
-					
+
 					ImageFile fileInfo = imageService.save(imageFile);
 
-					ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+					ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0,
+							SAVE_IMAGE_DIR + fileInfo.getFileName());
 					int result3 = tourRegisterService.updateThumnail(imgvo);
-					
+
 					if (result3 == 1) {
 						logger.info("썸네일 수정 성공");
 					} else {
