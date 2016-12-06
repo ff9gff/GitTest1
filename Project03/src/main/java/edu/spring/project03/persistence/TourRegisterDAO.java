@@ -6,13 +6,13 @@ import edu.spring.project03.domain.TourRegisterVO;
 
 public interface TourRegisterDAO {
 
-	public abstract int insert(TourRegisterVO vo); // ok
+	public abstract int insert(TourRegisterVO vo);
 
-	public abstract int insertThumnail(ImgVO vo); // ok
+	public abstract int insertThumnail(ImgVO vo);
 
-	public abstract int selectTrip_no(TourRegisterVO vo); // ok
+	public abstract int selectTrip_no(TourRegisterVO vo);
 
-	public abstract int insertRegion(RegionVO vo); // ok
+	public abstract int insertRegion(RegionVO vo);
 
 	public abstract int update(TourRegisterVO vo);
 

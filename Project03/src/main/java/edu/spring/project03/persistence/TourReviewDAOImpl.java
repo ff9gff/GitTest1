@@ -78,19 +78,16 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 		return sqlSession.selectOne(NAMESPACE + ".select-review_no", reviewvo);
 	} // end selectReview_no(reviewvo)
-
 	
-	
-	/**
-	 * select
-	 */	
 	@Override
 	public ReviewVO selectReviewRegister_data(int review_no) {
+		
+		logger.info("review_no : " + review_no);
 
-		System.out.println("리뷰 번호: " + review_no);
 		return sqlSession.selectOne(NAMESPACE + ".select_review-register_data", review_no);
 	} // end selectRegister_data(review_no)
-
+	
+	
 	@Override
 	public ReviewVO select_review_by_no(int review_no) {
 
@@ -98,22 +95,43 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 
 		return reviewvo;
 	} // end select_review_by_no(review_no)
-
+	
+	@Override
+	public ImgVO select_review_profile(int mno) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
+	} // end select_review_profile(mno)
+	
 	@Override
 	public PersonalVO select_review_personal(int mno) {
 
 		return sqlSession.selectOne(NAMESPACE + ".select_review_personal", mno);
 	} // end select_review_personal(mno)
-
-	@Override
-	public ImgVO select_review_profile(int mno) {
-		return sqlSession.selectOne(NAMESPACE + ".select_review_profile", mno);
-	} // end select_review_profile(mno)
-
+	
 	@Override
 	public String select_review_region_name(int review_no) {
+		
 		return sqlSession.selectOne(NAMESPACE + ".select_review_region_name", review_no);
 	} // end select_review_region_name(review_no)
+	
+	
+
+	
+	
+	
+	
+	/**
+	 * select
+	 */	
+
+
+
+
+
+
+
+
+
 
 	/**
 	 * update
@@ -219,39 +237,40 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	 */
 	@Override
 	public int updateReview(ReviewVO reviewvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+		return sqlSession.update(NAMESPACE + ".update-register", reviewvo);
+	} // end updateReview(reviewvo)
 
 	@Override
 	public int updateThumnail(ImgVO imgvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+		
+		return sqlSession.update(NAMESPACE + ".update-thumnail", imgvo);
+	} // end updateThumnail(imgvo)
 
 	@Override
 	public int updateRegion(ReviewRegionVO reviewRegionvo) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+		return sqlSession.update(NAMESPACE + ".update-region", reviewRegionvo);
+	} // end updateRegion(reviewRegionvo)
 
 	@Override
 	public int deleteReview(int review_no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+		return sqlSession.delete(NAMESPACE + ".delete-register", review_no);
+	} // end deleteReview(review_no)
 
 	@Override
 	public int deleteThumnail(int review_no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+		return sqlSession.delete(NAMESPACE + ".delete-thumnail", review_no);
+	} // end deleteThumnail(review_no)
 
 	@Override
 	public int deleteRegion(int review_no) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
+		return sqlSession.delete(NAMESPACE + ".delete-region", review_no);
+	} // end deleteRegion(review_no)
+	
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////
 	/////////////////////////////////////////////////////////////////////////////////////////////////

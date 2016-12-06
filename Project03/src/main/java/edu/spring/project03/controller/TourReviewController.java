@@ -155,7 +155,28 @@ public class TourReviewController {
 		} // end if
 
 		return "review/review_detail";
-
 	} // end reviewDetail()
+	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
+	public String toggleMsg() {
+
+		return "toggle_msg";
+	} // end toggleMsg()
+	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
+	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, String msg_address, Model model) {
+		System.out.println("setter: " + msg_setter);
+		System.out.println("getter: " + msg_getter);
+		System.out.println("msg_getnick: " + msg_getnick);
+
+		model.addAttribute("msg_setter", msg_setter);
+		model.addAttribute("msg_getter", msg_getter);
+		model.addAttribute("msg_getnick", msg_getnick);
+		model.addAttribute("msg_address", msg_address);
+
+		return "toggle_msg";
+	} // end toggleMsg(msg_setter, msg_getter, msg_getnick, msg_address, model)
+	
+	
 
 } // end class TourReviewController

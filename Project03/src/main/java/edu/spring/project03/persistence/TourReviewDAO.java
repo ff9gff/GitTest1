@@ -15,9 +15,6 @@ public interface TourReviewDAO {
 	public abstract int insertReview(ReviewVO reviewvo);
 	public abstract int insertThumnail(ImgVO imgvo);
 	public abstract int insertRegion(ReviewRegionVO reviewRegionvo);
-		
-	// select
-	public abstract int selectReview_no(ReviewVO reviewvo);
 	
 	// update
 	public abstract int updateReview(ReviewVO reviewvo);
@@ -30,14 +27,20 @@ public interface TourReviewDAO {
 	public abstract int deleteRegion(int review_no);
 
 	
+	// select
+	public abstract int selectReview_no(ReviewVO reviewvo);
+	public abstract ReviewVO selectReviewRegister_data(int review_no);	
+	
+	
+	public abstract ReviewVO select_review_by_no(int review_no);
+	public abstract ImgVO select_review_profile(int mno);
+	public abstract PersonalVO select_review_personal(int mno);
+	public abstract String select_review_region_name(int review_no);
 	
 	
 	// select
-	public abstract ReviewVO selectReviewRegister_data(int review_no);	
-	public abstract ImgVO select_review_profile(int mno);
-	public abstract PersonalVO select_review_personal(int mno);
-	public abstract ReviewVO select_review_by_no(int review_no);
-	public abstract String select_review_region_name(int review_no);
+
+
 	
 	
 	// 메인/후기 게시판 - 디폴트 4개 후기 등록순 뿌리기
