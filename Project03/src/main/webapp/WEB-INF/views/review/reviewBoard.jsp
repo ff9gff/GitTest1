@@ -109,26 +109,23 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
-
-
-	<div class="content-section" id="services">
+<div class="content-section" id="services">
 		<div class="container">
 			<div>
 
 				<h3 class="h2" style="font: bold;"> 후기 게시판 </h3>
 				
 				<br /><br />
-
-				<div class="row" id="reviewDetail">
-				</div>
 				
 				<div>
 					<input type="text" id="region_name" name="region_name" placeholder="지역이름">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" id="nickname" name="nickname" placeholder="닉네임">&nbsp;&nbsp;&nbsp;&nbsp;
 					<button type="button" id="select_search">장소 / 닉네임 선택 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button id="btn_create_review" style="float: right; margin-right: 13px">후기 등록</button> <br/><br/>
-					
-					
+				</div>
+
+				<br /><br />
+				
+				<div class="row" id="reviewDetail" style="width: 1200px;">
 				</div>
 				<!-- /.row -->
 			</div>
@@ -136,8 +133,6 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.container -->
 	</div>
 	<!-- /#services -->
-
-
 	<div id="footer">
 		<div class="container">
 			<div class="row">
@@ -328,12 +323,10 @@ http://www.templatemo.com/tm-406-flex
 
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 					+ '<div class="portfolio-thumb">'
-					+ '<figure>'
 					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
 					+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
 					+ '<div>' + ReviewImage[i].city + '</div>'	
 					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-					+ '</figure>'
 					+ '</div>'
 					+ '</div>';
 			}
