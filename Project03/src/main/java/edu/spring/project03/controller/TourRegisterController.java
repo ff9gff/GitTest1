@@ -328,7 +328,6 @@ public class TourRegisterController {
 					logger.info("장소 삭제 성공");
 				}
 			}
-
 		} else {
 			logger.info("여행 삭제 실패");
 		}
