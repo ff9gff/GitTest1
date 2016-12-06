@@ -28,5 +28,11 @@ public interface TourRegisterService {
 	public abstract int deleteThumnail(int trip_no);
 	// 지역 삭제
 	public abstract int deleteRegion(int trip_no);
+	
+	
+	// 여행 게시글에서 수정버튼 클릭 -> 수정 페이지로 데이터 넘기기 위한 데이터 검색
+	public abstract TourRegisterVO readTourInfo(int trip_no);
+	public abstract RegionVO readTourRegionInfo(int trip_no);
+	public abstract ImgVO readTourMainImage(int trip_no);
 
 }

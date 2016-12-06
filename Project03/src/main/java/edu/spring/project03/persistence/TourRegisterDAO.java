@@ -28,5 +28,12 @@ public interface TourRegisterDAO {
 
 	// 지역 삭제
 	public abstract int deleteRegion(int trip_no);
+	
+	////////////////////////////////////////////////////////
+	
+	// 여행 게시글에서 수정버튼 클릭 --> 수정페이지로 데이터 넘기기위한 select
+	public abstract TourRegisterVO selectTourInfo(int trip_no);
+	public abstract RegionVO selectTourRegionInfo(int trip_no);
+	public abstract ImgVO selectTourMainImage(int trip_no);
 
 }

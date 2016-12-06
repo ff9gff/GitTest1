@@ -479,7 +479,7 @@ ${tourVO.content}
 
 	<div class="menu">
 		<c:if test="${mno eq tourVO.mno}">
-			<form action="TourBoardUpdate" method="post" id="frm1" style="display: inline-block;">
+			<form action="TourBoardUpdateRequest" method="post" id="frm1" style="display: inline-block;">
 				<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
 				<input type="button" id='updateButton' value='수정' />
 			</form>
@@ -491,6 +491,7 @@ ${tourVO.content}
 				<input type="button" id='deleteButton' value='삭제' />
 			</form>
 		</c:if>
+		<button type="button" id="tourBoardButton">목록</button>
 	</div>
 
 <div class="menu">Comment</div>
@@ -1327,6 +1328,11 @@ $('#updateButton').click(function() {
 $('#deleteButton').click(function() {
 	alert("여행 정보 삭제하러 갑니다");
 	$('#frm2').submit();
+});
+
+$('#tourBoardButton').click(function() {
+	alert('여행 게시판으로 돌아갑니다');
+	location = '../tour/TourBoard';
 });
 
 

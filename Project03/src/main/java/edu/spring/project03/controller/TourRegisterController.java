@@ -222,6 +222,8 @@ public class TourRegisterController {
 	@RequestMapping(value = "/TourRegisterCheck", method = RequestMethod.POST)
 	public String tourRegisterCheck(TourRegisterVO tourregistervo, RegionVO regionvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
+		
+		int content_no = 0;
 
 		ImageFile fileInfo = imageService.save(imageFile);
 
@@ -246,7 +248,7 @@ public class TourRegisterController {
 				tourregistervo = new TourRegisterVO(0, tourregistervo.getMno(), tourregistervo.getTitle(), 0, 0,
 						tourregistervo.getContent(), null, tourregistervo.getStart_date(), tourregistervo.getEnd_date(),
 						0);
-				int content_no = tourRegisterService.readTrip_no(tourregistervo);
+				content_no = tourRegisterService.readTrip_no(tourregistervo);
 				logger.info("update content_no" + content_no);
 
 				ImgVO imgvo = new ImgVO(TourRegisterID, content_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
@@ -275,7 +277,8 @@ public class TourRegisterController {
 			logger.info("응 실패^^");
 		}
 
-		return "tour/TourRegisterConfirm";
+		return "redirect:detail?trip_no=" + content_no;
+		/*return "tour/TourRegisterConfirm";*/
 	}
 
 	// 여행 정보 등록 직후 칼삭제 : 삭제 후 TourRegister로 돌아간다(detail)
@@ -328,7 +331,7 @@ public class TourRegisterController {
 		}
 	}
 
-	// 여행 글에서 수정페이지에서 삭제하려고 할 때 : 삭제 후 TourRegister로 돌아간다
+	// 여행 게시글에서 삭제버튼 클릭 : 삭제 후 TourBoard로 돌아간다
 	@RequestMapping(value = "/TourBoardDelete", method = RequestMethod.POST)
 	public String ajaxDeleteTest2444(int trip_no) {
 		logger.info("여행 번호: " + trip_no);
@@ -355,20 +358,58 @@ public class TourRegisterController {
 	}
 
 	// 여행 글에서 수정페이지에서 수정하려고 할 때 : 수정 페이지로 먼저 보낸다
+	@RequestMapping(value = "/TourBoardUpdateRequest", method = RequestMethod.POST)
+	public String UpdateTest(int trip_no, Model model) {
+		logger.info("여행 번호: " + trip_no);
+
+		// 여행 번호를 가지고 select * from wm_tour 검색 --> vo1으로 받고 model에 실어서 다음 페이지로!
+		// select * from wm_tour_region 검색 --> vo2로 받고 model에 실어서 다음 페이지로!
+
+		TourRegisterVO vo1 = tourRegisterService.readTourInfo(trip_no);
+		RegionVO vo2 = tourRegisterService.readTourRegionInfo(trip_no);
+		ImgVO vo3 = tourRegisterService.readTourMainImage(trip_no);
+
+		if (vo1 != null && vo2 != null && vo3 != null) {
+			model.addAttribute("tourVO", vo1);
+			model.addAttribute("regionVO", vo2);
+			model.addAttribute("imgVO", vo3);
+
+			logger.info("수정하기 위한 검색작업 완료");
+		} else {
+			logger.info("수정하기 위한 검색작업 실패");
+		}
+
+		return "tour/TourBoardUpdate";
+	}
+
+	// 여행 글에서 수정페이지에서 수정!: 수정 완료하면 redirect
 	@RequestMapping(value = "/TourBoardUpdate", method = RequestMethod.POST)
-	public String UpdateTest(int trip_no) {
-		logger.info("여행 번호: " + trip_no);
+	public String UpdateTest2(TourRegisterVO vo1, RegionVO vo2) {
 
-		return "goUpdate";
+		if (vo1 != null && vo2 != null) {
+
+			int result = tourRegisterService.update(vo1);
+
+			if (result == 1) { // 여행등록 DB insert 성공
+				logger.info("여행 수정 성공");
+
+				int result2 = tourRegisterService.updateRegion(vo2);
+
+				if (result2 == 1) {
+					logger.info("장소 수정 성공");
+				}
+
+			} else {
+				logger.info("썸네일 수정 실패");
+			}
+
+		} else { // DB insert 실패
+			logger.info("여행 수정 실패");
+		}
+
+		return "redirect:detail?trip_no=" + vo1.getTrip_no();
 	}
 
-	// 여행 글에서 수정페이지에서 수정하려고 할 때 : 수정 페이지로 먼저 보낸다
-	@RequestMapping(value = "/goUpdate", method = RequestMethod.POST)
-	public String Update2Test(int trip_no) {
-		logger.info("여행 번호: " + trip_no);
-
-		return "redirect:detail?trip_no=" + trip_no;
-	}
 
 	@RequestMapping("/cancelTourRegister")
 	public String tourRegister() {

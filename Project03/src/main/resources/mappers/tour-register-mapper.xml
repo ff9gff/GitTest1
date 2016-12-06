@@ -51,6 +51,19 @@
 	<delete id="delete-region">
 		delete from wm_tour_region where trip_no = #{trip_no}
 	</delete>
+	
+	
+	<!-- 여행 게시글에서 수정 버튼 눌렀을 때 수정 페이지에 정보 출력-->
+	<select id="select_tourInfo_by_trip_no" resultType="edu.spring.project03.domain.TourRegisterVO">
+		select * from wm_tour where trip_no = #{trip_no}
+	</select>
+	<select id="select_tourRegionInfo_by_trip_no" resultType="edu.spring.project03.domain.RegionVO">
+		select * from wm_tour_region where trip_no = #{trip_no}
+	</select>
+	<select id="select_tourMainImage_by_trip_no" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image where board_type = 1 and content_no = #{trip_no}
+	</select>
+	
 
 
 
