@@ -338,7 +338,8 @@ $(document).ready(function() {
    $('#submit_OK').click(function() {
       if(final_check == 1) {
          alert('인증번호 확인 ok!');
-         var address = $('#address1').val() + " " + $('#address2').val();
+         //var address = $('#address1').val() + " " + $('#address2').val();
+         var address = $('#address1').val() + "," + $('#address2').val();
          $('#address').val(address);
          
          $("#register_form").submit();
