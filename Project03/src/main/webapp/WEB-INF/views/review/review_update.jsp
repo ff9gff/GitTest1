@@ -135,6 +135,7 @@
 					    	<input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>						
 						</c:if>
 						
+						<input type="hidden" name="review_no" value="${ReviewVO.review_no}" readonly="readonly" /> 
 					            
 					    <div id="image_preview">
 					    <img src="#" id="profile-image" style="display: none;" /><br/>
