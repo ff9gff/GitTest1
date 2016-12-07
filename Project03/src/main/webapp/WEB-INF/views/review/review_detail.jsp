@@ -338,6 +338,14 @@ width: 95%;
 	background-color: lightgray;
 	text-align: center;
 }
+.content_btns{
+	width: 60px;
+	height: 20px;
+	font-size: 12px;
+	padding: 0;
+	background-color: #F4511E;
+	color: white;
+}
 </style>
 
 </head>
@@ -459,29 +467,33 @@ width: 95%;
  --%>
 
 
-<div class="menu">Content</div>
-<!-- 작성일자가 들어가야 하는 곳 같다. -->
-<%-- <input hidden id="start_date" value="${reviewVO.start_date}"/>
-<input hidden id="end_date" value="${reviewVO.end_date}"/> --%>
 
-<div id="content">
-${reviewVO.content}
+
+<div class="menu" style="margin-top: 20px;"><p style="display: inline-block;">Content</p> 
+	<div style="display: inline-block; float: right;">
+		
+		<c:if test="${mno eq reviewVO.mno}">
+			<form action="TourBoardUpdateRequest" method="post" id="frm1" style="display: inline-block;">
+				<input type="hidden" name='review_no' value='${reviewVO.review_no}'/>
+				<input type="button" id='updateButton' class="content_btns" value='수정' />
+			</form>
+		</c:if>
+		
+		<c:if test="${mno eq reviewVO.mno or authority >= 2}" >
+			<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
+				<input type="hidden" name='review_no' value='${reviewVO.review_no}'/>
+				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
+			</form>
+		</c:if>
+		
+		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
+		
+	</div>
 </div>
 
-<div class="menu" style="text-align: right;">
-	<c:if test="${mno eq reviewVO.mno}">
-		<form action="TourBoardUpdate" method="post" id="frm1" style="display: inline-block;">
-			<input type="hidden" name='trip_no' value='${reviewVO.review_no}'/>
-			<input type="button" id='updateButton' value='수정' />
-		</form>
-	</c:if>
-		
-	<c:if test="${mno eq reviewVO.mno or authority >= 2}" >
-		<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
-			<input type="hidden" name='trip_no' value='${reviewVO.review_no}'/>
-			<input type="button" id='deleteButton' value='삭제' />
-		</form>
-	</c:if>
+
+<div id="content">
+	${reviewVO.content}
 </div>
 
 <div class="menu">Comment</div>
@@ -1334,6 +1346,21 @@ $(function(){
 	}
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/* +dateArray1[0]+" ~ "+dateArray2[0] */);
+});
+
+$('#updateButton').click(function() {
+	alert("여행 리뷰 정보 수정하러 갑니다");
+	$('#frm1').submit();
+});
+
+$('#deleteButton').click(function() {
+	alert("여행 리뷰 정보 삭제하러 갑니다");
+	$('#frm2').submit();
+});
+
+$('#tourBoardButton').click(function() {
+	alert('여행 리뷰 게시판으로 돌아갑니다');
+	location = '../review/reviewBoard';
 });
 
 
