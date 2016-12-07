@@ -225,7 +225,7 @@ public class TourReviewController {
 	@RequestMapping(value="/review_update_suf", method = RequestMethod.POST)
 	public String reviewUpdateSuf(ReviewVO reviewvo, ReviewRegionVO reviewRegionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile) {
 		
-		if(reviewvo != null && reviewRegionvo != null && imgvo != null){
+		if(reviewvo != null && reviewRegionvo != null){
 			logger.info("vo 값 읽기 성공");
 			
 			int review_result = tourReviewService.updateReview(reviewvo);

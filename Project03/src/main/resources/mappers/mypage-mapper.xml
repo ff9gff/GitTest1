@@ -28,6 +28,7 @@
 		where mno = #{mno})
 	</select>
 	
+	
 	<select id="select_mytour_title" resultType="edu.spring.project03.domain.TourRegisterVO">
 		select * from wm_tour
 		where trip_no in (select trip_no from wm_tour
@@ -41,8 +42,12 @@
  	</select>
  	
  	
- 	<update id="update-profile"> update wm_personal 
+ 	<update id="update-profile"> 
+ 		update wm_personal 
  		set sex = #{sex}, age = #{age}, nickname = #{nickname}, phone = #{phone}, postcode = ${postcode}, address1 = #{address1}, address2 = #{address2}, introduce = #{introduce}, email = #{email}   
-	    where mno = #{mno} </update>
+	    where mno = #{mno} 
+	</update>
+	
+	
 
 </mapper>

@@ -620,12 +620,12 @@ http://www.templatemo.com/tm-406-flex
 				
 				var list = '';
 				
+				if (imageList[i].expire == 0) {
+				
 				for(var i = 0; i<imageList.length; i++){
-					
-					if (imageList[i].expire == 0) {
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+'<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '">'
+							+'<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '">'
 							+ '<div class="portfolio-thumb">'
 								+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
 								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
