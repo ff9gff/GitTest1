@@ -184,7 +184,7 @@ public class MemberController {
 			// int mno = memberService.readMnobyUserid(userid);
 
 			PersonalVO personal = new PersonalVO(mno, personalvo.getName(), personalvo.getSex(), personalvo.getAge(),
-					personalvo.getNickname(), personalvo.getPhone(), personalvo.getAddress(), personalvo.getIntroduce(),
+					personalvo.getNickname(), personalvo.getPhone(), personalvo.getPostcode(), personalvo.getAddress1(), personalvo.getAddress2(), personalvo.getIntroduce(),
 					personalvo.getEmail(), null);
 
 			int personal_result = memberService.createPersional(personal);

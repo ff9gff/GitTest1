@@ -71,11 +71,10 @@
 	      <input type="text" id="phone" name="phone" placeholder="핸드폰 번호"><br><br>
 	      
 	      <label for="postcode">주소<p style="color: red; display: inline;">(*)</p></label><br>
-	      <input type="text" id="postcode" class="postcodify_postcode5" placeholder="우편번호">
+	      <input type="text" id="postcode" name="postcode" class="postcodify_postcode5" placeholder="우편번호">
 	      <input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
 	      <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " style="width: 450px"><br>
 	      <input type="text" id="address2" name="address2" placeholder="상세주소" style="width: 450px">
-	      <input type="hidden" id="address" name="address" readonly="readonly"/>
 	      <br><br>      
 	      
 	      <label for="email">이메일<p style="color: red; display: inline;">(*)</p></label><br/>
@@ -338,9 +337,6 @@ $(document).ready(function() {
    $('#submit_OK').click(function() {
       if(final_check == 1) {
          alert('인증번호 확인 ok!');
-         //var address = $('#address1').val() + " " + $('#address2').val();
-         var address = $('#address1').val() + "," + $('#address2').val();
-         $('#address').val(address);
          
          $("#register_form").submit();
       } else {

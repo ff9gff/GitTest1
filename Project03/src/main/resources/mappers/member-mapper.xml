@@ -39,9 +39,9 @@
    </select>
 
    <insert id="personal-insert">
-      insert into wm_personal(mno, name, sex, age, nickname, phone, address,
+      insert into wm_personal(mno, name, sex, age, nickname, phone, postcode, address1, address2,
       introduce, email)
-      values(#{mno}, #{name}, #{sex}, #{age}, #{nickname}, #{phone}, #{address},
+      values(#{mno}, #{name}, #{sex}, #{age}, #{nickname}, #{phone}, #{postcode}, #{address1}, #{address2},
       #{introduce}, #{email})
    </insert>
    
