@@ -47,7 +47,7 @@ $('#btnLogin').click(function() {
 });
 
 $('#btnAdministrator').click(function() {
-	location = '/project03/admin';
+	location = '/project03/admin/admin';
 });
 
 $('#btnMypage').click(function() {
