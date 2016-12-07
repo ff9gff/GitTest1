@@ -78,7 +78,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public int deleteReview(int review_no) {
 
-		return sqlSession.delete(NAMESPACE + ".delete-register", review_no);
+		return sqlSession.delete(NAMESPACE + ".delete-review", review_no);
 	} // end deleteReview(review_no)
 
 	@Override

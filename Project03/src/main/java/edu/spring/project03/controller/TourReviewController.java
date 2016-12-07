@@ -287,7 +287,7 @@ public class TourReviewController {
 			logger.info("여행 리뷰 삭제 실패");
 		}
 		
-		return null;
+		return "redirect:reviewBoard";
 	} // end reviewDelete(review_no)
 	
 	

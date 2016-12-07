@@ -1252,7 +1252,7 @@ $('#context_profile').on('click','.btn_context',function(){
  
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
-	var url = '/project03/UserPage/'+amno;
+	var url = '/project03/mypage/UserPage/'+amno;
 	location.href  = url;
 });
 
@@ -1266,7 +1266,7 @@ $('#overlay, #profile_button1').click(function(e){
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
-	var url = '/project03/UserPage/'+amno;
+	var url = '/project03/mypage/UserPage/'+amno;
 	location.href  = url;
 });
 
