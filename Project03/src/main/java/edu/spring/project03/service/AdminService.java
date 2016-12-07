@@ -44,6 +44,7 @@ public interface AdminService {
 	
 	public List<AdminMsgDTO> allAdminMSG2();
 	
+	public int cntAllMyUser();
 	
 	
 }

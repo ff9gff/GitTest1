@@ -139,6 +139,12 @@ public class AdminDAOImpl implements AdminDAO {
 		// TODO 자동 생성된 메소드 스텁
 		return sqlSession.selectList(NAMESPACE+".selectToMSGFromMSGSelf");
 	}
+
+	@Override
+	public int cntAllMyUser() {
+		
+		return sqlSession.selectOne(NAMESPACE+".cntAllActivUsers");
+	}
 	
 	
 }//end class 

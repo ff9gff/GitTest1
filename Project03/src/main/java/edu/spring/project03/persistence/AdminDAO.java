@@ -54,5 +54,9 @@ public interface AdminDAO {
 	//admin to admin 
 	public abstract List<AdminMsgDTO> adminMSGALL2();
 	
+	//admin  has active users
+	public abstract int cntAllMyUser();
+	
+	
 
 }

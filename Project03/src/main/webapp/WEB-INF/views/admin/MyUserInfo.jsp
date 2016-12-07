@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -9,6 +8,7 @@
 </head>
 <style type="text/css">
 #top{
+		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
@@ -21,6 +21,13 @@
 #selectOption {
 	padding-left: 655px
 }
+
+table, th, td {
+   border: 1px solid gray;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
+}
 </style>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -32,7 +39,8 @@
 
 <body>
 	<header id="top">
-				<div>&nbsp;</div>
+		<div>&nbsp;</div>
+		<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
 		<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
@@ -64,7 +72,7 @@
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
 				</li>
 
 
@@ -86,7 +94,7 @@
 <br>
 <br>
 
-	<table id="tableTest2" border="1px">
+	<table id="tableTest2" >
 		<!--<caption>유저 찾기</caption>-->
 		<colgroup>
 			<col width="100px">
@@ -128,7 +136,6 @@ $(document).ready(function(){
 		
 
 		$('#btnUpdate').click(function(){
-			
 			
 			
 			

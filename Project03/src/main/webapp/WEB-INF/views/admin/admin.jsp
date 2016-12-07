@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -10,35 +8,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-
 <style type="text/css">
-
 #top{
+		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
 		padding: 15px;
 }
-
-
-#form-main{
-	
-	padding-left:35px;
-	padding-right:35px;
-	padding-top:35px;
-	padding-bottom:50px;
-	float: left;
-	left: 50%;
-	position: absolute;
-  margin-top:30px;
-	margin-left: -500px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-	
-	
-}
-
 
 #dropDownType {
 	width: 50px
@@ -46,6 +23,13 @@
 
 #selectOption {
 	padding-left: 655px
+}
+
+table, th, td {
+   border: 1px solid gray;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
 }
 </style>
 
@@ -55,6 +39,7 @@
 
 <body>
 	<header id="top">
+	<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
 		<div>&nbsp;</div>
@@ -76,17 +61,17 @@
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg">홈(아직)</a>
 				</li>
-				
+					
 					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
 				</li>
 				
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
+				</li>  
 			</ul>
 		</nav>
 		
@@ -94,8 +79,8 @@
 	
 	
 	<form id="form-main">
-			<table id="checkboxTestTbl" border="1px">
-				<caption>유저 정보 확인</caption>
+			<table id="checkboxTestTbl" >
+				<caption style="border-top:  1px solid gray; border-left:  1px solid gray; border-right:  1px solid gray; background-color: lightgray">유저 정보 확인</caption>
 				<colgroup>
 					<col width="40px">
 					<col width="100px">
