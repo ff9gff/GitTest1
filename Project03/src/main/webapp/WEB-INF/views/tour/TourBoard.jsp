@@ -166,6 +166,7 @@ http://www.templatemo.com/tm-406-flex
   top: 400px;
   right: 20px;
 }
+
 </style>
 
 
@@ -214,7 +215,7 @@ http://www.templatemo.com/tm-406-flex
 			<div class="slider">
 				<div class="flexslider">
 					<ul class="slides">
-						<li>
+						<li style="z-index: 300;">
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
@@ -240,20 +241,17 @@ http://www.templatemo.com/tm-406-flex
 
 
 	<div class="content-section" id="services">
-		<div class="container">
-			<div>
-
-				<h3 class="h2" style="font: bold;">여행 조건 검색 </h3>
-				
-				<br />
-
+		<div class="container" style="width: 1300px; text-align: center; margin: 0 auto;">
 				<div>
-					<div id="region_select" style="display: inline-block;">
-						<input type="text" id="region_name" name="region_name" placeholder="지역이름">
-						<button type="button" id="region_search">장소 검색</button>
+					<div style="width: 800px; margin: 0 auto;">
+						<div id="region_select" style="display: inline-block;">
+							<input type="text" id="region_name" name="region_name" placeholder="지역이름">
+							<button type="button" id="region_search">장소 검색</button>
+						</div>
+						<button type="button" id="show_detail_search">기간 검색</button>
 					</div>
-					<button type="button" id="show_detail_search">기간 검색</button>
-					
+					<div style="height: 100px;">
+					</div>
 					<div id='hiddenSearch' hidden="hidden" style="border: 1px solid #ff5028; width: 300px; position: absolute;">
 						<div class="inside_div_conditon" style="heigth: 100px;">
 							<input type="text" id="start_date" name="start_date" class="date" placeholder="시작일"><p style="font-size: 20px; width: 10px; display: inline-block;">~</p> 
@@ -263,7 +261,7 @@ http://www.templatemo.com/tm-406-flex
 					</div>
 					
 					
-					<div id="condition_box" style="width: 300px; height: 310px; border: 1px solid gray;">
+					<div id="condition_box" style="width: 300px; height: 310px; border: 1px solid gray; z-index:200; background-color: #FFFFFF">
 						<div class="inside_div_conditon" style="height: 50px;">
 							<button id="btn_create_tour">여행 등록</button>
 						</div>
@@ -313,7 +311,7 @@ http://www.templatemo.com/tm-406-flex
 				<div class="row" id="tourDetailSearch">
 				</div>
 				<!-- /.row -->
-			</div>
+		
 		</div>
 		<!-- /.container -->
 	</div>

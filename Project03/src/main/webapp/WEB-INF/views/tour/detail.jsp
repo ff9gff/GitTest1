@@ -352,6 +352,14 @@ font-size: 12px;
 	background-color: lightgray;
 	text-align: center;
 }
+.content_btns{
+	width: 60px;
+	height: 20px;
+	font-size: 12px;
+	padding: 0;
+	background-color: #F4511E;
+	color: white;
+}
 </style>
 </head>
 <body>
@@ -470,29 +478,31 @@ font-size: 12px;
 		</tr>	
 	</table>
 </c:if>
-<div class="menu">Content</div>
-<input hidden id="start_date" value="${tourVO.start_date}"/>
-<input hidden id="end_date" value="${tourVO.end_date}"/>
-<div id="content">
-${tourVO.content}
-</div>
 
-	<div class="menu">
+<div class="menu" style="margin-top: 20px;"><p style="display: inline-block;">Content</p> 
+	<div style="display: inline-block; float: right;">
 		<c:if test="${mno eq tourVO.mno}">
 			<form action="TourBoardUpdateRequest" method="post" id="frm1" style="display: inline-block;">
 				<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
-				<input type="button" id='updateButton' value='수정' />
+				<input type="button" id='updateButton' class="content_btns" value='수정' />
 			</form>
 		</c:if>
 		
 		<c:if test="${mno eq tourVO.mno or authority >= 2}" >
 			<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
 				<input type="hidden" name='trip_no' value='${tourVO.trip_no}'/>
-				<input type="button" id='deleteButton' value='삭제' />
+				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
 			</form>
 		</c:if>
-		<button type="button" id="tourBoardButton">목록</button>
+		<button type="button" id="tourBoardButton" class="content_btns">목록</button>
 	</div>
+</div>
+<input type="hidden" id="start_date" value="${tourVO.start_date}"/>
+<input type="hidden" id="end_date" value="${tourVO.end_date}"/>
+
+<div id="content">
+${tourVO.content}
+</div>
 
 <div class="menu">Comment</div>
 
@@ -1228,7 +1238,7 @@ $('#context_profile').on('click','.btn_context',function(){
 
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
-	var url = '/project03/UserPage/'+amno;
+	var url = '/project03/mypage/UserPage/'+amno;
 	location.href  = url;
 });
 
@@ -1241,7 +1251,7 @@ $('#overlay, #profile_button1').click(function(e){
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
-	var url = '/project03/UserPage/'+amno;
+	var url = '/project03/mypage/UserPage/'+amno;
 	location.href  = url;
 });
 
