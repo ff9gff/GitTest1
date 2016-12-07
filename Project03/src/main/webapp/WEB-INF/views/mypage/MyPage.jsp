@@ -109,15 +109,15 @@ ul {
 </div>
 
 
-<div class="site-header">
-			<div class="main-header">
+	<div class="site-header">
+			<!-- <div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
 						<div class="row">
 							<div class="logo-wrapper col-md-2 col-sm-2">
 								<h1> <a href="#">같&nbsp;이&nbsp;가&nbsp;자</a> </h1>
 							</div>
-							<!-- /.logo-wrapper -->
+							/.logo-wrapper
 							<div class="col-md-10 col-sm-10 main-menu text-right">
 								<div class="toggle-menu visible-sm visible-xs">
 									<i class="fa fa-bars"></i>
@@ -131,15 +131,15 @@ ul {
 									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
-							<!-- /.main-menu -->
+							/.main-menu
 						</div>
-						<!-- /.row -->
+						/.row
 					</div>
-					<!-- /#menu-wrapper -->
+					/#menu-wrapper
 				</div>
-				<!-- /.container -->
+				/.container
 			</div>
-			<!-- /.main-header -->
+			/.main-header -->
 		</div>
 
 
@@ -147,7 +147,7 @@ ul {
 
 	<header style="background-color: #F79F12; height: 60px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
-		<p><a href="index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
+		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
 	</header>
 
 

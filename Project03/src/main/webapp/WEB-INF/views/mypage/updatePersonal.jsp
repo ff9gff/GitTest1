@@ -10,7 +10,9 @@
 
 	<h2>프로필 수정화면</h2>
 
-	<form id ="updateProfile_form" name="updateProfile_form" action="profile_update" method="post" enctype="multipart/form-data">
+	<form id ="updateProfile_form" action="profile_update" method="post" enctype="multipart/form-data">
+		<input type="hidden" id="mno" name="mno" value="${mno}"> 
+	
 		<label for="sex">성별</label><br> 
 		<input type="checkbox" id="male" name="sex" value="1"> 
 		<label for="male">남자 </label> 
@@ -27,11 +29,10 @@
 		<label for="phone">핸드폰 번호</label><br> 
 		<input type="text" id="phone" name="phone" placeholder="핸드폰 번호" value="${vo.phone }"><br><br> 
 		
-		<input type="text" id="postcode" class="postcodify_postcode5" placeholder="우편번호"> 
+		<input type="text" id="postcode" name="postcode"class="postcodify_postcode5" placeholder="우편번호" value="${vo.postcode }"> 
 		<input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
-		<input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " value="${vo.address }"><br> 
-		<input type="text" id="address2" name="address2" placeholder="상세주소">
-		<input type="hidden" id="address" name="address" readonly="readonly" />
+		<input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " value="${vo.address1 }"><br> 
+		<input type="text" id="address2" name="address2" placeholder="상세주소" value="${vo.address2 }">
 		<br>
 		<br> 
 		<label for="email">이메일</label><br /> 
@@ -181,7 +182,11 @@ $(document).ready(function() {
       $(this).parent().slideUp(); //미리 보기 영역 감춤
       //return false; //기본 이벤트 막지
    });
-      
+   
+   $('#submit_OK').click(function() {
+	   $('#updateProfile_form').submit(); 
+   });
+
 
    /** 
    * 폼요소 초기화 

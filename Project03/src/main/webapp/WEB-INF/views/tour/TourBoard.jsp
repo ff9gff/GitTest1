@@ -59,7 +59,7 @@ http://www.templatemo.com/tm-406-flex
 }
 
 .portfolio-thumb{
-	width: 297px;
+	width: 298px;
 	height: 240px;
 	vertical-align: middle;
 	margin-bottom: 5px;
