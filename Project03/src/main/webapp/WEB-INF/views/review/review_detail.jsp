@@ -473,14 +473,14 @@ width: 95%;
 	<div style="display: inline-block; float: right;">
 		
 		<c:if test="${mno eq reviewVO.mno}">
-			<form action="TourBoardUpdateRequest" method="post" id="frm1" style="display: inline-block;">
+			<form action="review_update_pre" method="post" id="frm1" style="display: inline-block;">
 				<input type="hidden" name='review_no' value='${reviewVO.review_no}'/>
 				<input type="button" id='updateButton' class="content_btns" value='수정' />
 			</form>
 		</c:if>
 		
 		<c:if test="${mno eq reviewVO.mno or authority >= 2}" >
-			<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
+			<form action="review_delete" method="post" id="frm2" style="display: inline-block;">
 				<input type="hidden" name='review_no' value='${reviewVO.review_no}'/>
 				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
 			</form>
