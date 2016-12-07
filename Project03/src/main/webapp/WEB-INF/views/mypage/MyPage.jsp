@@ -76,7 +76,7 @@ ul {
 }
 
 #profilemenu table{
-	width: 580px;
+	width: 400px;
 	height: 170px;
 	margin: 10px;
 	
@@ -95,7 +95,7 @@ ul {
 	<input hidden type="number" name="mno" id="profile_mno"/>
 	<table>
 		<tr>
-			<!-- <td rowspan="3" id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>	 -->      
+			 <!-- <td id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>  -->    
 			
 			<td style="text-align: right; width: 325.6px"><button id="profile_button1">X</button></td>
 		</tr>
@@ -436,7 +436,7 @@ ul {
 				
 				var mno_img = '${inserterImg}';
 				
-				$('#profile_image').html('<img src="../'+mno_img+'" id="profile_profile_img"/>');
+				$('#profile_image').html('<img src="../'+mno_img+'" id="profile_profile_img" style="width: 150px;"/>');
 				
 				
 			/* 	$.ajax({

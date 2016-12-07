@@ -121,6 +121,7 @@ http://www.templatemo.com/tm-406-flex
 					<input type="text" id="region_name" name="region_name" placeholder="지역이름">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="text" id="nickname" name="nickname" placeholder="닉네임">&nbsp;&nbsp;&nbsp;&nbsp;
 					<button type="button" id="select_search">장소 / 닉네임 선택 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<button type="button" id="btn_create_review">후기 등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				</div>
 
 				<br /><br />

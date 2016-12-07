@@ -359,13 +359,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/defaultimage';
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}, expire: {}});	
 					});
 					
 					var url2 = '/project03/index/defaulttitle';
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age, expire: this.expire});	
 						});
 						console.log(titleList);
 						
@@ -387,6 +387,7 @@ http://www.templatemo.com/tm-406-flex
 										imageList[i].tour = titleList[j].title;
 										imageList[i].condition_sex = titleList[j].condition_sex;
 										imageList[i].condition_age = titleList[j].condition_age;
+										imageList[i].expire = titleList[j].expire;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -419,13 +420,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/regionimage/' + $('#region_name').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}, expire: {}});	
 					});
 					
 					var url2 = '/project03/index/regiontitle/' + $('#region_name').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age, expire: this.expire});	
 						});
 						console.log(titleList);
 						
@@ -447,6 +448,7 @@ http://www.templatemo.com/tm-406-flex
 										imageList[i].tour = titleList[j].title;
 										imageList[i].condition_sex = titleList[j].condition_sex;
 										imageList[i].condition_age = titleList[j].condition_age;
+										imageList[i].expire = titleList[j].expire;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -480,13 +482,13 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/periodimage/' + $('#start_date').val() + "/" + $('#end_date').val();
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+						imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}, expire: {}});	
 					});
 					
 					var url2 = '/project03/index/periodtitle/' + $('#start_date').val() + "/" + $('#end_date').val();
 					$.getJSON(url2, function(data2) {
 						$(data2).each(function() {
-							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+							titleList.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age, expire: this.expire});	
 						});
 						console.log(titleList);
 						
@@ -508,6 +510,7 @@ http://www.templatemo.com/tm-406-flex
 										imageList[i].tour = titleList[j].title;
 										imageList[i].condition_sex = titleList[j].condition_sex;
 										imageList[i].condition_age = titleList[j].condition_age;
+										imageList[i].expire = titleList[j].expire;
 									} 
 									for (var k = 0; k < regionList.length; k++) {
 										if (imageList[i].content_no == regionList[k].trip_no) {
@@ -549,7 +552,7 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/detailsearchImage/' + region_name + "/" + start_date + "/" + condition_sex + "/" + condition_age;
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex});	
+						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
 			
 					});
 					
@@ -569,40 +572,43 @@ http://www.templatemo.com/tm-406-flex
 				var list = '';
 				
 				for(var i = 0; i<imageList.length; i++){
+					
+					if (imageList[i].expire == 0) {
 
-					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+'<a href="../tour/detail?trip_no=' + imageList[i].content_no + '">'
-							+ '<div class="portfolio-thumb">'
-								+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
-								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
-								switch(imageList[i].condition_sex){
-									case 0: list+='<img src="../resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+						list += '<div class="portfolio-item col-md-3 col-sm-6">'
+							+'<a href="../tour/detail?trip_no=' + imageList[i].content_no + '">'
+								+ '<div class="portfolio-thumb">'
+									+'<img src="../' + imageList[i].img_url + '" id="img_tour" style="position: absolute; width: 300px; height:240px; z-index:99;">'
+									+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
+									switch(imageList[i].condition_sex){
+										case 0: list+='<img src="../resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+											break;
+										case 1: list+='<img src="../resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+											break;
+										case 2: list+='<img src="../resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+											break;
+										default: break;
+									}	
+									switch(imageList[i].condition_age){
+									case 1: list+='<p id="img_age">20</p>';
 										break;
-									case 1: list+='<img src="../resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 2: list+='<p id="img_age">30</p>';
 										break;
-									case 2: list+='<img src="../resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+									case 3: list+='<p id="img_age">40↑</p>';
+										break;
+									case 4: list+='<p id="img_age">All</p>';
 										break;
 									default: break;
-								}	
-								switch(imageList[i].condition_age){
-								case 1: list+='<p id="img_age">20</p>';
-									break;
-								case 2: list+='<p id="img_age">30</p>';
-									break;
-								case 3: list+='<p id="img_age">40↑</p>';
-									break;
-								case 4: list+='<p id="img_age">All</p>';
-									break;
-								default: break;
-							}
-									
-								list+='</div>'
-							+ '</div>'
-								+ '<div class="tour_title">' + imageList[i].tour + '</div>'
-								+ '<div class="tour_region">' + imageList[i].city + '</div>'			
-						+'</a>'
-
-						+ '</div>';
+								}
+										
+									list+='</div>'
+								+ '</div>'
+									+ '<div class="tour_title">' + imageList[i].tour + '</div>'
+									+ '<div class="tour_region">' + imageList[i].city + '</div>'			
+							+'</a>'
+	
+							+ '</div>';
+					}
 				}
 
 				$('#tourDetailSearch').html(list);
@@ -615,6 +621,8 @@ http://www.templatemo.com/tm-406-flex
 				var list = '';
 				
 				for(var i = 0; i<imageList.length; i++){
+					
+					if (imageList[i].expire == 0) {
 
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+'<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '">'
@@ -649,6 +657,7 @@ http://www.templatemo.com/tm-406-flex
 						+'</a>'
 
 						+ '</div>';
+					}
 				}
 
 				$('#tourDetailSearch').html(list);
