@@ -19,6 +19,8 @@ public interface MypageDAO {
 	
 	public abstract List<ImgVO> select_join_mno(int mno);
 	
+	public abstract int updateProfile(PersonalVO vo);
+	
 	
 	// 마이페이지에 뿌려지는 제목/지역	
 	public abstract List<TourRegisterVO> select_mytour_title(int mno);
