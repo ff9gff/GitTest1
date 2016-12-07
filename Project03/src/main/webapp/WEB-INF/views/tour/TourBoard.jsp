@@ -553,7 +553,6 @@ http://www.templatemo.com/tm-406-flex
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
 						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
-			
 					});
 					
 					getAllThumnail_detail_search();
@@ -571,10 +570,14 @@ http://www.templatemo.com/tm-406-flex
 				
 				var list = '';
 				
+				
+				
 				for(var i = 0; i<imageList.length; i++){
 					
+				
 					if (imageList[i].expire == 0) {
-
+						
+				
 						list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+'<a href="../tour/detail?trip_no=' + imageList[i].content_no + '">'
 								+ '<div class="portfolio-thumb">'
@@ -619,11 +622,13 @@ http://www.templatemo.com/tm-406-flex
 			function getAllThumnail_detail_search(){
 				
 				var list = '';
-				
-				if (imageList[i].expire == 0) {
+
+			
 				
 				for(var i = 0; i<imageList.length; i++){
-
+					
+					if (imageList[i].expire == 0) {
+						
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 							+'<a href="../tour/detail?trip_no=' + imageList[i].trip_no + '">'
 							+ '<div class="portfolio-thumb">'
@@ -658,10 +663,9 @@ http://www.templatemo.com/tm-406-flex
 
 						+ '</div>';
 					}
+					
+					$('#tourDetailSearch').html(list);
 				}
-
-				$('#tourDetailSearch').html(list);
-	
 				//end of getThumnails()
 			};
 						
