@@ -56,7 +56,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public int updateReview(ReviewVO reviewvo) {
 
-		return sqlSession.update(NAMESPACE + ".update-register", reviewvo);
+		return sqlSession.update(NAMESPACE + ".update-review", reviewvo);
 	} // end updateReview(reviewvo)
 
 	@Override
@@ -145,7 +145,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public ReviewVO selectReviewInfo(int review_no) {
 		
-		return sqlSession.selectOne(NAMESPACE + "select_ReviewInfo_by_review_no", review_no);
+		return sqlSession.selectOne(NAMESPACE + ".select_ReviewInfo_by_review_no", review_no);
 	} // end selectReviewInfo(review_no)
 	
 	@Override

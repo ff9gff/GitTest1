@@ -203,11 +203,14 @@ public class TourReviewController {
 	
 	@RequestMapping(value="/review_update_pre", method = RequestMethod.POST)
 	public String reviewUpdatePre(int review_no, Model model) {
-		logger.info("여행 번호: " + review_no);
+		logger.info("리뷰 번호 번호 : " + review_no);
 		
 		ReviewVO reviewvo = tourReviewService.readReviewInfo(review_no);
+		logger.info("ReviewVO : " + reviewvo);
 		ReviewRegionVO reviewRegionvo = tourReviewService.readReviewRegionInfo(review_no);
+		logger.info("ReviewRegionVO : " + reviewRegionvo);
 		ImgVO imgvo = tourReviewService.readReviewMainImage(review_no);
+		logger.info("ImgVO : " + imgvo);
 		
 		if(reviewvo != null && reviewRegionvo != null && imgvo != null) {
 			logger.info("수정하기 위한 검색 작업 완료...");

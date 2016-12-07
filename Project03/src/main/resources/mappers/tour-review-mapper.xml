@@ -94,9 +94,11 @@
 	<select id="select_ReviewInfo_by_review_no" resultType="edu.spring.project03.domain.ReviewVO">
 		select * from wm_review where review_no = #{review_no}
 	</select>
+	
 	<select id="select_ReviewRegionInfo_by_review_no" resultType="edu.spring.project03.domain.ReviewRegionVO">
 		select * from wm_review_region where review_no = #{review_no}
 	</select>
+	
 	<select id="select_ReviewMainImage_by_review_no" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image where board_type = 2 and content_no = #{review_no}
 	</select>
