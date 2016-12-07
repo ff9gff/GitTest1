@@ -63,8 +63,8 @@ ul {
 }
 
 #profilemenu{
-	width: 600px;
-	height: 200px;
+	width: 400px;
+	height: 300px;
 	position: absolute;
 	background-color: #FFFFFF;
 	border:solid 1px #ccc; 
@@ -76,10 +76,19 @@ ul {
 }
 
 #profilemenu table{
-	width: 400px;
+	width: 680px;
 	height: 170px;
 	margin: 10px;
 	
+}
+
+#profile_image{
+	width: 30%;
+	padding-right: 5px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-top: 0;
+	vertical-align: middle;
 }
 </style>
 
@@ -93,18 +102,20 @@ ul {
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
 	<input hidden type="number" name="mno" id="profile_mno"/>
-	<table>
-		<tr>
-			 <!-- <td id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>  -->    
+	<div>
+		
+			<div style="width: "385px"><button id="profile_button1"  style="float: right;">X</button></div>
+			<div id="image_preview"><img src="#" id="profile-image" style="display: none; width: 200px; height: 200px;" /></div>
+			<div style="display: inline-block;">
+							
+		
+				<input type="file" id="imageFile" name="imageFile" style="width: 325.6px;">
+						 
+				<button id="profile_button2" style="float: right; font-size: 10;">수정하기</button>
+			</div>
 			
-			<td style="text-align: right; width: 325.6px"><button id="profile_button1">X</button></td>
-		</tr>
 		
-		<tr><td  style="text-align: right; float: right;"><input type="file" id="imageFile" name="imageFile" style="width: 325.6px;"></td></tr>
-		 
-		<tr><td  style="text-align: right;vertical-align: middle;"><button id="profile_button2">수정</button></td></tr>
-		
-	</table>
+	</div>
 </form>
 </div>
 
@@ -167,8 +178,10 @@ ul {
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
 
+					<c:if test="${mno eq vo.mno }">
 						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
+							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
+					</c:if>
 
 						</ul>
 					</div>
@@ -487,7 +500,7 @@ ul {
 			         blobURL = window.URL.createObjectURL(file);
 			         $('#image_preview img').attr('src', blobURL);
 			         document.getElementById("profile-image").style.display = "inline";
-			         $('#image_preview img').attr('width', '250px');
+			         $('#image_preview img').attr('width', '160px');
 			         $('#image_preview img').attr('height', '160px');
 			         document.getElementById("btn_profile-image_remove").style.display = "inline";
 			         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
