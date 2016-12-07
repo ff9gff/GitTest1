@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -52,7 +53,11 @@ textarea{
 		<input type="hidden" name="sd_mno" value="${msg_setter }" />
 		<input type="hidden" name="sd_url" value="${msg_address }" />
 		<div id="msg_send">
-			<span style="font-weight: 800;">받는사람</span><input name="nickname" id="msg_setter"  value="${msg_getnick }"/>
+			<span style="font-weight: 800;">받는사람</span>
+			<c:forEach items="${msg_getnick }" var="nick">
+				<input type="hidden" name="nickname"  value="${nick}"/>
+			</c:forEach>
+			<span id="msg_setter">받는사람</span>
 		</div>
 		<div id="msg_text">
 			<textarea name="msg_content"></textarea>
@@ -64,6 +69,12 @@ textarea{
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
+	var nickname='';
+	<c:forEach items="${msg_getnick}" var="nick">
+		nickname += "${nick} &nbsp&nbsp";
+	</c:forEach>
+		$('#msg_setter').html(nickname);
+
 	$('#send_button').click(function(){
 		var f = document.getElementById('msg_form');
 		f.submit();

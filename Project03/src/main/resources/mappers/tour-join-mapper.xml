@@ -22,6 +22,12 @@
 		where list_no = #{list_no}
 	</update>
 	
+	<update id="endtrip">
+		update wm_tour
+		set expire = 1
+		where trip_no = #{trip_no}
+	</update>
+	
 	<insert id="insert">
 		insert into wm_tour_join (trip_no, mno, approval)
 		values(#{trip_no},#{mno},0)

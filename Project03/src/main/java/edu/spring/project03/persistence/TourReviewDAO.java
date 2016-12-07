@@ -38,6 +38,12 @@ public interface TourReviewDAO {
 	public abstract String select_review_region_name(int review_no);
 	
 	
+	
+	public abstract ReviewVO selectReviewInfo(int review_no);
+	public abstract ReviewRegionVO selectReviewRegionInfo(int review_no);
+	public abstract ImgVO selectReviewMainImage(int review_no);
+	
+	
 	// select
 
 

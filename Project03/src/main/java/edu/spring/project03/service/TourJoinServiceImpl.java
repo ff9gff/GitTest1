@@ -40,4 +40,9 @@ public class TourJoinServiceImpl implements TourJoinService {
 		// TODO Auto-generated method stub
 		return tourJoinDAO.selectProfile(mno);
 	}
+	
+	@Override
+	public int endTrip(int trip_no) {
+		return tourJoinDAO.endTrip(trip_no);
+	}
 }

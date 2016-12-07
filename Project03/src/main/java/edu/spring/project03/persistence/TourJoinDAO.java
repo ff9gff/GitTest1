@@ -20,4 +20,6 @@ public interface TourJoinDAO {
 	
 	public abstract ImgVO selectProfile(int mno);
 	
+	// 여행 마감
+	public abstract int endTrip(int trip_no);
 }

@@ -59,4 +59,9 @@ public class TourJoinDAOImple implements TourJoinDAO {
 		return sqlSession.selectOne(NAMESPACE+".selectProfile", mno);
 	}
 	
+	@Override
+	public int endTrip(int trip_no) {
+		return sqlSession.update(NAMESPACE+".endtrip",trip_no);
+	}
+	
 }

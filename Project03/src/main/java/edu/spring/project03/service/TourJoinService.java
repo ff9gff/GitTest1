@@ -12,5 +12,6 @@ public interface TourJoinService {
 	public abstract int create(int trip_no, int mno);
 	public abstract int update(int approval, int list_no);
 	public abstract ImgVO readProfile(int mno);
+	public abstract int endTrip(int trip_no);
 	
 }

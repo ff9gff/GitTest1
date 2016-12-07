@@ -139,8 +139,26 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		
 		return sqlSession.selectOne(NAMESPACE + ".select_review_region_name", review_no);
 	} // end select_review_region_name(review_no)
-
 	
+	
+	
+	@Override
+	public ReviewVO selectReviewInfo(int review_no) {
+		
+		return sqlSession.selectOne(NAMESPACE + "select_ReviewInfo_by_review_no", review_no);
+	} // end selectReviewInfo(review_no)
+	
+	@Override
+	public ReviewRegionVO selectReviewRegionInfo(int review_no) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_ReviewRegionInfo_by_review_no", review_no);
+	} // end selectReviewRegionInfo(review_no)
+	
+	@Override
+	public ImgVO selectReviewMainImage(int review_no) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_ReviewMainImage_by_review_no", review_no);
+	} // end selectReviewMainImage(review_no)
 	
 	
 	

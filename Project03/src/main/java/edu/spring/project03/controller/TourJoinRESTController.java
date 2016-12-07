@@ -95,5 +95,20 @@ public class TourJoinRESTController {
 
 		return entity;
 	}
+	
+	// 해당 여행의 마감 여부
+		@RequestMapping(value = "/end/{trip_no}", method = RequestMethod.PUT)
+		public ResponseEntity<String> endTrip(@PathVariable("trip_no") Integer trip_no) {
+			ResponseEntity<String> entity = null;
+
+			int result = service.endTrip(trip_no);
+			if (result == 1) { // update 성공
+				entity = new ResponseEntity<String>("success", HttpStatus.OK);
+			} else { // update 실패
+				entity = new ResponseEntity<String>("fail", HttpStatus.BAD_REQUEST);
+			} // end if()
+
+			return entity;
+		}
 
 }// end class TourJoinRESTController

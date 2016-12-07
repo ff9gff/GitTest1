@@ -119,15 +119,22 @@
          
             <!-- /.heading-section -->
             <div class="heading-section">
-               <h2>후기 등록</h2>
+               <h2>후기 수정</h2>
             </div>
 
 				<div class="wrap">
 		
-					<form action="review_register" method="post" id="frm" enctype="multipart/form-data">
-					
-						<label for="imageFile">썸네일 이미지</label><br/>       
-					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+					<form action="review_update_suf" method="post" id="frm" enctype="multipart/form-data">
+						<c:if test="${ImgVO.img_url != null}">
+							<label for="imageFile">썸네일 이미지</label><br/>       
+					    	<input type="file" id="imageFile" name="imageFile" value="<img src='${ImgVO.img_url}' width='100' height='100'>"><br>							
+						</c:if>
+						
+						<c:if test="${ImgVO.img_url == null}">
+							<label for="imageFile">썸네일 이미지</label><br/>       
+					    	<input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>						
+						</c:if>
+						
 					            
 					    <div id="image_preview">
 					    <img src="#" id="profile-image" style="display: none;" /><br/>
@@ -135,13 +142,13 @@
 					
 						<input type="hidden" name="mno" value="${mno }" readonly="readonly" /> 
 					
-						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br/> <br/>
+						<input type="text" name="title" style="width: 60%" value="${ReviewVO.title }" placeholder="제목"/><br/> <br/>
 						
 						<div id="region_plus">
 							<table id="regionTable">
 								<tr>
 									<td>
-										<input type="text" name="region_name" placeholder="지역" />
+										<input type="text" name="region_name" value="${ReviewRegionVO.region_name }" placeholder="지역" />
 										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
 									</td>
 								</tr>
@@ -149,12 +156,12 @@
 						</div><br />
 						
 						<textarea name="content" id="smarteditor" rows="10"
-							cols="100" style="width: 766px; height: 412px;">	
+							cols="100" style="width: 766px; height: 412px;"> ${ReviewVO.content }	
 						</textarea><br/><br/>		
 													
 					</form>	
 
-					<input type="button" id="savebutton" value="작성" />
+					<input type="button" id="updatebutton" value="수정" />
 					<input type="button" id="cancelbutton" value="취소" />
 
 				</div>
@@ -259,7 +266,7 @@ $(document).ready(function() {
 
 		
 		//전송버튼 클릭이벤트
-		$("#savebutton").click(function() {
+		$("#updatebutton").click(function() {
 			//id가 smarteditor인 textarea에 에디터에서 대입
 			editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 			// 이부분에 에디터 validation 검증
