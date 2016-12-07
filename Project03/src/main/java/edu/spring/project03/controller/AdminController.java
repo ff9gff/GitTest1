@@ -136,9 +136,14 @@ public class AdminController {
 		Set<String>  msgContext = new LinkedHashSet<>(); 
 				//HashSet<>();
 		
-		for(int i=0 ; i < list.size(); i++){
-			msgContext.add(list.get(i).toString());
+		try {
+			for(int i=0 ; i < list.size(); i++){
+				msgContext.add(list.get(i).toString());
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+	
 		
 		model.addAttribute("msgContext",msgContext);
 		model.addAttribute("msgList", msgList);
@@ -155,6 +160,14 @@ public class AdminController {
 	}
 	
 	
+	////////////////////////////////
+	
+	
+	// 테스트 파일 입니다. MiniMSGpageU ///
+	@RequestMapping(value="/MiniMSGpageU", method=RequestMethod.GET)
+	public void MiniSendToUser(){
+		logger.info("/MiniMSGpageU 호출 ");			
+	}
 	
 	
 	
