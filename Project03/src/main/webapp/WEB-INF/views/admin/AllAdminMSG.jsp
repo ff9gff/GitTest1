@@ -15,6 +15,7 @@
 
 
 #top{
+color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
@@ -55,6 +56,7 @@
 
 <body>
 	<header id="top">
+			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
 		<div>&nbsp;</div>
@@ -68,10 +70,8 @@
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
-				</li>
 
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">공지사항</a>
 				</li>
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>

@@ -15,6 +15,7 @@
 <style type="text/css">
 
 #top{
+		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
@@ -22,22 +23,7 @@
 }
 
 
-#form-main{
-	
-	padding-left:35px;
-	padding-right:35px;
-	padding-top:35px;
-	padding-bottom:50px;
-	float: left;
-	left: 50%;
-	position: absolute;
-  margin-top:30px;
-	margin-left: -500px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-	
-	
-}
+
 
 
 #dropDownType {
@@ -55,6 +41,7 @@
 
 <body>
 	<header id="top">
+	<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
 		<div>&nbsp;</div>

@@ -61,7 +61,7 @@ $(document).ready(function() {
 	});
 	
 	$('#btnAdministrator').click(function() {
-		location = '/project03/admin';
+		location = '/project03/admin/admin';
 	});
 	
 	$('#btnHome').click(function() {

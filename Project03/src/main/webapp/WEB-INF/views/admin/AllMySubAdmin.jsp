@@ -12,6 +12,7 @@
 
 <style type="text/css">
 #top{
+		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
@@ -34,10 +35,11 @@
 
 <body>
 	<header id="top">
+			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-		<h1>&nbsp;관리자님 안녕하세요</h1>
-		<div>&nbsp;</div>
-		<p id="dpTime">&nbsp;&nbsp;</p>
+			<h1>&nbsp;관리자님 안녕하세요</h1>
+			<div>&nbsp;</div>
+			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
 
 
