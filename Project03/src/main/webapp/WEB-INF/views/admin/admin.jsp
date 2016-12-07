@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
 
 <!DOCTYPE html>
 <html>
@@ -10,10 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-
 <style type="text/css">
-
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -22,16 +17,19 @@
 		padding: 15px;
 }
 
-
-
-
-
 #dropDownType {
 	width: 50px
 }
 
 #selectOption {
 	padding-left: 655px
+}
+
+table, th, td {
+   border: 1px solid gray;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
 }
 </style>
 
@@ -82,7 +80,7 @@
 	
 	<form id="form-main">
 			<table id="checkboxTestTbl" >
-				<caption>유저 정보 확인</caption>
+				<caption style="border-top:  1px solid gray; border-left:  1px solid gray; border-right:  1px solid gray; background-color: lightgray">유저 정보 확인</caption>
 				<colgroup>
 					<col width="40px">
 					<col width="100px">

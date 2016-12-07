@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -9,22 +8,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-
 <style type="text/css">
-
-
 #top{
-color: white;
+		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
 		padding: 15px;
 }
 
-
-#form-main{
-	
+#form-main{	
 	padding-left:35px;
 	padding-right:35px;
 	padding-top:35px;
@@ -35,11 +28,8 @@ color: white;
   margin-top:30px;
 	margin-left: -500px;
   -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
-	
-	
+  -webkit-border-radius: 7px;	
 }
-
 
 #dropDownType {
 	width: 50px
@@ -47,6 +37,13 @@ color: white;
 
 #selectOption {
 	padding-left: 655px
+}
+
+table, th, td {
+   border: 1px solid gray;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
 }
 </style>
 
@@ -101,7 +98,7 @@ color: white;
 	<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
 	</form>
 	<table id="msgAdminMSG" >
-		<caption>관리자 지난 공지함 </caption>
+		<caption style="border-top:  1px solid gray; border-left:  1px solid gray; border-right:  1px solid gray; background-color: lightgray">관리자 지난 공지함 </caption>
 		<colgroup>
 		<col width="20px">
 		<col width="40px">
