@@ -85,7 +85,7 @@ color: white;
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
 				</li>
 			</ul>
 		</nav>
@@ -100,7 +100,7 @@ color: white;
 	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2">
 	<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
 	</form>
-	<table id="msgAdminMSG" border="1px">
+	<table id="msgAdminMSG" >
 		<caption>관리자 지난 공지함 </caption>
 		<colgroup>
 		<col width="20px">

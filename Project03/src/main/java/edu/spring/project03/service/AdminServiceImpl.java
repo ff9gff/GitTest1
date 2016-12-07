@@ -128,6 +128,13 @@ public class AdminServiceImpl implements AdminService{
 		
 		return aDao.adminMSGALL2();
 	}
+
+
+	@Override
+	public int cntAllMyUser() {
+		
+		return aDao.cntAllMyUser();
+	}
 	
 	
 

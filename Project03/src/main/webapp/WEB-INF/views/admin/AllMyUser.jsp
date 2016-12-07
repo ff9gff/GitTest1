@@ -66,7 +66,7 @@
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+					<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
 				</li>
 
 
@@ -77,10 +77,10 @@
 
 
 		<section id="main">
-
+<!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form action="">
-			<table id="checkboxTestTbl" border="1px">
-				<caption>전체 유저 정보 확인</caption>
+			<table id="checkboxTestTbl" >
+				<caption>전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
 				<colgroup>
 					
 					<col width="100px">
@@ -110,7 +110,7 @@
 						
 						<td>${vo.mno }</td>
 						<td>${vo.userid }</td>
-						<td>${vo.nickname }</td>
+						<td><a href="${vo.mno}">${vo.nickname }</a></td>
 						<td>${vo.phone }</td>
 						<td>${vo.email }</td>
 					        <td>

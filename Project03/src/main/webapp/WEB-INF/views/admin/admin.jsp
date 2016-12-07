@@ -63,17 +63,17 @@
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg">홈(아직)</a>
 				</li>
-				
+					
 					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
 				</li>
 				
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
+				</li>  
 			</ul>
 		</nav>
 		
@@ -81,7 +81,7 @@
 	
 	
 	<form id="form-main">
-			<table id="checkboxTestTbl" border="1px">
+			<table id="checkboxTestTbl" >
 				<caption>유저 정보 확인</caption>
 				<colgroup>
 					<col width="40px">

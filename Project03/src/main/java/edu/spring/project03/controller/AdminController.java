@@ -107,16 +107,21 @@ public class AdminController {
 		
 		//여기서 세팅을 한다. 
 		//AllMyUser로 보내기 
+		
+		int cntUsers = adminService.cntAllMyUser();
 		List<DomainDTO> list2 = adminService.allMyActivUser();
 		logger.info("All 나의 활동 유저 페이지로 가자 소환 ");
 		model.addAttribute("newMemberList", list2);
+		model.addAttribute("cntUsers" , cntUsers);
 	}
+	
 	@RequestMapping(value="/AllMySubAdmin" ,method=RequestMethod.GET)
 	public void AllMySubAdmin(Model model){
 		//AllMyUser로 보내기 
 		List<DomainDTO> list2 = adminService.allMySubAdminActivUser();
 		logger.info("All 나의 활동 유저 페이지로 가자 소환 ");
 		model.addAttribute("newMemberList", list2);
+		
 		
 	}
 	

@@ -66,7 +66,7 @@
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
 				</li>
 
 
@@ -79,7 +79,7 @@
 		<section id="main">
 
 	<form action="">
-		<table id="checkboxTestTbl" border="1px">
+		<table id="checkboxTestTbl" >
 				<caption>관리자 유저 정보 확인</caption>
 				<colgroup>
 					<col width="40px">

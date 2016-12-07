@@ -66,7 +66,7 @@
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
+				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
 				</li>
 
 
@@ -88,7 +88,7 @@
 <br>
 <br>
 
-	<table id="tableTest2" border="1px">
+	<table id="tableTest2" >
 		<!--<caption>유저 찾기</caption>-->
 		<colgroup>
 			<col width="100px">
