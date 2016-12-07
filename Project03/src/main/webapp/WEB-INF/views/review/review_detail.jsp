@@ -1358,7 +1358,7 @@ $('#deleteButton').click(function() {
 	$('#frm2').submit();
 });
 
-$('#tourBoardButton').click(function() {
+$('#reviewBoardButton').click(function() {
 	alert('여행 리뷰 게시판으로 돌아갑니다');
 	location = '../review/reviewBoard';
 });
