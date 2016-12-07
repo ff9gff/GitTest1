@@ -364,7 +364,6 @@ public class TourRegisterController {
 	// 여행 글에서 수정페이지에서 수정하려고 할 때 : 수정 페이지로 먼저 보낸다
 	@RequestMapping(value = "/TourBoardUpdateRequest", method = RequestMethod.POST)
 	public String UpdateTest(int trip_no, Model model) {
-		logger.info("여행 번호: " + trip_no);
 
 		// 여행 번호를 가지고 select * from wm_tour 검색 --> vo1으로 받고 model에 실어서 다음 페이지로!
 		// select * from wm_tour_region 검색 --> vo2로 받고 model에 실어서 다음 페이지로!
@@ -374,7 +373,13 @@ public class TourRegisterController {
 		ImgVO vo3 = tourRegisterService.readTourMainImage(trip_no);
 
 		if (vo1 != null && vo2 != null && vo3 != null) {
-			model.addAttribute("tourVO", vo1);
+				
+			String start_date = vo1.getStart_date().substring(0, 10);
+			String end_date = vo1.getEnd_date().substring(0, 10);
+			
+			TourRegisterVO vo4 = new TourRegisterVO(trip_no, vo1.getMno(), vo1.getTitle(), vo1.getCondition_sex(), vo1.getCondition_age(), vo1.getContent(), vo1.getRegdate(), start_date, end_date, vo1.getExpire());
+			
+			model.addAttribute("tourVO", vo4);
 			model.addAttribute("regionVO", vo2);
 			model.addAttribute("imgVO", vo3);
 

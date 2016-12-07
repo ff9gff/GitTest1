@@ -374,14 +374,14 @@
 			var url1 = '/project03/index/defaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					TourImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}});	
+					TourImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, condition_sex: {}, condition_age: {}, expire: {}});	
 				});
 				console.log(TourImage);
 				
 				var url2 = '/project03/index/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						TourTitle.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+						TourTitle.push({trip_no: this.trip_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age, expire: this.expire});	
 					});	
 					
 					var url3 = '/project03/index/defaultregion';
@@ -402,6 +402,7 @@
 									TourImage[i].tour = TourTitle[j].title;
 									TourImage[i].condition_sex = TourTitle[j].condition_sex;
 									TourImage[i].condition_age = TourTitle[j].condition_age;
+									TourImage[i].expire = TourTitle[j].expire;
 								} 
 								for (var k = 0; k < TourRegion.length; k++) {
 									if (TourImage[i].content_no == TourRegion[k].trip_no) {
@@ -436,7 +437,7 @@
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
-									+'<img src="' + TopReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
+								+'<img src="' + TopReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 							+ '</div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
 							+ '<div class="tour_region">' + TopReviewImage[i].city + '</div>'	
@@ -466,7 +467,7 @@
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<a href="review/review_detail?review_no=' + RecentReviewImage[i].content_no + '">'
 						+ '<div class="portfolio-thumb">'
-								+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
+							+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
 						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
 						+ '<div class="tour_region">' + RecentReviewImage[i].city + '</div>'	
@@ -494,39 +495,45 @@
 			
 			for(var i = 0; i < length; i++){
 				/* console.log(TourImage[i].content_no); */
+				if (TourImage[i].expire == 0) {
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+'<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
+						+ '<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
+							
 								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 297px; height:240px; z-index:99;">'
 								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
-								switch(TourImage[i].condition_sex){
-									case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
-										break;
-									case 1: list+='<img src="resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
-										break;
-									case 2: list+='<img src="resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
-										break;
-									default: break;
-								}	
-								switch(TourImage[i].condition_age){
-								case 1: list+='<p id="condition_age">20</p>';
-									break;
-								case 2: list+='<p id="condition_age">30</p>';
-									break;
-								case 3: list+='<p id="condition_age">40↑</p>';
-									break;
-								case 4: list+='<p id="condition_age">All</p>';
-									break;
-								default: break;
-							}
-									
-								list+='</div>'
-							+ '</div>'
+									switch(TourImage[i].condition_sex){
+										case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+											break;
+										case 1: list+='<img src="resources/theme/images/main_male.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+											break;
+										case 2: list+='<img src="resources/theme/images/main_all.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
+											break;
+										default: break;
+									}	
+									switch(TourImage[i].condition_age){
+										case 1: list+='<p id="condition_age">20</p>';
+											break;
+										case 2: list+='<p id="condition_age">30</p>';
+											break;
+										case 3: list+='<p id="condition_age">40↑</p>';
+											break;
+										case 4: list+='<p id="condition_age">All</p>';
+											break;
+										default: break;	
+									}
+								
+									list+='</div>'
+								
+								+ '</div>'
 								+ '<div class="tour_title">' + TourImage[i].tour + '</div>'
-								+ '<div class="tour_region">' + TourImage[i].city + '</div>'			
-						+'</a>'
-
+								+ '<div class="tour_region">' + TourImage[i].city + '</div>'	
+							
+			
+							+'</a>'
+							
 						+ '</div>';
+				}
 			}
 
 			$('#TourDetail').html(list);

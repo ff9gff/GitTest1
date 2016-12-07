@@ -5,8 +5,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.util.List;
 
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -80,10 +82,19 @@ public class SendMSGcontroller {
 	
 	//메세지 함을 확인 합니다. 일단 mno를 6으로 설정합니다. 나중에 합칠 경우에 대비해서 미리 적어 둔다 . 
 	@RequestMapping(value = "/myMsg", method = RequestMethod.GET)
-	public void stres(Model model , Integer page, Integer mno) {
+	public void stres(Model model , Integer page, Integer mno,HttpSession session) {
 
-		mno = 1; // 임시 보관함 //< 6
+	
 
+		String strmno = (String) session.getAttribute("mno");
+		logger.info("#####strmno : " + strmno);
+		
+		int Usermno = Integer.valueOf(strmno);
+		logger.info("#####testmno : " + Usermno);
+		
+		
+		mno = Usermno; 
+		
 		MsgPaginationCriteria x = new MsgPaginationCriteria(mno);
 		
 		if(page !=null){//요청 파라미터에 현재 페이지 정보가 있는 경우 
@@ -110,12 +121,18 @@ public class SendMSGcontroller {
 		
 		
 		//List<MsgDTO> allList = msgAllService.readGetMsg(mno);
-		for (MsgDTO dto : allList) {
-			String msg = dto.getMsg_content();
-			if (msg.length() >= 5) {
-				dto.setMsg_content(msg.substring(0, 5) + "...");
+		try {
+			for (MsgDTO dto : allList) {
+				String msg = dto.getMsg_content();
+				if (msg.length() >= 20) {
+					dto.setMsg_content(msg.substring(0, 20) + "...");
+				}
 			}
+		
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
+	
 
 	//	logger.info("가자 " + allList.size());
 		//logger.info(" 값 " + allList.get(0).getNickname());
@@ -129,10 +146,18 @@ public class SendMSGcontroller {
 	
 	//MySendMsg
 	@RequestMapping(value = "/MySendMsg", method = RequestMethod.GET)
-	public void sendMyMsg(Model model ,Integer page ,Integer mno) {
+	public void sendMyMsg(Model model ,Integer page ,Integer mno, HttpSession session) {
 			//Model model , Integer page, Integer mno
-		 mno = 6; // 임시 보관함 //< 6 일단 내용이 지금 많은  공지사항 admin으로 생각하자 
-		 
+		
+		String strmno = (String) session.getAttribute("mno");
+		logger.info("#####strmno : " + strmno);
+		
+		int Usermno = Integer.valueOf(strmno);
+		logger.info("#####testmno : " + Usermno);
+		
+		
+		mno = Usermno; 
+		
 		 MsgPaginationCriteria x = new MsgPaginationCriteria(mno);
 		 
 		 if(page != null){
@@ -149,12 +174,17 @@ public class SendMSGcontroller {
 		 maker.setMSGPageData();
 		model.addAttribute("pageMaker", maker);
 		 
-		for (MsgDTO dto : allList) {
-			String msg = dto.getMsg_content();
-			if (msg.length() >= 5) {
-				dto.setMsg_content(msg.substring(0, 5) + "...");
-			}
-		}		
+		try {
+			for (MsgDTO dto : allList) {
+				String msg = dto.getMsg_content();
+				if (msg.length() >= 20) {
+					dto.setMsg_content(msg.substring(0, 20) + "...");
+				}
+			}		
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	
 		
 		
 //		logger.info("가자 " + allList.size());
@@ -164,52 +194,11 @@ public class SendMSGcontroller {
 		model.addAttribute("allList", allList);
 
 		
-//		 MsgPaginationCriteria x = new MsgPaginationCriteria(mno);
-//			
-//			if(page !=null){//요청 파라미터에 현재 페이지 정보가 있는 경우 
-//				x.setPage(page);
-//				
-//			}
-//			
-//			logger.info("hi "+msgAllService.pageGetMsgOfRecords(mno));
-//			List<MsgDTO> allList= msgAllService.readSendMsg(mno);
-//			PageMaker maker = new PageMaker();
-//			maker.setMsgcriteria(x);
-//			
-//			
-//			maker.setTotalCount(msgAllService.pageGetMsgOfRecords(mno));
-//			
-//			maker.setPageData();
-//			model.addAttribute("pageMaker", maker);
-//		
-//			//http://localhost:8181/ex02/board/list-page?page=3 
-//			// 저렇게 쓰면 다른 페이지가 보인다  
-//			//해당 페이지에 보여줄 게시글만 검색 
-//			
-//			
-//			
-//			//List<MsgDTO> allList = msgAllService.readGetMsg(mno);
-//			for (MsgDTO dto : allList) {
-//				String msg = dto.getMsg_content();
-//				if (msg.length() >= 5) {
-//					dto.setMsg_content(msg.substring(0, 5) + "...");
-//				}
-//			}
-//
-//		//	logger.info("가자 " + allList.size());
-//			//logger.info(" 값 " + allList.get(0).getNickname());
-//			
-//			model.addAttribute("allList", allList);
-//		 
-//		 
+
 		 
 	}//end 
 	
-	
-	
-	
-	
-	
+
 	
 	@RequestMapping(value="/MiniMsg" ,method=RequestMethod.POST)
 	public void test022(@ModelAttribute("postdata") String postdata ,@ModelAttribute("msg_content") String msg_content ,

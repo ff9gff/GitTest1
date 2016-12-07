@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.spring.project03.domain.ImageFile;
 import edu.spring.project03.domain.ImgVO;
+import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
 import edu.spring.project03.domain.TourRegisterVO;
@@ -253,7 +254,7 @@ public class MypageController {
 		return entity;
 	}
 	
-//////////////////////////////프로필 수정 작업 중.../////////////////////////////////////	
+//////////////////////////////프로필 수정 작업 중... 수정하기 위해서 데이터를 검색 후  updatePersonal.jsp로 보내주자/////////////////////////////////////	
 	@RequestMapping(value = "updatePersonal/{mno}", method = RequestMethod.GET)
 	public String readPerson(@PathVariable("mno") int mno, Model model) {
 		
@@ -269,6 +270,36 @@ public class MypageController {
 		
 		return "mypage/updatePersonal";
 		
+	}
+	
+//////////////////////////////프로필 수정 작업 중... 업데이트 쿼리 실행 후 마이페이지로 돌아간다/////////////////////////////////////	
+
+	@RequestMapping(value = "/updatePersonal/profile_update", method = RequestMethod.POST)
+	public String readPerson2(PersonalVO vo2) {	
+		logger.info("프로필수정 메소드 들어왔니?");
+		
+		if (vo2 != null) {
+			
+			logger.info("회원 번호: " + vo2.getMno());
+			logger.info("유저 나이: " + vo2.getAge());
+			logger.info("유저 닉네임: " + vo2.getNickname());
+			logger.info("유저 핸드폰: " + vo2.getPhone());
+			logger.info("유저 우편번호: " + vo2.getPostcode());
+			logger.info("유저 주소1: " + vo2.getAddress1());
+			logger.info("유저 주소2: " + vo2.getAddress2());
+			logger.info("유저 이메일: " + vo2.getEmail());
+			logger.info("유저 자소서: " + vo2.getIntroduce());
+			
+			// update 쿼리 실행
+			int result = mypageService.update_profile(vo2);
+			if (result == 1) { // profile 업데이트 성공
+				logger.info("프로필 수정 성공");
+			} else { // 업데이트 실패
+				logger.info("프로필 수정 실패");
+			}
+		}
+
+		return "redirect:../MyPage";
 	}
 	
 	@RequestMapping(value = "checknick", method = RequestMethod.POST)
@@ -291,7 +322,7 @@ public class MypageController {
 	
 	// 해당 프로필의 이미지 업데이트 메소드
 	@RequestMapping(value = "MyPage", method = RequestMethod.POST)
-	public void prifleimageupdate (HttpServletRequest req, @RequestParam MultipartFile imageFile) {
+	public String prifleimageupdate (HttpServletRequest req, @RequestParam MultipartFile imageFile) {
 		HttpSession session = req.getSession();
 		int mno = Integer.valueOf(session.getAttribute("mno").toString());
 		
@@ -313,7 +344,7 @@ public class MypageController {
 			logger.info("썸네일 수정 실패");
 		}
 
-		
+		return "redirect:MyPage";
 	}
 	
 	
