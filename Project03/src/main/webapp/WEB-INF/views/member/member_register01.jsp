@@ -24,13 +24,13 @@
 		
 <title>같이가자</title>
 </head>
-<body background="../resources/theme/images/KakaoTalk_sky.jpg">
+<body>
 
 <div style="width: 800px; margin: 0 auto; vertical-align: middle;">
-<img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
-<img src="../resources/theme/images/Sign_up01.png" style="height: 75px"/><br/>
+	<img alt="" src="../resources/theme/images/Sign_up_title.png" style="display: block;">
+	<img alt="" src="../resources/theme/images/Sign_up01.png" style="display: block; height: 75px;">
 </div>
-
+<br/>
 <div style="width: 800px; margin: 0 auto; vertical-align: middle;">
 	<div>
 		<h2 style="font-size: medium; font-style: oblique; color: black;">이용약관</h2>

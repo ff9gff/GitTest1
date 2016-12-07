@@ -24,12 +24,11 @@
 <title>같이가자</title>
 </head>
 
-<body background="../resources/theme/images/KakaoTalk_sky.jpg">
+<body>
 
 <div style="width: 800px; margin: 0 auto; vertical-align: middle;">
-<img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
-<img src="../resources/theme/images/Sign_up02.png" style="height: 75px"/><br/>
-
+	<img src="../resources/theme/images/Sign_up_title.png" style="display: block;" />
+	<img src="../resources/theme/images/Sign_up02.png" style="display: block; height: 75px"/><br/>
 
 
 	<form id ="register_form" name="register_form" action="sign_up" method="post" enctype="multipart/form-data">
