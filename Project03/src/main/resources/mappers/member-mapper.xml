@@ -39,10 +39,8 @@
    </select>
 
    <insert id="personal-insert">
-      insert into wm_personal(mno, name, sex, age, nickname, phone, postcode, address1, address2,
-      introduce, email)
-      values(#{mno}, #{name}, #{sex}, #{age}, #{nickname}, #{phone}, #{postcode}, #{address1}, #{address2},
-      #{introduce}, #{email})
+      insert into wm_personal(mno, name, sex, age, nickname, phone, postcode, address1, address2, introduce, email)
+      values(#{mno}, #{name}, #{sex}, #{age}, #{nickname}, #{phone}, #{postcode}, #{address1}, #{address2}, #{introduce}, #{email})
    </insert>
    
    <select id="get-nickname" resultType="String">

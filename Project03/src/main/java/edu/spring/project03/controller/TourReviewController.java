@@ -52,6 +52,8 @@ public class TourReviewController {
 		// review_register.jsp 페이지 이동
 	} // end reviewRegister()
 
+	
+	// 후기 등록 작업  DB Insert
 	@RequestMapping(value = "/review_register", method = RequestMethod.POST)
 	public String CreateReview(ReviewVO reviewvo, ReviewRegionVO reviewregionvo, ImgVO imgvo,
 			@RequestParam MultipartFile imageFile, ModelMap modelMap, Model model) {
@@ -120,6 +122,10 @@ public class TourReviewController {
 		return "redirect:review_detail?review_no=" + review_no;
 	} // end CreateReview()
 
+	
+	
+	
+	
 	@RequestMapping(value = "/review_detail", method = RequestMethod.GET)
 	public String reviewDetail(int review_no, Model model) {
 		// review_detail.jsp 페이지 이동
