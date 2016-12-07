@@ -133,7 +133,6 @@ $(document).ready(function(){
 			
 			
 			
-			
 			upgrade_member();
 			
 			

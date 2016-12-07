@@ -78,7 +78,7 @@
 
 		<section id="main">
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
-	<form action="">
+	<form id="pageForm">
 			<table id="checkboxTestTbl" >
 				<caption>전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
 				<colgroup>
@@ -110,7 +110,7 @@
 						
 						<td>${vo.mno }</td>
 						<td>${vo.userid }</td>
-						<td><a href="${vo.mno}">${vo.nickname }</a></td>
+						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
 						<td>${vo.phone }</td>
 						<td>${vo.email }</td>
 					        <td>
@@ -157,6 +157,34 @@ function dpTime(){
     }
 document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
 };
+
+
+/*
+	var frm = $('#pageForm');
+	
+    // table 안의 tr 안의 td 안의 a 태그 click 커스터마이징
+    $('table tr td a').click(function() {
+    	//event.preventDefault();
+    	//var bno = $(this).attr('href');
+    	
+    	
+    	//frm.find('[name="bno"]').val(bno);
+    	//frm.attr('action', 'detail');
+    	//frm.attr('method', 'get');
+    	//frm.submit();
+    });
+
+*/
+
+
+
+
+
+
+
+
+
+
 
 
 
