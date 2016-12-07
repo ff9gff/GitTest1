@@ -107,6 +107,7 @@ public class TourReviewServiceImpl implements TourReviewService {
 	} // end readRegisterData(review_no)
 	
 	
+	
 	@Override
 	public ReviewVO read_review_by_no(int review_no) {
 		return tourReviewDAO.select_review_by_no(review_no);
@@ -135,6 +136,23 @@ public class TourReviewServiceImpl implements TourReviewService {
 	
 	
 	
+	@Override
+	public ReviewVO readReviewInfo(int review_no) {
+
+		return tourReviewDAO.selectReviewInfo(review_no);
+	} // end readReviewInfo(review_no)
+	
+	@Override
+	public ReviewRegionVO readReviewRegionInfo(int review_no) {
+
+		return tourReviewDAO.selectReviewRegionInfo(review_no);
+	} // end readReviewRegionInfo(review_no)
+	
+	@Override
+	public ImgVO readReviewMainImage(int review_no) {
+
+		return tourReviewDAO.selectReviewMainImage(review_no);
+	} // end readReviewMainImage(review_no)
 	
 	
 	

@@ -201,6 +201,7 @@ public class MemberController {
 		} // end if
 
 		// ImageFile fileInfo = imageService.save(imageFile);
+		
 
 		if (fileInfo != null) {
 			logger.info("대표 이미지 주소: " + SAVE_IMAGE_DIR + fileInfo.getFileName());

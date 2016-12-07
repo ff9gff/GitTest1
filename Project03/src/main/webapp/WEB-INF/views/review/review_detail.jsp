@@ -403,9 +403,13 @@ width: 95%;
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
 	<input type="hidden" id="msg_setter" name="msg_setter" value="${mno }"/>
-	<input type="hidden" id="msg_getter" name="msg_getter"/>
-	<input type="hidden" id="msg_getnick" name="msg_getnick"/>
-	<input type="hidden" id="msg_address" name="msg_address" value="tour/toggle_msg"/><!-- 수정 -->
+	<input type="hidden" id="msg_getter" name="msg_getter" value="${mno }"/> <!-- 실제로 사용은 안되고 있음.. -->	
+	
+	<div id="msg_getterList">
+		<input type="hidden" id="msg_getnick" name="msg_getnick"/>
+	</div>
+	
+	<input type="hidden" id="msg_address" name="msg_address" value="review/toggle_msg"/>
 </form>
 
 <!-- 작성자가 좋아요 안되게 하고 다른 사람은 좋아요 하게 넣기 해야 되는 부분 -->
@@ -1265,6 +1269,7 @@ $('#context_msg').on('click','.btn_context',function(){
 	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
 	window.open('',"msg" ,popOption);
 	f.submit();
+	
 });
 
 

@@ -121,9 +121,6 @@ public class TourReviewController {
 
 		return "redirect:review_detail?review_no=" + review_no;
 	} // end CreateReview()
-
-	
-	
 	
 	
 	@RequestMapping(value = "/review_detail", method = RequestMethod.GET)
@@ -163,13 +160,10 @@ public class TourReviewController {
 		return "review/review_detail";
 	} // end reviewDetail()
 	
-	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
-	public String toggleMsg() {
-
-		return "toggle_msg";
-	} // end toggleMsg()
 	
-	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
+	
+/*
+ * 	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
 	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, String msg_address, Model model) {
 		System.out.println("setter: " + msg_setter);
 		System.out.println("getter: " + msg_getter);
@@ -182,6 +176,116 @@ public class TourReviewController {
 
 		return "toggle_msg";
 	} // end toggleMsg(msg_setter, msg_getter, msg_getnick, msg_address, model)
+*	
+*/	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
+	public String toggleMsg(int msg_setter, int msg_getter, String[] msg_getnick, String msg_address, Model model) {
+		System.out.println("setter: " + msg_setter);
+		System.out.println("getter: " + msg_getter);
+		System.out.println("review####msg_getnick: " + msg_getnick.length);
+		//System.out.println("tour####msg_getnick[0]: " + msg_getnick[0]);
+		//System.out.println("tour####msg_getnick[1]: " + msg_getnick[1]);
+
+		model.addAttribute("msg_setter", msg_setter);
+		model.addAttribute("msg_getter", msg_getter);
+		model.addAttribute("msg_getnick", msg_getnick);
+		model.addAttribute("msg_address", msg_address);
+
+		return "toggle_msg";
+	} // end toggleMsg(msg_setter, msg_getter, String[] msg_getnick, msg_address, model)
+	
+	@RequestMapping(value = "/toggle_msg", method = RequestMethod.GET)
+	public String toggleMsg() {
+
+		return "toggle_msg";
+	} // end toggleMsg()
+	
+	
+	@RequestMapping(value="/review_update_pre", method = RequestMethod.POST)
+	public String reviewUpdatePre(int review_no, Model model) {
+		logger.info("여행 번호: " + review_no);
+		
+		ReviewVO reviewvo = tourReviewService.readReviewInfo(review_no);
+		ReviewRegionVO reviewRegionvo = tourReviewService.readReviewRegionInfo(review_no);
+		ImgVO imgvo = tourReviewService.readReviewMainImage(review_no);
+		
+		if(reviewvo != null && reviewRegionvo != null && imgvo != null) {
+			logger.info("수정하기 위한 검색 작업 완료...");
+			model.addAttribute("ReviewVO", reviewvo);
+			model.addAttribute("ReviewRegionVO", reviewRegionvo);
+			model.addAttribute("ImgVO", imgvo);
+			logger.info("수정하기 위한 vo model Add 완료...");			
+		} else {
+			logger.info("수정하기 위한 검색 작업 실패...");
+		}	
+		
+		return "review/review_update";
+	} // end ReviewUpdatePre(review_no, model)
+	
+	@RequestMapping(value="/review_update_suf", method = RequestMethod.POST)
+	public String reviewUpdateSuf(ReviewVO reviewvo, ReviewRegionVO reviewRegionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile) {
+		
+		if(reviewvo != null && reviewRegionvo != null && imgvo != null){
+			logger.info("vo 값 읽기 성공");
+			
+			int review_result = tourReviewService.updateReview(reviewvo);
+			if(review_result == 1) {
+				logger.info("후기 내용 수정 성공");
+				
+				int reviewregion_result = tourReviewService.updateRegion(reviewRegionvo);
+				if(reviewregion_result == 1) {
+					logger.info("후기 지역 수정 성공");
+					
+					ImageFile fileInfo = imageService.save(imageFile);
+					ImgVO imagevo = new ImgVO(ReviewRegisterID, reviewvo.getReview_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+					
+					int image_result = tourReviewService.updateThumnail(imagevo);
+					if(image_result == 1) {
+						logger.info("썸네일 수정 성공");						
+					} else {
+						logger.info("썸네일 수정 실패");
+					} // end if(image_result == 1)					
+				} else {
+					logger.info("후기 지역 수정 실패");
+				} // end if(reviewregion_result == 1)				
+			} else {
+				logger.info("후기 내용 수정 실패");
+			} // end if(review_result == 1)			
+		} else {
+			logger.info("vo 값 읽기 실패");
+		} // end if(reviewvo != null && reviewRegionvo != null && imgvo != null)		
+		
+		return "redirect:review_detail?review_no=" + reviewvo.getReview_no();
+	} // end ReviewUpdateSuf()
+	
+	
+	@RequestMapping(value="review_delete", method = RequestMethod.POST)
+	public String reviewDelete(int review_no) {
+		logger.info("리뷰 번호 : " + review_no);
+		
+		int review_result = tourReviewService.deleteReview(review_no);
+		if(review_result == 1){
+			logger.info("여행 리뷰 삭제 성공");
+			
+			int reviweRegion_result = tourReviewService.deleteRegion(review_no);
+			if(reviweRegion_result == 1) {
+				logger.info("여행 리뷰 지역 삭제 성공");
+				
+				int img_result = tourReviewService.deleteThumnail(review_no);
+				if(reviweRegion_result == 1) {
+					logger.info("썸네일 삭제 성공");					
+				} else {
+					logger.info("썸네일 삭제 실패");					
+				}				
+			} else {
+				logger.info("여행 리뷰 지역 삭제 실패");
+			}
+		} else {
+			logger.info("여행 리뷰 삭제 실패");
+		}
+		
+		return null;
+	} // end reviewDelete(review_no)
 	
 	
 
