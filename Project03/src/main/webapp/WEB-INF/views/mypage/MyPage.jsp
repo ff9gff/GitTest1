@@ -197,7 +197,7 @@ ul {
 				style="display: block; width: 1026px; height: 260px; margin: auto; vertical-align: center; text-align: center; padding-top: 30px">
 				<div>
 					<input type="text" Class="personal" value="${vo.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
-					<input type="text" Class="personal" value="${vo.age }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${vo.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 				<div>
 					<input type="text" Class="personal" value="${vo.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
@@ -210,7 +210,8 @@ ul {
 			
 			<c:if test="${mno eq vo.mno }">
 				<div>
-				 <input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />	
+					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
+					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
 				</div>
 			</c:if>
 			
@@ -440,6 +441,9 @@ ul {
 				location = 'updatePersonal/' + mno;
 			});
 			
+			$('#goHome').click(function() {
+				location = '../index';
+			});
 			
 			
 			
