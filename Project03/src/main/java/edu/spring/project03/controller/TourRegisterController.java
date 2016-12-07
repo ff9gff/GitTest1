@@ -418,9 +418,9 @@ public class TourRegisterController {
 						int result3 = tourRegisterService.updateThumnail(imgvo);
 	
 						if (result3 == 1) {
-							logger.info("새로운 썸네일 수정 성공");
+							logger.info("새로운 여행 썸네일 수정 성공");
 						} else {
-							logger.info("썸네일 수정 실패");
+							logger.info("새로운 여행 썸네일 수정 실패");
 						}
 					}
 				} else {

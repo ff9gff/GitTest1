@@ -240,14 +240,20 @@ public class TourReviewController {
 					logger.info("후기 지역 수정 성공");
 					
 					ImageFile fileInfo = imageService.save(imageFile);
-					ImgVO imagevo = new ImgVO(ReviewRegisterID, reviewvo.getReview_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 					
-					int image_result = tourReviewService.updateThumnail(imagevo);
-					if(image_result == 1) {
-						logger.info("썸네일 수정 성공");						
+					if (fileInfo.getFileName().length() < 40) {
+						logger.info("썸네일 수정 안할겁니다");
 					} else {
-						logger.info("썸네일 수정 실패");
-					} // end if(image_result == 1)					
+					
+						ImgVO imagevo = new ImgVO(ReviewRegisterID, reviewvo.getReview_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+						
+						int image_result = tourReviewService.updateThumnail(imagevo);
+						if(image_result == 1) {
+							logger.info("새로운 후기 썸네일 수정 성공");						
+						} else {
+							logger.info("새로운 후기 썸네일 수정 실패");
+						} // end if(image_result == 1)			
+					}
 				} else {
 					logger.info("후기 지역 수정 실패");
 				} // end if(reviewregion_result == 1)				
