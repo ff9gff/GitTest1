@@ -98,9 +98,15 @@
 									<li class="active"><a href="#">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="mypage/MyPage">마이페이지</a></li>
-									<li><a href="admin/admin">관리자</a></li>
-									<li><a href="member/login">로그인</a></li>
+									<c:if test="${not empty mno}">
+										<li><a href="mypage/MyPage">마이페이지</a></li>
+									</c:if>
+									<c:if test="${authority eq 3}">
+										<li><a href="admin/admin">관리자</a></li>
+									</c:if>
+									<c:if test="${empty mno}">
+										<li><a href="member/login">로그인</a></li>
+									</c:if>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
