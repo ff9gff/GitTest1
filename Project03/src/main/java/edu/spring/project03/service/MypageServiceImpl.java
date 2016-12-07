@@ -58,5 +58,11 @@ public class MypageServiceImpl implements MypageService {
 
 		return mypageDAO.select_mytour_region(mno);
 	}
+	
+	@Override
+	public int update_profile(PersonalVO vo) {
+	
+		return mypageDAO.updateProfile(vo);
+	}
 
 }
