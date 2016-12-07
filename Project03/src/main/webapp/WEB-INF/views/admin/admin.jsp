@@ -232,7 +232,7 @@ table, th, td {
 		        if (seconds < 10){
 		            seconds = "0" + seconds;
 		        }
-		document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
+				document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":" + seconds ;
 		    };
 		
 		
