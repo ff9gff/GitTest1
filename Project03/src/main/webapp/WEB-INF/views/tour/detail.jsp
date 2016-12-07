@@ -434,8 +434,10 @@ font-size: 12px;
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
 	<input type="hidden" id="msg_setter" name="msg_setter" value="${mno }"/>
-	<input type="hidden" id="msg_getter" name="msg_getter"/>
-	<input type="hidden" id="msg_getnick" name="msg_getnick"/>
+	<input type="hidden" id="msg_getter" name="msg_getter" value="${mno }"/>
+	<div id="msg_getterList">
+		<input type="hidden" id="msg_getnick" name="msg_getnick"/>
+	</div>
 	<input type="hidden" id="msg_address" name="msg_address" value="tour/toggle_msg"/>
 </form>
 
@@ -1344,6 +1346,46 @@ $('#tourBoardButton').click(function() {
 	alert('여행 게시판으로 돌아갑니다');
 	location = '../tour/TourBoard';
 });
+
+var allend;
+$('#trip_end').click(function(){
+	var check = confirm('정말 마감하시겠습니까?');
+	if(check == true){
+		$.ajax({
+			type:'put',
+			url:'/project03/tour/detail/apply/end/'+trip_no,
+			headers:{
+				'Content-Type':'application/json',
+				'X-Http-Method-Ovveride':'PUT'
+			},
+			success: function(result){
+				if(result == 'success'){
+					
+					allend = confirm('전체 쪽지를 보내시겠습니까?');
+					
+					if(allend == true){
+						var chkObj = document.getElementsByName("comCheck");
+						var divlist = '';
+						for(var i=0; i<chkObj.length; i++){
+							console.log(chkObj[i].parentNode.parentNode.childNodes[1].firstChild);
+							var chkatag = chkObj[i].parentNode.parentNode.childNodes[1].firstChild;
+							var chknick = chkatag.innerText;
+							var chkmno = chkatag.attributes.getNamedItem("data-rno").value;
+							divlist += '<input type="hidden" id="msg_getnick" name="msg_getnick" value="'+chknick+'"/>';
+						}// end for
+						$('#msg_getterList').html(divlist);	
+						console.log("새로운거");
+						var f = document.getElementById('msg_form');
+						var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
+						window.open('',"msg" ,popOption);
+						f.submit();
+					}// end if
+				}// end if
+			}// end success
+		}); // end ajax
+	}// end if
+});
+
 
 
 }); // end document.ready();
