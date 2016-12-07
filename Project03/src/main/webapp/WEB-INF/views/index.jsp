@@ -37,7 +37,7 @@
 }
 
 .portfolio-thumb{
-	width: 297	px;
+	width: 297.5px;
 	height: 240px;
 	vertical-align: middle;
 	margin-bottom: 5px;
@@ -506,7 +506,7 @@
 						+ '<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
 							
-								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 297px; height:240px; z-index:99;">'
+								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 297.5px; height:240px; z-index:99;">'
 								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
 									switch(TourImage[i].condition_sex){
 										case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';
