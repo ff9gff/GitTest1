@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -21,6 +20,13 @@
 
 #selectOption {
 	padding-left: 655px
+}
+
+table, th, td {
+   border: 1px solid gray;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
 }
 </style>
 
