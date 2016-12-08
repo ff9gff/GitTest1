@@ -44,9 +44,21 @@
 		</interceptor>
 		
 		<interceptor>
-			<mapping path="/board/register"/>
+			<mapping path="/tour/GoRegister"/>
 			<beans:ref bean="authInterceptor"/>	
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/review/review_register"/>
+			<beans:ref bean="authInterceptor"/>	
+		</interceptor>
+		
+		<!-- <interceptor>
+			<mapping path="/review/review_detail"/>
+			<beans:ref bean="authInterceptor"/>	
+		</interceptor> -->
+		
+		
 	</interceptors>
 	
 	
