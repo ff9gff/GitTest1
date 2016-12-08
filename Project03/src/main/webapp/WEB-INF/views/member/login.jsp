@@ -84,6 +84,7 @@ http://www.templatemo.com/tm-406-flex
 						<input type="submit" value="로그인" /><br/><br/>
 						
 						<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
+						<%System.out.println(request.getQueryString()); %>
 						<input type="hidden" name="query" value="<%=request.getQueryString()%>" />
 					</form>
 					

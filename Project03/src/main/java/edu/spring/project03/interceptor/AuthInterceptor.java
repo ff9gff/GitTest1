@@ -29,7 +29,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			saveDestination(request);
 
 			// 로그인 화면으로 리다이렉트
-			response.sendRedirect("member/login"); 
+			response.sendRedirect("../member/login"); 
 			
 			return false; // 컨트롤러 메소드를 실행하지 않음
 			
