@@ -62,14 +62,16 @@ http://www.templatemo.com/tm-406-flex
 	font-weight: bold;
 	color: #4e4e4f;
 	margin-left: 10px;
-	font-family:monospace
+	font-family:monospace;
+	text-align: left;
 }
 
 .tour_region{
 	font-size: 15px;
 	color: ligthgray;
 	margin-left: 10px;
-	font-family:monospace
+	font-family:monospace;
+	text-align: left;
 }
 .tour_hist{
  display: inline-block;
@@ -77,6 +79,42 @@ http://www.templatemo.com/tm-406-flex
  font-weight: normal;
  color: #878484;
  float: right;
+}
+#select_search{
+	float: right;
+	display: inline-block;
+	width: 90px;
+	border: 0;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#region_select{
+	width: 700px;
+	border: 1px solid #ff5028;
+}
+#region_name{
+	width: 600px;
+	border: 0;
+}
+#btn_create_review{
+	width: 100%;
+	height: 100%;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+	border: none;
+	font-size: 20px;
+}
+.inside_div_conditon{
+	width: 180px;
+	margin: 10px;
+}
+#condition_box{
+	 position: fixed;
+  margin: 0 auto;
+  top: 400px;
+  right: 20px;
 }
 </style>
 
@@ -149,22 +187,22 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /.site-main -->
 <div class="content-section" id="services">
-		<div class="container">
+		<div class="container" style="width: 1300px; text-align: center; margin: 0 auto;">
 			<div>
-
-				<h3 class="h2" style="font: bold;"> 후기 게시판 </h3>
-				
-				<br /><br />
-				
-				<div>
-					<input type="text" id="region_name" name="region_name" placeholder="지역이름">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" id="nickname" name="nickname" placeholder="닉네임">&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" id="select_search">장소 / 닉네임 선택 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" id="btn_create_review">후기 등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div style="width: 800px; margin: 0 auto;">
+					<div id="region_select" style="display: inline-block;">
+						<input type="text" id="region_name" name="region_name" placeholder="지역">
+						<button type="button" id="select_search">장소 검색</button>
+					</div>
+					<input hidden type="text" id="nickname" name="nickname" placeholder="닉네임">
 				</div>
 
-				<br /><br />
-				
+				<div id="condition_box" style="width: 200px; height: 70px; border: 1px dotted gray; z-index:200; background-color: #FFFFFF">
+						<div class="inside_div_conditon" style="height: 50px;">
+							<button type="button" id="btn_create_review">후기  등록</button>
+						</div>	
+				</div>
+				<div style="height: 100px;"></div>
 				<div class="row" id="reviewDetail" style="width: 1300px;">
 				</div>
 				<!-- /.row -->
@@ -345,8 +383,7 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no});	
-					
+					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits});			
 				});
 				getAllThumnail_Nickname_REVIEW()
 				
@@ -384,14 +421,14 @@ http://www.templatemo.com/tm-406-flex
 			var list = '';
 			
 			for(var i = 0; i < SelectSearchReview.length; i++){
-
+		
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<a href="../review/review_detail?review_no=' + SelectSearchReview[i].review_no + '">'
 						+ '<div class="portfolio-thumb">'
 								+'<img src="../' + SelectSearchReview[i].img_url + '" class="img_view" width="300" height="240"><br/>'
 						+ '</div>'
 						+ '<div class="tour_title">' + SelectSearchReview[i].title + '</div>'
-						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '</div>'	
+						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits +  '&nbsp;&nbsp;</p></div>'
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+'</a>'
 						+ '</div>';

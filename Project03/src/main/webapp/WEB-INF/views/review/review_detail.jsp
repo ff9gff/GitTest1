@@ -492,7 +492,9 @@ width: 95%;
 				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
 			</form>
 		</c:if>
-		
+		<c:if test="${not empty mno}"> 
+			<button type="button" id="likeButton" class="content_btns">따봉</button>
+		</c:if>
 		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
 		
 	</div>
@@ -1260,6 +1262,7 @@ $('#context_profile').on('click','.btn_context',function(){
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
 	var url = '/project03/mypage/UserPage/'+amno;
+	
 	location.href  = url;
 });
 
@@ -1355,7 +1358,7 @@ $(function(){
 	var hits = ${reviewVO.hits};
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region);
-	$('#content_count').html('&nbsp;| 조회수: ' + hits);
+	$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ');
 });
 
 $('#updateButton').click(function() {
@@ -1371,6 +1374,15 @@ $('#deleteButton').click(function() {
 $('#reviewBoardButton').click(function() {
 	alert('여행 리뷰 게시판으로 돌아갑니다');
 	location = '../review/reviewBoard';
+});
+
+$('#likeButton').click(function() {
+	
+	var mno = ${mno};
+	var review_no = ${reviewVO.review_no};
+	
+	alert('따봉!');
+	location = 'likeCheck/' + review_no + '/' + mno;
 });
 
 

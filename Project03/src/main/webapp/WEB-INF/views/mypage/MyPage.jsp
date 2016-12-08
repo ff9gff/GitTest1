@@ -29,6 +29,23 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <style type="text/css">
+.portfolio-item{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+}
+
+.portfolio-item-ex{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+	opacity: 0.5;
+}
+
 #dropDownType {
 	width: 50px
 }
@@ -90,6 +107,7 @@ ul {
 	padding-top: 0;
 	vertical-align: middle;
 }
+
 </style>
 
 <link rel="stylesheet" href="<c:url value="../resources/theme/css/mystyle1.css"/>">
@@ -98,6 +116,7 @@ ul {
 
 <body>
 
+<%@ include file="../main-header.jsp"  %>
 
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
@@ -156,14 +175,14 @@ ul {
 
 
 
-	<header style="background-image: url('../resources/theme/images/slide5.jpg'); height: 70px">
+	<header style="background-color: #F19A0D; height: 70px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
 		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-color: #000; height: 520px;">
+		<div style="background-color: #F19A0D; height: 520px;">
 			<div
 				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -204,7 +223,9 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-image: url('../resources/theme/images/slide5.jpg');/* background-color: #F19A0D; */ color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+
 				</textarea>
 					
 			</div>
@@ -268,13 +289,13 @@ ul {
 				var url = '/project03/mypage/MyPage/list/' + ${mno};
 				$.getJSON(url, function(datalist) {
 					$(datalist).each(function() {
-						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, expire:{}, city: {}})
 							
 					
 						var urltitle = '/project03/mypage/MyPage/title/' + ${mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
-								titleList.push({trip_no: this.trip_no, title: this.title});
+								titleList.push({trip_no: this.trip_no, title: this.title, expire: this.expire});
 								
 							});
 							console.log(titleList);
@@ -294,6 +315,7 @@ ul {
 									for (var j = 0; j < titleList.length; j++) {
 										if (List[i].content_no == titleList[j].trip_no) {
 											List[i].tour = titleList[j].title;
+											List[i].expire = titleList[j].expire;
 										} 
 										for (var k = 0; k < regionList.length; k++) {
 											if (List[i].content_no == regionList[k].trip_no) {
@@ -444,19 +466,28 @@ ul {
 			
 			function getThumnail() {
 				
-				var list = '';				
+				var list = '';
+				
 				
 				for(var i = 0; i<List.length; i++){
+					
+				if(List[i].expire == 0){
+					list += '<div class="portfolio-item col-md-3 col-sm-6">';
+				}else{
+					list += '<div class="portfolio-item-ex col-md-3 col-sm-6">';
+				}
 
-					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+ '<div class="portfolio-thumb">'
-						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
+					
+					
+						list+= '<div class="portfolio-thumb">'
+						+ '<figure>'						
+						+ '<a href="../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
 						+ '</div>'
 						+ '</div>';
+					
 				}
 				
 				$('#toursearch').html(list);				
@@ -473,7 +504,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../' + JoinList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../' + JoinList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + JoinList[i].tour + '</div>'
 						+ '<div>지역: ' + JoinList[i].city + '</div>'			
 						+ '</figure>'
@@ -497,7 +528,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="review/reivew?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../review/review_detial?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + ReviewList[i].tour + '</div>'
 						+ '<div>지역: ' + ReviewList[i].city + '</div>'			
 						+ '</figure>'

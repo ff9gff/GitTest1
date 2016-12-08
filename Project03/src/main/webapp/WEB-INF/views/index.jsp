@@ -470,9 +470,9 @@
 								
 							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
-							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
+							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
 							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-						+'</a>'
+						+ '</a>'
 						+ '</div>';
 			}
 
@@ -480,7 +480,7 @@
 		};
 		
 		// 가져온 최신후기 데이터를 뿌려주자
-		function getAllThumnail_RECENTREVIEW() {
+		function getAllThumnail_RECENTREVIEW() {	
 			var list = '';
 			
 			var length = 0;
