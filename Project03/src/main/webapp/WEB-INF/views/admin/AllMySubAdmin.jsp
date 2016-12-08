@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 <style type="text/css">
 #top{
@@ -25,14 +27,18 @@
 }
 
 table, th, td {
-   border: 1px solid gray;
+   border: 1px solid#e65b05;
    border-collapse: collapse;
    text-align: center;
    vertical-align: middle;
 }
+
+.menuItem{
+ 	background-color: lightblue;
+ }
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 
 </head>
 
@@ -40,7 +46,7 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;°ü¸®ÀÚ´Ô ¾È³çÇÏ¼¼¿ä</h1>
+			<h1>&nbsp;ê°™ì´ê°€ì íšŒì›ê´€ë¦¬ í˜ì´ì§€ì…ë‹ˆë‹¤.</h1>
 			<div>&nbsp;</div>
 			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
@@ -50,27 +56,25 @@ table, th, td {
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">°¡ÀÔ½ÂÀÎ</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">ê°€ì…ìŠ¹ì¸</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">°øÁö»çÇ×</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> ê³µì§€ì‚¬í•­</a>
 				</li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> ìœ ì € ë“±ê¸‰</a></li>
 
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">Áö³­°øÁö</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>í™ˆ(ì•„ì§)</a>
 				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">À¯Àú µî±Ş</a></li>
-
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">È¨(¾ÆÁ÷)</a>
-				</li>
-				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">ÀüÃ¼ À¯Àú</a>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> ì „ì²´ ìœ ì €</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">°ü¸®ÀÚ °ü¸®</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> íšŒì› ê´€ë¦¬</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="../index">¸ŞÀÎ</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> ë©”ì¸&nbsp;ê°€ì </a>
+				</li>  
 
 
 
@@ -83,7 +87,8 @@ table, th, td {
 
 	<form action="">
 		<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">°ü¸®ÀÚ À¯Àú Á¤º¸ È®ÀÎ</caption>
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">ê´€ë¦¬ì íšŒì› ì •ë³´ í™•ì¸</caption>
+
 				<colgroup>
 					<col width="40px">
 					<col width="100px">
@@ -96,14 +101,14 @@ table, th, td {
 				</colgroup>
 	
 				<tr>
-					<th>¹øÈ£</th>
-					<th>À¯Àú ¹øÈ£</th>
-					<th>À¯Àú ¾ÆÀÌµğ</th>
-					<th>À¯Àú ´Ğ³×ÀÓ</th>
-					<th>À¯Àú ¿¬¶ôÃ³</th>
-					<th>À¯Àú ÀÌ¸ŞÀÏ</th>
-					<th>À¯Àú °¡ÀÔ³¯Â¥</th>
-					<th>±¸ºĞ</th>
+					<th>ë²ˆí˜¸</th>
+					<th>íšŒì› ë²ˆí˜¸</th>
+					<th>ì•„ì´ë”” (ID)</th>
+					<th>ë‹‰ë„¤ì„</th>
+					<th>ì—°ë½ì²˜ (PHONE)</th>
+					<th>ì´ë©”ì¼ (E-MAIL)</th>
+					<th>ê°€ì…ë‚ ì§œ (DATE)</th>
+					<th>êµ¬ë¶„</th>
 				</tr>
 
 			
@@ -115,14 +120,14 @@ table, th, td {
 						<td >${x=x+1 }</td>
 						<td id="mno_${x }" value="${vo.mno }">${vo.mno }</td>
 						<td>${vo.userid }</td>
-						<td>${vo.nickname }</td>
+						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
 						<td>${vo.phone }</td>
 						<td>${vo.email }</td>
 					        <td>
 	       						 <fmt:formatDate value="${vo.joindate }" 
 	          						  pattern="yyyy-MM-dd HH:mm:ss"/>
         					</td>
-						<td><input type="button" value="ÀÏ¹İÈ¸¿ø" onclick="update('${x}')"></td>
+						<td><input type="button" value="ì¼ë°˜íšŒì›" onclick="update('${x}')"></td>
 					</tr>
 
 
@@ -180,16 +185,16 @@ function update(x){
  function insRow() {
 	  oTbl = document.getElementById("regionTable");
 	  var oRow = oTbl.insertRow();
-	  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - Å¬¸¯ÇÑ RowÀÇ À§Ä¡¸¦ È®ÀÎ;
+	  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - í´ë¦­í•œ Rowì˜ ìœ„ì¹˜ë¥¼ í™•ì¸;
 	  var oCell = oRow.insertCell();
 	  
-	  //»ğÀÔµÉ Form Tag
-	  var frmTag = "<input type=text name=region_name placeholder=Áö¿ª>";
-	  frmTag += " <input type=button value='»èÁ¦' onClick='removeRow()' style='cursor:hand'>";
+	  //ì‚½ì…ë  Form Tag
+	  var frmTag = "<input type=text name=region_name placeholder=ì§€ì—­>";
+	  frmTag += " <input type=button value='ì‚­ì œ' onClick='removeRow()' style='cursor:hand'>";
 	  oCell.innerHTML = frmTag;
 	}
 
-	//Row »èÁ¦
+	//Row ì‚­ì œ
 	function removeRow() {
 	  oTbl.deleteRow(oTbl.clickedRowIndex);
 	}
@@ -205,9 +210,9 @@ function dpTime(){
 
     if (hours > 12){
         hours -= 12;
-    ampm = "¿ÀÈÄ ";
+    ampm = "ì˜¤í›„ ";
     }else{
-        ampm = "¿ÀÀü ";
+        ampm = "ì˜¤ì „ ";
     }
     if (hours < 10){
         hours = "0" + hours;

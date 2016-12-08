@@ -18,8 +18,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.util.UrlPathHelper;
 
@@ -88,10 +91,16 @@ public class SendMSGcontroller {
 
 		String strmno = (String) session.getAttribute("mno");
 		logger.info("#####strmno : " + strmno);
-		
-		int Usermno = Integer.valueOf(strmno);
-		logger.info("#####testmno : " + Usermno);
-		
+		int Usermno = 0;
+		try {
+			
+			 Usermno = Integer.valueOf(strmno);
+			logger.info("#####testmno : " + Usermno);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	
 		
 		mno = Usermno; 
 		
@@ -114,10 +123,6 @@ public class SendMSGcontroller {
 		maker.setMSGPageData();
 		model.addAttribute("pageMaker", maker);
 	
-		//http://localhost:8181/ex02/board/list-page?page=3 
-		// 저렇게 쓰면 다른 페이지가 보인다  
-		//해당 페이지에 보여줄 게시글만 검색 
-		
 		
 		
 		//List<MsgDTO> allList = msgAllService.readGetMsg(mno);
@@ -130,13 +135,9 @@ public class SendMSGcontroller {
 			}
 		
 		} catch (Exception e) {
-			// TODO: handle exception
+		
 		}
 	
-
-	//	logger.info("가자 " + allList.size());
-		//logger.info(" 값 " + allList.get(0).getNickname());
-		
 		model.addAttribute("allList", allList);
 
 		
@@ -152,10 +153,18 @@ public class SendMSGcontroller {
 		String strmno = (String) session.getAttribute("mno");
 		logger.info("#####strmno : " + strmno);
 		
-		int Usermno = Integer.valueOf(strmno);
-		logger.info("#####testmno : " + Usermno);
+		int Usermno = 0;
+		try {
+			
+			 Usermno = Integer.valueOf(strmno);
+			logger.info("#####testmno : " + Usermno);
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	
 		
-		
+		 
 		mno = Usermno; 
 		
 		 MsgPaginationCriteria x = new MsgPaginationCriteria(mno);
@@ -184,18 +193,9 @@ public class SendMSGcontroller {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-	
-		
-		
-//		logger.info("가자 " + allList.size());
-//		logger.info(" 값 " + allList.get(0).getNickname());
-		
-		
-		model.addAttribute("allList", allList);
 
 		
-
-		 
+		model.addAttribute("allList", allList);	 
 	}//end 
 	
 
@@ -225,7 +225,7 @@ public class SendMSGcontroller {
 	
 	
 	
-
+	
 	
 	
 

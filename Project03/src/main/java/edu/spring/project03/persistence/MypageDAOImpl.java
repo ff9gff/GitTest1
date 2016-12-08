@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
+import edu.spring.project03.domain.ReviewRegionVO;
+import edu.spring.project03.domain.ReviewVO;
 import edu.spring.project03.domain.TourRegisterVO;
 
 @Repository
@@ -59,6 +61,27 @@ public class MypageDAOImpl implements MypageDAO {
 	public List<RegionVO> select_mytour_region(int mno) {
 
 		return sqlSession.selectList(NAMESPACE + ".select_mytour_region", mno);
+	}
+	
+	// 후기 게시글 이미지
+	@Override
+	public List<ImgVO> select_review_mno(int mno) {
+		
+		return sqlSession.selectList(NAMESPACE + ".selectreview", mno);
+	}
+	
+	// 후기 게시글 타이틀
+	@Override
+	public List<ReviewVO> select_review_title(int mno) {
+	
+		return sqlSession.selectList(NAMESPACE + ".select_review_title", mno);
+	}
+	
+	// 후기 게시글 지역
+	@Override
+	public List<ReviewRegionVO> select_review_region(int mno) {
+	
+		return sqlSession.selectList(NAMESPACE + ".select_review_region", mno);
 	}
 	
 	@Override

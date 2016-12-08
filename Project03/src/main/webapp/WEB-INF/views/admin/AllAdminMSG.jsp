@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 
 <style type="text/css">
 #top{
@@ -40,14 +42,22 @@
 }
 
 table, th, td {
-   border: 1px solid gray;
+   border: 1px solid #e65b05;
    border-collapse: collapse;
    text-align: center;
    vertical-align: middle;
 }
+
+.message{
+display: inline;
+}
+
+.menuItem{
+ 	background-color: lightblue;
+ }
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 
 </head>
 
@@ -61,49 +71,57 @@ table, th, td {
 		</header>
 
 		<div Class="wrapper">
-
 		<nav id="menuBar">
+		
 			<ul id="menuList">
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
 
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">공지사항</a>
+			<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지 사항</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저  등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>
-				
-				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 			</ul>
+			
 		</nav>
-		
 		<section id="main">
-	
-	<!-- todo 
-	
-	
-	
-	-->
-	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2">
-	<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
+
+	<div style="display: inline-block; margin-bottom: 15px;">
+	<div class="message" onclick="OpenPop('', '', '', '')">
+	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2" style="display: inline-block; border: 2px solid yellow ; background-color:#FF5A00 ">
+			<img  src="../resources/theme/images/shout.png" style="width: 40px; height: 40px; 
+					display: inline; text-align: center; vertical-align: middle;"/>
+	공지 보내기
 	</form>
+	</div>
 	
-		<form action="MiniMSGpageU" method="get" id="formName" name="formName">
-		<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
+
+	<div class="message" onclick="OpenPop2('', '', '', '')" style= "margin-left: 10px;">
+		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 2px solid yellow; background-color: #FF5A00">
+		<img  src="../resources/theme/images/please.png" style="width: 40px; height: 40px; 
+		display: inline; text-align: center; vertical-align: middle;" />
+		쪽지보내기
+
 		</form>
-	
-	
-	<table id="msgAdminMSG" >
+		</div>
+		
+		</div>
+
+	<div style="width: 100%">
+	<table id="msgAdminMSG" style="width: 100%" >
 		<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 지난 공지함 </caption>
 		<colgroup>
 		<col width="20px">
@@ -133,12 +151,13 @@ table, th, td {
 </table>
 	
 <form id="formAllmin">
-	<input type="button" id="deleteMSGbtn" value="삭제"> 
-
+	<div style="text-align: right;">
+	<input type="image" src="../resources/theme/images/close1.png" style="width: 30px; display:inline; margin-top: 15px;" id="deleteMSGbtn" value="삭제"> 
+	</div>
 </form>
+</div>
 
-	
-		</section>
+	</section>
 
 
 	
@@ -190,24 +209,16 @@ table, th, td {
 		        
 		    };
 		    
-		   /* 
-			<form action="MiniMSGpageU" method="get" id="formName" name="formName">
-			<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
-			</form>  
-		    
-		  */  
 		  
 		    function OpenPop2(url,name,width,height)
 		    {
 		   		
 		    	
 		        window.open("", "pop", "width=800, height=800"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
-		        document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
+		        document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다. 
 		        document.formName.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
 		        document.formName.submit(); // target에 쏜다.
-		        
-		         
-		        
+   
 		    };
 		    
 		    
@@ -218,7 +229,7 @@ table, th, td {
 		    
 		    var tbl = $("#msgAdminMSG");
 		
-	        // 테이블 헤더에 있는 checkbox 클릭시
+	      
 	        $(":checkbox:first", tbl).click(function(){
 	            // 클릭한 체크박스가 체크상태인지 체크해제상태인지 판단
 	            if( $(this).is(":checked") ){

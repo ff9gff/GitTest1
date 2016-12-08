@@ -49,6 +49,13 @@
  width:670px;
    font-size: 15px;
 }
+#content_count{
+ display: inline-block;
+ font-size: 15px;
+ font-weight: normal;
+ color: #878484;
+}
+
 #content_condition{
 	width:800px;
  	margin: 0 auto;
@@ -430,7 +437,7 @@ width: 95%;
 
 <div style="width: 800px;  margin: 0 auto; vertical-align: middle;">
 	<div style=" display: inline-block; vertical-align: middle;">
-		<div id=content_title>${reviewVO.title}</div>
+		<div id=content_title>${reviewVO.title}<p id="content_count"></p></div>
 		<div id=content_smalltitle></div>
 	</div>
 	
@@ -485,7 +492,9 @@ width: 95%;
 				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
 			</form>
 		</c:if>
-		
+		<c:if test="${not empty mno}"> 
+			<button type="button" id="likeButton" class="content_btns">따봉</button>
+		</c:if>
 		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
 		
 	</div>
@@ -1240,7 +1249,6 @@ $('#context_profile').on('click','.btn_context',function(){
 		$('#profile_nickname').text(anick);
 		$('#profile_introduce').text(intro);
 	} */
-
 	
 	$('#overlay, #profilemenu').show();
 
@@ -1253,6 +1261,7 @@ $('#context_profile').on('click','.btn_context',function(){
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
 	var url = '/project03/mypage/UserPage/'+amno;
+	
 	location.href  = url;
 });
 
@@ -1285,7 +1294,7 @@ $('#context_msg').on('click','.btn_context',function(){
 });
 
 
-// 날짜 계산
+// 날짜 계산 ㅎㅎ
 /* var date1 = $('#start_date').val();
 var date2 = $('#end_date').val();
 
@@ -1346,8 +1355,10 @@ $(function(){
 	}
 	
 	var hits = ${reviewVO.hits};
+	var countofbest = ${reviewVO.countofbest};
 
-	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수: " + hits);
+	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region);
+	$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ' + countofbest);
 });
 
 $('#updateButton').click(function() {
@@ -1363,6 +1374,15 @@ $('#deleteButton').click(function() {
 $('#reviewBoardButton').click(function() {
 	alert('여행 리뷰 게시판으로 돌아갑니다');
 	location = '../review/reviewBoard';
+});
+
+$('#likeButton').click(function() {
+	
+	var mno = ${mno};
+	var review_no = ${reviewVO.review_no};
+	
+	alert('따봉!');
+	location = 'likeCheck/' + review_no + '/' + mno;
 });
 
 

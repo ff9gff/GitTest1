@@ -8,6 +8,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 <style type="text/css">
 #top{
 		color: white;
@@ -31,14 +33,11 @@ table, th, td {
    text-align: center;
    vertical-align: middle;
  }
- #saveMyUser{
- 	border: 2px solid #e65b05;
- 	background-color: orange;
- 	
+ 
+ .menuItem{
+ 	background-color: lightblue;
  }
 </style>
-
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 </head>
 
@@ -61,7 +60,7 @@ table, th, td {
 				
 						
 				
-				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지 사항</a>
 				</li>
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
@@ -75,7 +74,7 @@ table, th, td {
 					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
 				</li>  
 			</ul>
 		</nav>
@@ -84,8 +83,9 @@ table, th, td {
 	
 	
 	<form id="form-main">
-			<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">유저 정보 확인</caption>
+		<div>
+			<table id="checkboxTestTbl" style="width: 100%" >
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">회원 정보 확인</caption>
 				<colgroup>
 					<col width="40px">
 					<col width="100px">
@@ -100,11 +100,11 @@ table, th, td {
 				
 				<tr>
 					<th>번호</th>
-					<th>유저 번호</th>
-					<th>유저 아이디</th>
-					<th>유저 연락처</th>
-					<th>유저 이메일</th>
-					<th>유저 가입날짜</th>
+					<th>회원 번호</th>
+					<th>아이디(ID)</th>
+					<th>연락처(PHONE)</th>
+					<th>이메일(E-MAIL)</th>
+					<th>가입날짜(DATE)</th>
 				</tr>
 				
 		
@@ -167,8 +167,10 @@ table, th, td {
 				</tr>
 
 			</table>
-  
-				<input type="button" value="수락" id="saveMyUser">
+  				<div style="text-align: right;">  					
+					<input type="image" src="../resources/theme/images/check.png" style="width: 30px; display:inline; margin-top: 15px;" >
+				</div>
+				</div>
 					</form>
 		</section>
 

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -7,6 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- í•©ì³ì§€ê³  ìµœì†Œí™”ëœ ìµœì‹  CSS -->
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- í•©ì³ì§€ê³  ìµœì†Œí™”ëœ ìµœì‹  CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 
 
@@ -34,9 +45,44 @@ table, th, td {
    text-align: center;
    vertical-align: middle;
  }
+ 
+<<<<<<< HEAD
+ #section{
+ 
+ 
+ }
+ 
+ .pagination{
+display: inline-block;
+
+}
+ul li {
+list-style: none;
+}
+
+<%--
+style="border-top:  1px solid orange; border-left: 
+ 1px solid gray; border-right:  1px solid gray; border-radius: 
+ 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;
+
+--%>
+
+#captionStyle{
+ border-top: 1px solid orange;
+ border-left: 1px solid gray;
+ border-right:  1px solid gray;
+ border-radius: 99px 0px 0px 0px;
+ border: 2px solid #e65b05;
+ background-color : orange;
+
+}
+
+ .menuItem{
+ 	background-color: lightblue;
+ }
+
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 </head>
 
@@ -44,7 +90,7 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;°ü¸®ÀÚ´Ô ¾È³çÇÏ¼¼¿ä</h1>
+			<h1>&nbsp;ê´€ë¦¬ìë‹˜ ì•ˆë…•í•˜ì„¸ìš”</h1>
 			<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
@@ -54,27 +100,25 @@ table, th, td {
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">°¡ÀÔ½ÂÀÎ</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">ê°€ì…ìŠ¹ì¸</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">°øÁö»çÇ×</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> ê³µì§€ì‚¬í•­</a>
 				</li>
-	
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">Áö³­°øÁö</a>
-				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">À¯Àú µî±Ş</a></li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> ìœ ì € ë“±ê¸‰</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">È¨(¾ÆÁ÷)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>í™ˆ(ì•„ì§)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> ì „ì²´ ìœ ì €</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">ÀüÃ¼ À¯Àú</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> íšŒì› ê´€ë¦¬</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">°ü¸®ÀÚ °ü¸®</a>
-				</li>
-				
-					<li Class="menuItem"><a Class="mylink" href="../index">¸ŞÀÎ</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> ë©”ì¸&nbsp;ê°€ì </a>
+				</li>  
 
 
 
@@ -87,7 +131,13 @@ table, th, td {
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form id="pageForm">
 			<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">ÀüÃ¼ À¯Àú Á¤º¸ È®ÀÎ     (ÇöÀçÀÎ¿ø : ${ cntUsers} ¸í)     </caption>
+				<caption id="captionStyle" ><b style="color: black; font-size: 150%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				ì „ì²´ ìœ ì € ì •ë³´ í™•ì¸     (í˜„ì¬ì¸ì› : ${ cntUsers} ëª…)</b></caption>
+
 				<colgroup>
 					
 					<col width="100px">
@@ -100,44 +150,88 @@ table, th, td {
 	
 				<tr>
 					
-					<th>À¯Àú ¹øÈ£</th>
-					<th>À¯Àú ¾ÆÀÌµğ</th>
-					<th>À¯Àú ´Ğ³×ÀÓ</th>
-					<th>À¯Àú ¿¬¶ôÃ³</th>
-					<th>À¯Àú ÀÌ¸ŞÀÏ</th>
-					<th>À¯Àú °¡ÀÔ³¯Â¥</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ì•„ì´ë”” (ID)</th>
+					<th>ë‹‰ë„¤ì„</th>
+					<th>ì—°ë½ì²˜ (PHONE)</th>
+					<th>ì´ë©”ì¼ (E-MAIL)</th>
+					<th>ê°€ì…ë‚ ì§œ (DATE)</th>
 				</tr>
 
 			
 			
 
-					<c:forEach var="vo" items="${newMemberList}">
-				
+					 <c:forEach var="vo" items="${listPage}">
+					
 					<tr class= "select0">
 						
-						<td>${vo.mno }</td>
-						<td>${vo.userid }</td>
-						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
-						<td>${vo.phone }</td>
-						<td>${vo.email }</td>
-					        <td>
+						<td ><label for="section">${vo.mno }</label></td>
+						<td ><label for="section">${vo.userid }</label></td>
+						<td ><a href="/project03/mypage/UserPage/${vo.mno}" id="section" style="color: black;"><b>${vo.nickname }</b></a></td>
+						<td ><label for="section">${vo.phone }</label></td>
+						<td ><label for="section">${vo.email }</label></td>
+					        <td><label for="section">
 	       						 <fmt:formatDate value="${vo.joindate }" 
-	          						  pattern="yyyy-MM-dd HH:mm:ss"/>
+	          						  pattern="yyyy-MM-dd HH:mm:ss"/></label>
         					</td>
 			
 					</tr>
-
-
+		
 						</c:forEach>
 
 			</table>
   
-					</form>
-		</section>
+</form>
+
+
+		<br/>
+		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+<ul class="pagination">
+    <c:if test="${pageMaker.hasPrev }">
+    <li><a href="${pageMaker.startPageNum - 1 }">&laquo;ì´ì „</a></li>
+    </c:if>
+    
+    <c:forEach begin="${pageMaker.startPageNum }"
+        end="${pageMaker.endPageNum }"
+        var="num">
+    <li><a href="${num }"><b>${num }</b></a></li>
+    </c:forEach>
+    
+    <c:if test="${pageMaker.hasNext }">
+    <li><a href="${pageMaker.endPageNum + 1 }">ë‹¤ìŒ&raquo;</a></li>
+    </c:if>
+    
+</ul>			
+<%-- í˜„ì¬ í˜ì´ì§€, í˜ì´ì§€ ë‹¹ ë³´ì—¬ì¤„ ê²Œì‹œê¸€ ê°œìˆ˜ë¥¼ ì„œë²„ë¡œ ë³´ë‚´ì£¼ê¸° ìœ„í•´ì„œ,
+ì‚¬ìš©ìì—ê²ŒëŠ” ë³´ì´ì§€ ì•Šì§€ë§Œ, ì„œë²„ë¡œ ë³´ë‚¼ ì •ë³´ë¥¼ ì–‘ì‹ ë°ì´í„°ë¡œ ì €ì¥í•˜ëŠ” form --%>
+<form id="pageForm2">
+    <input type="hidden" name="bno" />
+    <input type="hidden" name="page" 
+        value="${pageMaker.myUcriteria.page }" />
+    <input type="hidden" name="perPage"
+        value="${pageMaker.myUcriteria.perPage }" />
+</form>			
+					
+					
+					
+</section>
 
 	</div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 
 setInterval("dpTime()",1000);
@@ -149,9 +243,9 @@ function dpTime(){
 
     if (hours > 12){
         hours -= 12;
-    ampm = "¿ÀÈÄ ";
+    ampm = "ì˜¤í›„ ";
     }else{
-        ampm = "¿ÀÀü ";
+        ampm = "ì˜¤ì „ ";
     }
     if (hours < 10){
         hours = "0" + hours;
@@ -166,30 +260,27 @@ document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":"
 };
 
 
-/*
-	var frm = $('#pageForm');
-	
-    // table ¾ÈÀÇ tr ¾ÈÀÇ td ¾ÈÀÇ a ÅÂ±× click Ä¿½ºÅÍ¸¶ÀÌÂ¡
-    $('table tr td a').click(function() {
-    	//event.preventDefault();
-    	//var bno = $(this).attr('href');
-    	
-    	
-    	//frm.find('[name="bno"]').val(bno);
-    	//frm.attr('action', 'detail');
-    	//frm.attr('method', 'get');
-    	//frm.submit();
-    });
-
-*/
 
 
 
 
 
+var frm = $('#pageForm2');
 
-
-
+$('.pagination li a').click(function() {
+	alert('í•˜ì´');
+	event.preventDefault(); // ê¸°ë³¸ ì´ë²¤íŠ¸ ì²˜ë¦¬ ë°©ì‹ì„ ë°©ì§€(ë§‰ìŒ)
+	// pageForm ì•ˆì— ìˆëŠ” name="page"ì¸ ìš”ì†Œë¥¼ ì°¾ì•„ì„œ
+	// ì´ë™í•  í˜ì´ì§€ ë²ˆí˜¸ë¥¼ ì„¸íŒ…
+	var targetPage = $(this).attr('href');
+	frm.find('[name="page"]').val(targetPage);
+	// í˜ì´ì§• í™”ë©´ìœ¼ë¡œ ë³´ë‚´ê¸° ìœ„í•œ action ì •ë³´
+	frm.attr('action', 'AllMyUser');
+	// í˜ì´ì§• í™”ë©´ì„ ì²˜ë¦¬í•˜ëŠ” Controllerì˜ method(ìš”ì²­ ì²˜ë¦¬ ë°©ì‹)
+	frm.attr('method', 'get');
+	// í¼ ì–‘ì‹ì„ ì„œë²„ë¡œ ì „ì†¡
+	frm.submit();
+});
 
 
 

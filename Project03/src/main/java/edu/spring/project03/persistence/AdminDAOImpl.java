@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.pageutil.MyUserPaginationCriteria;
 
 @Repository
 public class AdminDAOImpl implements AdminDAO {
@@ -144,6 +145,12 @@ public class AdminDAOImpl implements AdminDAO {
 	public int cntAllMyUser() {
 		
 		return sqlSession.selectOne(NAMESPACE+".cntAllActivUsers");
+	}
+
+	@Override
+	public List<DomainDTO> domainAllUserLeb1T(MyUserPaginationCriteria x) {
+		
+		return sqlSession.selectList(NAMESPACE+".realDomainAdminAllUserT", x);
 	}
 	
 	

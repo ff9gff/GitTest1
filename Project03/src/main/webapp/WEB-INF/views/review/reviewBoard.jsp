@@ -39,7 +39,84 @@ http://www.templatemo.com/tm-406-flex
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<style>
+.portfolio-item{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+}
+.portfolio-item:hover{
+	border: 3px solid #ff5028;
+}
+.portfolio-thumb{
+	width: 297.5px;
+	height: 240px;
+	vertical-align: middle;
+	margin-bottom: 5px;
 
+}
+.tour_title{
+	font-size: 20px;
+	font-weight: bold;
+	color: #4e4e4f;
+	margin-left: 10px;
+	font-family:monospace;
+	text-align: left;
+}
+
+.tour_region{
+	font-size: 15px;
+	color: ligthgray;
+	margin-left: 10px;
+	font-family:monospace;
+	text-align: left;
+}
+.tour_hist{
+ display: inline-block;
+ font-size: 10px;
+ font-weight: normal;
+ color: #878484;
+ float: right;
+}
+#select_search{
+	float: right;
+	display: inline-block;
+	width: 90px;
+	border: 0;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+}
+#region_select{
+	width: 700px;
+	border: 1px solid #ff5028;
+}
+#region_name{
+	width: 600px;
+	border: 0;
+}
+#btn_create_review{
+	width: 100%;
+	height: 100%;
+	background-color: #ff5028;
+	color: #FFFFFF;
+	font-weight: bold;
+	border: none;
+	font-size: 20px;
+}
+.inside_div_conditon{
+	width: 180px;
+	margin: 10px;
+}
+#condition_box{
+	 position: fixed;
+  margin: 0 auto;
+  top: 400px;
+  right: 20px;
+}
+</style>
 
 </head>
 <body>
@@ -110,23 +187,23 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /.site-main -->
 <div class="content-section" id="services">
-		<div class="container">
+		<div class="container" style="width: 1300px; text-align: center; margin: 0 auto;">
 			<div>
-
-				<h3 class="h2" style="font: bold;"> 후기 게시판 </h3>
-				
-				<br /><br />
-				
-				<div>
-					<input type="text" id="region_name" name="region_name" placeholder="지역이름">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="text" id="nickname" name="nickname" placeholder="닉네임">&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" id="select_search">장소 / 닉네임 선택 검색</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<button type="button" id="btn_create_review">후기 등록</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<div style="width: 800px; margin: 0 auto;">
+					<div id="region_select" style="display: inline-block;">
+						<input type="text" id="region_name" name="region_name" placeholder="지역">
+						<button type="button" id="select_search">장소 검색</button>
+					</div>
+					<input hidden type="text" id="nickname" name="nickname" placeholder="닉네임">
 				</div>
 
-				<br /><br />
-				
-				<div class="row" id="reviewDetail" style="width: 1200px;">
+				<div id="condition_box" style="width: 200px; height: 70px; border: 1px dotted gray; z-index:200; background-color: #FFFFFF">
+						<div class="inside_div_conditon" style="height: 50px;">
+							<button type="button" id="btn_create_review">후기  등록</button>
+						</div>	
+				</div>
+				<div style="height: 100px;"></div>
+				<div class="row" id="reviewDetail" style="width: 1300px;">
 				</div>
 				<!-- /.row -->
 			</div>
@@ -178,13 +255,13 @@ http://www.templatemo.com/tm-406-flex
 		var url1 = '/project03/review/defaultimage';
 		$.getJSON(url1, function(data1) {
 			$(data1).each(function() {
-				imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+				imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, countofbest: {}});	
 			});
 			
 			var url2 = '/project03/review/defaulttitle';
 			$.getJSON(url2, function(data2) {
 				$(data2).each(function() {
-					titleList.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+					titleList.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age, countofbest: this.countofbest});	
 				});
 				console.log(titleList);
 				
@@ -204,6 +281,7 @@ http://www.templatemo.com/tm-406-flex
 						for (var j = 0; j < titleList.length; j++) {
 							if (imageList[i].content_no == titleList[j].review_no) {
 								imageList[i].tour = titleList[j].title;
+								imageList[i].countofbest = titleList[j].countofbest;
 							} 
 							for (var k = 0; k < regionList.length; k++) {
 								if (imageList[i].content_no == regionList[k].review_no) {
@@ -238,13 +316,13 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
+					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}, countofbest: {}});	
 				});
 				
 				var url2 = '/project03/review/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						ReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
+						ReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits, countofbest: this.countofbest});	
 					});
 					console.log(ReviewTitle);
 					
@@ -265,6 +343,7 @@ http://www.templatemo.com/tm-406-flex
 								if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
 									ReviewImage[i].tour = ReviewTitle[j].title;
 									ReviewImage[i].hits = ReviewTitle[j].hits;
+									ReviewImage[i].countofbest = ReviewTitle[j].countofbest;
 								} 
 								for (var k = 0; k < ReviewRegion.length; k++) {
 									if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
@@ -306,8 +385,7 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no});	
-					
+					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits, countofbest: this.countofbest});			
 				});
 				getAllThumnail_Nickname_REVIEW()
 				
@@ -324,13 +402,14 @@ http://www.templatemo.com/tm-406-flex
 			for(var i = 0; i<ReviewImage.length; i++){
 
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '">'	
 					+ '<div class="portfolio-thumb">'
-					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
-					+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
-					+ '<div>' + ReviewImage[i].city + '</div>'	
-					+ '<div>조회수: ' + ReviewImage[i].hits + '</div>'	
-					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+'<img src="../' + ReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 					+ '</div>'
+					+ '<div class="tour_title">' + ReviewImage[i].tour + '</div>'
+					+ '<div class="tour_region">'  + ReviewImage[i].city +  '<p class="tour_hist">|&nbsp;조회수: ' + ReviewImage[i].hits + '&nbsp;| 좋아요: ' + ReviewImage[i].countofbest	 + '&nbsp;|</p></div>'	
+					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+					+'</a>'
 					+ '</div>';
 			}
 
@@ -344,16 +423,16 @@ http://www.templatemo.com/tm-406-flex
 			var list = '';
 			
 			for(var i = 0; i < SelectSearchReview.length; i++){
-
+		
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<a href="../review/review_detail?review_no=' + SelectSearchReview[i].review_no + '">'
 						+ '<div class="portfolio-thumb">'
-						+ '<figure>'
-						+ '<a href="../review/review_detail?review_no=' + SelectSearchReview[i].review_no + '"><img src="../' + SelectSearchReview[i].img_url + '" width="300" height="240"><br/>'
-						+ '<div>제목: ' + SelectSearchReview[i].title + '</div>'
-						+ '<div>' + SelectSearchReview[i].region_name + '</div>'	
-						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-						+ '</figure>'
+								+'<img src="../' + SelectSearchReview[i].img_url + '" class="img_view" width="300" height="240"><br/>'
 						+ '</div>'
+						+ '<div class="tour_title">' + SelectSearchReview[i].title + '</div>'
+						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits + '&nbsp;| 좋아요: ' + SelectSearchReview[i].countofbest + ' |</p></div>'	
+						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+'</a>'
 						+ '</div>';
 			}
 

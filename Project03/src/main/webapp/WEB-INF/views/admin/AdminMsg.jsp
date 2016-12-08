@@ -7,6 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 <!-- 외부 css 파일을 링크 -->
 <link rel="stylesheet" href="theme/css/mystyle1.css"/>
 <style type="text/css">
@@ -173,11 +176,15 @@ input:focus, textarea:focus {
 		padding-left: 3%;
 		padding-right: 3%;
 	}
-}s
+}
+
+.menuItem{
+ 	background-color: lightblue;
+ }
 
 
 </style>
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 </head>
 
 
@@ -200,22 +207,22 @@ input:focus, textarea:focus {
 				</li>
 
 		
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">공지사항</a>
+			<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
 				</li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
-
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>
-				
-				<li Class="menuItem"><a Class="mylink" href="index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 
 			</ul>	
 		
@@ -269,31 +276,10 @@ $(document).ready(function(){
 		$('#sendBtn').click(function(){//sendBtn
 		var sendText = $('#msg_content').val(); 
 		alert('공지사항 전송 성공'+ sendText);
-		//<input type="hidden" id="value" name="value">
+	
 		$("#value").val(sendText);
 		frm.submit();
-		
-		
-		
-		
-		/*	
-				alert(sendText);
-		frm.attr('action','sendAllMyUser');
-		frm.attr('method','post');
-		frm.submit();
-		
-		
-		
-		
-		$('#btnUpdate').click(function() {
-		frm.attr('action', 'update'); // attr('속성이름', '속성값')
-		frm.attr('method', 'post');
-		frm.submit();
-		
-		
-	
-	});
-		*/
+
 	});
 	
 	
