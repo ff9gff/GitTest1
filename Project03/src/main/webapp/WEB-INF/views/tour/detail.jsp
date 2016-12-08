@@ -280,6 +280,20 @@ font-size: 12px;
 	right: 0; top: 0;
 	z-index: 99; display:none;
 }
+#overlay2{
+	background-color: #b7b7b7;
+ 	bottom: 0; left: 0;
+	opacity: 0.5;
+	filter: alpha(opacity = 50);
+	position: fixed;
+	right: 0; top: 0;
+	z-index: 99; display:none;
+	color: #FFFFFF;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+	vertical-align: middle;
+}
 #span_join{
 	color:#6d6f70;
 	font-weight: bold;
@@ -369,6 +383,7 @@ font-size: 12px;
 
 
 <div id="overlay"></div>
+<div id="overlay2"><p style="margin-top: 400px;">- 마감된 여행입니다 -</p> </div>
 
 <div id="contextmenu" hidden>
 	<input hidden type="number" name="mno" id="context_mno"/>
@@ -1384,6 +1399,14 @@ $('#trip_end').click(function(){
 			}// end success
 		}); // end ajax
 	}// end if
+});
+
+var end = ${tourVO.expire};
+
+$(function(){
+	if(end == 1){
+		$('#overlay2').show();
+	}
 });
 
 
