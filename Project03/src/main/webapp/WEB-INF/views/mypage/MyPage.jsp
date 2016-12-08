@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -29,6 +29,23 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <style type="text/css">
+.portfolio-item{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+}
+
+.portfolio-item-ex{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+	opacity: 0.5;
+}
+
 #dropDownType {
 	width: 50px
 }
@@ -90,6 +107,7 @@ ul {
 	padding-top: 0;
 	vertical-align: middle;
 }
+
 </style>
 
 <link rel="stylesheet" href="<c:url value="../resources/theme/css/mystyle1.css"/>">
@@ -98,6 +116,7 @@ ul {
 
 <body>
 
+<%@ include file="../main-header.jsp"  %>
 
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
@@ -156,14 +175,14 @@ ul {
 
 
 
-	<header style="background-image: url('../resources/theme/images/slide5.jpg'); height: 70px">
+	<header style="background-color: #F19A0D; height: 70px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
 		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-image: url('../resources/theme/images/slide5.jpg'); height: 520px;">
+		<div style="background-color: #F19A0D; height: 520px;">
 			<div
 				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -178,12 +197,13 @@ ul {
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
 
-					<c:if test="${mno eq vo.mno }">
+					<c:if test="${mno eq pageVO.mno}">
 						<ul id="context_ul">
 							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
+						</ul>
 					</c:if>
 
-						</ul>
+						
 					</div>
 					
 
@@ -196,19 +216,21 @@ ul {
 			<div
 				style="display: block; width: 1026px; height: 260px; margin: auto; vertical-align: center; text-align: center; padding-top: 30px">
 				<div>
-					<input type="text" Class="personal" value="${vo.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
-					<input type="text" Class="personal" value="${vo.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${pageVO.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
+					<input type="text" Class="personal" value="${pageVO.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 				<div>
-					<input type="text" Class="personal" value="${vo.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
-					<input type="text" Class="personal" value="${vo.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${pageVO.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-image: url('../resources/theme/images/slide5.jpg');/* background-color: #F19A0D; */ color: white; font-weight: bold; font-size: 25px">${vo.introduce }
+
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+
 				</textarea>
 					
 			</div>
 			
-			<c:if test="${mno eq vo.mno }">
+			<c:if test="${mno eq pageVO.mno }">
 				<div>
 					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
 					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
@@ -244,6 +266,10 @@ ul {
 				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	
 	<script>
+	var dddd = '${pageVO.mno}';
+	var aa = '<%=(String)session.getAttribute("mno")%>';
+	console.log("로그인:"+aa);
+	console.log(dddd);
 	
 		$(document).ready(function() {
 			
@@ -263,13 +289,13 @@ ul {
 				var url = '/project03/mypage/MyPage/list/' + ${mno};
 				$.getJSON(url, function(datalist) {
 					$(datalist).each(function() {
-						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, expire:{}, city: {}})
 							
 					
 						var urltitle = '/project03/mypage/MyPage/title/' + ${mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
-								titleList.push({trip_no: this.trip_no, title: this.title});
+								titleList.push({trip_no: this.trip_no, title: this.title, expire: this.expire});
 								
 							});
 							console.log(titleList);
@@ -289,6 +315,7 @@ ul {
 									for (var j = 0; j < titleList.length; j++) {
 										if (List[i].content_no == titleList[j].trip_no) {
 											List[i].tour = titleList[j].title;
+											List[i].expire = titleList[j].expire;
 										} 
 										for (var k = 0; k < regionList.length; k++) {
 											if (List[i].content_no == regionList[k].trip_no) {
@@ -372,23 +399,95 @@ ul {
 					
 				});// end getJSON()
 			
-			};//end of getThumnails()
+			};//end of 
+			
+			
+			function getThumnails_By_Review() {
+				
+				// 선택한 게시물 리스트
+				ReviewList = [];
+				// wm_review 리스트(제목)
+				titleList = [];
+				// wm_review_region 리스트(지역)
+				regionList = [];
+
+								
+				var url2 = '/project03/mypage/MyPage/reviewlist/' + ${mno};
+				$.getJSON(url2, function(data2){
+					
+					$(data2).each(function() {
+						alert("reviewlist 출력")	
+						ReviewList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						
+						var urltitle = '/project03/mypage/MyPage/reviewtitle/' + ${mno};
+						$.getJSON(urltitle, function(datatitle) {
+							$(datatitle).each(function() {
+								titleList.push({review_no: this.review_no, title: this.title});
+								
+							});
+							console.log(titleList);
+							
+							var urlregion = '/project03/mypage/MyPage/reviewregion/' + ${mno};
+							$.getJSON(urlregion, function(dataregion) {
+								$(dataregion).each(function() {
+									var name = this.region_name.split(",");
+									var tagname = '';
+									for(var i=0; i<name.length; i++){
+										tagname +="#"+name[i]+" ";
+									}									
+									regionList.push({region_name: tagname, review_no: this.review_no});	
+								});
+							
+								for (var i = 0; i < ReviewList.length; i++) {
+									for (var j = 0; j < titleList.length; j++) {
+										if (ReviewList[i].content_no == titleList[j].review_no) {
+											ReviewList[i].tour = titleList[j].title;
+										} 
+										for (var k = 0; k < regionList.length; k++) {
+											if (ReviewList[i].content_no == regionList[k].review_no) {
+												ReviewList[i].city = regionList[k].region_name;
+											} 
+										}	
+									}	
+								}
+								getReviewThumnail();
+							});
+								
+							
+						});
+				
+					});
+					
+				
+					
+				});// end getJSON()
+			
+			};//end of 
 			
 			function getThumnail() {
 				
-				var list = '';				
+				var list = '';
+				
 				
 				for(var i = 0; i<List.length; i++){
+					
+				if(List[i].expire == 0){
+					list += '<div class="portfolio-item col-md-3 col-sm-6">';
+				}else{
+					list += '<div class="portfolio-item-ex col-md-3 col-sm-6">';
+				}
 
-					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+ '<div class="portfolio-thumb">'
-						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
+					
+					
+						list+= '<div class="portfolio-thumb">'
+						+ '<figure>'						
+						+ '<a href="../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
 						+ '</div>'
 						+ '</div>';
+					
 				}
 				
 				$('#toursearch').html(list);				
@@ -405,9 +504,33 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../' + JoinList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../' + JoinList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + JoinList[i].tour + '</div>'
 						+ '<div>지역: ' + JoinList[i].city + '</div>'			
+						+ '</figure>'
+						+ '</div>'
+						+ '</div>';
+				}
+				
+				
+				$('#toursearch').html(list);				
+	
+				//end of getThumnails()
+			};
+			
+			
+			function getReviewThumnail() {
+				
+				var list = '';
+				
+				for(var i = 0; i<ReviewList.length; i++){
+					
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<div class="portfolio-thumb">'
+						+ '<figure>'
+						+ '<a href="../review/review_detial?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
+						+ '<div>제목: ' + ReviewList[i].tour + '</div>'
+						+ '<div>지역: ' + ReviewList[i].city + '</div>'			
 						+ '</figure>'
 						+ '</div>'
 						+ '</div>';
@@ -432,6 +555,15 @@ ul {
 
 				$('#toursearch').html('');
 				getThumnails_By_ChooseMno();
+				
+	
+			});
+			
+			// 후기 게시글 보기 버튼
+			$('#mytourReview').click(function() {
+
+				$('#toursearch').html('');
+				getThumnails_By_Review();
 				
 	
 			});

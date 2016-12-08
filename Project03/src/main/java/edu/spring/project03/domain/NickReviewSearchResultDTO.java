@@ -6,18 +6,20 @@ public class NickReviewSearchResultDTO {
 	private String title;
 	private String region_name;
 	private int review_no;
+	private int hits;
 
 	public NickReviewSearchResultDTO() {
 
 	}
-
-	public NickReviewSearchResultDTO(String img_url, String title, String region_name, int review_no) {
+	
+	public NickReviewSearchResultDTO(String img_url, String title, String region_name, int review_no, int hits) {
 		this.img_url = img_url;
 		this.title = title;
 		this.region_name = region_name;
 		this.review_no = review_no;
+		this.hits = hits;
 	}
-
+	
 	public String getImg_url() {
 		return img_url;
 	}
@@ -49,7 +51,15 @@ public class NickReviewSearchResultDTO {
 	public void setReview_no(int review_no) {
 		this.review_no = review_no;
 	}
-	
+
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub

@@ -65,7 +65,7 @@ public class MemberController {
 	} // end register02()
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void loginGET() {
+	public void loginGET(HttpServletRequest request) {
 		logger.info("loginGET() 호출...");
 
 	} // end loginGET()

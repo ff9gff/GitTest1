@@ -84,9 +84,17 @@ public interface TourReviewService {
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	// 조회수
 	public abstract int read_current_review_hits(int review_no);
 	public abstract int update_review_hits(ReviewVO vo);
 	
+	// 따봉
+	public abstract int readReviewLike(int review_no, int mno);
+	public abstract int createReviewLike(int review_no, int mno);
+	public abstract int deleteReviewLike(int review_no, int mno);
+	public abstract int update_review_best(int review_no);
+	
+	// 후기 (지역/닉네임) 선택 검색
 	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname);
 
 } // end interface TourReviewService

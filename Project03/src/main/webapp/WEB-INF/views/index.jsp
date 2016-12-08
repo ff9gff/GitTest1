@@ -71,7 +71,13 @@
 	margin-left: 10px;
 	font-family:monospace
 }
-
+.tour_hist{
+ display: inline-block;
+ font-size: 10px;
+ font-weight: normal;
+ color: #878484;
+ float: right;
+}
 
 
 </style>
@@ -127,8 +133,8 @@
 						<li>
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>같이가자</h2>
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
 						</li>
 						<li>
@@ -448,11 +454,25 @@
 						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
 								+'<img src="' + TopReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
-							+ '</div>'
+								+'<div style="position: absolute; height:40px; z-index:100; top:0; left:0;">';
+										switch(i){
+											case 0: list+='<img src="resources/theme/images/king_review.png" style="display: inline-block;z-index:100; width:80px; height:80px;">';
+												break;
+											case 1: list+='<p id="condition_age">2</p>';
+												break;
+											case 2: list+='<p id="condition_age">3</p>';
+												break;
+											case 3: list+='<p id="condition_age">4</p>';
+												break;
+											default: break;
+										}	
+								
+								
+							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
-							+ '<div class="tour_region">' + TopReviewImage[i].city + '&nbsp;&nbsp;&nbsp;&nbsp;조회수: ' + TopReviewImage[i].hits + '</div>'	
+							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
 							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-						+'</a>'
+						+ '</a>'
 						+ '</div>';
 			}
 
@@ -460,7 +480,7 @@
 		};
 		
 		// 가져온 최신후기 데이터를 뿌려주자
-		function getAllThumnail_RECENTREVIEW() {
+		function getAllThumnail_RECENTREVIEW() {	
 			var list = '';
 			
 			var length = 0;
@@ -480,7 +500,7 @@
 							+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
 						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
-						+ '<div class="tour_region">' + RecentReviewImage[i].city + '&nbsp;&nbsp;&nbsp;&nbsp;조회수: ' + RecentReviewImage[i].hits + '</div>'	
+						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						
 						+'</a>'
