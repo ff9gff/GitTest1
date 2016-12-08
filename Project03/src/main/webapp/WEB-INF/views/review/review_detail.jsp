@@ -493,7 +493,12 @@ width: 95%;
 			</form>
 		</c:if>
 		<c:if test="${not empty mno}"> 
-			<button type="button" id="likeButton" class="content_btns">따봉</button>
+			<c:if test="${likecheck.state eq 0}"> 
+				<button type="button" id="likeButton" class="content_btns">좋아요</button>
+			</c:if>	
+			<c:if test="${likecheck.state eq 1}"> 
+				<button type="button" id="likeButton" class="content_btns">좋아요 취소</button>
+			</c:if>	
 		</c:if>
 		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
 		
@@ -870,177 +875,6 @@ $(document).ready(function(){
 		} // end if
 	}); // end reply delete
 
-	
-<%-- 신청부분 --%>
-	// wm_tour_join 리스트
-	// var applylist = [];
-	// wm_personal 리스트
-	// var personlist = [];
-	// 수락한 인원
-	// var joincount=0;
-
-//	getAlldata();
-	
-	// DB에서 해당 글번호(review_no)의 모든 신청자들을 읽어오는 함수 정의
-/* 	function getAlldata(){
-		// wm_tour_join 리스트
-		applylist = [];
-		// wm_personal 리스트
-		personlist = [];
-		joincount=0;
-		
-		var url1 = '/project03/tour/detail/apply/all/'+trip_no;
-		$.getJSON(url1, function(data){
-			$(data).each(function(){
-				applylist.push({list_no: this.list_no, mno: this.mno, approval: this.approval, person:{}});	
-				
-			});
-			
-			var url2 = '/project03/tour/detail/apply/person/'+trip_no;
-			$.getJSON(url2, function(data){
-				$(data).each(function(){
-					personlist.push({mno: this.mno, name: this.name, sex: this.sex, age: this.age, nickname: this.nickname, introduce:this.introduce})
-				
-				
-				});
-				for(var i=0; i<applylist.length; i++){
-					for(var j=0; j<personlist.length; j++){
-						if(applylist[i].mno == personlist[j].mno){
-							applylist[i].person = personlist[j];	
-						}
-					}// end for(j)
-				}// end for(i)
-				getAllApply();
-			}); // end getJSON
-		}); // end getJSON
-	}// end getAlldata()
-	
-	function getAllApply(){
-		$('#joinmenu_count').text("현재까지 "+applylist.length+"명 신청중입니다.");
-		var tr ='<tr class="apply_th">'
-					+'<th class="table_check"><input id="allCheck" type="checkbox"/></th>'
-					+'<th class="table_name">신청자</th>'
-					+'<th class="table_sex">성별</th>'
-					+'<th class="table_age">나이</th>'
-					+'<th class="table_com">수락여부</th>'
-				+'</tr>' 
-		if(applylist[0] == null){
-			tr+= '<tr class="apply_notdata" style="height:130px;"><td colspan="5" class="apply_notdata">신청자가 없습니다.</td></tr>';
-		}else{
-		for(var i=0; i<applylist.length; i++){
-			if(applylist[i].approval == 0){
-					tr+= '<tr class="apply_td">';
-					tr+='<td class="table_check"><input class="check" name="rowCheck" type="checkbox" value="'+applylist[i].list_no+'"></td>';
-			}else{
-				joincount++;
-				tr+= '<tr class="apply_td" style="background-color:#DBD9D9 ">';
-				tr+='<td class="table_check"><input class="test" name="comCheck" type="checkbox" checked="checked" onclick="return false;" value="'+applylist[i].list_no+'"></td>';
-			}
-					tr+='<td class="table_name"><a href="#this" class="btn_nickname" data-rno="'+applylist[i].mno+'" data-listno="'+i+'">'+applylist[i].person["nickname"]+'</a></td>'
-					+'<td class="table_sex">';
-					if(applylist[i].person["sex"] == 0){
-						tr+='여자'+'</td>';
-					}else{
-						tr+='남자'+'</td>';
-					}
-					tr+='<td class="table_age">'+applylist[i].person["age"]+'</td>';
-					if(applylist[i].approval == 0){
-						tr+='<td class="table_com"></td></tr>';
-					}else{
-						tr+='<td class="table_com"><span class="join">수락완료</span></td></tr>';
-					}
-		}// end for(i)
-		}
-		$('#applicants').html(tr);
-		$('#span_join').html("현재까지 "+joincount+"명 수락완료");
-				
-	}// end getAllApply()
- */	
-	
-	// 체크박스 전체 선택
-/* 	$('#applicants').on('click','#allCheck',function(){
-		var chkObj = document.getElementsByName("rowCheck");
-	      var rowCnt = chkObj.length - 1;
-	      var check = $(this).context.checked;
-	  
-	      if (check) {﻿
-	          for (var i=0; i<=rowCnt; i++){
-	           if(chkObj[i].type == "checkbox")
-	               chkObj[i].checked = true; 
-	           var styletr = chkObj[i].parentNode.parentNode;
-	           styletr.style.backgroundColor='#DBD9D9';
-	          }
-	      } else {
-	          for (var i=0; i<=rowCnt; i++) {
-	           if(chkObj[i].type == "checkbox"){
-	               chkObj[i].checked = false;
-	               var styletr = chkObj[i].parentNode.parentNode;
-		           styletr.style.backgroundColor='#FFFFFF';
-	           }
-	          }
-	      }
-	 
-	}); // 체크박스 전체선택 끝
- */	
-	
-	// 체크박스 선택시 색깔바꾸기 
-/* 	$('#applicants').on('click','.apply_td .table_check .check',function(){
-		var obj = document.getElementsByName("rowCheck");
-		for(var i=0; i<obj.length; i++){
-			if(obj[i].checked == true){
-				var styletr = obj[i].parentNode.parentNode;
-				styletr.style.backgroundColor='#DBD9D9';
-			}else{
-				var styletr = obj[i].parentNode.parentNode;
-				styletr.style.backgroundColor='#FFFFFF';
-			}
-		}
-	});
- */		
-	
-	// 수락하기
-/* 	$('#apply_ok').on('click',$(this),function(){
-		var chkObj = document.getElementsByName("rowCheck");
-		var rowCnt = chkObj.length - 1;
-		var success= false;
-		var fail = 0;
-		for(var i=0; i<=rowCnt; i++){
-			if(chkObj[i].checked == true){
-				var no = chkObj[i].value;
-				$.ajax({
-					type:'put',
-					url:'/project03/tour/detail/apply/'+1+'/'+no,
-					headers:{
-						'Content-Type':'application/json',
-						'X-Http-Method-Ovveride':'PUT'
-					},
-				// 	data: JSON.stringify({
-				//		approval: 1,
-				//		list_no: no
-				//	}), 
-					success: function(result){
-							if(result == 'success'){
-								
-							}
-					}
-				}); // end ajax
-				success = true;
-			} // end if
-			if(chkObj[i].checked == false){
-				fail++;
-			}
-		}// end for
-
-		if(success){
-			alert('수락이 완료되었습니다.');
-			getAlldata();
-		}
-		if(fail > rowCnt){
-			alert('신청자를 체크해주세요');
-		}
-
-	}); // end apply_ok click
- */
 
 
  
