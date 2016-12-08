@@ -117,7 +117,7 @@
 	</select>
 	<!-- 2. 제목 가져오기 -->
 	<select id="select_default_review_title" resultType="edu.spring.project03.domain.ReviewVO">
-		select * from wm_review order by review_no desc
+		select * from wm_review order by countofbest desc
 	</select>
 	<!-- 3. 지역 가져오기 -->
 	<select id="select_default_review_region" resultType="edu.spring.project03.domain.ReviewRegionVO">

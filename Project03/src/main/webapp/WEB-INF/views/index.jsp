@@ -272,13 +272,13 @@
 			var url1 = '/project03/review/Topdefaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					TopReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
+					TopReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}, countofbest: {}});	
 				});
 				
 				var url2 = '/project03/review/Topdefaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						TopReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
+						TopReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits, countofbest: this.countofbest});	
 					});
 					console.log(TopReviewTitle);
 					
@@ -299,7 +299,7 @@
 								if (TopReviewImage[i].content_no == TopReviewTitle[j].review_no) {
 									TopReviewImage[i].tour = TopReviewTitle[j].title;
 									TopReviewImage[i].hits = TopReviewTitle[j].hits;
-									
+									TopReviewImage[i].countofbest = TopReviewTitle[j].countofbest;
 								} 
 								for (var k = 0; k < TopReviewRegion.length; k++) {
 									if (TopReviewImage[i].content_no == TopReviewRegion[k].review_no) {
@@ -331,13 +331,13 @@
 			var url1 = '/project03/review/defaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					RecentReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
+					RecentReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}, countofbest: {}});	
 				});
 				
 				var url2 = '/project03/review/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						RecentReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
+						RecentReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits, countofbest: this.countofbest});	
 					});
 					console.log(RecentReviewTitle);
 					
@@ -358,6 +358,7 @@
 								if (RecentReviewImage[i].content_no == RecentReviewTitle[j].review_no) {
 									RecentReviewImage[i].tour = RecentReviewTitle[j].title;
 									RecentReviewImage[i].hits = RecentReviewTitle[j].hits;
+									RecentReviewImage[i].countofbest = RecentReviewTitle[j].countofbest;
 
 								} 
 								for (var k = 0; k < RecentReviewRegion.length; k++) {
@@ -470,7 +471,7 @@
 								
 							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
-							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
+							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;| 좋아요: ' + TopReviewImage[i].countofbest + '&nbsp;|</p></div>'	
 							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+ '</a>'
 						+ '</div>';
@@ -500,7 +501,7 @@
 							+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
 						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
-						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
+						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;| 좋아요: ' + RecentReviewImage[i].countofbest + '&nbsp;|</p></div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						
 						+'</a>'
