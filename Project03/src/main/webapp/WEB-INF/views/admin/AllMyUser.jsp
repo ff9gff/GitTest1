@@ -103,12 +103,12 @@ table, th, td {
 	
 				<tr>
 					
-					<th>유저 번호</th>
-					<th>유저 아이디</th>
-					<th>유저 닉네임</th>
-					<th>유저 연락처</th>
-					<th>유저 이메일</th>
-					<th>유저 가입날짜</th>
+					<th>번호</th>
+					<th>아이디 (ID)</th>
+					<th>닉네임</th>
+					<th>연락처 (PHONE)</th>
+					<th>이메일 (E-MAIL)</th>
+					<th>가입날짜 (DATE)</th>
 				</tr>
 
 			

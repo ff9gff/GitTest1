@@ -71,8 +71,8 @@ display: inline;
 		</header>
 
 		<div Class="wrapper">
-
 		<nav id="menuBar">
+		
 			<ul id="menuList">
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
@@ -95,21 +95,21 @@ display: inline;
 				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
 				</li>  
 			</ul>
+			
 		</nav>
-		
 		<section id="main">
 
-	<div style="display: inline-block; margin-bottom: 15px">
+	<div style="display: inline-block; margin-bottom: 15px;">
 	<div class="message" onclick="OpenPop('', '', '', '')">
-	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2" style="display: inline-block; border: 1px solid yellow ; background-color:#E3DA2F ">
+	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2" style="display: inline-block; border: 2px solid yellow ; background-color:#FF5A00 ">
 			<img  src="../resources/theme/images/shout.png" style="width: 40px; height: 40px; 
 					display: inline; text-align: center; vertical-align: middle;"/>
-		공지 보내기
+	공지 보내기
 	</form>
 	</div>
 	
-	<div class="message" onclick="OpenPop2('', '', '', '')">
-		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 1px solid yellow; background-color: #E3DA2F">
+	<div class="message" onclick="OpenPop2('', '', '', '')" style= "margin-left: 10px;">
+		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 2px solid yellow; background-color: #FF5A00">
 		<img  src="../resources/theme/images/please.png" style="width: 40px; height: 40px; 
 		display: inline; text-align: center; vertical-align: middle;" />
 		쪽지보내기
@@ -118,8 +118,8 @@ display: inline;
 		
 		</div>
 
-	<div style="width: 39%">
-	<table id="msgAdminMSG" >
+	<div style="width: 100%">
+	<table id="msgAdminMSG" style="width: 100%" >
 		<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 지난 공지함 </caption>
 		<colgroup>
 		<col width="20px">
