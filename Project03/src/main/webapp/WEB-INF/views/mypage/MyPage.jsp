@@ -29,6 +29,23 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <style type="text/css">
+.portfolio-item{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+}
+
+.portfolio-item-ex{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+	opacity: 0.5;
+}
+
 #dropDownType {
 	width: 50px
 }
@@ -206,7 +223,9 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
+
 				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+
 				</textarea>
 					
 			</div>
@@ -270,13 +289,13 @@ ul {
 				var url = '/project03/mypage/MyPage/list/' + ${mno};
 				$.getJSON(url, function(datalist) {
 					$(datalist).each(function() {
-						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, expire:{}, city: {}})
 							
 					
 						var urltitle = '/project03/mypage/MyPage/title/' + ${mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
-								titleList.push({trip_no: this.trip_no, title: this.title});
+								titleList.push({trip_no: this.trip_no, title: this.title, expire: this.expire});
 								
 							});
 							console.log(titleList);
@@ -296,6 +315,7 @@ ul {
 									for (var j = 0; j < titleList.length; j++) {
 										if (List[i].content_no == titleList[j].trip_no) {
 											List[i].tour = titleList[j].title;
+											List[i].expire = titleList[j].expire;
 										} 
 										for (var k = 0; k < regionList.length; k++) {
 											if (List[i].content_no == regionList[k].trip_no) {
@@ -446,19 +466,28 @@ ul {
 			
 			function getThumnail() {
 				
-				var list = '';				
+				var list = '';
+				
 				
 				for(var i = 0; i<List.length; i++){
+					
+				if(List[i].expire == 0){
+					list += '<div class="portfolio-item col-md-3 col-sm-6">';
+				}else{
+					list += '<div class="portfolio-item-ex col-md-3 col-sm-6">';
+				}
 
-					list += '<div class="portfolio-item col-md-3 col-sm-6">'
-						+ '<div class="portfolio-thumb">'
-						+ '<figure>'
+					
+					
+						list+= '<div class="portfolio-thumb">'
+						+ '<figure>'						
 						+ '<a href="tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
 						+ '</div>'
 						+ '</div>';
+					
 				}
 				
 				$('#toursearch').html(list);				
