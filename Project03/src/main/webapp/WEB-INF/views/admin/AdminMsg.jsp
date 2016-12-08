@@ -269,31 +269,10 @@ $(document).ready(function(){
 		$('#sendBtn').click(function(){//sendBtn
 		var sendText = $('#msg_content').val(); 
 		alert('공지사항 전송 성공'+ sendText);
-		//<input type="hidden" id="value" name="value">
+	
 		$("#value").val(sendText);
 		frm.submit();
-		
-		
-		
-		
-		/*	
-				alert(sendText);
-		frm.attr('action','sendAllMyUser');
-		frm.attr('method','post');
-		frm.submit();
-		
-		
-		
-		
-		$('#btnUpdate').click(function() {
-		frm.attr('action', 'update'); // attr('속성이름', '속성값')
-		frm.attr('method', 'post');
-		frm.submit();
-		
-		
-	
-	});
-		*/
+
 	});
 	
 	

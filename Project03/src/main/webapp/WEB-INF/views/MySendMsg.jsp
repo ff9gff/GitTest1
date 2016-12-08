@@ -7,6 +7,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -78,19 +87,45 @@ li {
     </c:forEach>
 </table>
 <br/>
-<ul class="pageLinks">
+
+<%--
+<nav>
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+pageLinks
+
+
+ --%>
+
+<ul class="pagination">
     <c:if test="${pageMaker.hasPrev }">
-    <li><a href="${pageMaker.startPageNum - 1 }">&laquo;이전</a></li>
+    <li><a href="${pageMaker.startPageNum - 1 }"><b>&laquo;이전</b></a></li>
     </c:if>
     
     <c:forEach begin="${pageMaker.startPageNum }"
         end="${pageMaker.endPageNum }"
         var="num">
-    <li><a href="${num }">${num }</a></li>
+    <li><a href="${num }"><b>${num }</b></a></li>
     </c:forEach>
     
     <c:if test="${pageMaker.hasNext }">
-    <li><a href="${pageMaker.endPageNum + 1 }">다음&raquo;</a></li>
+    <li><a href="${pageMaker.endPageNum + 1 }"><b>다음&raquo;</b></a></li>
     </c:if>
     
 </ul>
@@ -182,7 +217,7 @@ function OpenPop(no)
 
 
 	// 클래스 pageLinks 안의 li 태그 안의 a 태그를 찾아서 click 이벤트를 커스터마이징
-	$('.pageLinks li a').click(function() {
+	$('.pagination li a').click(function() {
 		event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
 		// pageForm 안에 있는 name="page"인 요소를 찾아서
 		// 이동할 페이지 번호를 세팅

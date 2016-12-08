@@ -7,7 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
 
 <style type="text/css">
@@ -34,6 +41,36 @@ table, th, td {
    text-align: center;
    vertical-align: middle;
  }
+ 
+ #section{
+ 
+ 
+ }
+ 
+ .pagination{
+display: inline-block;
+
+}
+ul li {
+list-style: none;
+}
+
+<%--
+style="border-top:  1px solid orange; border-left: 
+ 1px solid gray; border-right:  1px solid gray; border-radius: 
+ 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;
+
+--%>
+
+#captionStyle{
+ border-top: 1px solid orange;
+ border-left: 1px solid gray;
+ border-right:  1px solid gray;
+ border-radius: 99px 0px 0px 0px;
+ border: 2px solid #e65b05;
+ background-color : orange;
+
+}
 </style>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -87,7 +124,12 @@ table, th, td {
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form id="pageForm">
 			<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
+				<caption id="captionStyle" ><b style="color: black; font-size: 150%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)</b></caption>
 
 				<colgroup>
 					
@@ -116,14 +158,14 @@ table, th, td {
 					
 					<tr class= "select0">
 						
-						<td>${vo.mno }</td>
-						<td>${vo.userid }</td>
-						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
-						<td>${vo.phone }</td>
-						<td>${vo.email }</td>
-					        <td>
+						<td ><label for="section">${vo.mno }</label></td>
+						<td ><label for="section">${vo.userid }</label></td>
+						<td ><a href="/project03/mypage/UserPage/${vo.mno}" id="section" style="color: black;"><b>${vo.nickname }</b></a></td>
+						<td ><label for="section">${vo.phone }</label></td>
+						<td ><label for="section">${vo.email }</label></td>
+					        <td><label for="section">
 	       						 <fmt:formatDate value="${vo.joindate }" 
-	          						  pattern="yyyy-MM-dd HH:mm:ss"/>
+	          						  pattern="yyyy-MM-dd HH:mm:ss"/></label>
         					</td>
 			
 					</tr>
@@ -136,7 +178,21 @@ table, th, td {
 
 
 		<br/>
-<ul class="pageLinks">
+		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+<ul class="pagination">
     <c:if test="${pageMaker.hasPrev }">
     <li><a href="${pageMaker.startPageNum - 1 }">&laquo;이전</a></li>
     </c:if>
@@ -144,7 +200,7 @@ table, th, td {
     <c:forEach begin="${pageMaker.startPageNum }"
         end="${pageMaker.endPageNum }"
         var="num">
-    <li><a href="${num }">${num }</a></li>
+    <li><a href="${num }"><b>${num }</b></a></li>
     </c:forEach>
     
     <c:if test="${pageMaker.hasNext }">
@@ -204,7 +260,7 @@ document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":"
 
 var frm = $('#pageForm2');
 
-$('.pageLinks li a').click(function() {
+$('.pagination li a').click(function() {
 	alert('하이');
 	event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
 	// pageForm 안에 있는 name="page"인 요소를 찾아서
