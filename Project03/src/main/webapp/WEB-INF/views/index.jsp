@@ -454,7 +454,21 @@
 						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
 								+'<img src="' + TopReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
-							+ '</div>'
+								+'<div style="position: absolute; height:40px; z-index:100; top:0; left:0;">';
+										switch(i){
+											case 0: list+='<img src="resources/theme/images/king_review.png" style="display: inline-block;z-index:100; width:80px; height:80px;">';
+												break;
+											case 1: list+='<p id="condition_age">2</p>';
+												break;
+											case 2: list+='<p id="condition_age">3</p>';
+												break;
+											case 3: list+='<p id="condition_age">4</p>';
+												break;
+											default: break;
+										}	
+								
+								
+							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
 							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
 							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
