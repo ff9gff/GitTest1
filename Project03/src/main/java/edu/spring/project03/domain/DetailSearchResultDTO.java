@@ -8,19 +8,29 @@ public class DetailSearchResultDTO {
 	private int condition_sex;
 	private int condition_age;
 	private int trip_no;
+	private int expire;
 
 	public DetailSearchResultDTO() {
 
 	}
 
 	public DetailSearchResultDTO(String img_url, String title, String region_name, int condition_sex, int condition_age,
-			int trip_no) {
+			int trip_no, int expire) {
 		this.img_url = img_url;
 		this.title = title;
 		this.region_name = region_name;
 		this.condition_sex = condition_sex;
 		this.condition_age = condition_age;
 		this.trip_no = trip_no;
+		this.expire = expire;
+	}
+
+	public int getExpire() {
+		return expire;
+	}
+
+	public void setExpire(int expire) {
+		this.expire = expire;
 	}
 
 	public String getImg_url() {

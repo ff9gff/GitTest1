@@ -38,6 +38,12 @@ public interface TourReviewDAO {
 	public abstract String select_review_region_name(int review_no);
 	
 	
+	
+	public abstract ReviewVO selectReviewInfo(int review_no);
+	public abstract ReviewRegionVO selectReviewRegionInfo(int review_no);
+	public abstract ImgVO selectReviewMainImage(int review_no);
+	
+	
 	// select
 
 
@@ -72,6 +78,12 @@ public interface TourReviewDAO {
 	// 후기 게시판 - 닉네임 검색
 	public abstract List<NickReviewSearchResultDTO> select_review_by_nickname(String region_name, String nickname);
 	
+	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public abstract int select_current_review_hits(int review_no);
+	public abstract int update_review_hits(ReviewVO vo);
+
 	
 	/**
 	 * BestVO 

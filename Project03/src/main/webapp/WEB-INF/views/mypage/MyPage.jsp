@@ -63,8 +63,8 @@ ul {
 }
 
 #profilemenu{
-	width: 600px;
-	height: 200px;
+	width: 400px;
+	height: 300px;
 	position: absolute;
 	background-color: #FFFFFF;
 	border:solid 1px #ccc; 
@@ -76,10 +76,19 @@ ul {
 }
 
 #profilemenu table{
-	width: 400px;
+	width: 680px;
 	height: 170px;
 	margin: 10px;
 	
+}
+
+#profile_image{
+	width: 30%;
+	padding-right: 5px;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-top: 0;
+	vertical-align: middle;
 }
 </style>
 
@@ -93,18 +102,20 @@ ul {
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
 	<input hidden type="number" name="mno" id="profile_mno"/>
-	<table>
-		<tr>
-			 <!-- <td id="profile_image"><img src="#" id="profile-image" style="display: none;" /><br/>  -->    
+	<div>
+		
+			<div style="width: "385px"><button id="profile_button1"  style="float: right;">X</button></div>
+			<div id="image_preview"><img src="#" id="profile-image" style="display: none; width: 200px; height: 200px;" /></div>
+			<div style="display: inline-block;">
+							
+		
+				<input type="file" id="imageFile" name="imageFile" style="width: 325.6px;">
+						 
+				<button id="profile_button2" style="float: right; font-size: 10;">수정하기</button>
+			</div>
 			
-			<td style="text-align: right; width: 325.6px"><button id="profile_button1">X</button></td>
-		</tr>
 		
-		<tr><td  style="text-align: right; float: right;"><input type="file" id="imageFile" name="imageFile" style="width: 325.6px;"></td></tr>
-		 
-		<tr><td  style="text-align: right;vertical-align: middle;"><button id="profile_button2">수정</button></td></tr>
-		
-	</table>
+	</div>
 </form>
 </div>
 
@@ -145,14 +156,14 @@ ul {
 
 
 
-	<header style="background-color: #F79F12; height: 60px">
+	<header style="background-image: url('../resources/theme/images/slide5.jpg'); height: 70px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
 		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-color: #F79F12; height: 520px;">
+		<div style="background-image: url('../resources/theme/images/slide5.jpg'); height: 520px;">
 			<div
 				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -167,8 +178,10 @@ ul {
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
 
+					<c:if test="${mno eq vo.mno }">
 						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context">프로필보기</a></li>
+							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
+					</c:if>
 
 						</ul>
 					</div>
@@ -184,20 +197,21 @@ ul {
 				style="display: block; width: 1026px; height: 260px; margin: auto; vertical-align: center; text-align: center; padding-top: 30px">
 				<div>
 					<input type="text" Class="personal" value="${vo.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
-					<input type="text" Class="personal" value="${vo.age }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${vo.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 				<div>
 					<input type="text" Class="personal" value="${vo.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 					<input type="text" Class="personal" value="${vo.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${vo.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-image: url('../resources/theme/images/slide5.jpg');/* background-color: #F19A0D; */ color: white; font-weight: bold; font-size: 25px">${vo.introduce }
 				</textarea>
 					
 			</div>
 			
 			<c:if test="${mno eq vo.mno }">
 				<div>
-				 <input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />	
+					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
+					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
 				</div>
 			</c:if>
 			
@@ -427,6 +441,9 @@ ul {
 				location = 'updatePersonal/' + mno;
 			});
 			
+			$('#goHome').click(function() {
+				location = '../index';
+			});
 			
 			
 			
@@ -487,7 +504,7 @@ ul {
 			         blobURL = window.URL.createObjectURL(file);
 			         $('#image_preview img').attr('src', blobURL);
 			         document.getElementById("profile-image").style.display = "inline";
-			         $('#image_preview img').attr('width', '250px');
+			         $('#image_preview img').attr('width', '160px');
 			         $('#image_preview img').attr('height', '160px');
 			         document.getElementById("btn_profile-image_remove").style.display = "inline";
 			         //$('#image_preview').slideDown(); //업로드한 이미지 미리보기

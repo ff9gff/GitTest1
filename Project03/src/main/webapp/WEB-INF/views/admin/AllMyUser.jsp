@@ -27,6 +27,13 @@
 #selectOption {
 	padding-left: 655px
 }
+
+table, th, td {
+   border: 1px solid #e65b05;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
+ }
 </style>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -80,7 +87,8 @@
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form id="pageForm">
 			<table id="checkboxTestTbl" >
-				<caption>전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
+
 				<colgroup>
 					
 					<col width="100px">

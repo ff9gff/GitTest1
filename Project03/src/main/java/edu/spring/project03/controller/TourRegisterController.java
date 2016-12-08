@@ -91,10 +91,12 @@ public class TourRegisterController {
 	}
 
 	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
-	public String toggleMsg(int msg_setter, int msg_getter, String msg_getnick, String msg_address, Model model) {
+	public String toggleMsg(int msg_setter, int msg_getter, String[] msg_getnick, String msg_address, Model model) {
 		System.out.println("setter: " + msg_setter);
 		System.out.println("getter: " + msg_getter);
-		System.out.println("msg_getnick: " + msg_getnick);
+		System.out.println("tour####msg_getnick: " + msg_getnick.length);
+		//System.out.println("tour####msg_getnick[0]: " + msg_getnick[0]);
+		//System.out.println("tour####msg_getnick[1]: " + msg_getnick[1]);
 
 		model.addAttribute("msg_setter", msg_setter);
 		model.addAttribute("msg_getter", msg_getter);
@@ -362,7 +364,6 @@ public class TourRegisterController {
 	// 여행 글에서 수정페이지에서 수정하려고 할 때 : 수정 페이지로 먼저 보낸다
 	@RequestMapping(value = "/TourBoardUpdateRequest", method = RequestMethod.POST)
 	public String UpdateTest(int trip_no, Model model) {
-		logger.info("여행 번호: " + trip_no);
 
 		// 여행 번호를 가지고 select * from wm_tour 검색 --> vo1으로 받고 model에 실어서 다음 페이지로!
 		// select * from wm_tour_region 검색 --> vo2로 받고 model에 실어서 다음 페이지로!
@@ -372,7 +373,13 @@ public class TourRegisterController {
 		ImgVO vo3 = tourRegisterService.readTourMainImage(trip_no);
 
 		if (vo1 != null && vo2 != null && vo3 != null) {
-			model.addAttribute("tourVO", vo1);
+				
+			String start_date = vo1.getStart_date().substring(0, 10);
+			String end_date = vo1.getEnd_date().substring(0, 10);
+			
+			TourRegisterVO vo4 = new TourRegisterVO(trip_no, vo1.getMno(), vo1.getTitle(), vo1.getCondition_sex(), vo1.getCondition_age(), vo1.getContent(), vo1.getRegdate(), start_date, end_date, vo1.getExpire());
+			
+			model.addAttribute("tourVO", vo4);
 			model.addAttribute("regionVO", vo2);
 			model.addAttribute("imgVO", vo3);
 
@@ -401,15 +408,20 @@ public class TourRegisterController {
 					logger.info("장소 수정 성공");
 
 					ImageFile fileInfo = imageService.save(imageFile);
-
-					ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0,
-							SAVE_IMAGE_DIR + fileInfo.getFileName());
-					int result3 = tourRegisterService.updateThumnail(imgvo);
-
-					if (result3 == 1) {
-						logger.info("썸네일 수정 성공");
+					
+					if (fileInfo.getFileName().length() < 40) {
+						logger.info("썸네일 수정 안할겁니다");
 					} else {
-						logger.info("썸네일 수정 실패");
+
+						ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0,
+								SAVE_IMAGE_DIR + fileInfo.getFileName());
+						int result3 = tourRegisterService.updateThumnail(imgvo);
+	
+						if (result3 == 1) {
+							logger.info("새로운 여행 썸네일 수정 성공");
+						} else {
+							logger.info("새로운 여행 썸네일 수정 실패");
+						}
 					}
 				} else {
 					logger.info("장소 수정 실패");

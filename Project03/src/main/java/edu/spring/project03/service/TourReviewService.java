@@ -30,11 +30,16 @@ public interface TourReviewService {
 	public abstract int readReview_no(ReviewVO reviewvo);
 	public abstract ReviewVO readReviewRegisterData(int review_no);
 	
+	
 	public abstract ReviewVO read_review_by_no(int review_no);
 	public abstract ImgVO read_review_profile(int mno);
 	public abstract PersonalVO read_review_personal(int mno);
 	public abstract String read_review_region_name(int review_no);
-
+	
+	
+	public abstract ReviewVO readReviewInfo(int review_no);
+	public abstract ReviewRegionVO readReviewRegionInfo(int review_no);
+	public abstract ImgVO readReviewMainImage(int review_no);
 	
 	
 	// Read
@@ -78,6 +83,9 @@ public interface TourReviewService {
 	public abstract List<ReviewRegionVO> read_review_region_region(String region_name);
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public abstract int read_current_review_hits(int review_no);
+	public abstract int update_review_hits(ReviewVO vo);
 	
 	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname);
 

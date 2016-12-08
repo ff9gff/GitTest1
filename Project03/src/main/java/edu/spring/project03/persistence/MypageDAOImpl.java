@@ -60,5 +60,11 @@ public class MypageDAOImpl implements MypageDAO {
 
 		return sqlSession.selectList(NAMESPACE + ".select_mytour_region", mno);
 	}
+	
+	@Override
+	public int updateProfile(PersonalVO vo) {
+	
+		return sqlSession.update(NAMESPACE + ".update-profile", vo);
+	}
 
 }

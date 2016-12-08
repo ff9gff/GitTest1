@@ -47,9 +47,9 @@ public class SendMSGcontroller {
 
 	// 메세지 보내는 코드
 	@RequestMapping(value = "/sendMsgU", method = RequestMethod.POST)
-	public String sendMSGU(int sd_mno, String nickname, String msg_content,String sd_url, RedirectAttributes attr, HttpServletRequest request) {
+	public String sendMSGU(int sd_mno, String[] nickname, String msg_content,String sd_url, RedirectAttributes attr, HttpServletRequest request) {
 		System.out.println("msg_userid - > " + sd_mno);
-		System.out.println("msg_nickname - > " + nickname);
+		System.out.println("msg_nickname - > " + nickname[0]);
 		logger.info("userid - > " + sd_mno); // content 넘어 가는 거 확인
 		logger.info("neckname " + nickname);
 		logger.info("msg_content" + msg_content);
@@ -60,10 +60,14 @@ public class SendMSGcontroller {
 		
 		String sendUrl = "redirect:"+sd_url;
 		System.out.println("어디서 부른거니!111 =====> "+sendUrl);
-		
+		System.out.println("닉네임의 길이는? =====> "+nickname.length);
 		
 
-		int result = searchUserService.sendMsgTO(sd_mno, nickname, msg_content);
+		int result = 0;
+		for(int i=0; i<nickname.length; i++){
+			result = searchUserService.sendMsgTO(sd_mno, nickname[i], msg_content);
+		}
+		
 		
 		if(result ==1){
 			attr.addFlashAttribute("insert_result","success");

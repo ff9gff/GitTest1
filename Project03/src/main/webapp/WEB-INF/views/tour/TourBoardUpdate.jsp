@@ -129,8 +129,16 @@
 						
 							<input type="text" name="title" style="width: 60%" value="${tourVO.title}" placeholder="제목" /><br /> <br /> 
 						
-							<input type="text" name="region_name" style="width: 60%" value="${regionVO.region_name}" placeholder="지역" /><br /> <br />
-				
+							<div id="region_plus">
+								<table id="regionTable">
+									<tr>
+										<td>
+											<input type="text" name="region_name" value="${regionVO.region_name }" placeholder="지역" />
+											<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
+										</td>
+									</tr>
+								</table>						
+							</div><br />				
 							<input type="text" id="start_date" name="start_date" value="${tourVO.start_date}" placeholder="시작일"> 
 							~ 
 							<input type="text" id="end_date" name="end_date" value="${tourVO.end_date}" placeholder="종료일" > <br /> <br />
@@ -143,11 +151,15 @@
 							
 							<br />
 							 
-							<textarea name="content"  rows="10"
+							<%-- <textarea name="content"  rows="10"
 							cols="100" style="width: 766px; height: 412px; display: none">
 								${tourVO.content}		
 							</textarea>
-							${tourVO.content}	
+							${tourVO.content}	 --%>
+							
+							<textarea name="content" id="smarteditor" rows="10"
+							cols="100" style="width: 766px; height: 412px;"> ${tourVO.content }	
+							</textarea><br/><br/>		
 							<br /><br />	
 															
 						</form>	
@@ -188,7 +200,28 @@
 	
 	<script>
 	
-		$("#updatebutton").click(function() {			
+		var oTbl;
+	
+		//Row 추가
+		function insRow() {
+		  oTbl = document.getElementById("regionTable");
+		  var oRow = oTbl.insertRow();
+		  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
+		  var oCell = oRow.insertCell();
+		  
+		  //삽입될 Form Tag
+		  var frmTag = "<input type=text name=region_name placeholder=지역>";
+		  frmTag += " <input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
+		  oCell.innerHTML = frmTag;
+		}
+	
+		//Row 삭제
+		function removeRow() {
+		  oTbl.deleteRow(oTbl.clickedRowIndex);
+		}
+	
+		$("#updatebutton").click(function() {		
+			editor_object.getById["smarteditor"].exec("UPDATE_CONTENTS_FIELD", []);
 			//폼 submit
 			$("#frm").submit();
 		})
@@ -204,50 +237,69 @@
 		
 		$('#imageFile').on('change', function() {
 			      
-		    	ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	    	ext = $(this).val().split('.').pop().toLowerCase(); //확장자
+	      
+	      	//배열에 추출한 확장자가 존재하는지 체크
+	      	if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
+	        	resetFormElement($(this)); //폼 초기화
+	         	window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
+	      	} else {
+	        	file = $('#imageFile').prop("files")[0];
+	         	blobURL = window.URL.createObjectURL(file);
+		        $('#image_preview img').attr('src', blobURL);
+		        document.getElementById("profile-image").style.display = "inline";
+		        $('#image_preview img').attr('width', '300px');
+		        $('#image_preview img').attr('height', '300px');
+		        document.getElementById("btn_profile-image_remove").style.display = "inline";
+		        //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
+		        $('#image_preview').show(); //업로드한 이미지 미리보기
+	     	}
+		});
+		
+		/**
+		onclick event handler for the delete button.
+		It removes the image, clears and unhides the file input field.
+		*/
+		$('#image_preview a').bind('click', function() {
+		   resetFormElement($('#imageFile'));
+		   //$('#image').slideDown(); //파일 양식 보여줌
+		   $(this).parent().slideUp(); //미리 보기 영역 감춤
+		   //return false; //기본 이벤트 막지
+		});
 		      
-		      	//배열에 추출한 확장자가 존재하는지 체크
-		      	if($.inArray(ext, ['gif', 'png', 'jpg', 'jpeg']) == -1) {
-		        	resetFormElement($(this)); //폼 초기화
-		         	window.alert('이미지 파일이 아닙니다! (gif, png, jpg, jpeg 만 업로드 가능)');
-		      	} else {
-		        	file = $('#imageFile').prop("files")[0];
-		         	blobURL = window.URL.createObjectURL(file);
-			        $('#image_preview img').attr('src', blobURL);
-			        document.getElementById("profile-image").style.display = "inline";
-			        $('#image_preview img').attr('width', '300px');
-			        $('#image_preview img').attr('height', '300px');
-			        document.getElementById("btn_profile-image_remove").style.display = "inline";
-			        //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
-			        $('#image_preview').show(); //업로드한 이미지 미리보기
-		     	}
-			});
-			
-			/**
-			onclick event handler for the delete button.
-			It removes the image, clears and unhides the file input field.
-			*/
-			$('#image_preview a').bind('click', function() {
-			   resetFormElement($('#imageFile'));
-			   //$('#image').slideDown(); //파일 양식 보여줌
-			   $(this).parent().slideUp(); //미리 보기 영역 감춤
-			   //return false; //기본 이벤트 막지
-			});
-			      
 
-			/** 
-			* 폼요소 초기화 
-			* Reset form element
-			* 
-			* @param e jQuery object
-			*/
-			function resetFormElement(e) {
-			   e.wrap('<form>').closest('form').get(0).reset(); 
-			   //리셋하려는 폼양식 요소를 폼(<form>) 으로 감싸고 (wrap()) , 
-			   //감싼 폼 ( closest('form')) 에서 Dom요소를 반환받고 ( get(0) ),
-			   //DOM에서 제공하는 초기화하는 메서드 reset()을 호출
-			   e.unwrap(); //감싼 <form> 태그를 제거
+		/** 
+		* 폼요소 초기화 
+		* Reset form element
+		* 
+		* @param e jQuery object
+		*/
+		function resetFormElement(e) {
+		   e.wrap('<form>').closest('form').get(0).reset(); 
+		   //리셋하려는 폼양식 요소를 폼(<form>) 으로 감싸고 (wrap()) , 
+		   //감싼 폼 ( closest('form')) 에서 Dom요소를 반환받고 ( get(0) ),
+		   //DOM에서 제공하는 초기화하는 메서드 reset()을 호출
+		   e.unwrap(); //감싼 <form> 태그를 제거
+		}
+		
+		var editor_object = [];
+		nhn.husky.EZCreator.createInIFrame({
+			oAppRef : editor_object,
+			elPlaceHolder : "smarteditor",
+			sSkinURI : "../resources/smarteditor/SmartEditor2Skin.html",
+			htParams : {
+				// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseToolbar : true,
+				// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseVerticalResizer : true,
+				// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
+				bUseModeChanger : true,
 			}
+		});
+		
+		$("#start_date, #end_date").datepicker({
+			dateFormat : 'yy-mm-dd'
+		});
 	
 	</script>
 

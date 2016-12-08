@@ -56,7 +56,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public int updateReview(ReviewVO reviewvo) {
 
-		return sqlSession.update(NAMESPACE + ".update-register", reviewvo);
+		return sqlSession.update(NAMESPACE + ".update-review", reviewvo);
 	} // end updateReview(reviewvo)
 
 	@Override
@@ -78,7 +78,7 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public int deleteReview(int review_no) {
 
-		return sqlSession.delete(NAMESPACE + ".delete-register", review_no);
+		return sqlSession.delete(NAMESPACE + ".delete-review", review_no);
 	} // end deleteReview(review_no)
 
 	@Override
@@ -139,8 +139,26 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		
 		return sqlSession.selectOne(NAMESPACE + ".select_review_region_name", review_no);
 	} // end select_review_region_name(review_no)
-
 	
+	
+	
+	@Override
+	public ReviewVO selectReviewInfo(int review_no) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_ReviewInfo_by_review_no", review_no);
+	} // end selectReviewInfo(review_no)
+	
+	@Override
+	public ReviewRegionVO selectReviewRegionInfo(int review_no) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_ReviewRegionInfo_by_review_no", review_no);
+	} // end selectReviewRegionInfo(review_no)
+	
+	@Override
+	public ImgVO selectReviewMainImage(int review_no) {
+		
+		return sqlSession.selectOne(NAMESPACE + ".select_ReviewMainImage_by_review_no", review_no);
+	} // end selectReviewMainImage(review_no)
 	
 	
 	
@@ -264,6 +282,18 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		
 		return list;
 		
+	}
+
+	@Override
+	public int select_current_review_hits(int review_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + ".select_current_review_hits", review_no);
+	}
+
+	@Override
+	public int update_review_hits(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE + ".update_review_hits", vo);
 	}
 
 } // end class TourReviewDAOImpl

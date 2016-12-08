@@ -338,6 +338,14 @@ width: 95%;
 	background-color: lightgray;
 	text-align: center;
 }
+.content_btns{
+	width: 60px;
+	height: 20px;
+	font-size: 12px;
+	padding: 0;
+	background-color: #F4511E;
+	color: white;
+}
 </style>
 
 </head>
@@ -403,9 +411,13 @@ width: 95%;
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
 	<input type="hidden" id="msg_setter" name="msg_setter" value="${mno }"/>
-	<input type="hidden" id="msg_getter" name="msg_getter"/>
-	<input type="hidden" id="msg_getnick" name="msg_getnick"/>
-	<input type="hidden" id="msg_address" name="msg_address" value="tour/toggle_msg"/><!-- 수정 -->
+	<input type="hidden" id="msg_getter" name="msg_getter" value="${mno }"/> <!-- 실제로 사용은 안되고 있음.. -->	
+	
+	<div id="msg_getterList">
+		<input type="hidden" id="msg_getnick" name="msg_getnick"/>
+	</div>
+	
+	<input type="hidden" id="msg_address" name="msg_address" value="review/toggle_msg"/>
 </form>
 
 <!-- 작성자가 좋아요 안되게 하고 다른 사람은 좋아요 하게 넣기 해야 되는 부분 -->
@@ -455,29 +467,33 @@ width: 95%;
  --%>
 
 
-<div class="menu">Content</div>
-<!-- 작성일자가 들어가야 하는 곳 같다. -->
-<%-- <input hidden id="start_date" value="${reviewVO.start_date}"/>
-<input hidden id="end_date" value="${reviewVO.end_date}"/> --%>
 
-<div id="content">
-${reviewVO.content}
+
+<div class="menu" style="margin-top: 20px;"><p style="display: inline-block;">Content</p> 
+	<div style="display: inline-block; float: right;">
+		
+		<c:if test="${mno eq reviewVO.mno}">
+			<form action="review_update_pre" method="post" id="frm1" style="display: inline-block;">
+				<input type="hidden" name='review_no' value='${reviewVO.review_no}'/>
+				<input type="button" id='updateButton' class="content_btns" value='수정' />
+			</form>
+		</c:if>
+		
+		<c:if test="${mno eq reviewVO.mno or authority >= 2}" >
+			<form action="review_delete" method="post" id="frm2" style="display: inline-block;">
+				<input type="hidden" name='review_no' value='${reviewVO.review_no}'/>
+				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
+			</form>
+		</c:if>
+		
+		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
+		
+	</div>
 </div>
 
-<div class="menu" style="text-align: right;">
-	<c:if test="${mno eq reviewVO.mno}">
-		<form action="TourBoardUpdate" method="post" id="frm1" style="display: inline-block;">
-			<input type="hidden" name='trip_no' value='${reviewVO.review_no}'/>
-			<input type="button" id='updateButton' value='수정' />
-		</form>
-	</c:if>
-		
-	<c:if test="${mno eq reviewVO.mno or authority >= 2}" >
-		<form action="TourBoardDelete" method="post" id="frm2" style="display: inline-block;">
-			<input type="hidden" name='trip_no' value='${reviewVO.review_no}'/>
-			<input type="button" id='deleteButton' value='삭제' />
-		</form>
-	</c:if>
+
+<div id="content">
+	${reviewVO.content}
 </div>
 
 <div class="menu">Comment</div>
@@ -1236,7 +1252,7 @@ $('#context_profile').on('click','.btn_context',function(){
  
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
-	var url = '/project03/UserPage/'+amno;
+	var url = '/project03/mypage/UserPage/'+amno;
 	location.href  = url;
 });
 
@@ -1250,7 +1266,7 @@ $('#overlay, #profile_button1').click(function(e){
 
 $('#context_board').on('click','.btn_context',function(){
 	var amno = $('#context_mno').val();
-	var url = '/project03/UserPage/'+amno;
+	var url = '/project03/mypage/UserPage/'+amno;
 	location.href  = url;
 });
 
@@ -1265,6 +1281,7 @@ $('#context_msg').on('click','.btn_context',function(){
 	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
 	window.open('',"msg" ,popOption);
 	f.submit();
+	
 });
 
 
@@ -1323,12 +1340,29 @@ $('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img
 
 var review_region_name = '${inserterRegion}';
 $(function(){
-		var mno_region = review_region_name.split(",");
+	var mno_region = review_region_name.split(",");
 	for(var i=0; i<mno_region.length; i++){
 		review_region+='#'+mno_region[i]+" ";
 	}
+	
+	var hits = ${reviewVO.hits};
 
-	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/* +dateArray1[0]+" ~ "+dateArray2[0] */);
+	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수: " + hits);
+});
+
+$('#updateButton').click(function() {
+	alert("여행 리뷰 정보 수정하러 갑니다");
+	$('#frm1').submit();
+});
+
+$('#deleteButton').click(function() {
+	alert("여행 리뷰 정보 삭제하러 갑니다");
+	$('#frm2').submit();
+});
+
+$('#reviewBoardButton').click(function() {
+	alert('여행 리뷰 게시판으로 돌아갑니다');
+	location = '../review/reviewBoard';
 });
 
 

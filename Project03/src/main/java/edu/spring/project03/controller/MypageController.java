@@ -291,6 +291,12 @@ public class MypageController {
 			logger.info("유저 자소서: " + vo2.getIntroduce());
 			
 			// update 쿼리 실행
+			int result = mypageService.update_profile(vo2);
+			if (result == 1) { // profile 업데이트 성공
+				logger.info("프로필 수정 성공");
+			} else { // 업데이트 실패
+				logger.info("프로필 수정 실패");
+			}
 		}
 
 		return "redirect:../MyPage";

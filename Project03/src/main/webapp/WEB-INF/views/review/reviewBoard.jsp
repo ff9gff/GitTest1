@@ -238,13 +238,13 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
 				});
 				
 				var url2 = '/project03/review/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						ReviewTitle.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+						ReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
 					});
 					console.log(ReviewTitle);
 					
@@ -264,6 +264,7 @@ http://www.templatemo.com/tm-406-flex
 							for (var j = 0; j < ReviewTitle.length; j++) {
 								if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
 									ReviewImage[i].tour = ReviewTitle[j].title;
+									ReviewImage[i].hits = ReviewTitle[j].hits;
 								} 
 								for (var k = 0; k < ReviewRegion.length; k++) {
 									if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
@@ -327,6 +328,7 @@ http://www.templatemo.com/tm-406-flex
 					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
 					+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
 					+ '<div>' + ReviewImage[i].city + '</div>'	
+					+ '<div>조회수: ' + ReviewImage[i].hits + '</div>'	
 					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 					+ '</div>'
 					+ '</div>';

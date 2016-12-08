@@ -83,7 +83,8 @@ table, th, td {
 
 	<form action="">
 		<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid gray; border-left:  1px solid gray; border-right:  1px solid gray; background-color: lightgray">관리자 유저 정보 확인</caption>
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 유저 정보 확인</caption>
+
 				<colgroup>
 					<col width="40px">
 					<col width="100px">
