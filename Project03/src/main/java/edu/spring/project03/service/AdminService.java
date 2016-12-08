@@ -5,6 +5,7 @@ import java.util.List;
 import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.pageutil.MyUserPaginationCriteria;
 
 public interface AdminService {
 
@@ -47,4 +48,5 @@ public interface AdminService {
 	public int cntAllMyUser();
 	
 	
+	public List<DomainDTO> pagingAllMyUser(MyUserPaginationCriteria x);
 }
