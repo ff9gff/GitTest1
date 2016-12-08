@@ -39,7 +39,46 @@ http://www.templatemo.com/tm-406-flex
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 <script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+<style>
+.portfolio-item{
+	height: 320px;
+	width: 302px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid lightgray;
+}
+.portfolio-item:hover{
+	border: 3px solid #ff5028;
+}
+.portfolio-thumb{
+	width: 297.5px;
+	height: 240px;
+	vertical-align: middle;
+	margin-bottom: 5px;
 
+}
+.tour_title{
+	font-size: 20px;
+	font-weight: bold;
+	color: #4e4e4f;
+	margin-left: 10px;
+	font-family:monospace
+}
+
+.tour_region{
+	font-size: 15px;
+	color: ligthgray;
+	margin-left: 10px;
+	font-family:monospace
+}
+.tour_hist{
+ display: inline-block;
+ font-size: 10px;
+ font-weight: normal;
+ color: #878484;
+ float: right;
+}
+</style>
 
 </head>
 <body>
@@ -126,7 +165,7 @@ http://www.templatemo.com/tm-406-flex
 
 				<br /><br />
 				
-				<div class="row" id="reviewDetail" style="width: 1200px;">
+				<div class="row" id="reviewDetail" style="width: 1300px;">
 				</div>
 				<!-- /.row -->
 			</div>
@@ -324,13 +363,14 @@ http://www.templatemo.com/tm-406-flex
 			for(var i = 0; i<ReviewImage.length; i++){
 
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '">'	
 					+ '<div class="portfolio-thumb">'
-					+ '<a href="../review/review_detail?review_no=' + ReviewImage[i].content_no + '"><img src="../' + ReviewImage[i].img_url + '" width="300" height="240"><br/>'
-					+ '<div>제목: ' + ReviewImage[i].tour + '</div>'
-					+ '<div>' + ReviewImage[i].city + '</div>'	
-					+ '<div>조회수: ' + ReviewImage[i].hits + '</div>'	
-					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+'<img src="../' + ReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 					+ '</div>'
+					+ '<div class="tour_title">' + ReviewImage[i].tour + '</div>'
+					+ '<div class="tour_region">'  + ReviewImage[i].city +  '<p class="tour_hist">|&nbsp;조회수: ' + ReviewImage[i].hits +  '&nbsp;&nbsp;</p></div>'
+					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+					+'</a>'
 					+ '</div>';
 			}
 
@@ -346,14 +386,14 @@ http://www.templatemo.com/tm-406-flex
 			for(var i = 0; i < SelectSearchReview.length; i++){
 
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<a href="../review/review_detail?review_no=' + SelectSearchReview[i].review_no + '">'
 						+ '<div class="portfolio-thumb">'
-						+ '<figure>'
-						+ '<a href="../review/review_detail?review_no=' + SelectSearchReview[i].review_no + '"><img src="../' + SelectSearchReview[i].img_url + '" width="300" height="240"><br/>'
-						+ '<div>제목: ' + SelectSearchReview[i].title + '</div>'
-						+ '<div>' + SelectSearchReview[i].region_name + '</div>'	
-						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-						+ '</figure>'
+								+'<img src="../' + SelectSearchReview[i].img_url + '" class="img_view" width="300" height="240"><br/>'
 						+ '</div>'
+						+ '<div class="tour_title">' + SelectSearchReview[i].title + '</div>'
+						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '</div>'	
+						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
+						+'</a>'
 						+ '</div>';
 			}
 

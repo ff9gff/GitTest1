@@ -81,13 +81,13 @@ public class MypageController {
 		model.addAttribute("inserterImg", src.getImg_url());
 		logger.info("src: " + src);
 		
-		model.addAttribute("vo", vo);
+		model.addAttribute("pageVO", vo);
 		
 		return "mypage/MyPage";
 	}
 	
-	@RequestMapping(value="/UserPage/{mno}", method=RequestMethod.GET )
-	public String selectUserPesrsonal(@PathVariable("mno") Integer mno, Model model) {		
+	@RequestMapping(value="/UserPage/{amno}", method=RequestMethod.GET )
+	public String selectUserPesrsonal(@PathVariable("amno") Integer mno, Model model) {		
 		
 		PersonalVO vo = mypageService.selectpersonal(mno);
 		
@@ -95,7 +95,7 @@ public class MypageController {
 		model.addAttribute("inserterImg", src.getImg_url());
 		logger.info("src: " + src);
 		
-		model.addAttribute("vo", vo);
+		model.addAttribute("pageVO", vo);
 		
 		return "mypage/MyPage";
 	}
