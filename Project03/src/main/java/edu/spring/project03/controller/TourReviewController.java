@@ -70,14 +70,22 @@ public class TourReviewController {
 			// 이 게시글에 이미 따봉을 눌렀습니다. 따봉의 흔적을 지웁니다
 			int insertLike = tourReviewService.createReviewLike(review_no, mno);
 		}
-		
-		if (selectLike == 1){
-				// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
-				logger.info("따봉 눌렀으니까 삭제합시다.");
-				int deleteLike = tourReviewService.deleteReviewLike(review_no, mno);
-			}
 
-		return "redirect:reviewBoard";
+		if (selectLike == 1) {
+			// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
+			logger.info("따봉 눌렀으니까 삭제합시다.");
+			int deleteLike = tourReviewService.deleteReviewLike(review_no, mno);
+		}
+		
+		// 따봉 추가 삭제가 끝났으면 해당 게시글의 따봉 개수를 종합하여 wm_review 테이블에 업데이트 해줍시다
+		int updateBest = tourReviewService.update_review_best(review_no);
+		if (updateBest == 1) {
+			logger.info(" wm_review 테이블 따봉 업데이트 성공");
+		} else {
+			logger.info(" wm_review 테이블 따봉 업데이트 실패");
+		}
+		
+		return "redirect:../../review_detail?review_no=" + review_no;
 	} // end reviewRegister()
 
 	// 후기 등록 작업 DB Insert

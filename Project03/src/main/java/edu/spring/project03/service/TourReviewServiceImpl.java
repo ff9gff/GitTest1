@@ -263,6 +263,12 @@ public class TourReviewServiceImpl implements TourReviewService {
 		return tourReviewDAO.deleteReviewLike(review_no, mno);
 	}
 
+	@Override
+	public int update_review_best(int review_no) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.update_review_best(review_no);
+	}
+
 
 	
 	

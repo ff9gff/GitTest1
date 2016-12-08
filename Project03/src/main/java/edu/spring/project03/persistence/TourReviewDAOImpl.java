@@ -322,4 +322,10 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		return sqlSession.delete(NAMESPACE + ".deleteReviewLike", vo);
 	}
 
+	@Override
+	public int update_review_best(int review_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE + ".update_review_best", review_no);
+	}
+
 } // end class TourReviewDAOImpl

@@ -181,6 +181,10 @@
 		delete wm_best where review_no = #{review_no} and mno = #{mno}
 	</delete>
 	
+	<update id="update_review_best">
+		update wm_review
+ 		set countofbest = (select count(state) from wm_best where review_no = #{review_no}) 
+  		where review_no = #{review_no}
+	</update>
 
-    
 </mapper>

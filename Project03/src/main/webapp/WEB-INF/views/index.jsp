@@ -480,7 +480,7 @@
 		};
 		
 		// 가져온 최신후기 데이터를 뿌려주자
-		function getAllThumnail_RECENTREVIEW() {
+		function getAllThumnail_RECENTREVIEW() {	
 			var list = '';
 			
 			var length = 0;
