@@ -5,6 +5,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
+
 </head>
 <style type="text/css">
 #top{
@@ -23,14 +27,16 @@
 }
 
 table, th, td {
-   border: 1px solid gray;
+   border: 1px solid #e65b05;
    border-collapse: collapse;
    text-align: center;
    vertical-align: middle;
 }
+ .menuItem{
+ 	background-color: lightblue;
+ }
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 
 
@@ -55,25 +61,22 @@ table, th, td {
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지 사항</a>
 				</li>
-	
-	
-				<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
-				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>
-				
-				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 
 
 
@@ -86,14 +89,12 @@ table, th, td {
 		<section id="main">
 
 
-	<input type="text" name="userid" id="userid" form="btnList"
-		placeholder="찾을 유저검색">
 
-	<input type="button" id="btnList" value="유저 검색">
-
-<br>
-<br>
-
+	<div style="vertical-align: middle;">
+		<input type="text" name="userid" id="userid" form="btnList" placeholder="찾을 유저검색" style="display: inline; vertical-align: middle;">
+		<input type="image" src="../resources/theme/images/search.png" style="width: 30px; display:inline; vertical-align: middle;"  id="btnList" value="유저 검색">
+	</div>
+	<br/>
 	<table id="tableTest2" >
 		<!--<caption>유저 찾기</caption>-->
 		<colgroup>

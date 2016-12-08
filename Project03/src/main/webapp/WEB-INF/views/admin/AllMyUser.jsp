@@ -9,12 +9,16 @@
 <title>Insert title here</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 
 
 <style type="text/css">
@@ -42,6 +46,7 @@ table, th, td {
    vertical-align: middle;
  }
  
+<<<<<<< HEAD
  #section{
  
  
@@ -71,9 +76,13 @@ style="border-top:  1px solid orange; border-left:
  background-color : orange;
 
 }
+
+ .menuItem{
+ 	background-color: lightblue;
+ }
+
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 </head>
 
@@ -94,24 +103,22 @@ style="border-top:  1px solid orange; border-left:
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
 				</li>
-	
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
-				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>
-				
-					<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 
 
 
@@ -143,12 +150,12 @@ style="border-top:  1px solid orange; border-left:
 	
 				<tr>
 					
-					<th>유저 번호</th>
-					<th>유저 아이디</th>
-					<th>유저 닉네임</th>
-					<th>유저 연락처</th>
-					<th>유저 이메일</th>
-					<th>유저 가입날짜</th>
+					<th>번호</th>
+					<th>아이디 (ID)</th>
+					<th>닉네임</th>
+					<th>연락처 (PHONE)</th>
+					<th>이메일 (E-MAIL)</th>
+					<th>가입날짜 (DATE)</th>
 				</tr>
 
 			
