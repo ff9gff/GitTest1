@@ -86,8 +86,8 @@ public class MypageController {
 		return "mypage/MyPage";
 	}
 	
-	@RequestMapping(value="/UserPage/{mno}", method=RequestMethod.GET )
-	public String selectUserPesrsonal(@PathVariable("mno") Integer mno, Model model) {		
+	@RequestMapping(value="/UserPage/{amno}", method=RequestMethod.GET )
+	public String selectUserPesrsonal(@PathVariable("amno") Integer mno, Model model) {		
 		
 		PersonalVO vo = mypageService.selectpersonal(mno);
 		
