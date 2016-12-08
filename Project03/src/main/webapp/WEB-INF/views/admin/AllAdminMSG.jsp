@@ -7,6 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 
 <style type="text/css">
 #top{
@@ -40,14 +42,17 @@
 }
 
 table, th, td {
-   border: 1px solid gray;
+   border: 1px solid #e65b05;
    border-collapse: collapse;
    text-align: center;
    vertical-align: middle;
 }
+
+.menuItem{
+ 	background-color: lightblue;
+ }
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 </head>
 
@@ -68,41 +73,36 @@ table, th, td {
 				</li>
 
 
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">공지사항</a>
+			<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>
-				
-				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 			</ul>
 		</nav>
 		
 		<section id="main">
-	
-	<!-- todo 
-	
-	
-	
-	-->
+
 	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2">
-	<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
+		<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
 	</form>
 	
 		<form action="MiniMSGpageU" method="get" id="formName" name="formName">
-		<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
+			<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
 		</form>
 	
-	
+	<div style="width: 70%">
 	<table id="msgAdminMSG" >
 		<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 지난 공지함 </caption>
 		<colgroup>
@@ -133,12 +133,13 @@ table, th, td {
 </table>
 	
 <form id="formAllmin">
-	<input type="button" id="deleteMSGbtn" value="삭제"> 
-
+	<div style="text-align: right;">
+	<input type="image" src="../resources/theme/images/close1.png" style="width: 30px; display:inline; margin-top: 15px;" id="deleteMSGbtn" value="삭제"> 
+	</div>
 </form>
+</div>
 
-	
-		</section>
+	</section>
 
 
 	
