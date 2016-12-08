@@ -407,7 +407,7 @@ http://www.templatemo.com/tm-406-flex
 						+'<img src="../' + ReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 					+ '</div>'
 					+ '<div class="tour_title">' + ReviewImage[i].tour + '</div>'
-					+ '<div class="tour_region">'  + ReviewImage[i].city +  '<p class="tour_hist">|&nbsp;조회수: ' + ReviewImage[i].hits + '&nbsp;| 좋아요: ' + ReviewImage[i].countofbest + '&nbsp;|</p></div>'	
+					+ '<div class="tour_region">'  + ReviewImage[i].city +  '<p class="tour_hist">|&nbsp;조회수: ' + ReviewImage[i].hits + '&nbsp;| 좋아요: ' + ReviewImage[i].countofbest	 + '&nbsp;|</p></div>'	
 					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 					+'</a>'
 					+ '</div>';
@@ -430,7 +430,7 @@ http://www.templatemo.com/tm-406-flex
 								+'<img src="../' + SelectSearchReview[i].img_url + '" class="img_view" width="300" height="240"><br/>'
 						+ '</div>'
 						+ '<div class="tour_title">' + SelectSearchReview[i].title + '</div>'
-						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits +  + '&nbsp;| 좋아요: ' + SelectSearchReview[i].countofbest + '&nbsp;|</p></div>'	
+						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits + '&nbsp;| 좋아요: ' + SelectSearchReview[i].countofbest + ' |</p></div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+'</a>'
 						+ '</div>';
