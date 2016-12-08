@@ -235,6 +235,8 @@ public class TourReviewController {
 		int selectLike = 0;
 		
 		String mnoString = (String)(session.getAttribute("mno"));
+		
+		// 문제가 있음
 		int mno = Integer.valueOf(mnoString);
 		
 
