@@ -102,7 +102,7 @@ table, th, td {
 			<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
 		</form>
 	
-	<div style="width: 70%">
+	<div style="width: 39%">
 	<table id="msgAdminMSG" >
 		<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 지난 공지함 </caption>
 		<colgroup>
