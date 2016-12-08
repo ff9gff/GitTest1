@@ -48,10 +48,15 @@ table, th, td {
    vertical-align: middle;
 }
 
+.message{
+display: inline;
+}
+
 .menuItem{
  	background-color: lightblue;
  }
 </style>
+
 
 
 </head>
@@ -94,14 +99,25 @@ table, th, td {
 		
 		<section id="main">
 
-	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2">
-		<a href="javascript:OpenPop('', '', '', '');">공지사항보내기</a>
+	<div style="display: inline-block; margin-bottom: 15px">
+	<div class="message" onclick="OpenPop('', '', '', '')">
+	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2" style="display: inline-block; border: 1px solid yellow ; background-color:#E3DA2F ">
+			<img  src="../resources/theme/images/shout.png" style="width: 40px; height: 40px; 
+					display: inline; text-align: center; vertical-align: middle;"/>
+		공지 보내기
 	</form>
+	</div>
 	
-		<form action="MiniMSGpageU" method="get" id="formName" name="formName">
-			<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
+	<div class="message" onclick="OpenPop2('', '', '', '')">
+		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 1px solid yellow; background-color: #E3DA2F">
+		<img  src="../resources/theme/images/please.png" style="width: 40px; height: 40px; 
+		display: inline; text-align: center; vertical-align: middle;" />
+		쪽지보내기
 		</form>
-	
+		</div>
+		
+		</div>
+
 	<div style="width: 39%">
 	<table id="msgAdminMSG" >
 		<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 지난 공지함 </caption>
