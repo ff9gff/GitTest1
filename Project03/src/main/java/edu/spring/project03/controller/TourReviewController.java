@@ -78,7 +78,7 @@ public class TourReviewController {
 			logger.info("따봉 눌렀으니까 삭제합시다.");
 			int deleteLike = tourReviewService.deleteReviewLike(review_no, mno);
 		}
-		
+
 		// 따봉 추가 삭제가 끝났으면 해당 게시글의 따봉 개수를 종합하여 wm_review 테이블에 업데이트 해줍시다
 		int updateBest = tourReviewService.update_review_best(review_no);
 		if (updateBest == 1) {
@@ -86,7 +86,7 @@ public class TourReviewController {
 		} else {
 			logger.info(" wm_review 테이블 따봉 업데이트 실패");
 		}
-		
+
 		return "redirect:../../review_detail?review_no=" + review_no;
 	} // end reviewRegister()
 
@@ -230,38 +230,41 @@ public class TourReviewController {
 				model.addAttribute("inserterRegion", region);
 			}
 		} // end if
-		
-		// 내가 이 게시물에  따봉을 눌렀는가? state를 조회해보면 알 수 있다
+
+		// 내가 이 게시물에 따봉을 눌렀는가? state를 조회해보면 알 수 있다
 		int selectLike = 0;
-		
-		String mnoString = (String)(session.getAttribute("mno"));
-		
-		// 문제가 있음
-		int mno = Integer.valueOf(mnoString);
-		
 
-		try {
-			// 먼저 사용자가 게시글에 따봉을 눌렀는지 확인!
-			selectLike = tourReviewService.readReviewLike(review_no, mno);
+		String mnoString = (String) (session.getAttribute("mno"));
 
-			logger.info("selectLike=? : " + selectLike);
-		} catch (Exception e) {
-			// TODO: handle exception
-			logger.info("따봉을 누른 흔적이 없습니다.");
-			
-			BestVO vo = new BestVO(mno, review_no, 0);
-			model.addAttribute("likecheck", vo);
-			
+		if (mnoString == null) {
+			logger.info("로그인된 아이디가 없음");
+		} else {
+
+			// 문제가 있음
+			int mno = Integer.valueOf(mnoString);
+
+			try {
+				// 먼저 사용자가 게시글에 따봉을 눌렀는지 확인!
+				selectLike = tourReviewService.readReviewLike(review_no, mno);
+
+				logger.info("selectLike=? : " + selectLike);
+			} catch (Exception e) {
+				// TODO: handle exception
+				logger.info("따봉을 누른 흔적이 없습니다.");
+
+				BestVO vo = new BestVO(mno, review_no, 0);
+				model.addAttribute("likecheck", vo);
+
+			}
+
+			if (selectLike == 1) {
+				// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
+				logger.info("따봉 누른 흔적이 있습니다.");
+				BestVO vo = new BestVO(mno, review_no, selectLike);
+				model.addAttribute("likecheck", vo);
+
+			}
 		}
-
-		if (selectLike == 1) {
-			// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
-			logger.info("따봉 누른 흔적이 있습니다.");
-			BestVO vo = new BestVO(mno, review_no, selectLike);
-			model.addAttribute("likecheck", vo);
-			
-		}
-		
 
 		return "review/review_detail";
 	} // end reviewDetail()
