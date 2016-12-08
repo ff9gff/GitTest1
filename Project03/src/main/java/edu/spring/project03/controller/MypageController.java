@@ -79,7 +79,7 @@ public class MypageController {
 		model.addAttribute("inserterImg", src.getImg_url());
 		logger.info("src: " + src);
 		
-		model.addAttribute("vo", vo);
+		model.addAttribute("pageVO", vo);
 		
 		return "mypage/MyPage";
 	}
@@ -93,7 +93,7 @@ public class MypageController {
 		model.addAttribute("inserterImg", src.getImg_url());
 		logger.info("src: " + src);
 		
-		model.addAttribute("vo", vo);
+		model.addAttribute("pageVO", vo);
 		
 		return "mypage/MyPage";
 	}

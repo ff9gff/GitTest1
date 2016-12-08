@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
 <html>
@@ -163,7 +163,7 @@ ul {
 
 
 	<div Class="wrapper">
-		<div style="background-image: url('../resources/theme/images/slide5.jpg'); height: 520px;">
+		<div style="background-color: #000; height: 520px;">
 			<div
 				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -178,12 +178,13 @@ ul {
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
 
-					<c:if test="${mno eq vo.mno }">
+					<c:if test="${mno eq pageVO.mno}">
 						<ul id="context_ul">
 							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
+						</ul>
 					</c:if>
 
-						</ul>
+						
 					</div>
 					
 
@@ -196,19 +197,19 @@ ul {
 			<div
 				style="display: block; width: 1026px; height: 260px; margin: auto; vertical-align: center; text-align: center; padding-top: 30px">
 				<div>
-					<input type="text" Class="personal" value="${vo.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
-					<input type="text" Class="personal" value="${vo.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${pageVO.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
+					<input type="text" Class="personal" value="${pageVO.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 				<div>
-					<input type="text" Class="personal" value="${vo.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
-					<input type="text" Class="personal" value="${vo.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${pageVO.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-image: url('../resources/theme/images/slide5.jpg');/* background-color: #F19A0D; */ color: white; font-weight: bold; font-size: 25px">${vo.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-image: url('../resources/theme/images/slide5.jpg');/* background-color: #F19A0D; */ color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
 				</textarea>
 					
 			</div>
 			
-			<c:if test="${mno eq vo.mno }">
+			<c:if test="${mno eq pageVO.mno }">
 				<div>
 					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
 					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
@@ -244,6 +245,10 @@ ul {
 				src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	
 	<script>
+	var dddd = '${pageVO.mno}';
+	var aa = '<%=(String)session.getAttribute("mno")%>';
+	console.log("로그인:"+aa);
+	console.log(dddd);
 	
 		$(document).ready(function() {
 			
