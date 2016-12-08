@@ -3,9 +3,13 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -21,15 +25,17 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+	
+	<!-- Multipart를 받기 위한 리졸버 추가 -->
+	<beans:bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
+	
+	
 	<!-- 인터셉터 클래스를 스프링 프레임워크에 bean으로 등록 -->
 	<beans:bean id="loginInterceptor" class="edu.spring.project03.interceptor.LoginInterceptor"></beans:bean>
 	<beans:bean id="authInterceptor" class="edu.spring.project03.interceptor.AuthInterceptor"></beans:bean>
-		
-	<!-- Multipart를 받기 위한 리졸버 추가 -->
-	<beans:bean id="multipartResolver"
-		class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>	
-		
-		
+			
 	<!-- 인터셉터를 요청(request)에 매핑 -->
 	<interceptors>
 		<interceptor>
@@ -48,10 +54,7 @@
 	<context:component-scan base-package="edu.spring.project03" />
 	<context:component-scan base-package="edu.spring.project03.controller" />
 	
-	<!-- 삭제 가능할듯.. 일단 컨트롤러 없는거.. 하... -->
 	<context:component-scan base-package="edu.spring.project03.service" />
-	
-	
-	
+	<!-- service component가 왜 servlet-context에 있어야 되는지 이유를 알려주세요... by 대호 -->	
 	
 </beans:beans>
