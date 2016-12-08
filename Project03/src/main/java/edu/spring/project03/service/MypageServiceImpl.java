@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
+import edu.spring.project03.domain.ReviewRegionVO;
+import edu.spring.project03.domain.ReviewVO;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.persistence.MypageDAO;
 
@@ -63,6 +65,27 @@ public class MypageServiceImpl implements MypageService {
 	public int update_profile(PersonalVO vo) {
 	
 		return mypageDAO.updateProfile(vo);
+	}
+	
+	// 후기 게시글 
+	@Override
+	public List<ImgVO> read_review_mno(int mno) {
+
+		return mypageDAO.select_review_mno(mno);
+	}
+	
+	// 후기 게시글 타이틀
+	@Override
+	public List<ReviewVO> read_review_title(int mno) {
+	
+		return mypageDAO.select_review_title(mno);
+	}
+	
+	// 후기 게시르 지역
+	@Override
+	public List<ReviewRegionVO> read_review_region(int mno) {
+	
+		return mypageDAO.select_review_region(mno);
 	}
 
 }
