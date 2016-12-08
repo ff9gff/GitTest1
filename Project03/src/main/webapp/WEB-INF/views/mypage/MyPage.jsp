@@ -377,7 +377,7 @@ ul {
 			function getThumnails_By_Review() {
 				
 				// 선택한 게시물 리스트
-				ReivewList = [];
+				ReviewList = [];
 				// wm_review 리스트(제목)
 				titleList = [];
 				// wm_review_region 리스트(지역)
@@ -389,7 +389,7 @@ ul {
 					
 					$(data2).each(function() {
 						alert("reviewlist 출력")	
-						ReivewList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						ReviewList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 						
 						var urltitle = '/project03/mypage/MyPage/reviewtitle/' + ${mno};
 						$.getJSON(urltitle, function(datatitle) {
@@ -410,7 +410,7 @@ ul {
 									regionList.push({region_name: tagname, review_no: this.review_no});	
 								});
 							
-								for (var i = 0; i < ReivewList.length; i++) {
+								for (var i = 0; i < ReviewList.length; i++) {
 									for (var j = 0; j < titleList.length; j++) {
 										if (ReviewList[i].content_no == titleList[j].review_no) {
 											ReviewList[i].tour = titleList[j].title;
