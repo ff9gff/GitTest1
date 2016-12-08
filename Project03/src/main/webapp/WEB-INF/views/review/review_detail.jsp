@@ -1340,12 +1340,14 @@ $('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img
 
 var review_region_name = '${inserterRegion}';
 $(function(){
-		var mno_region = review_region_name.split(",");
+	var mno_region = review_region_name.split(",");
 	for(var i=0; i<mno_region.length; i++){
 		review_region+='#'+mno_region[i]+" ";
 	}
+	
+	var hits = ${reviewVO.hits};
 
-	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/* +dateArray1[0]+" ~ "+dateArray2[0] */);
+	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수: " + hits);
 });
 
 $('#updateButton').click(function() {

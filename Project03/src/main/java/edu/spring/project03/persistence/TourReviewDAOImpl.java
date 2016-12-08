@@ -284,4 +284,16 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 		
 	}
 
+	@Override
+	public int select_current_review_hits(int review_no) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(NAMESPACE + ".select_current_review_hits", review_no);
+	}
+
+	@Override
+	public int update_review_hits(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(NAMESPACE + ".update_review_hits", vo);
+	}
+
 } // end class TourReviewDAOImpl

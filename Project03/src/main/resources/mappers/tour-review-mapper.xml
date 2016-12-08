@@ -157,6 +157,16 @@
 	</select>
 	
 	
+	<!-- 후기 게시판 현재 조회수 -->
+	<select id="select_current_review_hits" resultType="Integer">
+		select hits from wm_review where review_no = #{review_no}
+	</select>
+	<!-- 후기 게시판 업데이트 후 조회수 -->
+	<update id="update_review_hits">
+		update wm_review
+		set hits = #{hits}
+		where review_no = #{review_no}
+	</update>
 
     
 </mapper>

@@ -233,6 +233,18 @@ public class TourReviewServiceImpl implements TourReviewService {
 		return tourReviewDAO.select_review_by_nickname(region_name, nickname);
 	}
 
+	@Override
+	public int read_current_review_hits(int review_no) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.select_current_review_hits(review_no);
+	}
+
+	@Override
+	public int update_review_hits(ReviewVO vo) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.update_review_hits(vo);
+	}
+
 
 	
 	

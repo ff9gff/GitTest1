@@ -97,19 +97,38 @@ public class TourReviewController {
 					logger.info("후기 지역 등록 성공");
 
 					model.addAttribute("reviewregionvo", reviewRegionvo2);
+					
 
-					ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-					int image_result = tourReviewService.createThumnail(imagevo);
+					if (fileInfo.getFileName().length() < 40) {
+						logger.info("후기 기본 썸네일 등록할거임 아직 테스트 ㄴㄴ");
+						
+						ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + "default-profile.jpg");
+						int result2 = tourReviewService.createThumnail(imagevo);
+						if (result2 == 1) {
+							logger.info("후기 기본 썸네일 등록 성공");
+						} else {
+							logger.info("후기 기본 썸네일 등록 실패");
+						}
 
-					if (image_result == 1) {
-						logger.info("썸네일 등록 성공");
-
-						model.addAttribute("imagevo", imagevo);
-						logger.info("imagevo 주소 : " + imagevo);
 					} else {
 
-						logger.info("썸네일 등록 실패");
-					} // end if(image_result == 1)
+						ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+						int image_result = tourReviewService.createThumnail(imagevo);
+	
+						if (image_result == 1) {
+							logger.info("후기 썸네일 직접 등록 성공");
+	
+							model.addAttribute("imagevo", imagevo);
+							logger.info("imagevo 주소 : " + imagevo);
+						} else {
+	
+							logger.info("후기 썸네일 직접 등록 실패");
+						} // end if(image_result == 1)
+						
+					}
+					
+					// 이 부분에서 조회수(좋아요) 테이블에도 후기 게시글 번호를 입력해준다! 
+					
 
 				} else {
 					logger.info("후기 지역 등록 실패");
@@ -129,6 +148,27 @@ public class TourReviewController {
 		// DAO 통해서 view 테이블 불러오게..
 		logger.info("reviewDetail() 호출...");
 		logger.info("review_no : " + review_no);
+		
+		// 클릭할 때마다 조회수 + 1
+		int currentHit = tourReviewService.read_current_review_hits(review_no);
+		logger.info("조회수  : " + currentHit);
+
+		
+		// 업데이트 할 조회수 = 현재 조회수 + 1
+		currentHit =  currentHit + 1;
+		logger.info("업데이트 조회수  : " + currentHit);
+		
+		// 조회수 업데이트!
+		ReviewVO updatehitvo = new ReviewVO(review_no, null, null, 0, 0, currentHit, null);
+		
+		int updatehitResult = tourReviewService.update_review_hits(updatehitvo);
+		
+		if (updatehitResult == 1) {
+			logger.info("업데이트 조회수  : " + currentHit);
+		} else {
+			logger.info("조회수 업데이트 실패");
+		}
+		
 
 		ReviewVO reviewvo = tourReviewService.read_review_by_no(review_no);
 
