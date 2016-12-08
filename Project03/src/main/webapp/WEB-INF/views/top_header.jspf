@@ -43,7 +43,7 @@ $('#btnMemberRegister').click(function() {
 });
 
 $('#btnLogin').click(function() {
-	location = '/project03/member/login';
+	location = '/project03/member/login?url=' + location.href;
 });
 
 $('#btnAdministrator').click(function() {
