@@ -1260,6 +1260,7 @@ $('#context_profile').on('click','.btn_context',function(){
 $('#profile_button2').click(function(){
 	var amno = $('#profile_mno').val();
 	var url = '/project03/mypage/UserPage/'+amno;
+	
 	location.href  = url;
 });
 
