@@ -1249,7 +1249,6 @@ $('#context_profile').on('click','.btn_context',function(){
 		$('#profile_nickname').text(anick);
 		$('#profile_introduce').text(intro);
 	} */
-
 	
 	$('#overlay, #profilemenu').show();
 
@@ -1295,7 +1294,7 @@ $('#context_msg').on('click','.btn_context',function(){
 });
 
 
-// 날짜 계산
+// 날짜 계산 ㅎㅎ
 /* var date1 = $('#start_date').val();
 var date2 = $('#end_date').val();
 
