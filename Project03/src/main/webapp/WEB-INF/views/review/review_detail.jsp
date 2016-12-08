@@ -1356,9 +1356,10 @@ $(function(){
 	}
 	
 	var hits = ${reviewVO.hits};
+	var countofbest = ${reviewVO.countofbest};
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region);
-	$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ');
+	$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ' + countofbest);
 });
 
 $('#updateButton').click(function() {
