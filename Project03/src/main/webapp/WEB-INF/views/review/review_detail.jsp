@@ -1381,7 +1381,7 @@ $('#likeButton').click(function() {
 	var review_no = ${reviewVO.review_no};
 	
 	alert('따봉!');
-	location = '../review/likeCheck/' + review_no + '/' + mno;
+	location = 'likeCheck/' + review_no + '/' + mno;
 });
 
 

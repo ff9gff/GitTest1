@@ -174,7 +174,7 @@
 	</select>
 	
 	<insert id="insertReviewLike">
-		insert into wm_best (mno, review_no) values (#{mno}, #{review_no})
+		insert into wm_best (mno, review_no, state) values (#{mno}, #{review_no}, 1)
 	</insert>
 	
 	<delete id="deleteReviewLike">

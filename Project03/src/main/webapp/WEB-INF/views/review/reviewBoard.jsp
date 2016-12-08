@@ -345,8 +345,7 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no});	
-					
+					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits});			
 				});
 				getAllThumnail_Nickname_REVIEW()
 				
@@ -384,14 +383,14 @@ http://www.templatemo.com/tm-406-flex
 			var list = '';
 			
 			for(var i = 0; i < SelectSearchReview.length; i++){
-
+		
 				list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<a href="../review/review_detail?review_no=' + SelectSearchReview[i].review_no + '">'
 						+ '<div class="portfolio-thumb">'
 								+'<img src="../' + SelectSearchReview[i].img_url + '" class="img_view" width="300" height="240"><br/>'
 						+ '</div>'
 						+ '<div class="tour_title">' + SelectSearchReview[i].title + '</div>'
-						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '</div>'	
+						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits +  '&nbsp;&nbsp;</p></div>'
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+'</a>'
 						+ '</div>';

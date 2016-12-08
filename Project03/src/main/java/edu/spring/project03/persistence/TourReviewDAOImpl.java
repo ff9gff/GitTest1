@@ -301,21 +301,25 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 	@Override
 	public int selectReviewLike(int review_no, int mno) {
 		// TODO Auto-generated method stub
-		return 0;
+		logger.info("리뷰 번호: " + review_no);
+		BestVO vo = new BestVO(mno, review_no, 0);
+		return sqlSession.selectOne(NAMESPACE + ".selectReviewLike", vo);
 	}
 
 	// 따봉 추가
 	@Override
 	public int insertReviewLike(int review_no, int mno) {
 		// TODO Auto-generated method stub
-		return 0;
+		BestVO vo = new BestVO(mno, review_no, 1);
+		return sqlSession.insert(NAMESPACE + ".insertReviewLike", vo);
 	}
 	
 	// 따봉 삭제 
 	@Override
 	public int deleteReviewLike(int review_no, int mno) {
+		BestVO vo = new BestVO(mno, review_no, 0);
 		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete(NAMESPACE + ".deleteReviewLike", vo);
 	}
 
 } // end class TourReviewDAOImpl
