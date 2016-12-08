@@ -5,6 +5,9 @@ import java.util.List;
 import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.domain.MsgDTO;
+import edu.spring.project03.pageutil.MsgPaginationCriteria;
+import edu.spring.project03.pageutil.MyUserPaginationCriteria;
 
 public interface AdminDAO {
 
@@ -57,6 +60,7 @@ public interface AdminDAO {
 	//admin  has active users
 	public abstract int cntAllMyUser();
 	
-	
+	//페이징 처리를 위한 
+	public abstract List<DomainDTO> domainAllUserLeb1T(MyUserPaginationCriteria x);
 
 }

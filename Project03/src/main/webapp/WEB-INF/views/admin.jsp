@@ -206,15 +206,6 @@
       
       
       
-      
-      
-      
-      
-      
-      
-      
-      
-      
       // 실시간 시간 보내는  모습입니다. 
        setInterval("dpTime()",1000);
           function dpTime(){

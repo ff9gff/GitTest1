@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -27,6 +27,13 @@
 #selectOption {
 	padding-left: 655px
 }
+
+table, th, td {
+   border: 1px solid #e65b05;
+   border-collapse: collapse;
+   text-align: center;
+   vertical-align: middle;
+ }
 </style>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
@@ -37,7 +44,7 @@
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;�����ڴ� �ȳ��ϼ���</h1>
+			<h1>&nbsp;관리자님 안녕하세요</h1>
 			<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
@@ -47,26 +54,26 @@
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">���Խ���</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">��������</a>
+				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
 				</li>
 	
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">��������</a>
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
 				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">���� ���</a></li>
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">Ȩ(����)</a>
+				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">��ü ����</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">������ ����</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="../index">����</a>
+					<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
 				</li>
 
 
@@ -80,7 +87,8 @@
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form id="pageForm">
 			<table id="checkboxTestTbl" >
-				<caption>��ü ���� ���� Ȯ��     (�����ο� : ${ cntUsers} ��)     </caption>
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
+
 				<colgroup>
 					
 					<col width="100px">
@@ -93,19 +101,19 @@
 	
 				<tr>
 					
-					<th>���� ��ȣ</th>
-					<th>���� ���̵�</th>
-					<th>���� �г���</th>
-					<th>���� ����ó</th>
-					<th>���� �̸���</th>
-					<th>���� ���Գ�¥</th>
+					<th>유저 번호</th>
+					<th>유저 아이디</th>
+					<th>유저 닉네임</th>
+					<th>유저 연락처</th>
+					<th>유저 이메일</th>
+					<th>유저 가입날짜</th>
 				</tr>
 
 			
 			
 
-					<c:forEach var="vo" items="${newMemberList}">
-				
+					 <c:forEach var="vo" items="${listPage}">
+					
 					<tr class= "select0">
 						
 						<td>${vo.mno }</td>
@@ -119,18 +127,48 @@
         					</td>
 			
 					</tr>
-
-
+		
 						</c:forEach>
 
 			</table>
   
-					</form>
-		</section>
+</form>
+
+
+		<br/>
+<ul class="pageLinks">
+    <c:if test="${pageMaker.hasPrev }">
+    <li><a href="${pageMaker.startPageNum - 1 }">&laquo;이전</a></li>
+    </c:if>
+    
+    <c:forEach begin="${pageMaker.startPageNum }"
+        end="${pageMaker.endPageNum }"
+        var="num">
+    <li><a href="${num }">${num }</a></li>
+    </c:forEach>
+    
+    <c:if test="${pageMaker.hasNext }">
+    <li><a href="${pageMaker.endPageNum + 1 }">다음&raquo;</a></li>
+    </c:if>
+    
+</ul>			
+<%-- 현재 페이지, 페이지 당 보여줄 게시글 개수를 서버로 보내주기 위해서,
+사용자에게는 보이지 않지만, 서버로 보낼 정보를 양식 데이터로 저장하는 form --%>
+<form id="pageForm2">
+    <input type="hidden" name="bno" />
+    <input type="hidden" name="page" 
+        value="${pageMaker.myUcriteria.page }" />
+    <input type="hidden" name="perPage"
+        value="${pageMaker.myUcriteria.perPage }" />
+</form>			
+					
+					
+					
+</section>
 
 	</div>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 
 setInterval("dpTime()",1000);
@@ -142,9 +180,9 @@ function dpTime(){
 
     if (hours > 12){
         hours -= 12;
-    ampm = "���� ";
+    ampm = "오후 ";
     }else{
-        ampm = "���� ";
+        ampm = "오전 ";
     }
     if (hours < 10){
         hours = "0" + hours;
@@ -159,30 +197,27 @@ document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":"
 };
 
 
-/*
-	var frm = $('#pageForm');
-	
-    // table ���� tr ���� td ���� a �±� click Ŀ���͸���¡
-    $('table tr td a').click(function() {
-    	//event.preventDefault();
-    	//var bno = $(this).attr('href');
-    	
-    	
-    	//frm.find('[name="bno"]').val(bno);
-    	//frm.attr('action', 'detail');
-    	//frm.attr('method', 'get');
-    	//frm.submit();
-    });
-
-*/
 
 
 
 
 
+var frm = $('#pageForm2');
 
-
-
+$('.pageLinks li a').click(function() {
+	alert('하이');
+	event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
+	// pageForm 안에 있는 name="page"인 요소를 찾아서
+	// 이동할 페이지 번호를 세팅
+	var targetPage = $(this).attr('href');
+	frm.find('[name="page"]').val(targetPage);
+	// 페이징 화면으로 보내기 위한 action 정보
+	frm.attr('action', 'AllMyUser');
+	// 페이징 화면을 처리하는 Controller의 method(요청 처리 방식)
+	frm.attr('method', 'get');
+	// 폼 양식을 서버로 전송
+	frm.submit();
+});
 
 
 

@@ -408,15 +408,20 @@ public class TourRegisterController {
 					logger.info("장소 수정 성공");
 
 					ImageFile fileInfo = imageService.save(imageFile);
-
-					ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0,
-							SAVE_IMAGE_DIR + fileInfo.getFileName());
-					int result3 = tourRegisterService.updateThumnail(imgvo);
-
-					if (result3 == 1) {
-						logger.info("썸네일 수정 성공");
+					
+					if (fileInfo.getFileName().length() < 40) {
+						logger.info("썸네일 수정 안할겁니다");
 					} else {
-						logger.info("썸네일 수정 실패");
+
+						ImgVO imgvo = new ImgVO(TourRegisterID, vo1.getTrip_no(), 0,
+								SAVE_IMAGE_DIR + fileInfo.getFileName());
+						int result3 = tourRegisterService.updateThumnail(imgvo);
+	
+						if (result3 == 1) {
+							logger.info("새로운 여행 썸네일 수정 성공");
+						} else {
+							logger.info("새로운 여행 썸네일 수정 실패");
+						}
 					}
 				} else {
 					logger.info("장소 수정 실패");

@@ -84,6 +84,9 @@ public interface TourReviewService {
 
 	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
+	public abstract int read_current_review_hits(int review_no);
+	public abstract int update_review_hits(ReviewVO vo);
+	
 	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname);
 
 } // end interface TourReviewService

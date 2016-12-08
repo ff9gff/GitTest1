@@ -18,6 +18,9 @@ import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 
 import edu.spring.project03.domain.MsgVO;
+import edu.spring.project03.pageutil.MyUserPaginationCriteria;
+import edu.spring.project03.pageutil.PageMaker;
+import edu.spring.project03.pageutil.PageMakerMyUser;
 import edu.spring.project03.service.AdminService;
 import edu.spring.project03.service.SearchUserService;
 
@@ -103,7 +106,7 @@ public class AdminController {
 	
 	
 	@RequestMapping(value="/AllMyUser" ,method=RequestMethod.GET)
-	public void AllMyUser(Model model){
+	public void AllMyUser(Model model,Integer page){
 		
 		//여기서 세팅을 한다. 
 		//AllMyUser로 보내기 
@@ -113,7 +116,29 @@ public class AdminController {
 		logger.info("All 나의 활동 유저 페이지로 가자 소환 ");
 		model.addAttribute("newMemberList", list2);
 		model.addAttribute("cntUsers" , cntUsers);
-	}
+		
+		
+		MyUserPaginationCriteria x = new MyUserPaginationCriteria();
+		
+		
+		if(page !=null){//요청 파라미터에 현재 페이지 정보가 있는 경우 
+			x.setPage(page);
+			
+		}
+		List<DomainDTO> listPage = adminService.pagingAllMyUser(x);
+		PageMakerMyUser maker = new PageMakerMyUser();
+		
+		maker.setMyUcriteria(x);
+		
+		
+		maker.setTotalCount(cntUsers);
+		maker.setPageData();
+		model.addAttribute("pageMaker", maker);
+		model.addAttribute("listPage",listPage);
+		
+		
+		
+	}//
 	
 	@RequestMapping(value="/AllMySubAdmin" ,method=RequestMethod.GET)
 	public void AllMySubAdmin(Model model){

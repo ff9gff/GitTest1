@@ -37,7 +37,7 @@
 }
 
 .portfolio-thumb{
-	width: 297	px;
+	width: 297.5px;
 	height: 240px;
 	vertical-align: middle;
 	margin-bottom: 5px;
@@ -71,7 +71,13 @@
 	margin-left: 10px;
 	font-family:monospace
 }
-
+.tour_hist{
+ display: inline-block;
+ font-size: 10px;
+ font-weight: normal;
+ color: #878484;
+ float: right;
+}
 
 
 </style>
@@ -98,9 +104,15 @@
 									<li class="active"><a href="#">메인</a></li>
 									<li><a href="#services">후기</a></li>
 									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="mypage/MyPage">마이페이지</a></li>
-									<li><a href="admin/admin">관리자</a></li>
-									<li><a href="member/login">로그인</a></li>
+									<c:if test="${not empty mno}">
+										<li><a href="mypage/MyPage">마이페이지</a></li>
+									</c:if>
+									<c:if test="${authority eq 3}">
+										<li><a href="admin/admin">관리자</a></li>
+									</c:if>
+									<c:if test="${empty mno}">
+										<li><a href="member/login">로그인</a></li>
+									</c:if>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -121,8 +133,8 @@
 						<li>
 							<div class="overlay"></div> <img
 							src="resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>같이가자</h2>
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
 						</li>
 						<li>
@@ -260,13 +272,13 @@
 			var url1 = '/project03/review/Topdefaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					TopReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+					TopReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
 				});
 				
 				var url2 = '/project03/review/Topdefaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						TopReviewTitle.push({review_no: this.review_no, title: this.title});	
+						TopReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
 					});
 					console.log(TopReviewTitle);
 					
@@ -286,6 +298,8 @@
 							for (var j = 0; j < TopReviewTitle.length; j++) {
 								if (TopReviewImage[i].content_no == TopReviewTitle[j].review_no) {
 									TopReviewImage[i].tour = TopReviewTitle[j].title;
+									TopReviewImage[i].hits = TopReviewTitle[j].hits;
+									
 								} 
 								for (var k = 0; k < TopReviewRegion.length; k++) {
 									if (TopReviewImage[i].content_no == TopReviewRegion[k].review_no) {
@@ -317,13 +331,13 @@
 			var url1 = '/project03/review/defaultimage';
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
-					RecentReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+					RecentReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
 				});
 				
 				var url2 = '/project03/review/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						RecentReviewTitle.push({review_no: this.review_no, title: this.title});	
+						RecentReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
 					});
 					console.log(RecentReviewTitle);
 					
@@ -343,6 +357,8 @@
 							for (var j = 0; j < RecentReviewTitle.length; j++) {
 								if (RecentReviewImage[i].content_no == RecentReviewTitle[j].review_no) {
 									RecentReviewImage[i].tour = RecentReviewTitle[j].title;
+									RecentReviewImage[i].hits = RecentReviewTitle[j].hits;
+
 								} 
 								for (var k = 0; k < RecentReviewRegion.length; k++) {
 									if (RecentReviewImage[i].content_no == RecentReviewRegion[k].review_no) {
@@ -438,9 +454,23 @@
 						+ '<a href="review/review_detail?review_no=' + TopReviewImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
 								+'<img src="' + TopReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
-							+ '</div>'
+								+'<div style="position: absolute; height:40px; z-index:100; top:0; left:0;">';
+										switch(i){
+											case 0: list+='<img src="resources/theme/images/king_review.png" style="display: inline-block;z-index:100; width:80px; height:80px;">';
+												break;
+											case 1: list+='<p id="condition_age">2</p>';
+												break;
+											case 2: list+='<p id="condition_age">3</p>';
+												break;
+											case 3: list+='<p id="condition_age">4</p>';
+												break;
+											default: break;
+										}	
+								
+								
+							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
-							+ '<div class="tour_region">' + TopReviewImage[i].city + '</div>'	
+							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
 							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+'</a>'
 						+ '</div>';
@@ -470,7 +500,7 @@
 							+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
 						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
-						+ '<div class="tour_region">' + RecentReviewImage[i].city + '</div>'	
+						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;&nbsp;</p></div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						
 						+'</a>'
@@ -500,7 +530,7 @@
 						+ '<a href="tour/detail?trip_no=' + TourImage[i].content_no + '">'
 							+ '<div class="portfolio-thumb">'
 							
-								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 297px; height:240px; z-index:99;">'
+								+'<img src="' + TourImage[i].img_url + '" id="img_tour" style="position: absolute; width: 297.5px; height:240px; z-index:99;">'
 								+'<div style="position: absolute; height:40px; z-index:100; bottom:0; right:0;">';
 									switch(TourImage[i].condition_sex){
 										case 0: list+='<img src="resources/theme/images/main_female.png" style="display: inline-block;z-index:100; width:40px; height:40px;">';

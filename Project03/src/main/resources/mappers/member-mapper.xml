@@ -181,7 +181,7 @@ where MSG_NO= #{mno}
 	) a 
 	where rn between #{start} and #{end}
     
-    
+
     
     </select>
     

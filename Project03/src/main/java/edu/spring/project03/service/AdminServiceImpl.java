@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.spring.project03.domain.AdminMsgDTO;
 import edu.spring.project03.domain.DomainDTO;
 import edu.spring.project03.domain.MemberVO;
+import edu.spring.project03.pageutil.MyUserPaginationCriteria;
 import edu.spring.project03.persistence.AdminDAO;
 
 @Service
@@ -134,6 +135,13 @@ public class AdminServiceImpl implements AdminService{
 	public int cntAllMyUser() {
 		
 		return aDao.cntAllMyUser();
+	}
+
+
+	@Override
+	public List<DomainDTO> pagingAllMyUser(MyUserPaginationCriteria x) {
+		
+		return aDao.domainAllUserLeb1T(x);
 	}
 	
 	

@@ -79,6 +79,12 @@ public interface TourReviewDAO {
 	public abstract List<NickReviewSearchResultDTO> select_review_by_nickname(String region_name, String nickname);
 	
 	
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	public abstract int select_current_review_hits(int review_no);
+	public abstract int update_review_hits(ReviewVO vo);
+
+	
 	/**
 	 * BestVO 
 	 */	

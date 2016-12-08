@@ -104,7 +104,7 @@ table, th, td {
 	
 	
 	<table id="msgAdminMSG" >
-		<caption style="border-top:  1px solid gray; border-left:  1px solid gray; border-right:  1px solid gray; background-color: lightgray">관리자 지난 공지함 </caption>
+		<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 지난 공지함 </caption>
 		<colgroup>
 		<col width="20px">
 		<col width="40px">

@@ -94,9 +94,11 @@
 	<select id="select_ReviewInfo_by_review_no" resultType="edu.spring.project03.domain.ReviewVO">
 		select * from wm_review where review_no = #{review_no}
 	</select>
+	
 	<select id="select_ReviewRegionInfo_by_review_no" resultType="edu.spring.project03.domain.ReviewRegionVO">
 		select * from wm_review_region where review_no = #{review_no}
 	</select>
+	
 	<select id="select_ReviewMainImage_by_review_no" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image where board_type = 2 and content_no = #{review_no}
 	</select>
@@ -155,6 +157,16 @@
 	</select>
 	
 	
+	<!-- 후기 게시판 현재 조회수 -->
+	<select id="select_current_review_hits" resultType="Integer">
+		select hits from wm_review where review_no = #{review_no}
+	</select>
+	<!-- 후기 게시판 업데이트 후 조회수 -->
+	<update id="update_review_hits">
+		update wm_review
+		set hits = #{hits}
+		where review_no = #{review_no}
+	</update>
 
     
 </mapper>

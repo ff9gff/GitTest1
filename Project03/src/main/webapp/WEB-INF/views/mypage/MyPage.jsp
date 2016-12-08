@@ -156,14 +156,14 @@ ul {
 
 
 
-	<header style="background-color: #F79F12; height: 60px">
+	<header style="background-image: url('../resources/theme/images/slide5.jpg'); height: 70px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
 		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-color: #F79F12; height: 520px;">
+		<div style="background-image: url('../resources/theme/images/slide5.jpg'); height: 520px;">
 			<div
 				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -197,20 +197,21 @@ ul {
 				style="display: block; width: 1026px; height: 260px; margin: auto; vertical-align: center; text-align: center; padding-top: 30px">
 				<div>
 					<input type="text" Class="personal" value="${vo.nickname }" readonly="readonly" style="background-color: transparent; color: white; font-size: 20px; font-weight: bold; text-align: center;" /> 
-					<input type="text" Class="personal" value="${vo.age }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<input type="text" Class="personal" value="${vo.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 				<div>
 					<input type="text" Class="personal" value="${vo.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 					<input type="text" Class="personal" value="${vo.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${vo.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-image: url('../resources/theme/images/slide5.jpg');/* background-color: #F19A0D; */ color: white; font-weight: bold; font-size: 25px">${vo.introduce }
 				</textarea>
 					
 			</div>
 			
 			<c:if test="${mno eq vo.mno }">
 				<div>
-				 <input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent;" /><br />	
+					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
+					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
 				</div>
 			</c:if>
 			
@@ -536,6 +537,9 @@ ul {
 				location = 'updatePersonal/' + mno;
 			});
 			
+			$('#goHome').click(function() {
+				location = '../index';
+			});
 			
 			
 			

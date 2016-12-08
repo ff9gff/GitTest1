@@ -97,19 +97,38 @@ public class TourReviewController {
 					logger.info("후기 지역 등록 성공");
 
 					model.addAttribute("reviewregionvo", reviewRegionvo2);
+					
 
-					ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
-					int image_result = tourReviewService.createThumnail(imagevo);
+					if (fileInfo.getFileName().length() < 40) {
+						logger.info("후기 기본 썸네일 등록할거임 아직 테스트 ㄴㄴ");
+						
+						ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + "default-profile.jpg");
+						int result2 = tourReviewService.createThumnail(imagevo);
+						if (result2 == 1) {
+							logger.info("후기 기본 썸네일 등록 성공");
+						} else {
+							logger.info("후기 기본 썸네일 등록 실패");
+						}
 
-					if (image_result == 1) {
-						logger.info("썸네일 등록 성공");
-
-						model.addAttribute("imagevo", imagevo);
-						logger.info("imagevo 주소 : " + imagevo);
 					} else {
 
-						logger.info("썸네일 등록 실패");
-					} // end if(image_result == 1)
+						ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+						int image_result = tourReviewService.createThumnail(imagevo);
+	
+						if (image_result == 1) {
+							logger.info("후기 썸네일 직접 등록 성공");
+	
+							model.addAttribute("imagevo", imagevo);
+							logger.info("imagevo 주소 : " + imagevo);
+						} else {
+	
+							logger.info("후기 썸네일 직접 등록 실패");
+						} // end if(image_result == 1)
+						
+					}
+					
+					// 이 부분에서 조회수(좋아요) 테이블에도 후기 게시글 번호를 입력해준다! 
+					
 
 				} else {
 					logger.info("후기 지역 등록 실패");
@@ -129,6 +148,27 @@ public class TourReviewController {
 		// DAO 통해서 view 테이블 불러오게..
 		logger.info("reviewDetail() 호출...");
 		logger.info("review_no : " + review_no);
+		
+		// 클릭할 때마다 조회수 + 1
+		int currentHit = tourReviewService.read_current_review_hits(review_no);
+		logger.info("조회수  : " + currentHit);
+
+		
+		// 업데이트 할 조회수 = 현재 조회수 + 1
+		currentHit =  currentHit + 1;
+		logger.info("업데이트 조회수  : " + currentHit);
+		
+		// 조회수 업데이트!
+		ReviewVO updatehitvo = new ReviewVO(review_no, null, null, 0, 0, currentHit, null);
+		
+		int updatehitResult = tourReviewService.update_review_hits(updatehitvo);
+		
+		if (updatehitResult == 1) {
+			logger.info("업데이트 조회수  : " + currentHit);
+		} else {
+			logger.info("조회수 업데이트 실패");
+		}
+		
 
 		ReviewVO reviewvo = tourReviewService.read_review_by_no(review_no);
 
@@ -203,11 +243,14 @@ public class TourReviewController {
 	
 	@RequestMapping(value="/review_update_pre", method = RequestMethod.POST)
 	public String reviewUpdatePre(int review_no, Model model) {
-		logger.info("여행 번호: " + review_no);
+		logger.info("리뷰 번호 번호 : " + review_no);
 		
 		ReviewVO reviewvo = tourReviewService.readReviewInfo(review_no);
+		logger.info("ReviewVO : " + reviewvo);
 		ReviewRegionVO reviewRegionvo = tourReviewService.readReviewRegionInfo(review_no);
+		logger.info("ReviewRegionVO : " + reviewRegionvo);
 		ImgVO imgvo = tourReviewService.readReviewMainImage(review_no);
+		logger.info("ImgVO : " + imgvo);
 		
 		if(reviewvo != null && reviewRegionvo != null && imgvo != null) {
 			logger.info("수정하기 위한 검색 작업 완료...");
@@ -225,7 +268,7 @@ public class TourReviewController {
 	@RequestMapping(value="/review_update_suf", method = RequestMethod.POST)
 	public String reviewUpdateSuf(ReviewVO reviewvo, ReviewRegionVO reviewRegionvo, ImgVO imgvo, @RequestParam MultipartFile imageFile) {
 		
-		if(reviewvo != null && reviewRegionvo != null && imgvo != null){
+		if(reviewvo != null && reviewRegionvo != null){
 			logger.info("vo 값 읽기 성공");
 			
 			int review_result = tourReviewService.updateReview(reviewvo);
@@ -237,14 +280,20 @@ public class TourReviewController {
 					logger.info("후기 지역 수정 성공");
 					
 					ImageFile fileInfo = imageService.save(imageFile);
-					ImgVO imagevo = new ImgVO(ReviewRegisterID, reviewvo.getReview_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
 					
-					int image_result = tourReviewService.updateThumnail(imagevo);
-					if(image_result == 1) {
-						logger.info("썸네일 수정 성공");						
+					if (fileInfo.getFileName().length() < 40) {
+						logger.info("썸네일 수정 안할겁니다");
 					} else {
-						logger.info("썸네일 수정 실패");
-					} // end if(image_result == 1)					
+					
+						ImgVO imagevo = new ImgVO(ReviewRegisterID, reviewvo.getReview_no(), 0, SAVE_IMAGE_DIR + fileInfo.getFileName());
+						
+						int image_result = tourReviewService.updateThumnail(imagevo);
+						if(image_result == 1) {
+							logger.info("새로운 후기 썸네일 수정 성공");						
+						} else {
+							logger.info("새로운 후기 썸네일 수정 실패");
+						} // end if(image_result == 1)			
+					}
 				} else {
 					logger.info("후기 지역 수정 실패");
 				} // end if(reviewregion_result == 1)				
@@ -284,7 +333,7 @@ public class TourReviewController {
 			logger.info("여행 리뷰 삭제 실패");
 		}
 		
-		return null;
+		return "redirect:reviewBoard";
 	} // end reviewDelete(review_no)
 	
 	

@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;°ü¸®ÀÚ´Ô ¾È³çÇÏ¼¼¿ä</h1>
+			<h1>&nbsp;ê´€ë¦¬ìë‹˜ ì•ˆë…•í•˜ì„¸ìš”</h1>
 			<div>&nbsp;</div>
 			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
@@ -50,26 +50,26 @@ table, th, td {
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">°¡ÀÔ½ÂÀÎ</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">ê°€ì…ìŠ¹ì¸</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">°øÁö»çÇ×</a>
+				<li Class="menuItem"><a Class="mylink" href="AdminMsg">ê³µì§€ì‚¬í•­</a>
 				</li>
 
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">Áö³­°øÁö</a>
+			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">ì§€ë‚œê³µì§€</a>
 				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">À¯Àú µî±Ş</a></li>
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">ìœ ì € ë“±ê¸‰</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">È¨(¾ÆÁ÷)</a>
+				<li Class="menuItem"><a Class="mylink" href="SendMsg">í™ˆ(ì•„ì§)</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">ÀüÃ¼ À¯Àú</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser">ì „ì²´ ìœ ì €</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">°ü¸®ÀÚ °ü¸®</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">ê´€ë¦¬ì ê´€ë¦¬</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="../index">¸ŞÀÎ</a>
+				<li Class="menuItem"><a Class="mylink" href="../index">ë©”ì¸</a>
 				</li>
 
 
@@ -83,7 +83,8 @@ table, th, td {
 
 	<form action="">
 		<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid gray; border-left:  1px solid gray; border-right:  1px solid gray; background-color: lightgray">°ü¸®ÀÚ À¯Àú Á¤º¸ È®ÀÎ</caption>
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">ê´€ë¦¬ì ìœ ì € ì •ë³´ í™•ì¸</caption>
+
 				<colgroup>
 					<col width="40px">
 					<col width="100px">
@@ -96,14 +97,14 @@ table, th, td {
 				</colgroup>
 	
 				<tr>
-					<th>¹øÈ£</th>
-					<th>À¯Àú ¹øÈ£</th>
-					<th>À¯Àú ¾ÆÀÌµğ</th>
-					<th>À¯Àú ´Ğ³×ÀÓ</th>
-					<th>À¯Àú ¿¬¶ôÃ³</th>
-					<th>À¯Àú ÀÌ¸ŞÀÏ</th>
-					<th>À¯Àú °¡ÀÔ³¯Â¥</th>
-					<th>±¸ºĞ</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ìœ ì € ë²ˆí˜¸</th>
+					<th>ìœ ì € ì•„ì´ë””</th>
+					<th>ìœ ì € ë‹‰ë„¤ì„</th>
+					<th>ìœ ì € ì—°ë½ì²˜</th>
+					<th>ìœ ì € ì´ë©”ì¼</th>
+					<th>ìœ ì € ê°€ì…ë‚ ì§œ</th>
+					<th>êµ¬ë¶„</th>
 				</tr>
 
 			
@@ -122,7 +123,7 @@ table, th, td {
 	       						 <fmt:formatDate value="${vo.joindate }" 
 	          						  pattern="yyyy-MM-dd HH:mm:ss"/>
         					</td>
-						<td><input type="button" value="ÀÏ¹İÈ¸¿ø" onclick="update('${x}')"></td>
+						<td><input type="button" value="ì¼ë°˜íšŒì›" onclick="update('${x}')"></td>
 					</tr>
 
 
@@ -180,16 +181,16 @@ function update(x){
  function insRow() {
 	  oTbl = document.getElementById("regionTable");
 	  var oRow = oTbl.insertRow();
-	  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - Å¬¸¯ÇÑ RowÀÇ À§Ä¡¸¦ È®ÀÎ;
+	  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - í´ë¦­í•œ Rowì˜ ìœ„ì¹˜ë¥¼ í™•ì¸;
 	  var oCell = oRow.insertCell();
 	  
-	  //»ğÀÔµÉ Form Tag
-	  var frmTag = "<input type=text name=region_name placeholder=Áö¿ª>";
-	  frmTag += " <input type=button value='»èÁ¦' onClick='removeRow()' style='cursor:hand'>";
+	  //ì‚½ì…ë  Form Tag
+	  var frmTag = "<input type=text name=region_name placeholder=ì§€ì—­>";
+	  frmTag += " <input type=button value='ì‚­ì œ' onClick='removeRow()' style='cursor:hand'>";
 	  oCell.innerHTML = frmTag;
 	}
 
-	//Row »èÁ¦
+	//Row ì‚­ì œ
 	function removeRow() {
 	  oTbl.deleteRow(oTbl.clickedRowIndex);
 	}
@@ -205,9 +206,9 @@ function dpTime(){
 
     if (hours > 12){
         hours -= 12;
-    ampm = "¿ÀÈÄ ";
+    ampm = "ì˜¤í›„ ";
     }else{
-        ampm = "¿ÀÀü ";
+        ampm = "ì˜¤ì „ ";
     }
     if (hours < 10){
         hours = "0" + hours;
