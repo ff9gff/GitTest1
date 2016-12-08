@@ -42,8 +42,8 @@
 	width: 302px;
 	margin: 5px;
 	padding: 0;
-	border: 1px solid red;
-	
+	border: 1px solid lightgray;
+	opacity: 0.5;
 }
 
 #dropDownType {
