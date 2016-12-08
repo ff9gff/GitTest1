@@ -167,6 +167,20 @@
 		set hits = #{hits}
 		where review_no = #{review_no}
 	</update>
+	
+	<!-- 따봉 -->
+	<select id="selectReviewLike" resultType="Integer">
+		select state from wm_best where review_no = #{review_no} and mno = #{mno}
+	</select>
+	
+	<insert id="insertReviewLike">
+		insert into wm_best (mno, review_no) values (#{mno}, #{review_no})
+	</insert>
+	
+	<delete id="deleteReviewLike">
+		delete wm_best where review_no = #{review_no} and mno = #{mno}
+	</delete>
+	
 
     
 </mapper>

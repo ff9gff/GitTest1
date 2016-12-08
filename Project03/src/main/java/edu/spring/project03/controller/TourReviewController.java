@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,6 +52,26 @@ public class TourReviewController {
 	public void reviewRegister() {
 		// review_register.jsp 페이지 이동
 	} // end reviewRegister()
+	
+	@RequestMapping(value = "/likeCheck/{review_no}/{mno}", method = RequestMethod.GET)
+	public String likeCheck(@PathVariable("review_no") int review_no, @PathVariable("mno") int mno) {
+		
+		// 먼저 사용자가 게시글에 따봉을 눌렀는지 확인!
+		int selectLike = tourReviewService.readReviewLike(review_no, mno);
+		
+		if (selectLike == 1) {
+			// 이 게시글에 이미 따봉을 눌렀습니다. 따봉의 흔적을 지웁니다
+			int deleteLike = tourReviewService.deleteReviewLike(review_no, mno);
+			
+		} else {
+			// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
+			int deleteLike = tourReviewService.createReviewLike(review_no, mno);
+		}
+		
+		
+		return "redirect:../../review_detail?review_no=" + review_no;
+	} // end reviewRegister()
+	
 
 	
 	// 후기 등록 작업  DB Insert
@@ -335,6 +356,12 @@ public class TourReviewController {
 		
 		return "redirect:reviewBoard";
 	} // end reviewDelete(review_no)
+	
+	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////
+	
+	// 따봉충의 모험
+	
 	
 	
 
