@@ -80,15 +80,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 			session.setAttribute(SESSION_ATTR_AUTHORITY, String.valueOf(result.getAuthority()));
 			logger.info(String.valueOf("Authority : " + result.getAuthority()));
 			
-			String nickname = memberservice.getNickname(result.getMno());
 			
+			String nickname = memberservice.getNickname(result.getMno());			
 			if(nickname != null){
 				session.setAttribute(SESSION_ATTR_NICKNAME, nickname);
 				logger.info("nickname : " + nickname);
-			}
-			
-			
-			
+			}			
 
 			// 기존에 최종 요청 주소(dest)가 있는 경우는 해당 페이지로 이동
 			Object dest = session.getAttribute("dest");
@@ -102,9 +99,9 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
 		} else { // DB에 일치하는 회원 정보가 없는 경우
 			// 세션에 저장하는 정보 없음
 			logger.info("로그인 실패");
-			response.sendRedirect("/project03");
-		}
-
+			response.sendRedirect("/project03/member/login");
+		} // end if (result != null)
+		
 	} // end postHandle()
 
 	@Override

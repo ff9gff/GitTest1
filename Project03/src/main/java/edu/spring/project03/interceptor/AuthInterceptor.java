@@ -15,9 +15,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger= LoggerFactory.getLogger(AuthInterceptor.class);
 	
 	@Override // 컨트롤러 메소드 실행 전에 호출되는 메소드
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {		
 		logger.info("preHandle() 호출!");
 		
 		// 세션에 로그인 정보가 있는지 확인
@@ -31,14 +29,15 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			saveDestination(request);
 
 			// 로그인 화면으로 리다이렉트
-			response.sendRedirect("/login"); 
+			response.sendRedirect("member/login"); 
 			
 			return false; // 컨트롤러 메소드를 실행하지 않음
+			
 		} else { // 로그인한 경우
 			logger.info("로그인 아이디: " + loginId);
 			return true; // 컨트롤러 메소드를 실행함
 		}
-	}
+	} // end preHandle(request, response, handler)
 	
 	private void saveDestination(HttpServletRequest request) {
 		logger.info("saveDestination() 호출");
@@ -61,12 +60,6 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		
 		// 최종 요청 주소(dest)를 세션에 저장
 		request.getSession().setAttribute("dest", dest);
-	}
+	} // end saveDestination()
 	
-}
-
-
-
-
-
-
+} // end class AuthInterceptor
