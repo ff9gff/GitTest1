@@ -28,6 +28,8 @@ import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
 import edu.spring.project03.domain.RegionVO;
+import edu.spring.project03.domain.ReviewRegionVO;
+import edu.spring.project03.domain.ReviewVO;
 import edu.spring.project03.domain.TourRegisterVO;
 import edu.spring.project03.service.ImageService;
 import edu.spring.project03.service.MemberService;
@@ -253,6 +255,85 @@ public class MypageController {
 		// 출력 됨
 		return entity;
 	}
+	
+	
+	// 후기 리스트
+	@RequestMapping(value = "/MyPage/reviewlist/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ImgVO>> ajaxreviewlistTest(@PathVariable("mno") int mno, Model model) {
+
+		logger.info("mno3: " + mno);
+		ResponseEntity<List<ImgVO>> reviewentity = null;
+
+		List<ImgVO> reviewlist = mypageService.read_review_mno(mno);
+		model.addAttribute("reviewlist", reviewlist);
+
+		
+		if (reviewlist != null) {
+			reviewentity = new ResponseEntity<List<ImgVO>>(reviewlist, HttpStatus.OK);
+			logger.info("reviewmno 검색 성공 ");
+		} else {
+			reviewentity = new ResponseEntity<List<ImgVO>>(reviewlist, HttpStatus.BAD_REQUEST);
+			logger.info("reviewmno 검색 실패 ");
+		}
+		
+				
+		logger.info("reviewentity " + reviewentity.getBody());
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return reviewentity;
+	}
+	
+	// mno 검색 Ajax 처리
+	// 해당 mno 이미지 아래 제목 검색 메소드
+	@RequestMapping(value = "/MyPage/reviewtitle/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ReviewVO>> ajaxreviewtitleTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<ReviewVO>> entity = null;
+
+	    List<ReviewVO> list = mypageService.read_review_title(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ReviewVO>>(list, HttpStatus.OK);
+			logger.info("제목 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ReviewVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("제목 전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+	
+	// mno 검색 Ajax 처리
+	// 해당 mno 이미지 아래 지역 검색 메소드
+	@RequestMapping(value = "/MyPage/reviewregion/{mno}", method = RequestMethod.GET)
+	public ResponseEntity<List<ReviewRegionVO>> ajaxreivewregionTest(@PathVariable("mno") int mno) {
+
+		ResponseEntity<List<ReviewRegionVO>> entity = null;
+
+		List<ReviewRegionVO> list = mypageService.read_review_region(mno);
+
+		if (list != null) {
+			// select 성공 한것이다.
+			entity = new ResponseEntity<List<ReviewRegionVO>>(list, HttpStatus.OK);
+			logger.info("지역 전체 검색 성공 ");
+		} else {
+			// select 실패이다.
+			entity = new ResponseEntity<List<ReviewRegionVO>>(list, HttpStatus.BAD_REQUEST);
+			logger.info("지역  전체 검색 실패 ");
+		}
+
+		logger.info("entity " + entity);
+		// logger.info("list.mno "+ list.get(0).getUserid());
+		// 출력 됨
+		return entity;
+	}
+	
+	
 	
 //////////////////////////////프로필 수정 작업 중... 수정하기 위해서 데이터를 검색 후  updatePersonal.jsp로 보내주자/////////////////////////////////////	
 	@RequestMapping(value = "updatePersonal/{mno}", method = RequestMethod.GET)

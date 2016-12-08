@@ -377,7 +377,70 @@ ul {
 					
 				});// end getJSON()
 			
-			};//end of getThumnails()
+			};//end of 
+			
+			
+			function getThumnails_By_Review() {
+				
+				// 선택한 게시물 리스트
+				ReviewList = [];
+				// wm_review 리스트(제목)
+				titleList = [];
+				// wm_review_region 리스트(지역)
+				regionList = [];
+
+								
+				var url2 = '/project03/mypage/MyPage/reviewlist/' + ${mno};
+				$.getJSON(url2, function(data2){
+					
+					$(data2).each(function() {
+						alert("reviewlist 출력")	
+						ReviewList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
+						
+						var urltitle = '/project03/mypage/MyPage/reviewtitle/' + ${mno};
+						$.getJSON(urltitle, function(datatitle) {
+							$(datatitle).each(function() {
+								titleList.push({review_no: this.review_no, title: this.title});
+								
+							});
+							console.log(titleList);
+							
+							var urlregion = '/project03/mypage/MyPage/reviewregion/' + ${mno};
+							$.getJSON(urlregion, function(dataregion) {
+								$(dataregion).each(function() {
+									var name = this.region_name.split(",");
+									var tagname = '';
+									for(var i=0; i<name.length; i++){
+										tagname +="#"+name[i]+" ";
+									}									
+									regionList.push({region_name: tagname, review_no: this.review_no});	
+								});
+							
+								for (var i = 0; i < ReviewList.length; i++) {
+									for (var j = 0; j < titleList.length; j++) {
+										if (ReviewList[i].content_no == titleList[j].review_no) {
+											ReviewList[i].tour = titleList[j].title;
+										} 
+										for (var k = 0; k < regionList.length; k++) {
+											if (ReviewList[i].content_no == regionList[k].review_no) {
+												ReviewList[i].city = regionList[k].region_name;
+											} 
+										}	
+									}	
+								}
+								getReviewThumnail();
+							});
+								
+							
+						});
+				
+					});
+					
+				
+					
+				});// end getJSON()
+			
+			};//end of 
 			
 			function getThumnail() {
 				
@@ -424,6 +487,30 @@ ul {
 				//end of getThumnails()
 			};
 			
+			
+			function getReviewThumnail() {
+				
+				var list = '';
+				
+				for(var i = 0; i<ReviewList.length; i++){
+					
+					list += '<div class="portfolio-item col-md-3 col-sm-6">'
+						+ '<div class="portfolio-thumb">'
+						+ '<figure>'
+						+ '<a href="review/reivew?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
+						+ '<div>제목: ' + ReviewList[i].tour + '</div>'
+						+ '<div>지역: ' + ReviewList[i].city + '</div>'			
+						+ '</figure>'
+						+ '</div>'
+						+ '</div>';
+				}
+				
+				
+				$('#toursearch').html(list);				
+	
+				//end of getThumnails()
+			};
+			
 			// mno 검색 버튼 처리
 			$('#mytour').click(function() {
 
@@ -437,6 +524,15 @@ ul {
 
 				$('#toursearch').html('');
 				getThumnails_By_ChooseMno();
+				
+	
+			});
+			
+			// 후기 게시글 보기 버튼
+			$('#mytourReview').click(function() {
+
+				$('#toursearch').html('');
+				getThumnails_By_Review();
 				
 	
 			});
