@@ -245,6 +245,24 @@ public class TourReviewServiceImpl implements TourReviewService {
 		return tourReviewDAO.update_review_hits(vo);
 	}
 
+	@Override
+	public int readReviewLike(int review_no, int mno) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.selectReviewLike(review_no, mno);
+	}
+
+	@Override
+	public int createReviewLike(int review_no, int mno) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.insertReviewLike(review_no, mno);
+	}
+
+	@Override
+	public int deleteReviewLike(int review_no, int mno) {
+		// TODO Auto-generated method stub
+		return tourReviewDAO.deleteReviewLike(review_no, mno);
+	}
+
 
 	
 	

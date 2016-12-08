@@ -107,6 +107,7 @@ ul {
 	padding-top: 0;
 	vertical-align: middle;
 }
+
 </style>
 
 <link rel="stylesheet" href="<c:url value="../resources/theme/css/mystyle1.css"/>">
@@ -115,6 +116,7 @@ ul {
 
 <body>
 
+<%@ include file="../main-header.jsp"  %>
 
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
@@ -173,14 +175,14 @@ ul {
 
 
 
-	<header style="background-image: url('../resources/theme/images/slide5.jpg'); height: 70px">
+	<header style="background-color: #F19A0D; height: 70px">
 		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
 		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-color: #000; height: 520px;">
+		<div style="background-color: #F19A0D; height: 520px;">
 			<div
 				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -221,7 +223,9 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; /* background-image: url('../resources/theme/images/slide5.jpg'); */ background-color: #000; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+
 				</textarea>
 					
 			</div>

@@ -279,21 +279,47 @@ public class TourReviewDAOImpl implements TourReviewDAO {
 			
 		}
 		
-		
 		return list;
-		
 	}
 
+	// 조회수 조회
 	@Override
 	public int select_current_review_hits(int review_no) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(NAMESPACE + ".select_current_review_hits", review_no);
 	}
 
+	// 조회수 업데이트
 	@Override
 	public int update_review_hits(ReviewVO vo) {
 		// TODO Auto-generated method stub
 		return sqlSession.update(NAMESPACE + ".update_review_hits", vo);
+	}
+	
+	
+	// 현재 따봉 상태
+	@Override
+	public int selectReviewLike(int review_no, int mno) {
+		// TODO Auto-generated method stub
+		logger.info("리뷰 번호: " + review_no);
+		BestVO vo = new BestVO(mno, review_no, 0);
+		return sqlSession.selectOne(NAMESPACE + ".selectReviewLike", vo);
+	}
+
+	// 따봉 추가
+	@Override
+	public int insertReviewLike(int review_no, int mno) {
+		// TODO Auto-generated method stub
+		BestVO vo = new BestVO(mno, review_no, 1);
+		return sqlSession.insert(NAMESPACE + ".insertReviewLike", vo);
+	}
+	
+	// 따봉 삭제 
+	@Override
+	public int deleteReviewLike(int review_no, int mno) {
+		BestVO vo = new BestVO(mno, review_no, 0);
+		// TODO Auto-generated method stub
+		return sqlSession.delete(NAMESPACE + ".deleteReviewLike", vo);
 	}
 
 } // end class TourReviewDAOImpl
