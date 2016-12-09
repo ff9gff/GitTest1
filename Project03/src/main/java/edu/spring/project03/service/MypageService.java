@@ -31,5 +31,9 @@ public interface MypageService {
 	public abstract List<ImgVO> read_review_mno(int mno);
 	public abstract List<ReviewVO> read_review_title(int mno);
 	public abstract List<ReviewRegionVO> read_review_region(int mno);
+	
+	// 내가 선택한 여행 게시글 제목/지역
+	public abstract List<TourRegisterVO> read_mytourjoin_title(int mno);
+	public abstract List<RegionVO> read_mytourjoin_region(int mno);
 
 }

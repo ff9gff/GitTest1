@@ -63,6 +63,18 @@ public class MypageDAOImpl implements MypageDAO {
 		return sqlSession.selectList(NAMESPACE + ".select_mytour_region", mno);
 	}
 	
+	// 내가 선택한 여행 게시글 타이틀
+	public java.util.List<TourRegisterVO> select_mytourjoin_title(int mno) {
+		
+		return sqlSession.selectList(NAMESPACE + ".select_mytourjoin_title", mno);
+	};
+	
+	// 내가 선택한 여행 게시글 지역
+	public java.util.List<RegionVO> select_mytourjoin_region(int mno) {
+		
+		return sqlSession.selectList(NAMESPACE + ".select_mytourjoin_region", mno);
+	};
+	
 	// 후기 게시글 이미지
 	@Override
 	public List<ImgVO> select_review_mno(int mno) {

@@ -62,6 +62,18 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	@Override
+	public List<TourRegisterVO> read_mytourjoin_title(int mno) {
+	
+		return mypageDAO.select_mytourjoin_title(mno);
+	}
+	
+	@Override
+	public List<RegionVO> read_mytourjoin_region(int mno) {
+	
+		return mypageDAO.select_mytourjoin_region(mno);
+	}
+	
+	@Override
 	public int update_profile(PersonalVO vo) {
 	
 		return mypageDAO.updateProfile(vo);
