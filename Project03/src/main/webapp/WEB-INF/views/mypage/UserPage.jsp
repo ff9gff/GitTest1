@@ -29,6 +29,7 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <style type="text/css">
+
 .portfolio-item{
 	height: 320px;
 	width: 302px;
@@ -44,6 +45,14 @@
 	padding: 0;
 	border: 1px solid lightgray;
 	opacity: 0.5;
+}
+
+.portfolio-thumb{
+	width: 297.5px;
+	height: 240px;
+	vertical-align: middle;
+	margin-bottom: 5px;
+
 }
 
 #dropDownType {
@@ -231,14 +240,14 @@ ul {
 				
 		</div>	
 
-			<div style="display: block; width: 100%; margin-top: 16px; text-align: left; margin-left: auto; margin-right: auto">
+			<div style="display: block; width: 1330px; margin-top: 16px; text-align: left; margin-left: auto; margin-right: auto">
 				<p></p>
 				<input type="hidden" id="mytour_mno" name="mytour_mno" value="${mno}" />
 				<button type="button" id="mytour" style="font-weight: bold; background-color: transparent;">내 여행 리스트</button>
 				<button type="button" id="mytourReview" style="font-weight: bold; background-color: transparent;">내 후기 리스트</button>
 				<button type="button" id="tourchoose" style="font-weight: bold; background-color: transparent;">내 선택 리스트</button>
 				
-				<div class="row" id="toursearch" style="width: 97%; margin-top: 30px; margin-left: auto; margin-right: auto"></div>
+				<div class="row" id="toursearch" style="width: 1330px; margin-top: 30px; margin-left: auto; margin-right: auto"></div>
 				
 
 
