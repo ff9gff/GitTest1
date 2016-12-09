@@ -467,12 +467,10 @@
 												break;
 											default: break;
 										}	
-								
-								
+							
 							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
 							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;| 좋아요: ' + TopReviewImage[i].countofbest + '&nbsp;|</p></div>'	
-							//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+ '</a>'
 						+ '</div>';
 			}
@@ -491,7 +489,6 @@
 			} else {
 				length = 4;
 			}
-			// 무조건 4개만 뿌린다!
 			
 			for(var i = 0; i < length; i++){
 		
@@ -501,9 +498,7 @@
 							+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
 						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
-						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;| 좋아요: ' + RecentReviewImage[i].countofbest + '&nbsp;|</p></div>'	
-						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
-						
+						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;| 좋아요: ' + RecentReviewImage[i].countofbest + '&nbsp;|</p></div>'							
 						+'</a>'
 						+ '</div>';
 			}

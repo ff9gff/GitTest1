@@ -1120,9 +1120,15 @@ $('#likeButton').click(function() {
    
    var mno = '${mno}';
    var review_no = ${reviewVO.review_no};
+   var state = ${likecheck.state}; 
    
-   alert('따봉!');
-   location = 'likeCheck/' + review_no + '/' + mno;
+	if (state == 0) {
+		alert('좋아요!');
+		location = 'likeCheck/' + review_no + '/' + mno;
+	} else {
+		alert('좋아요 취소!');
+		location = 'likeCheck/' + review_no + '/' + mno;
+	}
 });
 </c:if>
 
