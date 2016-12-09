@@ -264,6 +264,7 @@ public class TourReviewController {
 			}
 		}
 
+	
 		return "review/review_detail";
 	} // end reviewDetail()
 

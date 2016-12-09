@@ -11,6 +11,8 @@
 
 </head>
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -34,6 +36,12 @@ table, th, td {
 }
  .menuItem{
  	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
+ 
+ }
+ 
+ #tableTest2{
+ 	font-family: 'Jeju Hallasan', serif;
  }
 </style>
 
@@ -54,7 +62,7 @@ table, th, td {
 	
 
 
-	<div Class="wrapper">
+	
 
 		<nav id="menuBar">
 			<ul id="menuList">
