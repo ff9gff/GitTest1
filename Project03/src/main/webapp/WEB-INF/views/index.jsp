@@ -132,14 +132,14 @@
 					<ul class="slides">
 						<li>
 							<div class="overlay"></div> <img
-							src="resources/theme/images/slide1.jpg" alt="">
+							src="resources/theme/images/backimage3.png" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
 						</li>
 						<li>
 							<div class="overlay"></div> <img
-							src="resources/theme/images/slide2.jpg" alt="">
+							src="resources/theme/images/backimage2.png" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>이벤트</h2>
 							</div>
