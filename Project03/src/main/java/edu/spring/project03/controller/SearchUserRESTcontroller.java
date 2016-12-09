@@ -138,13 +138,17 @@ public class SearchUserRESTcontroller {
 		
 		logger.info("여기야 여기 살려죠 update ");
 		List<Integer> list =adminService.readLevelZero();
-		
-		logger.info(list.get(0).toString());
 		int result =0 ;
-		for (int i = 0 ; i < list.size(); i++){
-		 
-			adminService.updateLevelOne(Integer.parseInt(list.get(i).toString()));
 		
+		try {
+			for (int i = 0 ; i < list.size(); i++){
+				
+				adminService.updateLevelOne(Integer.parseInt(list.get(i).toString()));
+				
+			}//end for 
+			
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		
 		if(list.size() !=0){
