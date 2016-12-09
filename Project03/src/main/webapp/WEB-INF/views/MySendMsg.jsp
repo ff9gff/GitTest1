@@ -19,6 +19,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+
+
 table, th, td {
      border: 1px solid gray;
     border-collapse: collapse;
@@ -39,8 +42,23 @@ li {
     display: inline-block;
 }
 
+
 #paddingAction{
- 	margin-left: 50ex;
+	  position: relative;
+          margin: 0 auto;
+
+
+
+}
+
+
+#msgTable{
+     position: relative;
+          margin: 0 auto;
+}
+#deleteBtn{
+
+margin-left:1115px;
 }
 
 </style>
@@ -51,6 +69,17 @@ li {
 <div id="paddingAction">
 <table id="msgTable">
 <caption>보낸 쪽지함</caption>
+		<colgroup>
+			<col width="20px">
+			<col width="40px">
+			<col width="150px">
+			<col width="400px">
+			<col width="180px">
+	
+		</colgroup>
+
+
+
     <tr>
     	<th><input type="checkbox" name="rowCheck"></th>
         <th>번호</th>
@@ -68,7 +97,20 @@ li {
     
   	
         <td>${x=x+1 }</td>
-        <td>${vo.nickname }${vo.msg_no }</td>
+        
+        
+        <td><form action="mypage/MiniMSGpageU2" method="get" id="formName" name="formName" target="pop">
+        		<input type="hidden"  id="sendmno${x }" value="${vo.nickname }">
+        		 <input type="hidden"  id="value2" name= "value2" />
+        		</form>
+        	
+        		
+        		<a href="javascript:OpenPop2('${x }');">
+        		${vo.nickname }
+        		 </a>
+        </td>
+        
+        
         	<td style="text-align: left;">
         <form id="form2" name="form2" method='post' action="MiniMsg" target="pop">
  		 <input type="hidden" name="postdata"  id ="postdata${x}"  value="${vo.nickname }"/> 
@@ -77,7 +119,7 @@ li {
         <input type="hidden" name="msg_no"  id ="msg_no${x}"  value="${vo.msg_no }"/>       
         </form>       
 
-       
+
         <a href="javascript:OpenPop('${x }');">${vo.msg_content }  </a>
         
   
@@ -94,31 +136,7 @@ li {
 </table>
 <br/>
 
-<%--
-<nav>
-  <ul class="pagination">
-    <li>
-      <a href="#" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-      </a>
-    </li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li>
-      <a href="#" aria-label="Next">
-        <span aria-hidden="true">&raquo;</span>
-      </a>
-    </li>
-  </ul>
-</nav>
-pageLinks
-
-
- --%>
-
+<div class="pager">
 <ul class="pagination">
     <c:if test="${pageMaker.hasPrev }">
     <li><a href="${pageMaker.startPageNum - 1 }"><b>&laquo;이전</b></a></li>
@@ -135,7 +153,9 @@ pageLinks
     </c:if>
     
 </ul>
-
+<form id ="deleteBtn">
+	<input type="button" id="deleteMSGbtn" value="삭제"> 
+</form >
 <%-- 현재 페이지, 페이지 당 보여줄 게시글 개수를 서버로 보내주기 위해서,
 사용자에게는 보이지 않지만, 서버로 보낼 정보를 양식 데이터로 저장하는 form --%>
 <form id="pageForm">
@@ -145,12 +165,9 @@ pageLinks
     <input type="hidden" name="perPage"
         value="${pageMaker.criteria.perPage }" />
 </form>
-
+</div>
 <!--  //////////////////////////////////////////////// -->
-<form >
-	<input type="button" id="deleteMSGbtn" value="삭제"> 
 
-</form>
 	<br/>
 </div>		
 <!-- jQuery CDN -->
@@ -291,7 +308,19 @@ function OpenPop(no)
 
 	
 	
-	
+     function OpenPop2(no)
+	    {
+				
+	   		var getdata2 = document.getElementById("sendmno"+no+"").value;
+	   		$("#value2").val(getdata2); 
+	        var f = document.getElementById('formName');
+	        window.open("", "pop", "width=800, height=800"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
+	        f.submit(); 
+	        /*    document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다. 
+	        document.formName.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
+	        document.formName.submit(); // target에 쏜다.
+*/	
+	    };
 	
 	
 	

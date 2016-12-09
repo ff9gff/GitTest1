@@ -428,6 +428,16 @@ public class MypageController {
 		return "redirect:MyPage";
 	}
 	
+	@RequestMapping(value="/MiniMSGpageU2", method=RequestMethod.GET)
+	public void MiniSendToUser(String msg_address, Model model ,String value2){
+		logger.info("/MiniMSGpageU 마이 페이지에서 호출 ");
+		System.out.println("valu2 " +value2);
+		//System.out.println("어디로 가니 너는 " + msg_address);
+		model.addAttribute("value2" , value2);
+		
+		//return "redirect:../mypage/MiniMSGpageU2";
+	}
+	
 	
 	
 }
