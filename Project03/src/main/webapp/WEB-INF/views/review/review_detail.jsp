@@ -941,47 +941,6 @@ $(document).click(function(e){
          $('#context_mno').val(null);
    }
 });
-
-<%-- 수정 applicANTS 삭제 --%>
-/* //다른 곳 클릭시 메뉴 사라지기
-$(document).click(function(e){      
-   if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
-      !$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length &&
-      !$('#replies .reply_list .nickname').has(e.target).length &&
-      !$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
-      !$('#content_profile').has(e.target).length){
-         $('#contextmenu').hide();
-         $('#context_mno').val(null);
-   } 
-}); 
-*/
-
-
-
-
-
-
- 
-<%-- 필요 없음 --%>
-// 수락에서 - 닉네임 클릭시 메뉴 보이기
-/* $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
-   // e.pageX
-   // a 태그안의 mno 불러오기
-   var amno = $(this).attr('data-rno');
-   var alistno = $(this).attr('data-listno');
-   // 메뉴 input에 mno숨겨넣기
-   $('#context_mno').val(amno);
-   $('#context_listno').val(alistno);
-   $('#context_type').val("apply");
-   $('#context_nickname').val($(this).text());
-   // a 태그의 위치
-   var atag = $(this).offset();
-   var menubox = $('#contextmenu');
-   menubox.css("left", (atag.left+30) +"px");
-   menubox.css("top", (atag.top+10) +"px");
-   menubox.show();          
-});   
- */
  
 /* script 에서 c:if 사용 가능!! */
 <c:if test="${not empty login_id}">
@@ -1031,57 +990,6 @@ $('#content_profile').on('click',$(this),function(){
 });   
 </c:if>
 
-<%-- 좋아요 했을때 하는 부분 js --%>
-/* // 여행 신청하기
-$('#joinmenu_apply').click(function(){
-   // 승인된 인간만 누를 수 있도록
-   if(sessionaut != 0 ){
-      // 중복 안되게
-      var apply_value = false;
-      var length = 0;
-      
-      if(applylist.length==0){
-         apply_value = true;
-      }
-      for(var i=0; i<applylist.length; i++){
-         if(applylist[i].mno != sessionmno){
-            length++;
-            if(length == applylist.length){
-               apply_value = true;
-            }   
-         }
-      }
-      console.log(apply_value + ", " + length + ", " + applylist.length);
-      
-      if(apply_value){
-         var mnoString = $('#mno').val();
-         $.ajax({
-            type:'post',
-            url:'/project03/tour/detail/apply/insert/'+trip_no+'/'+mnoString,
-            headers:{
-               'Content-Type':'application/json',
-               'X-HTTP-Method-Override':'POST'
-            },
-            data: JSON.stringify({
-               trip_no: trip_no,
-               mno: mnoString
-            }),
-            success: function(result){
-               if(result == 1){
-                  alert('여행 신청 성공');
-                  getAlldata();
-               }
-            }
-         });// end ajax;
-      }else{
-         alert("이미 신청한 여행입니다");
-      }   
-   }else{
-      alert("승인된 회원만 신청이 가능합니다.");
-   }
-});
- */
-
 
 $('#context_profile').on('click','.btn_context',function(){   
    var alistno = $('#context_listno').val();
@@ -1117,17 +1025,6 @@ $('#context_profile').on('click','.btn_context',function(){
       $('#profile_nickname').text(anick);
       $('#profile_introduce').text(intro);
    }
-   
-/*    if(atype=='reply'){
-      $('#profile_nickname').text(replylist[alistno].person["nickname"]);
-      $('#profile_introduce').text(replylist[alistno].person["introduce"]);
-   } else if(atype='contextmenu'){
-      $('#profile_nickname').text(applylist[alistno].person["nickname"]);
-      $('#profile_introduce').text(applylist[alistno].person["introduce"]);
-   } else{
-      $('#profile_nickname').text(anick);
-      $('#profile_introduce').text(intro);
-   } */
    
    $('#overlay, #profilemenu').show();
 
@@ -1171,52 +1068,6 @@ $('#context_msg').on('click','.btn_context',function(){
    f.submit();
    
 });
-
-
-// 날짜 계산 ㅎㅎ
-/* var date1 = $('#start_date').val();
-var date2 = $('#end_date').val();
-
-var dateArray1 = date1.split(" ");
-var dateArray2 = date2.split(" ");
-
-var startArray = dateArray1[0].split("-");
-var endArray = dateArray2[0].split("-");
-
-var startObj = new Date(startArray[0], Number(startArray[1])-1, startArray[2]);
-var endObj = new Date(endArray[0], Number(endArray[1])-1, endArray[2]);
-
-var betweenDay = (endObj.getTime() - startObj.getTime())/1000/60/60/24;
- */
- 
-// 조건 띄우기
-/* var con_sex = ${tourVO.condition_sex};
-var con_age = ${tourVO.condition_age};
-
-$('#condition_date').html('<img src="../resources/theme/images/date.png" class="condition_img"/><div class="condition_text">'+betweenDay+'박 '+(betweenDay+1)+'일'+'</div>');
-switch(con_sex){
-   case 0: $('#condition_sex').html('<img src="../resources/theme/images/female.png" class="condition_img"/><div class="condition_text">여자 만</div>');
-         break;
-   case 1: $('#condition_sex').html('<img src="../resources/theme/images/male.png" class="condition_img"/><div class="condition_text">남자 만</div>');
-         break;
-   case 2: $('#condition_sex').html('<img src="../resources/theme/images/people.png" class="condition_img"/><div class="condition_text">누구나</div>');
-         break;
-   default: break;
-}// end switch
-
-switch(con_age){
-   case 1: $('#condition_age').html('<img src="../resources/theme/images/20age.png" class="condition_img"/><div class="condition_text">20대 만</div>');
-      break;
-   case 2: $('#condition_age').html('<img src="../resources/theme/images/30age.png" class="condition_img"/><div class="condition_text">30대 만</div>');
-      break;
-   case 3: $('#condition_age').html('<img src="../resources/theme/images/40age.png" class="condition_img"/><div class="condition_text">40대 이상 만</div>');
-      break;
-   case 4: $('#condition_age').html('<img src="../resources/theme/images/freeage.png" class="condition_img"/><div class="condition_text">누구나</div>');
-      break;
-   default: break;
-}// end switch */
-
-
 
 var mno_nickname = '${inserterNickname}';
 var mno_intro = '${inserterIntro}';
