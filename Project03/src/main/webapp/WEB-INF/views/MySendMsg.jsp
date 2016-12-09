@@ -171,13 +171,10 @@ function OpenPop(no)
 	//alert(getdata+getcontent);
 
 	var f = document.getElementById('form2');
-	window.open("", "pop", "width=600, height=400");
+	window.open("", "pop", "width=580, height=380");
 	f.submit(); 
 
-	
-	
-	
-	
+
 	
 }//end 분노 
 

@@ -40,10 +40,45 @@ li {
 }
 
 
+
 #paddingAction{
- 	margin-left: 50ex;
+	  position: relative;
+          margin: 0 auto;
+
+
+
 }
 
+
+#msgTable{
+     position: relative;
+          margin: 0 auto;
+}
+#deleteBtn{
+
+margin-left:1115px;
+}
+<%---
+.pagination{
+position: relative;
+        margin:0 auto;
+}
+#test1 {
+position: relative;
+        margin-left: 700px;
+
+}
+
+
+--%>
+<%--
+#msgTable  .pagination{
+
+  position: absolute;
+  top: 10px; 
+  left: 500px;
+}
+--%>
 </style>
 </head>
 <body>
@@ -107,11 +142,11 @@ li {
     </c:forEach>
 </table>
 
-
+</div>	
 <br/>
 
-
-<ul class="pagination" >
+<div class="pager">
+<ul class="pagination" id="test1" >
     <c:if test="${pageMaker.hasPrev }">
     <li><a href="${pageMaker.startPageNum - 1 }"><b>&laquo;이전</b></a></li>
     </c:if>
@@ -137,14 +172,14 @@ li {
     <input type="hidden" name="perPage"
         value="${pageMaker.criteria.perPage }" />
 </form>
-
+</div>
 <!--  //////////////////////////////////////////////// -->
-<form >
+<form id ="deleteBtn">
 	<input type="button" id="deleteMSGbtn" value="삭제"> 
 
 </form>
 	<br/>
-</div>	
+
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -164,7 +199,7 @@ function OpenPop(no)
 	//alert(getdata+getcontent);
 
 	var f = document.getElementById('form2');
-	window.open("", "pop", "width=500, height=370");
+	window.open("", "pop", "width=580, height=380");
 	f.submit(); 
 
 	
