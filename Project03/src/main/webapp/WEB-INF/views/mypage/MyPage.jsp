@@ -191,19 +191,19 @@ ul {
 
 
 	<div Class="wrapper">
-		<div style="background-color: #F19A0D; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
+		<div style="background-color: #F4511E; height: 520px; width: 1330px; margin: auto; vertical-align: center; opacity: 0.8">
 			<div
 				style="width: 800px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
 					style="display: block; width: 100%; height: 100%; margin-top: 20px; margin: 10px; vertical-align: center; text-align: center;">
 
-					<a href="../myMsg" style="margin-right: 20px;">받은 쪽지함</a>
+					<a href="../myMsg" style="margin-right: 20px; "><img src="../resources/theme/images/myMSG.png" style="display: inline-block; width: 25px; vertical-align: middle;"/></a>
 					<div id="content_profile"
 						style="display: inline-block; text-align: center; vertical-align: middle; padding-top: 14px;">
 
 					</div>
 					
-					<a href="../MySendMsg" style="margin-left: 20px;">보낸 쪽지함</a>
+					<a href="../MySendMsg" style="margin-left: 20px;"><img src="../resources/theme/images/mysendMSG.png" style="display: inline-block; width: 25px; vertical-align: middle;"/></a>
 					
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
@@ -235,7 +235,7 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F4511E; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
 
 				</textarea>
 					

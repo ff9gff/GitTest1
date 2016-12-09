@@ -8,9 +8,10 @@
 </head>
 <body>
 
+	
+	<div style="width: 800px; margin: auto; vertical-align: middle;">
 	<h2>프로필 수정화면</h2>
-
-	<form id ="updateProfile_form" action="profile_update" method="post" enctype="multipart/form-data">
+	<form id ="updateProfile_form" action="profile_update" method="post" enctype="multipart/form-data" >
 		<input type="hidden" id="mno" name="mno" value="${mno}"> 
 	
 		<label for="sex">성별</label><br> 
@@ -38,18 +39,9 @@
 		<label for="email">이메일</label><br /> 
 		<input type="email" id="email" name="email" placeholder="이메일 입력" value="${vo.email }"/>
 		
-		<br>
-		<br> 
-		<%-- <label for="imageFile">프로필 이미지</label><br /> 
-		<input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
-
-		<div id="image_preview">
-			<!-- <img src="#" id="profile-image" width="300px" height="400px"/><br/> -->
-			<img src="#" id="profile-image" style="display: none;" /><br />
-			<!-- <button type="button" id="btn_profile-image_remove" style="display: none;">Remove</button> -->
-			<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
-		</div> --%>
-		<br /> <label for="introduce">자기소개</label><br />
+		<br/>
+		<br/> 
+		<br/> <label for="introduce">자기소개</label><br />
 		<textarea id="introduce" name="introduce" cols="100" rows="15">${vo.introduce }</textarea>
 		<br>
 		<br>
@@ -57,6 +49,7 @@
 		<button type="button" id="submit_OK">프로필 수정</button>
 		<button type="button" id="submit_Cancel">취소</button>
 	</form>
+	</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>
@@ -143,7 +136,7 @@ $(document).ready(function() {
    
    
    $("#submit_Cancel").click(function() {
-      location = '/MyPage';
+      location = '../MyPage';
    });
    
    /** 
