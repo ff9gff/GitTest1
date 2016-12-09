@@ -182,14 +182,16 @@ input:focus, textarea:focus {
 </head>
 <body>
 
-
+<!--value="${login_nickname }" id="name"  -->
 	<div id="form-main">
 	  <div id="form-div">
-    		<form class="form" id="form1" action="sendMsgU" method="post" >
-      
+    		<form class="form" id="form1" action="../sendMsgU" method="post" >
+     <!--   <form action="">-->
     	  <p class="name">
-       		 <input name="sd_mno" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" 
+       		 <input name="sd_rmno" type="text" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" placeholder="Name" 
        		 value="${login_nickname }" id="name" readonly="readonly" />
+      		<input type="hidden" name="sd_mno" id="sd_rmno" value = "${mno }">
+      		<input type="hidden" id="sd_url" name="sd_url" value="/admin/MiniMSGpageU"/>
       		</p>
       
      		 <p class="userClass">
@@ -205,7 +207,7 @@ input:focus, textarea:focus {
       
       
      		 <div class="submit">
-      	  <input type="submit" value="SEND" id="button-blue"/>
+      	  <input type="submit" value="SEND" id="button-blue"/> <!-- submit 에서 수정  -->
       	  <div class="ease"></div>
      	 </div>
    		 </form>
@@ -214,9 +216,9 @@ input:focus, textarea:focus {
   
   
   <br>
-
-  
-  
+	
+  	
+  	
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
  <script type="text/javascript">
   $(document).ready(function(){
@@ -225,10 +227,10 @@ input:focus, textarea:focus {
  		// 닉네임 중복 체크
  		$('#nickname').change(function() {
  			alert("닉네임 중복 체크");
- 			
+ 			//	url: '../member/checknick',
  			$.ajax({
  				type: 'post',
- 				url: './member/checknick',
+ 				url: '../member/checknick',
  				headers: {
  					'Content-Type': 'application/json',
  					'X-HTTP-Method-Override': 'POST'
@@ -238,6 +240,7 @@ input:focus, textarea:focus {
  				}),
  				success: function(response) {
  					if (response == 'NOK') {
+ 						
  							<%-- 유저 정보가 있는 경우 --%>
  					} else {					
  						alert("존재하지 않는 사용자 입니다. 다시 입력하세요.");
@@ -248,8 +251,22 @@ input:focus, textarea:focus {
  			});
  			
  		}); 
+ 		
+ 		if ('${insert_result}' == 'success') {
+ 			alert('쪽지 보내기 성공!');
+ 			self.close();
  			
-
+ 		} else if ('${insert_result}' == 'fail') {
+ 			alert('쪽지 보내기 실패!');
+ 			self.close();
+ 		};
+ 	
+ 	
+ 	
+ 			
+ 
+ 		
+ 		
  		
  		
  		

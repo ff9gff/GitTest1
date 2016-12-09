@@ -127,7 +127,7 @@ table, th, td {
 						<td >${x=x+1 }</td>
 						<td id="mno_${x }" value="${vo.mno }">${vo.mno }</td>
 						<td>${vo.userid }</td>
-						<td>${vo.nickname }</td>
+						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
 						<td>${vo.phone }</td>
 						<td>${vo.email }</td>
 					        <td>

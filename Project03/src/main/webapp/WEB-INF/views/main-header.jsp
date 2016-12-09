@@ -19,41 +19,88 @@
 		<script src="../resources/theme/js/bootstrap.js"></script>
 		<script src="../resources/theme/js/plugins.js"></script>
 		<script src="../resources/theme/js/main.js"></script>
+
 </head>
 <body>
-
-<!-- 헤더 메인부분 -->
-	<div class="main-header">
+	<div class="main-header" style="top: 0.5%;">
 		<div class="container">
 			<div id="menu-wrapper">
 				<div class="row">
+				
 					<div class="logo-wrapper col-md-2 col-sm-2">
 						<h1>
-							<a href="#">hello </a>
+							<a href="../index" id="#btnHome">With&nbsp;me</a>
 						</h1>
 					</div>
-					<!-- /.logo-wrapper -->
-					<div class="col-md-10 col-sm-10 main-menu text-right">
-						<div class="toggle-menu visible-sm visible-xs">
+					
+					
+					<div class="col-md-10 col-sm-10 main-menu text-right" style="width: 70%; float: right;">
+ 						<div class="toggle-menu visible-sm visible-xs">
 							<i class="fa fa-bars"></i>
 						</div>
 
 						<ul class="menu-first">
-							<li><a href="../index">메인</a></li>
-							<li><a href="../admin">관리자</a></li>
-							<li><a href="../login">로그인</a></li>
+							<li><a href="../index">Main</a></li>
+							<li><a href="../tour/tourBoard">Tour</a></li>
+							<li><a href="../review/reviewBoard">Review</a></li>
+<!-- 							<li><a href="../index">메인</a></li>
+							<li><a href="../tour/tourBoard">여행</a></li>
+							<li><a href="../review/reviewBoard">후기</a></li> -->
+							
+							<%-- 세션에 로그인 정보가 없는 경우 --%>
+							<c:if test="${empty login_id }">
+								<li><a href="#this" id="btnLogin">Sign in</a></li>								
+								<li><a href="#this" id="btnMemberRegister">Sign up</a></li>
+<!-- 								<li><a href="#this" id="btnLogin">로그인</a></li>								
+								<li><a href="#this" id="btnMemberRegister">회원가입</a></li>	 -->							
+							</c:if>
+							
+							<%-- 세션에 로그인 정보가 있는 경우 --%>
+							<c:if test="${not empty login_id }">
+							
+								<%-- 세션에 로그인 정보가 있고, 권한이 3인 경우 --%>	
+								<c:if test="${authority == 3 }">
+									<li><a href="#this" id="btnAdministrator">Admin</a></li>
+									<!-- <li><a href="#this" id="btnAdministrator">관리자</a></li> -->
+								</c:if>
+								
+								<li><a href="#this" id="btnMypage">MyPage</a></li>								
+								<li><a href="#this" id="btnLogout">Sign out</a></li>
+								<!-- <li><a href="#this" id="btnMypage">마이페이지</a></li>
+								<li><a href="#this" id="btnLogout">로그아웃</a></li> -->
+							</c:if>
 						</ul>
 					</div>
-					<!-- /.main-menu -->
 				</div>
-				<!-- /.row -->
 			</div>
-			<!-- /#menu-wrapper -->
 		</div>
-		<!-- /.container -->
 	</div>
-	<!-- /.main-header -->
 
+<script>
+$('#btnMemberRegister').click(function() {
+	location = '/project03/member/member_register01';
+});
+
+$('#btnLogin').click(function() {
+	location = '/project03/member/login?url=' + location.href;
+});
+
+$('#btnAdministrator').click(function() {
+	location = '/project03/admin/admin';
+});
+
+$('#btnMypage').click(function() {
+	location = '/project03/mypage/MyPage';
+});	
+
+$('#btnLogout').click(function() {
+	location = '/project03/member/logout'; //logout 이라는 컨트롤러로 가겠다.
+});
+
+$('#btnHome').click(function() {
+	location = '/project03/';
+});
+</script>
 
 </body>
 </html>

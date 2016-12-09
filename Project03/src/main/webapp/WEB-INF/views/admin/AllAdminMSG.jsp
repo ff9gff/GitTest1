@@ -89,10 +89,10 @@ display: inline;
 				</li>
 
 
-			<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
+			<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지 사항</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저  등급</a></li>
 
 				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
 				</li>
@@ -119,11 +119,14 @@ display: inline;
 	</form>
 	</div>
 	
+
 	<div class="message" onclick="OpenPop2('', '', '', '')" style= "margin-left: 10px;">
 		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 2px solid yellow; background-color: #FF5A00">
 		<img  src="../resources/theme/images/please.png" style="width: 40px; height: 40px; 
 		display: inline; text-align: center; vertical-align: middle;" />
+
 		<span class="span_notice">쪽지보내기</span>
+
 		</form>
 		</div>
 		
@@ -218,24 +221,16 @@ display: inline;
 		        
 		    };
 		    
-		   /* 
-			<form action="MiniMSGpageU" method="get" id="formName" name="formName">
-			<a href="javascript:OpenPop2('', '', '', '');">쪽지보내기</a>
-			</form>  
-		    
-		  */  
 		  
 		    function OpenPop2(url,name,width,height)
 		    {
 		   		
 		    	
 		        window.open("", "pop", "width=800, height=800"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
-		        document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다.
+		        document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다. 
 		        document.formName.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
 		        document.formName.submit(); // target에 쏜다.
-		        
-		         
-		        
+   
 		    };
 		    
 		    
@@ -246,7 +241,7 @@ display: inline;
 		    
 		    var tbl = $("#msgAdminMSG");
 		
-	        // 테이블 헤더에 있는 checkbox 클릭시
+	      
 	        $(":checkbox:first", tbl).click(function(){
 	            // 클릭한 체크박스가 체크상태인지 체크해제상태인지 판단
 	            if( $(this).is(":checked") ){

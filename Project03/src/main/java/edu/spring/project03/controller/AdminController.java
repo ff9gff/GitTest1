@@ -189,9 +189,14 @@ public class AdminController {
 	
 	
 	// 테스트 파일 입니다. MiniMSGpageU ///
+	
+	
 	@RequestMapping(value="/MiniMSGpageU", method=RequestMethod.GET)
-	public void MiniSendToUser(){
+	public void MiniSendToUser(String msg_address, Model model){
 		logger.info("/MiniMSGpageU 호출 ");			
+		System.out.println("어디로 가니 너는 " + msg_address);
+		model.addAttribute("msg_address", msg_address);
+		
 	}
 	
 	
