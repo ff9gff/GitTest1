@@ -500,6 +500,7 @@ width: 95%;
 				<button type="button" id="likeButton" class="content_btns">좋아요 취소</button>
 			</c:if>	
 		</c:if>
+		
 		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
 		
 	</div>
@@ -878,113 +879,113 @@ $(document).ready(function(){
 
 
  
-// menu에 마우스가 올라갔을때 색 바꾸기
-$('#context_ul').on('mouseover','li',function(){
-	$(this).context.style.backgroundColor='#ffdfaf';
-});
-
-$('#context_ul').on('mouseout','li',function(){
-	$(this).context.style.backgroundColor='#FFFFFF';
-});
-
-
-//다른 곳 클릭시 메뉴 사라지기
-$(document).click(function(e){		
-	if(!$('#replies .reply_list .nickname').has(e.target).length &&
-	   !$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
-	   !$('#content_profile').has(e.target).length){			
-			$('#contextmenu').hide();
-			$('#context_mno').val(null);
-	}
-});
-
-<%-- 수정 applicANTS 삭제 --%>
-/* //다른 곳 클릭시 메뉴 사라지기
-$(document).click(function(e){		
-	if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
-		!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length &&
-		!$('#replies .reply_list .nickname').has(e.target).length &&
-		!$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
-		!$('#content_profile').has(e.target).length){
-			$('#contextmenu').hide();
-			$('#context_mno').val(null);
-	} 
-}); */
-
-
-
-
-
-
- 
-<%-- 필요 없음 --%>
-// 수락에서 - 닉네임 클릭시 메뉴 보이기
-/* $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
-	// e.pageX
-	// a 태그안의 mno 불러오기
-	var amno = $(this).attr('data-rno');
-	var alistno = $(this).attr('data-listno');
-	// 메뉴 input에 mno숨겨넣기
-	$('#context_mno').val(amno);
-	$('#context_listno').val(alistno);
-	$('#context_type').val("apply");
-	$('#context_nickname').val($(this).text());
-	// a 태그의 위치
-	var atag = $(this).offset();
-	var menubox = $('#contextmenu');
-	menubox.css("left", (atag.left+30) +"px");
-	menubox.css("top", (atag.top+10) +"px");
-	menubox.show();			 
-});	
- */
- 
-/* script 에서 c:if 사용 가능!! */
-<c:if test="${not empty login_id}">
-// 댓글에서 - 닉네임 클릭시 메뉴 보이기
-$('#replies').on('click','.reply_list .btn_nickname',function(){
-	// e.pageX
-	// a 태그안의 mno 불러오기
-	var amno = $(this).attr('data-rno');
-	var alistno = $(this).attr('data-listno');
+	// menu에 마우스가 올라갔을때 색 바꾸기
+	$('#context_ul').on('mouseover','li',function(){
+		$(this).context.style.backgroundColor='#ffdfaf';
+	});
 	
-	// 메뉴 input에 mno숨겨넣기
-	$('#context_mno').val(amno);
-	$('#context_listno').val(alistno);
-	$('#context_type').val("reply");
-	$('#context_nickname').val($(this).text());
-	
-	// a 태그의 위치
-	var atag = $(this).offset();
-	var menubox = $('#contextmenu');
-	menubox.css("left", (atag.left+30) +"px");
-	menubox.css("top", (atag.top+10) +"px");
-	menubox.show();			 
-});
+	$('#context_ul').on('mouseout','li',function(){
+		$(this).context.style.backgroundColor='#FFFFFF';
+	});
 
-// 작성자 - 클릭시 메뉴 보이기
-$('#content_profile').on('click',$(this),function(){
-	// e.pageX
-	// a 태그안의 mno 불러오기
-	var amno = ${reviewVO.mno};
-	var anick = '${inserterNickname}';
 	
-	var alistno = 0;
+	//다른 곳 클릭시 메뉴 사라지기
+	$(document).click(function(e){		
+		if(!$('#replies .reply_list .nickname').has(e.target).length &&
+		   !$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
+		   !$('#content_profile').has(e.target).length){			
+				$('#contextmenu').hide();
+				$('#context_mno').val(null);
+		}
+	});
 	
-	// 메뉴 input에 mno숨겨넣기
-	$('#context_mno').val(amno);
-	$('#context_listno').val(alistno);
-	$('#context_type').val("inserter");
-	$('#context_nickname').val(anick);
+	<%-- 수정 applicANTS 삭제 --%>
+	/* //다른 곳 클릭시 메뉴 사라지기
+	$(document).click(function(e){		
+		if(!$('#applicants .apply_td .table_name ').has(e.target).length &&
+			!$('#applicants .apply_td .table_name .btn_nickname').has(e.target).length &&
+			!$('#replies .reply_list .nickname').has(e.target).length &&
+			!$('#replies .reply_list .nickname .btn_nickname').has(e.target).length &&
+			!$('#content_profile').has(e.target).length){
+				$('#contextmenu').hide();
+				$('#context_mno').val(null);
+		} 
+	}); */
+
+
+
+
 	
-	// a 태그의 위치
-	var atag = $(this).offset();
-	var menubox = $('#contextmenu');
-	menubox.css("left", (atag.left+30) +"px");
-	menubox.css("top", (atag.top+10) +"px");
-	menubox.show();
-			 
-});	
-</c:if>
+	
+	 
+	<%-- 필요 없음 --%>
+	// 수락에서 - 닉네임 클릭시 메뉴 보이기
+	/* $('#applicants').on('click','.apply_td .table_name .btn_nickname',function(){
+		// e.pageX
+		// a 태그안의 mno 불러오기
+		var amno = $(this).attr('data-rno');
+		var alistno = $(this).attr('data-listno');
+		// 메뉴 input에 mno숨겨넣기
+		$('#context_mno').val(amno);
+		$('#context_listno').val(alistno);
+		$('#context_type').val("apply");
+		$('#context_nickname').val($(this).text());
+		// a 태그의 위치
+		var atag = $(this).offset();
+		var menubox = $('#contextmenu');
+		menubox.css("left", (atag.left+30) +"px");
+		menubox.css("top", (atag.top+10) +"px");
+		menubox.show();			 
+	});	
+	 */
+		 
+	/* script 에서 c:if 사용 가능!! */
+	<c:if test="${not empty login_id}">
+	// 댓글에서 - 닉네임 클릭시 메뉴 보이기
+		$('#replies').on('click','.reply_list .btn_nickname',function(){
+			// e.pageX
+			// a 태그안의 mno 불러오기
+			var amno = $(this).attr('data-rno');
+			var alistno = $(this).attr('data-listno');
+			
+			// 메뉴 input에 mno숨겨넣기
+			$('#context_mno').val(amno);
+			$('#context_listno').val(alistno);
+			$('#context_type').val("reply");
+			$('#context_nickname').val($(this).text());
+			
+			// a 태그의 위치
+			var atag = $(this).offset();
+			var menubox = $('#contextmenu');
+			menubox.css("left", (atag.left+30) +"px");
+			menubox.css("top", (atag.top+10) +"px");
+			menubox.show();			 
+		});
+		
+		// 작성자 - 클릭시 메뉴 보이기
+		$('#content_profile').on('click',$(this),function(){
+			// e.pageX
+			// a 태그안의 mno 불러오기
+			var amno = ${reviewVO.mno};
+			var anick = '${inserterNickname}';
+			
+			var alistno = 0;
+			
+			// 메뉴 input에 mno숨겨넣기
+			$('#context_mno').val(amno);
+			$('#context_listno').val(alistno);
+			$('#context_type').val("inserter");
+			$('#context_nickname').val(anick);
+			
+			// a 태그의 위치
+			var atag = $(this).offset();
+			var menubox = $('#contextmenu');
+			menubox.css("left", (atag.left+30) +"px");
+			menubox.css("top", (atag.top+10) +"px");
+			menubox.show();
+					 
+		});	
+	</c:if>
 
 <%-- 좋아요 했을때 하는 부분 js --%>
 /* // 여행 신청하기
@@ -1036,96 +1037,96 @@ $('#joinmenu_apply').click(function(){
 	}
 });
  */
-
-
-$('#context_profile').on('click','.btn_context',function(){	
-	var alistno = $('#context_listno').val();
-	var atype = $('#context_type').val();
-	var amno = $('#context_mno').val();
-	var anick =$('#context_nickname').val();
-	var intro = '${inserterIntro}';
 	
-	$('#profile_mno').val(amno);
 	
-	var src = '';
+	$('#context_profile').on('click','.btn_context',function(){	
+		var alistno = $('#context_listno').val();
+		var atype = $('#context_type').val();
+		var amno = $('#context_mno').val();
+		var anick =$('#context_nickname').val();
+		var intro = '${inserterIntro}';
+		
+		$('#profile_mno').val(amno);
+		
+		var src = '';
+		
+		var url3 = '/project03/review/detail/reply/profile/'+amno;
+		
+		$.ajax({
+			type:'Get',
+			url: '/project03/review/detail/reply/profile/'+amno,
+			headers:{
+				'Content-Type':'application/json',
+				'X-HTTP-Method-Override':'GET'
+				},
+				success: function(result){
+						src = result;
+						
+						$('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');				
+				}
+		});	
+		
+		if(atype=='reply'){
+			$('#profile_nickname').text(replylist[alistno].person["nickname"]);
+			$('#profile_introduce').text(replylist[alistno].person["introduce"]);
+		} else {
+			$('#profile_nickname').text(anick);
+			$('#profile_introduce').text(intro);
+		}
+		
+	/* 	if(atype=='reply'){
+			$('#profile_nickname').text(replylist[alistno].person["nickname"]);
+			$('#profile_introduce').text(replylist[alistno].person["introduce"]);
+		} else if(atype='contextmenu'){
+			$('#profile_nickname').text(applylist[alistno].person["nickname"]);
+			$('#profile_introduce').text(applylist[alistno].person["introduce"]);
+		} else{
+			$('#profile_nickname').text(anick);
+			$('#profile_introduce').text(intro);
+		} */
+		
+		$('#overlay, #profilemenu').show();
 	
-	var url3 = '/project03/review/detail/reply/profile/'+amno;
-	
-	$.ajax({
-		type:'Get',
-		url: '/project03/review/detail/reply/profile/'+amno,
-		headers:{
-			'Content-Type':'application/json',
-			'X-HTTP-Method-Override':'GET'
-			},
-			success: function(result){
-					src = result;
-					
-					$('#profile_image').html('<img src="../'+src+'" id="profile_profile_img"/>');				
-			}
-	});	
-	
-	if(atype=='reply'){
-		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
-		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
-	} else {
-		$('#profile_nickname').text(anick);
-		$('#profile_introduce').text(intro);
-	}
-	
-/* 	if(atype=='reply'){
-		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
-		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
-	} else if(atype='contextmenu'){
-		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
-		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
-	} else{
-		$('#profile_nickname').text(anick);
-		$('#profile_introduce').text(intro);
-	} */
-	
-	$('#overlay, #profilemenu').show();
-
-	$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
-	$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
-	
-});
+		$('#profilemenu').css("top",  Math.max(0, (($(window).height() - $('#profilemenu').outerHeight()) / 2) + $(window).scrollTop())+ "px"); 
+		$('#profilemenu').css("left", Math.max(0, (($(window).width() - $('#profilemenu').outerWidth()) / 2) + $(window).scrollLeft())+ "px");
+		
+	});
 
  
-$('#profile_button2').click(function(){
-	var amno = $('#profile_mno').val();
-	var url = '/project03/mypage/UserPage/'+amno;
+	$('#profile_button2').click(function(){
+		var amno = $('#profile_mno').val();
+		var url = '/project03/mypage/UserPage/'+amno;
+		
+		location.href  = url;
+	});
 	
-	location.href  = url;
-});
-
-
-// 프로필 창 닫기
-$('#overlay, #profile_button1').click(function(e){ 
-    e.preventDefault(); 
-    $('#profilemenu, #overlay').hide(); 
-}); 
-
-
-$('#context_board').on('click','.btn_context',function(){
-	var amno = $('#context_mno').val();
-	var url = '/project03/mypage/UserPage/'+amno;
-	location.href  = url;
-});
-
-
-$('#context_msg').on('click','.btn_context',function(){
-	var msg_nickname = $('#context_nickname').val();
-	var amno = $('#context_mno').val();
-	var msg_setter =  $('#msg_setter').val();
-	$('#msg_getter').val(amno);
-	$('#msg_getnick').val(msg_nickname);
-	var f = document.getElementById('msg_form');
-	var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
-	window.open('',"msg" ,popOption);
-	f.submit();
 	
-});
+	// 프로필 창 닫기
+	$('#overlay, #profile_button1').click(function(e){ 
+	    e.preventDefault(); 
+	    $('#profilemenu, #overlay').hide(); 
+	}); 
+	
+	
+	$('#context_board').on('click','.btn_context',function(){
+		var amno = $('#context_mno').val();
+		var url = '/project03/mypage/UserPage/'+amno;
+		location.href  = url;
+	});
+	
+	
+	$('#context_msg').on('click','.btn_context',function(){
+		var msg_nickname = $('#context_nickname').val();
+		var amno = $('#context_mno').val();
+		var msg_setter =  $('#msg_setter').val();
+		$('#msg_getter').val(amno);
+		$('#msg_getnick').val(msg_nickname);
+		var f = document.getElementById('msg_form');
+		var popOption = "width=400, height=500, resizble=no, scrollbars=no, status=no";
+		window.open('',"msg" ,popOption);
+		f.submit();
+		
+	});
 
 
 // 날짜 계산 ㅎㅎ
@@ -1172,53 +1173,61 @@ switch(con_age){
 }// end switch */
 
 
-
-var mno_nickname = '${inserterNickname}';
-var mno_intro = '${inserterIntro}';
-var mno_img = '${inserterImg}';
-var review_region='';
-
-
-$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
-
-var review_region_name = '${inserterRegion}';
-$(function(){
-	var mno_region = review_region_name.split(",");
-	for(var i=0; i<mno_region.length; i++){
-		review_region+='#'+mno_region[i]+" ";
-	}
 	
-	var hits = ${reviewVO.hits};
-	var countofbest = ${reviewVO.countofbest};
+	var mno_nickname = '${inserterNickname}';
+	var mno_intro = '${inserterIntro}';
+	var mno_img = '${inserterImg}';
+	var review_region='';
 
-	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region);
-	$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ' + countofbest);
-});
-
-$('#updateButton').click(function() {
-	alert("여행 리뷰 정보 수정하러 갑니다");
-	$('#frm1').submit();
-});
-
-$('#deleteButton').click(function() {
-	alert("여행 리뷰 정보 삭제하러 갑니다");
-	$('#frm2').submit();
-});
-
-$('#reviewBoardButton').click(function() {
-	alert('여행 리뷰 게시판으로 돌아갑니다');
-	location = '../review/reviewBoard';
-});
-
-$('#likeButton').click(function() {
 	
-	var mno = ${mno};
-	var review_no = ${reviewVO.review_no};
+	$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 	
-	alert('따봉!');
-	location = 'likeCheck/' + review_no + '/' + mno;
-});
-
+	var review_region_name = '${inserterRegion}';
+	$(function(){
+		var mno_region = review_region_name.split(",");
+		for(var i=0; i<mno_region.length; i++){
+			review_region+='#'+mno_region[i]+" ";
+		}
+		
+		var hits = ${reviewVO.hits};
+		var countofbest = ${reviewVO.countofbest};
+	
+		$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region);
+		$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ' + countofbest);
+	});
+	
+	$('#updateButton').click(function() {
+		alert("여행 리뷰 정보 수정하러 갑니다");
+		$('#frm1').submit();
+	});
+	
+	$('#deleteButton').click(function() {
+		alert("여행 리뷰 정보 삭제하러 갑니다");
+		$('#frm2').submit();
+	});
+	
+	$('#reviewBoardButton').click(function() {
+		alert('여행 리뷰 게시판으로 돌아갑니다');
+		location = '../review/reviewBoard';
+	});
+	
+	<c:if test="${not empty mno}"> 
+		$('#likeButton').click(function() {
+			
+			var mno = ${mno};
+			var review_no = ${reviewVO.review_no};
+			var state = ${likecheck.state};
+			
+			if (state == 0) {
+				alert('따봉!');
+				location = 'likeCheck/' + review_no + '/' + mno;
+			} else {
+				alert('따봉 취소!');
+				location = 'likeCheck/' + review_no + '/' + mno;
+			}
+			
+		}); 
+	</c:if>
 
 
 }); // end document.ready();

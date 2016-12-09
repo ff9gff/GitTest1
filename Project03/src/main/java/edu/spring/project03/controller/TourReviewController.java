@@ -136,8 +136,7 @@ public class TourReviewController {
 					model.addAttribute("reviewregionvo", reviewRegionvo2);
 
 					if (fileInfo.getFileName().length() < 40) {
-						logger.info("후기 기본 썸네일 등록할거임 아직 테스트 ㄴㄴ");
-
+	
 						ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0,
 								SAVE_IMAGE_DIR + "default-profile.jpg");
 						int result2 = tourReviewService.createThumnail(imagevo);
@@ -231,6 +230,7 @@ public class TourReviewController {
 			}
 		} // end if
 
+		
 		// 내가 이 게시물에 따봉을 눌렀는가? state를 조회해보면 알 수 있다
 		int selectLike = 0;
 
@@ -246,15 +246,14 @@ public class TourReviewController {
 			try {
 				// 먼저 사용자가 게시글에 따봉을 눌렀는지 확인!
 				selectLike = tourReviewService.readReviewLike(review_no, mno);
-
 				logger.info("selectLike=? : " + selectLike);
+				
 			} catch (Exception e) {
 				// TODO: handle exception
 				logger.info("따봉을 누른 흔적이 없습니다.");
 
 				BestVO vo = new BestVO(mno, review_no, 0);
 				model.addAttribute("likecheck", vo);
-
 			}
 
 			if (selectLike == 1) {
@@ -262,7 +261,6 @@ public class TourReviewController {
 				logger.info("따봉 누른 흔적이 있습니다.");
 				BestVO vo = new BestVO(mno, review_no, selectLike);
 				model.addAttribute("likecheck", vo);
-
 			}
 		}
 
