@@ -20,8 +20,10 @@
 <title>Insert title here</title>
 <style type="text/css">
 table, th, td {
-    border: 1px solid gray;
+     border: 1px solid gray;
     border-collapse: collapse;
+    text-align: center;
+    vertical-align: middle;
 }
 
 th {
@@ -37,12 +39,16 @@ li {
     display: inline-block;
 }
 
+#paddingAction{
+ 	margin-left: 50ex;
+}
+
 </style>
 </head>
 <body>
 
 
-
+<div id="paddingAction">
 <table id="msgTable">
 <caption>보낸 쪽지함</caption>
     <tr>
@@ -63,7 +69,7 @@ li {
   	
         <td>${x=x+1 }</td>
         <td>${vo.nickname }${vo.msg_no }</td>
-        	<td>
+        	<td style="text-align: left;">
         <form id="form2" name="form2" method='post' action="MiniMsg" target="pop">
  		 <input type="hidden" name="postdata"  id ="postdata${x}"  value="${vo.nickname }"/> 
  		 <input type="hidden"  id="value" name= "value" />
@@ -146,7 +152,7 @@ pageLinks
 
 </form>
 	<br/>
-	
+</div>		
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">

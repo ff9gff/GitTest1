@@ -18,9 +18,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
 table, th, td {
     border: 1px solid gray;
     border-collapse: collapse;
+    text-align: center;
+     vertical-align: middle;
 }
 
 th {
@@ -37,6 +40,9 @@ li {
 }
 
 
+#paddingAction{
+ 	margin-left: 50ex;
+}
 
 </style>
 </head>
@@ -47,25 +53,25 @@ li {
 
 
 
-
+<div id="paddingAction">
 <table id="msgTable">
-<caption>받은 쪽지함</caption>
-	<colgroup>
-		<col width="20px">
-		<col width="40px">
-		<col width="150px">
-		<col width="400px">
-		<col width="180px">
+	<caption>받은 쪽지함</caption>
+		<colgroup>
+			<col width="20px">
+			<col width="40px">
+			<col width="150px">
+			<col width="400px">
+			<col width="180px">
 	
-	</colgroup>
+		</colgroup>
 
-    <tr>
-    	<th><input type="checkbox" name="rowCheck"></th>
-        <th>번호</th>
-        <th>작성자</th>
-        <th>내용</th>
-        <th>받은 시간</th>
-    </tr>
+    	<tr>
+    		<th><input type="checkbox" name="rowCheck"></th>
+        	<th>번호</th>
+        	<th>작성자</th>
+        	<th>내용</th>
+        	<th>받은 시간</th>
+    	</tr>
     
 
     <c:forEach var="vo" items="${allList}">
@@ -77,7 +83,7 @@ li {
   	
         <td>${x=x+1 }</td>
         <td>${vo.nickname }${vo.msg_no }</td>
-        	<td>
+        	<td style="text-align: left;">
         <form id="form2" name="form2" method='post' action="MiniMsg" target="pop">
  		 <input type="hidden" name="postdata"  id ="postdata${x}"  value="${vo.nickname }"/> 
  		 <input type="hidden"  id="value" name= "value" />
@@ -100,6 +106,8 @@ li {
     
     </c:forEach>
 </table>
+
+
 <br/>
 
 
@@ -136,7 +144,7 @@ li {
 
 </form>
 	<br/>
-	
+</div>	
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
@@ -156,7 +164,7 @@ function OpenPop(no)
 	//alert(getdata+getcontent);
 
 	var f = document.getElementById('form2');
-	window.open("", "pop", "width=600, height=400");
+	window.open("", "pop", "width=500, height=370");
 	f.submit(); 
 
 	

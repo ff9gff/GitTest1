@@ -168,7 +168,7 @@ table, th, td {
 
 			</table>
   				<div style="text-align: right;">  					
-					<input type="image" src="../resources/theme/images/check.png" style="width: 30px; display:inline; margin-top: 15px;" >
+					<input type="image" src="../resources/theme/images/check.png" id="saveMyUser" onclick="ace()" style="width: 30px; display:inline; margin-top: 15px;" >
 				</div>
 				</div>
 					</form>
@@ -180,6 +180,24 @@ table, th, td {
 	<script type="text/javascript">
 	
 		
+		function ace(){
+			alert("ss");
+			$.ajax({
+				type:'put',
+				url:'/project03/users/updateLevelOne',
+				headers:{
+					'Content-Type':'application/json',
+					'X-Http-Method-Ovveride':'PUT'
+				}
+				
+				
+			});
+			
+	
+			$('.select0').empty();
+			
+			
+		};
 
 		
 		$('#saveMyUser').click(function(){
