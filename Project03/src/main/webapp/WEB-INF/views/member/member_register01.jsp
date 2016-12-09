@@ -8,35 +8,39 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
-		<link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
+      <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="<c:url value="../resources/theme/css/bootstrap.min.css"/>">
+      <link rel="stylesheet" href="<c:url value="../resources/theme/css/templatemo_style.css"/>">
 
-		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
-		<script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
-		<script src="../resources/theme/js/bootstrap.js"></script>
-		<script src="../resources/theme/js/plugins.js"></script>
-		<script src="../resources/theme/js/main.js"></script>
-		
+      
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+      <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+      <script src="../resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+      <script src="../resources/theme/js/bootstrap.js"></script>
+      <script src="../resources/theme/js/plugins.js"></script>
+      <script src="../resources/theme/js/main.js"></script>
+      
 <title>같이가자</title>
 </head>
 <body>
+<div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%"><!-- #ffffcc -->
 
-<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
-	<img alt="" src="../resources/theme/images/Sign_up_title.png" style="display: block;">
-	<img alt="" src="../resources/theme/images/Sign_up01.png" style="display: block; height: 75px;">
-</div>
-<br/>
-<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
-	<div>
-		<h2 style="font-size: medium; font-style: oblique; color: black;">이용약관</h2>
-	</div>
-
-	<textarea rows="12" cols="120" readonly="readonly" style="margin-top: 5px">
+   <div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/><!-- white -->
+      <div>
+        <!--  <img alt="" src="../resources/theme/images/naver.png" style="display: block; width: 100%; height: 10%"> -->
+          <img alt="" src="../resources/theme/images/signup01.png" style="display: block; width: 30%; height: 10%">
+      </div>
+      
+      <br/><br/>
+      
+      <div>
+         <div>
+            <h2 style="font-size: medium; font-style: oblique; color: black; text-align: left;">이용약관</h2>
+         </div>
+         <div style="text-align: center;">
+            <textarea style="margin-top: 5px; width: 100%; height: 25%" rows="12" readonly="readonly">
 같이가자 및 같이가자 관련 제반 서비스의 이용과 관련하여 필요한 사항을 규정합니다.
 제 1조 (목적)
 이 약관은 같이가자(주)(이하 "회사")가 제공하는 같이가자 및 같이가자 관련 제반 서비스의 이용과 관련하여 회사와 회원과의 권리, 의무 및 책임사항, 기타 필요한 사항을 규정함을 목적으로 합니다.
@@ -77,27 +81,34 @@
 ⑦ "회사"는 "회원"에 대해 회사정책에 따라 등급별로 구분하여 이용시간, 이용횟수, 서비스 메뉴 등을 세분하여 이용에 차등을 둘 수 있습니다. 
 ⑧ "회사"는 "회원"에 대하여 "청소년보호법"등에 따른 등급 및 연령 준수를 위해 이용제한이나 등급별 제한을 할 수 있습니다.
 ⑨ "회사"는 "정회원"이 “안전동행” 서비스 내의 상호간에 "동의"를 체크함으로써 상대방의 개인 정보를 확인할 수 있도록 합니다.
-	</textarea><br/>
-	
-	<div style="text-align: center;">		
-		<input type="radio" id="btn_member_stipulation_agree" name="stipulation" value="agree" />
-		<label for="btn_member_stipulation_agree" style="color: black;">동의 합니다</label>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="radio" id="btn_member_stipulation_disagree" name="stipulation" value="disagree" />
-		<label for="btn_member_stipulation_disagree" style="color: black;">동의하지 않습니다</label>				
-	</div>
-	
-</div>
-	
-	<br/>
+            </textarea><br/>
 
-
-<div style="width: 800px; margin: 0 auto; vertical-align: middle;">
-	<div>
-		<h2 style="font-size: medium; font-style: oblique; color: black;">개인정보취급방침</h2>
-	</div>
-
-	<textarea rows="12" cols="120" readonly="readonly" style="margin-top: 5px">
+   <div style="text-align: center;">
+      <div style="text-align: center; width: 30%; display: inline-block;">
+         <input type="radio" id="btn_member_stipulation_agree" name="stipulation" value="agree" />
+         <label for="btn_member_stipulation_agree" style="color: black;">동의 합니다</label>
+      </div>
+         
+      <div style="text-align: center; width: 30%; display: inline-block;">
+         <input type="radio" id="btn_member_stipulation_disagree" name="stipulation" value="disagree" />
+         <label for="btn_member_stipulation_disagree" style="color: black;">동의하지 않습니다</label>   
+      </div>         
+   </div>
+   
+         </div>
+         
+      
+      </div>
+      
+      <br/>
+      
+      <div><!-- 개인정보취급방침  -->
+         <div>
+            <h2 style="font-size: medium; font-style: oblique; color: black; text-align: left;">개인정보취급방침</h2>
+         </div>
+         
+         <div style="text-align: center;">
+            <textarea style="margin-top: 5px; width: 100%; height: 25%" rows="12" readonly="readonly">
 같이가자 (주)(이하 “회사” 또는 “같이가자” 라 함)는 통신비밀보호법, 전기통신사업법, 정보통신망 이용촉진 및 정보보호 등에 관한 법률 등 정보통신서비스제공자가 준수하여야 할 관련 법령상의 개인정보보호 규정을 준수하며, 관련 법령에 의거한 개인정보취급방침을 정하여 이용자 권익 보호에 최선을 다하고 있습니다.
 
 같이가자의 개인정보취급방침은 다음과 같은 내용을 담고 있습니다.
@@ -209,56 +220,69 @@
 11. 고지의 의무
 현 개인정보취급방침 내용 추가, 삭제 및 수정이 있을 시에는 개정 최소 7일전부터 홈페이지의 '공지사항'을 통해 고지할 것입니다.
 
- 부칙이 약관은 20XX년 XX월 XX일부터 적용됩니다
-	</textarea><br/>
-	
-	<div style="width: 800px; margin: 0 auto; vertical-align: middle; text-align: center;">		
-		<input type="radio" id="btn_personal_information_agree" name="information" value="agree" />
-		<label for="btn_personal_information_agree" style="color: black;">동의 합니다</label>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input type="radio" id="btn_personal_information_disagree" name="information" value="disagree" />
-		<label for="btn_personal_information_disagree" style="color: black;">동의하지 않습니다</label>						
-	</div>
-
-</div>
-	
-	<br/>
-	
-	<div style="text-align: center;">
-	<button id="confirm" style="width: 100px; color: black;">확인</button>
-	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button id="cancel" style="width: 100px; color: black;">취소</button>	
-	</div>
-	
-<div id="footer" style="margin-top: 50px">
-	<div class="col-md-8 col-xs-12 text-left">
-		<span style="margin-left: 0px">Copyright &copy; 2014 Company Name</span>
-	</div>
-</div>
-
+ 부칙이 약관은 20XX년 XX월 XX일부터 적용됩니다.
+            </textarea><br/>
+   
+   <div style="text-align: center;">
+         <div style="text-align: center; width: 30%; display: inline-block;">
+            <input type="radio" id="btn_personal_information_agree" name="information" value="agree" />
+            <label for="btn_personal_information_agree" style="color: black;">동의 합니다</label>
+         </div>
+         
+         <div style="text-align: center; width: 30%; display: inline-block;">
+            <input type="radio" id="btn_personal_information_disagree" name="information" value="disagree"/>
+            <label for="btn_personal_information_disagree" style="color: black;">동의하지 않습니다</label>
+         </div>         
+   </div>
+      
+         </div>
+         
+      
+      </div><!-- 개인정보취급방침  -->
+      
+      <br/>
+      
+      <div style="text-align: center;">
+         <div style="text-align: center; width: 30%; display: inline-block;">
+            <button id="confirm" style="width: 100px; color: black;">확인</button>
+         </div>
+         
+         <div style="text-align: center; width: 30%; display: inline-block;">
+            <button id="cancel" style="width: 100px; color: black;">취소</button>   
+         </div>         
+      </div>
+      
+      <div id="footer" style="margin-top: 20px">
+         <div class="col-md-8 col-xs-12 text-left">
+            <span style="margin-left: 0px">Copyright &copy; 2016 With Me</span>
+         </div>
+      </div>      
+      
+   </div><!-- white -->
+</div><!-- #ffffcc -->
 <script>
 $(document).ready(function() {
-	
-	$('#cancel').click(function() {
-		location = '../index';
-	});	
-	
-	$('#confirm').click(function() {
-		var stipulation = $('input[type=radio][name=stipulation]:checked').val();
-		var information = $('input[type=radio][name=information]:checked').val();
-		
-		if(stipulation == 'disagree' && information == 'disagree') {
-			alert("이용약관 및 개인정보취급방침에 동의하셔야 합니다.");			
-		} else if(stipulation == 'agree' && information == 'disagree') {
-			alert("개인정보취급방침에 동의하셔야 합니다.");
-		} else if(stipulation == 'disagree' && information == 'agree') {
-			alert("이용약관에 동의하셔야 합니다.");
-		} else if(stipulation == 'agree' && information == 'agree') {
-			location = 'member_register02';
-		}		
-	});	
+   
+   $('#cancel').click(function() {
+      location = '../index';
+   });   
+   
+   $('#confirm').click(function() {
+      var stipulation = $('input[type=radio][name=stipulation]:checked').val();
+      var information = $('input[type=radio][name=information]:checked').val();
+      
+      if(stipulation == 'disagree' && information == 'disagree') {
+         alert("이용약관 및 개인정보취급방침에 동의하셔야 합니다.");         
+      } else if(stipulation == 'agree' && information == 'disagree') {
+         alert("개인정보취급방침에 동의하셔야 합니다.");
+      } else if(stipulation == 'disagree' && information == 'agree') {
+         alert("이용약관에 동의하셔야 합니다.");
+      } else if(stipulation == 'agree' && information == 'agree') {
+         location = 'member_register02';
+      }      
+   });   
 });
-</script>	
+</script>   
 
 </body>
 </html>

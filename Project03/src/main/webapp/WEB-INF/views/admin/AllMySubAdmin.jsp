@@ -43,6 +43,10 @@ table, th, td {
 	 font-family: 'Jeju Hallasan', serif;
  }
  
+ 
+ #hi{
+ 	font-family: 'Jeju Hallasan', serif;
+ }
 </style>
 
 
@@ -53,7 +57,8 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;같이가자 회원관리 페이지입니다.</h1>
+			<h1 id="hi">&nbsp;관리자님 안녕하세요</h1>
+
 			<div>&nbsp;</div>
 			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
@@ -186,27 +191,7 @@ function update(x){
 	
 }//end 
 
-/*function removeRow() {
-  oTbl.deleteRow(oTbl.clickedRowIndex);
- * 
- function insRow() {
-	  oTbl = document.getElementById("regionTable");
-	  var oRow = oTbl.insertRow();
-	  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
-	  var oCell = oRow.insertCell();
-	  
-	  //삽입될 Form Tag
-	  var frmTag = "<input type=text name=region_name placeholder=지역>";
-	  frmTag += " <input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
-	  oCell.innerHTML = frmTag;
-	}
 
-	//Row 삭제
-	function removeRow() {
-	  oTbl.deleteRow(oTbl.clickedRowIndex);
-	}
- 
- */
 
 setInterval("dpTime()",1000);
 function dpTime(){

@@ -173,49 +173,10 @@ http://www.templatemo.com/tm-406-flex
 </head>
 <body>
 
-	<%@ include file="../top_header.jspf"%>
+	<%@ include file="../main-header2.jsp"%>
 
 	<div class="site-main" id="sTop">
-		<div class="site-header">
-			<div class="main-header">
-				<div class="container">
-					<div id="menu-wrapper">
-						<div class="row">
-							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
-							</div>
-							<!-- /.logo-wrapper -->
-							<div class="col-md-10 col-sm-10 main-menu text-right">
-								<div class="toggle-menu visible-sm visible-xs">
-									<i class="fa fa-bars"></i>
-								</div>
-								<ul class="menu-first">
-									<li class="active"><a href="#">메인</a></li>
-									<li><a href="#services">후기</a></li>
-									<li><a href="#portfolio">찾기</a></li>
-									<c:if test="${not empty mno}">
-										<li><a href="MyPage">마이페이지</a></li>
-									</c:if>
-									<c:if test="${authority eq 3}">
-										<li><a href="admin">관리자</a></li>
-									</c:if>
-									<c:if test="${empty mno}">
-										<li><a href="login">로그인</a></li>
-									</c:if>
-								</ul>
-							</div>
-							<!-- /.main-menu -->
-						</div>
-						<!-- /.row -->
-					</div>
-					<!-- /#menu-wrapper -->
-				</div>
-				<!-- /.container -->
-			</div>
-			<!-- /.main-header -->
-		</div>
+
 		<!-- /.site-header -->
 		<div class="site-slider">
 			<div class="slider">
@@ -225,7 +186,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
-								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/tour-main.png" alt=""/>
+								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-main.png" alt=""/>
 							</div>
 						</li>
 						<li>
@@ -270,7 +231,7 @@ http://www.templatemo.com/tm-406-flex
 					<div id="condition_box" style="width: 300px; height: 310px; border: 1px solid gray; z-index:200; background-color: #FFFFFF">
 						<div class="inside_div_conditon" style="height: 50px;">
 							
-							<button id="btn_create_tour"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="resources/theme/images/tour-btn.png" alt=""/>여행 등록</button>
+							<button id="btn_create_tour"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-btn.png" alt=""/>여행 등록</button>
 						</div>
 						<div class="inside_div_conditon" style="height: 30px; border-top: 1px dotted gray;">
 							<p style="font-size: 16px; font-weight: bold;">상세검색</p>

@@ -379,7 +379,7 @@ font-size: 12px;
 <body>
 
 <!-- 회원가입/로그인 부분 -->
-	<%@ include file="../top_header.jspf"  %>
+<%@ include file="../main-header2.jsp"%>
 
 
 <div id="overlay"></div>
@@ -414,37 +414,7 @@ font-size: 12px;
 
 <!-- 회원가입/로그인 부분 -->
 
-	<!-- 헤더 메인부분 -->
-	<div class="main-header">
-		<div class="container">
-			<div id="menu-wrapper">
-				<div class="row">
-					<div class="logo-wrapper col-md-2 col-sm-2">
-						<h1>
-							<a href="#">hello </a>
-						</h1>
-					</div>
-					<!-- /.logo-wrapper -->
-					<div class="col-md-10 col-sm-10 main-menu text-right">
-						<div class="toggle-menu visible-sm visible-xs">
-							<i class="fa fa-bars"></i>
-						</div>
-
-						<ul class="menu-first">
-							<li><a href="../index">메인</a></li>
-							<li><a href="../admin">관리자</a></li>
-							<li><a href="../login">로그인</a></li>
-						</ul>
-					</div>
-					<!-- /.main-menu -->
-				</div>
-				<!-- /.row -->
-			</div>
-			<!-- /#menu-wrapper -->
-		</div>
-		<!-- /.container -->
-	</div>
-	<!-- /.main-header -->
+	
 <div style="height: 150px;"></div>
 
 <form id="msg_form" method="post" action="toggle_msg" target="msg">
