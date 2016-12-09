@@ -9,7 +9,7 @@ public class MyUserPaginationCriteria {
 		
 		public MyUserPaginationCriteria(){
 			page =1;// 디폴트로 1페이지를 보여준다.,
-			perPage =3;  // 디폴트로 한페이지  게시글 10 개씩 보여준다. 
+			perPage =100;  // 디폴트로 한페이지  게시글 10 개씩 보여준다. 
 			
 			
 		}//end public 

@@ -481,7 +481,7 @@ ul {
 					
 						list+= '<div class="portfolio-thumb">'
 						+ '<figure>'						
-						+ '<a href="../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
+						+ '<a href="../../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
@@ -528,7 +528,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../review/review_detail?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../review/review_detial?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + ReviewList[i].tour + '</div>'
 						+ '<div>지역: ' + ReviewList[i].city + '</div>'			
 						+ '</figure>'

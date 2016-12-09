@@ -12,11 +12,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+<link rel="stylesheet" href="<c:url value="../../resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="../../resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="../../resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="../../resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="../../resources/theme/css/templatemo_style.css"/>">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
 <script src="/resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
@@ -481,7 +481,7 @@ ul {
 					
 						list+= '<div class="portfolio-thumb">'
 						+ '<figure>'						
-						+ '<a href="../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
+						+ '<a href="../../tour/detail?trip_no=' + List[i].content_no + '"><img src="../../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
@@ -504,7 +504,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../' + JoinList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../tour/detail?trip_no=' + JoinList[i].content_no + '"><img src="../../' + JoinList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + JoinList[i].tour + '</div>'
 						+ '<div>지역: ' + JoinList[i].city + '</div>'			
 						+ '</figure>'
@@ -528,7 +528,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../review/review_detail?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../review/review_detial?review_no=' + ReviewList[i].content_no + '"><img src="../../' + ReviewList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + ReviewList[i].tour + '</div>'
 						+ '<div>지역: ' + ReviewList[i].city + '</div>'			
 						+ '</figure>'
@@ -657,7 +657,7 @@ ul {
 		
 		var mno_img = '${inserterImg}';
 		
-		$('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/>');
+		$('#content_profile').html('<img src="../../'+mno_img+'" class="content_profile_img"/>');
 		
 	</script>
 	

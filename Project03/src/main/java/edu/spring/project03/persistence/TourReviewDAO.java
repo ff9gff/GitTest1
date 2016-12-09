@@ -96,6 +96,7 @@ public interface TourReviewDAO {
 	public abstract int selectReviewLike(int review_no, int mno);
 	public abstract int insertReviewLike(int review_no, int mno);
 	public abstract int deleteReviewLike(int review_no, int mno);
+	public abstract int update_review_best(int review_no);
 
 	/**
 	 * BestVO

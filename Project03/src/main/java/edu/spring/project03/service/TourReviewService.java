@@ -92,6 +92,7 @@ public interface TourReviewService {
 	public abstract int readReviewLike(int review_no, int mno);
 	public abstract int createReviewLike(int review_no, int mno);
 	public abstract int deleteReviewLike(int review_no, int mno);
+	public abstract int update_review_best(int review_no);
 	
 	// 후기 (지역/닉네임) 선택 검색
 	public abstract List<NickReviewSearchResultDTO> read_review_by_nickname(String region_name, String nickname);

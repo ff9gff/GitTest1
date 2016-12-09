@@ -1,6 +1,7 @@
 package edu.spring.project03.controller;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.spring.project03.domain.BestVO;
 import edu.spring.project03.domain.ImageFile;
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.PersonalVO;
@@ -70,14 +72,22 @@ public class TourReviewController {
 			// 이 게시글에 이미 따봉을 눌렀습니다. 따봉의 흔적을 지웁니다
 			int insertLike = tourReviewService.createReviewLike(review_no, mno);
 		}
-		
-		if (selectLike == 1){
-				// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
-				logger.info("따봉 눌렀으니까 삭제합시다.");
-				int deleteLike = tourReviewService.deleteReviewLike(review_no, mno);
-			}
 
-		return "redirect:reviewBoard";
+		if (selectLike == 1) {
+			// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
+			logger.info("따봉 눌렀으니까 삭제합시다.");
+			int deleteLike = tourReviewService.deleteReviewLike(review_no, mno);
+		}
+
+		// 따봉 추가 삭제가 끝났으면 해당 게시글의 따봉 개수를 종합하여 wm_review 테이블에 업데이트 해줍시다
+		int updateBest = tourReviewService.update_review_best(review_no);
+		if (updateBest == 1) {
+			logger.info(" wm_review 테이블 따봉 업데이트 성공");
+		} else {
+			logger.info(" wm_review 테이블 따봉 업데이트 실패");
+		}
+
+		return "redirect:../../review_detail?review_no=" + review_no;
 	} // end reviewRegister()
 
 	// 후기 등록 작업 DB Insert
@@ -126,8 +136,7 @@ public class TourReviewController {
 					model.addAttribute("reviewregionvo", reviewRegionvo2);
 
 					if (fileInfo.getFileName().length() < 40) {
-						logger.info("후기 기본 썸네일 등록할거임 아직 테스트 ㄴㄴ");
-
+	
 						ImgVO imagevo = new ImgVO(ReviewRegisterID, review_no, 0,
 								SAVE_IMAGE_DIR + "default-profile.jpg");
 						int result2 = tourReviewService.createThumnail(imagevo);
@@ -169,7 +178,7 @@ public class TourReviewController {
 	} // end CreateReview()
 
 	@RequestMapping(value = "/review_detail", method = RequestMethod.GET)
-	public String reviewDetail(int review_no, Model model) {
+	public String reviewDetail(int review_no, Model model, HttpSession session) {
 		// review_detail.jsp 페이지 이동
 		// DAO 통해서 view 테이블 불러오게..
 		logger.info("reviewDetail() 호출...");
@@ -221,25 +230,44 @@ public class TourReviewController {
 			}
 		} // end if
 
+		
+		// 내가 이 게시물에 따봉을 눌렀는가? state를 조회해보면 알 수 있다
+		int selectLike = 0;
+
+		String mnoString = (String) (session.getAttribute("mno"));
+
+		if (mnoString == null) {
+			logger.info("로그인된 아이디가 없음");
+		} else {
+
+			// 문제가 있음
+			int mno = Integer.valueOf(mnoString);
+
+			try {
+				// 먼저 사용자가 게시글에 따봉을 눌렀는지 확인!
+				selectLike = tourReviewService.readReviewLike(review_no, mno);
+				logger.info("selectLike=? : " + selectLike);
+				
+			} catch (Exception e) {
+				// TODO: handle exception
+				logger.info("따봉을 누른 흔적이 없습니다.");
+
+				BestVO vo = new BestVO(mno, review_no, 0);
+				model.addAttribute("likecheck", vo);
+			}
+
+			if (selectLike == 1) {
+				// 따봉을 누른 흔적이 없으니 새 따봉을 입력합니다.
+				logger.info("따봉 누른 흔적이 있습니다.");
+				BestVO vo = new BestVO(mno, review_no, selectLike);
+				model.addAttribute("likecheck", vo);
+			}
+		}
+
+	
 		return "review/review_detail";
 	} // end reviewDetail()
 
-	/*
-	 * @RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
-	 * public String toggleMsg(int msg_setter, int msg_getter, String
-	 * msg_getnick, String msg_address, Model model) { System.out.println(
-	 * "setter: " + msg_setter); System.out.println("getter: " + msg_getter);
-	 * System.out.println("msg_getnick: " + msg_getnick);
-	 * 
-	 * model.addAttribute("msg_setter", msg_setter);
-	 * model.addAttribute("msg_getter", msg_getter);
-	 * model.addAttribute("msg_getnick", msg_getnick);
-	 * model.addAttribute("msg_address", msg_address);
-	 * 
-	 * return "toggle_msg"; } // end toggleMsg(msg_setter, msg_getter,
-	 * msg_getnick, msg_address, model)
-	 * 
-	 */
 	@RequestMapping(value = "/toggle_msg", method = RequestMethod.POST)
 	public String toggleMsg(int msg_setter, int msg_getter, String[] msg_getnick, String msg_address, Model model) {
 		System.out.println("setter: " + msg_setter);

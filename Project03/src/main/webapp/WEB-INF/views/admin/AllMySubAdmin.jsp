@@ -7,7 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -25,14 +28,24 @@
 }
 
 table, th, td {
-   border: 1px solid gray;
+   border: 1px solid#e65b05;
    border-collapse: collapse;
    text-align: center;
    vertical-align: middle;
 }
+
+.menuItem{
+ 	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
+ }
+ 
+ #checkboxTestTbl{
+	 font-family: 'Jeju Hallasan', serif;
+ }
+ 
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
+
 
 </head>
 
@@ -40,7 +53,7 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;관리자님 안녕하세요</h1>
+			<h1>&nbsp;같이가자 회원관리 페이지입니다.</h1>
 			<div>&nbsp;</div>
 			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>
@@ -53,24 +66,22 @@ table, th, td {
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
 				</li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
 				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
-
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
-				</li>
-				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-				<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 
 
 
@@ -83,7 +94,7 @@ table, th, td {
 
 	<form action="">
 		<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 유저 정보 확인</caption>
+				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">관리자 회원 정보 확인</caption>
 
 				<colgroup>
 					<col width="40px">
@@ -98,12 +109,12 @@ table, th, td {
 	
 				<tr>
 					<th>번호</th>
-					<th>유저 번호</th>
-					<th>유저 아이디</th>
-					<th>유저 닉네임</th>
-					<th>유저 연락처</th>
-					<th>유저 이메일</th>
-					<th>유저 가입날짜</th>
+					<th>회원 번호</th>
+					<th>아이디 (ID)</th>
+					<th>닉네임</th>
+					<th>연락처 (PHONE)</th>
+					<th>이메일 (E-MAIL)</th>
+					<th>가입날짜 (DATE)</th>
 					<th>구분</th>
 				</tr>
 
@@ -116,7 +127,7 @@ table, th, td {
 						<td >${x=x+1 }</td>
 						<td id="mno_${x }" value="${vo.mno }">${vo.mno }</td>
 						<td>${vo.userid }</td>
-						<td>${vo.nickname }</td>
+						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
 						<td>${vo.phone }</td>
 						<td>${vo.email }</td>
 					        <td>

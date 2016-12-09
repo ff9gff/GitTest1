@@ -7,10 +7,24 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<!-- 합쳐지고 최소화된 최신 CSS -->
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+
+<!-- 합쳐지고 최소화된 최신 CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 
 
 <style type="text/css">
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -34,9 +48,50 @@ table, th, td {
    text-align: center;
    vertical-align: middle;
  }
+ 
+
+ #section{
+ 
+ 
+ }
+ 
+ .pagination{
+display: inline-block;
+
+}
+ul li {
+list-style: none;
+}
+
+<%--
+style="border-top:  1px solid orange; border-left: 
+ 1px solid gray; border-right:  1px solid gray; border-radius: 
+ 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;
+
+--%>
+
+#captionStyle{
+ border-top: 1px solid orange;
+ border-left: 1px solid gray;
+ border-right:  1px solid gray;
+ border-radius: 99px 0px 0px 0px;
+ border: 2px solid #e65b05;
+ background-color : orange;
+
+}
+
+ .menuItem{
+ 	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
+ }
+
+ #pageForm{
+	 font-family: 'Jeju Hallasan', serif;
+ }
+
+
 </style>
 
-<link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 </head>
 
@@ -57,24 +112,22 @@ table, th, td {
 				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
 				</li>
 
-				<li Class="menuItem"><a Class="mylink" href="AdminMsg">공지사항</a>
+				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
 				</li>
-	
-			<li Class="menuItem"><a Class="mylink" href="AllAdminMSG">지난공지</a>
-				</li>
-				<li Class="menuItem"><a Class="mylink" href="MyUserInfo">유저 등급</a></li>
+				
+				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="SendMsg">홈(아직)</a>
+				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
+				</li>
+					
+					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
+					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/new4.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 회원 관리</a>
 				</li>
 				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>
-				
-					<li Class="menuItem"><a Class="mylink" href="../index">메인</a>
-				</li>
+				<li Class="menuItem"><a Class="mylink" href="../index" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/house.png" style="width: 40px; height: 40px; display: inline; vertical-align: middle;"/> 메인&nbsp;가자 </a>
+				</li>  
 
 
 
@@ -87,7 +140,12 @@ table, th, td {
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form id="pageForm">
 			<table id="checkboxTestTbl" >
-				<caption style="border-top:  1px solid orange; border-left:  1px solid gray; border-right:  1px solid gray; border-radius: 99px 0px 0px 0px; border: 2px solid #e65b05; background-color : orange;">전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)     </caption>
+				<caption id="captionStyle" ><b style="color: black; font-size: 150%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)</b></caption>
 
 				<colgroup>
 					
@@ -101,12 +159,12 @@ table, th, td {
 	
 				<tr>
 					
-					<th>유저 번호</th>
-					<th>유저 아이디</th>
-					<th>유저 닉네임</th>
-					<th>유저 연락처</th>
-					<th>유저 이메일</th>
-					<th>유저 가입날짜</th>
+					<th>번호</th>
+					<th>아이디 (ID)</th>
+					<th>닉네임</th>
+					<th>연락처 (PHONE)</th>
+					<th>이메일 (E-MAIL)</th>
+					<th>가입날짜 (DATE)</th>
 				</tr>
 
 			
@@ -116,14 +174,14 @@ table, th, td {
 					
 					<tr class= "select0">
 						
-						<td>${vo.mno }</td>
-						<td>${vo.userid }</td>
-						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
-						<td>${vo.phone }</td>
-						<td>${vo.email }</td>
-					        <td>
+						<td ><label for="section">${vo.mno }</label></td>
+						<td ><label for="section">${vo.userid }</label></td>
+						<td ><a href="/project03/mypage/UserPage/${vo.mno}" id="section" style="color: black;"><b>${vo.nickname }</b></a></td>
+						<td ><label for="section">${vo.phone }</label></td>
+						<td ><label for="section">${vo.email }</label></td>
+					        <td><label for="section">
 	       						 <fmt:formatDate value="${vo.joindate }" 
-	          						  pattern="yyyy-MM-dd HH:mm:ss"/>
+	          						  pattern="yyyy-MM-dd HH:mm:ss"/></label>
         					</td>
 			
 					</tr>
@@ -136,7 +194,21 @@ table, th, td {
 
 
 		<br/>
-<ul class="pageLinks">
+		
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
+
+
+
+
+<ul class="pagination">
     <c:if test="${pageMaker.hasPrev }">
     <li><a href="${pageMaker.startPageNum - 1 }">&laquo;이전</a></li>
     </c:if>
@@ -144,7 +216,7 @@ table, th, td {
     <c:forEach begin="${pageMaker.startPageNum }"
         end="${pageMaker.endPageNum }"
         var="num">
-    <li><a href="${num }">${num }</a></li>
+    <li><a href="${num }"><b>${num }</b></a></li>
     </c:forEach>
     
     <c:if test="${pageMaker.hasNext }">
@@ -204,7 +276,7 @@ document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":"
 
 var frm = $('#pageForm2');
 
-$('.pageLinks li a').click(function() {
+$('.pagination li a').click(function() {
 	alert('하이');
 	event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
 	// pageForm 안에 있는 name="page"인 요소를 찾아서
