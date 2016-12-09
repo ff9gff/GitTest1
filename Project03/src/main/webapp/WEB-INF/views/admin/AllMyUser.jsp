@@ -88,19 +88,17 @@ style="border-top:  1px solid orange; border-left:
  #pageForm{
 	 font-family: 'Jeju Hallasan', serif;
  }
-<<<<<<< HEAD
 
 .menuItem{
 font-size: 170%;
 }
-=======
+
 
 
 #hi{
  	font-family: 'Jeju Hallasan', serif;
  }
 
->>>>>>> branch 'master' of https://github.com/ff9gff/GitTest1
 </style>
 
 
