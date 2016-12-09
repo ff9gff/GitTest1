@@ -188,11 +188,13 @@ ul {
 				<div
 					style="display: block; width: 100%; height: 100%; margin-top: 20px; margin: 10px; vertical-align: center; text-align: center;">
 
+					<a href="../myMsg" style="margin-right: 10px;">받은 쪽지함 </a>
 					<div id="content_profile"
 						style="display: inline-block; text-align: center; vertical-align: middle; padding-top: 14px;">
 
 					</div>
 					
+					<a href="../MySendMsg" style="margin-left: 10px;">보낸 쪽지함</a>
 					
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>

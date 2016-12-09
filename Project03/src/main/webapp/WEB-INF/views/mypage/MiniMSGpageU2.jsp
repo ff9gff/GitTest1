@@ -197,7 +197,7 @@ input:focus, textarea:focus {
      		 <p class="userClass">
         	<input name="nickname" type="text" 
         	class="validate[required,custom[email]] feedback-input" 
-        	id="nickname"   placeholder="받는 사람" />
+        	id="nickname"  value="${value2 }" />
        	
       		</p>
       

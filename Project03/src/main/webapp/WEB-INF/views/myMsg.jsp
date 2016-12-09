@@ -58,27 +58,7 @@ li {
 
 margin-left:1115px;
 }
-<%---
-.pagination{
-position: relative;
-        margin:0 auto;
-}
-#test1 {
-position: relative;
-        margin-left: 700px;
 
-}
-
-
---%>
-<%--
-#msgTable  .pagination{
-
-  position: absolute;
-  top: 10px; 
-  left: 500px;
-}
---%>
 </style>
 </head>
 <body>
@@ -117,7 +97,22 @@ position: relative;
     
   	
         <td>${x=x+1 }</td>
-        <td>${vo.nickname }${vo.msg_no }</td>
+        <td>
+        	
+        		
+        		<form action="mypage/MiniMSGpageU2" method="get" id="formName" name="formName" target="pop">
+        		<input type="hidden"  id="sendmno${x }" value="${vo.nickname }">
+        		 <input type="hidden"  id="value2" name= "value2" />
+        		</form>
+        	
+        		
+        		<a href="javascript:OpenPop2('${x }');">
+        		${vo.nickname }
+        		 </a>
+        	
+        	
+        	
+        </td>
         	<td style="text-align: left;">
         <form id="form2" name="form2" method='post' action="MiniMsg" target="pop">
  		 <input type="hidden" name="postdata"  id ="postdata${x}"  value="${vo.nickname }"/> 
@@ -321,8 +316,23 @@ function OpenPop(no)
             }
         });
 
+        
+
 	
-	
+
+        function OpenPop2(no)
+	    {
+				
+	   		var getdata2 = document.getElementById("sendmno"+no+"").value;
+	   		$("#value2").val(getdata2); 
+	        var f = document.getElementById('formName');
+	        window.open("", "pop", "width=800, height=800"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
+	        f.submit(); 
+	        /*    document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다. 
+	        document.formName.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
+	        document.formName.submit(); // target에 쏜다.
+*/	
+	    };
 	
 	
 	
