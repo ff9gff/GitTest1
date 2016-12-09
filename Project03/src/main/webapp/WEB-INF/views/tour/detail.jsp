@@ -1134,6 +1134,8 @@ $('#content_profile').on('click',$(this),function(){
 	// a 태그안의 mno 불러오기
 	var amno = ${tourVO.mno};
 	var anick = '${inserterNickname}';
+	console.log("amno: "+amno);
+	
 	
 	var alistno = 0;
 	// 메뉴 input에 mno숨겨넣기
@@ -1239,7 +1241,7 @@ $('#context_profile').on('click','.btn_context',function(){
 	if(atype=='reply'){
 		$('#profile_nickname').text(replylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(replylist[alistno].person["introduce"]);
-	}else if(atype='contextmenu'){
+	}else if(atype=='contextmenu'){
 		$('#profile_nickname').text(applylist[alistno].person["nickname"]);
 		$('#profile_introduce').text(applylist[alistno].person["introduce"]);
 	}else{
