@@ -208,7 +208,7 @@ ul {
 
 					<c:if test="${mno eq pageVO.mno}">
 						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
+							<li id="context_profile"><a href="#this" class="btn_context"><img src="../resources/theme/images/imagechange.svg" style="width:40px; margin: auto; vertical-align: center;" /></a></li>
 						</ul>
 					</c:if>
 
