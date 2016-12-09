@@ -35,68 +35,11 @@
 	</head>
 	
 	<body>
-		<%@ include file="../top_header.jspf"  %>
+		<%@ include file="../main-header2.jsp"%>
 
-		<div class="site-main" id="sTop" style="background-color: green;">
-			<div class="site-header">
-				<!-- /.container -->
-				<div class="main-header">
-					<div class="container">
-						<div id="menu-wrapper">
-							<div class="row">
-								<div class="logo-wrapper col-md-2 col-sm-2">
-									<h1>
-										<a href="#">hello </a>
-									</h1>
-								</div>
-								<!-- /.logo-wrapper -->
-								<div class="col-md-10 col-sm-10 main-menu text-right">
-									<div class="toggle-menu visible-sm visible-xs">
-										<i class="fa fa-bars"></i>
-									</div>
-									
-									<ul class="menu-first">
-										<li><a href="../index">메인</a></li>
-										<li><a href="../admin">관리자</a></li>
-										<li><a href="../login">로그인</a></li>
-									</ul>
-								</div>
-								<!-- /.main-menu -->
-							</div>
-							<!-- /.row -->
-						</div>
-						<!-- /#menu-wrapper -->
-					</div>
-					<!-- /.container -->
-				</div>
-				<!-- /.main-header -->
-			</div>
-			
-			<!-- /.site-header -->
-			<div class="site-slider">
-			
-			<div class="slider">
-				<div class="flexslider">
-					<ul class="slides">
-						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>여행 등록 정보 확인</h2>
-								<br /> <br />
-							</div>
-						</li>
-					</ul>
-				</div>
-				<!-- /.flexslider -->
-			</div>
-			<!-- /.slider -->
-		</div>
-		<!-- /.site-slider -->
-	</div>
-	<!-- /.site-main -->
+		
 
-	<div class="content-section" id="services">
+	<div class="content-section" id="services" style="margin-top: 150px">
 		<div class="container">
 			<div class="row">
 			

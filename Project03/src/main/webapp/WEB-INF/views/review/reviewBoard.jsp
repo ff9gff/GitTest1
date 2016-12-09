@@ -127,10 +127,10 @@ http://www.templatemo.com/tm-406-flex
 </head>
 <body>
 
-	<%@ include file="../top_header.jspf"%>
-
+	<%@ include file="../main-header2.jsp"%>
+	
 	<div class="site-main" id="sTop">
-		<div class="site-header">
+		<!-- <div class="site-header">
 			<div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
@@ -140,7 +140,7 @@ http://www.templatemo.com/tm-406-flex
 									<a href="#">hello </a>
 								</h1>
 							</div>
-							<!-- /.logo-wrapper -->
+							/.logo-wrapper
 							<div class="col-md-10 col-sm-10 main-menu text-right">
 								<div class="toggle-menu visible-sm visible-xs">
 									<i class="fa fa-bars"></i>
@@ -154,15 +154,15 @@ http://www.templatemo.com/tm-406-flex
 									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
-							<!-- /.main-menu -->
+							/.main-menu
 						</div>
-						<!-- /.row -->
+						/.row
 					</div>
-					<!-- /#menu-wrapper -->
+					/#menu-wrapper
 				</div>
-				<!-- /.container -->
+				/.container
 			</div>
-			<!-- /.main-header -->
+			/.main-header -->
 		</div>
 		<!-- /.site-header -->
 		<div class="site-slider">

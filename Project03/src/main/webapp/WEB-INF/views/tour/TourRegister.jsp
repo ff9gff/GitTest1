@@ -61,56 +61,21 @@ http://www.templatemo.com/tm-406-flex
  
 <body>
  
-	<%@ include file="../top_header.jspf"%>
+	<%@ include file="../main-header2.jsp"%>
  
  
 	<div class="site-main" id="sTop">
-		<div class="site-header">
-			<div class="main-header">
-				<div class="container">
-					<div id="menu-wrapper">
-						<div class="row">
-							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
-							</div>
-							<!-- /.logo-wrapper -->
-							<div class="col-md-10 col-sm-10 main-menu text-right">
-								<div class="toggle-menu visible-sm visible-xs">
-									<i class="fa fa-bars"></i>
-								</div>
-								<ul class="menu-first">
-									<li class="active"><a href="index">메인</a></li>
-									<li><a href="#services">후기</a></li>
-									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="../MyPage">마이페이지</a></li>
-									<li><a href="admin">관리자</a></li>
-									<li><a href="member/login">로그인</a></li>
-								</ul>
-							</div>
-							<!-- /.main-menu -->
-						</div>
-						<!-- /.row -->
-					</div>
-					<!-- /#menu-wrapper -->
-				</div>
-				<!-- /.container -->
-			</div>
-			<!-- /.main-header -->
-		</div>
-		<!-- /.site-header -->
 		<div class="site-slider">
 			<div class="slider">
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide1.jpg" alt="">
+							<div class="overlay"></div> <img src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>같이가자</h2>
 							</div>
 						</li>
+						
 						<li>
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide2.jpg" alt="">
@@ -164,25 +129,29 @@ http://www.templatemo.com/tm-406-flex
 								</tr>
 							</table>						
 						</div> <br /> 
-						<div style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px;padding: 2px; ">
+						<div style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px; padding: 2px; ">
 						<input type="text" id="start_date" name="start_date" placeholder="시작일" style="border:none;"> 
 						~ 
 						<input type="text" id="end_date" name="end_date" placeholder="종료일" style="border:none;"> <br /> <br />
-						</div>
-						<div>
+						</div> <br/>
+						<div style="display: inline-block;">
 							성별 조건: <br />
 							남자 <input type="radio" name="condition_sex" value="1" /> 
 							여자 <input type="radio" name="condition_sex" value="0" /> 
 							조건없음 <input type="radio" name="condition_sex" value="2" />
-						</div><br />
+						</div> 
+						
+						<div style="display: inline-block;">
+							
+						</div> 
 					
-						<div>
+						<div style="display: inline-block;">
 							연령 조건: <br />
 							20대 <input type="radio" name="condition_age" value="1" /> 
 							30대 <input type="radio" name="condition_age" value="2" /> 
 							40대 <input type="radio" name="condition_age" value="3" /> 
 							조건없음 <input type="radio" name="condition_age" value="4" />
-						 </div><br />		 
+						 </div><br /><br />		 
 						 
 						
 						<textarea name="content" id="smarteditor" rows="10"
