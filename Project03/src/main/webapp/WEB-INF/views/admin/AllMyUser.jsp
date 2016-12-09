@@ -22,6 +22,9 @@
 
 
 <style type="text/css">
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -79,7 +82,13 @@ style="border-top:  1px solid orange; border-left:
 
  .menuItem{
  	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
  }
+
+ #pageForm{
+	 font-family: 'Jeju Hallasan', serif;
+ }
+
 
 </style>
 

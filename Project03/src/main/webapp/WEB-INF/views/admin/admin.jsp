@@ -11,12 +11,14 @@
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
 		background-size: 100%;
 		background-repeat: no-repeat;
 		padding: 15px;
+		
 }
 
 #dropDownType {
@@ -35,7 +37,12 @@ table, th, td {
  }
  
  .menuItem{
+ 	
  	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
+ }
+ #checkboxTestTbl{
+ 	font-family: 'Jeju Hallasan', serif;
  }
 </style>
 

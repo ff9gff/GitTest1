@@ -38,82 +38,90 @@
    		<div style="margin-left: 50px">   		
    		
 	   		<label for="userid">아이디<p style="color: red; display: inline;">(*)</p></label><br>
-			<input type="text" pattern="[A-Za-z0-9]*" style="ime-mode: disabled;" id="userid" name="userid" placeholder="아이디" />
+			<input type="text" pattern="[A-Za-z0-9]*" style="ime-mode: disabled; width: 60%;" id="userid" name="userid" placeholder="아이디" />
 			<div id="result_id"></div><br/>
 	      
 			<label for="pwd">비밀번호<p style="color: red; display: inline;">(*)</p></label><br>
-			<input type="password" id="pwd" placeholder="비밀번호" /><br><br>
+			<input type="password" id="pwd" style="width: 60%;" placeholder="비밀번호" /><br><br>
 	      
 			<label for="pwd2">비밀번호 확인</label><br>
-			<input type="password" id="pwd2" name="pwd" placeholder="비밀번호 확인"><br>
+			<input type="password" id="pwd2" name="pwd" style="width: 60%;" placeholder="비밀번호 확인"><br>
 			<div id="check-pwd">비밀번호 확인을 위해 다시한번 입력 해 주세요</div><br/>
 	      
 			<label for="username">이름<p style="color: red; display: inline;">(*)</p></label><br>
-			<input type="text" id="name" name="name" placeholder="이름을 입력해 주세요"><br><br>
+			<input type="text" id="name" name="name" style="width: 60%;" placeholder="이름을 입력해 주세요"><br><br>
 	      
 	      <label for="sex">성별<p style="color: red; display: inline;">(*)</p></label><br>
+	      <div style="width: 30%; display: inline-block;">
 	      <input type="checkbox" id="male" name="sex" value="1">
 	      <label for="male">남자 </label>
-	      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	      <input type="checkbox" id="female" name="sex" value="0">
+	      </div>
+	      
+	      <div style="width: 30%; display: inline-block;">
+	      <input type="checkbox" id="female" name="sex" value="0">	      
 	      <label for="female">여자 </label>
+	      </div>
 	      <br><br>
 	      
 	      <label for="age">나이<p style="color: red; display: inline;">(*)</p></label><br>
-	      <input type="text" pattern="[0-9]*" id="age" name="age" placeholder="나이" /><br><br>
+	      <input type="text" pattern="[0-9]*" id="age" name="age" style="width: 60%;" placeholder="나이" /><br><br>
 	      
 	      <label for="nickname">넥네임이름<p style="color: red; display: inline;">(*)</p></label><br>
-	      <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요">
+	      <input type="text" id="nickname" name="nickname" style="width: 60%;" placeholder="닉네임">
 	      <div id="result_nick"></div><br>
 	      
 	      <label for="phone">핸드폰 번호<p style="color: red; display: inline;">(*)</p></label><br>
-	      <input type="text" id="phone" name="phone" placeholder="핸드폰 번호"><br><br>
+	      <input type="text" id="phone" name="phone" style="width: 60%;" placeholder="핸드폰 번호"><br><br>
 	      
 	      <label for="postcode">주소<p style="color: red; display: inline;">(*)</p></label><br>
-	      <input type="text" id="postcode" name="postcode" class="postcodify_postcode5" placeholder="우편번호">
-	      <input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
-	      <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " style="width: 450px"><br>
-	      <input type="text" id="address2" name="address2" placeholder="상세주소" style="width: 450px">
+	      <input type="text" id="postcode" name="postcode" style="width: 44.5%;"class="postcodify_postcode5" placeholder="우편번호">
+	      <input type="button" id="postcodify_search_button" style="width: 15%;" value="우편번호 찾기"><br>
+	      <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " style="width: 60%;"><br>
+	      <input type="text" id="address2" name="address2" placeholder="상세주소" style="width: 60%;">
 	      <br><br>      
 	      
 	      <label for="email">이메일<p style="color: red; display: inline;">(*)</p></label><br/>
-	      <input type="email" id="email" name="email" placeholder="이메일 입력" style="width: 250px" />
-	      <button type="button" id="btn_send_certification" name="btn_send_certification">인증번호 전송</button><br><br>
+	      <input type="email" id="email" name="email" placeholder="이메일" style="width: 44.5%;"/>
+	      <button type="button" id="btn_send_certification" name="btn_send_certification" style="width: 15%;">인증번호 전송</button><br><br>
 	      
-	      <label for="email_certification">인증번호 입력</label><br/>
-	      <input type="text" id="email_certification" placeholder="인증번호">
-	      <button type="button" id="btn_check_certification">인증번호 확인</button><br><br>
+	      <label for="email_certification">인증번호<p style="color: red; display: inline;">(*)</p></label><br/>
+	      <input type="text" id="email_certification" placeholder="인증번호" style="width: 44.5%;" />
+	      <button type="button" id="btn_check_certification" style="width: 15%;">인증번호 확인</button><br><br>
 	
 	      <!-- TODO : 이미지 (프로필 사진) 넣기 첨부! -->      
-	      <hr style="width: 800px" />
-	      
+	      <hr/>	      
+	      	      
 	      <label for="imageFile">프로필 이미지</label><br/>       
 	      <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
 	            
 	            
 	      <div id="image_preview">
 	      <img src="#" id="profile-image" style="display: none;" /><br/>
-	      <a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
+	      <a href="#" id="btn_profile-image_remove" style="display: none; text-align: right;">삭제</a>
 	      </div><br/>
 	      
 	      <label for="introduce">자기소개</label><br/>
-	      <textarea id="introduce" name="introduce" cols="100" rows="15"></textarea><br><br>         
+	      <textarea id="introduce" name="introduce" style="width: 100%" rows="15" placeholder="자기 소개"></textarea><br><br>         
 		
 		</div>
 		
 		<br/>
 		
-		<div style="text-align: center;">
-			<button type="button" id="submit_OK">회원가입</button>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      		<button type="button" id="submit_Cancel">가입취소</button>
+		<div style="width:100%; display: inline-block; text-align: center;">
+			<div style="width: 25%; display: inline-block; ; text-align: center;">
+				<button type="button" id="submit_OK">회원가입</button>
+			</div>
+			
+			<div style="text-align: center; width: 25%; display: inline-block;">
+      			<button type="button" id="submit_Cancel">가입취소</button>
+      		</div>
 		</div>      
    </form>
 </div>
    
 <div id="footer" style="margin-top: 50px">
 	<div class="col-md-8 col-xs-12 text-left">
-		<span style="margin-left: 0px">Copyright &copy; 2014 Company Name</span>
+		<span style="margin-left: 0px">Copyright &copy; 2016 같이가자(With Me)</span>
 	</div>
 	
 	<div class="col-md-4 hidden-xs text-right">
@@ -140,10 +148,10 @@ $(document).ready(function() {
          }),
          success: function(response) {
             if (response == 'NOK') {
-               $('#result_id').html('이미 사용 중인 아이디입니다.');
+               $('#result_id').html('이미 사용 중인 아이디입니다');
                $('#result_id').css('color', 'red');   
             } else {               
-               $('#result_id').html('사용 가능한 아이디입니다.');
+               $('#result_id').html('사용 가능한 아이디입니다');
                $('#result_id').css('color', 'blue');   
             }
          }
@@ -190,10 +198,10 @@ $(document).ready(function() {
          }),
          success: function(response) {
             if (response == 'NOK') {
-               $('#result_nick').html('이미 사용 중인 nick입니다.');
+               $('#result_nick').html('이미 사용 중인 닉네임 입니다.');
                $('#result_nick').css('color', 'red');   
             } else {               
-               $('#result_nick').html('사용 가능한 nick입니다.');
+               $('#result_nick').html('사용 가능한 닉네임 입니다.');
                $('#result_nick').css('color', 'blue');   
             }
          }
@@ -272,12 +280,12 @@ $(document).ready(function() {
    // 인증번호 입력 확인
    $('#btn_check_certification').click(function() {      
       if($('#email_certification').val() == auth_code) {
-         alert('인증번호가 동일!');
+         alert('인증번호가 확인 되었습니다.');
          final_check = 1;
          alert(final_check);
          
       } else {
-         alert('인증번호 다시 확인 해!');
+         alert('인증번호를 다시 확인 해주길 바랍니다.');
       }      
    });
    
@@ -299,8 +307,8 @@ $(document).ready(function() {
          blobURL = window.URL.createObjectURL(file);
          $('#image_preview img').attr('src', blobURL);
          document.getElementById("profile-image").style.display = "inline";
-         $('#image_preview img').attr('width', '300px');
-         $('#image_preview img').attr('height', '400px');
+         $('#image_preview img').attr('width', '50%');
+         $('#image_preview img').attr('height', '50%');
          document.getElementById("btn_profile-image_remove").style.display = "inline";
          //$('#image_preview').slideDown(); //업로드한 이미지 미리보기
          $('#image_preview').show(); //업로드한 이미지 미리보기
@@ -334,8 +342,7 @@ $(document).ready(function() {
 
    
    $('#submit_OK').click(function() {
-      if(final_check == 1) {
-         alert('인증번호 확인 ok!');
+      if(final_check == 1) {         
          
          $("#register_form").submit();
       } else {

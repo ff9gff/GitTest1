@@ -116,6 +116,12 @@ http://www.templatemo.com/tm-406-flex
   top: 400px;
   right: 20px;
 }
+.like_img{
+	width: 15px;
+	height: 15px;
+	vertical-align: middle;
+	display: inline-block;
+}
 </style>
 
 </head>
@@ -255,13 +261,13 @@ http://www.templatemo.com/tm-406-flex
 		var url1 = '/project03/review/defaultimage';
 		$.getJSON(url1, function(data1) {
 			$(data1).each(function() {
-				imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}});	
+				imageList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, countofbest: {}});	
 			});
 			
 			var url2 = '/project03/review/defaulttitle';
 			$.getJSON(url2, function(data2) {
 				$(data2).each(function() {
-					titleList.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age});	
+					titleList.push({review_no: this.review_no, title: this.title, condition_sex: this.condition_sex, condition_age: this.condition_age, countofbest: this.countofbest});	
 				});
 				console.log(titleList);
 				
@@ -281,6 +287,7 @@ http://www.templatemo.com/tm-406-flex
 						for (var j = 0; j < titleList.length; j++) {
 							if (imageList[i].content_no == titleList[j].review_no) {
 								imageList[i].tour = titleList[j].title;
+								imageList[i].countofbest = titleList[j].countofbest;
 							} 
 							for (var k = 0; k < regionList.length; k++) {
 								if (imageList[i].content_no == regionList[k].review_no) {
@@ -315,13 +322,13 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}});	
+					ReviewImage.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}, hits: {}, countofbest: {}});	
 				});
 				
 				var url2 = '/project03/review/defaulttitle';
 				$.getJSON(url2, function(data2) {
 					$(data2).each(function() {
-						ReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits});	
+						ReviewTitle.push({review_no: this.review_no, title: this.title, hits: this.hits, countofbest: this.countofbest});	
 					});
 					console.log(ReviewTitle);
 					
@@ -342,6 +349,7 @@ http://www.templatemo.com/tm-406-flex
 								if (ReviewImage[i].content_no == ReviewTitle[j].review_no) {
 									ReviewImage[i].tour = ReviewTitle[j].title;
 									ReviewImage[i].hits = ReviewTitle[j].hits;
+									ReviewImage[i].countofbest = ReviewTitle[j].countofbest;
 								} 
 								for (var k = 0; k < ReviewRegion.length; k++) {
 									if (ReviewImage[i].content_no == ReviewRegion[k].review_no) {
@@ -383,7 +391,7 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits});			
+					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits, countofbest: this.countofbest});			
 				});
 				getAllThumnail_Nickname_REVIEW()
 				
@@ -405,7 +413,7 @@ http://www.templatemo.com/tm-406-flex
 						+'<img src="../' + ReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 					+ '</div>'
 					+ '<div class="tour_title">' + ReviewImage[i].tour + '</div>'
-					+ '<div class="tour_region">'  + ReviewImage[i].city +  '<p class="tour_hist">|&nbsp;조회수: ' + ReviewImage[i].hits +  '&nbsp;&nbsp;</p></div>'
+					+ '<div class="tour_region">'  + ReviewImage[i].city +  '<p class="tour_hist">|&nbsp;조회수: ' + ReviewImage[i].hits + '&nbsp;| <img src="../resources/theme/images/likebtn.jpg" class="like_img"/>' + ReviewImage[i].countofbest	 + '&nbsp;</p></div>'	
 					//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 					+'</a>'
 					+ '</div>';
@@ -428,7 +436,7 @@ http://www.templatemo.com/tm-406-flex
 								+'<img src="../' + SelectSearchReview[i].img_url + '" class="img_view" width="300" height="240"><br/>'
 						+ '</div>'
 						+ '<div class="tour_title">' + SelectSearchReview[i].title + '</div>'
-						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits +  '&nbsp;&nbsp;</p></div>'
+						+ '<div class="tour_region">'  + SelectSearchReview[i].region_name + '<p class="tour_hist">|&nbsp;조회수: ' + SelectSearchReview[i].hits + '&nbsp;| <img src="../resources/theme/images/likebtn.jpg" class="like_img"/>' + SelectSearchReview[i].countofbest + '&nbsp; </p></div>'	
 						//+ '<div>' + imageList[i].condition_sex +  '&nbsp;&nbsp; / &nbsp;&nbsp;' + imageList[i].condition_age + '</div>'
 						+'</a>'
 						+ '</div>';

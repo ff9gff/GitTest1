@@ -36,7 +36,7 @@ public class TourReviewSearchController {
 		List<ImgVO> list = tourReviewService.read_review_top_image();
 
 		if (list != null) {
-			// select 성공 한것이다.
+			// select 성공 한것이다.			
 			entity = new ResponseEntity<List<ImgVO>>(list, HttpStatus.OK);
 			logger.info("Top후기 이미지 검색 성공 ");
 		} else {

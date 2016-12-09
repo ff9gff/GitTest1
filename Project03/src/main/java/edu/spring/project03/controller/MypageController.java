@@ -97,7 +97,7 @@ public class MypageController {
 		
 		model.addAttribute("pageVO", vo);
 		
-		return "mypage/MyPage";
+		return "mypage/UserPage";
 	}
 	
 	// mno 검색 Ajax 처리
