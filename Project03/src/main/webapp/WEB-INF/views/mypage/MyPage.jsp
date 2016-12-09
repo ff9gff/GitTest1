@@ -426,7 +426,6 @@ ul {
 				$.getJSON(url2, function(data2){
 					
 					$(data2).each(function() {
-						alert("reviewlist 출력")	
 						ReviewList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 						
 						var urltitle = '/project03/mypage/MyPage/reviewtitle/' + ${mno};

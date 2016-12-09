@@ -173,7 +173,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
-								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/review-main.png" alt=""/>
+								<img style="width: 800px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/review-main.png" alt=""/>
 							</div>
 						</li>
 						<li>
@@ -205,7 +205,7 @@ http://www.templatemo.com/tm-406-flex
 
 				<div id="condition_box" style="width: 200px; height: 70px; border: 1px dotted gray; z-index:200; background-color: #FFFFFF">
 						<div class="inside_div_conditon" style="height: 50px;">
-							<button type="button" id="btn_create_review"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="resources/theme/images/review-btn.png" alt=""/>후기  등록</button>
+							<button type="button" id="btn_create_review"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/review-btn.png" alt=""/>후기  등록</button>
 						</div>	
 				</div>
 				<div style="height: 100px;"></div>

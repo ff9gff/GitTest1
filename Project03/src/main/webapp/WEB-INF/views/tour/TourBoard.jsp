@@ -225,7 +225,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
-								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/tour-main.png" alt=""/>
+								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-main.png" alt=""/>
 							</div>
 						</li>
 						<li>
@@ -270,7 +270,7 @@ http://www.templatemo.com/tm-406-flex
 					<div id="condition_box" style="width: 300px; height: 310px; border: 1px solid gray; z-index:200; background-color: #FFFFFF">
 						<div class="inside_div_conditon" style="height: 50px;">
 							
-							<button id="btn_create_tour"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="resources/theme/images/tour-btn.png" alt=""/>여행 등록</button>
+							<button id="btn_create_tour"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-btn.png" alt=""/>여행 등록</button>
 						</div>
 						<div class="inside_div_conditon" style="height: 30px; border-top: 1px dotted gray;">
 							<p style="font-size: 16px; font-weight: bold;">상세검색</p>
