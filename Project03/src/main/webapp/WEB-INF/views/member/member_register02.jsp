@@ -29,8 +29,11 @@
    <div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/><!-- white -->
       
       <div>
-         <img alt="" src="../resources/theme/images/naver.png" style="display: block;">         
+        <!--  <img alt="" src="../resources/theme/images/naver.png" style="display: block; width: 100%; height: 10%">   -->      
+          <img alt="" src="../resources/theme/images/signup02.png" style="display: block; width: 30%; height: 10%"> 
       </div>
+      
+      <br/><br/>
       
       <form id ="register_form" name="register_form" action="sign_up" method="post" enctype="multipart/form-data" style="text-align: left;">
             
