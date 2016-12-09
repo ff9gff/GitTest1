@@ -184,33 +184,33 @@ ul {
 
 
 
-	<header style="background-color: #F19A0D; height: 70px">
-		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
-		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
+	<header style="height: 102px; width: 1330px; margin: auto; vertical-align: center;">
+		<p style="font-weight: bold; color: white; font-size: 25px;"></p>
+		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;"></a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-color: #F19A0D; height: 520px;">
+		<div style="background-color: #F19A0D; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
 			<div
-				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
+				style="width: 800px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
 					style="display: block; width: 100%; height: 100%; margin-top: 20px; margin: 10px; vertical-align: center; text-align: center;">
 
-					<a href="../myMsg" style="margin-right: 10px;">받은 쪽지함 </a>
+					<a href="../myMsg" style="margin-right: 20px;">받은 쪽지함</a>
 					<div id="content_profile"
 						style="display: inline-block; text-align: center; vertical-align: middle; padding-top: 14px;">
 
 					</div>
 					
-					<a href="../MySendMsg" style="margin-left: 10px;">보낸 쪽지함</a>
+					<a href="../MySendMsg" style="margin-left: 20px;">보낸 쪽지함</a>
 					
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
 
 					<c:if test="${mno eq pageVO.mno}">
 						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context"><img src="../resources/theme/images/imagechange.svg" style="width:40px; margin: auto; vertical-align: center;" /></a></li>
+							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
 						</ul>
 					</c:if>
 
