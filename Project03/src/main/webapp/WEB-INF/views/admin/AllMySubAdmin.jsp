@@ -43,6 +43,10 @@ table, th, td {
 	 font-family: 'Jeju Hallasan', serif;
  }
  
+ 
+ #hi{
+ 	font-family: 'Jeju Hallasan', serif;
+ }
 </style>
 
 
@@ -53,7 +57,8 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;관리자님 안녕하세요</h1>
+			<h1 id="hi">&nbsp;관리자님 안녕하세요</h1>
+
 			<div>&nbsp;</div>
 			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>

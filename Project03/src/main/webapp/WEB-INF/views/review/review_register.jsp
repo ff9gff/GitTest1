@@ -45,45 +45,10 @@
 
 <body>
 
-	<%@ include file="../top_header.jspf"%>
+	<%@ include file="../main-header2.jsp"%>
 
 	<div class="site-main" id="sTop">
-		<div class="site-header">
-			<div class="main-header">
-				<div class="container">
-					<div id="menu-wrapper">
-						<div class="row">
-							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
-							</div>
-							<!-- /.logo-wrapper -->
-							<div class="col-md-10 col-sm-10 main-menu text-right">
-								<div class="toggle-menu visible-sm visible-xs">
-									<i class="fa fa-bars"></i>
-								</div>
-								<ul class="menu-first">
-									<li class="active"><a href="#">메인</a></li>
-									<li><a href="#services">후기</a></li>
-									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="MyPage">마이페이지</a></li>
-									<li><a href="admin">관리자</a></li>
-									<li><a href="member/login">로그인</a></li>
-								</ul>
-							</div>
-							<!-- /.main-menu -->
-						</div>
-						<!-- /.row -->
-					</div>
-					<!-- /#menu-wrapper -->
-				</div>
-				<!-- /.container -->
-			</div>
-			<!-- /.main-header -->
-		</div>
-		<!-- /.site-header -->
-
+	
 		<div class="site-slider">
 			<div class="slider">
 				<div class="flexslider">
@@ -122,7 +87,7 @@
                <h2>후기 등록</h2>
             </div>
 
-				<div class="wrap">
+				<div class="wrap">				
 		
 					<form action="review_register" method="post" id="frm" enctype="multipart/form-data">
 					
@@ -135,7 +100,7 @@
 					
 						<input type="hidden" name="mno" value="${mno }" readonly="readonly" /> 
 					
-						<input type="text" name="title" style="width: 60%" placeholder="제목"/><br/> <br/>
+						<input type="text" name="title" style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px;padding: 2px;  placeholder="제목"/><br/> <br/>
 						
 						<div id="region_plus">
 							<table id="regionTable">

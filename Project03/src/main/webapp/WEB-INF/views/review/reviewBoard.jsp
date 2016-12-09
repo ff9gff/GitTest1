@@ -127,10 +127,10 @@ http://www.templatemo.com/tm-406-flex
 </head>
 <body>
 
-	<%@ include file="../top_header.jspf"%>
-
+	<%@ include file="../main-header2.jsp"%>
+	
 	<div class="site-main" id="sTop">
-		<div class="site-header">
+		<!-- <div class="site-header">
 			<div class="main-header">
 				<div class="container">
 					<div id="menu-wrapper">
@@ -140,7 +140,7 @@ http://www.templatemo.com/tm-406-flex
 									<a href="#">hello </a>
 								</h1>
 							</div>
-							<!-- /.logo-wrapper -->
+							/.logo-wrapper
 							<div class="col-md-10 col-sm-10 main-menu text-right">
 								<div class="toggle-menu visible-sm visible-xs">
 									<i class="fa fa-bars"></i>
@@ -154,15 +154,15 @@ http://www.templatemo.com/tm-406-flex
 									<li><a href="member/login">로그인</a></li>
 								</ul>
 							</div>
-							<!-- /.main-menu -->
+							/.main-menu
 						</div>
-						<!-- /.row -->
+						/.row
 					</div>
-					<!-- /#menu-wrapper -->
+					/#menu-wrapper
 				</div>
-				<!-- /.container -->
+				/.container
 			</div>
-			<!-- /.main-header -->
+			/.main-header -->
 		</div>
 		<!-- /.site-header -->
 		<div class="site-slider">
@@ -173,7 +173,7 @@ http://www.templatemo.com/tm-406-flex
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide1.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
-								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/review-main.png" alt=""/>
+								<img style="width: 800px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/review-main.png" alt=""/>
 							</div>
 						</li>
 						<li>
@@ -205,7 +205,7 @@ http://www.templatemo.com/tm-406-flex
 
 				<div id="condition_box" style="width: 200px; height: 70px; border: 1px dotted gray; z-index:200; background-color: #FFFFFF">
 						<div class="inside_div_conditon" style="height: 50px;">
-							<button type="button" id="btn_create_review"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="resources/theme/images/review-btn.png" alt=""/>후기  등록</button>
+							<button type="button" id="btn_create_review"><img style="width: 30px; height: 30px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/review-btn.png" alt=""/>후기  등록</button>
 						</div>	
 				</div>
 				<div style="height: 100px;"></div>

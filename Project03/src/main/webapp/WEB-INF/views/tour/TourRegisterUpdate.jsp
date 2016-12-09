@@ -47,7 +47,7 @@
 </head>
 
 <body>
-<%@ include file="../top_header.jspf"  %>
+<%@ include file="../main-header.jsp"%>
 
 		<div class="site-main" id="sTop" style="background-color: green;">
 			<div class="site-header">

@@ -47,6 +47,13 @@ public class HomeController {
 		return "index";
 
 	} // end home(locale, model)
+	
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
+	public String homeback() {
+		System.out.println("##############넘어오니?");
+		
+		return "index";
+	}
 
 	
 
