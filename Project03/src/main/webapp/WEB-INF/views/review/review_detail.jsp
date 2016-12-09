@@ -353,6 +353,39 @@ width: 95%;
 	background-color: #F4511E;
 	color: white;
 }
+#likemenu{
+	background-color: #FFFFFF;
+	border: 2px dotted lightgray;
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	vertical-align: middle;
+	display: inline-block;
+	  position: fixed;
+  margin: 0 auto;
+  top: 400px;
+  right: 20px;
+}
+#likeButton{
+	width: 170px;
+	height: 50px;
+	background-color: #ec523f;
+  color: white;
+  font-weight: 700;
+}
+#like_count{
+	margin-top: 10px;
+	width: 200px;
+	height: 30px;
+	text-align: center;
+	vertical-align: middle;
+}
+.like_img{
+	width: 25px;
+	height: 25px;
+	vertical-align: middle;
+	display: inline-block;
+}
 </style>
 
 </head>
@@ -387,6 +420,20 @@ width: 95%;
 		<tr><td colspan="2" style="text-align: right;vertical-align: middle;"><button id="profile_button2">자세히▶</button></td></tr>
 	</table>
 </div>
+
+
+	<div id="likemenu">
+		<p id="like_count">으잉</p>
+		<c:if test="${not empty mno}"> 
+			<c:if test="${likecheck.state eq 0}"> 
+				<button type="button" id="likeButton" >좋아요</button>
+			</c:if>	
+			<c:if test="${likecheck.state eq 1}"> 
+				<button type="button" id="likeButton" >좋아요 취소</button>
+			</c:if>
+		</c:if>	
+	</div>
+
 
 <!-- 헤더 메인부분 -->
 <div class="main-header">
@@ -492,14 +539,7 @@ width: 95%;
 				<input type="button" id='deleteButton' class="content_btns" value='삭제' />
 			</form>
 		</c:if>
-		<c:if test="${not empty mno}"> 
-			<c:if test="${likecheck.state eq 0}"> 
-				<button type="button" id="likeButton" class="content_btns">좋아요</button>
-			</c:if>	
-			<c:if test="${likecheck.state eq 1}"> 
-				<button type="button" id="likeButton" class="content_btns">좋아요 취소</button>
-			</c:if>	
-		</c:if>
+		
 		<button type="button" id="reviewBoardButton" class="content_btns">목록</button>
 		
 	</div>
@@ -605,6 +645,7 @@ $(document).ready(function(){
 							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
+							if( sessionmno != 'null'){
 							if(sessionaut != 0){
 								list +='<a href="#this" class="btn_reply">답글</a>';
 							}	
@@ -615,6 +656,7 @@ $(document).ready(function(){
 							if(replylist[i].mno == sessionmno || sessionaut==2 || sessionaut==3){
 								list+='<span class="btn_div">|</span>'
 								+'<a href="#this" class="btn_delete">삭제</a>';
+							}
 							}
 							list+='</span>'
 						+'</dt>'
@@ -663,6 +705,7 @@ $(document).ready(function(){
 									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong>'
 									+'<span class="regdate">'+dateString+'</span>'
 									+'<span class="btns">';
+									if( sessionmno != 'null'){
 									if(sessionaut != 0){
 										list +='<a href="#this" class="btn_reply">답글</a>';
 									}
@@ -674,6 +717,7 @@ $(document).ready(function(){
 											list+='<span class="btn_div">|</span>'
 											+'<a href="#this" class="btn_delete">삭제</a>';
 										}
+									}
 									list+='</span>'
 								+'</dt>'
 								+'<dd class="rcontent">'+replylist[j].rcontent+'</dd>'
@@ -909,7 +953,8 @@ $(document).click(function(e){
 			$('#contextmenu').hide();
 			$('#context_mno').val(null);
 	} 
-}); */
+}); 
+*/
 
 
 
@@ -1182,6 +1227,7 @@ var review_region='';
 $('#content_profile').html('<img src="../'+mno_img+'" class="content_profile_img"/><div class="content_profile_text">'+mno_nickname+'</div>');
 
 var review_region_name = '${inserterRegion}';
+var likestate = '${likecheck.state}';
 $(function(){
 	var mno_region = review_region_name.split(",");
 	for(var i=0; i<mno_region.length; i++){
@@ -1190,9 +1236,17 @@ $(function(){
 	
 	var hits = ${reviewVO.hits};
 	var countofbest = ${reviewVO.countofbest};
+	console.log("countofbest: "+countofbest);
 
 	$('#content_smalltitle').html("&nbsp;&nbsp;"+review_region);
-	$('#content_count').html('&nbsp;| 조회수: ' + hits + '&nbsp;| 좋아요: ' + countofbest);
+	$('#content_count').html('&nbsp;| 조회수: ' + hits);
+	
+	$('#like_count').html('<img src="../resources/theme/images/likebtn.jpg" class="like_img"/>'+ countofbest+'명');
+	if(likestate == 1){
+		$('#like_count').html('<img src="../resources/theme/images/likebtn.jpg" class="like_img"/>'+sessionnick+'님 외' + (countofbest-1)+'명');
+	}
+		
+	
 });
 
 $('#updateButton').click(function() {
@@ -1212,7 +1266,7 @@ $('#reviewBoardButton').click(function() {
 
 $('#likeButton').click(function() {
 	
-	var mno = ${mno};
+	var mno = '${mno}';
 	var review_no = ${reviewVO.review_no};
 	
 	alert('따봉!');

@@ -615,6 +615,7 @@ $(document).ready(function(){
 							+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[i].mno+'" data-listno="'+i+'">'+replylist[i].person["nickname"]+'</a></strong>'
 							+'<span class="regdate">'+dateString+'</span>'
 							+'<span class="btns">'
+						if( sessionmno != 'null'){
 							if(sessionaut != 0){
 								list +='<a href="#this" class="btn_reply">답글</a>';
 							}	
@@ -626,6 +627,7 @@ $(document).ready(function(){
 								list+='<span class="btn_div">|</span>'
 								+'<a href="#this" class="btn_delete">삭제</a>';
 							}
+						}
 							list+='</span>'
 						+'</dt>'
 						+'<dd class="rcontent">'+replylist[i].rcontent+'</dd>'
@@ -673,6 +675,7 @@ $(document).ready(function(){
 									+'<strong class="nickname"><a href="#this" class="btn_nickname" data-rno="'+replylist[j].mno+'" data-listno="'+j+'">'+replylist[j].person["nickname"]+'</a></strong>'
 									+'<span class="regdate">'+dateString+'</span>'
 									+'<span class="btns">';
+								if( sessionmno != 'null'){
 									if(sessionaut != 0){
 										list +='<a href="#this" class="btn_reply">답글</a>';
 									}
@@ -684,6 +687,7 @@ $(document).ready(function(){
 											list+='<span class="btn_div">|</span>'
 											+'<a href="#this" class="btn_delete">삭제</a>';
 										}
+								}
 									list+='</span>'
 								+'</dt>'
 								+'<dd class="rcontent">'+replylist[j].rcontent+'</dd>'
