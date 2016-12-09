@@ -29,6 +29,7 @@
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
 <style type="text/css">
+
 .portfolio-item{
 	height: 320px;
 	width: 302px;
@@ -44,6 +45,14 @@
 	padding: 0;
 	border: 1px solid lightgray;
 	opacity: 0.5;
+}
+
+.portfolio-thumb{
+	width: 297.5px;
+	height: 240px;
+	vertical-align: middle;
+	margin-bottom: 5px;
+
 }
 
 #dropDownType {
@@ -242,14 +251,14 @@ ul {
 				
 		</div>	
 
-			<div style="display: block; width: 100%; margin-top: 16px; text-align: left; margin-left: auto; margin-right: auto">
+			<div style="display: block; width: 1330px; margin-top: 16px; text-align: left; margin-left: auto; margin-right: auto">
 				<p></p>
 				<input type="hidden" id="mytour_mno" name="mytour_mno" value="${mno}" />
 				<button type="button" id="mytour" style="font-weight: bold; background-color: transparent;">내 여행 리스트</button>
 				<button type="button" id="mytourReview" style="font-weight: bold; background-color: transparent;">내 후기 리스트</button>
 				<button type="button" id="tourchoose" style="font-weight: bold; background-color: transparent;">내 선택 리스트</button>
 				
-				<div class="row" id="toursearch" style="width: 97%; margin-top: 30px; margin-left: auto; margin-right: auto"></div>
+				<div class="row" id="toursearch" style="width: 1330px; margin-top: 30px; margin-left: auto; margin-right: auto"></div>
 				
 
 
@@ -278,7 +287,7 @@ ul {
 			
 			getThumnails_By_Mno();
 
-			// 지역 검색: 해당 지역의 여행정보 썸네일들을 읽어오는 함수 정의 
+			// 내가 등록한 여행 게시글
 			function getThumnails_By_Mno() {
 				
 				// 등록된 게시물 리스트
@@ -341,6 +350,7 @@ ul {
 			};//end of getThumnails()
 			
 			
+			// 내가 신청한 여행 게시글
 			function getThumnails_By_ChooseMno() {
 												
 				// 선택한 게시물 리스트
@@ -483,7 +493,7 @@ ul {
 					
 						list+= '<div class="portfolio-thumb">'
 						+ '<figure>'						
-						+ '<a href="../../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
+						+ '<a href="../tour/detail?trip_no=' + List[i].content_no + '"><img src="../' + List[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + List[i].tour + '</div>'
 						+ '<div>지역: ' + List[i].city + '</div>'		
 						+ '</figure>'
@@ -530,7 +540,7 @@ ul {
 					list += '<div class="portfolio-item col-md-3 col-sm-6">'
 						+ '<div class="portfolio-thumb">'
 						+ '<figure>'
-						+ '<a href="../review/review_detial?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
+						+ '<a href="../review/review_detail?review_no=' + ReviewList[i].content_no + '"><img src="../' + ReviewList[i].img_url + '" width="300" height="200">'
 						+ '<div>제목: ' + ReviewList[i].tour + '</div>'
 						+ '<div>지역: ' + ReviewList[i].city + '</div>'			
 						+ '</figure>'

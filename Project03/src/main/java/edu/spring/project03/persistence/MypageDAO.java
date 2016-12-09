@@ -32,5 +32,9 @@ public interface MypageDAO {
 	// 마이페이지에 뿌려지는 제목/지역	
 	public abstract List<TourRegisterVO> select_mytour_title(int mno);
 	public abstract List<RegionVO> select_mytour_region(int mno);
+	
+	// 내가 선택한 여행 게시글 제목/지역
+	public abstract List<TourRegisterVO> select_mytourjoin_title(int mno);
+	public abstract List<RegionVO> select_mytourjoin_region(int mno);
 
 }

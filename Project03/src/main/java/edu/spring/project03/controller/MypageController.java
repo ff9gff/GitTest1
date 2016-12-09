@@ -215,7 +215,7 @@ public class MypageController {
 
 		ResponseEntity<List<TourRegisterVO>> entity = null;
 
-	    List<TourRegisterVO> list = mypageService.read_mytour_title(mno);
+	    List<TourRegisterVO> list = mypageService.read_mytourjoin_title(mno);
 
 		if (list != null) {
 			// select 성공 한것이다.
@@ -238,7 +238,7 @@ public class MypageController {
 
 		ResponseEntity<List<RegionVO>> entity = null;
 
-		List<RegionVO> list = mypageService.read_mytour_region(mno);
+		List<RegionVO> list = mypageService.read_mytourjoin_region(mno);
 
 		if (list != null) {
 			// select 성공 한것이다.
