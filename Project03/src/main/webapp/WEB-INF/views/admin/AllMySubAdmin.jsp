@@ -53,7 +53,7 @@ table, th, td {
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
-			<h1>&nbsp;같이가자 회원관리 페이지입니다.</h1>
+			<h1>&nbsp;관리자님 안녕하세요</h1>
 			<div>&nbsp;</div>
 			<p id="dpTime">&nbsp;&nbsp;</p>
 	</header>

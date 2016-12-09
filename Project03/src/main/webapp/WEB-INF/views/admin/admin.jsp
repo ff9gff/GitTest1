@@ -50,7 +50,7 @@ table, th, td {
 
 <body>
 	<header id="top">
-	<div>&nbsp;</div>
+		<div>&nbsp;</div>
 		<div>&nbsp;</div>
 		<h1>&nbsp;관리자님 안녕하세요</h1>
 		<div>&nbsp;</div>
@@ -175,7 +175,9 @@ table, th, td {
 
 			</table>
   				<div style="text-align: right;">  					
-					<input type="image" src="../resources/theme/images/check.png" id="saveMyUser" onclick="ace()" style="width: 30px; display:inline; margin-top: 15px;" >
+					<input type="image" src="../resources/theme/images/check.png"  id="image_btn" 
+					style="width: 30px; display:inline; margin-top: 15px;" >
+				
 				</div>
 				</div>
 					</form>
@@ -186,17 +188,20 @@ table, th, td {
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 	
 	<script type="text/javascript">
 	
-		
+		$('#image_btn').click(ace);
 		function ace(){
 			alert("ss");
+			event.preventDefault();
 			$.ajax({
 				type:'put',
 				url:'/project03/users/updateLevelOne',
 				headers:{
 					'Content-Type':'application/json',
 					'X-Http-Method-Ovveride':'PUT'
+				},
+				success: function(data) {
+					console.log('data: ' + data);
 				}
-				
 				
 			});
 			
@@ -207,33 +212,11 @@ table, th, td {
 		};
 
 		
-		$('#saveMyUser').click(function(){
-			
-			$.ajax({
-				type:'put',
-				url:'/project03/users/updateLevelOne',
-				headers:{
-					'Content-Type':'application/json',
-					'X-Http-Method-Ovveride':'PUT'
-				}
-				
-				
-			});
-			
+		
+		
+		
+		
 	
-			$('.select0').empty();
-			
-		});//end saveMyuser
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 		
 		// 실시간 시간 보내는  모습입니다. 
