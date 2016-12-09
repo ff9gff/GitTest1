@@ -197,11 +197,7 @@ ul {
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
 
-					<c:if test="${mno eq pageVO.mno}">
-						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
-						</ul>
-					</c:if>
+					
 
 						
 					</div>
@@ -230,12 +226,7 @@ ul {
 					
 			</div>
 			
-			<c:if test="${mno eq pageVO.mno }">
-				<div>
-					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
-					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
-				</div>
-			</c:if>
+			
 			
 				
 		</div>	
