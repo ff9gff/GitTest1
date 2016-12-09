@@ -89,6 +89,11 @@ style="border-top:  1px solid orange; border-left:
 	 font-family: 'Jeju Hallasan', serif;
  }
 
+.menuItem{
+font-size: 170%;
+}
+
+
 
 #hi{
  	font-family: 'Jeju Hallasan', serif;
@@ -103,6 +108,9 @@ style="border-top:  1px solid orange; border-left:
 	<header id="top">
 			<div>&nbsp;</div>	
 			<div>&nbsp;</div>
+
+			<div>&nbsp;</div>
+
 			<h1 id="hi">&nbsp;관리자님 안녕하세요</h1>
 			<div>&nbsp;</div>
 		<p id="dpTime">&nbsp;&nbsp;</p>
