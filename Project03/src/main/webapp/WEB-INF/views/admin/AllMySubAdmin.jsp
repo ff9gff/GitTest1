@@ -186,27 +186,7 @@ function update(x){
 	
 }//end 
 
-/*function removeRow() {
-  oTbl.deleteRow(oTbl.clickedRowIndex);
- * 
- function insRow() {
-	  oTbl = document.getElementById("regionTable");
-	  var oRow = oTbl.insertRow();
-	  oRow.onmouseover=function(){oTbl.clickedRowIndex=this.rowIndex}; //clickedRowIndex - 클릭한 Row의 위치를 확인;
-	  var oCell = oRow.insertCell();
-	  
-	  //삽입될 Form Tag
-	  var frmTag = "<input type=text name=region_name placeholder=지역>";
-	  frmTag += " <input type=button value='삭제' onClick='removeRow()' style='cursor:hand'>";
-	  oCell.innerHTML = frmTag;
-	}
 
-	//Row 삭제
-	function removeRow() {
-	  oTbl.deleteRow(oTbl.clickedRowIndex);
-	}
- 
- */
 
 setInterval("dpTime()",1000);
 function dpTime(){
