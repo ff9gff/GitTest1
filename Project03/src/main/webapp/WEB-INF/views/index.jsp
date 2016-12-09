@@ -78,12 +78,7 @@
  color: #878484;
  float: right;
 }
-.like_img{
-	width: 15px;
-	height: 15px;
-	vertical-align: middle;
-	display: inline-block;
-}
+
 
 </style>
 </head>
@@ -475,7 +470,7 @@
 							
 							list+= '</div></div>'
 							+ '<div class="tour_title">' + TopReviewImage[i].tour + '</div>'
-							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;| <img src="../resources/theme/images/likebtn.jpg" class="like_img"/>' + TopReviewImage[i].countofbest + '&nbsp;</p></div>'	
+							+ '<div class="tour_region">' + TopReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + TopReviewImage[i].hits + '&nbsp;| 좋아요: ' + TopReviewImage[i].countofbest + '&nbsp;|</p></div>'	
 						+ '</a>'
 						+ '</div>';
 			}
@@ -503,7 +498,7 @@
 							+'<img src="' + RecentReviewImage[i].img_url + '" class="img_view" width="300" height="240">'
 						+ '</div>'
 						+ '<div class="tour_title">' + RecentReviewImage[i].tour + '</div>'
-						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;| <img src="../resources/theme/images/likebtn.jpg" class="like_img"/>' + RecentReviewImage[i].countofbest + '&nbsp;</p></div>'							
+						+ '<div class="tour_region">' + RecentReviewImage[i].city + '<p class="tour_hist">|&nbsp;조회수: ' + RecentReviewImage[i].hits + '&nbsp;| 좋아요: ' + RecentReviewImage[i].countofbest + '&nbsp;|</p></div>'							
 						+'</a>'
 						+ '</div>';
 			}
@@ -569,8 +564,6 @@
 
 			$('#TourDetail').html(list);
 		};
-		
-		
 
 	});
 
