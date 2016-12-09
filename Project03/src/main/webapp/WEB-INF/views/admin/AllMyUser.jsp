@@ -12,6 +12,9 @@
 
 
 <style type="text/css">
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -38,7 +41,12 @@ table, th, td {
  
  .menuItem{
  	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
  }
+ #pageForm{
+	 font-family: 'Jeju Hallasan', serif;
+ }
+ 
 </style>
 
 

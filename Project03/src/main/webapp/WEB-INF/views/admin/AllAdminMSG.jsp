@@ -5,12 +5,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
 
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 #top{
 		color: white;
 		background-image: url("../resources/theme/images/slide1.jpg");
@@ -54,7 +56,16 @@ display: inline;
 
 .menuItem{
  	background-color: lightblue;
+ 	font-family: 'Jeju Hallasan', serif;
  }
+ 
+ #msgAdminMSG{
+ 	font-family: 'Jeju Hallasan', serif;
+ }
+ .span_notice{
+ font-family: 'Jeju Hallasan', serif;
+ }
+ 
 </style>
 
 
@@ -104,7 +115,7 @@ display: inline;
 	<form action="MiniSendToAllMyUser" method="get" id="form2" name="form2" style="display: inline-block; border: 2px solid yellow ; background-color:#FF5A00 ">
 			<img  src="../resources/theme/images/shout.png" style="width: 40px; height: 40px; 
 					display: inline; text-align: center; vertical-align: middle;"/>
-	공지 보내기
+	<span class="span_notice">공지 보내기</span>
 	</form>
 	</div>
 	
@@ -112,7 +123,7 @@ display: inline;
 		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 2px solid yellow; background-color: #FF5A00">
 		<img  src="../resources/theme/images/please.png" style="width: 40px; height: 40px; 
 		display: inline; text-align: center; vertical-align: middle;" />
-		쪽지보내기
+		<span class="span_notice">쪽지보내기</span>
 		</form>
 		</div>
 		
