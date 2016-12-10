@@ -93,7 +93,7 @@
 					<div id="menu-wrapper">
 						<div class="row">
 							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1> <a href="#">같&nbsp;이&nbsp;가&nbsp;자</a> </h1>
+								<h1> <a href="#"><img alt="" src="resources/theme/images/mainlogo2.jpg" style="width: 300px; height: 100px;"></a> </h1>
 							</div>
 							<!-- /.logo-wrapper -->
 							<div class="col-md-10 col-sm-10 main-menu text-right">
