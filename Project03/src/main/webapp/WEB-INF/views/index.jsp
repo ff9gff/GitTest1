@@ -483,7 +483,7 @@
 						+ '</div>';
 			}
 
-			$('#RecentReview').html(list);
+			$('#TopReview').html(list);
 		};
 		
 		// 가져온 최신후기 데이터를 뿌려주자
@@ -511,7 +511,8 @@
 						+ '</div>';
 			}
 
-			$('#TopReview').html(list);
+			$('#RecentReview').html(list);
+
 		};
 
 		// 가져온 여행 데이터를 뿌려주자
