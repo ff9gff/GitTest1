@@ -102,8 +102,9 @@
 								</div>
 								<ul class="menu-first">
 									<li class="active"><a href="#">메인</a></li>
-									<li><a href="#services">후기</a></li>
-									<li><a href="#portfolio">찾기</a></li>
+									<li><a href="#services1">TOP 후기</a></li>
+									<li><a href="#services2">최신 후기</a></li>
+									<li><a href="#portfolio">여행 찾기</a></li>
 									<c:if test="${not empty mno}">
 										<li><a href="mypage/MyPage">마이페이지</a></li>
 									</c:if>
@@ -149,7 +150,7 @@
 	<br /><br /><br /><br />
 	
 
-	<div class="content-section" id="services">
+	<div class="content-section" id="services1">
 		<img src="resources/theme/images/top4reviews.png" alt="" style="width: 100%">
 		<br /><br />
 		<div class="container">
@@ -170,7 +171,7 @@
 	
 	<br /><br /><br /><br /><br /><br /><br /><br />
 	
-	<div class="content-section" id="services">
+	<div class="content-section" id="services2">
 		<!-- <br /><br />	
 		<div class="container">
 			<div class="row">
