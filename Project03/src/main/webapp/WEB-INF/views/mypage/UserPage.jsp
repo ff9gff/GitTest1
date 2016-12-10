@@ -191,7 +191,7 @@ ul {
 
 
 	<div Class="wrapper">
-		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center; opacity: 0.8">
+		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
 			<div
 				style="width: 800px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
