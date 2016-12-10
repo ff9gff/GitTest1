@@ -101,21 +101,21 @@
 									<i class="fa fa-bars"></i>
 								</div>
 								<ul class="menu-first">
-									<li class="active"><a href="#">메인</a></li>
-									<li><a href="#services1">TOP 후기</a></li>
-									<li><a href="#services2">최신 후기</a></li>
-									<li><a href="#portfolio">여행 찾기</a></li>
+									<li class="active"><a href="#">MAIN</a></li>
+									<li><a href="#services1">TOP REVIEWS</a></li>
+									<li><a href="#services2">LATEST REVIEWS</a></li>
+									<li><a href="#portfolio">TRAVEL LIST</a></li>
 									<c:if test="${not empty mno}">
-										<li><a href="mypage/MyPage">마이페이지</a></li>
+										<li><a href="mypage/MyPage">MYPAGE</a></li>
 									</c:if>
 									<c:if test="${authority eq 3}">
-										<li><a href="admin/admin">관리자</a></li>
+										<li><a href="admin/admin">ADMIN</a></li>
 									</c:if>
 									<c:if test="${empty mno}">
-										<li><a href="member/login">로그인</a></li>
+										<li><a href="member/login">LOGIN</a></li>
 									</c:if>
 									<c:if test="${not empty mno}">
-										<li><a href="member/logout">로그아웃</a></li>
+										<li><a href="member/logout">LOGOUT</a></li>
 									</c:if>
 								</ul>
 							</div>

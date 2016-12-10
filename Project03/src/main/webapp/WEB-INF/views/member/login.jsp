@@ -65,23 +65,18 @@ http://www.templatemo.com/tm-406-flex
 
 	
 	
-<div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%"><!-- #ffffcc -->
-
-   <div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%"><br/><!-- white -->
+<div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%" ><!-- #ffffcc -->
+<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%"><br/><!-- white -->
  
-
-	
-
-
 	<div class="content-section" id="services">
 		<div class="container">
-			<div class="row">
-				<div class="heading-section col-md-12 text-center">
+			<div class="row"  style="margin-left: 5%; margin-right: 5%; text-align: center;">
+				<div class="heading-section col-md-12 text-center"> 
 					<h2>로그인</h2>
-					<br />
-					<br />
+					<br /><br />
+					<br /><br />
 					
-					<form action="login-post" method="post">
+					<form action="login-post" method="post" >
 						<input type="text" name="userid" id="userid" placeholder="아이디" required /><br/><br/>
 						<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required /><br/><br/>
 						<input type="submit" value="로그인" /><br/><br/>
