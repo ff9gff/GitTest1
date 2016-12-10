@@ -519,9 +519,14 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/detailsearchImage/' + region_name + "/" + start_date + "/" + condition_sex + "/" + condition_age;
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
+						var name = this.region_name.split(",");
+						var tagname = '';
+						for(var i=0; i<name.length; i++){
+							tagname +="#"+name[i]+" ";
+						}
+						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: tagname, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
 					});
-					
+								
 					getAllThumnail_detail_search();
 	
 				});// end getJSON()

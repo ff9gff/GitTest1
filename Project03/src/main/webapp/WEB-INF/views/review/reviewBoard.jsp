@@ -356,7 +356,12 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits, countofbest: this.countofbest});			
+					var name = this.region_name.split(",");
+					var tagname = '';
+					for(var i=0; i<name.length; i++){
+						tagname +="#"+name[i]+" ";
+					}
+					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: tagname, review_no: this.review_no, hits: this.hits, countofbest: this.countofbest});			
 				});
 				getAllThumnail_Nickname_REVIEW()
 				
