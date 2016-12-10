@@ -77,50 +77,62 @@
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
+	
+	
+	<div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%">
+	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/>
 
-   <div class="content-section" id="services">
-      <div class="container">
-         <div class="row">
+
+   	<div class="content-section" id="services">
+		<div class="container">
+			<div class="row">
          
             <!-- /.heading-section -->
-            <div class="heading-section">
-               <h2>후기 등록</h2>
+            <div class="heading-section" style="margin-left: 5%; margin-right: 5%; text-align: left;" >
+            	<h2>후기 등록</h2>
             </div>
 
 				<div class="wrap">				
 		
 					<form action="review_register" method="post" id="frm" enctype="multipart/form-data">
 					
-						<label for="imageFile">썸네일 이미지</label><br/>       
-					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
-					            
-					    <div id="image_preview">
-					    <img src="#" id="profile-image" style="display: none;" /><br/>
-					    </div><br/>   
-					
-						<input type="hidden" name="mno" value="${mno }" readonly="readonly" /> 
-					
-						<input type="text" name="title" style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px;padding: 2px;  placeholder="제목"/><br/> <br/>
+						<div style="margin-left: 5%; margin-right: 5%; text-align: left;" >
 						
-						<div id="region_plus">
-							<table id="regionTable">
-								<tr>
-									<td>
-										<input type="text" name="region_name" placeholder="지역" />
-										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
-									</td>
-								</tr>
-							</table>						
-						</div><br />
+							<label for="imageFile">썸네일 이미지</label><br/>       
+						    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+						            
+						    <div id="image_preview">
+						    <img src="#" id="profile-image" style="display: none;" /><br/>
+						    </div><br/>   
 						
-						<textarea name="content" id="smarteditor" rows="10"
-							cols="100" style="width: 766px; height: 412px;">	
-						</textarea><br/><br/>		
-													
+							<input type="hidden" name="mno" value="${mno }" readonly="readonly" /> 
+						
+							<input type="text" name="title" style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px;padding: 2px;  placeholder="제목"/><br/> <br/>
+							
+							<div id="region_plus">
+								<table id="regionTable">
+									<tr>
+										<td>
+											<input type="text" name="region_name" placeholder="지역" />
+											<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
+										</td>
+									</tr>
+								</table>						
+							</div><br />
+							
+							<textarea name="content" id="smarteditor" rows="10"
+								cols="100" style="width: 766px; height: 412px;">	
+							</textarea><br/><br/>	
+						
+						</div>	
+						
+						<div style="text-align: left;" >
+							<button type="button" id="savebutton" style="margin-left: 5%; text-align: left;">작성</button>
+							<button type="button" id="cancelbutton" style="text-align: left;">취소</button>	
+						</div>						
 					</form>	
 
-					<input type="button" id="savebutton" value="작성" />
-					<input type="button" id="cancelbutton" value="취소" />
+				
 
 				</div>
 
@@ -148,6 +160,10 @@
 		<!-- /.container -->
 	</div>
 	<!-- /#footer -->
+	
+	
+	</div>
+	</div>
 
 
 	<script src="../resources/theme/js/bootstrap.js"></script>
