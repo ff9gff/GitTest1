@@ -54,7 +54,7 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<img src="../resources/theme/images/mainindex.png" alt="">
+							<div class="overlay"></div><img src="../resources/theme/images/mainindex2.png" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>같이가자</h2>
 							</div>

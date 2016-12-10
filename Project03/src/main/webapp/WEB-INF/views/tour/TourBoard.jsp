@@ -183,7 +183,7 @@ http://www.templatemo.com/tm-406-flex
 				<div class="flexslider">
 					<ul class="slides">
 						<li style="z-index: 300;">
-							<img src="../resources/theme/images/mainindex.png" alt="">
+							<div class="overlay"></div><img src="../resources/theme/images/mainindex2.png" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-main.png" alt=""/>
 							</div>

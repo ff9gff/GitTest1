@@ -135,7 +135,7 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<img src="resources/theme/images/mainindex.png" alt="">
+							<div class="overlay"></div><img src="resources/theme/images/mainindex2.png" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
