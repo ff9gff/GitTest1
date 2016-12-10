@@ -65,7 +65,10 @@ http://www.templatemo.com/tm-406-flex
 
 	
 	
+<div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%"><!-- #ffffcc -->
 
+   <div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%"><br/><!-- white -->
+ 
 
 	
 
@@ -101,6 +104,8 @@ http://www.templatemo.com/tm-406-flex
 	<!-- /#services -->
 
 
+
+
 	<div id="footer">
 		<div class="container">
 			<div class="row">
@@ -114,7 +119,8 @@ http://www.templatemo.com/tm-406-flex
 	</div>
 	<!-- /#footer -->
 
-
+</div>
+</div>	
 
 	<script src="../resources/theme/js/bootstrap.js"></script>
 	<script src="../resources/theme/js/plugins.js"></script>

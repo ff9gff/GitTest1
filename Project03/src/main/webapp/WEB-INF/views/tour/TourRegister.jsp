@@ -86,8 +86,8 @@ http://www.templatemo.com/tm-406-flex
 	<!-- /.site-main -->
 	
 	
-	<div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%">
-	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/>
+	<div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%">
+	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%"><br/>
 
 
 	<div class="content-section" id="services">
@@ -103,7 +103,7 @@ http://www.templatemo.com/tm-406-flex
 		
 					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
 			
-						<div style="margin-left: 5%; margin-right: 5%; text-align: left;" >
+						<div style="margin-left: 5%; margin-right: 5%; text-align: left; " >
 						
 							<label for="imageFile">썸네일 이미지</label><br/>       
 						    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>

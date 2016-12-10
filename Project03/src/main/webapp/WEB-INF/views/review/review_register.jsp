@@ -71,7 +71,7 @@
 	
 	
 	<div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%">
-	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/>
+	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%;  height: 100%""><br/>
 
 
    	<div class="content-section" id="services">

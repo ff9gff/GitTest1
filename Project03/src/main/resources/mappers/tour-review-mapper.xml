@@ -112,8 +112,9 @@
 	<!-- 메인 index.jsp 디폴트 4개 따봉순으로 후기 뿌리기 -->
 	<!-- 1. 이미지 가져오기 -->
 	<select id="select_default_review_image" resultType="edu.spring.project03.domain.ImgVO">
-		select * from wm_image
-		where board_type = 2 order by content_no desc
+		select * from wm_image join wm_review
+		on content_no = review_no and board_type = 2
+		order by countofbest desc
 	</select>
 	<!-- 2. 제목 가져오기 -->
 	<select id="select_default_review_title" resultType="edu.spring.project03.domain.ReviewVO">
