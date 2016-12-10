@@ -70,17 +70,9 @@ http://www.templatemo.com/tm-406-flex
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div> <img src="../resources/theme/images/slide1.jpg" alt="">
+							<img src="../resources/theme/images/mainindex.png" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>같이가자</h2>
-							</div>
-						</li>
-						
-						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide2.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>이벤트</h2>
 							</div>
 						</li>
 					</ul>
