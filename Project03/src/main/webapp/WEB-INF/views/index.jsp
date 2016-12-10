@@ -84,11 +84,11 @@
 </head>
 <body>
 
-	<%@ include file="top_header.jspf"%>
+	<%-- <%@ include file="top_header.jspf"%> --%>
 
 	<div class="site-main" id="sTop">
-		<div class="site-header">
-			<div class="main-header">
+		<div class="site-header" >
+			<div class="main-header" style="top: 0.5%;">
 				<div class="container">
 					<div id="menu-wrapper">
 						<div class="row">
@@ -114,6 +114,9 @@
 									<c:if test="${empty mno}">
 										<li><a href="member/login">로그인</a></li>
 									</c:if>
+									<c:if test="${not empty mno}">
+										<li><a href="member/logout">로그아웃</a></li>
+									</c:if>
 								</ul>
 							</div>
 							<!-- /.main-menu -->
@@ -133,7 +136,7 @@
 					<ul class="slides">
 						<li>
 							<img src="resources/theme/images/mainindex.png" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 120px;">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
 						</li>
