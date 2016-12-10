@@ -183,19 +183,18 @@ http://www.templatemo.com/tm-406-flex
 				<div class="flexslider">
 					<ul class="slides">
 						<li style="z-index: 300;">
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+							<img src="../resources/theme/images/mainindex.png" alt="">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-main.png" alt=""/>
 							</div>
 						</li>
-						<li>
+						<!-- <li>
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>참여하고 싶은 여행을 검색해보세요</h2>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<!-- /.flexslider -->

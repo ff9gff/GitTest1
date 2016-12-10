@@ -131,17 +131,9 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div> <img
-							src="resources/theme/images/backimage3.png" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+							<img src="resources/theme/images/mainindex.png" alt="">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 120px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
-							</div>
-						</li>
-						<li>
-							<div class="overlay"></div> <img
-							src="resources/theme/images/backimage2.png" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>이벤트</h2>
 							</div>
 						</li>
 					</ul>
@@ -154,16 +146,15 @@
 	</div>
 	<!-- /.site-main -->
 
-	<br /><br />	
+	<br /><br /><br /><br />
+	
 
 	<div class="content-section" id="services">
-		<br /><br />	
+		<img src="resources/theme/images/top4reviews.png" alt="" style="width: 100%">
+		<br /><br />
 		<div class="container">
-			<div class="row">
-				<div class="heading-section col-md-12 text-center">
-					<h2>Top 4 Review</h2><br/><br/>
-					<h1>당신만의 멋진 후기를 보여주세요</h1>
-				</div>
+			<div class="heading-section col-md-12 text-center">
+				<h2>최고의 후기를 살펴보세요</h2><br/>
 			</div>
 
 			<!-- /.row -->
@@ -177,8 +168,10 @@
 		<!-- /.container -->
 	</div>
 	
+	<br /><br /><br /><br /><br /><br /><br /><br />
+	
 	<div class="content-section" id="services">
-		<br /><br />	
+		<!-- <br /><br />	
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
@@ -188,10 +181,15 @@
 				<div class="heading-section col-md-12 text-center">
 					<h2><a href="review/reviewBoard">전체보기</a></h2>
 				</div>
-				<!-- /.heading-section -->
-			</div>
-
-			<!-- /.row -->
+			</div>  -->
+		<img src="resources/theme/images/latestreviews.png" alt="" style="width: 100%">
+		<br /><br />
+		<div class="container">
+			<div class="heading-section col-md-12 text-center">
+				<h2>최신 후기를 살펴보세요</h2><br/><br/>
+				<h2><a href="review/reviewBoard">전체보기</a></h2>
+			</div>	
+			
 			<br />
 			
 			<div class="row" id="RecentReview">
@@ -203,11 +201,10 @@
 	</div>
 	<!-- /#services -->
 	
-	<br />
+	<br /><br /><br /><br />
 	
-
 	<div class="content-section" id="portfolio">
-		<div class="container">
+		<!-- <div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
 					<h2>여행 리스트</h2><br/><br/>
@@ -215,11 +212,18 @@
 				</div>
 				<div class="heading-section col-md-12 text-center"> 
 					<h2><a href="tour/tourBoard">전체보기</a></h2>
-					<!-- <br /><br />
-					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2> -->
+					<br /><br />
+					<h2><a href="tour/GoRegister">여행 등록하러 가기</a></h2>
 				</div>
-				<!-- /.heading-section -->
-			</div>
+				/.heading-section
+			</div> -->
+		<img src="resources/theme/images/travellist.png" alt="" style="width: 100%">
+		<br /><br />
+		<div class="container">
+			<div class="heading-section col-md-12 text-center">
+				<h2>함께 여행할 사람들을 찾아보세요</h2><br/><br/>
+				<h2><a href="tour/tourBoard">전체보기</a></h2>
+			</div>	
 			
 			<br />
 			

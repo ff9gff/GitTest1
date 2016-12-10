@@ -136,19 +136,18 @@ http://www.templatemo.com/tm-406-flex
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/backimage4.png" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+							<img src="../resources/theme/images/mainindex.png" alt="">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 800px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/review-main.png" alt=""/>
 							</div>
 						</li>
-						<li>
+						<!-- <li>
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/backimage2.png" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>후기를 적어 공유해봅시다</h2>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<!-- /.flexslider -->

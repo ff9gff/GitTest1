@@ -191,7 +191,7 @@ ul {
 
 
 	<div Class="wrapper">
-		<div style="background-color: #F4511E; height: 520px; width: 1330px; margin: auto; vertical-align: center; opacity: 0.8">
+		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center; opacity: 0.8">
 			<div
 				style="width: 800px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
@@ -229,7 +229,7 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F4511E; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #f25454; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
 
 				</textarea>
 					
