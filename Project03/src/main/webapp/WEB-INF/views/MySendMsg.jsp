@@ -72,7 +72,6 @@ li {
 
 }
 
-
 #msgTable{
      position: relative;
           margin: 0 auto;
@@ -80,8 +79,10 @@ li {
 }
 #deleteBtn{
 
-margin-left:1115px;
+margin-left:740px;
 }
+
+
 #msgTable tbody tr:hover td {background:#F2F684; color:#1BA6B2}
 </style>
 </head>
@@ -90,7 +91,7 @@ margin-left:1115px;
 
 <div id="paddingAction">
 <table id="msgTable">
-<caption>받은 쪽지함</caption>
+<caption style="text-align: center;">받은 쪽지함</caption>
 		<colgroup>
 			<col width="20px">
 			<col width="40px">
@@ -176,9 +177,6 @@ margin-left:1115px;
     </c:if>
     
 </ul>
-<form id ="deleteBtn">
-	<input type="button" id="deleteMSGbtn" value="삭제"> 
-</form >
 <%-- 현재 페이지, 페이지 당 보여줄 게시글 개수를 서버로 보내주기 위해서,
 사용자에게는 보이지 않지만, 서버로 보낼 정보를 양식 데이터로 저장하는 form --%>
 <form id="pageForm">
@@ -188,6 +186,10 @@ margin-left:1115px;
     <input type="hidden" name="perPage"
         value="${pageMaker.criteria.perPage }" />
 </form>
+
+<form id ="deleteBtn">
+	<input type="button" id="deleteMSGbtn" value="삭제"> 
+</form >
 </div>
 <!--  //////////////////////////////////////////////// -->
 
