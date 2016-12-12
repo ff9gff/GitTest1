@@ -85,14 +85,17 @@ http://www.templatemo.com/tm-406-flex
 	font-weight: bold;
 	color: #4e4e4f;
 	margin-left: 10px;
-	font-family:monospace
+	font-family:monospace;
+	text-align: left;
 }
 
 .tour_region{
 	font-size: 15px;
 	color: ligthgray;
 	margin-left: 10px;
-	font-family:monospace
+	font-family:monospace;
+	text-align: left;
+	
 }
 #region_select{
 	width: 700px;

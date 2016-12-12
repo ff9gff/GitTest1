@@ -77,18 +77,18 @@
          <input type="text" id="phone" name="phone" style="width: 60%;" placeholder="핸드폰 번호"><br><br>
          
          <label for="postcode">주소<p style="color: red; display: inline;">(*)</p></label><br>
-         <input type="text" id="postcode" name="postcode" style="width: 44.5%;"class="postcodify_postcode5" placeholder="우편번호">
-         <input type="button" id="postcodify_search_button" style="width: 15%;" value="우편번호 찾기"><br>
-         <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " style="width: 60%;"><br>
-         <input type="text" id="address2" name="address2" placeholder="상세주소" style="width: 60%;">
+         <input type="text" id="postcode" name="postcode" style="width: 44.5%;"class="postcodify_postcode5" placeholder="우편번호" required>
+         <input type="button" id="postcodify_search_button" style="width: 15%;" value="우편번호 찾기" ><br>
+         <input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " style="width: 60%;" required><br>
+         <input type="text" id="address2" name="address2" placeholder="상세주소" style="width: 60%;" required>
          <br><br>      
          
          <label for="email">이메일<p style="color: red; display: inline;">(*)</p></label><br/>
-         <input type="email" id="email" name="email" placeholder="이메일" style="width: 44.5%;"/>
+         <input type="email" id="email" name="email" placeholder="이메일" style="width: 44.5%;" required/>
          <button type="button" id="btn_send_certification" name="btn_send_certification" style="width: 15%;">인증번호 전송</button><br><br>
          
          <label for="email_certification">인증번호<p style="color: red; display: inline;">(*)</p></label><br/>
-         <input type="text" id="email_certification" placeholder="인증번호" style="width: 44.5%;" />
+         <input type="text" id="email_certification" placeholder="인증번호" style="width: 44.5%;"/>
          <button type="button" id="btn_check_certification" style="width: 15%;">인증번호 확인</button><br><br>
    
          <!-- TODO : 이미지 (프로필 사진) 넣기 첨부! -->      
@@ -259,23 +259,30 @@ $(document).ready(function() {
       $('#btn_send_certification').click(function() {
          var email = $('#email').val();
          
-         $.ajax({
-            type: 'post',
-            url: 'email_auth',
-            headers: {
-               'Content-Type': 'application/json',
-               'X-HTTP-Method-Override': 'POST'
-            },
-   /*           data: JSON.stringify({
-               email: $('#email').val()
-            }), */
-            data : $('#email').val(),
-            success: function(response) {
-               if (response != null) {
-                  auth_code = response;
-               }
-            }      
-         });      
+         if (email == '') {
+             alert('이메일을 입력해주세요');
+         }
+         else {
+        	 alert('인증번호가 전송되었습니다.');
+	         $.ajax({
+	            type: 'post',
+	            url: 'email_auth',
+	            headers: {
+	               'Content-Type': 'application/json',
+	               'X-HTTP-Method-Override': 'POST'
+	            },
+	   /*           data: JSON.stringify({
+	               email: $('#email').val()
+	            }), */
+	            data : $('#email').val(),
+	            success: function(response) {
+	               if (response != null) {
+	                  auth_code = response;
+	             
+	               }
+	            }      
+	         });     
+      	  }
       });
       
       var final_check = 0; // 인증번호 입력시 회원가입이 되기 위하여...
@@ -284,8 +291,7 @@ $(document).ready(function() {
       $('#btn_check_certification').click(function() {      
          if($('#email_certification').val() == auth_code) {
             alert('인증번호가 확인 되었습니다.');
-            final_check = 1;
-            alert(final_check);
+            final_check = 1;     
             
          } else {
             alert('인증번호를 다시 확인 해주길 바랍니다.');
