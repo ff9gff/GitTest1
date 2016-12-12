@@ -1,6 +1,5 @@
 <%@page import="edu.spring.project03.domain.MsgVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 
@@ -39,6 +38,9 @@
 <title>Insert title here</title>
 <style type="text/css">
 
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
+
 table, th, td {
     border: 1px solid gray;
     border-collapse: collapse;
@@ -47,8 +49,8 @@ table, th, td {
 }
 
 th {
-    background-color: lightpink;
-    border-left: 1px solid white;
+	border: 1px solid gray;
+    background-color: lightpink;    
 }
 
 ul {
@@ -74,11 +76,13 @@ li {
      position: relative;
           margin: 0 auto;
           margin-top: 200px;
+          font-family: 'Jeju Hallasan', serif;
 }
 
 #deleteBtn{
 
-margin-left:700px;
+margin-left:1058px;
+
 }
 
 
@@ -91,12 +95,14 @@ margin-left:700px;
 
 <%@ include file="main-header4.jsp"  %>
 
-
-
+<div ></div>
+<div style="text-align: center; vertical-align: middle; background-color: lightblue; height: 1000%;">
+   <div style="display: inline-block; vertical-align: middle; background-color: lightyellow; width: 75%"><br/>
 
 <div id="paddingAction">
-<table id="msgTable">
-	<caption style="text-align: center;">보낸 쪽지함</caption>
+<table id="msgTable" style="width: 78%">
+		<caption style="text-align: center; width: 90%; border-left: 1px solid gray; border-right: 1px solid gray; border-top: 1px solid gray;width: 100%; background-color : #FFA900"><strong>보낸 쪽지함</strong></caption>
+
 		<colgroup>
 			<col width="20px">
 			<col width="150px">
@@ -167,9 +173,20 @@ background:#F3F5BB
     
     </c:forEach>
 
+
+	
    </tbody>
 
 </table>
+
+<br/>
+
+<!--  //////////////////////////////////////////////// -->
+<form id ="deleteBtn">
+	<input type="button" id="deleteMSGbtn" value="삭제"> 
+
+</form>
+
 
 </div>	
 <br/>
@@ -202,16 +219,24 @@ background:#F3F5BB
         value="${pageMaker.criteria.perPage }" />
 </form>
 
-<!--  //////////////////////////////////////////////// -->
-<form id ="deleteBtn">
-	<input type="button" id="deleteMSGbtn" value="삭제"> 
-
-</form>
 
 </div>
 	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	
 
-<!-- jQuery CDN -->
+
+	
+      
+   </div><!-- white -->
+</div><!-- #ffffcc -->
+
+
 <script type="text/javascript">
 var frm = $('#pageForm');
 

@@ -12,7 +12,7 @@ public class PaginationCriteria {
 	
 	public PaginationCriteria(){
 		page =1;// 디폴트로 1페이지를 보여준다.,
-		perPage =10;  // 디폴트로 한페이지  게시글 10 개씩 보여준다. 
+		perPage =13;  // 디폴트로 한페이지  게시글 10 개씩 보여준다. 
 		
 		
 	}//end public 
