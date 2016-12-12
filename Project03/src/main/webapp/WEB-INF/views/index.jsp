@@ -112,6 +112,7 @@
 										<li><a href="admin/admin">ADMIN</a></li>
 									</c:if>
 									<c:if test="${empty mno}">
+										<li><a href="member/member_register01">Sign in</a></li>
 										<li><a href="member/login">LOGIN</a></li>
 									</c:if>
 									<c:if test="${not empty mno}">
@@ -135,13 +136,15 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div><img src="resources/theme/images/mainindex3.png" alt="">
+							<div></div>
+							<img src="resources/theme/images/mainindex3.png" alt="" style="margin-top: 10.8%;">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 40%;">
 								<img style="width: 40%; height: 30%; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
 						</li>
 						<li>
-							<div class="overlay"></div><img src="resources/theme/images/mainindex2.png" alt="">
+							<div></div>
+							<img src="resources/theme/images/mainindex2.png" alt="" style="margin-top: 10.8%;">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 40%;">
 								<img style="width: 40%; height: 30%; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>

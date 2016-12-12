@@ -191,7 +191,7 @@ ul {
 
 
 	<div Class="wrapper">
-		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
+		<div style="background-color: #C0392B; height: 520px; width: 1330px; margin: auto; vertical-align: center; opacity: 0.9;">
 		
 			<div style=" float: right; margin-top: 20px; margin-right: 20px; vertical-align: center; height: 27px;">
 				<a href="../MySendMsg" style="vertical-align: center;  margin-bottom: 20px;"><img src="../resources/theme/images/Sendmassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%"">보낸 쪽지함</p></a>
@@ -237,11 +237,17 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.age }세" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 				<div>
-					<input type="text" Class="personal" value="${pageVO.sex }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					<c:if test="${pageVO.sex == 1 }">
+						<input type="text" Class="personal" value="남" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					</c:if>
+					<c:if test="${pageVO.sex == 0 }">
+						<input type="text" Class="personal" value="여" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
+					</c:if>
+					
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #f25454; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #C0392B; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
 
 				</textarea>
 					
