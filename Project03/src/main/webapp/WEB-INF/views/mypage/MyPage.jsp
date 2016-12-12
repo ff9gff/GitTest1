@@ -194,8 +194,8 @@ ul {
 		<div style="background-color: #C0392B; height: 520px; width: 1330px; margin: auto; vertical-align: center; opacity: 0.9;">
 		
 			<div style=" float: right; margin-top: 20px; margin-right: 20px; vertical-align: center; height: 27px;">
-				<a href="../myMsg" style="vertical-align: center;  margin-bottom: 20px;"><img src="../resources/theme/images/Sendmassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%"">보낸 쪽지함</p></a>
-				<a href="../MySendMsg" ><img src="../resources/theme/images/Mymassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%">받은 쪽지함</p></a>
+				<a href="../MySendMsg" style="vertical-align: center;  margin-bottom: 20px;"><img src="../resources/theme/images/Sendmassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%"">보낸 쪽지함</p></a>
+				<a href="../myMsg" ><img src="../resources/theme/images/Mymassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%">받은 쪽지함</p></a>
 			</div>
 		
 			<div
