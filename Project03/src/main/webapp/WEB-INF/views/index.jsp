@@ -93,7 +93,7 @@
 					<div id="menu-wrapper">
 						<div class="row">
 							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1> <a href="#"><img alt="" src="resources/theme/images/mainlogo2.jpg" style="width: 300px; height: 100px;"></a> </h1>
+								<h1> <a href="#"><img alt="" src="resources/theme/images/mainlogo2.jpg" style="width: 240px; height: 100px;"></a> </h1>
 							</div>
 							<!-- /.logo-wrapper -->
 							<div class="col-md-10 col-sm-10 main-menu text-right">
@@ -136,8 +136,8 @@
 					<ul class="slides">
 						<li>
 							<div class="overlay"></div><img src="resources/theme/images/mainindex2.png" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
-								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 40%;">
+								<img style="width: 40%; height: 30%; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
 							</div>
 						</li>
 					</ul>
