@@ -135,6 +135,12 @@
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
+							<div class="overlay"></div><img src="resources/theme/images/mainindex3.png" alt="">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 40%;">
+								<img style="width: 40%; height: 30%; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
+							</div>
+						</li>
+						<li>
 							<div class="overlay"></div><img src="resources/theme/images/mainindex2.png" alt="">
 							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 40%;">
 								<img style="width: 40%; height: 30%; vertical-align: middle; display: inline-block;" src="resources/theme/images/main_string.png" alt=""/>
