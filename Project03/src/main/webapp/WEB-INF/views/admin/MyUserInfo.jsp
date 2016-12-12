@@ -70,7 +70,7 @@ table, th, td {
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin"><img  src="../resources/theme/images/why2.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>가입승인</a>
 				</li>
 
 				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지 사항</a>
@@ -165,13 +165,11 @@ $(document).ready(function(){
  	
  	
  	   $('#btnList').click(function() {
- 	    	//location = 'list';
- 	    	//location = "list-page?page=${page}"
+ 	
  	    			
- 	    			//searchUserid
+ 	    	
  	    var userid = $('#userid').val();		
- 		// alert('안녕하세요 '+ userid );
- 		//  $('#userid').val("");
+ 
  		
  		
 		getMyUser();
@@ -180,13 +178,10 @@ $(document).ready(function(){
 
  	  
  	   
- 	   //DB에서 해당 유저 아이디를 읽어오는 함수 정의 
- 	   
- 	   //$.getJSON(url,data, callback): HTTP GET 요청을 사용해서 Json 
- 	   //데이터를 로드하는 ajax 함수를 말한다,.  get 방식만 가능 
+ 
  	   
  	   function getMyUser(){
- 		   //$.getJSON 
+ 		 
  		    alert('메소드 호출 ');
  		   
  		   var url =
@@ -201,7 +196,7 @@ $(document).ready(function(){
  				
  				table_len += 1;
  			   	<%--$('#c').append(--%>
- 			   	 list+= '<tr>'
+ 			   	 list+= '<tr class= "select0">'
  		 			    	+'<td id="mno_id('+table_len+')" value='+this.mno+'>' +this.mno+'</td>'
  		 			    	+'<td id="userid_id('+table_len+')">' +this.userid+'</td>'
  			   	 			+'<td><input type="button" id="upgrade" value="관리자" onclick="upgrade_row('+table_len+')"/>'
@@ -233,10 +228,8 @@ $(document).ready(function(){
  	
  	
  	function delete_row(no){
-		 
- 		
- 		
-		 alert("하이 " + no);
+		 	
+	
 		 var url1 =
 			   '/project03/users/deluser/'+no;
 //url: '/ex03/replies/' + rno,
@@ -258,17 +251,14 @@ $(document).ready(function(){
 			 
 		 });
 		 
-		 alert('강퇴했습니다.');
-		 
+		 alert('선택하신 유저를 강퇴했습니다.');
+		 $('.select0').empty();
 	 }//end delete _ row 
  	   
  	
  	
 	 function upgrade_row(no){
 		 
-	 		
-	 		
-		 alert("하이 " + no);
 		 var url1 =
 			   '/project03/users/num/'+no;
 //url: '/ex03/replies/' + rno,
@@ -289,9 +279,11 @@ $(document).ready(function(){
 			 
 			 
 		 });
-		 
+			
 		alert('선택하신 유저를 관리자로 임명하셨습니다.');
 		 
+		$('.select0').empty();
+		
 	 }//end delete _ row 
  	   
  	

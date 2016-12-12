@@ -47,35 +47,7 @@ public class MsgRESTController {
 	};
 	
 	
-	/*
-	@RequestMapping(value = "/sendMsgU3", method = RequestMethod.POST)
-	
-	public  String  sendMSGU(@PathVariable("sd_mno") String sd_mno,@PathVariable("nickname") String nickname, 
-		@PathVariable("msg_content") String msg_content ,@PathVariable("sd_rmno") String sd_rmno ,String msg_address ,
-		RedirectAttributes attr, HttpServletRequest request,HttpServletResponse response) {
-		logger.info("위치" + msg_address);
-		logger.info("들어왓나 ...");
-		logger.info("userid - > " + sd_mno); // content 넘어 가는 거 확인
-		logger.info("neckname " + nickname);
-		logger.info("msg_content" + msg_content);
-		int mno = Integer.parseInt(sd_rmno); 
-		int result = 	searchUserService.sendMsgTO(mno, nickname, msg_content);
-		
-		if(result ==1){
-			attr.addFlashAttribute("insert_result","success");
-		}else{
-			attr.addFlashAttribute("insert_result","fail");
-		}
-	
-	
-		
-		//http://localhost:8181/project03/mypage/UserPage/9   ./mypage/UserPage/"+mno
 
-		
-		return "redirect:" +msg_address;
-	};
-	*/
-	
 	
 	
 	

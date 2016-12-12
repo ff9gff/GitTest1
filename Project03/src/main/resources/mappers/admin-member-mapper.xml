@@ -21,7 +21,7 @@
     select m.mno , m.userid  , p.nickname, p.phone , p.email , p.joindate
   from WM_MEMBER m , WM_PERSONAL p 
   where m.mno = p.mno and m.AUTHORITY =1
-  order by m.mno
+  order by m.mno 
  </select>
  
   <select id="realDomainAdminAllUserT" resultType="edu.spring.project03.domain.DomainDTO">
@@ -30,7 +30,7 @@
   select rownum rn, m.mno , m.userid  , p.nickname, p.phone , p.email , p.joindate
   from WM_MEMBER m , WM_PERSONAL p 
   where m.mno = p.mno and m.AUTHORITY =1
-  order by m.mno
+  order by m.mno desc
   )a 
   where rn between #{start} and #{end}
  </select>
@@ -186,10 +186,16 @@ select msg_content , MSG_DATE , MSG_NO from WM_Msg where sd_mno=1 and rc_mno=1 o
 
 
 
-<!--  전체 유저의 수를 나타 냅니다.  -->
+<!--  전체 유저의 수를 나타 냅니다. 
+ 이전  mapper 12 12 이전 
+ select count(*) from WM_MEMBER where AUTHORITY = 1
+  -->
 <select id="cntAllActivUsers" resultType="Integer">
 
-select count(*) from WM_MEMBER where AUTHORITY = 1
+  select count(*)
+  from WM_MEMBER m , WM_PERSONAL p 
+  where m.mno = p.mno and m.AUTHORITY =1 
+  order by m.mno desc
 </select>
 
 

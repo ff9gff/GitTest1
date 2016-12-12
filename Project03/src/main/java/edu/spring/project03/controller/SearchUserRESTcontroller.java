@@ -108,14 +108,6 @@ public class SearchUserRESTcontroller {
 		logger.info("여기는 관리자에서 일반 유저로 보내는 곳 입니다. "+list2.get(no-1).getUserid()); // 출력 완료 
 		
 		
-//		try {
-//			
-//
-//			//여기는 블랙 리스트를 만듭니다.     list2.get(no-1).getMno() 이게 바로 mno 정보이지 .
-//			
-//		} catch (Exception e) {
-//			logger.info("index 사이즈 오류 입니다. ");
-//		}//end exception 설정 합니다. 
 		
 		return 0;
 

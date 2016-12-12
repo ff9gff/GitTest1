@@ -1,6 +1,6 @@
 package edu.spring.project03.controller;
 
-import java.util.HashSet;
+
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,7 +19,7 @@ import edu.spring.project03.domain.DomainDTO;
 
 import edu.spring.project03.domain.MsgVO;
 import edu.spring.project03.pageutil.MyUserPaginationCriteria;
-import edu.spring.project03.pageutil.PageMaker;
+
 import edu.spring.project03.pageutil.PageMakerMyUser;
 import edu.spring.project03.service.AdminService;
 import edu.spring.project03.service.SearchUserService;
@@ -42,9 +42,7 @@ public class AdminController {
 	public void callAdmin(Model model) {
 		
 
-//		List<MemberVO> list = adminService.newUserList();
-//		model.addAttribute("newMemberList", list);
-//		logger.info("admin.jsp 소환 ");
+
 		
 		//여기를 수정하겠습니다. 11.28 수정 완료 부분 
 		List<DomainDTO> list2 = adminService.readAdminDomain();
@@ -74,13 +72,9 @@ public class AdminController {
 	
 	
 	
+
 	
-	
-	/*	frm.attr('action','sendAllMyUser');
-		frm.attr('method','post');
-		frm.submit();*/
-	
-	//@ModelAttribute("msg_content") String msg_content
+
 	@RequestMapping(value="/sendAllMyUser", method=RequestMethod.POST)
 	public String sendUserText(@ModelAttribute("msg_content") String msg_content ,@ModelAttribute("value") String value, MsgVO vo){
 		//@ModelAttribute("value") String value
@@ -167,6 +161,7 @@ public class AdminController {
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
+			
 		}
 	
 		
@@ -177,18 +172,17 @@ public class AdminController {
 	}//end 
 	
 	//MiniSendToAllMyUser
-	
+	//전체 유저에게 보내는 관리자의 화면입니다. 
 	@RequestMapping(value="/MiniSendToAllMyUser", method=RequestMethod.GET)
 	public void MiniSendToAllMyUserpage(){
 		logger.info("안녕 새창이야 .");
+		
 				
 	}
 	
 	
-	////////////////////////////////
 	
-	
-	// 테스트 파일 입니다. MiniMSGpageU ///
+	// MiniMSGpageU ///
 	
 	
 	@RequestMapping(value="/MiniMSGpageU", method=RequestMethod.GET)
@@ -201,57 +195,6 @@ public class AdminController {
 	
 	
 	
-	
-	/*					<li Class="menuItem"><a Class="mylink" href="AllMyUser">전체 유저</a>
-				</li>
-				
-					<li Class="menuItem"><a Class="mylink" href="AllMySubAdmin">관리자 관리</a>
-				</li>*/
-	
-	
-	
-	///////////////임시 자리 
-	
-//	@RequestMapping(value= "/SendMsg" , method=RequestMethod.GET)
-//	public void sendMSgPage(){
-//		
-//		
-//		
-//	}
-//	
-//	
-//	@RequestMapping(value ="/sendMsgU" , method=RequestMethod.POST)
-//	public String sendMSGU(String sd_mno , String nickname  , String msg_content){
-//		
-//		
-//		logger.info("userid - > " + sd_mno); // content 넘어 가는 거 확인 
-//		logger.info("neckname "+nickname); 
-//		logger.info("msg_content"+msg_content);
-//		
-//		searchUserService.sendMsgTO(sd_mno, nickname, msg_content);
-//		return "redirect:admin"; 
-//	}
-//	
-//	
-//	
-//	///////////////테스트 컨트롤러 
-//	@RequestMapping(value="/myMsg", method= RequestMethod.GET)
-//	public void stres(Model model){
-//		/* <c:forEach var="vo" items="${boardList }">
-//    <tr>
-//        <td>${vo.bno }</td>
-//        <td><a href="${vo.bno }">${vo.title }</a></td>
-//        <td>${vo.userid }</td>
-//        <td>
-//	        <fmt:formatDate value="${vo.regdate }" 
-//	            pattern="yyyy-MM-dd HH:mm:ss"/>*/
-//		
-//	
-//		
-//		
-//	
-//	
-//	}
 	
 	
 	

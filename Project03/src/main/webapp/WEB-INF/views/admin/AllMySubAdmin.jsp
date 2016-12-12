@@ -47,6 +47,13 @@ table, th, td {
  #hi{
  	font-family: 'Jeju Hallasan', serif;
  }
+
+.select0 a {
+
+text-decoration: none;
+
+}
+
 </style>
 
 
@@ -68,7 +75,7 @@ table, th, td {
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin"><img  src="../resources/theme/images/why2.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>가입승인</a>
 				</li>
 
 				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
@@ -131,7 +138,7 @@ table, th, td {
 					<tr class= "select0">
 						<td >${x=x+1 }</td>
 						<td id="mno_${x }" value="${vo.mno }">${vo.mno }</td>
-						<td>${vo.userid }</td>
+						<td><a href="/project03/mypage/UserPage/${vo.mno}" >${vo.userid }</a></td>
 						<td><a href="/project03/mypage/UserPage/${vo.mno}">${vo.nickname }</a></td>
 						<td>${vo.phone }</td>
 						<td>${vo.email }</td>

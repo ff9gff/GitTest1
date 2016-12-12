@@ -121,7 +121,7 @@ font-size: 170%;
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin"><img  src="../resources/theme/images/why2.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>가입승인</a>
 				</li>
 
 				<li Class="menuItem" ><a Class="mylink" href="AllAdminMSG" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 공지사항</a>
@@ -152,13 +152,8 @@ font-size: 170%;
 <!-- 	model.addAttribute("cntUsers" , cntUsers) -->
 	<form id="pageForm">
 			<table id="checkboxTestTbl" >
-				<caption id="captionStyle" ><b style="color: black; font-size: 150%" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<caption id="captionStyle"  style="text-align: center;"><b style="color: black; font-size: 150%; "  >
 				전체 유저 정보 확인     (현재인원 : ${ cntUsers} 명)</b></caption>
-
 				<colgroup>
 					
 					<col width="100px">
@@ -187,9 +182,9 @@ font-size: 170%;
 					<tr class= "select0">
 						
 						<td ><label for="section">${vo.mno }</label></td>
-						<td ><label for="section">${vo.userid }</label></td>
+						<td ><a href="/project03/mypage/UserPage/${vo.mno}" style="color: black;"><b>${vo.userid }</b></a></td>
 						<td ><a href="/project03/mypage/UserPage/${vo.mno}" id="section" style="color: black;"><b>${vo.nickname }</b></a></td>
-						<td ><label for="section">${vo.phone }</label></td>
+						<td ><a href="/project03/mypage/UserPage/${vo.mno}" style="color: black;">${vo.phone }></a></td>
 						<td ><label for="section">${vo.email }</label></td>
 					        <td><label for="section">
 	       						 <fmt:formatDate value="${vo.joindate }" 
