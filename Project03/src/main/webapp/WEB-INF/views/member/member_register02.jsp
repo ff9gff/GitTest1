@@ -69,7 +69,7 @@
          <label for="age">나이<p style="color: red; display: inline;">(*)</p></label><br>
          <input type="text" pattern="[0-9]*" id="age" name="age" style="width: 60%;" placeholder="나이" /><br><br>
          
-         <label for="nickname">넥네임이름<p style="color: red; display: inline;">(*)</p></label><br>
+         <label for="nickname">닉네임이름<p style="color: red; display: inline;">(*)</p></label><br>
          <input type="text" id="nickname" name="nickname" style="width: 60%;" placeholder="닉네임">
          <div id="result_nick"></div><br>
          
