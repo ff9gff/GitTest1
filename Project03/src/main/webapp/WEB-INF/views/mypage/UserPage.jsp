@@ -286,13 +286,13 @@ ul {
 				// wm_tour_region 리스트(지역)
 				regionList = [];
 				
-				var url = '/project03/mypage/MyPage/list/' + ${mno};
+				var url = '/project03/mypage/MyPage/list/' + ${pageVO.mno};
 				$.getJSON(url, function(datalist) {
 					$(datalist).each(function() {
 						List.push({img_url: this.img_url, content_no: this.content_no, tour: {}, expire:{}, city: {}})
 							
 					
-						var urltitle = '/project03/mypage/MyPage/title/' + ${mno};
+						var urltitle = '/project03/mypage/MyPage/title/' + ${pageVO.mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
 								titleList.push({trip_no: this.trip_no, title: this.title, expire: this.expire});
@@ -300,7 +300,7 @@ ul {
 							});
 							console.log(titleList);
 							
-							var urlregion = '/project03/mypage/MyPage/region/' + ${mno};
+							var urlregion = '/project03/mypage/MyPage/region/' + ${pageVO.mno};
 							$.getJSON(urlregion, function(dataregion) {
 								$(dataregion).each(function() {
 									var name = this.region_name.split(",");
@@ -349,14 +349,14 @@ ul {
 				regionList = [];
 
 								
-				var url2 = '/project03/mypage/MyPage/joinlist/' + ${mno};
+				var url2 = '/project03/mypage/MyPage/joinlist/' + ${pageVO.mno};
 				$.getJSON(url2, function(data2){
 					
 					$(data2).each(function() {
 						
 						JoinList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 						
-						var urltitle = '/project03/mypage/MyPage/jointitle/' + ${mno};
+						var urltitle = '/project03/mypage/MyPage/jointitle/' + ${pageVO.mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
 								titleList.push({trip_no: this.trip_no, title: this.title});
@@ -364,7 +364,7 @@ ul {
 							});
 							console.log(titleList);
 							
-							var urlregion = '/project03/mypage/MyPage/joinregion/' + ${mno};
+							var urlregion = '/project03/mypage/MyPage/joinregion/' + ${pageVO.mno};
 							$.getJSON(urlregion, function(dataregion) {
 								$(dataregion).each(function() {
 									var name = this.region_name.split(",");
@@ -412,14 +412,14 @@ ul {
 				regionList = [];
 
 								
-				var url2 = '/project03/mypage/MyPage/reviewlist/' + ${mno};
+				var url2 = '/project03/mypage/MyPage/reviewlist/' + ${pageVO.mno};
 				$.getJSON(url2, function(data2){
 					
 					$(data2).each(function() {
 						alert("reviewlist 출력")	
 						ReviewList.push({img_url: this.img_url, content_no: this.content_no, tour: {}, city: {}})
 						
-						var urltitle = '/project03/mypage/MyPage/reviewtitle/' + ${mno};
+						var urltitle = '/project03/mypage/MyPage/reviewtitle/' + ${pageVO.mno};
 						$.getJSON(urltitle, function(datatitle) {
 							$(datatitle).each(function() {
 								titleList.push({review_no: this.review_no, title: this.title});
@@ -427,7 +427,7 @@ ul {
 							});
 							console.log(titleList);
 							
-							var urlregion = '/project03/mypage/MyPage/reviewregion/' + ${mno};
+							var urlregion = '/project03/mypage/MyPage/reviewregion/' + ${pageVO.mno};
 							$.getJSON(urlregion, function(dataregion) {
 								$(dataregion).each(function() {
 									var name = this.region_name.split(",");
