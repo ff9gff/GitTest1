@@ -193,9 +193,9 @@ ul {
 	<div Class="wrapper">
 		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
 		
-			<div style=" float: right; margin-top: 20px; margin-right: 20px;">
-				<a href="../MySendMsg" ><img src="../resources/theme/images/mysendMSG.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px;">보낸 쪽지함</p></a>
-				<a href="../myMsg" ><img src="../resources/theme/images/myMSG.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px;">받은 쪽지함</p></a>
+			<div style=" float: right; margin-top: 20px; margin-right: 20px; vertical-align: center;">
+				<a href="../MySendMsg" style="vertical-align: center;"><img src="../resources/theme/images/Sendmassage.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; ">보낸 쪽지함</p></a>
+				<a href="../myMsg" ><img src="../resources/theme/images/Mymassage.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px;">받은 쪽지함</p></a>
 			</div>
 		
 			<div
@@ -216,7 +216,7 @@ ul {
 
 					<c:if test="${mno eq pageVO.mno}">
 						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context">이미지 수정</a></li>
+							<li id="context_profile"><a href="#this" class="btn_context"><img src="../resources/theme/images/ImageChange.png" style="display: inline-block; width: 35px; vertical-align: right; margin-right: 10px;"/></a></li>
 						</ul>
 					</c:if>
 
@@ -249,7 +249,7 @@ ul {
 			
 			<c:if test="${mno eq pageVO.mno }">
 				<div>
-					<input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" />
+					<!-- <input type="button" id="goHome" value="홈" style="text-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /> -->
 					<input type="button" id="updatePersonal" value="수정" style="text-align: right; vertical-align: right; float: right; font-weight: bold; color: white; background-color: transparent; margin-right: 15px;" /><br />	
 				</div>
 			</c:if>
