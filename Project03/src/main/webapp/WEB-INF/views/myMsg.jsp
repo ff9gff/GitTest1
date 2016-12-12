@@ -86,7 +86,7 @@ margin-left:1115px;
     	<tr>
     		<th><input type="checkbox" name="rowCheck"></th>
         	<th>번호</th>
-        	<th>작성자</th>
+        	<th>보낸 사람</th>
         	<th>내용</th>
         	<th>받은 시간</th>
     	</tr>
