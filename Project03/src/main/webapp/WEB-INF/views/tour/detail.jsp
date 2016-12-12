@@ -514,6 +514,7 @@ ${tourVO.content}
 	<ul id="replies"></ul>
 </div>
 
+<input hidden id="introval" value="'${inserterIntro}'"/>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -1180,7 +1181,7 @@ $('#context_profile').on('click','.btn_context',function(){
 	var atype = $('#context_type').val();
 	var amno = $('#context_mno').val();
 	var anick =$('#context_nickname').val();
-	var intro = '${inserterIntro}';
+	var intro = $('#introval').val();
 	
 	$('#profile_mno').val(amno);
 	
@@ -1306,7 +1307,7 @@ switch(con_age){
 }// end switch
 
 var mno_nickname = '${inserterNickname}';
-var mno_intro = '${inserterIntro}';
+var mno_intro = $('#introval').val();
 var mno_img = '${inserterImg}';
 var trip_region='';
 
