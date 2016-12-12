@@ -193,9 +193,9 @@ ul {
 	<div Class="wrapper">
 		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
 		
-			<div style=" float: right; margin-top: 20px; margin-right: 20px; vertical-align: center;">
-				<a href="../MySendMsg" style="vertical-align: center;"><img src="../resources/theme/images/Sendmassage.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; ">보낸 쪽지함</p></a>
-				<a href="../myMsg" ><img src="../resources/theme/images/Mymassage.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px;">받은 쪽지함</p></a>
+			<div style=" float: right; margin-top: 20px; margin-right: 20px; vertical-align: center; height: 27px;">
+				<a href="../MySendMsg" style="vertical-align: center;  margin-bottom: 20px;"><img src="../resources/theme/images/Sendmassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%"">보낸 쪽지함</p></a>
+				<a href="../myMsg" ><img src="../resources/theme/images/Mymassage.png" style="display: inline-block; width: 18px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px; font-size: 110%">받은 쪽지함</p></a>
 			</div>
 		
 			<div
@@ -216,7 +216,7 @@ ul {
 
 					<c:if test="${mno eq pageVO.mno}">
 						<ul id="context_ul">
-							<li id="context_profile"><a href="#this" class="btn_context"><img src="../resources/theme/images/ImageChange.png" style="display: inline-block; width: 35px; vertical-align: right; margin-right: 10px;"/></a></li>
+							<li id="context_profile"><a href="#this" class="btn_context"><img src="../resources/theme/images/ImageChange.png" style="display: inline-block; width: 35px; vertical-align: right;"/></a></li>
 						</ul>
 					</c:if>
 
