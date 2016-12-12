@@ -1,6 +1,5 @@
 <%@page import="edu.spring.project03.domain.MsgVO"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 
@@ -75,7 +74,7 @@ li {
           margin: 0 auto;
           margin-top: 200px;
 }
-#deleteBtn{
+#deleteMSGbtn{
 
 margin-left:1115px;
 }
@@ -91,11 +90,12 @@ margin-left:1115px;
 <%@ include file="main-header4.jsp"  %>
 
 
-
+<div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%"><!-- #ffffcc -->
+   <div style="display: inline-block; vertical-align: middle; background-color: white; width: 75%"><br/><!-- white -->
 
 <div id="paddingAction">
-<table id="msgTable">
-	<caption>보낸 쪽지함</caption>
+<table id="msgTable" style="width: 90%;">
+	<caption style="border: 1px solid gray;">보낸 쪽지함</caption>
 		<colgroup>
 			<col width="20px">
 			<col width="150px">
@@ -207,8 +207,11 @@ background:#F3F5BB
 
 </form>
 	<br/>
+      
+   </div><!-- white -->
+</div><!-- #ffffcc -->
 
-<!-- jQuery CDN -->
+
 <script type="text/javascript">
 var frm = $('#pageForm');
 
