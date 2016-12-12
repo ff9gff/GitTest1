@@ -73,10 +73,9 @@ margin-left:1115px;
 
 <div id="paddingAction">
 <table id="msgTable">
-	<caption>받은 쪽지함</caption>
+	<caption>보낸 쪽지함</caption>
 		<colgroup>
 			<col width="20px">
-			<col width="40px">
 			<col width="150px">
 			<col width="400px">
 			<col width="180px">
@@ -85,7 +84,7 @@ margin-left:1115px;
 
     	<tr>
     		<th><input type="checkbox" name="rowCheck"></th>
-        	<th>번호</th>
+        	
         	<th>보낸 사람</th>
         	<th>내용</th>
         	<th>받은 시간</th>
@@ -100,10 +99,12 @@ background:#F3F5BB
   
     <tr Class="selectAll">
     	
-    	<td><input type="checkbox" name="rowCheck" value="${vo.msg_no }"></td>
+    	<td><input type="checkbox" name="rowCheck" value="${vo.msg_no }">
+    		<input type="hidden" name="xValue" value="${x=x+1 }">																</td>
     
   	
-        <td>${x=x+1 }</td>
+  
+      
         <td>
         	
         		

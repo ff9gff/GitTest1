@@ -68,7 +68,7 @@ margin-left:1115px;
 
 <div id="paddingAction">
 <table id="msgTable">
-<caption>보낸 쪽지함</caption>
+<caption>받은 쪽지함</caption>
 		<colgroup>
 			<col width="20px">
 			<col width="40px">

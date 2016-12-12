@@ -123,7 +123,7 @@ display: inline;
 	</form>
 	</div>
 	
-<%---
+
 	<div class="message" onclick="OpenPop2('', '', '', '')" style= "margin-left: 10px;">
 		<form action="MiniMSGpageU" method="get" id="formName" name="formName" style="display: inline-block; border: 2px solid yellow; background-color: #FF5A00">
 		<img  src="../resources/theme/images/please.png" style="width: 40px; height: 40px; 
@@ -132,7 +132,7 @@ display: inline;
 		<span class="span_notice">쪽지보내기</span>
 		</form>
 		</div>
- --%>
+
 		
 		</div>
 
