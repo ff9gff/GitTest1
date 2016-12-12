@@ -75,9 +75,10 @@ li {
           margin: 0 auto;
           margin-top: 200px;
 }
+
 #deleteBtn{
 
-margin-left:1115px;
+margin-left:700px;
 }
 
 
@@ -95,7 +96,7 @@ margin-left:1115px;
 
 <div id="paddingAction">
 <table id="msgTable">
-	<caption>보낸 쪽지함</caption>
+	<caption style="text-align: center;">보낸 쪽지함</caption>
 		<colgroup>
 			<col width="20px">
 			<col width="150px">
@@ -200,12 +201,14 @@ background:#F3F5BB
     <input type="hidden" name="perPage"
         value="${pageMaker.criteria.perPage }" />
 </form>
-</div>
+
 <!--  //////////////////////////////////////////////// -->
 <form id ="deleteBtn">
 	<input type="button" id="deleteMSGbtn" value="삭제"> 
 
 </form>
+
+</div>
 	<br/>
 
 <!-- jQuery CDN -->
