@@ -67,7 +67,7 @@ table, th, td {
 
 		<nav id="menuBar">
 			<ul id="menuList">
-				<li Class="menuItem"><a Class="mylink" href="callbackAdmin">가입승인</a>
+				<li Class="menuItem"><a Class="mylink" href="callbackAdmin"style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/why2.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>가입승인</a>
 				</li>
 				
 						
