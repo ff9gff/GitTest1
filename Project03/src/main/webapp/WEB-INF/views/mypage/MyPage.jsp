@@ -192,18 +192,24 @@ ul {
 
 	<div Class="wrapper">
 		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
+		
+			<div style=" float: right; margin-top: 20px; margin-right: 20px;">
+				<a href="../MySendMsg" ><img src="../resources/theme/images/mysendMSG.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px;">보낸 쪽지함</p></a>
+				<a href="../myMsg" ><img src="../resources/theme/images/myMSG.png" style="display: inline-block; width: 25px; vertical-align: right; margin-right: 10px;"/><p style="color: white; display: inline-block; margin-right: 10px;">받은 쪽지함</p></a>
+			</div>
+		
 			<div
 				style="width: 800px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
 					style="display: block; width: 100%; height: 100%; margin-top: 20px; margin: 10px; vertical-align: center; text-align: center;">
 
-					<a href="../myMsg" style="margin-right: 20px; "><img src="../resources/theme/images/myMSG.png" style="display: inline-block; width: 25px; vertical-align: middle;"/></a>
+					
 					<div id="content_profile"
 						style="display: inline-block; text-align: center; vertical-align: middle; padding-top: 14px;">
 
 					</div>
 					
-					<div><a href="../MySendMsg" style="margin-left: 20px;"><img src="../resources/theme/images/mysendMSG.png" style="display: inline-block; width: 25px; vertical-align: middle;"/></a></div>
+					
 					
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
