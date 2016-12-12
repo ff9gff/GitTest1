@@ -57,65 +57,61 @@ http://www.templatemo.com/tm-406-flex
             <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
         <![endif]-->
 
-
-
-
-	
-
-
-	<div class="content-section" id="services">
-		<div class="container">
-			<div class="row">
-				<div class="heading-section col-md-12 text-center">
+<div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%" ><!-- #ffffcc -->
+<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%; text-align: center;"><br/><!-- white -->
+ 
+	<div class="content-section" id="services" style="margin: 0; border: 0; width: 100%;text-align: center; display: inline-block;">
+		<div class="container" style="margin: 0; border: 0; width: 100%; text-align: center; display: inline-block;">
+			<div class="row" style="width: 100%; margin: 0; text-align: center; display: inline-block;">
+				<div class="heading-section col-md-12 text-center" style="width: 100%; margin: 0; text-align: center; display: inline-block;">
+					
+					<div style="width: 50%; margin: 0; text-align: center; display: inline-block;">
+						<img src="../resources/theme/images/why2.png" style="width: 100%; display: inline-block;"/>					
+					</div>
+					
+					<br/><br/>
+					
+					<div style="width: 100%; text-align: center;">
 					<h2>내 정보에 등록된 아이디/이름/휴대폰 /이메일로 비밀번호 찾기</h2>
 					<br/><br/>
 					
 					<form action="find_password" method="post">
-						<input type="text" name="userid" id="userid" placeholder="아이디를 입력해 주세요." required /><br/><br/>
-						<input type="text" name="name" id="name" placeholder="이름을 입력해 주세요." required /><br/><br/>
-						<input type="text" name="phone" id="phone" placeholder="핸드폰 번호를 입력해 주세요." required /><br/><br/>
-						<input type="email" name="email" id="email" placeholder="이메일 주소를 입력해 주세요." required /><br/><br/>
+						<div style="margin: 5px;">
+							<input type="text" name="userid" id="userid" placeholder="아이디를 입력해 주세요." required />
+						</div>
+						<div style="margin: 5px;">
+							<input type="text" name="name" id="name" placeholder="이름을 입력해 주세요." required />
+						</div>
+						<div style="margin: 5px;">
+							<input type="text" name="phone" id="phone" placeholder="핸드폰 번호를 입력해 주세요." required />
+						</div>
+						<div style="margin: 5px;">
+							<input type="email" name="email" id="email" placeholder="이메일 주소를 입력해 주세요." required />
+						</div>
+						<br/><br/>
 						<input type="submit" value="비밀번호 찾기" /><br/><br/>
 					</form>
 					
 					<a href="member_register01">회원가입</a>
-					
-
+					</div>
 				</div>
-				<!-- /.heading-section -->
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container -->
 	</div>
-	<!-- /#services -->
-
 
 	<div id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-xs-12 text-left">
-					<span>Copyright &copy; 2014 Company Name</span>
-				</div>
-				<!-- /.text-center -->
-				<div class="col-md-4 hidden-xs text-right">
-					<a href="#top" id="go-top">Back to top</a>
-				</div>
-				<!-- /.text-center -->
+				<div class="col-md-8 col-xs-12 text-left" style="text-align: right;">
+					<span>Copyright &copy; 2016 With Me</span>
+				</div>				
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.container -->
 	</div>
-	<!-- /#footer -->
+</div>
+</div>	
 
-
-
-	<script src="../resources/theme/js/bootstrap.js"></script>
-	<script src="../resources/theme/js/plugins.js"></script>
-	<script src="../resources/theme/js/main.js"></script>
-	
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 	// 휴대폰 번호
     function autoHypenPhone(str){
@@ -157,7 +153,7 @@ http://www.templatemo.com/tm-406-flex
 	
 	
 	
-	</script>>
+</script>
 
 </body>
 </html>

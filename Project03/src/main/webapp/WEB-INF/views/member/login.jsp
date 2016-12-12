@@ -80,12 +80,18 @@ http://www.templatemo.com/tm-406-flex
 					
 						<h2>로그인</h2>
 						<br /><br />
-						<br /><br />
 						
 						<form action="login-post" method="post" >
-							<input type="text" name="userid" id="userid" placeholder="아이디" required /><br/><br/>
-							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required /><br/><br/>
-							<input type="submit" value="로그인" /><br/><br/>
+						
+							<div style="margin: 5px;">
+								<input type="text" name="userid" id="userid" placeholder="아이디" required />
+							</div>
+							<div style="margin: 5px;">
+								<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required />
+							</div>
+							
+							<br/><br/>
+							<input type="submit" value="로그인" />
 							
 							<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
 							<%System.out.println(request.getQueryString()); %>

@@ -28,9 +28,9 @@
 <div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%"><!-- #ffffcc -->
 
    <div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/><!-- white -->
-      <div>
+      <div style="background-color: #ff7c25">
         <!--  <img alt="" src="../resources/theme/images/naver.png" style="display: block; width: 100%; height: 10%"> -->
-          <img alt="" src="../resources/theme/images/signup01.png" style="display: block; width: 30%; height: 10%">
+          <img alt="" src="../resources/theme/images/signup01_2.png" style="display: block; width: 30%; height: 10%">
       </div>
       
       <br/><br/>
@@ -240,7 +240,7 @@
       
       </div><!-- 개인정보취급방침  -->
       
-      <br/>
+      <br/><br/>
       
       <div style="text-align: center;">
          <div style="text-align: center; width: 30%; display: inline-block;">
