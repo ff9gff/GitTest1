@@ -67,17 +67,18 @@ http://www.templatemo.com/tm-406-flex
 		<div class="container">
 			<div class="row">
 				<div class="heading-section col-md-12 text-center">
-					<h2>내 정보에 등록된 이름 /휴대폰/이메일로 아이디 찾기</h2>
+					<h2>내 정보에 등록된 아이디/이름/휴대폰 /이메일로 비밀번호 찾기</h2>
 					<br/><br/>
 					
-					<form action="find_id" method="post">
+					<form action="find_password" method="post">
+						<input type="text" name="userid" id="userid" placeholder="아이디를 입력해 주세요." required /><br/><br/>
 						<input type="text" name="name" id="name" placeholder="이름을 입력해 주세요." required /><br/><br/>
 						<input type="text" name="phone" id="phone" placeholder="핸드폰 번호를 입력해 주세요." required /><br/><br/>
 						<input type="email" name="email" id="email" placeholder="이메일 주소를 입력해 주세요." required /><br/><br/>
-						<input type="submit" value="다음단계" /><br/><br/>
+						<input type="submit" value="비밀번호 찾기" /><br/><br/>
 					</form>
 					
-					<a href="find_password">비밀번호 찾기</a>&nbsp;&nbsp;<a href="member_register01">회원가입</a>
+					<a href="member_register01">회원가입</a>
 					
 
 				</div>

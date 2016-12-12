@@ -1,5 +1,7 @@
 package edu.spring.project03.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -76,5 +78,16 @@ public class MemberServiceImpl implements MemberService {
    /**
     * 
     */
+   @Override
+	public List<String> find_id(String name, String phone, String email) {
+		
+		return memberDAO.find_id(name, phone, email);
+	}
+   
+   @Override
+	public String find_pwd(String userid, String name, String phone, String email) {
+
+		return memberDAO.find_pwd(userid, name, phone, email);
+	}
 
 } // end class MemberServiceImpl

@@ -1,5 +1,9 @@
 package edu.spring.project03.persistence;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -84,8 +88,36 @@ public class MemberDAOImpl implements MemberDAO {
 
       return sqlSession.insert(NAMESPACE + ".profile-insert", imgvo);
    } // end insertProfile(imgvo)
+   
+   
+   
 
    /***
+    * 
+    */
+  @Override
+	public List<String> find_id(String name, String phone, String email) {
+	  Map<String, String> args = new HashMap<>();
+	  args.put("name", name);
+	  args.put("phone", phone);
+	  args.put("email", email);
+	  
+	  return sqlSession.selectList(NAMESPACE + ".find_id", args);	  
+	} // end find_id(String name, String phone, String email)
+
+  @Override
+	public String find_pwd(String userid, String name, String phone, String email) {
+	  Map<String, String> args = new HashMap<>();
+	  args.put("userid", userid);
+	  args.put("name", name);
+	  args.put("phone", phone);
+	  args.put("email", email);
+	  
+	  return sqlSession.selectOne(NAMESPACE + ".find_pwd", args);
+	}
+  
+   
+   /**
     * 
     */
 
@@ -94,5 +126,7 @@ public class MemberDAOImpl implements MemberDAO {
       // TODO Auto-generated method stub
       return null;
    }
+
+
 
 } // end class MemberDAOImpl

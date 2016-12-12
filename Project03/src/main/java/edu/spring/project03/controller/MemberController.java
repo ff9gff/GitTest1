@@ -2,6 +2,7 @@ package edu.spring.project03.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -245,6 +246,70 @@ public class MemberController {
 		// String name = request.getParameter("name");
 		// String email = request.getParameter("email");
 
+	} // end findId()
+	
+	@RequestMapping(value = "find_id", method = RequestMethod.POST)
+	public String findId(String name, String phone, String email, Model model) {
+		
+		logger.info("name : " + name);
+		logger.info("phone : " + phone);
+		logger.info("email : " + email);
+
+		List<String> userids = memberService.find_id(name, phone, email);
+		for(int i = 0; i < userids.size(); i++){
+			logger.info("userids : " + userids.get(i));			
+		}
+		
+		model.addAttribute("userids", userids);
+		
+		return "member/find_id_result";
+	} // end findId()
+	
+	@RequestMapping(value = "find_password", method = RequestMethod.GET)
+	public void findPassword() {
+
+	} // end findId()
+	
+	@RequestMapping(value = "find_password", method = RequestMethod.POST)
+	public String findPassword(String userid, String name, String phone, String email) {
+		
+		logger.info("name : " + userid);
+		logger.info("name : " + name);
+		logger.info("phone : " + phone);
+		logger.info("email : " + email);
+		
+		String pwd = memberService.find_pwd(userid, name, phone, email);
+		
+		SimpleMailMessage message = new SimpleMailMessage();
+		message.setTo(email);
+		logger.info("메일 주소 : " + email);
+		message.setSubject("같이가자(With me) 비밀번호");
+		message.setText("비밀번호: " + pwd);
+		logger.info("보낸 코드 : " + pwd);
+		mailSender.send(message);
+				
+/*		select m.pwd from wm_member m, wm_personal p
+		where 
+		m.mno = p.mno and
+		m.userid = 'aaa' and
+		p.name = 'aaa' and
+		p.phone = '010-0000-0000' and
+		p.email = 'aaa@withme.com';*/
+		
+		
+/*		update wm_member
+		set pwd = 123
+		where mno = 
+		(select m.mno from wm_member m, wm_personal p
+		where 
+		m.mno = p.mno and
+		m.userid = 'aaa' and
+		p.name = 'aaa' and
+		p.phone = '010-0000-0000' and
+		p.email = 'aaa@withme.com'
+		);*/
+		
+		return "redirect:/";
 	} // end findId()
 
 } // end class MemberController

@@ -13,10 +13,10 @@
 	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/><!-- white -->
 	
 	
-	<h2>프로필 수정화면</h2>
+	<h2>프로필 수정</h2>
 	<form id ="updateProfile_form" action="profile_update" method="post" enctype="multipart/form-data" >
 		
-		<div style="margin-left: 5%; margin-right: 5% text-align: left;" >
+		<div style="margin-left: 5%; margin-right: 5%; text-align: left;" >
 		
 			<input type="hidden" id="mno" name="mno" value="${mno}"> 
 		
@@ -48,7 +48,7 @@
 			<br/>
 			<br/> 
 			<br/> <label for="introduce">자기소개</label><br />
-			<textarea id="introduce" name="introduce" cols="100" rows="15">${vo.introduce }</textarea>
+			<textarea id="introduce" name="introduce" cols="" rows="15" style="width: 100%;">${vo.introduce }</textarea>
 			<br>
 			<br>
 	

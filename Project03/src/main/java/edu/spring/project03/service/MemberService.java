@@ -1,5 +1,7 @@
 package edu.spring.project03.service;
 
+import java.util.List;
+
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
@@ -28,6 +30,12 @@ public interface MemberService {
    
    // ImgVO
    public abstract int createProfile(ImgVO imgvo);
+   
+   /**
+    * 
+    */
+   public abstract List<String> find_id(String name, String phone, String email);
+   public abstract String find_pwd(String userid, String name, String phone, String email);
    
 
    // 특정 회원 검색
