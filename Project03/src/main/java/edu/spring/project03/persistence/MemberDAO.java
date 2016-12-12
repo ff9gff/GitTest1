@@ -1,5 +1,7 @@
 package edu.spring.project03.persistence;
 
+import java.util.List;
+
 import edu.spring.project03.domain.ImgVO;
 import edu.spring.project03.domain.MemberVO;
 import edu.spring.project03.domain.PersonalVO;
@@ -22,6 +24,13 @@ public interface MemberDAO {
    public abstract int insertPersional(PersonalVO personalvo);
    
    public abstract String getNickname(int mno);
+   
+   
+   
+   //
+   public abstract List<String> find_id(String name, String phone, String email);
+   public abstract String find_pwd(String userid, String name, String phone, String email);
+   
    
    
    // ImgVO

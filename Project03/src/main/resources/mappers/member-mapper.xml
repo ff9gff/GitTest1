@@ -98,6 +98,26 @@
       where board_type = #{board_type} and content_no = #{content_no} and
       photo_no = #{photo_no}
    </select>
+   
+   
+   <select id="find_id" resultType="String">
+      select userid from wm_member
+      where mno in (select mno from wm_personal
+		where name = #{name} and
+		phone = #{phone} and
+		email = #{email}
+      )   
+   </select>
+   
+   <select id="find_pwd" resultType="String">
+   	select m.pwd from wm_member m, wm_personal p
+		where 
+		m.mno = p.mno and
+		m.userid = #{userid} and
+		p.name = #{name} and
+		p.phone = #{phone} and
+		p.email = #{email}   
+   </select>
 
 
 
