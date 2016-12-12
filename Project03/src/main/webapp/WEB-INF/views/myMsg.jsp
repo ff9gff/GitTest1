@@ -15,6 +15,26 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
+
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/bootstrap.min.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/font-awesome.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/animate.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_misc.css"/>">
+<link rel="stylesheet" href="<c:url value="/resources/theme/css/templatemo_style.css"/>">
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
+
+<script src="/resources/theme/js/vendor/modernizr-2.6.1-respond-1.1.0.min.js"></script>
+
+<script type="text/javascript" src="/resources/smarteditor/js/HuskyEZCreator.js" charset="utf-8"></script>
+
+
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
@@ -53,6 +73,7 @@ li {
 #msgTable{
      position: relative;
           margin: 0 auto;
+          margin-top: 200px;
 }
 #deleteBtn{
 
@@ -64,9 +85,10 @@ margin-left:1115px;
 
 </style>
 </head>
+	
 <body>
 
-
+<%@ include file="main-header4.jsp"  %>
 
 
 
@@ -187,7 +209,6 @@ background:#F3F5BB
 	<br/>
 
 <!-- jQuery CDN -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript">
 var frm = $('#pageForm');
 
