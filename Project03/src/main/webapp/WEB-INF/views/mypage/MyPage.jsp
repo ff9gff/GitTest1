@@ -203,7 +203,7 @@ ul {
 
 					</div>
 					
-					<a href="../MySendMsg" style="margin-left: 20px;"><img src="../resources/theme/images/mysendMSG.png" style="display: inline-block; width: 25px; vertical-align: middle;"/></a>
+					<div><a href="../MySendMsg" style="margin-left: 20px;"><img src="../resources/theme/images/mysendMSG.png" style="display: inline-block; width: 25px; vertical-align: middle;"/></a></div>
 					
 					<div id="contextmenu">
 						<input hidden type="number" name="mno" id="context_mno"/>
