@@ -43,6 +43,7 @@ http://www.templatemo.com/tm-406-flex
 <style>
 	#hiddenSearch {
 		display: none;
+		z-index: 100;
 	}
 .portfolio-item{
 	height: 320px;
@@ -686,7 +687,7 @@ http://www.templatemo.com/tm-406-flex
 					var buttonOffset = $(this).offset();
 					console.log(buttonOffset);
 					$('#hiddenSearch').css("left", (buttonOffset.left+30)+"px");
-					$('#hiddenSearch').css("top", (buttonOffset.tip+20)+"px");
+					$('#hiddenSearch').css("top", (buttonOffset.top+50)+"px");
 					$('#hiddenSearch').show();
 					show=false;
 				}else{
