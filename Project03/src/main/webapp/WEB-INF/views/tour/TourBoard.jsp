@@ -183,19 +183,18 @@ http://www.templatemo.com/tm-406-flex
 				<div class="flexslider">
 					<ul class="slides">
 						<li style="z-index: 300;">
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+							<div class="overlay"></div><img src="../resources/theme/images/mainindex2.png" alt="">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 600px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/tour-main.png" alt=""/>
 							</div>
 						</li>
-						<li>
+						<!-- <li>
 							<div class="overlay"></div> <img
 							src="../resources/theme/images/slide2.jpg" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>참여하고 싶은 여행을 검색해보세요</h2>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<!-- /.flexslider -->
@@ -520,9 +519,14 @@ http://www.templatemo.com/tm-406-flex
 				var url1 = '/project03/index/detailsearchImage/' + region_name + "/" + start_date + "/" + condition_sex + "/" + condition_age;
 				$.getJSON(url1, function(data1) {
 					$(data1).each(function() {
-						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: this.region_name, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
+						var name = this.region_name.split(",");
+						var tagname = '';
+						for(var i=0; i<name.length; i++){
+							tagname +="#"+name[i]+" ";
+						}
+						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: tagname, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
 					});
-					
+								
 					getAllThumnail_detail_search();
 	
 				});// end getJSON()

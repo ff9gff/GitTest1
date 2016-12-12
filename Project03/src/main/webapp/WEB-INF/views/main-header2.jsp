@@ -14,7 +14,7 @@
             
                <div class="logo-wrapper col-md-2 col-sm-2">
                   <h1>
-                     <a href="#this" id="btnHome">With&nbsp;me</a>
+                   		<a href="../index" id="#btnHome"><img alt="" src="../resources/theme/images/mainlogo2.jpg" style="width: 300px; height: 100px;"></a>	
                   </h1>
                </div>
                

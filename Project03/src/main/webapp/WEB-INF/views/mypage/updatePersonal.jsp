@@ -8,48 +8,60 @@
 </head>
 <body>
 
+<div style="text-align: center; vertical-align: middle; background-color: #ffffcc; height: 100%"><!-- #ffffcc -->
+
+	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%"><br/><!-- white -->
 	
-	<div style="width: 800px; margin: auto; vertical-align: middle;">
+	
 	<h2>프로필 수정화면</h2>
 	<form id ="updateProfile_form" action="profile_update" method="post" enctype="multipart/form-data" >
-		<input type="hidden" id="mno" name="mno" value="${mno}"> 
+		
+		<div style="margin-left: 5%; margin-right: 5% text-align: left;" >
+		
+			<input type="hidden" id="mno" name="mno" value="${mno}"> 
+		
+			<label for="sex">성별</label><br> 
+			<input type="checkbox" id="male" name="sex" value="1"> 
+			<label for="male">남자 </label> 
+			<input type="checkbox" id="female" name="sex" value="0"> 
+			<label for="female">여자 </label> <br><br>
+			 
+			<label for="age">나이</label><br> 
+			<input type="text" pattern="[0-9]*" id="age" name="age" value="${vo.age }" /><br><br>
+			 
+			<label for="nickname">넥네임이름</label><br> 
+			<input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요" value="${vo.nickname }">
+			<div id="result_nick"></div><br/><br/>
+					 
+			<label for="phone">핸드폰 번호</label><br> 
+			<input type="text" id="phone" name="phone" placeholder="핸드폰 번호" value="${vo.phone }"><br><br> 
+			
+			<input type="text" id="postcode" name="postcode"class="postcodify_postcode5" placeholder="우편번호" value="${vo.postcode }"> 
+			<input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
+			<input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " value="${vo.address1 }"><br> 
+			<input type="text" id="address2" name="address2" placeholder="상세주소" value="${vo.address2 }">
+			<br>
+			<br> 
+			<label for="email">이메일</label><br /> 
+			<input type="email" id="email" name="email" placeholder="이메일 입력" value="${vo.email }"/>
+			
+			<br/>
+			<br/> 
+			<br/> <label for="introduce">자기소개</label><br />
+			<textarea id="introduce" name="introduce" cols="100" rows="15">${vo.introduce }</textarea>
+			<br>
+			<br>
 	
-		<label for="sex">성별</label><br> 
-		<input type="checkbox" id="male" name="sex" value="1"> 
-		<label for="male">남자 </label> 
-		<input type="checkbox" id="female" name="sex" value="0"> 
-		<label for="female">여자 </label> <br><br>
-		 
-		<label for="age">나이</label><br> 
-		<input type="text" pattern="[0-9]*" id="age" name="age" value="${vo.age }" /><br><br>
-		 
-		<label for="nickname">넥네임이름</label><br> 
-		<input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력해 주세요" value="${vo.nickname }">
-		<div id="result_nick"></div><br/><br/>
-				 
-		<label for="phone">핸드폰 번호</label><br> 
-		<input type="text" id="phone" name="phone" placeholder="핸드폰 번호" value="${vo.phone }"><br><br> 
+			<button type="button" id="submit_OK">프로필 수정</button>
+			<button type="button" id="submit_Cancel">취소</button>
 		
-		<input type="text" id="postcode" name="postcode"class="postcodify_postcode5" placeholder="우편번호" value="${vo.postcode }"> 
-		<input type="button" id="postcodify_search_button" value="우편번호 찾기"><br>
-		<input type="text" id="address1" name="address1" class="postcodify_address" placeholder="지번/도로명 " value="${vo.address1 }"><br> 
-		<input type="text" id="address2" name="address2" placeholder="상세주소" value="${vo.address2 }">
-		<br>
-		<br> 
-		<label for="email">이메일</label><br /> 
-		<input type="email" id="email" name="email" placeholder="이메일 입력" value="${vo.email }"/>
-		
-		<br/>
-		<br/> 
-		<br/> <label for="introduce">자기소개</label><br />
-		<textarea id="introduce" name="introduce" cols="100" rows="15">${vo.introduce }</textarea>
-		<br>
-		<br>
-
-		<button type="button" id="submit_OK">프로필 수정</button>
-		<button type="button" id="submit_Cancel">취소</button>
+		</div>
 	</form>
+	
 	</div>
+
+
+</div>
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//d1p7wdleee1q2z.cloudfront.net/post/search.min.js"></script>

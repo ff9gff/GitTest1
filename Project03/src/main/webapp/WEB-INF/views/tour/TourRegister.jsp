@@ -70,17 +70,9 @@ http://www.templatemo.com/tm-406-flex
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div> <img src="../resources/theme/images/slide1.jpg" alt="">
+							<div class="overlay"></div><img src="../resources/theme/images/mainindex2.png" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>같이가자</h2>
-							</div>
-						</li>
-						
-						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide2.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg">
-								<h2>이벤트</h2>
 							</div>
 						</li>
 					</ul>
@@ -92,13 +84,18 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.site-slider -->
 	</div>
 	<!-- /.site-main -->
+	
+	
+	<div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%">
+	<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%"><br/>
+
 
 	<div class="content-section" id="services">
 		<div class="container">
         	<div class="row">
          
             <!-- /.heading-section -->
-            <div class="heading-section">
+            <div class="heading-section" style="margin-left: 5%; margin-right: 5%; text-align: left;" >
             	<h2>여행 등록</h2>
             </div>
  
@@ -106,64 +103,70 @@ http://www.templatemo.com/tm-406-flex
 		
 					<form action="TourRegisterInsert" method="post" id="frm" enctype="multipart/form-data">
 			
-						<label for="imageFile">썸네일 이미지</label><br/>       
-					    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
-					            
-					    <div id="image_preview">
-					    	<img src="#" id="profile-image" style="display: none;" /><br/>
-					    	<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
-					    </div><br/>      
-					
-						<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
+						<div style="margin-left: 5%; margin-right: 5%; text-align: left; " >
 						
-						<input type="text" name="title" style="width: 70%; border: 2px solid #f45c3a; border-radius: 10px; " placeholder="제목"/><br /> <br /> 
-					
+							<label for="imageFile">썸네일 이미지</label><br/>       
+						    <input type="file" id="imageFile" name="imageFile" value="<img src='${pageContext.request.contextPath}/image/${imageFile.id}' width='100' height='100'>"><br>
+						            
+						    <div id="image_preview">
+						    	<img src="#" id="profile-image" style="display: none;" /><br/>
+						    	<a href="#" id="btn_profile-image_remove" style="display: none;">Remove</a>
+						    </div><br/>      
+						
+							<input type="hidden" name="mno" value="${mno}" readonly="readonly" /> 
 							
-						<div id="region_plus">
-							<table id="regionTable">
-								<tr>
-									<td>
-										<input type="text" name="region_name" placeholder="지역" />
-										<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
-									</td>
-								</tr>
-							</table>						
-						</div> <br /> 
-						<div style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px; padding: 2px; ">
-						<input type="text" id="start_date" name="start_date" placeholder="시작일" style="border:none;"> 
-						~ 
-						<input type="text" id="end_date" name="end_date" placeholder="종료일" style="border:none;"> <br /> <br />
-						</div> <br/>
-						<div style="display: inline-block;">
-							성별 조건: <br />
-							남자 <input type="radio" name="condition_sex" value="1" /> 
-							여자 <input type="radio" name="condition_sex" value="0" /> 
-							조건없음 <input type="radio" name="condition_sex" value="2" />
-						</div> 
+							<input type="text" name="title" style="width: 70%; border: 2px solid #f45c3a; border-radius: 10px; " placeholder="제목"/><br /> <br /> 
 						
-						<div style="display: inline-block;">
+								
+							<div id="region_plus">
+								<table id="regionTable">
+									<tr>
+										<td>
+											<input type="text" name="region_name" placeholder="지역" />
+											<input id="addButton" name="addButton" type="button" style="cursor:hand;" onClick="insRow()" value="추가">
+										</td>
+									</tr>
+								</table>						
+							</div> <br /> 
+							<div style="width: 40%; height: 5.5%; border: 2px solid #f45c3a; border-radius: 10px; padding: 2px; ">
+							<input type="text" id="start_date" name="start_date" placeholder="시작일" style="border:none;"> 
+							~ 
+							<input type="text" id="end_date" name="end_date" placeholder="종료일" style="border:none;"> <br /> <br />
+							</div> <br/>
+							<div style="display: inline-block;">
+								성별 조건: <br />
+								남자 <input type="radio" name="condition_sex" value="1" /> 
+								여자 <input type="radio" name="condition_sex" value="0" /> 
+								조건없음 <input type="radio" name="condition_sex" value="2" />
+							</div> 
 							
-						</div> 
-					
-						<div style="display: inline-block;">
-							연령 조건: <br />
-							20대 <input type="radio" name="condition_age" value="1" /> 
-							30대 <input type="radio" name="condition_age" value="2" /> 
-							40대 <input type="radio" name="condition_age" value="3" /> 
-							조건없음 <input type="radio" name="condition_age" value="4" />
-						 </div><br /><br />		 
-						 
+							<div style="display: inline-block;">
+								
+							</div> 
 						
-						<textarea name="content" id="smarteditor" rows="10"
-							cols="100" style="width: 766px; height: 412px;">	
-						</textarea><br /><br />		
-													
+							<div style="display: inline-block;">
+								연령 조건: <br />
+								20대 <input type="radio" name="condition_age" value="1" /> 
+								30대 <input type="radio" name="condition_age" value="2" /> 
+								40대 <input type="radio" name="condition_age" value="3" /> 
+								조건없음 <input type="radio" name="condition_age" value="4" />
+							 </div><br /><br />		 
+							 
+							
+							<textarea name="content" id="smarteditor" rows="10"
+								cols="100" style="width: 766px; height: 412px;">	
+							</textarea><br /><br />	
+							
+						</div>	
+						
+						<div style="text-align: left;" >
+							<button type="button" id="savebutton" style="margin-left: 5%; text-align: left;">작성</button>
+							<button type="button" id="cancelbutton" style="text-align: left;">취소</button>
+							<button type="button" id="homebutton" style="text-align: left;">홈으로</button>
+						</div>								
 					</form>	
  
-					<input type="button" id="savebutton" value="작성" />
-					<input type="button" id="cancelbutton" value="취소" />
-					<input type="button" id="homebutton" value="홈으로" />
- 
+		
 				</div>
  
 			</div>
@@ -191,6 +194,9 @@ http://www.templatemo.com/tm-406-flex
 		<!-- /.container -->
 	</div>
 	<!-- /#footer -->
+	
+	</div>
+	</div>
 	
 	<script>
 	

@@ -263,7 +263,7 @@ hr {
 }
 
 .logo-wrapper {
-	background: url(../images/logo.png) no-repeat;
+/* 	background: url(../images/logo.png) no-repeat;  */
 	height: 100px;
 	background-position: 15px;
 }
@@ -271,7 +271,8 @@ hr {
 .logo-wrapper a {
 	display: inline-block;
 	overflow: hidden;
-	padding-left: 130px;
+	/* padding-left: 130px; */
+	padding-left: 10px;
 	line-height: 100px;
 	text-transform: uppercase;
 	color: #ec523f;

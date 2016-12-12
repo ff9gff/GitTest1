@@ -125,7 +125,7 @@ ul {
 
 <body>
 
-<%@ include file="../main-header.jsp"  %>
+<%@ include file="../main-header2.jsp"  %>
 
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
@@ -184,16 +184,16 @@ ul {
 
 
 
-	<header style="background-color: #F19A0D; height: 70px">
-		<p style="font-weight: bold; color: white; font-size: 25px;">같이 가자</p>
-		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;">마이페이지 TEST 화면입니다</a></p>
+	<header style="height: 102px; width: 1330px; margin: auto; vertical-align: center;">
+		<p style="font-weight: bold; color: white; font-size: 25px;"></p>
+		<p><a href="../index" style="font-weight: bolder; color: white; font-size: 18px;"></a></p>
 	</header>
 
 
 	<div Class="wrapper">
-		<div style="background-color: #F19A0D; height: 520px;">
+		<div style="background-color: #f25454; height: 520px; width: 1330px; margin: auto; vertical-align: center;">
 			<div
-				style="width: 1026px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
+				style="width: 800px; height: 200px; text-align: center; vertical-align: center; margin: auto;">
 				<div
 					style="display: block; width: 100%; height: 100%; margin-top: 20px; margin: 10px; vertical-align: center; text-align: center;">
 
@@ -229,7 +229,7 @@ ul {
 					<input type="text" Class="personal" value="${pageVO.email }" readonly="readonly" style="background-color: transparent; color: white; font-weight: bold; text-align: center;"/>
 				</div>
 
-				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #F19A0D; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
+				<textarea rows="" cols="" readonly="readonly" style="width: 600px; height: 120px; border: none; margin-top: 20px; background-color: #f25454; color: white; font-weight: bold; font-size: 25px">${pageVO.introduce }
 
 				</textarea>
 					

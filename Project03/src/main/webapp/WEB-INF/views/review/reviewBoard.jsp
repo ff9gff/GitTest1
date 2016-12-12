@@ -130,59 +130,24 @@ http://www.templatemo.com/tm-406-flex
 	<%@ include file="../main-header2.jsp"%>
 	
 	<div class="site-main" id="sTop">
-		<!-- <div class="site-header">
-			<div class="main-header">
-				<div class="container">
-					<div id="menu-wrapper">
-						<div class="row">
-							<div class="logo-wrapper col-md-2 col-sm-2">
-								<h1>
-									<a href="#">hello </a>
-								</h1>
-							</div>
-							/.logo-wrapper
-							<div class="col-md-10 col-sm-10 main-menu text-right">
-								<div class="toggle-menu visible-sm visible-xs">
-									<i class="fa fa-bars"></i>
-								</div>
-								<ul class="menu-first">
-									<li><a href="index">메인</a></li>
-									<li><a href="#services">후기</a></li>
-									<li><a href="#portfolio">찾기</a></li>
-									<li><a href="MyPage">마이페이지</a></li>
-									<li><a href="admin">관리자</a></li>
-									<li><a href="member/login">로그인</a></li>
-								</ul>
-							</div>
-							/.main-menu
-						</div>
-						/.row
-					</div>
-					/#menu-wrapper
-				</div>
-				/.container
-			</div>
-			/.main-header -->
-		</div>
-		<!-- /.site-header -->
+		
 		<div class="site-slider">
 			<div class="slider">
 				<div class="flexslider">
 					<ul class="slides">
 						<li>
-							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide1.jpg" alt="">
-							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 290px;">
+							<div class="overlay"></div><img src="../resources/theme/images/mainindex2.png" alt="">
+							<div class="slider-caption visible-md visible-lg" style="text-align: center; top: 250px;">
 								<img style="width: 800px; height: 400px; vertical-align: middle; display: inline-block;" src="../resources/theme/images/review-main.png" alt=""/>
 							</div>
 						</li>
-						<li>
+						<!-- <li>
 							<div class="overlay"></div> <img
-							src="../resources/theme/images/slide2.jpg" alt="">
+							src="../resources/theme/images/backimage2.png" alt="">
 							<div class="slider-caption visible-md visible-lg">
 								<h2>후기를 적어 공유해봅시다</h2>
 							</div>
-						</li>
+						</li> -->
 					</ul>
 				</div>
 				<!-- /.flexslider -->
@@ -391,7 +356,12 @@ http://www.templatemo.com/tm-406-flex
 			$.getJSON(url1, function(data1) {
 				$(data1).each(function() {
 					// 데이터들을 배열에 저장
-					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: this.region_name, review_no: this.review_no, hits: this.hits, countofbest: this.countofbest});			
+					var name = this.region_name.split(",");
+					var tagname = '';
+					for(var i=0; i<name.length; i++){
+						tagname +="#"+name[i]+" ";
+					}
+					SelectSearchReview.push({img_url: this.img_url, title: this.title, region_name: tagname, review_no: this.review_no, hits: this.hits, countofbest: this.countofbest});			
 				});
 				getAllThumnail_Nickname_REVIEW()
 				

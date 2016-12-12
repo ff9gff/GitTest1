@@ -109,35 +109,38 @@
 	
 	
 	
-	<!-- 메인 index.jsp 디폴트 4개 따봉순으로 후기 뿌리기 -->
+	<!-- 메인 index.jsp 디폴트 4개 조회수순으로 후기 뿌리기 -->
 	<!-- 1. 이미지 가져오기 -->
 	<select id="select_default_review_image" resultType="edu.spring.project03.domain.ImgVO">
-		select * from wm_image
-		where board_type = 2 order by content_no desc
-	</select>
-	<!-- 2. 제목 가져오기 -->
-	<select id="select_default_review_title" resultType="edu.spring.project03.domain.ReviewVO">
-		select * from wm_review order by countofbest desc
-	</select>
-	<!-- 3. 지역 가져오기 -->
-	<select id="select_default_review_region" resultType="edu.spring.project03.domain.ReviewRegionVO">
-		select * from wm_review_region order by review_no desc
-	</select>
-	
-	<!-- 메인 index.jsp 디폴트 4개 조회수 순으로 후기 뿌리기 -->
-	<!-- 1. 이미지 가져오기 -->
-	<select id="select_top_review_image" resultType="edu.spring.project03.domain.ImgVO">
 		select * from wm_image join wm_review
 		on content_no = review_no and board_type = 2
 		order by hits desc
 	</select>
 	<!-- 2. 제목 가져오기 -->
+	<select id="select_default_review_title" resultType="edu.spring.project03.domain.ReviewVO">
+		select * from wm_review order by hits desc
+	</select>
+	<!-- 3. 지역 가져오기 -->
+	<select id="select_default_review_region" resultType="edu.spring.project03.domain.ReviewRegionVO">
+		select * from wm_review_region a join wm_review b
+		on a.review_no = b.review_no order by hits desc
+	</select>
+	
+	<!-- 메인 index.jsp 디폴트 4개 좋아요 순으로 후기 뿌리기 -->
+	<!-- 1. 이미지 가져오기 -->
+	<select id="select_top_review_image" resultType="edu.spring.project03.domain.ImgVO">
+		select * from wm_image join wm_review
+		on content_no = review_no and board_type = 2
+		order by countofbest desc
+	</select>
+	<!-- 2. 제목 가져오기 -->
 	<select id="select_top_review_title" resultType="edu.spring.project03.domain.ReviewVO">
-		select * from wm_review order by hits
+		select * from wm_review order by countofbest
 	</select>
 	<!-- 3. 지역 가져오기 -->
 	<select id="select_top_review_region" resultType="edu.spring.project03.domain.ReviewRegionVO">
-		select * from wm_review_region
+		select * from wm_review_region a join wm_review b
+		on a.review_no = b.review_no order by countofbest desc
 	</select>
 
 	
