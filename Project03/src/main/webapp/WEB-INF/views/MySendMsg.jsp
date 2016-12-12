@@ -60,7 +60,7 @@ li {
 
 margin-left:1115px;
 }
-
+#msgTable tbody tr:hover td {background:#F2F684; color:#1BA6B2}
 </style>
 </head>
 <body>
@@ -88,7 +88,7 @@ margin-left:1115px;
         <th>받은 시간</th>
     </tr>
     
-
+    <tbody>
     <c:forEach var="vo" items="${allList}">
   
     <tr Class="selectAll">
@@ -133,6 +133,7 @@ margin-left:1115px;
     </tr>
     
     </c:forEach>
+  </tbody>
 </table>
 <br/>
 

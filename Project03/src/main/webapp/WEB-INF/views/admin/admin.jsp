@@ -49,6 +49,7 @@ table, th, td {
  	font-family: 'Jeju Hallasan', serif;
  }
 
+ #checkboxTestTbl tbody tr:hover {background:#F3F5BB}
 </style>
 
 </head>
@@ -117,7 +118,7 @@ table, th, td {
 					<th>가입날짜(DATE)</th>
 				</tr>
 				
-		
+		 	<tbody>
 				<c:forEach var="vo" items="${newMemberList}">
 				
 					<tr class= "select0">
@@ -175,8 +176,9 @@ table, th, td {
 					<th>userEmail5</th>
 					<th>JoinDate5</th>
 				</tr>
+			</tbody>
 
-			</table>
+		</table>
   				<div style="text-align: right;">  					
 					<input type="image" src="../resources/theme/images/check.png"  id="image_btn" 
 					style="width: 30px; display:inline; margin-top: 15px;" >
@@ -184,6 +186,8 @@ table, th, td {
 				</div>
 				</div>
 					</form>
+					
+					
 		</section>
 
 

@@ -158,7 +158,7 @@ display: inline;
 	<tr>
 			<td><input type="checkbox" name="rowCheck" value="${bo.msg_no }"></td>
 			<td>${x= x+1}</td>
-			<td>${bo.msg_content }</td>
+			<td style="text-align: left;">${bo.msg_content }</td>
 	</tr>
 	</c:forEach>
 
