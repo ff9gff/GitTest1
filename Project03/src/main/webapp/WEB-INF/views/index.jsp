@@ -221,7 +221,7 @@
 				</div>
 				/.heading-section
 			</div> -->
-		<img src="resources/theme/images/travellist.png" alt="" style="width: 100%">
+		<img src="resources/theme/images/travellists.png" alt="" style="width: 100%">
 		<br /><br />
 		<div class="container">
 			<div class="heading-section col-md-12 text-center">
