@@ -125,7 +125,7 @@ ul {
 
 <body>
 
-<%@ include file="../main-header2.jsp"  %>
+<%@ include file="../main-header3.jsp"  %>
 
 <div id="profilemenu" hidden>
 <form id ="profileimage_form" name="profileimage_form" action="MyPage" method="post" enctype="multipart/form-data">
