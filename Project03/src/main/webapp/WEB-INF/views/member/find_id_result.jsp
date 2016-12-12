@@ -75,8 +75,13 @@ http://www.templatemo.com/tm-406-flex
 					<c:forEach items="${userids}" var="userid">
 						<div>
 							<input type="text" value="${userid}" />
-						</div>
-					</c:forEach>		
+						</div>	
+						
+					</c:forEach>
+					
+					<c:if test="${empty userids}" >
+							<input type="text" value="입력하신 정보의 아이디가 존재하지 않습니다." readonly="readonly" style="width: 300px;">
+					</c:if>
 						
 					<br/><br/>
 					

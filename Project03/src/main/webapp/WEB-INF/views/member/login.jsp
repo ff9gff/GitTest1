@@ -66,27 +66,36 @@ http://www.templatemo.com/tm-406-flex
 	
 	
 <div style="text-align: center; vertical-align: middle; background-color: #f25454; height: 100%" ><!-- #ffffcc -->
-<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%"><br/><!-- white -->
+<div style="display: inline-block; vertical-align: middle; background-color: white; width: 50%; height: 100%; text-align: center;"><br/><!-- white -->
  
-	<div class="content-section" id="services">
-		<div class="container">
-			<div class="row"  style="margin-left: 5%; margin-right: 5%; text-align: center;">
-				<div class="heading-section col-md-12 text-center"> 
-					<h2>로그인</h2>
-					<br /><br />
-					<br /><br />
+	<div class="content-section" id="services" style="margin: 0; border: 0; width: 100%;text-align: center; display: inline-block;">
+		<div class="container" style="margin: 0; border: 0; width: 100%; text-align: center; display: inline-block;">
+			<div class="row" style="width: 100%; margin: 0; text-align: center; display: inline-block;">
+				<div class="heading-section col-md-12 text-center" style="width: 100%; margin: 0; text-align: center; display: inline-block;">
+					<div style="width: 50%; margin: 0; text-align: center; display: inline-block;">
+						<img src="../resources/theme/images/why2.png" style="width: 100%; display: inline-block;"/>					
+					</div>
+					<!-- <br/> --> 
+					<div style="width: 100%; text-align: center;">
 					
-					<form action="login-post" method="post" >
-						<input type="text" name="userid" id="userid" placeholder="아이디" required /><br/><br/>
-						<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required /><br/><br/>
-						<input type="submit" value="로그인" /><br/><br/>
+						<h2>로그인</h2>
+						<br /><br />
+						<br /><br />
 						
-						<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
-						<%System.out.println(request.getQueryString()); %>
-						<input type="hidden" name="query" value="<%=request.getQueryString()%>" />
-					</form>
+						<form action="login-post" method="post" >
+							<input type="text" name="userid" id="userid" placeholder="아이디" required /><br/><br/>
+							<input type="password" name="pwd" id="pwd" placeholder="비밀번호" required /><br/><br/>
+							<input type="submit" value="로그인" /><br/><br/>
+							
+							<%-- "로그인" 버튼을 클릭했을 때 서버로 쿼리 스트링을 보내기 위해서 --%>
+							<%System.out.println(request.getQueryString()); %>
+							<input type="hidden" name="query" value="<%=request.getQueryString()%>" />
+						</form>
+						
+						<a href="find_id">아이디</a>·<a href="find_password">비밀번호 찾기</a>&nbsp;&nbsp;<a href="member_register01">회원가입</a>
 					
-					<a href="find_id">아이디</a>·<a href="find_password">비밀번호 찾기</a>&nbsp;&nbsp;<a href="member_register01">회원가입</a>
+					</div>
+					
 					
 
 				</div>
@@ -104,8 +113,8 @@ http://www.templatemo.com/tm-406-flex
 	<div id="footer">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-8 col-xs-12 text-left">
-					<span>Copyright &copy; 2014 Company Name</span>
+				<div class="col-md-8 col-xs-12 text-left" style="text-align: right;">
+					<span>Copyright &copy; 2016 With Me</span>
 				</div>				
 			</div>
 			<!-- /.row -->
