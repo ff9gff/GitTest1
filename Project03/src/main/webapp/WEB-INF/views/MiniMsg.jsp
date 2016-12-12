@@ -37,7 +37,14 @@ margin-left: 10px;
 <body>
 <form action="">
 <p id="sendMen">
-보낸이 : ${getname }
+<c:if test="${empty sendPage }">
+	보낸이 :
+</c:if>
+<c:if test="${!empty sendPage }">
+${sendPage } :
+</c:if>
+
+ ${getname }
 <!--  ${ value } 보낸 번호 -->
 </p>
 <textarea rows="15" cols="70" readonly id="textArea">${sendTxt }</textarea><br/>

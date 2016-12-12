@@ -202,7 +202,8 @@ public class SendMSGcontroller {
 	
 	@RequestMapping(value="/MiniMsg" ,method=RequestMethod.POST)
 	public void test022(@ModelAttribute("postdata") String postdata ,@ModelAttribute("msg_content") String msg_content ,
-			 Model model , @ModelAttribute("value") String value, @ModelAttribute("getname") String getname,String sendTxt){
+			 Model model , @ModelAttribute("value") String value, @ModelAttribute("getname") String getname,String sendTxt,
+			 @ModelAttribute("sendPage") String sendPage   ){
 		
 		//postdata=5&value=&msg_content=공지사항입니다.
 		logger.info("userSearch2 호출 팝업 나와라 ");
@@ -210,9 +211,11 @@ public class SendMSGcontroller {
 		logger.info("value" + value +"getname" +getname);
 		int mno = Integer.parseInt(value);
 		logger.info(""+mno);
+		logger.info("sendPage 값이 있을 까요 "+sendPage);
 		sendTxt= msgAllService.selectMSGContext(mno);
 		logger.info("여기는 컨트롤러 입니다."+sendTxt);
 		model.addAttribute("sendTxt",sendTxt);
+		model.addAttribute("sendPage",sendPage);
 		
 		
 		

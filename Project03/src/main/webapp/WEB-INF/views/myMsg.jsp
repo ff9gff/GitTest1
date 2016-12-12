@@ -25,6 +25,7 @@
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" />
 
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>
 
@@ -61,14 +62,9 @@ li {
     display: inline-block;
 }
 
-
-
 #paddingAction{
 	  position: relative;
           margin: 0 auto;
-
-
-
 }
 
 
@@ -114,7 +110,7 @@ margin-left:1058px;
     	<tr>
     		<th><input type="checkbox" name="rowCheck"></th>
         	
-        	<th>보낸 사람</th>
+        	<th>받는 사람</th>
         	<th>내용</th>
         	<th>받은 시간</th>
     	</tr>
@@ -130,9 +126,7 @@ background:#F3F5BB
     	
     	<td><input type="checkbox" name="rowCheck" value="${vo.msg_no }">
     		<input type="hidden" name="xValue" value="${x=x+1 }">																</td>
-    
-  	
-  
+
       
         <td>
         	
@@ -154,7 +148,8 @@ background:#F3F5BB
         <form id="form2" name="form2" method='post' action="MiniMsg" target="pop">
  		 <input type="hidden" name="postdata"  id ="postdata${x}"  value="${vo.nickname }"/> 
  		 <input type="hidden"  id="value" name= "value" />
- 		 <input type="hidden" id ="getname" name ="getname"/> 		 	
+ 		 <input type="hidden" id ="getname" name ="getname"/> 	
+ 		 <input type="hidden" id="sendPage" name="sendPage"/>	 	
         <input type="hidden" name="msg_no"  id ="msg_no${x}"  value="${vo.msg_no }"/>       
         </form>       
 
@@ -249,7 +244,7 @@ function OpenPop(no)
 	// <input type="hidden" name="msg_no"  id ="msg_no${x}"  value="${vo.msg_no }"/> 
 	$("#value").val(getno); 
 	$('#getname').val(getdata);
-	
+	$('#sendPage').val('받는 사람');
 	
 	//alert(getdata+getcontent);
 
@@ -258,7 +253,12 @@ function OpenPop(no)
 	f.submit(); 
 
 	
+
+	/*
 	
+			 <input type="hidden"  id="value" name= "value" />
+ 		 <input type="hidden" id ="getname" name ="getname"/> 	
+ 		 <input type="hidden" id="sendPage" name="sendPage"/>*/
 	
 	
 	
@@ -391,7 +391,10 @@ function OpenPop(no)
 	        /*    document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다. 
 	        document.formName.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
 	        document.formName.submit(); // target에 쏜다.
-*/	
+	
+	        
+	        
+	        */	
 	    };
 	
 	

@@ -41,7 +41,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 
-
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 
 table, th, td {
      border: 1px solid gray;
@@ -52,7 +52,7 @@ table, th, td {
 
 th {
     background-color: lightpink;
-    border-left: 1px solid white;
+    border-left: 1px solid gray;
 }
 
 ul {
@@ -76,6 +76,9 @@ li {
      position: relative;
           margin: 0 auto;
            margin-top: 200px;
+           font-family: 'Jeju Hallasan', serif;
+           
+           
 }
 #deleteBtn{
 
@@ -89,11 +92,15 @@ margin-left:740px;
 <body>
 <%@ include file="./main-header4.jsp"  %>
 
+<div style="text-align: center; vertical-align: middle; background-color: lightblue; height: 1000%;">
+   <div style="display: inline-block; vertical-align: middle; background-color: lightyellow; width: 75%"><br/>
+
 <div id="paddingAction">
 <table id="msgTable">
-<caption style="text-align: center;">받은 쪽지함</caption>
+<caption style="text-align: center; width: 90%; border-left: 1px solid gray; border-right: 1px solid gray; border-top: 1px solid gray;width: 100%; background-color : #FFA900"><strong>받은 쪽지함</strong></caption>
+
 		<colgroup>
-			<col width="20px">
+			
 			<col width="40px">
 			<col width="150px">
 			<col width="400px">
@@ -105,7 +112,7 @@ margin-left:740px;
 
     <tr>
     	<th><input type="checkbox" name="rowCheck"></th>
-        <th>번호</th>
+      
         <th>작성자</th>
         <th>내용</th>
         <th>받은 시간</th>
@@ -116,11 +123,10 @@ margin-left:740px;
   
     <tr Class="selectAll">
     	
-    	<td><input type="checkbox" name="rowCheck" value="${vo.msg_no }"></td>
+    	<td><input type="checkbox" name="rowCheck" value="${vo.msg_no }">
+    	<input type="hidden" name="xValue" value="${x=x+1 }">	</td>
     
   	
-        <td>${x=x+1 }</td>
-        
         
         <td><form action="mypage/MiniMSGpageU2" method="get" id="formName" name="formName" target="pop">
         		<input type="hidden"  id="sendmno${x }" value="${vo.nickname }">
@@ -187,13 +193,25 @@ margin-left:740px;
         value="${pageMaker.criteria.perPage }" />
 </form>
 
+
 <form id ="deleteBtn">
 	<input type="button" id="deleteMSGbtn" value="삭제"> 
 </form >
 </div>
-<!--  //////////////////////////////////////////////// -->
 
+<br/>
 	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	
+
+
+<!--  //////////////////////////////////////////////// -->
+</div>
+</div>
 </div>		
 <!-- jQuery CDN -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -341,10 +359,7 @@ function OpenPop(no)
 	        var f = document.getElementById('formName');
 	        window.open("", "pop", "width=800, height=800"); // 먼저 빈 창을 pop 라는 이름으로 열어놓고
 	        f.submit(); 
-	        /*    document.formName.target = "pop"; // 이 부분이 핵심! 열어놓은 빈 창(pop)을 form2가 날아갈 target으로 정한다. 
-	        document.formName.method = "get"; // target에 submit할 방식을 post 방식으로 지정한다.
-	        document.formName.submit(); // target에 쏜다.
-*/	
+
 	    };
 	
 	
