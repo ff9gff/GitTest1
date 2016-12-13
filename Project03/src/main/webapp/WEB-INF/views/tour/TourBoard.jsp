@@ -535,6 +535,7 @@ http://www.templatemo.com/tm-406-flex
 							tagname +="#"+name[i]+" ";
 						}
 						imageList.push({img_url: this.img_url, trip_no: this.trip_no, title: this.title, region_name: tagname, condition_sex: this.condition_sex, condition_age: this.condition_sex, expire: this.expire});	
+						console.log(data1);
 					});
 								
 					getAllThumnail_detail_search();

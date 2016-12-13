@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>같이 가자</title>
 <style type="text/css">
 
 html{

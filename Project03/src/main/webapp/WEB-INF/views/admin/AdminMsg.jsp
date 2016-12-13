@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>같이 가자</title>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 

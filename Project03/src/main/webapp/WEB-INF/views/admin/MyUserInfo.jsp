@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>같이 가자</title>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
@@ -78,8 +78,7 @@ table, th, td {
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
-				</li>
+
 					
 					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
@@ -182,7 +181,7 @@ $(document).ready(function(){
  	   
  	   function getMyUser(){
  		 
- 		    alert('메소드 호출 ');
+ 		    //alert('메소드 호출 ');
  		   
  		   var url =
  			   '/project03/users/all/'+$('#userid').val();

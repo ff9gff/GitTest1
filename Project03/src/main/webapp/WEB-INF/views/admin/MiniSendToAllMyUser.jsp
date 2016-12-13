@@ -214,7 +214,7 @@ $(document).ready(function(){
 		
 		$('#sendBtn').click(function(){//sendBtn
 		var sendText = $('#msg_content').val(); 
-		alert('공지사항 전송 성공'+ sendText);
+		alert('공지사항 전송 성공'); //+ sendText
 		//<input type="hidden" id="value" name="value">
 		$("#value").val(sendText);
 		frm.submit();

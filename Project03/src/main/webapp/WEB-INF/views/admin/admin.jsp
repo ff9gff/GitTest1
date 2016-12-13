@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>같이 가자</title>
 
 <link rel="stylesheet" href="<c:url value="/resources/theme/css/mystyle1.css"/>">
 
@@ -136,46 +136,7 @@ table, th, td {
 			
 				
 				</c:forEach>
-				<tr class= "select0">
-					<th><input type="checkbox" /></th>
-					<th>#</th>
-					<th>user1</th>
-					<th>userphone</th>
-					<th>userEmail1</th>
-					<th>JoinDate1</th>
-				</tr>
-				<tr class= "select0">
-					<th><input type="checkbox" /></th>
-					<th>#</th>
-					<th>user2</th>
-					<th>userphone</th>
-					<th>userEmail2</th>
-					<th>JoinDate2</th>
-				</tr>
-				<tr class= "select0">
-					<th><input type="checkbox" /></th>
-					<th>#</th>
-					<th>user3</th>
-					<th>userphone</th>
-					<th>userEmail3</th>
-					<th>JoinDate3</th>
-				</tr>
-				<tr class= "select0">
-					<th><input type="checkbox" /></th>
-					<th>#</th>
-					<th>user4</th>
-					<th>userphone</th>
-					<th>userEmail4</th>
-					<th>JoinDate5</th>
-				</tr>
-				<tr class= "select0">
-					<th><input type="checkbox" /></th>
-					<th>#</th>
-					<th>user5</th>
-					<th>userphone</th>
-					<th>userEmail5</th>
-					<th>JoinDate5</th>
-				</tr>
+			
 			</tbody>
 
 		</table>
@@ -197,7 +158,7 @@ table, th, td {
 	
 		$('#image_btn').click(ace);
 		function ace(){
-			alert("ss");
+		
 			event.preventDefault();
 			$.ajax({
 				type:'put',

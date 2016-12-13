@@ -75,7 +75,7 @@ http://www.templatemo.com/tm-406-flex
 					<h2>내 정보에 등록된 아이디/이름/휴대폰 /이메일로 비밀번호 찾기</h2>
 					<br/><br/>
 					
-					<form action="find_password" method="post">
+					<form action="find_password" method="post" id="frm">
 						<div style="margin: 5px;">
 							<input type="text" name="userid" id="userid" placeholder="아이디를 입력해 주세요." required />
 						</div>
@@ -91,6 +91,8 @@ http://www.templatemo.com/tm-406-flex
 						<br/><br/>
 						<input type="submit" value="비밀번호 찾기" /><br/><br/>
 					</form>
+					
+					<!-- <button type="button" id="pwdSearch">비밀번호 찾기</button> <br/> -->
 					
 					<a href="member_register01">회원가입</a>
 					</div>
@@ -149,6 +151,16 @@ http://www.templatemo.com/tm-406-flex
             var _val = this.value.trim();
             this.value = autoHypenPhone(_val) ;
     }   
+    
+    
+    
+   /*  $('#pwdSearch').click(function() {
+    	
+    	alert('입력하신 이메일로 비밀번호가 발송되었습니다');
+  
+    	$('#frm').submit();
+    
+    }); */
 	
 	
 	

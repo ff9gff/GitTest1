@@ -79,112 +79,112 @@
 	
 	<!-- 1 0 0 0 -->
 	<select id='select_detail_search_1000' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date is not null and b.condition_sex is not null and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 1 0 0 -->
 	<select id='select_detail_search_1100' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date = #{start_date} and b.condition_sex is not null and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 1 1 0 -->
 	<select id='select_detail_search_1110' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date = #{start_date} and b.condition_sex = #{condition_sex} and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 1 1 1 -->
 	<select id='select_detail_search_1111' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date = #{start_date} and b.condition_sex = #{condition_sex} and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 1 0 1 -->
 	<select id='select_detail_search_1101' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date = #{start_date} and b.condition_sex is not null and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 0 1 1 -->
 	<select id='select_detail_search_1011' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date is not null and b.condition_sex = #{condition_sex} and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 0 1 0 -->
 	<select id='select_detail_search_1010' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date is not null and b.condition_sex = #{condition_sex} and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 1 0 0 1 -->
 	<select id='select_detail_search_1001' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.end_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name like #{region_name} and b.start_date is not null and b.condition_sex is not null and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 1 0 0 -->
 	<select id='select_detail_search_0100' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, start_date, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date = #{start_date} and b.condition_sex is not null and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 1 0 1 -->
 	<select id='select_detail_search_0101' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, start_date, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date = #{start_date} and b.condition_sex is not null and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 1 1 0 -->
 	<select id='select_detail_search_0110' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, start_date, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date = #{start_date} and b.condition_sex = #{condition_sex} and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 1 1 1 -->
 	<select id='select_detail_search_0111' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, start_date, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date = #{start_date} and b.condition_sex = #{condition_sex} and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 0 1 1 -->
 	<select id='select_detail_search_0011' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date is not null and b.condition_sex = #{condition_sex} and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 0 1 0 -->
 	<select id='select_detail_search_0010' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, start_date, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date is not null and b.condition_sex = #{condition_sex} and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 0 0 1 -->
 	<select id='select_detail_search_0001' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, start_date, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date is not null and b.condition_sex is not null and b.condition_age = #{condition_age} and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>
 	
 	<!-- 0 0 0 0 -->
 	<select id='select_detail_search_0000' resultType="edu.spring.project03.domain.DetailSearchResultDTO">
-		select img_url, title, region_name, trip_no, expire from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
+		select img_url, title, region_name, trip_no, expire, condition_sex, condition_age from (select a.region_name, b.title, b.start_date, b.condition_sex, b.condition_age, b.trip_no, c.img_url, b.expire
 		from wm_tour_region a, wm_tour b, wm_image c
 		where a.region_name is not null and b.start_date is not null and b.condition_sex is not null and b.condition_age is not null and c.board_type = 1 and b.trip_no = a.trip_no and a.trip_no = c.content_no and b.expire = 0)
 	</select>

@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>같이 가자</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 
 
@@ -129,9 +129,7 @@ font-size: 170%;
 				
 				<li Class="menuItem"><a Class="mylink" href="MyUserInfo" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/test.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 유저 등급</a></li>
 
-				<li Class="menuItem"><a Class="mylink" href="../SendMsg" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/gongji.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/>홈(아직)</a>
-				</li>
-					
+				
 					<li Class="menuItem"><a Class="mylink" href="AllMyUser" style="text-align: center; vertical-align: middle;"><img  src="../resources/theme/images/allperson.png" style="width: 40px; height: 40px; display: inline; text-align: center; vertical-align: middle;"/> 전체 유저</a>
 				</li>
 				
@@ -284,7 +282,7 @@ document.getElementById("dpTime").innerHTML = ampm + hours + ":" + minutes + ":"
 var frm = $('#pageForm2');
 
 $('.pagination li a').click(function() {
-	alert('하이');
+	//alert('하이');
 	event.preventDefault(); // 기본 이벤트 처리 방식을 방지(막음)
 	// pageForm 안에 있는 name="page"인 요소를 찾아서
 	// 이동할 페이지 번호를 세팅
